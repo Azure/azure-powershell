@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     targetVaultName = HelperUtils.GetVaultNameFromId(keyValueDict, TargetItem.Id);
                     targetSubscriptionId = HelperUtils.GetSubscriptionIdFromId(keyValueDict, TargetItem.Id);
 
-                    // check if the TragetItem provided is of workload type
+                    // check if the TargetItem provided is of workload type
                     if (!string.Equals(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
                         ProtectableItemType.SQLInstance.ToString()))
                     {

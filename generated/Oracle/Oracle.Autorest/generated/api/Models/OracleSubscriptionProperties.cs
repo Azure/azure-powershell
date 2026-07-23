@@ -13,6 +13,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="AddSubscriptionOperationState" /> property.</summary>
+        private string _addSubscriptionOperationState;
+
+        /// <summary>State of the add Azure subscription operation on Oracle subscription</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string AddSubscriptionOperationState { get => this._addSubscriptionOperationState; }
+
+        /// <summary>Backing field for <see cref="AzureSubscriptionId" /> property.</summary>
+        private System.Collections.Generic.List<string> _azureSubscriptionId;
+
+        /// <summary>Azure subscriptions to be added</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AzureSubscriptionId { get => this._azureSubscriptionId; }
+
         /// <summary>Backing field for <see cref="CloudAccountId" /> property.</summary>
         private string _cloudAccountId;
 
@@ -34,11 +48,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Intent { get => this._intent; set => this._intent = value; }
 
+        /// <summary>Backing field for <see cref="LastOperationStatusDetail" /> property.</summary>
+        private string _lastOperationStatusDetail;
+
+        /// <summary>Status details of the last operation on Oracle subscription</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string LastOperationStatusDetail { get => this._lastOperationStatusDetail; }
+
+        /// <summary>Internal Acessors for AddSubscriptionOperationState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal.AddSubscriptionOperationState { get => this._addSubscriptionOperationState; set { {_addSubscriptionOperationState = value;} } }
+
+        /// <summary>Internal Acessors for AzureSubscriptionId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal.AzureSubscriptionId { get => this._azureSubscriptionId; set { {_azureSubscriptionId = value;} } }
+
         /// <summary>Internal Acessors for CloudAccountId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal.CloudAccountId { get => this._cloudAccountId; set { {_cloudAccountId = value;} } }
 
         /// <summary>Internal Acessors for CloudAccountState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal.CloudAccountState { get => this._cloudAccountState; set { {_cloudAccountState = value;} } }
+
+        /// <summary>Internal Acessors for LastOperationStatusDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal.LastOperationStatusDetail { get => this._lastOperationStatusDetail; set { {_lastOperationStatusDetail = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -84,6 +114,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     public partial interface IOracleSubscriptionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IJsonSerializable
     {
+        /// <summary>State of the add Azure subscription operation on Oracle subscription</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"State of the add Azure subscription operation on Oracle subscription",
+        SerializedName = @"addSubscriptionOperationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Succeeded", "Updating", "Failed")]
+        string AddSubscriptionOperationState { get;  }
+        /// <summary>Azure subscriptions to be added</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Azure subscriptions to be added",
+        SerializedName = @"azureSubscriptionIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AzureSubscriptionId { get;  }
         /// <summary>Cloud Account Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -119,6 +172,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Retain", "Reset")]
         string Intent { get; set; }
+        /// <summary>Status details of the last operation on Oracle subscription</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Status details of the last operation on Oracle subscription",
+        SerializedName = @"lastOperationStatusDetail",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationStatusDetail { get;  }
         /// <summary>Product code for the term unit</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -170,6 +234,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     internal partial interface IOracleSubscriptionPropertiesInternal
 
     {
+        /// <summary>State of the add Azure subscription operation on Oracle subscription</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Succeeded", "Updating", "Failed")]
+        string AddSubscriptionOperationState { get; set; }
+        /// <summary>Azure subscriptions to be added</summary>
+        System.Collections.Generic.List<string> AzureSubscriptionId { get; set; }
         /// <summary>Cloud Account Id</summary>
         string CloudAccountId { get; set; }
         /// <summary>Cloud Account provisioning state.</summary>
@@ -178,6 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Intent for the update operation</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Retain", "Reset")]
         string Intent { get; set; }
+        /// <summary>Status details of the last operation on Oracle subscription</summary>
+        string LastOperationStatusDetail { get; set; }
         /// <summary>Product code for the term unit</summary>
         string ProductCode { get; set; }
         /// <summary>OracleSubscriptionProvisioningState provisioning state</summary>

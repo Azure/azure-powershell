@@ -21,6 +21,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).DisplayName = value ?? null; }
 
+        /// <summary>The details of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).EndpointSettingDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).EndpointSettingDetail = value ?? null /* model class */; }
+
+        /// <summary>The kind of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string EndpointSettingKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).EndpointSettingKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).EndpointSettingKind = value ?? null; }
+
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string ExternalEvaluationEnforcementSettingMissingTokenAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingMissingTokenAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingMissingTokenAction = value ?? null; }
+
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string ExternalEvaluationEnforcementSettingResultLifespan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingResultLifespan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingResultLifespan = value ?? null; }
+
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingRoleDefinitionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingRoleDefinitionId = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -34,6 +62,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
+        /// <summary>Internal Acessors for ExternalEvaluationEnforcementSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.ExternalEvaluationEnforcementSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSetting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ExternalEvaluationEnforcementSettingEndpointSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.ExternalEvaluationEnforcementSettingEndpointSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingEndpointSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).ExternalEvaluationEnforcementSettingEndpointSetting = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.Id { get => this._id; set { {_id = value;} } }
 
@@ -45,6 +79,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.SystemData()); set { {_systemData = value;} } }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.Type { get => this._type; set { {_type = value;} } }
@@ -94,27 +146,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -159,6 +211,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
+        /// <summary>The details of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The details of the endpoint.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get; set; }
+        /// <summary>The kind of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The kind of the endpoint.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointSettingKind { get; set; }
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.",
+        SerializedName = @"missingTokenAction",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalEvaluationEnforcementSettingMissingTokenAction { get; set; }
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.",
+        SerializedName = @"resultLifespan",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalEvaluationEnforcementSettingResultLifespan { get; set; }
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.",
+        SerializedName = @"roleDefinitionIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get; set; }
         /// <summary>The ID of the policy definition version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -345,6 +460,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         string Description { get; set; }
         /// <summary>The display name of the policy definition.</summary>
         string DisplayName { get; set; }
+        /// <summary>The details of the endpoint.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get; set; }
+        /// <summary>The kind of the endpoint.</summary>
+        string EndpointSettingKind { get; set; }
+        /// <summary>
+        /// The details of the source of external evaluation results required by the policy during enforcement evaluation.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings ExternalEvaluationEnforcementSetting { get; set; }
+        /// <summary>The settings of an external endpoint providing evaluation results.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings ExternalEvaluationEnforcementSettingEndpointSetting { get; set; }
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        string ExternalEvaluationEnforcementSettingMissingTokenAction { get; set; }
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        string ExternalEvaluationEnforcementSettingResultLifespan { get; set; }
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get; set; }
         /// <summary>The ID of the policy definition version.</summary>
         string Id { get; set; }
         /// <summary>

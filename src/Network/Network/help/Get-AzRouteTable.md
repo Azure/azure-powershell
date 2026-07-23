@@ -219,5 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzRouteTable](./Remove-AzRouteTable.md)
 
 [Set-AzRouteTable](./Set-AzRouteTable.md)
-
-

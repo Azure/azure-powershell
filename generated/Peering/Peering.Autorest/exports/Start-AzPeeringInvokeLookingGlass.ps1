@@ -22,51 +22,26 @@ Run looking glass functionality
 .Example
 Start-AzPeeringInvokeLookingGlass -Command Ping -DestinationIp 1.1.1.1 -SourceLocation Seattle -SourceType EdgeSite
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ILookingGlassOutput
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPeeringIdentity>: Identity Parameter
-  [ConnectionMonitorTestName <String>]: The name of the connection monitor test
-  [Id <String>]: Resource identity path
-  [PeerAsnName <String>]: The peer ASN name.
-  [PeeringName <String>]: The name of the peering.
-  [PeeringServiceName <String>]: The name of the peering service.
-  [PrefixName <String>]: The name of the prefix.
-  [RegisteredAsnName <String>]: The name of the registered ASN.
-  [RegisteredPrefixName <String>]: The name of the registered prefix.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The Azure subscription ID.
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ILookingGlassOutput
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/start-azpeeringinvokelookingglass
 #>
 function Start-AzPeeringInvokeLookingGlass {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ILookingGlassOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ILookingGlassOutput])]
 [CmdletBinding(DefaultParameterSetName='Invoke', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Invoke')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='InvokeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassCommand])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Traceroute", "Ping", "BgpRoute")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassCommand]
+    [System.String]
     # The command to be executed: ping, traceroute, bgpRoute.
     ${Command},
 
@@ -83,9 +58,9 @@ param(
     ${SourceLocation},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassSourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("EdgeSite", "AzureRegion")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassSourceType]
+    [System.String]
     # The type of the source: Edge site or Azure Region.
     ${SourceType},
 
@@ -145,6 +120,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -165,11 +149,8 @@ begin {
 
         $mapping = @{
             Invoke = 'Az.Peering.private\Start-AzPeeringInvokeLookingGlass_Invoke';
-            InvokeViaIdentity = 'Az.Peering.private\Start-AzPeeringInvokeLookingGlass_InvokeViaIdentity';
         }
-        if (('Invoke') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Invoke') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -183,6 +164,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

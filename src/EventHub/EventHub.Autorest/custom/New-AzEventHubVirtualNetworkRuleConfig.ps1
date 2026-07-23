@@ -30,7 +30,21 @@ function New-AzEventHubVirtualNetworkRuleConfig{
 		[Parameter(HelpMessage = "Resource ID of Virtual Network Subnet")]
         [System.Management.Automation.SwitchParameter]
 		# The IP Filter Action
-        ${IgnoreMissingVnetServiceEndpoint}
+        ${IgnoreMissingVnetServiceEndpoint},
+
+		[Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend}
 	)
 
 	process{

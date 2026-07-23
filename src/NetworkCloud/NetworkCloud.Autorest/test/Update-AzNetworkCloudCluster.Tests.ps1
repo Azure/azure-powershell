@@ -21,7 +21,11 @@ Describe 'Update-AzNetworkCloudCluster' {
                 tag1       = $clusterconfig.tags
                 tagsUpdate = $clusterconfig.tagsUpdate
             }
-            $password = ConvertTo-SecureString "********" -AsPlainText -Force
+            $password = New-Object System.Security.SecureString
+            "********".ToCharArray() | ForEach-Object {
+                $password.AppendChar($_)
+            }
+            $password.MakeReadOnly()
             $bmmConfigurationData1 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress1 -BootMacAddress $clusterconfig.bootMacAddress1 -RackSlot 1 -SerialNumber  $clusterconfig.serialNumber1 -MachineDetail "machineDetail" -MachineName "lab00r750wkr1"
             $bmmConfigurationData2 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress2 -BootMacAddress $clusterconfig.bootMacAddress2 -RackSlot 2 -SerialNumber $clusterconfig.serialNumber2 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr1"
             $bmmConfigurationData3 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress3 -BootMacAddress $clusterconfig.bootMacAddress3 -RackSlot 3 -SerialNumber $clusterconfig.serialNumber3 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr2"
@@ -30,7 +34,11 @@ Describe 'Update-AzNetworkCloudCluster' {
             $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.aggregatorRack.networkRackId -RackSerialNumber $clusterconfig.computeRack.serialNumber -RackSkuId $clusterconfig.computeRack.rackSkuId -AvailabilityZone "1" -RackLocation $clusterconfig.rackDefinitionRackLocation  -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
             $baremetalmachineconfigurationdata = @($bmmconfigurationdata1)
 
-            $securePassword = ConvertTo-SecureString $clusterconfig.clusterServicePrincipalPassword -AsPlainText -Force
+            $securePassword = New-Object System.Security.SecureString
+            $clusterconfig.clusterServicePrincipalPassword.ToCharArray() | ForEach-Object {
+                $securePassword.AppendChar($_)
+            }
+            $securePassword.MakeReadOnly()
 
             Update-AzNetworkCloudCluster -ResourceGroupName $clusterconfig.clusterRg -Name $clusterconfig.clusterName `
                 -AggregatorOrSingleRackDefinitionNetworkRackId $clusterconfig.aggregatorRack.networkRackId `
@@ -48,7 +56,60 @@ Describe 'Update-AzNetworkCloudCluster' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+            $clusterconfig = $global:config.AzNetworkCloudCluster
+            $common = $global:config.common
+            $tagHash = @{
+                tag2       = $clusterconfig.tags
+                tagsUpdate = $clusterconfig.tagsUpdate1
+            }
+            $password = New-Object System.Security.SecureString
+            $clusterconfig.clusterServicePrincipalPassword.ToCharArray() | ForEach-Object {
+                $password.AppendChar($_)
+            }
+            $password.MakeReadOnly()
+            $bmmConfigurationData1 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress1 -BootMacAddress $clusterconfig.bootMacAddress1 -RackSlot 1 -SerialNumber $clusterconfig.serialNumber1 -MachineDetail "machineDetail" -MachineName "lab00r750wkr1"
+            $bmmConfigurationData2 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress2 -BootMacAddress $clusterconfig.bootMacAddress2 -RackSlot 2 -SerialNumber $clusterconfig.serialNumber2 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr1"
+            $bmmConfigurationData3 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress3 -BootMacAddress $clusterconfig.bootMacAddress3 -RackSlot 3 -SerialNumber $clusterconfig.serialNumber3 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr2"
+            $bareMetalMachineConfigurationData = @($bmmConfigurationData1, $bmmConfigurationData2, $bmmConfigurationData3)
+
+            $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.aggregatorRack.networkRackId -RackSerialNumber $clusterconfig.computeRack.serialNumber -RackSkuId $clusterconfig.computeRack.rackSkuId -AvailabilityZone $clusterconfig.computeRack.availabilityZone -RackLocation $clusterconfig.clusterLocation -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
+
+            Update-AzNetworkCloudCluster -ResourceGroupName $clusterconfig.miClusterRg -Name $clusterconfig.miClusterName `
+                -SubscriptionId $clusterconfig.subscriptionId `
+                -AggregatorOrSingleRackDefinitionNetworkRackId $clusterconfig.aggregatorRack.networkRackId `
+                -AggregatorOrSingleRackDefinitionRackSerialNumber $clusterconfig.aggregatorRack.serialNumber `
+                -AggregatorOrSingleRackDefinitionRackSkuId $clusterconfig.aggregatorRack.rackSkuId `
+                -AggregatorOrSingleRackDefinitionAvailabilityZone $clusterconfig.aggregatorRack.availabilityZone `
+                -AggregatorOrSingleRackDefinitionRackLocation $clusterconfig.clusterLocation `
+                -AnalyticOutputSettingAnalyticsWorkspaceId $clusterconfig.miAnalyticsWorkspaceId `
+                -AnalyticsOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
+                -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -CommandOutputSettingContainerUrl $clusterconfig.containerUrlUpdate `
+                -AssociatedIdentityType $clusterconfig.identityType `
+                -AssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -ComputeDeploymentThresholdGrouping $clusterconfig.computeDeploymentThresholdGrouping `
+                -ComputeDeploymentThresholdType $clusterconfig.computeDeploymentThresholdType `
+                -ComputeDeploymentThresholdValue $clusterconfig.computeDeploymentThresholdValue `
+                -ComputeRackDefinition $computerackdefinition `
+                -UserAssignedIdentity $clusterconfig.miUserAssignedIdentityResourceId `
+                -RuntimeProtectionConfigurationEnforcementLevel $clusterconfig.runtimeProtectionConfigEnforcementLevel `
+                -SecretArchiveKeyVaultId $clusterconfig.miKeyVaultId `
+                -SecretArchiveSettingVaultUri $clusterconfig.keyVaultUriUpdate `
+                -SecretArchiveSettingsAssociatedIdentityType $clusterconfig.identityType `
+                -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -SecretArchiveUseKeyVault $clusterconfig.useKeyVault `
+                -ClusterServicePrincipalApplicationId $clusterconfig.clusterServicePrincipalApplicationId `
+                -ClusterServicePrincipalId $clusterconfig.clusterServicePrincipalId `
+                -ClusterServicePrincipalPassword $password `
+                -ClusterServicePrincipalTenantId $clusterconfig.clusterServicePrincipalTenantId `
+                -UpdateStrategyThresholdType $clusterconfig.updateStrategyThresholdType `
+                -UpdateStrategyThresholdValue $clusterconfig.updateStrategyThresholdValue `
+                -UpdateStrategyType $clusterconfig.updateStrategyType `
+                -UpdateStrategyWaitTimeMinute $clusterconfig.updateStrategyWaitTimeMinute `
+                -VulnerabilityScanningSettingContainerScan $clusterconfig.vulnerabilityScanningSettingContainerScan `
+                -Tag $tagHash `
+        } | Should -Not -Throw
     }
 }

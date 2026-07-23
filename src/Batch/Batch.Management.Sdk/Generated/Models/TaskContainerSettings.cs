@@ -42,13 +42,19 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="workingDirectory">A flag to indicate where the container task working directory is. The
         /// default is &#39;taskWorkingDirectory&#39;.
         /// Possible values include: &#39;TaskWorkingDirectory&#39;, &#39;ContainerImageDefault&#39;</param>
-        public TaskContainerSettings(string imageName, string containerRunOptions = default(string), ContainerRegistry registry = default(ContainerRegistry), ContainerWorkingDirectory? workingDirectory = default(ContainerWorkingDirectory?))
+
+        /// <param name="containerHostBatchBindMounts">If this array is null or be not present, container task will mount entire
+        /// temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It
+        /// won&#39;t&#39; mount any data paths into container if this array is set as empty.
+        /// </param>
+        public TaskContainerSettings(string imageName, string containerRunOptions = default(string), ContainerRegistry registry = default(ContainerRegistry), ContainerWorkingDirectory? workingDirectory = default(ContainerWorkingDirectory?), System.Collections.Generic.IList<ContainerHostBatchBindMountEntry> containerHostBatchBindMounts = default(System.Collections.Generic.IList<ContainerHostBatchBindMountEntry>))
 
         {
             this.ContainerRunOptions = containerRunOptions;
             this.ImageName = imageName;
             this.Registry = registry;
             this.WorkingDirectory = workingDirectory;
+            this.ContainerHostBatchBindMounts = containerHostBatchBindMounts;
             CustomInit();
         }
 
@@ -87,6 +93,15 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workingDirectory")]
         public ContainerWorkingDirectory? WorkingDirectory {get; set; }
+
+        /// <summary>
+        /// Gets or sets if this array is null or be not present, container task will
+        /// mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in
+        /// Linux). It won&#39;t&#39; mount any data paths into container if this array is set
+        /// as empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "containerHostBatchBindMounts")]
+        public System.Collections.Generic.IList<ContainerHostBatchBindMountEntry> ContainerHostBatchBindMounts {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -99,6 +114,7 @@ namespace Microsoft.Azure.Management.Batch.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ImageName");
             }
+
 
 
 

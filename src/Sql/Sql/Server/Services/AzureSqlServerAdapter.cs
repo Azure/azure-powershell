@@ -142,7 +142,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
-                FederatedClientId = model.FederatedClientId
+                FederatedClientId = model.FederatedClientId,
+                RetentionDays = model.SoftDeleteRetentionDays,
+                CreateMode = model.CreateMode,
             });
 
             return CreateServerModelFromResponse(resp);
@@ -193,13 +195,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             server.KeyId = resp.KeyId;
             server.FederatedClientId = resp.FederatedClientId;
+            server.SoftDeleteRetentionDays = resp.RetentionDays;
 
             return server;
         }
 
         /// <summary>
         /// Convert a <see cref="System.Security.SecureString"/> to a plain-text string representation.
-        /// This should only be used in a proetected context, and must be done in the same logon and process context
+        /// This should only be used in a protected context, and must be done in the same logon and process context
         /// in which the <see cref="System.Security.SecureString"/> was constructed.
         /// </summary>
         /// <param name="secureString">The encrypted <see cref="System.Security.SecureString"/>.</param>
@@ -408,6 +411,18 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             }
 
             return tenantIdGuid;
+        }
+
+        /// <summary>
+        /// Gets a deleted Azure SQL server by location and server name.
+        /// </summary>
+        /// <param name="location">The Azure region (location) where the deleted server resided.</param>
+        /// <param name="serverName">The name of the deleted SQL server.</param>
+        /// <param name="subscriptionId">Optional. The subscription ID associated with the server. If null, uses the current context.</param>
+        /// <returns>The deleted server information if found; otherwise, null.</returns>
+        public Management.Sql.Models.DeletedServer GetDeletedServer(string location, string serverName, string subscriptionId = null)
+        {
+            return Communicator.GetDeleted(location, serverName, subscriptionId);
         }
     }
 }

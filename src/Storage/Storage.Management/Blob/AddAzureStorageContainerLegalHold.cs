@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string[] Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.")]
+        [Parameter(Mandatory = false, HelpMessage = "When enabled, new blocks can be written to both 'Append and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.")]
         public bool AllowProtectedAppendWriteAll
         {
             get

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleResponseHeaderActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleresponseheaderactionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleResponseHeaderActionObject -Name <DeliveryRuleAction>
- -ParameterHeaderAction <HeaderAction> -ParameterHeaderName <String> [-ParameterValue <String>]
- [<CommonParameters>]
+New-AzCdnDeliveryRuleResponseHeaderActionObject -ParameterHeaderAction <String> -ParameterHeaderName <String>
+ -ParameterTypeName <String> [-ParameterValue <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,26 +37,11 @@ Create an in-memory object for AzureCDN DeliveryRuleResponseHeaderAction
 
 ## PARAMETERS
 
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParameterHeaderAction
 Action to perform.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,6 +59,21 @@ Name of the header to modify.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterTypeName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
 
 Required: True
 Position: Named
@@ -105,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleResponseHeaderAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
 
 ## NOTES
 

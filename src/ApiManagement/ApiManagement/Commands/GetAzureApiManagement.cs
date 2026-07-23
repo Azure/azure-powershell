@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             }
             else
             {
-                // List all services in given resource group if avaliable otherwise all services in given subscription
+                // List all services in given resource group if available otherwise all services in given subscription
                 var enumeration = Client.ListApiManagements(ResourceGroupName);
                 WriteObject(enumeration.ToList(), true);
             }

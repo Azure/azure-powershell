@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IInheritedSettingsForProject
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IInheritedSettingsForProject
 
 ## NOTES
 

@@ -8,24 +8,27 @@ schema: 2.0.0
 # Update-AzMonitorWorkspace
 
 ## SYNOPSIS
-Updates part of a workspace
+Update an Azure Monitor Workspace
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-MetricEnableAccessUsingResourcePermission]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
+ [-MetricEnableAccessUsingResourcePermission] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates part of a workspace
+Update an Azure Monitor Workspace
 
 ## EXAMPLES
 
@@ -73,9 +76,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentity
@@ -89,8 +106,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MetricEnableAccessUsingResourcePermission
+Flag that indicates whether to enable access using resource permissions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the Azure Monitor workspace.
+The name of the Azure Monitor Workspace.
 The name is case insensitive
 
 ```yaml
@@ -99,6 +131,21 @@ Parameter Sets: UpdateExpanded
 Aliases: AzureMonitorWorkspaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Gets or sets allow or disallow public network access to Azure Monitor Workspace
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,6 +170,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -137,10 +185,26 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +255,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource
 
 ## NOTES
 

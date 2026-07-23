@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
             }
 
             telemetry.HasErrorInDetection = true;
-            telemetry.DetectionError = new Exception($"Potential stack overflow exception may occurr on property: '{property.PropertyName}' declared in the object '{property.ValueSupplier.DeclaringType.FullName}' with type '{property.PropertyType.FullName}'");
+            telemetry.DetectionError = new Exception($"Potential stack overflow exception may occur on property: '{property.PropertyName}' declared in the object '{property.ValueSupplier.DeclaringType.FullName}' with type '{property.PropertyType.FullName}'");
 
             return false;
         }

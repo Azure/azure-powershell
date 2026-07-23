@@ -21,12 +21,13 @@ Create an in-memory object for ActionGroup.
 Create an in-memory object for ActionGroup.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroup
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertActionGroupObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertactiongroupobject
 #>
 function New-AzActivityLogAlertActionGroupObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroup')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,12 +35,12 @@ function New-AzActivityLogAlertActionGroupObject {
         [string]
         $Id,
         [Parameter(HelpMessage="the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroupWebhookProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroupWebhookProperties]
         $WebhookProperty
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroup]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

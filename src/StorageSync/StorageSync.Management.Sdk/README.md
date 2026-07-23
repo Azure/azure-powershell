@@ -6,7 +6,6 @@ In this directory, run AutoRest:
 ```
 autorest --reset
 autorest --use:@autorest/powershell@4.x
-autorest.cmd README.md --version=v2
 ```
 
 ### AutoRest Configuration
@@ -27,9 +26,9 @@ payload-flattening-threshold: 1
 
 ###
 ``` yaml
-commit: 9ec0fcc278aa2128c4fbb2b8a1aa93432d72cce0
+commit: 2ec4c94bd944ea1230297b26ba6bbfa94becdcce
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2022-09-01/storagesync.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/storagesync/resource-manager/Microsoft.StorageSync/StorageSync/stable/2022-09-01/storagesync.json
 
 output-folder: Generated
 

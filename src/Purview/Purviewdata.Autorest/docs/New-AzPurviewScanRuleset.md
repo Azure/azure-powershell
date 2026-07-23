@@ -8,23 +8,36 @@ schema: 2.0.0
 # New-AzPurviewScanRuleset
 
 ## SYNOPSIS
-Creates or Updates a scan ruleset
+Create a scan ruleset
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzPurviewScanRuleset -Endpoint <String> -Name <String> -Body <IScanRuleset> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPurviewScanRuleset -Endpoint <String> -Name <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewScanRuleset -Endpoint <String> -Name <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or Updates a scan ruleset
+Create a scan ruleset
 
 ## EXAMPLES
 
 ### Example 1: Create custom scanruleset
 ```powershell
-$obj = New-AzPurviewAdlsGen1ScanRulesetObject -Kind 'AdlsGen1' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+$obj = New-AzPurviewAdlsGen1ScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 New-AzPurviewScanRuleset -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'Rule1' -Body $obj
 ```
 
@@ -50,11 +63,10 @@ Create custom scanruleset
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -87,6 +99,36 @@ Example: https://{accountName}.purview.azure.com
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -147,11 +189,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
 
 ## NOTES
 

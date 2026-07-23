@@ -16,7 +16,8 @@ Resets the scalable P2S VPN gateway.
 ### ByP2SVpnGatewayName (Default)
 ```
 Reset-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObject
@@ -27,8 +28,8 @@ Reset-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-AsJob] [-DefaultProfile <
 
 ### ByP2SVpnGatewayResourceId
 ```
-Reset-AzP2sVpnGateway -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Reset-AzP2sVpnGateway -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

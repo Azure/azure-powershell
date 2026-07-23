@@ -64,18 +64,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_networkFunctionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("networkFunctionName"), out var __jsonNetworkFunctionName) ? (string)__jsonNetworkFunctionName : (string)NetworkFunctionName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_vendorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("vendorName"), out var __jsonVendorName) ? (string)__jsonVendorName : (string)VendorName;}
-            {_skuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("skuName"), out var __jsonSkuName) ? (string)__jsonSkuName : (string)SkuName;}
-            {_previewSubscription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("previewSubscription"), out var __jsonPreviewSubscription) ? (string)__jsonPreviewSubscription : (string)PreviewSubscription;}
-            {_deviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("deviceName"), out var __jsonDeviceName) ? (string)__jsonDeviceName : (string)DeviceName;}
-            {_vendorSkuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("vendorSkuName"), out var __jsonVendorSkuName) ? (string)__jsonVendorSkuName : (string)VendorSkuName;}
-            {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)LocationName;}
-            {_serviceKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("serviceKey"), out var __jsonServiceKey) ? (string)__jsonServiceKey : (string)ServiceKey;}
-            {_roleInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("roleInstanceName"), out var __jsonRoleInstanceName) ? (string)__jsonRoleInstanceName : (string)RoleInstanceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_networkFunctionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("networkFunctionName"), out var __jsonNetworkFunctionName) ? (string)__jsonNetworkFunctionName : (string)_networkFunctionName;}
+            {_vendorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("vendorName"), out var __jsonVendorName) ? (string)__jsonVendorName : (string)_vendorName;}
+            {_skuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("skuName"), out var __jsonSkuName) ? (string)__jsonSkuName : (string)_skuName;}
+            {_previewSubscription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("previewSubscription"), out var __jsonPreviewSubscription) ? (string)__jsonPreviewSubscription : (string)_previewSubscription;}
+            {_deviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("deviceName"), out var __jsonDeviceName) ? (string)__jsonDeviceName : (string)_deviceName;}
+            {_vendorSkuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("vendorSkuName"), out var __jsonVendorSkuName) ? (string)__jsonVendorSkuName : (string)_vendorSkuName;}
+            {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)_locationName;}
+            {_serviceKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("serviceKey"), out var __jsonServiceKey) ? (string)__jsonServiceKey : (string)_serviceKey;}
+            {_roleInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("roleInstanceName"), out var __jsonRoleInstanceName) ? (string)__jsonRoleInstanceName : (string)_roleInstanceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._networkFunctionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._networkFunctionName.ToString()) : null, "networkFunctionName" ,container.Add );
-            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._vendorName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._vendorName.ToString()) : null, "vendorName" ,container.Add );
             AddIf( null != (((object)this._skuName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._skuName.ToString()) : null, "skuName" ,container.Add );
             AddIf( null != (((object)this._previewSubscription)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Json.JsonString(this._previewSubscription.ToString()) : null, "previewSubscription" ,container.Add );

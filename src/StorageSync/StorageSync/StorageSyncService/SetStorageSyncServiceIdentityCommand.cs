@@ -187,11 +187,6 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         }
                     }
 
-                    if(candidateServersLookup.Count == 0)
-                    {
-                        throw new PSArgumentException("No server found which can be configured to use a managed identity.");
-                    }
-
                     StorageSyncClientWrapper.VerboseLogger.Invoke($"Found {candidateServersLookup.Count} servers out of {registeredServers.Count(s => s.ServerRole != ServerRoleType.ClusterName.ToString())} total servers to migrate");
 
                     // 2. Set System Assigned managed identity to Storage Sync service
@@ -239,13 +234,13 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
                             // Identity , RoleDef, Scope
                             var scope = cloudEndpoint.StorageAccountResourceId;
-                            var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                            StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                                 storageSyncService.Identity.PrincipalId.Value,
                                 Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
                                 scope);
 
                             scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                            var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                            StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                                storageSyncService.Identity.PrincipalId.Value,
                                Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                                scope);
@@ -279,7 +274,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                                         }
                                         // Identity , RoleDef, Scope
                                         scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                                        identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                        StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                                            applicationGuid,
                                            Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                                            scope);
@@ -322,7 +317,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     {
                         if (serverKvp.Value.ServerRole != ServerRoleType.ClusterName.ToString())
                         {
-                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId, identity: true);
+                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId,
+                                new RegisteredServerUpdateParameters()
+                                {
+                                    Identity = true
+                                });
                             if (!registeredServer.Identity.GetValueOrDefault(false))
                             {
                                 throw new PSArgumentException($"Not able to set Identity on to server {serverKvp.Key}. Please reach out to administrator for further troubleshooting");

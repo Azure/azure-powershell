@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolume { get => (this._diskPoolVolume = this._diskPoolVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DiskPoolVolume()); set { {_diskPoolVolume = value;} } }
 
         /// <summary>Internal Acessors for DiskPoolVolumePath</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticSanVolume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.ElasticSanVolume { get => (this._elasticSanVolume = this._elasticSanVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolume()); set { {_elasticSanVolume = value;} } }
@@ -64,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for PureStorageVolume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.PureStorageVolume { get => (this._pureStorageVolume = this._pureStorageVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStorageVolume()); set { {_pureStorageVolume = value;} } }
 
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.Status { get => this._status; set { {_status = value;} } }
@@ -85,6 +88,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The state of the datastore provisioning</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="PureStorageVolume" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume _pureStorageVolume;
+
+        /// <summary>A Pure Storage volume</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume PureStorageVolume { get => (this._pureStorageVolume = this._pureStorageVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStorageVolume()); set => this._pureStorageVolume = value; }
+
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public int? PureStorageVolumeSizeGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolumeInternal)PureStorageVolume).SizeGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolumeInternal)PureStorageVolume).SizeGb = value ?? default(int); }
+
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string PureStorageVolumeStoragePoolId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolumeInternal)PureStorageVolume).StoragePoolId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolumeInternal)PureStorageVolume).StoragePoolId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private string _status;
@@ -186,6 +204,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get;  }
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Volume size to be used to create a Virtual Volumes (vVols) datastore",
+        SerializedName = @"sizeGb",
+        PossibleTypes = new [] { typeof(int) })]
+        int? PureStorageVolumeSizeGb { get; set; }
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure resource ID of the Pure Storage Pool",
+        SerializedName = @"storagePoolId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PureStorageVolumeStoragePoolId { get; set; }
         /// <summary>The operational status of the datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -229,6 +269,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The state of the datastore provisioning</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get; set; }
+        /// <summary>A Pure Storage volume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume PureStorageVolume { get; set; }
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        int? PureStorageVolumeSizeGb { get; set; }
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        string PureStorageVolumeStoragePoolId { get; set; }
         /// <summary>The operational status of the datastore</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Unknown", "Accessible", "Inaccessible", "Attached", "Detached", "LostCommunication", "DeadOrError")]
         string Status { get; set; }

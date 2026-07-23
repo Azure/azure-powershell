@@ -16,6 +16,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {

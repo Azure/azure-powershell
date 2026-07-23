@@ -19,7 +19,8 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -28,7 +29,8 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroupId <String[]>]
  [-DestinationApplicationSecurityGroupId <String[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -333,5 +335,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 [Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
-
-

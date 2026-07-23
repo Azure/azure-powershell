@@ -27,7 +27,7 @@ Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name spri
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigServerSettingsValidateResult
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigServerSettingsValidateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,9 +40,9 @@ GITREPOSITORY <IGitPatternRepository[]>: Repositories of git.
   [HostKeyAlgorithm <String>]: SshKey algorithm of git repository.
   [Label <String>]: Label of the repository
   [Password <String>]: Password of git repository basic auth.
-  [Pattern <String[]>]: Collection of pattern of the repository
+  [Pattern <List<String>>]: Collection of pattern of the repository
   [PrivateKey <String>]: Private sshKey algorithm of git repository.
-  [SearchPath <String[]>]: Searching path of the repository
+  [SearchPath <List<String>>]: Searching path of the repository
   [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
   [Username <String>]: Username of git repository basic auth.
 
@@ -71,16 +71,20 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudconfigserver
 #>
 function Test-AzSpringCloudConfigServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigServerSettingsValidateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigServerSettingsValidateResult])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${Name},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
@@ -88,6 +92,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath')]
+    [Parameter(ParameterSetName='ValidateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -99,71 +105,91 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Public sshKey of git repository.
     ${GitHostKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # SshKey algorithm of git repository.
     ${GitHostKeyAlgorithm},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Label of the repository
     ${GitLabel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Password of git repository basic auth.
     ${GitPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Private sshKey algorithm of git repository.
     ${GitPrivateKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IGitPatternRepository[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IGitPatternRepository[]]
     # Repositories of git.
-    # To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
     ${GitRepository},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String[]]
     # Searching path of the repository
     ${GitSearchPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Strict host key checking or not.
     ${GitStrictHostKeyChecking},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # URI of the repository
     ${GitUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Username of git repository basic auth.
     ${GitUsername},
+
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Validate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Validate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -233,6 +259,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -254,9 +289,15 @@ begin {
         $mapping = @{
             ValidateExpanded = 'Az.SpringCloud.private\Test-AzSpringCloudConfigServer_ValidateExpanded';
             ValidateViaIdentityExpanded = 'Az.SpringCloud.private\Test-AzSpringCloudConfigServer_ValidateViaIdentityExpanded';
+            ValidateViaJsonFilePath = 'Az.SpringCloud.private\Test-AzSpringCloudConfigServer_ValidateViaJsonFilePath';
+            ValidateViaJsonString = 'Az.SpringCloud.private\Test-AzSpringCloudConfigServer_ValidateViaJsonString';
         }
-        if (('ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('ValidateExpanded', 'ValidateViaJsonFilePath', 'ValidateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -265,6 +306,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -46,9 +46,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory = false, HelpMessage = "List of node names for the operation.")]
         public string[] NodeName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specify the update type. Valid values are 'Default' and 'ByUpgradeDomain'.")]
+        public string UpdateType { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
@@ -64,11 +66,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Restart node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Restart node(s) {0}, from node type {1} on cluster {2} with update type {3}", (this.NodeName == null) ? String.Empty : string.Join(", ", this.NodeName), this.Name, this.ClusterName, this.UpdateType ?? "Default")))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, updateType: this.UpdateType, force: this.ForceRestart.IsPresent);
                     var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,

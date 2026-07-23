@@ -67,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the account.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The group identifier.",
         SerializedName = @"groupId",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource group name.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription identifier",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

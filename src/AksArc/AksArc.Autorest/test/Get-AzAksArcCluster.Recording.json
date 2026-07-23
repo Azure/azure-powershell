@@ -1,0 +1,48 @@
+{
+  "Get-AzAksArcCluster+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "1d48d9f4-8e5a-4801-88f5-4ac78dfbaba3" ],
+        "CommandName": [ "Az.AksArc.internal\\Get-AzAksArcCluster" ],
+        "FullCommandName": [ "Get-AzAksArcCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.AksArc/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8601df2a-0000-0a00-0000-68d730ef0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=2717d02a-6a0e-4f54-b968-8543e7eb3a3a/canadacentral/3642b219-9be6-407c-973d-e964240b0151" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "eae96be0-d1d7-4475-8ad9-e2676f739569" ],
+        "x-ms-correlation-request-id": [ "04d682aa-2245-4de9-be77-52ddffe744cd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20251002T052137Z:04d682aa-2245-4de9-be77-52ddffe744cd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EAF639FB79AD4104AE04506C73499017 Ref B: CO6AA3150220023 Ref C: 2025-10-02T05:21:37Z" ],
+        "Date": [ "Thu, 02 Oct 2025 05:21:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2651" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/ProvisionedClusterInstances/default\",\"name\":\"default\",\"type\":\"microsoft.hybridcontainerservice/provisionedclusterinstances\",\"extendedLocation\":{\"name\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"92ff90fe-b2e9-4061-86b0-44e8b8377c22\",\"createdByType\":\"Application\",\"createdAt\":\"2025-09-26T19:06:53.6065983Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-27T00:33:51.068456Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"linuxProfile\":{\"ssh\":{\"publicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyv6XBuUaR2ZhlXG9qN7YW+kJI9J7ACdN17DDhzBNISsR6Y2nf4wHJqoDM6CN7NiEfHrG0LmqSTiy1/XASMtRvppNctld+DXvN4fapdDqCllats2qeV7HHBdoOvf/M18H5ndSaLvTrJhWJHgYNfRyMOYRgkB9kq4ONE1eQneOodKra2uw/nCOfAuQeoVW6KNdpp9+L8f02jLBss1K9TNzfNJDRo+LdGa3h2bzUJMwoHKGZwCkXk4eOEIvgNeKKCgHRyjILitkvcYSv+rMT4PlxR4bqwMAoE7iuboc1oWmIy1Wz1RtONLGhecZL08vTHhUUAiuePuGyrWs04vUtVj/p\"}]}},\"controlPlane\":{\"count\":1,\"controlPlaneEndpoint\":{\"hostIP\":\"192.168.200.154\"},\"vmSize\":\"Standard_A4_v2\"},\"networkProfile\":{\"loadBalancerProfile\":{\"count\":0},\"networkPolicy\":\"calico\",\"podCidr\":\"10.244.0.0/16\"},\"storageProfile\":{\"smbCsiDriver\":{\"enabled\":true},\"nfsCsiDriver\":{\"enabled\":true}},\"clusterVMAccessProfile\":{},\"agentPoolProfiles\":[{\"count\":1,\"name\":\"nodepool1\",\"osSKU\":\"CBLMariner\",\"osType\":\"Linux\",\"vmSize\":\"Standard_A4_v2\"}],\"cloudProviderProfile\":{\"infraNetworkProfile\":{\"vnetSubnetIds\":[\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.AzureStackHCI/logicalNetworks/s-ln\"]}},\"licenseProfile\":{\"azureHybridBenefit\":\"False\"},\"status\":{\"controlPlaneStatus\":[{\"name\":\"ArcAgent\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"CloudProvider\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"Telemetry\"},{\"name\":\"CertificateAuthority\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"ProviderKeyVaultKms\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"ProviderCsiDriver\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"NfsCsiDriver\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"SmbCsiDriver\",\"phase\":\"provisioned\",\"ready\":true},{\"name\":\"KubeProxy\",\"phase\":\"provisioned\",\"ready\":true}],\"currentState\":\"Succeeded\"},\"kubernetesVersion\":\"1.32.6\"}}",
+      "isContentBase64": false
+    }
+  }
+}

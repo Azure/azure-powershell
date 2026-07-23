@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.Confluent
+Module Name: Az.confluent
 online version: https://learn.microsoft.com/powershell/module/az.confluent/new-azconfluentorganization
 schema: 2.0.0
 ---
@@ -12,12 +12,30 @@ Create Organization resource
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-OfferDetailId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
- [-OfferDetailPublisherId <String>] [-OfferDetailTermUnit <String>] [-Tag <Hashtable>]
- [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>] [-UserDetailLastName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LinkOrganizationToken <SecureString>] [-Location <String>] [-OfferDetailId <String>]
+ [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>] [-OfferDetailPrivateOfferId <String>]
+ [-OfferDetailPublisherId <String>] [-OfferDetailStatus <String>] [-OfferDetailTermId <String>]
+ [-OfferDetailTermUnit <String>] [-PropertiesOfferDetailPrivateOfferId <String[]>] [-Tag <Hashtable>]
+ [-UserDetailAadEmail <String>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
+ [-UserDetailLastName <String>] [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +45,7 @@ Create Organization resource
 
 ### Example 1: Create a confluent organization
 ```powershell
-New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
+New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "user@example.com"
 ```
 
 ```output
@@ -71,12 +89,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of Organization resource
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LinkOrganizationToken
+User auth token
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -121,7 +184,7 @@ Offer Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -136,7 +199,7 @@ Offer Plan Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -151,7 +214,22 @@ Offer Plan Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailPrivateOfferId
+Private Offer Id
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -166,7 +244,37 @@ Publisher Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailStatus
+SaaS Offer Status
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailTermId
+Offer Plan Term Id
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -181,7 +289,22 @@ Offer Plan Term unit
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertiesOfferDetailPrivateOfferId
+Array of Private Offer Ids
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -192,7 +315,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -207,7 +331,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Microsoft Azure subscription id
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -222,11 +347,26 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Organization resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailAadEmail
+AAD email address
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,7 +381,7 @@ Email address
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -256,7 +396,7 @@ First name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -271,7 +411,22 @@ Last name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailUserPrincipalName
+User principal name
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -319,7 +474,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IOrganizationResource
 
 ## NOTES
 

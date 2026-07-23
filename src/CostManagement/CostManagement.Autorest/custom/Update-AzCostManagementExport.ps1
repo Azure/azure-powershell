@@ -36,7 +36,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,10 +54,12 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
 #>
 function Update-AzCostManagementExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ExportName')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [System.String]
@@ -65,6 +67,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [System.String]
     # This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
@@ -74,10 +78,10 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String[]]
     # Array of column names to be included in the export.
@@ -85,108 +89,164 @@ param(
     # The available columns can vary by customer channel (see examples).
     ${ConfigurationColumn},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the export.
     # Currently only 'Daily' is supported.
     ${DataSetGranularity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("MonthToDate", "BillingMonthToDate", "TheLastMonth", "TheLastBillingMonth", "WeekToDate", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the export.
     # If custom, then a specific time period must be provided.
     ${DefinitionTimeframe},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Usage", "ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the export.
     # Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
     ${DefinitionType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the container where exports will be uploaded.
+    # If the container does not exist it will be created.
     ${DestinationContainer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The resource id of the storage account where exports will be delivered.
+    # This is not required if a sasToken and storageAccount are specified.
     ${DestinationResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The name of the directory where exports will be uploaded.
     ${DestinationRootFolderPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # A SAS token for the storage account.
+    # For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId.
+    # Note: the value returned by the API for this property will always be obfuscated.
+    # Returning this same obfuscated value will not result in the SAS token being updated.
+    # To update this value a new SAS token must be specified.
+    ${DestinationSasToken},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # The storage account where exports will be uploaded.
+    # For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
+    ${DestinationStorageAccount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # eTag of the resource.
     # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
     ${ETag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Csv")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
+    [System.String]
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file.
+    # Note: this option is currently available only for modern commerce scopes.
+    ${PartitionData},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date of recurrence.
     ${RecurrencePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date of recurrence.
     ${RecurrencePeriodTo},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily", "Weekly", "Monthly", "Annually")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]
+    [System.String]
     # The schedule recurrence.
     ${ScheduleRecurrence},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Active", "Inactive")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]
+    [System.String]
     # The status of the export's schedule.
     # If 'Inactive', the export's schedule is paused.
     ${ScheduleStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The start date for export data.
     ${TimePeriodFrom},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.DateTime]
     # The end date for export data.
     ${TimePeriodTo},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -231,72 +291,89 @@ param(
 
     process {
         try {
-            $CommonPSBoundParameters = @{}
-            if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+            if(('UpdateViaJsonFilePath') -contains $parameterSet -or ('UpdateViaJsonString') -contains $parameterSet){
+                Az.CostManagement.internal\Update-AzCostManagementExport @PSBoundParameters
             }
-            if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-                $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+            else{
+                $CommonPSBoundParameters = @{}
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                    $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+                }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                    $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
+                }
+                if($PSBoundParameters['InputObject'] -ne $null)
+                {
+                    $InputExportObject = $PSBoundParameters['InputObject']
+                    $getExport = Get-AzCostManagementExport -InputObject $InputExportObject @CommonPSBoundParameters
+                }else{
+                    $InputExportScope = $PSBoundParameters['Scope']
+                    $InputExportName = $PSBoundParameters['Name']
+                    $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName @CommonPSBoundParameters
+                }
+                
+                $null = $PSBoundParameters.Add("ETag",$getExport.Etag)
+                if($PSBoundParameters['DataSetGranularity'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DataSetGranularity",$getExport.DataSetGranularity)
+                }
+                if($PSBoundParameters['DefinitionTimeframe'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DefinitionTimeframe",$getExport.DefinitionTimeframe)
+                }
+                if($PSBoundParameters['DefinitionType'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DefinitionType",$getExport.DefinitionType)
+                }
+                if($PSBoundParameters['DestinationContainer'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DestinationContainer",$getExport.DestinationContainer)
+                }
+                if($PSBoundParameters['DestinationResourceId'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DestinationResourceId",$getExport.DestinationResourceId)
+                }
+                if($PSBoundParameters['DestinationRootFolderPath'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DestinationRootFolderPath",$getExport.DestinationRootFolderPath)
+                }
+                if($PSBoundParameters['DestinationSasToken'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DestinationSasToken",$getExport.DestinationSasToken)
+                }
+                if($PSBoundParameters['DestinationStorageAccount'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("DestinationStorageAccount",$getExport.DestinationStorageAccount)
+                }
+                if($PSBoundParameters['Format'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("Format",$getExport.Format)
+                }
+                if($PSBoundParameters['PartitionData'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("PartitionData",$getExport.PartitionData)
+                }
+                if($PSBoundParameters['RecurrencePeriodFrom'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("RecurrencePeriodFrom",$getExport.RecurrencePeriodFrom)
+                }
+                if($PSBoundParameters['RecurrencePeriodTo'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("RecurrencePeriodTo",$getExport.RecurrencePeriodTo)
+                }
+                if($PSBoundParameters['ScheduleStatus'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("ScheduleStatus",$getExport.ScheduleStatus)
+                }
+                if($PSBoundParameters['ScheduleRecurrence'] -eq $null)
+                {
+                    $null = $PSBoundParameters.Add("ScheduleRecurrence",$getExport.ScheduleRecurrence)
+                }
+                Az.CostManagement.internal\Update-AzCostManagementExport @PSBoundParameters
             }
-            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
-            }
-            if($PSBoundParameters['InputObject'] -ne $null)
-            {
-                $InputExportObject = $PSBoundParameters['InputObject']
-                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject @CommonPSBoundParameters
-            }else{
-                $InputExportScope = $PSBoundParameters['Scope']
-                $InputExportName = $PSBoundParameters['Name']
-                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName @CommonPSBoundParameters
-            }
-            
-            $null = $PSBoundParameters.Add("ETag",$getExport.Etag)
-            if($PSBoundParameters['DataSetGranularity'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("DataSetGranularity",$getExport.DataSetGranularity)
-            }
-            if($PSBoundParameters['DefinitionTimeframe'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("DefinitionTimeframe",$getExport.DefinitionTimeframe)
-            }
-            if($PSBoundParameters['DefinitionType'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("DefinitionType",$getExport.DefinitionType)
-            }
-            if($PSBoundParameters['DestinationContainer'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("DestinationContainer",$getExport.DestinationContainer)
-            }
-            if($PSBoundParameters['DestinationResourceId'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("DestinationResourceId",$getExport.DestinationResourceId)
-            }
-            if($PSBoundParameters['DestinationRootFolderPath'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("DestinationRootFolderPath",$getExport.DestinationRootFolderPath)
-            }
-            if($PSBoundParameters['Format'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("Format",$getExport.Format)
-            }
-            if($PSBoundParameters['RecurrencePeriodFrom'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("RecurrencePeriodFrom",$getExport.RecurrencePeriodFrom)
-            }
-            if($PSBoundParameters['RecurrencePeriodTo'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("RecurrencePeriodTo",$getExport.RecurrencePeriodTo)
-            }
-            if($PSBoundParameters['ScheduleStatus'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("ScheduleStatus",$getExport.ScheduleStatus)
-            }
-            if($PSBoundParameters['ScheduleRecurrence'] -eq $null)
-            {
-                $null = $PSBoundParameters.Add("ScheduleRecurrence",$getExport.ScheduleRecurrence)
-            }
-            Az.CostManagement.internal\Update-AzCostManagementExport @PSBoundParameters
         } catch {
             throw
         }

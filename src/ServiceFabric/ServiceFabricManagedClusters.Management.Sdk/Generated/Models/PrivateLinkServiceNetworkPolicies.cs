@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class PrivateLinkServiceNetworkPolicies
     {
+        /// <summary>
+        /// Enable apply network policies on private link service in the subnet.
+        /// </summary>
         public const string Enabled = "enabled";
+        /// <summary>
+        /// Disable apply network policies on private link service in the subnet.
+        /// </summary>
         public const string Disabled = "disabled";
     }
 }

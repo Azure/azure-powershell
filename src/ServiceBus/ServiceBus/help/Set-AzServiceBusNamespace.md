@@ -18,8 +18,10 @@ Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Subscript
  [-AlternateName <String>] [-DisableLocalAuth] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-RequireInfrastructureEncryption] [-IdentityType <String>] [-UserAssignedIdentityId <String[]>]
  [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>] [-SkuName <String>] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-IPAddressType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -27,8 +29,11 @@ Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Subscript
 Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <String>] [-DisableLocalAuth]
  [-KeyVaultProperty <IKeyVaultProperties[]>] [-RequireInfrastructureEncryption] [-IdentityType <String>]
  [-UserAssignedIdentityId <String[]>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
- [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-IPAddressType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -346,6 +351,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GeoDataReplicationLocation
+Replica locations for geo data replication.
+Pass an array of NamespaceReplicaLocation objects.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Type of managed service identity.
 
@@ -368,6 +406,22 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPAddressType
+The IP address type for the namespace.
+Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -430,21 +484,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

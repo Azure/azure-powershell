@@ -30,6 +30,12 @@ Get-AzApplicationInsightsApiKey -InputObject <IApplicationInsightsIdentity> [-De
  [<CommonParameters>]
 ```
 
+### GetViaIdentityComponent
+```
+Get-AzApplicationInsightsApiKey -ApiKeyId <String> -ComponentInputObject <IApplicationInsightsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the API Key for this key id.
 
@@ -44,7 +50,7 @@ Get Api Keys for an application insights resource
 
 ### Example 2: Get specific API key for an application insights resource
 ```powershell
-Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 7c4c61dc-b392-4aa4-992f-ee92b84e5dee
+Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 Get specific API key for an application insights resource
@@ -57,13 +63,28 @@ This is unique within a Application Insights component.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityComponent
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComponentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: GetViaIdentityComponent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -85,7 +106,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -154,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey
 
 ## NOTES
 

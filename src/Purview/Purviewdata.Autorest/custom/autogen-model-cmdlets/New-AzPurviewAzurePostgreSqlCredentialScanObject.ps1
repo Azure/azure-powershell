@@ -21,12 +21,13 @@ Create an in-memory object for AzurePostgreSqlCredentialScan.
 Create an in-memory object for AzurePostgreSqlCredentialScan.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzurePostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurepostgresqlcredentialscanobject
 #>
 function New-AzPurviewAzurePostgreSqlCredentialScanObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,8 +44,8 @@ function New-AzPurviewAzurePostgreSqlCredentialScanObject {
         [string]
         $CredentialReferenceName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
+        [string]
         $CredentialType,
         [Parameter()]
         [string]
@@ -56,8 +57,8 @@ function New-AzPurviewAzurePostgreSqlCredentialScanObject {
         [string]
         $ScanRulesetName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $ScanRulesetType,
         [Parameter()]
         [string]
@@ -67,15 +68,11 @@ function New-AzPurviewAzurePostgreSqlCredentialScanObject {
         $SslMode,
         [Parameter()]
         [int]
-        $Worker,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-        $Kind
+        $Worker
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -112,9 +109,6 @@ function New-AzPurviewAzurePostgreSqlCredentialScanObject {
         }
         if ($PSBoundParameters.ContainsKey('Worker')) {
             $Object.Worker = $Worker
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

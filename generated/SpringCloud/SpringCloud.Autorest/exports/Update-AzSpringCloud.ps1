@@ -27,7 +27,7 @@ Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-s
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,10 +58,12 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloud
 #>
 function Update-AzSpringCloud {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
@@ -69,6 +71,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
@@ -76,6 +80,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -87,75 +93,55 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The GEO location of the resource.
     ${Location},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Name of the resource group containing network resources for customer apps in Azure Spring Apps
-    ${NetworkProfileResourceGroup},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Azure Spring Apps service reserved CIDR
-    ${NetworkProfileServiceCidr},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Name of the resource group containing network resources of Azure Spring Apps Service Runtime
-    ${NetworkProfileServiceResourceGroup},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
-    ${NetworkProfileServiceSubnetId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.String]
-    # Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
-    ${NetworkProfileSubnetId},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Int32]
     # Current capacity of the target resource
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Name of the Sku
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Tier of the Sku
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # .
-    ${ZoneRedundant},
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -225,6 +211,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -246,9 +241,15 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.SpringCloud.private\Update-AzSpringCloud_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloud_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.SpringCloud.private\Update-AzSpringCloud_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.SpringCloud.private\Update-AzSpringCloud_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -257,6 +258,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

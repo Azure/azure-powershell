@@ -6,39 +6,6 @@
   },
   "commands": [
     {
-      "name": "Get-AzReservationAvailableScope",
-      "description": "Check whether the scopes from request is valid for `Reservation`.\\n",
-      "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-ReservationId <String>",
-              "-ReservationOrderId <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Check whether the scopes from request is valid for `Reservation`.\\n",
-          "parameters": [
-            {
-              "name": "-ReservationId",
-              "value": "[Path.reservationId]"
-            },
-            {
-              "name": "-ReservationOrderId",
-              "value": "[Path.reservationOrderId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Invoke-AzReservationArchiveReservation",
       "description": "Archiving a `Reservation` moves it to `Archived` state.",
       "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",

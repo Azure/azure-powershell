@@ -26,45 +26,41 @@ $user = Get-AzLabServicesUser -ResourceGroupName "group name" -LabName "lab name
 $user | Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 5)
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-USER <User>: 
-  Email <String>: Email address of the user.
+USER <User>: The object of lab service user.
   [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Email <String>]: Email address of the user.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
 #>
 function Add-AzLabServicesUserQuota {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(DefaultParameterSetName='User', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Email', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Email', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of the lab service lab.
     ${LabName},
 
     [Parameter(ParameterSetName='Email', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
-    # Used in resource URIs.
+    # Email address of the user.
     ${Email},
 
     [Parameter()]
@@ -82,8 +78,8 @@ param(
 
     [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user.
     ${User},
 
     [Parameter()]
@@ -147,6 +143,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -169,9 +174,7 @@ begin {
             Email = 'Az.LabServices.custom\Add-AzLabServicesUserQuota_Email';
             User = 'Az.LabServices.custom\Add-AzLabServicesUserQuota_User';
         }
-        if (('Email', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Email', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -185,6 +188,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

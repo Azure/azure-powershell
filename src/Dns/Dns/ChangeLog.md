@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Added support for linking a DNS record set to an Azure Traffic Manager profile (Traffic Manager link, also known as TMLink)
+    - Added `-TrafficManagerProfileId` to `New-AzDnsRecordSet`
+    - `Get-AzDnsRecordSet` and `Set-AzDnsRecordSet` now expose `TrafficManagerProfileId` for round-trip updates
+
+## Version 2.1.0
+* Added ChangeSafety Support
+
+## Version 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 1.3.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 1.3.1
 * Upgraded nuget package to signed package.
 

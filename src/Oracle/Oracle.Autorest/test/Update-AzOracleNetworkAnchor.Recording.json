@@ -1,0 +1,90 @@
+{
+  "Update-AzOracleNetworkAnchor+[NoContext]+Update tags only+$PATCH+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/networkAnchors/perfTestNA001?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/networkAnchors/perfTestNA001?api-version=2025-09-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"updatedBy\": \"Pester\",\r\n    \"purpose\": \"sdk-test\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"61003717-0000-0100-0000-68ee984a0000\"" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/southcentralus/4a2cbcc0-f7ec-4416-838e-0ff233a3c8b1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "oci-DF3268E98858FF9-202510141836/938E297EE6A3D8DB4898EE6849414461/325C1982BA5D8ACABC4F2384F6EC4D79" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4986b6d5-a192-44b1-8bf0-932473b7a6ea" ],
+        "x-ms-correlation-request-id": [ "f66b6fd7-ea09-4c9e-9fe8-fc7a7320da92" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251014T183659Z:f66b6fd7-ea09-4c9e-9fe8-fc7a7320da92" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F952D3B0CB1547FCA020EFEA5F825728 Ref B: SN4AA2022301021 Ref C: 2025-10-14T18:36:55Z" ],
+        "Date": [ "Tue, 14 Oct 2025 18:36:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1309" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/networkAnchors/perfTestNA001\",\"name\":\"perfTestNA001\",\"type\":\"oracle.database/networkanchors\",\"location\":\"eastus\",\"zones\":[\"2\"],\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"diego.mendiburu@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-18T15:23:04.1817362Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T18:36:56.5628128Z\"},\"properties\":{\"resourceAnchorId\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/resourceAnchors/perfTestRA001\",\"provisioningState\":\"Succeeded\",\"subnetId\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Microsoft.Network/virtualNetworks/perf-test-vnet/subnets/delegated\",\"cidrBlock\":\"10.0.1.0/24\",\"ociVcnId\":\"ocid1.vcn.oc1.iad.amaaaaaa2edokzyac2xemkgncrhr6o7u4wkryr3h6z2ajc3wpk6eixcfysca\",\"ociVcnDnsLabel\":\"ociperftestvne\",\"ociSubnetId\":\"ocid1.subnet.oc1.iad.aaaaaaaa7kfkgdbbgdrgj6noghifrezfhqawctzelmnylb32tyb5ronjwjvq\",\"isOracleToAzureDnsZoneSyncEnabled\":false,\"isOracleDnsListeningEndpointEnabled\":false,\"isOracleDnsForwardingEndpointEnabled\":false}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzOracleNetworkAnchor+[NoContext]+Update tags only+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/networkAnchors/perfTestNA001?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/networkAnchors/perfTestNA001?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "4cd770b2-6c4e-4010-a87a-eeea1858a52b" ],
+        "CommandName": [ "Get-AzOracleNetworkAnchor" ],
+        "FullCommandName": [ "Get-AzOracleNetworkAnchor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"61003717-0000-0100-0000-68ee984a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8b63b0ab-d710-4a22-b75e-f57af4b32a3d" ],
+        "x-ms-correlation-request-id": [ "126567ed-5288-4efd-8099-177a08a5aead" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251014T183700Z:126567ed-5288-4efd-8099-177a08a5aead" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4669C7AD33274E1DB8AEB7AF32DCD264 Ref B: SN4AA2022301021 Ref C: 2025-10-14T18:36:59Z" ],
+        "Date": [ "Tue, 14 Oct 2025 18:36:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1309" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/networkAnchors/perfTestNA001\",\"name\":\"perfTestNA001\",\"type\":\"oracle.database/networkanchors\",\"location\":\"eastus\",\"zones\":[\"2\"],\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"diego.mendiburu@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-18T15:23:04.1817362Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T18:36:56.5628128Z\"},\"properties\":{\"resourceAnchorId\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Oracle.Database/resourceAnchors/perfTestRA001\",\"provisioningState\":\"Succeeded\",\"subnetId\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/perf-test-dbsystems/providers/Microsoft.Network/virtualNetworks/perf-test-vnet/subnets/delegated\",\"cidrBlock\":\"10.0.1.0/24\",\"ociVcnId\":\"ocid1.vcn.oc1.iad.amaaaaaa2edokzyac2xemkgncrhr6o7u4wkryr3h6z2ajc3wpk6eixcfysca\",\"ociVcnDnsLabel\":\"ociperftestvne\",\"ociSubnetId\":\"ocid1.subnet.oc1.iad.aaaaaaaa7kfkgdbbgdrgj6noghifrezfhqawctzelmnylb32tyb5ronjwjvq\",\"isOracleToAzureDnsZoneSyncEnabled\":false,\"isOracleDnsListeningEndpointEnabled\":false,\"isOracleDnsForwardingEndpointEnabled\":false}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StandbyPool-help.xml
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/update-azstandbycontainergrouppool
 schema: 2.0.0
@@ -15,16 +15,17 @@ Update a StandbyContainerGroupPoolResource
 ### UpdateExpanded (Default)
 ```
 Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>]
- [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ContainerProfileId <String>] [-DynamicSizingEnabled] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>]
+ [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-ContainerProfileId <String>]
- [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DynamicSizingEnabled] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>]
+ [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -50,11 +51,13 @@ Update-AzStandbyContainerGroupPool `
 -Name testPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -ResourceGroupName test-standbypool `
--MaxReadyCapacity 5
+-MaxReadyCapacity 5 `
+-DynamicSizingEnabled
 ```
 
 ```output
 ContainerGroupProfileId           : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG
+DynamicSizingEnabled              : True
 ContainerGroupProfileRevision     : 1
 ContainerGroupPropertySubnetId    : {{
                                       "id": "/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
@@ -75,6 +78,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zone                              : {1} 
 ```
 
 The above command updated a standby container pool's max ready capacity to 5.
@@ -104,6 +108,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DynamicSizingEnabled
+Indicates whether dynamic sizing is enabled for the standby pool.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -269,6 +288,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies zones of standby container group pools.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

@@ -15,8 +15,9 @@ Creates a health probe.
 ```
 New-AzApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] [-Path <String>]
  -Interval <Int32> -Timeout <Int32> -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings]
- [-MinServers <Int32>] [-Port <Int32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MinServers <Int32>] [-Port <Int32>] [-EnableProbeProxyProtocolHeader <Boolean>]
+ [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +56,21 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableProbeProxyProtocolHeader
+Whether to send Proxy Protocol header along with the Health Probe over TCP or TLS protocol. Default value is false.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -251,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Create custom probe for Application Gateway using PowerShell for Azure Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#)
+[Create custom probe for Application Gateway using PowerShell for Azure Resource Manager](/azure/application-gateway/application-gateway-create-probe-ps)
 
 [Add-AzApplicationGatewayProbeConfig](./Add-AzApplicationGatewayProbeConfig.md)
 
@@ -260,4 +276,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewayProbeConfig](./Remove-AzApplicationGatewayProbeConfig.md)
 
 [Set-AzApplicationGatewayProbeConfig](./Set-AzApplicationGatewayProbeConfig.md)
-

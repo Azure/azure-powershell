@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzBillingBenefitsSavingsPlan
 
 ## SYNOPSIS
-Update savings plan.
+update savings plan.
 
 ## SYNTAX
 
@@ -17,19 +17,7 @@ Update savings plan.
 Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> [-AppliedScopePropertyDisplayName <String>]
  [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
  [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
- [-AppliedScopeType <AppliedScopeType>] [-DisplayName <String>] [-Renew] [-RenewProperty <IRenewProperties>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -Body <ISavingsPlanUpdateRequest>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity> -Body <ISavingsPlanUpdateRequest>
+ [-AppliedScopeType <String>] [-DisplayName <String>] [-Renew] [-RenewProperty <IRenewProperties>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,13 +26,35 @@ Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity> -Bod
 Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity>
  [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
  [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
- [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-DisplayName <String>]
- [-Renew] [-RenewProperty <IRenewProperties>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <String>] [-DisplayName <String>] [-Renew]
+ [-RenewProperty <IRenewProperties>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentitySavingsPlanOrderExpanded
+```
+Update-AzBillingBenefitsSavingsPlan -Id <String> -SavingsPlanOrderInputObject <IBillingBenefitsIdentity>
+ [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
+ [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <String>] [-DisplayName <String>] [-Renew]
+ [-RenewProperty <IRenewProperties>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Update savings plan.
+update savings plan.
 
 ## EXAMPLES
 
@@ -68,7 +78,7 @@ Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -83,7 +93,7 @@ Fully-qualified identifier of the management group where the benefit must be app
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -98,7 +108,7 @@ Fully-qualified identifier of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -113,7 +123,7 @@ Fully-qualified identifier of the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -128,7 +138,7 @@ Tenant ID where the benefit is applied.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -142,30 +152,14 @@ Accept wildcard characters: False
 Type of the Applied Scope.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Savings plan patch request
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanUpdateRequest
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -190,7 +184,7 @@ Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -205,7 +199,7 @@ ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySavingsPlanOrderExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SavingsPlanId
 
 Required: True
@@ -217,11 +211,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -231,12 +224,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OrderId
 Order ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SavingsPlanOrderId
 
 Required: True
@@ -266,7 +289,7 @@ Setting this to true will automatically purchase a new benefit on the expiration
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -278,17 +301,31 @@ Accept wildcard characters: False
 
 ### -RenewProperty
 .
-To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IRenewProperties
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SavingsPlanOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
+Parameter Sets: UpdateViaIdentitySavingsPlanOrderExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -328,13 +365,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanUpdateRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModel
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModel
 
 ## NOTES
 

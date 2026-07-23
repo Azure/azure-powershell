@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 return;
             }
+            {_remoteDisasterRecoveryConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("remoteDisasterRecoveryConfiguration"), out var __jsonRemoteDisasterRecoveryConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DisasterRecoveryConfigurationDetails.FromJson(__jsonRemoteDisasterRecoveryConfiguration) : _remoteDisasterRecoveryConfiguration;}
             {_localStandbyDb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("localStandbyDb"), out var __jsonLocalStandbyDb) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseStandbySummary.FromJson(__jsonLocalStandbyDb) : _localStandbyDb;}
-            {_scheduledOperation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("scheduledOperations"), out var __jsonScheduledOperations) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsType.FromJson(__jsonScheduledOperations) : _scheduledOperation;}
             {_apexDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("apexDetails"), out var __jsonApexDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ApexDetailsType.FromJson(__jsonApexDetails) : _apexDetail;}
             {_connectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("connectionStrings"), out var __jsonConnectionStrings) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ConnectionStringType.FromJson(__jsonConnectionStrings) : _connectionString;}
             {_connectionUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("connectionUrls"), out var __jsonConnectionUrls) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ConnectionUrlType.FromJson(__jsonConnectionUrls) : _connectionUrl;}
@@ -88,6 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_isLocalDataGuardEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isLocalDataGuardEnabled"), out var __jsonIsLocalDataGuardEnabled) ? (bool?)__jsonIsLocalDataGuardEnabled : _isLocalDataGuardEnabled;}
             {_isRemoteDataGuardEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isRemoteDataGuardEnabled"), out var __jsonIsRemoteDataGuardEnabled) ? (bool?)__jsonIsRemoteDataGuardEnabled : _isRemoteDataGuardEnabled;}
             {_localDisasterRecoveryType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("localDisasterRecoveryType"), out var __jsonLocalDisasterRecoveryType) ? (string)__jsonLocalDisasterRecoveryType : (string)_localDisasterRecoveryType;}
+            {_timeDisasterRecoveryRoleChanged = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("timeDisasterRecoveryRoleChanged"), out var __jsonTimeDisasterRecoveryRoleChanged) ? global::System.DateTime.TryParse((string)__jsonTimeDisasterRecoveryRoleChanged, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonTimeDisasterRecoveryRoleChangedValue) ? __jsonTimeDisasterRecoveryRoleChangedValue : _timeDisasterRecoveryRoleChanged : _timeDisasterRecoveryRoleChanged;}
             {_failedDataRecoveryInSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("failedDataRecoveryInSeconds"), out var __jsonFailedDataRecoveryInSeconds) ? (int?)__jsonFailedDataRecoveryInSeconds : _failedDataRecoveryInSecond;}
             {_isMtlsConnectionRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isMtlsConnectionRequired"), out var __jsonIsMtlsConnectionRequired) ? (bool?)__jsonIsMtlsConnectionRequired : _isMtlsConnectionRequired;}
             {_licenseModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("licenseModel"), out var __jsonLicenseModel) ? (string)__jsonLicenseModel : (string)_licenseModel;}
@@ -95,6 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_lifecycleDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("lifecycleDetails"), out var __jsonLifecycleDetails) ? (string)__jsonLifecycleDetails : (string)_lifecycleDetail;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_lifecycleState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("lifecycleState"), out var __jsonLifecycleState) ? (string)__jsonLifecycleState : (string)_lifecycleState;}
+            {_scheduledOperationsList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("scheduledOperationsList"), out var __jsonScheduledOperationsList) ? If( __jsonScheduledOperationsList as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsType.FromJson(__k) )) ))() : null : _scheduledOperationsList;}
             {_privateEndpointIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("privateEndpointIp"), out var __jsonPrivateEndpointIP) ? (string)__jsonPrivateEndpointIP : (string)_privateEndpointIP;}
             {_privateEndpointLabel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("privateEndpointLabel"), out var __jsonPrivateEndpointLabel) ? (string)__jsonPrivateEndpointLabel : (string)_privateEndpointLabel;}
             {_ociUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("ociUrl"), out var __jsonOciUrl) ? (string)__jsonOciUrl : (string)_ociUrl;}
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_timeMaintenanceEnd = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("timeMaintenanceEnd"), out var __jsonTimeMaintenanceEnd) ? global::System.DateTime.TryParse((string)__jsonTimeMaintenanceEnd, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonTimeMaintenanceEndValue) ? __jsonTimeMaintenanceEndValue : _timeMaintenanceEnd : _timeMaintenanceEnd;}
             {_actualUsedDataStorageSizeInTb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("actualUsedDataStorageSizeInTbs"), out var __jsonActualUsedDataStorageSizeInTbs) ? (double?)__jsonActualUsedDataStorageSizeInTbs : _actualUsedDataStorageSizeInTb;}
             {_allocatedStorageSizeInTb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("allocatedStorageSizeInTbs"), out var __jsonAllocatedStorageSizeInTbs) ? (double?)__jsonAllocatedStorageSizeInTbs : _allocatedStorageSizeInTb;}
-            {_availableUpgradeVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("availableUpgradeVersions"), out var __jsonAvailableUpgradeVersions) ? If( __jsonAvailableUpgradeVersions as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _availableUpgradeVersion;}
+            {_availableUpgradeVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("availableUpgradeVersions"), out var __jsonAvailableUpgradeVersions) ? If( __jsonAvailableUpgradeVersions as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _availableUpgradeVersion;}
             {_dataSafeStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("dataSafeStatus"), out var __jsonDataSafeStatus) ? (string)__jsonDataSafeStatus : (string)_dataSafeStatus;}
             {_databaseEdition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("databaseEdition"), out var __jsonDatabaseEdition) ? (string)__jsonDatabaseEdition : (string)_databaseEdition;}
             {_autonomousDatabaseId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("autonomousDatabaseId"), out var __jsonAutonomousDatabaseId) ? (string)__jsonAutonomousDatabaseId : (string)_autonomousDatabaseId;}
@@ -118,11 +120,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_operationsInsightsStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("operationsInsightsStatus"), out var __jsonOperationsInsightsStatus) ? (string)__jsonOperationsInsightsStatus : (string)_operationsInsightsStatus;}
             {_permissionLevel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("permissionLevel"), out var __jsonPermissionLevel) ? (string)__jsonPermissionLevel : (string)_permissionLevel;}
             {_privateEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("privateEndpoint"), out var __jsonPrivateEndpoint) ? (string)__jsonPrivateEndpoint : (string)_privateEndpoint;}
-            {_provisionableCpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("provisionableCpus"), out var __jsonProvisionableCpus) ? If( __jsonProvisionableCpus as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<int>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(int) (__f is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber __e ? (int)__e : default(int))) ))() : null : _provisionableCpu;}
+            {_provisionableCpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("provisionableCpus"), out var __jsonProvisionableCpus) ? If( __jsonProvisionableCpus as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<int>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(int) (__a is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber ___z ? (int)___z : default(int))) ))() : null : _provisionableCpu;}
             {_role = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("role"), out var __jsonRole) ? (string)__jsonRole : (string)_role;}
             {_serviceConsoleUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("serviceConsoleUrl"), out var __jsonServiceConsoleUrl) ? (string)__jsonServiceConsoleUrl : (string)_serviceConsoleUrl;}
             {_sqlWebDeveloperUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("sqlWebDeveloperUrl"), out var __jsonSqlWebDeveloperUrl) ? (string)__jsonSqlWebDeveloperUrl : (string)_sqlWebDeveloperUrl;}
-            {_supportedRegionsToCloneTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("supportedRegionsToCloneTo"), out var __jsonSupportedRegionsToCloneTo) ? If( __jsonSupportedRegionsToCloneTo as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(string) (__a is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString ___z ? (string)(___z.ToString()) : null)) ))() : null : _supportedRegionsToCloneTo;}
+            {_supportedRegionsToCloneTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("supportedRegionsToCloneTo"), out var __jsonSupportedRegionsToCloneTo) ? If( __jsonSupportedRegionsToCloneTo as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___w, (___v)=>(string) (___v is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString ___u ? (string)(___u.ToString()) : null)) ))() : null : _supportedRegionsToCloneTo;}
             {_timeDataGuardRoleChanged = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("timeDataGuardRoleChanged"), out var __jsonTimeDataGuardRoleChanged) ? (string)__jsonTimeDataGuardRoleChanged : (string)_timeDataGuardRoleChanged;}
             {_timeDeletionOfFreeAutonomousDatabase = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("timeDeletionOfFreeAutonomousDatabase"), out var __jsonTimeDeletionOfFreeAutonomousDatabase) ? (string)__jsonTimeDeletionOfFreeAutonomousDatabase : (string)_timeDeletionOfFreeAutonomousDatabase;}
             {_timeLocalDataGuardEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("timeLocalDataGuardEnabled"), out var __jsonTimeLocalDataGuardEnabled) ? (string)__jsonTimeLocalDataGuardEnabled : (string)_timeLocalDataGuardEnabled;}
@@ -135,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_usedDataStorageSizeInTb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("usedDataStorageSizeInTbs"), out var __jsonUsedDataStorageSizeInTbs) ? (int?)__jsonUsedDataStorageSizeInTbs : _usedDataStorageSizeInTb;}
             {_ocid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("ocid"), out var __jsonOcid) ? (string)__jsonOcid : (string)_ocid;}
             {_backupRetentionPeriodInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("backupRetentionPeriodInDays"), out var __jsonBackupRetentionPeriodInDays) ? (int?)__jsonBackupRetentionPeriodInDays : _backupRetentionPeriodInDay;}
-            {_whitelistedIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("whitelistedIps"), out var __jsonWhitelistedIps) ? If( __jsonWhitelistedIps as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___w, (___v)=>(string) (___v is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString ___u ? (string)(___u.ToString()) : null)) ))() : null : _whitelistedIP;}
+            {_whitelistedIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("whitelistedIps"), out var __jsonWhitelistedIps) ? If( __jsonWhitelistedIps as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var ___r) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___r, (___q)=>(string) (___q is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString ___p ? (string)(___p.ToString()) : null)) ))() : null : _whitelistedIP;}
             AfterFromJson(json);
         }
 
@@ -161,6 +163,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 case "Clone":
                 {
                     return new AutonomousDatabaseCloneProperties(json);
+                }
+                case "CrossRegionDisasterRecovery":
+                {
+                    return new AutonomousDatabaseCrossRegionDisasterRecoveryProperties(json);
+                }
+                case "CloneFromBackupTimestamp":
+                {
+                    return new AutonomousDatabaseFromBackupTimestampProperties(json);
                 }
                 case "Regular":
                 {
@@ -191,9 +201,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
+                AddIf( null != this._remoteDisasterRecoveryConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._remoteDisasterRecoveryConfiguration.ToJson(null,serializationMode) : null, "remoteDisasterRecoveryConfiguration" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
                 AddIf( null != this._localStandbyDb ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._localStandbyDb.ToJson(null,serializationMode) : null, "localStandbyDb" ,container.Add );
             }
-            AddIf( null != this._scheduledOperation ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._scheduledOperation.ToJson(null,serializationMode) : null, "scheduledOperations" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._apexDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._apexDetail.ToJson(null,serializationMode) : null, "apexDetails" ,container.Add );
@@ -278,6 +291,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
+                AddIf( null != this._timeDisasterRecoveryRoleChanged ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._timeDisasterRecoveryRoleChanged?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "timeDisasterRecoveryRoleChanged" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
                 AddIf( null != this._failedDataRecoveryInSecond ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._failedDataRecoveryInSecond) : null, "failedDataRecoveryInSeconds" ,container.Add );
             }
             AddIf( null != this._isMtlsConnectionRequired ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean((bool)this._isMtlsConnectionRequired) : null, "isMtlsConnectionRequired" ,container.Add );
@@ -301,6 +318,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._lifecycleState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._lifecycleState.ToString()) : null, "lifecycleState" ,container.Add );
+            }
+            if (null != this._scheduledOperationsList)
+            {
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                foreach( var __n in this._scheduledOperationsList )
+                {
+                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                }
+                container.Add("scheduledOperationsList",__m);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeCreate))
             {
@@ -346,12 +372,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._availableUpgradeVersion)
                 {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._availableUpgradeVersion )
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._availableUpgradeVersion )
                     {
-                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                        AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
                     }
-                    container.Add("availableUpgradeVersions",__m);
+                    container.Add("availableUpgradeVersions",__h);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
@@ -403,12 +429,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._provisionableCpu)
                 {
-                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __i in this._provisionableCpu )
+                    var __c = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __d in this._provisionableCpu )
                     {
-                        AddIf((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber(__i) ,__h.Add);
+                        AddIf((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber(__d) ,__c.Add);
                     }
-                    container.Add("provisionableCpus",__h);
+                    container.Add("provisionableCpus",__c);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
@@ -427,12 +453,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 if (null != this._supportedRegionsToCloneTo)
                 {
-                    var __c = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                    foreach( var __d in this._supportedRegionsToCloneTo )
+                    var ___x = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var ___y in this._supportedRegionsToCloneTo )
                     {
-                        AddIf(null != (((object)__d)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__d.ToString()) : null ,__c.Add);
+                        AddIf(null != (((object)___y)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(___y.ToString()) : null ,___x.Add);
                     }
-                    container.Add("supportedRegionsToCloneTo",__c);
+                    container.Add("supportedRegionsToCloneTo",___x);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
@@ -482,12 +508,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             AddIf( null != this._backupRetentionPeriodInDay ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._backupRetentionPeriodInDay) : null, "backupRetentionPeriodInDays" ,container.Add );
             if (null != this._whitelistedIP)
             {
-                var ___x = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                foreach( var ___y in this._whitelistedIP )
+                var ___s = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                foreach( var ___t in this._whitelistedIP )
                 {
-                    AddIf(null != (((object)___y)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(___y.ToString()) : null ,___x.Add);
+                    AddIf(null != (((object)___t)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(___t.ToString()) : null ,___s.Add);
                 }
-                container.Add("whitelistedIps",___x);
+                container.Add("whitelistedIps",___s);
             }
             AfterToJson(ref container);
             return container;

@@ -42,9 +42,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AccountCredentialDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AccountCredentialDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AccountCredentialDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AccountCredentialDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -76,9 +76,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AddressValidationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AddressValidationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AddressValidationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AddressValidationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -122,9 +122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApplianceNetworkConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApplianceNetworkConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ApplianceNetworkConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ApplianceNetworkConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -150,9 +150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ArmBaseObject</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ArmBaseObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ArmBaseObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ArmBaseObject</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -172,9 +172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AvailableSkuRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AvailableSkuRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AvailableSkuRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AvailableSkuRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -212,9 +212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AvailableSkusResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AvailableSkusResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AvailableSkusResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AvailableSkusResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -234,9 +234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AzureFileFilterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AzureFileFilterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.AzureFileFilterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.AzureFileFilterDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -268,9 +268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.BlobFilterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.BlobFilterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.BlobFilterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.BlobFilterDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -302,9 +302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CancellationReason</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CancellationReason</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CancellationReason</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CancellationReason</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -324,9 +324,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CloudError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CloudError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CloudError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CloudError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -358,9 +358,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -404,9 +404,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -444,9 +444,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CopyProgress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CopyProgress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CopyProgress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CopyProgress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -556,9 +556,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CreateJobValidations</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CreateJobValidations</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CreateJobValidations</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CreateJobValidations</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -578,9 +578,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CreateOrderLimitForSubscriptionValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CreateOrderLimitForSubscriptionValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CreateOrderLimitForSubscriptionValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CreateOrderLimitForSubscriptionValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -589,6 +589,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -600,15 +603,18 @@
               <TableColumnItem>
                 <PropertyName>DeviceType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CreateOrderLimitForSubscriptionValidationResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CreateOrderLimitForSubscriptionValidationResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CreateOrderLimitForSubscriptionValidationResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CreateOrderLimitForSubscriptionValidationResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -652,9 +658,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CustomerDiskJobSecrets</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CustomerDiskJobSecrets</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CustomerDiskJobSecrets</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.CustomerDiskJobSecrets</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -704,9 +710,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataAccountDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataAccountDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataAccountDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataAccountDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -732,9 +738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxAccountCopyLogDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxAccountCopyLogDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxAccountCopyLogDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxAccountCopyLogDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -766,9 +772,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskCopyLogDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskCopyLogDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskCopyLogDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskCopyLogDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -800,9 +806,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskCopyProgress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskCopyProgress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskCopyProgress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskCopyProgress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -942,9 +948,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -994,9 +1000,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskCopyLogDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskCopyLogDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskCopyLogDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskCopyLogDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1028,9 +1034,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskCopyProgress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskCopyProgress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskCopyProgress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskCopyProgress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1074,9 +1080,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskGranularCopyLogDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskGranularCopyLogDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskGranularCopyLogDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskGranularCopyLogDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1120,9 +1126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskGranularCopyProgress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskGranularCopyProgress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskGranularCopyProgress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskGranularCopyProgress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1262,9 +1268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1314,9 +1320,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetailsDisksAndSizeDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetailsDisksAndSizeDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetailsDisksAndSizeDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetailsDisksAndSizeDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1336,9 +1342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetailsPreferredDisks</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetailsPreferredDisks</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetailsPreferredDisks</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetailsPreferredDisks</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1358,9 +1364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobSecrets</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobSecrets</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobSecrets</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobSecrets</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1416,9 +1422,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyAccountCopyLogDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyAccountCopyLogDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyAccountCopyLogDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyAccountCopyLogDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1450,9 +1456,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyJobDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyJobDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1502,9 +1508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyJobSecrets</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobSecrets</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyJobSecrets</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobSecrets</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1548,9 +1554,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavySecret</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavySecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavySecret</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavySecret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1582,9 +1588,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1634,9 +1640,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataboxJobSecrets</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataboxJobSecrets</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataboxJobSecrets</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataboxJobSecrets</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1680,14 +1686,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxScheduleAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxScheduleAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxScheduleAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxScheduleAvailabilityRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Country</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SkuName</Label>
@@ -1703,6 +1712,9 @@
                 <PropertyName>Country</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1714,9 +1726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxSecret</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxSecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxSecret</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxSecret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1748,9 +1760,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressInstructionResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressInstructionResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressInstructionResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressInstructionResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1788,9 +1800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressLocationResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressLocationResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressLocationResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressLocationResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1900,12 +1912,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>Model</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>SkuName</Label>
           </TableColumnHeader>
@@ -1916,6 +1931,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
@@ -1928,9 +1946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DatacenterAddressResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DatacenterAddressResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1962,9 +1980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataExportDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataExportDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataExportDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataExportDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1984,9 +2002,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataImportDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataImportDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataImportDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataImportDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2006,9 +2024,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataLocationToServiceLocationMap</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataLocationToServiceLocationMap</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataLocationToServiceLocationMap</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataLocationToServiceLocationMap</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2034,9 +2052,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataTransferDetailsValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataTransferDetailsValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataTransferDetailsValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataTransferDetailsValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2045,6 +2063,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TransferType</Label>
@@ -2060,6 +2081,9 @@
                 <PropertyName>DeviceType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>TransferType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -2068,9 +2092,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataTransferDetailsValidationResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataTransferDetailsValidationResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataTransferDetailsValidationResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataTransferDetailsValidationResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2114,9 +2138,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DcAccessSecurityCode</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DcAccessSecurityCode</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DcAccessSecurityCode</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DcAccessSecurityCode</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2142,9 +2166,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Details</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Details</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Details</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Details</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2170,9 +2194,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DeviceErasureDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DeviceCapabilityDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DeviceErasureDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DeviceCapabilityDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>HardwareEncryption</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>HardwareEncryption</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DeviceCapabilityRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DeviceCapabilityRequest</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Model</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DeviceErasureDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DeviceErasureDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2198,14 +2272,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DiskScheduleAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DiskScheduleAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DiskScheduleAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DiskScheduleAvailabilityRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Country</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SkuName</Label>
@@ -2224,6 +2301,9 @@
                 <PropertyName>Country</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2238,9 +2318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DiskSecret</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DiskSecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DiskSecret</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DiskSecret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2266,9 +2346,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.EncryptionPreferences</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.EncryptionPreferences</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.EncryptionPreferences</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.EncryptionPreferences</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2294,9 +2374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ErrorDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2328,9 +2408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ExportDiskDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ExportDiskDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ExportDiskDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ExportDiskDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2362,9 +2442,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.FilterFileDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.FilterFileDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.FilterFileDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.FilterFileDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2390,9 +2470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.GranularCopyLogDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.GranularCopyLogDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.GranularCopyLogDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.GranularCopyLogDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2412,9 +2492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.GranularCopyProgress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.GranularCopyProgress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.GranularCopyProgress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.GranularCopyProgress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2524,14 +2604,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.HeavyScheduleAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.HeavyScheduleAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.HeavyScheduleAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.HeavyScheduleAvailabilityRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Country</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SkuName</Label>
@@ -2547,6 +2630,9 @@
                 <PropertyName>Country</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2558,9 +2644,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ImportDiskDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ImportDiskDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ImportDiskDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ImportDiskDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2598,9 +2684,55 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobDeliveryInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobDelayDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobDeliveryInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobDelayDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ErrorCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResolutionTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ErrorCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResolutionTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobDeliveryInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobDeliveryInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2620,9 +2752,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2666,14 +2798,20 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>AllDevicesLost</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CancellationReason</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DelayedStage</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeliveryType</Label>
@@ -2713,7 +2851,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>AllDevicesLost</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>CancellationReason</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DelayedStage</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DeliveryType</PropertyName>
@@ -2754,9 +2898,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2818,9 +2962,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2840,9 +2984,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResourceUpdateParameterTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResourceUpdateParameterTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResourceUpdateParameterTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobResourceUpdateParameterTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2862,9 +3006,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobStages</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobStages</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobStages</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.JobStages</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2902,9 +3046,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2936,9 +3080,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.LastMitigationActionOnJob</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.LastMitigationActionOnJob</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.LastMitigationActionOnJob</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.LastMitigationActionOnJob</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2970,9 +3114,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3010,9 +3154,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.MitigateJobRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.MitigateJobRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.MitigateJobRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.MitigateJobRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3032,9 +3176,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.MitigateJobRequestSerialNumberCustomerResolutionMap</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.MitigateJobRequestSerialNumberCustomerResolutionMap</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.MitigateJobRequestSerialNumberCustomerResolutionMap</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.MitigateJobRequestSerialNumberCustomerResolutionMap</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3054,9 +3198,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.NotificationPreference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.NotificationPreference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.NotificationPreference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.NotificationPreference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3082,9 +3226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3116,9 +3260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3156,9 +3300,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.OperationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3178,9 +3322,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PackageCarrierDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageCarrierDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PackageCarrierDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageCarrierDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3212,9 +3356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PackageCarrierInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageCarrierInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PackageCarrierInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageCarrierInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3240,9 +3384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PackageShippingDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PackageShippingDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3274,9 +3418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Preferences</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Preferences</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Preferences</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Preferences</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3302,9 +3446,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PreferencesValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PreferencesValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PreferencesValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PreferencesValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3313,6 +3457,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3324,15 +3471,18 @@
               <TableColumnItem>
                 <PropertyName>DeviceType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PreferencesValidationResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PreferencesValidationResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.PreferencesValidationResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PreferencesValidationResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3376,9 +3526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3398,9 +3548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ResourceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ResourceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ResourceIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ResourceIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3426,9 +3576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3448,9 +3598,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ReverseShippingDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ReverseShippingDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ReverseShippingDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ReverseShippingDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3470,14 +3620,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ScheduleAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ScheduleAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ScheduleAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ScheduleAvailabilityRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Country</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SkuName</Label>
@@ -3493,6 +3646,9 @@
                 <PropertyName>Country</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3504,9 +3660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ScheduleAvailabilityResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ScheduleAvailabilityResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ScheduleAvailabilityResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ScheduleAvailabilityResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3526,9 +3682,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShareCredentialDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShareCredentialDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShareCredentialDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShareCredentialDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3572,9 +3728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShipmentPickUpRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShipmentPickUpRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShipmentPickUpRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShipmentPickUpRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3606,9 +3762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShipmentPickUpResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShipmentPickUpResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShipmentPickUpResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShipmentPickUpResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3634,9 +3790,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3722,9 +3878,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3733,6 +3889,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Family</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
@@ -3748,6 +3907,9 @@
                 <PropertyName>Family</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -3756,9 +3918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuAvailabilityValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuAvailabilityValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuAvailabilityValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuAvailabilityValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3773,6 +3935,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TransferType</Label>
@@ -3794,6 +3959,9 @@
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>TransferType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -3802,9 +3970,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuAvailabilityValidationResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuAvailabilityValidationResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuAvailabilityValidationResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuAvailabilityValidationResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3848,12 +4016,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuCapacity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuCapacity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuCapacity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuCapacity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>IndividualSkuUsable</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Maximum</Label>
           </TableColumnHeader>
@@ -3864,6 +4035,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IndividualSkuUsable</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Maximum</PropertyName>
               </TableColumnItem>
@@ -3876,9 +4050,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuCost</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuCost</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuCost</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuCost</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3910,9 +4084,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3932,9 +4106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SkuProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SkuProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3978,9 +4152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4012,9 +4186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SubscriptionIsAllowedToCreateJobValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SubscriptionIsAllowedToCreateJobValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SubscriptionIsAllowedToCreateJobValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SubscriptionIsAllowedToCreateJobValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4034,9 +4208,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SubscriptionIsAllowedToCreateJobValidationResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SubscriptionIsAllowedToCreateJobValidationResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SubscriptionIsAllowedToCreateJobValidationResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SubscriptionIsAllowedToCreateJobValidationResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4080,9 +4254,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4132,9 +4306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferAllDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferAllDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferAllDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferAllDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4166,9 +4340,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferFilterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferFilterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferFilterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferFilterDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4188,9 +4362,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransportAvailabilityDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransportAvailabilityDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransportAvailabilityDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransportAvailabilityDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4210,12 +4384,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransportAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransportAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransportAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransportAvailabilityRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>Model</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>SkuName</Label>
           </TableColumnHeader>
@@ -4223,6 +4400,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
@@ -4232,9 +4412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransportPreferences</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransportPreferences</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransportPreferences</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransportPreferences</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4260,9 +4440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UnencryptedCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UnencryptedCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UnencryptedCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UnencryptedCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4282,9 +4462,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UnencryptedCredentialsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UnencryptedCredentialsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UnencryptedCredentialsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UnencryptedCredentialsList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4304,9 +4484,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UserAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UserAssignedIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UserAssignedIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4332,9 +4512,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UserAssignedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UserAssignedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.UserAssignedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.UserAssignedProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4354,9 +4534,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidateAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidateAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidateAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidateAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4365,6 +4545,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -4376,15 +4559,18 @@
               <TableColumnItem>
                 <PropertyName>DeviceType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationInputRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationInputRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationInputRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationInputRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4404,9 +4590,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationInputResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationInputResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationInputResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationInputResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4426,9 +4612,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4448,9 +4634,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ValidationResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ValidationResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

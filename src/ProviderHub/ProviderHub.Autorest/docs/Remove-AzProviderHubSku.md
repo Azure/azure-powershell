@@ -24,6 +24,18 @@ Remove-AzProviderHubSku -InputObject <IProviderHubIdentity> [-DefaultProfile <PS
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityProviderRegistration
+```
+Remove-AzProviderHubSku -ProviderRegistrationInputObject <IProviderHubIdentity> -ResourceType <String>
+ -Sku <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityResourceTypeRegistration
+```
+Remove-AzProviderHubSku -ResourceTypeRegistrationInputObject <IProviderHubIdentity> -Sku <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes a resource type sku.
 
@@ -46,7 +58,8 @@ Delete a nested resource type SKU definition.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -106,12 +119,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: DeleteViaIdentityProviderRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceType
 The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityProviderRegistration
 Aliases:
 
 Required: True
@@ -121,12 +149,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceTypeRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: DeleteViaIdentityResourceTypeRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Sku
 The SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityProviderRegistration, DeleteViaIdentityResourceTypeRegistration
 Aliases:
 
 Required: True

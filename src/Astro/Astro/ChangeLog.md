@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Fixed module name in module metadata
+
 ## Version 0.1.2
 * Upgraded nuget package to signed package.
 

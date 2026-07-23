@@ -15,12 +15,9 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Microsoft.Azure.Management.Internal.Network.Common;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
-    using Microsoft.Azure.Management.Network.Models;
-    public class PSNetworkVirtualAppliance : PSTopLevelResource
+	using System.Collections.Generic;
+	using Newtonsoft.Json;
+	public class PSNetworkVirtualAppliance : PSTopLevelResource
     {
         
         public IList<string> BootStrapConfigurationBlobs { get; set; }
@@ -49,8 +46,30 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSNetworkVirtualApplianceDelegationProperties Delegation { get; set; }
 
+        public PSNetworkVirtualAppliancePartnerManagedResourceProperties PartnerManagedResource { get; set; }
+
         public IList<PSVirtualApplianceInternetIngressIpsProperties> InternetIngressPublicIps { get; set; }
 
         public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
+
+        public IList<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaInterfaceConfigurations { get; set; }
+
+        [JsonIgnore]
+        public string VirtualHubText
+        {
+            get { return JsonConvert.SerializeObject(VirtualHub, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DelegationText
+        {
+            get { return JsonConvert.SerializeObject(Delegation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PartnerManagedResourceText
+        {
+            get { return JsonConvert.SerializeObject(PartnerManagedResource, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

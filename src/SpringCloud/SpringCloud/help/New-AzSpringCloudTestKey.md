@@ -12,9 +12,31 @@ Regenerate a test key for a Service.
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
 New-AzSpringCloudTestKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -KeyType <TestKeyType> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KeyType <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzSpringCloudTestKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzSpringCloudTestKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+New-AzSpringCloudTestKey -InputObject <ISpringCloudIdentity> -KeyType <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +60,8 @@ Regenerate a test key for a Service.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -52,12 +75,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyType
 Type of the test key
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.TestKeyType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -72,7 +140,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -88,7 +156,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -104,7 +172,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -150,12 +218,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ITestKeys
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITestKeys
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -16,22 +16,23 @@
 
 <#
 .Synopsis
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 .Description
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 .Example
 Get-AzElasticBillingInfo -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IBillingInfoResponse
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -42,7 +43,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticbillinginfo
 #>
 function Get-AzElasticBillingInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IBillingInfoResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -70,7 +71,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -129,6 +129,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -151,9 +160,7 @@ begin {
             Get = 'Az.Elastic.private\Get-AzElasticBillingInfo_Get';
             GetViaIdentity = 'Az.Elastic.private\Get-AzElasticBillingInfo_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -167,6 +174,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

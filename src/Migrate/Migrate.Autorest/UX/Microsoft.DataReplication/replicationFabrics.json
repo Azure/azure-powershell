@@ -1,17 +1,17 @@
 {
   "resourceType": "replicationFabrics",
-  "apiVersion": "2021-02-16-preview",
+  "apiVersion": "2024-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.migrate"
   },
   "commands": [
     {
-      "name": "Get-AzMigrateHCIReplicationFabric",
+      "name": "Get-AzMigrateLocalReplicationFabric",
       "description": "Gets the details of the fabric.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcireplicationfabric"
+          "url": "https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalreplicationfabric"
         },
         "parameterSets": [
           {

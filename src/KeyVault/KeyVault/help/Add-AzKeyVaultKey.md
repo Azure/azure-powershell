@@ -135,7 +135,7 @@ in the Key Vault REST API documentation.
 Note: To import a key from your own hardware security module, you must first generate a BYOK
 package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset. For
 more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
+[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](/azure/key-vault/keys/hsm-protected-keys).
 As a best practice, back up your key after it is created or updated, by using the
 Backup-AzKeyVaultKey cmdlet. There is no undelete functionality, so if you accidentally delete
 your key or delete it and then change your mind, the key is not recoverable unless you have a
@@ -274,7 +274,7 @@ This command imports the key named ITByok from the location that the *KeyFilePat
 specifies. The imported key is an HSM-protected key.
 To import a key from your own hardware security module, you must first generate a BYOK package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset.
 For more information, see
-[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
+[How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](/azure/key-vault/keys/hsm-protected-keys).
 
 ### Example 6: Import a software-protected key
 ```powershell
@@ -423,6 +423,34 @@ Release Policy :
 Tags           :
 ```
 
+### Example 11: Create an AES (oct) HSM-protected key in a Premium Azure Key Vault
+
+```powershell
+Add-AzKeyVaultKey -VaultName 'MyPremiumVault' -Name 'aesKey' -KeyType oct -Destination HSM -Size 256
+```
+
+```output
+Vault/HSM Name : MyPremiumVault
+Name           : aesKey
+Key Type       : oct-HSM
+Key Size       : 256
+Curve Name     :
+Version        : <Version>
+Id             : https://mypremiumvault.vault.azure.net:443/keys/aesKey/<Version>
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 1/1/2025 12:00:00 AM
+Updated        : 1/1/2025 12:00:00 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+```
+
+Creates an AES (symmetric) HSM-protected key named `aesKey` in the Premium-SKU Azure Key Vault `MyPremiumVault`.
+The `-Destination HSM` switch is required because symmetric (oct) keys in Azure Key Vault are always HSM-backed,
+and the resulting key type is reported as `oct-HSM`. Supported key sizes are 128, 192, and 256 bits.
+AES keys are only supported on Key Vault Premium SKU and Managed HSM.
+
 ## PARAMETERS
 
 ### -CurveName
@@ -512,7 +540,7 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time of the key in UTC, as a **DateTime** object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a **DateTime** object, use the **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`. Please notice that expirys is ignored for Key Exchange Key used in BYOK process.
+Specifies the expiration time of the key in UTC, as a **DateTime** object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a **DateTime** object, use the **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`. Please notice that expires is ignored for Key Exchange Key used in BYOK process.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -773,7 +801,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-RSA key size, in bits. If not specified, the service will provide a safe default.
+The key size, in bits. For RSA keys, valid values depend on the vault/HSM (for example 2048, 3072, or 4096). For AES (oct/oct-HSM) keys, valid values are 128, 192, or 256. If not specified, the service will provide a safe default.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

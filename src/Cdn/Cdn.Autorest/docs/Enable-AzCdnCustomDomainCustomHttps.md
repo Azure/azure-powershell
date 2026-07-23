@@ -27,6 +27,49 @@ Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <St
  [<CommonParameters>]
 ```
 
+### EnableViaIdentityEndpoint
+```
+Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointInputObject <ICdnIdentity>
+ -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaIdentityEndpointExpanded
+```
+Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointInputObject <ICdnIdentity>
+ [-CertificateSource <String>] [-MinimumTlsVersion <String>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaIdentityProfile
+```
+Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String>
+ -ProfileInputObject <ICdnIdentity> -CustomDomainHttpsParameter <ICustomDomainHttpsParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaIdentityProfileExpanded
+```
+Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String>
+ -ProfileInputObject <ICdnIdentity> [-CertificateSource <String>] [-MinimumTlsVersion <String>]
+ [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### EnableViaJsonFilePath
+```
+Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaJsonString
+```
+Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Enable https delivery of the custom domain.
 
@@ -34,7 +77,7 @@ Enable https delivery of the custom domain.
 
 ### Example 1: Enable an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
-$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType TLS12
+$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType ServerNameIndication
 Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 ```
 
@@ -63,13 +106,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomDomainHttpsParameter
-The JSON object that contains the properties to secure a custom domain.
-To construct, see NOTES section for CUSTOMDOMAINHTTPSPARAMETER properties and create a hash table.
+### -CertificateSource
+Defines the source of the SSL certificate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: EnableViaIdentityEndpointExpanded, EnableViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainHttpsParameter
+The JSON object that contains the properties to secure a custom domain.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters
+Parameter Sets: Enable, EnableViaIdentity, EnableViaIdentityEndpoint, EnableViaIdentityProfile
 Aliases:
 
 Required: True
@@ -84,7 +141,7 @@ Name of the custom domain within an endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable
+Parameter Sets: Enable, EnableViaIdentityEndpoint, EnableViaIdentityEndpointExpanded, EnableViaIdentityProfile, EnableViaIdentityProfileExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -110,12 +167,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: EnableViaIdentityEndpoint, EnableViaIdentityEndpointExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable
+Parameter Sets: Enable, EnableViaIdentityProfile, EnableViaIdentityProfileExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -127,7 +199,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -138,6 +209,51 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Enable operation
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Enable operation
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+TLS protocol version that will be used for Https
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaIdentityEndpointExpanded, EnableViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -156,12 +272,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: EnableViaIdentityProfile, EnableViaIdentityProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable
+Parameter Sets: Enable, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -171,12 +302,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+### -ProtocolType
+Defines the TLS extension protocol that is used for secure delivery.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable
+Parameter Sets: EnableViaIdentityEndpointExpanded, EnableViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Enable, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -187,11 +334,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable
+Parameter Sets: Enable, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: False
@@ -237,13 +385,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain
 
 ## NOTES
 

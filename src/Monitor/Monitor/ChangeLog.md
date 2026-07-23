@@ -20,6 +20,47 @@
 
 ## Upcoming Release
 
+## Version 8.0.0
+* Added ChangeSafety Support
+* Updated MonitorWorkspace module to API 2025-10-03 with CRUD cmdlets for issues, alerts, resources, investigation, visualization, metrics containers, `Set-AzMonitorWorkspace`
+* Upgraded Pipelines API to GA 2026-04-01: added `-DistributionMaxInstancesPerHost`, `-ExecutionPlacementConstraint`, `-TlsConfiguration`; removed `-NetworkingConfiguration`, UDP receiver, `TcpUrl`, `JsonArrayMapperKey`, `SourceFieldName`, `SyslogProtocol`, `DestinationField*`; expanded parameter sets
+
+## Version 7.0.0
+* Parameters EmailSendToSubscriptionAdministrator and EmailSendToSubscriptionCoAdministrator of cmdlet `New-AzAutoscaleNotificationObject` was unavailable after April 3, 2024 due to Azure classic administrator retirement.
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 6.0.3
+* Added breaking change announcement for below cmdlets from single object or fixed array to list.
+  - `Get-AzActivityLogAlert`
+  - `New-AzActivityLogAlert`
+  - `Update-AzActivityLogAlert`
+  - `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
+  - `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+  - `Get-AzAutoscalePredictiveMetric`
+  - `Get-AzAutoscaleSetting`
+  - `New-AzAutoscaleNotificationObject`
+  - `New-AzAutoscaleProfileObject`
+  - `New-AzAutoscaleScaleRuleMetricDimensionObject`
+  - `New-AzAutoscaleScaleRuleObject`
+  - `New-AzAutoscaleSetting`
+  - `Update-AzAutoscaleSetting`
+  - `Get-AzMonitorWorkspace`
+  - `New-AzMonitorWorkspace`
+  - `Update-AzMonitorWorkspace`
+  - `New-AzDiagnosticSetting`
+  - `New-AzSubscriptionDiagnosticSetting`
+  - `Get-AzDiagnosticSetting`
+  - `Get-AzDiagnosticSettingCategory`
+  - `Get-AzSubscriptionDiagnosticSetting`
+  - `Get-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRule`
+  - `New-AzScheduledQueryRuleConditionObject`
+  - `New-AzScheduledQueryRuleDimensionObject`
+  - `Update-AzScheduledQueryRule`
+
+## Version 6.0.2
+* Pipeline Group upgraded API version to 2024-10-01-preview
+
 ## Version 6.0.1
 * Upgraded nuget package to signed package.
 
@@ -231,7 +272,7 @@
 	- `New-AzMetricAlertRuleV2Criteria`: an option to create webtest availability criteria was added
 	- `Add-AzMetricAlertRuleV2`: supports the new webtest availability criteria
 * Removed redundant definition for RetentionPolicy in PSLogProfile [#7608]
-* Removed redundant properties difined in PSEventData [#11353]
+* Removed redundant properties defined in PSEventData [#11353]
 * Renamed `Get-AzLog` to `Get-AzActivityLog`
 
 ## Version 1.7.0
@@ -253,7 +294,7 @@
 ## Version 1.6.0
 * Fixed description of the Get-AzLog cmdlet.
 * A new parameter called ActionGroupId was added to `New-AzMetricAlertRuleV2` command.
-	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
+	- The user can provide either ActionGroupId(string) or ActionGroup(ActivityLogAlertActionGroup).
 
 ## Version 1.5.0
 * Update references in .psd1 to use relative path
@@ -268,7 +309,7 @@
 	-LogicAppReceiver
 	-AutomationRunbookReceiver
 	-AzureAppPushReceiver
-* Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
+* Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice receivers
 * Webhooks now supports Azure active directory authentication .
 
 ## Version 1.3.0
@@ -279,10 +320,10 @@
    - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
    - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
 * Support Dynamic Threshold criteria for metric alert V2
-	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+	- New-AzMetricAlertRuleV2Criteria: now creates dynamic threshold criteria also
 	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
 * Improvements in Scheduled Query Rule cmdlets (SQR)
- - Cmdlets will accept `Location` paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
+ - Cmdlets will accept `Location` parameter in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
  - Illustrated `Enabled` parameter in help files properly
  - Added examples for `ActionGroup` optional parameter
  - Overall improved help files

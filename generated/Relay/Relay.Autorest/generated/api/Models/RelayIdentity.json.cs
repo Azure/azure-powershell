@@ -74,15 +74,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_namespaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("namespaceName"), out var __jsonNamespaceName) ? (string)__jsonNamespaceName : (string)NamespaceName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_authorizationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("authorizationRuleName"), out var __jsonAuthorizationRuleName) ? (string)__jsonAuthorizationRuleName : (string)AuthorizationRuleName;}
-            {_hybridConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("hybridConnectionName"), out var __jsonHybridConnectionName) ? (string)__jsonHybridConnectionName : (string)HybridConnectionName;}
-            {_relayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("relayName"), out var __jsonRelayName) ? (string)__jsonRelayName : (string)RelayName;}
-            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
-            {_privateLinkResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("privateLinkResourceName"), out var __jsonPrivateLinkResourceName) ? (string)__jsonPrivateLinkResourceName : (string)PrivateLinkResourceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_namespaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("namespaceName"), out var __jsonNamespaceName) ? (string)__jsonNamespaceName : (string)_namespaceName;}
+            {_authorizationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("authorizationRuleName"), out var __jsonAuthorizationRuleName) ? (string)__jsonAuthorizationRuleName : (string)_authorizationRuleName;}
+            {_hybridConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("hybridConnectionName"), out var __jsonHybridConnectionName) ? (string)__jsonHybridConnectionName : (string)_hybridConnectionName;}
+            {_relayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("relayName"), out var __jsonRelayName) ? (string)__jsonRelayName : (string)_relayName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
+            {_privateLinkResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("privateLinkResourceName"), out var __jsonPrivateLinkResourceName) ? (string)__jsonPrivateLinkResourceName : (string)_privateLinkResourceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -105,9 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._namespaceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._namespaceName.ToString()) : null, "namespaceName" ,container.Add );
-            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._authorizationRuleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._authorizationRuleName.ToString()) : null, "authorizationRuleName" ,container.Add );
             AddIf( null != (((object)this._hybridConnectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._hybridConnectionName.ToString()) : null, "hybridConnectionName" ,container.Add );
             AddIf( null != (((object)this._relayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._relayName.ToString()) : null, "relayName" ,container.Add );

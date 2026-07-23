@@ -16,35 +16,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Backing field for <see cref="Canary" /> property.</summary>
         private bool? _canary;
 
-        /// <summary>Canary (stack canaries) flag.</summary>
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public bool? Canary { get => this._canary; set => this._canary = value; }
 
-        /// <summary>Backing field for <see cref="Nx" /> property.</summary>
-        private bool? _nx;
+        /// <summary>Backing field for <see cref="NoExecute" /> property.</summary>
+        private bool? _noExecute;
 
-        /// <summary>NX (no-execute) flag.</summary>
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public bool? Nx { get => this._nx; set => this._nx = value; }
+        public bool? NoExecute { get => this._noExecute; set => this._noExecute = value; }
 
-        /// <summary>Backing field for <see cref="Pie" /> property.</summary>
-        private bool? _pie;
+        /// <summary>Backing field for <see cref="PositionIndependentExecutable" /> property.</summary>
+        private bool? _positionIndependentExecutable;
 
-        /// <summary>PIE (position independent executable) flag.</summary>
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public bool? Pie { get => this._pie; set => this._pie = value; }
+        public bool? PositionIndependentExecutable { get => this._positionIndependentExecutable; set => this._positionIndependentExecutable = value; }
 
-        /// <summary>Backing field for <see cref="Relro" /> property.</summary>
-        private bool? _relro;
+        /// <summary>Backing field for <see cref="RelocationReadOnly" /> property.</summary>
+        private bool? _relocationReadOnly;
 
-        /// <summary>RELRO (relocation read-only) flag.</summary>
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public bool? Relro { get => this._relro; set => this._relro = value; }
+        public bool? RelocationReadOnly { get => this._relocationReadOnly; set => this._relocationReadOnly = value; }
 
         /// <summary>Backing field for <see cref="Stripped" /> property.</summary>
         private bool? _stripped;
 
-        /// <summary>Stripped flag.</summary>
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public bool? Stripped { get => this._stripped; set => this._stripped = value; }
 
@@ -58,58 +60,60 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
     public partial interface IBinaryHardeningFeatures :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable
     {
-        /// <summary>Canary (stack canaries) flag.</summary>
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Canary (stack canaries) flag.",
+        Description = @"Flag indicating if the binary was compiled with stack canaries enabled.",
         SerializedName = @"canary",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Canary { get; set; }
-        /// <summary>NX (no-execute) flag.</summary>
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"NX (no-execute) flag.",
-        SerializedName = @"nx",
+        Description = @"Flag indicating the binary's stack is set to NX (no-execute).",
+        SerializedName = @"noExecute",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? Nx { get; set; }
-        /// <summary>PIE (position independent executable) flag.</summary>
+        bool? NoExecute { get; set; }
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"PIE (position independent executable) flag.",
-        SerializedName = @"pie",
+        Description = @"Flag indicating the binary was compiled to be a position independent executable.",
+        SerializedName = @"positionIndependentExecutable",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? Pie { get; set; }
-        /// <summary>RELRO (relocation read-only) flag.</summary>
+        bool? PositionIndependentExecutable { get; set; }
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"RELRO (relocation read-only) flag.",
-        SerializedName = @"relro",
+        Description = @"Flag indicating the binary has enabled relocation read-only protections.",
+        SerializedName = @"relocationReadOnly",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? Relro { get; set; }
-        /// <summary>Stripped flag.</summary>
+        bool? RelocationReadOnly { get; set; }
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Stripped flag.",
+        Description = @"Flag indicating if debug symbols have been stripped from the binary.",
         SerializedName = @"stripped",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Stripped { get; set; }
@@ -119,15 +123,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
     internal partial interface IBinaryHardeningFeaturesInternal
 
     {
-        /// <summary>Canary (stack canaries) flag.</summary>
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
         bool? Canary { get; set; }
-        /// <summary>NX (no-execute) flag.</summary>
-        bool? Nx { get; set; }
-        /// <summary>PIE (position independent executable) flag.</summary>
-        bool? Pie { get; set; }
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        bool? Relro { get; set; }
-        /// <summary>Stripped flag.</summary>
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        bool? NoExecute { get; set; }
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        bool? PositionIndependentExecutable { get; set; }
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        bool? RelocationReadOnly { get; set; }
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
         bool? Stripped { get; set; }
 
     }

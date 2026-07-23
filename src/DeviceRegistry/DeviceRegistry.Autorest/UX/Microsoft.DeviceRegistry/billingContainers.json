@@ -1,6 +1,6 @@
 {
   "resourceType": "billingContainers",
-  "apiVersion": "2024-11-01",
+  "apiVersion": "2025-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
   },

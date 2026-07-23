@@ -15,7 +15,8 @@ Gets the CosmosDB Sql Trigger.
 ### ByNameParameterSet
 ```
 Get-AzCosmosDBSqlTrigger -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- -ContainerName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ContainerName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

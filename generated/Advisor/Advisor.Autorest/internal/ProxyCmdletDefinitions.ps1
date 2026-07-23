@@ -25,12 +25,12 @@ Lists all the available Advisor REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IOperationEntity
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IOperationEntity
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisoroperation
 #>
 function Get-AzAdvisorOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IOperationEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IOperationEntity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Advisor.private\Get-AzAdvisorOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -148,7 +154,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -180,7 +186,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -245,14 +250,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Advisor.private\Get-AzAdvisorRecommendationGenerateStatus_Get';
             GetViaIdentity = 'Az.Advisor.private\Get-AzAdvisorRecommendationGenerateStatus_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -261,6 +267,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -303,14 +312,14 @@ Gets the metadata entity.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IMetadataEntity
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IMetadataEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -322,7 +331,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendationmetadata
 #>
 function Get-AzAdvisorRecommendationMetadata {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IMetadataEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IMetadataEntity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -335,7 +344,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -394,6 +402,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Advisor.private\Get-AzAdvisorRecommendationMetadata_Get';
@@ -402,6 +413,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -437,7 +451,7 @@ Obtains details of a cached recommendation.
 .Description
 Obtains details of a cached recommendation.
 .Example
- Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
+Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
 .Example
 Get-AzAdvisorRecommendation -filter "Category eq 'HighAvailability' and ResourceGroup eq 'lnxtest'"
 .Example
@@ -446,14 +460,14 @@ Get-AzAdvisorRecommendation -Id 42963553-61de-5334-2d2e-47f3a0099d41 -ResourceUr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -465,7 +479,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
 #>
 function Get-AzAdvisorRecommendation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -485,7 +499,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -572,15 +585,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Advisor.private\Get-AzAdvisorRecommendation_Get';
             GetViaIdentity = 'Az.Advisor.private\Get-AzAdvisorRecommendation_GetViaIdentity';
             List = 'Az.Advisor.private\Get-AzAdvisorRecommendation_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -589,6 +603,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -631,14 +648,24 @@ Obtains the details of a suppression.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -650,10 +677,11 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorsuppression
 #>
 function Get-AzAdvisorSuppression {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRecommendation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The name of the suppression.
@@ -675,8 +703,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRecommendation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
@@ -753,15 +786,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Advisor.private\Get-AzAdvisorSuppression_Get';
             GetViaIdentity = 'Az.Advisor.private\Get-AzAdvisorSuppression_GetViaIdentity';
+            GetViaIdentityRecommendation = 'Az.Advisor.private\Get-AzAdvisorSuppression_GetViaIdentityRecommendation';
             List = 'Az.Advisor.private\Get-AzAdvisorSuppression_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -770,6 +805,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -801,118 +839,67 @@ end {
 
 <#
 .Synopsis
-Create/Overwrite Azure Advisor configuration.
+Create Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
 .Description
-Create/Overwrite Azure Advisor configuration.
+Create Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CONFIGCONTRACT <IConfigData>: The Advisor configuration data structure.
-  [Digest <IDigestConfig[]>]: Advisor digest configuration. Valid only for subscriptions
-    [ActionGroupResourceId <String>]: Action group resource id used by digest.
-    [Category <Category[]>]: Categories to send digest for. If categories are not provided, then digest will be sent for all categories.
-    [Frequency <Int32?>]: Frequency that digest will be triggered, in days. Value must be between 7 and 30 days inclusive.
-    [Language <String>]: Language for digest content body. Value must be ISO 639-1 code for one of Azure portal supported languages. Otherwise, it will be converted into one. Default value is English (en).
-    [Name <String>]: Name of digest configuration. Value is case-insensitive and must be unique within a subscription.
-    [State <DigestConfigState?>]: State of digest configuration.
-  [Exclude <Boolean?>]: Exclude the resource from Advisor evaluations. Valid values: False (default) or True.
-  [LowCpuThreshold <CpuThreshold?>]: Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20.
-
 DIGEST <IDigestConfig[]>: Advisor digest configuration. Valid only for subscriptions
   [ActionGroupResourceId <String>]: Action group resource id used by digest.
-  [Category <Category[]>]: Categories to send digest for. If categories are not provided, then digest will be sent for all categories.
+  [Category <List<String>>]: Categories to send digest for. If categories are not provided, then digest will be sent for all categories.
   [Frequency <Int32?>]: Frequency that digest will be triggered, in days. Value must be between 7 and 30 days inclusive.
   [Language <String>]: Language for digest content body. Value must be ISO 639-1 code for one of Azure portal supported languages. Otherwise, it will be converted into one. Default value is English (en).
   [Name <String>]: Name of digest configuration. Value is case-insensitive and must be unique within a subscription.
-  [State <DigestConfigState?>]: State of digest configuration.
-
-INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
-  [Id <String>]: Resource identity path
-  [Name <String>]: Name of metadata entity.
-  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
-  [RecommendationId <String>]: The recommendation ID.
-  [ResourceGroup <String>]: The name of the Azure resource group.
-  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
-  [SubscriptionId <String>]: The Azure subscription ID.
+  [State <String>]: State of digest configuration.
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorconfiguration
 #>
 function New-AzAdvisorConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create1', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
-    [System.String]
-    # The name of the Azure resource group.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Create1')]
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [System.String]
+    # The name of the Azure resource group.
+    ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity1', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData]
-    # The Advisor configuration data structure.
-    # To construct, see NOTES section for CONFIGCONTRACT properties and create a hash table.
-    ${ConfigContract},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig[]]
     # Advisor digest configuration.
     # Valid only for subscriptions
-    # To construct, see NOTES section for DIGEST properties and create a hash table.
     ${Digest},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Exclude the resource from Advisor evaluations.
     # Valid values: False (default) or True.
     ${Exclude},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold])]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.PSArgumentCompleterAttribute("5", "10", "15", "20")]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]
+    [System.String]
     # Minimum percentage threshold for Advisor low CPU utilization evaluation.
     # Valid only for subscriptions.
     # Valid values: 5 (default), 10, 15 or 20.
@@ -974,17 +961,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Create1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_Create1';
             CreateExpanded = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateExpanded';
             CreateExpanded1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateExpanded1';
-            CreateViaIdentity1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateViaIdentity1';
-            CreateViaIdentityExpanded1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateViaIdentityExpanded1';
         }
-        if (('Create1', 'CreateExpanded', 'CreateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -993,6 +978,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1036,24 +1024,8 @@ The generated recommendations are stored in a cache in the Advisor service.
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
-  [Id <String>]: Resource identity path
-  [Name <String>]: Name of metadata entity.
-  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
-  [RecommendationId <String>]: The recommendation ID.
-  [ResourceGroup <String>]: The name of the Azure resource group.
-  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
-  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorrecommendation
 #>
@@ -1061,19 +1033,12 @@ function New-AzAdvisorRecommendation {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Generate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Generate')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1137,14 +1102,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Generate = 'Az.Advisor.private\New-AzAdvisorRecommendation_Generate';
-            GenerateViaIdentity = 'Az.Advisor.private\New-AzAdvisorRecommendation_GenerateViaIdentity';
         }
-        if (('Generate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Generate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1153,6 +1118,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1186,23 +1154,39 @@ end {
 .Synopsis
 Enables the snoozed or dismissed attribute of a recommendation.
 The snoozed or dismissed attribute is referred to as a suppression.
-Use this API to create or update the snoozed or dismissed status of a recommendation.
+Use this API to create the snoozed or dismissed status of a recommendation.
 .Description
 Enables the snoozed or dismissed attribute of a recommendation.
 The snoozed or dismissed attribute is referred to as a suppression.
-Use this API to create or update the snoozed or dismissed status of a recommendation.
+Use this API to create the snoozed or dismissed status of a recommendation.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorsuppression
 #>
 function New-AzAdvisorSuppression {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1211,17 +1195,23 @@ param(
     # The name of the suppression.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The recommendation ID.
     ${RecommendationId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
     ${ResourceUri},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRecommendationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
@@ -1291,12 +1281,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Advisor.private\New-AzAdvisorSuppression_CreateExpanded';
+            CreateViaIdentityRecommendationExpanded = 'Az.Advisor.private\New-AzAdvisorSuppression_CreateViaIdentityRecommendationExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1348,7 +1345,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -1364,6 +1371,7 @@ function Remove-AzAdvisorSuppression {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRecommendation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The name of the suppression.
@@ -1385,8 +1393,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRecommendation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1450,13 +1463,211 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Advisor.private\Remove-AzAdvisorSuppression_Delete';
             DeleteViaIdentity = 'Az.Advisor.private\Remove-AzAdvisorSuppression_DeleteViaIdentity';
+            DeleteViaIdentityRecommendation = 'Az.Advisor.private\Remove-AzAdvisorSuppression_DeleteViaIdentityRecommendation';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Enables the snoozed or dismissed attribute of a recommendation.
+The snoozed or dismissed attribute is referred to as a suppression.
+Use this API to update the snoozed or dismissed status of a recommendation.
+.Description
+Enables the snoozed or dismissed attribute of a recommendation.
+The snoozed or dismissed attribute is referred to as a suppression.
+Use this API to update the snoozed or dismissed status of a recommendation.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
+.Link
+https://learn.microsoft.com/powershell/module/az.advisor/update-azadvisorsuppression
+#>
+function Update-AzAdvisorSuppression {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRecommendationExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [System.String]
+    # The name of the suppression.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [System.String]
+    # The recommendation ID.
+    ${RecommendationId},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+    ${ResourceUri},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRecommendationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
+    [System.String]
+    # The GUID of the suppression.
+    ${SuppressionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
+    [System.String]
+    # The duration for which the suppression is valid.
+    ${Ttl},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Advisor.private\Update-AzAdvisorSuppression_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Advisor.private\Update-AzAdvisorSuppression_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRecommendationExpanded = 'Az.Advisor.private\Update-AzAdvisorSuppression_UpdateViaIdentityRecommendationExpanded';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

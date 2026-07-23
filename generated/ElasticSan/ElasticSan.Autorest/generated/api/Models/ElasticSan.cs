@@ -19,17 +19,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.TrackedResource();
 
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public string AutoScalePolicyEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AutoScalePolicyEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AutoScalePolicyEnforcement = value ?? null; }
+
         /// <summary>Logical zone for Elastic San resource; example: ["1"].</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AvailabilityZone = value ?? null /* arrayOf */; }
 
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
-        public long BaseSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).BaseSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).BaseSizeTiB = value ; }
+        public long? BaseSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).BaseSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).BaseSizeTiB = value ?? default(long); }
+
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public long? CapacityUnitScaleUpLimitTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).CapacityUnitScaleUpLimitTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).CapacityUnitScaleUpLimitTiB = value ?? default(long); }
 
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
-        public long ExtendedCapacitySizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ExtendedCapacitySizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ExtendedCapacitySizeTiB = value ; }
+        public long? ExtendedCapacitySizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ExtendedCapacitySizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ExtendedCapacitySizeTiB = value ?? default(long); }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -37,48 +45,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Id; }
 
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public long? IncreaseCapacityUnitByTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).IncreaseCapacityUnitByTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).IncreaseCapacityUnitByTiB = value ?? default(long); }
+
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
+
+        /// <summary>Internal Acessors for AutoScaleProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.AutoScaleProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AutoScaleProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AutoScaleProperty = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AutoScalePropertyScaleUpProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.AutoScalePropertyScaleUpProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AutoScalePropertyScaleUpProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).AutoScalePropertyScaleUpProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).PrivateEndpointConnection = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TotalIops</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalIops; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalIops = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalIops; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalIops = value ?? default(long); }
 
         /// <summary>Internal Acessors for TotalMBps</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalMBps { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalMBps; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalMBps = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalMBps { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalMBps; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalMBps = value ?? default(long); }
 
         /// <summary>Internal Acessors for TotalSizeTiB</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalSizeTiB = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalSizeTiB = value ?? default(long); }
 
         /// <summary>Internal Acessors for TotalVolumeSizeGiB</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalVolumeSizeGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalVolumeSizeGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalVolumeSizeGiB = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalVolumeSizeGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalVolumeSizeGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalVolumeSizeGiB = value ?? default(long); }
 
         /// <summary>Internal Acessors for VolumeGroupCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.VolumeGroupCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).VolumeGroupCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).VolumeGroupCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.VolumeGroupCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).VolumeGroupCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).VolumeGroupCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
@@ -121,31 +157,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
@@ -172,6 +208,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__trackedResource).Type; }
+
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public long? UnusedSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).UnusedSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).UnusedSizeTiB = value ?? default(long); }
 
         /// <summary>Total number of volume groups in this Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
@@ -200,6 +240,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResource
     {
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable or Disable scale up setting on Elastic San Appliance.",
+        SerializedName = @"autoScalePolicyEnforcement",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+        string AutoScalePolicyEnforcement { get; set; }
         /// <summary>Logical zone for Elastic San resource; example: ["1"].</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -213,7 +265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -221,10 +273,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Base size of the Elastic San appliance in TiB.",
         SerializedName = @"baseSizeTiB",
         PossibleTypes = new [] { typeof(long) })]
-        long BaseSizeTiB { get; set; }
+        long? BaseSizeTiB { get; set; }
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum scale up size on Elastic San appliance in TiB.",
+        SerializedName = @"capacityUnitScaleUpLimitTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? CapacityUnitScaleUpLimitTiB { get; set; }
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -232,7 +295,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Extended size of the Elastic San appliance in TiB.",
         SerializedName = @"extendedCapacitySizeTiB",
         PossibleTypes = new [] { typeof(long) })]
-        long ExtendedCapacitySizeTiB { get; set; }
+        long? ExtendedCapacitySizeTiB { get; set; }
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Unit to increase Capacity Unit on Elastic San appliance in TiB.",
+        SerializedName = @"increaseCapacityUnitByTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? IncreaseCapacityUnitByTiB { get; set; }
         /// <summary>The list of Private Endpoint Connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -254,7 +328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get;  }
         /// <summary>
         /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
@@ -338,6 +412,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"totalVolumeSizeGiB",
         PossibleTypes = new [] { typeof(long) })]
         long? TotalVolumeSizeGiB { get;  }
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Unused size on Elastic San appliance in TiB.",
+        SerializedName = @"unusedSizeTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? UnusedSizeTiB { get; set; }
         /// <summary>Total number of volume groups in this Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -355,18 +440,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface IElasticSanInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceInternal
     {
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+        string AutoScalePolicyEnforcement { get; set; }
+        /// <summary>Auto Scale Properties for Elastic San Appliance.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties AutoScaleProperty { get; set; }
+        /// <summary>Scale up settings on Elastic San Appliance.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties AutoScalePropertyScaleUpProperty { get; set; }
         /// <summary>Logical zone for Elastic San resource; example: ["1"].</summary>
         System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
-        long BaseSizeTiB { get; set; }
+        long? BaseSizeTiB { get; set; }
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        long? CapacityUnitScaleUpLimitTiB { get; set; }
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
-        long ExtendedCapacitySizeTiB { get; set; }
+        long? ExtendedCapacitySizeTiB { get; set; }
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        long? IncreaseCapacityUnitByTiB { get; set; }
         /// <summary>The list of Private Endpoint Connections.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>Properties of ElasticSan.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanProperties Property { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get; set; }
         /// <summary>
         /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
@@ -389,6 +485,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         long? TotalSizeTiB { get; set; }
         /// <summary>Total size of the provisioned Volumes in GiB.</summary>
         long? TotalVolumeSizeGiB { get; set; }
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        long? UnusedSizeTiB { get; set; }
         /// <summary>Total number of volume groups in this Elastic San appliance.</summary>
         long? VolumeGroupCount { get; set; }
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Search
     public static partial class UsagesOperationsExtensions
     {
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Search
             }
         }
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

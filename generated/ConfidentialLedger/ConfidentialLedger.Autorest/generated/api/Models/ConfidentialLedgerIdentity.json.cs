@@ -64,10 +64,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_ledgerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("ledgerName"), out var __jsonLedgerName) ? (string)__jsonLedgerName : (string)LedgerName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_ledgerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("ledgerName"), out var __jsonLedgerName) ? (string)__jsonLedgerName : (string)_ledgerName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

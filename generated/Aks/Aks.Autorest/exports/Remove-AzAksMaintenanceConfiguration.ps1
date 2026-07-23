@@ -39,12 +39,30 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [CommandId <String>]: Id of the command.
   [ConfigName <String>]: The name of the maintenance configuration.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
+  [MachineName <String>]: host name of the machine
+  [Mode <String>]: The mode of the mesh.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the managed cluster resource.
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrustedAccessRoleBindingName <String>]: The name of trusted access role binding.
+
+MANAGEDCLUSTERINPUTOBJECT <IAksIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CommandId <String>]: Id of the command.
+  [ConfigName <String>]: The name of the maintenance configuration.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [MachineName <String>]: host name of the machine
+  [Mode <String>]: The mode of the mesh.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the managed cluster resource.
+  [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrustedAccessRoleBindingName <String>]: The name of trusted access role binding.
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/remove-azaksmaintenanceconfiguration
 #>
@@ -53,6 +71,7 @@ function Remove-AzAksMaintenanceConfiguration {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityManagedCluster', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [System.String]
     # The name of the maintenance configuration.
@@ -76,14 +95,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityManagedCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity]
+    # Identity Parameter
+    ${ManagedClusterInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -147,6 +172,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -168,10 +202,9 @@ begin {
         $mapping = @{
             Delete = 'Az.Aks.private\Remove-AzAksMaintenanceConfiguration_Delete';
             DeleteViaIdentity = 'Az.Aks.private\Remove-AzAksMaintenanceConfiguration_DeleteViaIdentity';
+            DeleteViaIdentityManagedCluster = 'Az.Aks.private\Remove-AzAksMaintenanceConfiguration_DeleteViaIdentityManagedCluster';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -185,6 +218,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

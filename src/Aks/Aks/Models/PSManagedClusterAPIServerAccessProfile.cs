@@ -53,5 +53,18 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         public bool? DisableRunCommand { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether to enable apiserver vnet integration for the cluster
+        /// or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        public bool? EnableVnetIntegration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subnet to be used when apiserver vnet integration is
+        /// enabled. It is required when creating a new cluster with BYO Vnet, or when
+        /// updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        public string SubnetId { get; set; }
+
     }
 }

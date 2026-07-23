@@ -16,8 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzContainerRegistryImport
 
 Describe 'New-AzContainerRegistryImportPipeline' {
     It 'CreateExpanded' {
-        $keyVaultUri = "https://lnxtestkeyvault.vault.azure.net/secrets/test/de11705d609e48b6a2faf6facc30a9e0"
-        $StorageAccount = "https://acrteststorageaccount.blob.core.windows.net/test"
-        {New-AzContainerRegistryImportPipeline -name $env.rstr2 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri } | Should -Not -Throw
+        {New-AzContainerRegistryImportPipeline -name $env.rstr2 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -EnableSystemAssignedIdentity -SourceType AzureStorageBlobContainer -SourceUri $env.StorageAccount -SourceKeyVaultUri $env.keyVaultUri } | Should -Not -Throw
     }
 }

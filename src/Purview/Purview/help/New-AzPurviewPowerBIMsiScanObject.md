@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbimsiscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,9 @@ Create an in-memory object for PowerBIMsiScan.
 ## SYNTAX
 
 ```
-New-AzPurviewPowerBIMsiScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-IncludePersonalWorkspace <Boolean>]
- [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>]
- [<CommonParameters>]
+New-AzPurviewPowerBIMsiScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-IncludePersonalWorkspace <Boolean>] [-ScanRulesetName <String>]
+ [-ScanRulesetType <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +25,7 @@ Create an in-memory object for PowerBIMsiScan.
 
 ### Example 1: Create PowerBI delegated scan object
 ```powershell
-New-AzPurviewPowerBIMsiScanObject -Kind 'PowerBIMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true
+New-AzPurviewPowerBIMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true
 ```
 
 ```output
@@ -106,20 +105,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScanRulesetName
 
 ```yaml
@@ -137,7 +122,7 @@ Accept wildcard characters: False
 ### -ScanRulesetType
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiMsiScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBiMsiScan
 
 ## NOTES
 

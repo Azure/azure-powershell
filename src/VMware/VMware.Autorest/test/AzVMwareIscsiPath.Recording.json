@@ -1,0 +1,279 @@
+{
+  "AzVMwareIscsiPath+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:56:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "bb3b2e3c-cbee-438e-b996-484a3a131ffe" ],
+        "CommandName": [ "New-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "New-AzVMwareIscsiPath_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:56:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "bb3b2e3c-cbee-438e-b996-484a3a131ffe" ],
+        "CommandName": [ "New-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "New-AzVMwareIscsiPath_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:56:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "8157c934-e62c-49b4-8c90-e3972a94346b" ],
+        "CommandName": [ "Get-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "Get-AzVMwareIscsiPath_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:56:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "67" ],
+        "x-ms-client-request-id": [ "f272e5ef-9662-4947-967f-a52f6894cd30" ],
+        "CommandName": [ "Update-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "Update-AzVMwareIscsiPath_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:56:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"networkBlock\": \"192.168.0.0/24\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:56:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "f272e5ef-9662-4947-967f-a52f6894cd30" ],
+        "CommandName": [ "Update-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "Update-AzVMwareIscsiPath_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "f272e5ef-9662-4947-967f-a52f6894cd30" ],
+        "CommandName": [ "Update-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "Update-AzVMwareIscsiPath_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default\",\"name\":\"default\",\"type\":\"Microsoft.AVS/privateClouds/iscsiPaths\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkBlock\":\"192.168.0.0/24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareIscsiPath+[NoContext]+Remove+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "5405e303-57eb-4954-93a1-46191c832bae" ],
+        "CommandName": [ "Remove-AzVMwareIscsiPath" ],
+        "FullCommandName": [ "Remove-AzVMwareIscsiPath_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

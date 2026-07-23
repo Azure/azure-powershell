@@ -1,17 +1,17 @@
 {
-  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c?api-version=2017-04-01-preview+1": {
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "093b14fb-6ef8-4968-820f-b90b4afa33ba" ],
+        "x-ms-unique-id": [ "1002" ],
+        "x-ms-client-request-id": [ "1e28bc30-b02c-4b0e-a8b6-77c21bca7616" ],
         "CommandName": [ "Get-AzStreamAnalyticsInput" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsInput_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "4691c4f0-c7d3-4f84-aef5-f6da526d29f8" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "093b14fb-6ef8-4968-820f-b90b4afa33ba" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
-        "x-ms-correlation-request-id": [ "11953e66-5971-4a5a-bccd-a6b1ecd636ca" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20210316T063514Z:11953e66-5971-4a5a-bccd-a6b1ecd636ca" ],
+        "ETag": [ "9aa0b16c-d949-43a1-b122-ec75c2c5905f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1e28bc30-b02c-4b0e-a8b6-77c21bca7616" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/6e8f27d7-5102-4fed-ab6f-c8dd7e0ff9ea" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "ebcc2ee9-4180-4257-8852-94e3b0d1dc1c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020416Z:ebcc2ee9-4180-4257-8852-94e3b0d1dc1c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 06:35:13 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B2D71C641064AFFAB1620FACD3F13BC Ref B: MAA201060513047 Ref C: 2025-08-22T02:04:15Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:04:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "580" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "866" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c\",\"name\":\"inputnlga1c\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/inputs\",\"properties\":{\"type\":\"Stream\",\"datasource\":{\"type\":\"Microsoft.Devices/IotHubs\",\"properties\":{\"iotHubNamespace\":\"iothubn0lj1p\",\"sharedAccessPolicyName\":\"iothubowner\",\"endpoint\":\"messages/events\",\"consumerGroupName\":\"$Default\"}},\"compression\":{\"type\":\"None\"},\"serialization\":{\"type\":\"Json\",\"properties\":{\"encoding\":\"UTF8\"}}}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo\",\r\n  \"name\": \"inputqf47vo\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs/inputs\",\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubpsmaqx\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"endpoint\": \"messages/events\",\r\n        \"consumerGroupName\": \"$Default\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"schemaRegistry\": null,\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"messagingCatalogConfiguration\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/test?api-version=2017-04-01-preview+2": {
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/test?api-version=2017-04-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/test?api-version=2017-04-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubn0lj1p\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"consumerGroupName\": \"$Default\",\r\n        \"endpoint\": \"messages/events\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/test?api-version=2017-04-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubpsmaqx\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"consumerGroupName\": \"$Default\",\r\n        \"endpoint\": \"messages/events\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "497" ]
+        "Content-Length": [ "522" ]
       }
     },
     "Response": {
@@ -61,41 +60,41 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/OperationResults/ade27600-a750-4ae6-a73a-6bdd6aa09811?api-version=2017-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/OperationResults/0638914176000000000.31f65366-6fc2-4539-8443-715fb817c4dd?api-version=2017-04-01-preview\u0026t=638914250593982006\u0026c=MIIIpTCCBo2gAwIBAgITFgGt2JEpNowfqCnGHAABAa3YkTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDMwHhcNMjUwNzE5MTQ1NzQwWhcNMjYwMTE1MTQ1NzQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL5TQVW0Qals2t66nORtdmQwb00kVPjniCGDLLX4mwKZ-fxkHqwHO7g_esL2deyq8HcN36C0DLwWukkoVGn0ufXbKd1pJ4b5N_sx4zsPY-9cZffSeCobK9SMjDw_Z2FngZDr6jynqhn1LqM5oTNDC7WkeOTSdwhN3w0-wgZgYR6l5slOSYIk0nAkZj-Pt4UIneFIDrvRJ0f0vA3lPPcQ94RHxKqVM21jHUI1dgUO5gb4nv5xUsEJBSTgKA9pH4sWzyETRwvAn6ZtvhRLAT4VGssZKaNe9Fd-Fpp40QwiARBKySjS1MpVsyVhuGwxdWHhXfUscU5Ux_dlfgHy3RvE4PUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9BTTNQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAzKDEpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MB0GA1UdDgQWBBQ_6zDy7fendurTyys2Fav6C-FFKjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBRIo61gdWpv7GDzaVXRALEyV_xs5DAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggIBAJaPckelU9EAh7Z5s4Kye0xRzJ1cRmt4BcOdI0s982io2nVT2oOo-grIVFjuZ6JQblfiWgy0CLlwdhXTLNrVMOfA-jZ9xZ7PPvXJjPilxt-ZaRt4wEUf2KYVbjdrhNWhRMQfbFJGL0lC4XNWLmvjBioFfwQ_GoerxWSDQl9VE7OEr7-R5XD6nK4_tIza2uzkO1OYffwtur3ezp5rw2cTlf0Y1oRSQXhPzea7-gCYBIqjXykR8v9x-SIwDHPqCyhXqDV1dRFFRSg7VaO5D28keTV7sQO7kduGVK8VK4vTPXXFOzfe9bt7eg0XBq6MfN4j17GQ_TVPUmxvfUoIDYMSpxZu4fGNQ9iKji6ncomVmF9LX6KPd0hWajO7jHWYztEjok0bL9oxAt_A7VZv5crnVac_PnTp2JFfYcYaO4YhRLyfb23v-DQx2WhUZ3mReiEiPAQbpA9wLUYLD7dkPDG5rJSpGnHGchUX-pvHsmlMmM5s9exP-Hxg6BSoQ8-7gO-SvTPuUVHK_3aCp7hNpoyD3cosIrbNQC5Fyi7rRlHTOKuttA9ZZQYWafSnDXdrpHBegHh2RFywnulrzw9pqevDo5FG-M6WUlsPV6lm9aGRWuXs98kExP_g3yzbXRfZ2MaG7c_G6aX2W3rMpuHJ5YsLmwsmVRl75UWaMJMBHcE71_39\u0026s=TicVOvL20ka8UdLug_jEZmhaG14fBCsUenVg-NYyWgm-JOJcXFZaSo1_Frsr2ZsX3rkxtopybneXgGi7Xcsgp6j2IaVSWA9fuooEFPLBom__M3ptQ-TsbVHlfTYpEZEKg70u1o7PYwRGxHwHl0VYmsa1q8Aj5f0xPlAf-zgSoYp9cIFKSvAFfsg3qkdaiI8nOLeT7tJODI6L2nA_rvPhiGu_fawAR-esqWorFMSs1EAmppy90lrVACJr4Acbjb81WPfuVJQ0eBH4Pd2IoaLLq05Qe5o3KpP8Tr1EFix_W0n31jxesHANLamLhDHp67PZV22lhdptSA3Ui4GTYXGguQ\u0026h=SqhyeQeIuxG4chKqbvsZG56tCypGZZzs4GjcFj8l-q4" ],
         "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "4b69d7c6-5c49-48ae-9a0f-7e14a299b1ec" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "eb4ccaa7-dd22-49de-ba55-1f9094a3b2b9" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20210316T063516Z:eb4ccaa7-dd22-49de-ba55-1f9094a3b2b9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9c6addcd-e785-4bce-b80f-e33b7e8fdf07" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/45685a65-afd6-49b0-a076-0c5eb5217562" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "37cc5a02-1c46-4f2b-b853-e174062c3488" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020419Z:37cc5a02-1c46-4f2b-b853-e174062c3488" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 06:35:15 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0A1DFF40F34F42FCBD377579FDFF43DB Ref B: MAA201060513047 Ref C: 2025-08-22T02:04:17Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:04:18 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/OperationResults/ade27600-a750-4ae6-a73a-6bdd6aa09811?api-version=2017-04-01-preview+3": {
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/OperationResults/0638914176000000000.31f65366-6fc2-4539-8443-715fb817c4dd?api-version=2017-04-01-preview\u0026t=638914250593982006\u0026c=MIIIpTCCBo2gAwIBAgITFgGt2JEpNowfqCnGHAABAa3YkTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDMwHhcNMjUwNzE5MTQ1NzQwWhcNMjYwMTE1MTQ1NzQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL5TQVW0Qals2t66nORtdmQwb00kVPjniCGDLLX4mwKZ-fxkHqwHO7g_esL2deyq8HcN36C0DLwWukkoVGn0ufXbKd1pJ4b5N_sx4zsPY-9cZffSeCobK9SMjDw_Z2FngZDr6jynqhn1LqM5oTNDC7WkeOTSdwhN3w0-wgZgYR6l5slOSYIk0nAkZj-Pt4UIneFIDrvRJ0f0vA3lPPcQ94RHxKqVM21jHUI1dgUO5gb4nv5xUsEJBSTgKA9pH4sWzyETRwvAn6ZtvhRLAT4VGssZKaNe9Fd-Fpp40QwiARBKySjS1MpVsyVhuGwxdWHhXfUscU5Ux_dlfgHy3RvE4PUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9BTTNQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAzKDEpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MB0GA1UdDgQWBBQ_6zDy7fendurTyys2Fav6C-FFKjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBRIo61gdWpv7GDzaVXRALEyV_xs5DAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggIBAJaPckelU9EAh7Z5s4Kye0xRzJ1cRmt4BcOdI0s982io2nVT2oOo-grIVFjuZ6JQblfiWgy0CLlwdhXTLNrVMOfA-jZ9xZ7PPvXJjPilxt-ZaRt4wEUf2KYVbjdrhNWhRMQfbFJGL0lC4XNWLmvjBioFfwQ_GoerxWSDQl9VE7OEr7-R5XD6nK4_tIza2uzkO1OYffwtur3ezp5rw2cTlf0Y1oRSQXhPzea7-gCYBIqjXykR8v9x-SIwDHPqCyhXqDV1dRFFRSg7VaO5D28keTV7sQO7kduGVK8VK4vTPXXFOzfe9bt7eg0XBq6MfN4j17GQ_TVPUmxvfUoIDYMSpxZu4fGNQ9iKji6ncomVmF9LX6KPd0hWajO7jHWYztEjok0bL9oxAt_A7VZv5crnVac_PnTp2JFfYcYaO4YhRLyfb23v-DQx2WhUZ3mReiEiPAQbpA9wLUYLD7dkPDG5rJSpGnHGchUX-pvHsmlMmM5s9exP-Hxg6BSoQ8-7gO-SvTPuUVHK_3aCp7hNpoyD3cosIrbNQC5Fyi7rRlHTOKuttA9ZZQYWafSnDXdrpHBegHh2RFywnulrzw9pqevDo5FG-M6WUlsPV6lm9aGRWuXs98kExP_g3yzbXRfZ2MaG7c_G6aX2W3rMpuHJ5YsLmwsmVRl75UWaMJMBHcE71_39\u0026s=TicVOvL20ka8UdLug_jEZmhaG14fBCsUenVg-NYyWgm-JOJcXFZaSo1_Frsr2ZsX3rkxtopybneXgGi7Xcsgp6j2IaVSWA9fuooEFPLBom__M3ptQ-TsbVHlfTYpEZEKg70u1o7PYwRGxHwHl0VYmsa1q8Aj5f0xPlAf-zgSoYp9cIFKSvAFfsg3qkdaiI8nOLeT7tJODI6L2nA_rvPhiGu_fawAR-esqWorFMSs1EAmppy90lrVACJr4Acbjb81WPfuVJQ0eBH4Pd2IoaLLq05Qe5o3KpP8Tr1EFix_W0n31jxesHANLamLhDHp67PZV22lhdptSA3Ui4GTYXGguQ\u0026h=SqhyeQeIuxG4chKqbvsZG56tCypGZZzs4GjcFj8l-q4+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/OperationResults/ade27600-a750-4ae6-a73a-6bdd6aa09811?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/OperationResults/0638914176000000000.31f65366-6fc2-4539-8443-715fb817c4dd?api-version=2017-04-01-preview\u0026t=638914250593982006\u0026c=MIIIpTCCBo2gAwIBAgITFgGt2JEpNowfqCnGHAABAa3YkTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDMwHhcNMjUwNzE5MTQ1NzQwWhcNMjYwMTE1MTQ1NzQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL5TQVW0Qals2t66nORtdmQwb00kVPjniCGDLLX4mwKZ-fxkHqwHO7g_esL2deyq8HcN36C0DLwWukkoVGn0ufXbKd1pJ4b5N_sx4zsPY-9cZffSeCobK9SMjDw_Z2FngZDr6jynqhn1LqM5oTNDC7WkeOTSdwhN3w0-wgZgYR6l5slOSYIk0nAkZj-Pt4UIneFIDrvRJ0f0vA3lPPcQ94RHxKqVM21jHUI1dgUO5gb4nv5xUsEJBSTgKA9pH4sWzyETRwvAn6ZtvhRLAT4VGssZKaNe9Fd-Fpp40QwiARBKySjS1MpVsyVhuGwxdWHhXfUscU5Ux_dlfgHy3RvE4PUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9BTTNQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAzKDEpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MB0GA1UdDgQWBBQ_6zDy7fendurTyys2Fav6C-FFKjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBRIo61gdWpv7GDzaVXRALEyV_xs5DAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggIBAJaPckelU9EAh7Z5s4Kye0xRzJ1cRmt4BcOdI0s982io2nVT2oOo-grIVFjuZ6JQblfiWgy0CLlwdhXTLNrVMOfA-jZ9xZ7PPvXJjPilxt-ZaRt4wEUf2KYVbjdrhNWhRMQfbFJGL0lC4XNWLmvjBioFfwQ_GoerxWSDQl9VE7OEr7-R5XD6nK4_tIza2uzkO1OYffwtur3ezp5rw2cTlf0Y1oRSQXhPzea7-gCYBIqjXykR8v9x-SIwDHPqCyhXqDV1dRFFRSg7VaO5D28keTV7sQO7kduGVK8VK4vTPXXFOzfe9bt7eg0XBq6MfN4j17GQ_TVPUmxvfUoIDYMSpxZu4fGNQ9iKji6ncomVmF9LX6KPd0hWajO7jHWYztEjok0bL9oxAt_A7VZv5crnVac_PnTp2JFfYcYaO4YhRLyfb23v-DQx2WhUZ3mReiEiPAQbpA9wLUYLD7dkPDG5rJSpGnHGchUX-pvHsmlMmM5s9exP-Hxg6BSoQ8-7gO-SvTPuUVHK_3aCp7hNpoyD3cosIrbNQC5Fyi7rRlHTOKuttA9ZZQYWafSnDXdrpHBegHh2RFywnulrzw9pqevDo5FG-M6WUlsPV6lm9aGRWuXs98kExP_g3yzbXRfZ2MaG7c_G6aX2W3rMpuHJ5YsLmwsmVRl75UWaMJMBHcE71_39\u0026s=TicVOvL20ka8UdLug_jEZmhaG14fBCsUenVg-NYyWgm-JOJcXFZaSo1_Frsr2ZsX3rkxtopybneXgGi7Xcsgp6j2IaVSWA9fuooEFPLBom__M3ptQ-TsbVHlfTYpEZEKg70u1o7PYwRGxHwHl0VYmsa1q8Aj5f0xPlAf-zgSoYp9cIFKSvAFfsg3qkdaiI8nOLeT7tJODI6L2nA_rvPhiGu_fawAR-esqWorFMSs1EAmppy90lrVACJr4Acbjb81WPfuVJQ0eBH4Pd2IoaLLq05Qe5o3KpP8Tr1EFix_W0n31jxesHANLamLhDHp67PZV22lhdptSA3Ui4GTYXGguQ\u0026h=SqhyeQeIuxG4chKqbvsZG56tCypGZZzs4GjcFj8l-q4",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "4b69d7c6-5c49-48ae-9a0f-7e14a299b1ec" ],
+        "x-ms-unique-id": [ "1004" ],
+        "x-ms-client-request-id": [ "9c6addcd-e785-4bce-b80f-e33b7e8fdf07" ],
         "CommandName": [ "Test-AzStreamAnalyticsInput" ],
         "FullCommandName": [ "Test-AzStreamAnalyticsInput_TestViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -105,40 +104,40 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "4b69d7c6-5c49-48ae-9a0f-7e14a299b1ec" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
-        "x-ms-correlation-request-id": [ "829de61d-45c0-4d07-8c88-6eb88ea7cf6c" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20210316T063526Z:829de61d-45c0-4d07-8c88-6eb88ea7cf6c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9c6addcd-e785-4bce-b80f-e33b7e8fdf07" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/8497b1ef-fb92-47b3-8720-3a563c94cfca" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "574bfc43-b5cc-41fb-bcdc-fb2f4361dad7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020430Z:574bfc43-b5cc-41fb-bcdc-fb2f4361dad7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 06:35:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D387FE88A94A4EDFAA9BD47574C99632 Ref B: MAA201060513047 Ref C: 2025-08-22T02:04:29Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:04:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "58" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
       "Content": "{\"status\":\"TestSucceeded\",\"error\":null,\"diagnostics\":null}",
       "isContentBase64": false
     }
   },
-  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/OperationResults/ade27600-a750-4ae6-a73a-6bdd6aa09811?api-version=2017-04-01-preview+4": {
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/OperationResults/0638914176000000000.31f65366-6fc2-4539-8443-715fb817c4dd?api-version=2017-04-01-preview\u0026t=638914250593982006\u0026c=MIIIpTCCBo2gAwIBAgITFgGt2JEpNowfqCnGHAABAa3YkTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDMwHhcNMjUwNzE5MTQ1NzQwWhcNMjYwMTE1MTQ1NzQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL5TQVW0Qals2t66nORtdmQwb00kVPjniCGDLLX4mwKZ-fxkHqwHO7g_esL2deyq8HcN36C0DLwWukkoVGn0ufXbKd1pJ4b5N_sx4zsPY-9cZffSeCobK9SMjDw_Z2FngZDr6jynqhn1LqM5oTNDC7WkeOTSdwhN3w0-wgZgYR6l5slOSYIk0nAkZj-Pt4UIneFIDrvRJ0f0vA3lPPcQ94RHxKqVM21jHUI1dgUO5gb4nv5xUsEJBSTgKA9pH4sWzyETRwvAn6ZtvhRLAT4VGssZKaNe9Fd-Fpp40QwiARBKySjS1MpVsyVhuGwxdWHhXfUscU5Ux_dlfgHy3RvE4PUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9BTTNQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAzKDEpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MB0GA1UdDgQWBBQ_6zDy7fendurTyys2Fav6C-FFKjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBRIo61gdWpv7GDzaVXRALEyV_xs5DAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggIBAJaPckelU9EAh7Z5s4Kye0xRzJ1cRmt4BcOdI0s982io2nVT2oOo-grIVFjuZ6JQblfiWgy0CLlwdhXTLNrVMOfA-jZ9xZ7PPvXJjPilxt-ZaRt4wEUf2KYVbjdrhNWhRMQfbFJGL0lC4XNWLmvjBioFfwQ_GoerxWSDQl9VE7OEr7-R5XD6nK4_tIza2uzkO1OYffwtur3ezp5rw2cTlf0Y1oRSQXhPzea7-gCYBIqjXykR8v9x-SIwDHPqCyhXqDV1dRFFRSg7VaO5D28keTV7sQO7kduGVK8VK4vTPXXFOzfe9bt7eg0XBq6MfN4j17GQ_TVPUmxvfUoIDYMSpxZu4fGNQ9iKji6ncomVmF9LX6KPd0hWajO7jHWYztEjok0bL9oxAt_A7VZv5crnVac_PnTp2JFfYcYaO4YhRLyfb23v-DQx2WhUZ3mReiEiPAQbpA9wLUYLD7dkPDG5rJSpGnHGchUX-pvHsmlMmM5s9exP-Hxg6BSoQ8-7gO-SvTPuUVHK_3aCp7hNpoyD3cosIrbNQC5Fyi7rRlHTOKuttA9ZZQYWafSnDXdrpHBegHh2RFywnulrzw9pqevDo5FG-M6WUlsPV6lm9aGRWuXs98kExP_g3yzbXRfZ2MaG7c_G6aX2W3rMpuHJ5YsLmwsmVRl75UWaMJMBHcE71_39\u0026s=TicVOvL20ka8UdLug_jEZmhaG14fBCsUenVg-NYyWgm-JOJcXFZaSo1_Frsr2ZsX3rkxtopybneXgGi7Xcsgp6j2IaVSWA9fuooEFPLBom__M3ptQ-TsbVHlfTYpEZEKg70u1o7PYwRGxHwHl0VYmsa1q8Aj5f0xPlAf-zgSoYp9cIFKSvAFfsg3qkdaiI8nOLeT7tJODI6L2nA_rvPhiGu_fawAR-esqWorFMSs1EAmppy90lrVACJr4Acbjb81WPfuVJQ0eBH4Pd2IoaLLq05Qe5o3KpP8Tr1EFix_W0n31jxesHANLamLhDHp67PZV22lhdptSA3Ui4GTYXGguQ\u0026h=SqhyeQeIuxG4chKqbvsZG56tCypGZZzs4GjcFj8l-q4+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/inputs/inputnlga1c/OperationResults/ade27600-a750-4ae6-a73a-6bdd6aa09811?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/inputs/inputqf47vo/OperationResults/0638914176000000000.31f65366-6fc2-4539-8443-715fb817c4dd?api-version=2017-04-01-preview\u0026t=638914250593982006\u0026c=MIIIpTCCBo2gAwIBAgITFgGt2JEpNowfqCnGHAABAa3YkTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDMwHhcNMjUwNzE5MTQ1NzQwWhcNMjYwMTE1MTQ1NzQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL5TQVW0Qals2t66nORtdmQwb00kVPjniCGDLLX4mwKZ-fxkHqwHO7g_esL2deyq8HcN36C0DLwWukkoVGn0ufXbKd1pJ4b5N_sx4zsPY-9cZffSeCobK9SMjDw_Z2FngZDr6jynqhn1LqM5oTNDC7WkeOTSdwhN3w0-wgZgYR6l5slOSYIk0nAkZj-Pt4UIneFIDrvRJ0f0vA3lPPcQ94RHxKqVM21jHUI1dgUO5gb4nv5xUsEJBSTgKA9pH4sWzyETRwvAn6ZtvhRLAT4VGssZKaNe9Fd-Fpp40QwiARBKySjS1MpVsyVhuGwxdWHhXfUscU5Ux_dlfgHy3RvE4PUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9BTTNQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAzKDEpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MB0GA1UdDgQWBBQ_6zDy7fendurTyys2Fav6C-FFKjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBRIo61gdWpv7GDzaVXRALEyV_xs5DAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggIBAJaPckelU9EAh7Z5s4Kye0xRzJ1cRmt4BcOdI0s982io2nVT2oOo-grIVFjuZ6JQblfiWgy0CLlwdhXTLNrVMOfA-jZ9xZ7PPvXJjPilxt-ZaRt4wEUf2KYVbjdrhNWhRMQfbFJGL0lC4XNWLmvjBioFfwQ_GoerxWSDQl9VE7OEr7-R5XD6nK4_tIza2uzkO1OYffwtur3ezp5rw2cTlf0Y1oRSQXhPzea7-gCYBIqjXykR8v9x-SIwDHPqCyhXqDV1dRFFRSg7VaO5D28keTV7sQO7kduGVK8VK4vTPXXFOzfe9bt7eg0XBq6MfN4j17GQ_TVPUmxvfUoIDYMSpxZu4fGNQ9iKji6ncomVmF9LX6KPd0hWajO7jHWYztEjok0bL9oxAt_A7VZv5crnVac_PnTp2JFfYcYaO4YhRLyfb23v-DQx2WhUZ3mReiEiPAQbpA9wLUYLD7dkPDG5rJSpGnHGchUX-pvHsmlMmM5s9exP-Hxg6BSoQ8-7gO-SvTPuUVHK_3aCp7hNpoyD3cosIrbNQC5Fyi7rRlHTOKuttA9ZZQYWafSnDXdrpHBegHh2RFywnulrzw9pqevDo5FG-M6WUlsPV6lm9aGRWuXs98kExP_g3yzbXRfZ2MaG7c_G6aX2W3rMpuHJ5YsLmwsmVRl75UWaMJMBHcE71_39\u0026s=TicVOvL20ka8UdLug_jEZmhaG14fBCsUenVg-NYyWgm-JOJcXFZaSo1_Frsr2ZsX3rkxtopybneXgGi7Xcsgp6j2IaVSWA9fuooEFPLBom__M3ptQ-TsbVHlfTYpEZEKg70u1o7PYwRGxHwHl0VYmsa1q8Aj5f0xPlAf-zgSoYp9cIFKSvAFfsg3qkdaiI8nOLeT7tJODI6L2nA_rvPhiGu_fawAR-esqWorFMSs1EAmppy90lrVACJr4Acbjb81WPfuVJQ0eBH4Pd2IoaLLq05Qe5o3KpP8Tr1EFix_W0n31jxesHANLamLhDHp67PZV22lhdptSA3Ui4GTYXGguQ\u0026h=SqhyeQeIuxG4chKqbvsZG56tCypGZZzs4GjcFj8l-q4",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "4b69d7c6-5c49-48ae-9a0f-7e14a299b1ec" ],
+        "x-ms-unique-id": [ "1005" ],
+        "x-ms-client-request-id": [ "9c6addcd-e785-4bce-b80f-e33b7e8fdf07" ],
         "CommandName": [ "Test-AzStreamAnalyticsInput" ],
         "FullCommandName": [ "Test-AzStreamAnalyticsInput_TestViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -148,21 +147,21 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "4b69d7c6-5c49-48ae-9a0f-7e14a299b1ec" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
-        "x-ms-correlation-request-id": [ "92b54b17-2522-4080-bc6f-eb4aa9cb0523" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20210316T063527Z:92b54b17-2522-4080-bc6f-eb4aa9cb0523" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9c6addcd-e785-4bce-b80f-e33b7e8fdf07" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/d2c7a46e-12cf-43c7-a055-871c7c8c195c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "1dab1332-766c-446c-a92c-25f1e1f3227d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020432Z:1dab1332-766c-446c-a92c-25f1e1f3227d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 06:35:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4B9B524CD12944DBACF1E07EC8CEF9B6 Ref B: MAA201060513047 Ref C: 2025-08-22T02:04:30Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:04:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "58" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
       "Content": "{\"status\":\"TestSucceeded\",\"error\":null,\"diagnostics\":null}",
       "isContentBase64": false

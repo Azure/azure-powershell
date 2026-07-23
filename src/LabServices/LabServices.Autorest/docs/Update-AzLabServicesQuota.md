@@ -76,10 +76,10 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-To construct, see NOTES section for LAB properties and create a hash table.
+The object of lab service lab.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-
+The name of lab service lab.
 
 ```yaml
 Type: System.String
@@ -106,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -LabQuota
-
+The initial quota alloted to each lab user.
+Must be a time span between 0 and 9999 hours.
 
 ```yaml
 Type: System.TimeSpan
@@ -202,11 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 
 ## NOTES
 

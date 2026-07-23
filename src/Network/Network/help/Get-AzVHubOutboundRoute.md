@@ -15,19 +15,22 @@ Retrieves the outbound routes of a virtual hub connection
 ### ByVirtualHubName (Default)
 ```
 Get-AzVHubOutboundRoute -ResourceGroupName <String> -VirtualHubName <String> [-ResourceUri <String>]
- [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Get-AzVHubOutboundRoute -VirtualHubObject <PSVirtualHub> [-ResourceUri <String>]
- [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Get-AzVHubOutboundRoute -VirtualHubResourceId <String> [-ResourceUri <String>]
- [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

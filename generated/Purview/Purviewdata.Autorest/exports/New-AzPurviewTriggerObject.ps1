@@ -20,28 +20,28 @@ Create an in-memory object for Trigger.
 .Description
 Create an in-memory object for Trigger.
 .Example
-New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
+RECURRENCESCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
   [(Any) <Object>]: This indicates any property can be added to this object.
 
-SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
+RECURRENCESCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
   [AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]: Dictionary of <any>
     [(Any) <Object>]: This indicates any property can be added to this object.
-  [Day <DayOfWeek?>]: 
+  [Day <String>]: 
   [Occurrence <Int32?>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewtriggerobject
 #>
 function New-AzPurviewTriggerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -60,15 +60,48 @@ param(
     ${RecurrenceEndTime},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Week", "Month")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency]
+    [System.String]
     ${RecurrenceFrequency},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
     ${RecurrenceInterval},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties]
+    # Dictionary of <any>.
+    ${RecurrenceScheduleAdditionalProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    ${RecurrenceScheduleHour},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    ${RecurrenceScheduleMinute},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    ${RecurrenceScheduleMonthDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]]
+    # 
+    ${RecurrenceScheduleMonthlyOccurrence},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String[]]
+    ${RecurrenceScheduleWeekDay},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
@@ -81,44 +114,10 @@ param(
     ${RecurrenceTimeZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Full", "Incremental")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType]
-    ${ScanLevel},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleAdditionalProperties]
-    # Dictionary of <any>.
-    # To construct, see NOTES section for SCHEDULEADDITIONALPROPERTY properties and create a hash table.
-    ${ScheduleAdditionalProperty},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [System.Int32[]]
-    ${ScheduleHour},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [System.Int32[]]
-    ${ScheduleMinute},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [System.Int32[]]
-    ${ScheduleMonthDay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleOccurrence[]]
-    # To construct, see NOTES section for SCHEDULEMONTHLYOCCURRENCE properties and create a hash table.
-    ${ScheduleMonthlyOccurrence},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek[]]
-    ${ScheduleWeekDay}
+    [System.String]
+    ${ScanLevel}
 )
 
 begin {
@@ -128,6 +127,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -156,6 +158,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

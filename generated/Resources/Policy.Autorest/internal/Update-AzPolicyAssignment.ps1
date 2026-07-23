@@ -70,10 +70,6 @@ Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelect
 $Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
 $Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
 Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
@@ -117,6 +113,15 @@ param(
     ${Id},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The type of policy assignment.
+    # Possible values are NotSpecified, System, SystemHidden, and Custom.
+    # Immutable.
+    ${AssignmentType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The version of the policy definition to use.
@@ -141,11 +146,11 @@ param(
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll
     ${EnforcementMode},
 
     [Parameter()]
@@ -240,12 +245,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.Policy.private\Update-AzPolicyAssignment_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

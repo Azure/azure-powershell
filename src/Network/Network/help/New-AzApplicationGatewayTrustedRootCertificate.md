@@ -14,7 +14,8 @@ Creates a Trusted Root Certificate for an application gateway.
 
 ```
 New-AzApplicationGatewayTrustedRootCertificate -Name <String> -CertificateFile <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

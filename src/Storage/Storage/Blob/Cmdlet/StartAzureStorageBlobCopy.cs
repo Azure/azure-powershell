@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string BlobToBlobParameterSet = "BlobInstanceToBlobInstance";
 
         /// <summary>
-        /// Container pipeline paremeter set name
+        /// Container pipeline parameter set name
         /// </summary>
         private const string ContainerParameterSet = "ContainerInstance";
 
@@ -288,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ValueFromPipelineByPropertyName = true, Mandatory = false)]
         public IStorageContext DestContext { get; set; }
 
-        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Destination Blob. The blob request will fail when the destiantion blob tags not match the given tag conditions.", Mandatory = false)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Destination Blob. The blob request will fail when the destination blob tags not match the given tag conditions.", Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public virtual string DestTagCondition { get; set; }
 
@@ -352,7 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             //If destChannel exits, reuse it.
             //If desContext exits, use it.
-            //If Channl object exists, use it.
+            //If Channel object exists, use it.
             //Otherwise, create a new channel.
             IStorageBlobManagement destChannel = default(IStorageBlobManagement);
 
@@ -521,7 +521,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="destChannel">IStorageBlobManagement channel object</param>
         /// <param name="srcCloudBlob">Source CloudBlob object</param>
-        /// <param name="destContainer">Destinaion container name</param>
+        /// <param name="destContainer">Destination container name</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, string destContainer, string destBlobName)
@@ -553,7 +553,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="destChannel">IStorageBlobManagement channel object</param>
         /// <param name="srcUri">Source uri</param>
-        /// <param name="destContainer">Destinaion container name</param>
+        /// <param name="destContainer">Destination container name</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <param name="context">a cloud blob object</param>
         /// <returns>Destination CloudBlob object</returns>
@@ -605,7 +605,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="destChannel"></param>
         /// <param name="srcContainerName">Source container name</param>
         /// <param name="srcBlobName">Source blob name</param>
-        /// <param name="destContainerName">Destinaion container name</param>
+        /// <param name="destContainerName">Destination container name</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement SrcChannel, IStorageBlobManagement destChannel, string srcContainerName, string srcBlobName, string destContainerName, string destBlobName)
@@ -679,7 +679,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
-                    // if inside same account, source blob can be anonumous
+                    // if inside same account, source blob can be anonymous
                     srcBlobUriWithCredentail = srcBlob.SnapshotQualifiedUri;
                 }
                 else
@@ -716,7 +716,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
-                    // if inside same account, source blob can be anonumous
+                    // if inside same account, source blob can be anonymous
                     srcBlobUriWithCredentail = srcBlob.Uri;
                 }
                 else
@@ -774,7 +774,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     string copyId;
 
-                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://learn.microsoft.com/en-us/rest/api/storageservices/copy-blob
+                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwrite the dest blob metadata. See https://learn.microsoft.com/en-us/rest/api/storageservices/copy-blob
                     destBlob.Metadata.Clear();
 
                     // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
@@ -891,7 +891,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Start copy using transfer mangager by source CloudBlob object
+        /// Start copy using transfer manager by source CloudBlob object
         /// </summary>
         /// <param name="taskId">Task id</param>
         /// <param name="destChannel">IStorageBlobManagement channel object</param>
@@ -917,7 +917,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Start copy using transfer mangager by source uri
+        /// Start copy using transfer manager by source uri
         /// </summary>
         /// <param name="taskId">Task id</param>
         /// <param name="destChannel">IStorageBlobManagement channel object</param>

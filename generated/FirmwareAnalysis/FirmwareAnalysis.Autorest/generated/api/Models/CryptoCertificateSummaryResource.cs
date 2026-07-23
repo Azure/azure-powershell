@@ -19,61 +19,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceProperties __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties();
 
-        /// <summary>Backing field for <see cref="Expired" /> property.</summary>
-        private long? _expired;
+        /// <summary>Backing field for <see cref="ExpiredCertificateCount" /> property.</summary>
+        private long? _expiredCertificateCount;
 
         /// <summary>Total number of expired certificates found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? Expired { get => this._expired; set => this._expired = value; }
+        public long? ExpiredCertificateCount { get => this._expiredCertificateCount; set => this._expiredCertificateCount = value; }
 
-        /// <summary>Backing field for <see cref="ExpiringSoon" /> property.</summary>
-        private long? _expiringSoon;
+        /// <summary>Backing field for <see cref="ExpiringSoonCertificateCount" /> property.</summary>
+        private long? _expiringSoonCertificateCount;
 
         /// <summary>Total number of nearly expired certificates found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? ExpiringSoon { get => this._expiringSoon; set => this._expiringSoon = value; }
+        public long? ExpiringSoonCertificateCount { get => this._expiringSoonCertificateCount; set => this._expiringSoonCertificateCount = value; }
 
-        /// <summary>Backing field for <see cref="PairedKey" /> property.</summary>
-        private long? _pairedKey;
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState = value ?? null; }
+
+        /// <summary>Backing field for <see cref="PairedKeyCount" /> property.</summary>
+        private long? _pairedKeyCount;
 
         /// <summary>Total number of paired private keys found for the certificates.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? PairedKey { get => this._pairedKey; set => this._pairedKey = value; }
+        public long? PairedKeyCount { get => this._pairedKeyCount; set => this._pairedKeyCount = value; }
 
-        /// <summary>Backing field for <see cref="SelfSigned" /> property.</summary>
-        private long? _selfSigned;
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; }
+
+        /// <summary>Backing field for <see cref="SelfSignedCertificateCount" /> property.</summary>
+        private long? _selfSignedCertificateCount;
 
         /// <summary>Total number of certificates found that are self-signed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? SelfSigned { get => this._selfSigned; set => this._selfSigned = value; }
+        public long? SelfSignedCertificateCount { get => this._selfSignedCertificateCount; set => this._selfSignedCertificateCount = value; }
 
-        /// <summary>Backing field for <see cref="ShortKeySize" /> property.</summary>
-        private long? _shortKeySize;
+        /// <summary>Backing field for <see cref="ShortKeySizeCount" /> property.</summary>
+        private long? _shortKeySizeCount;
 
         /// <summary>
         /// Total number of certificates found that have an insecure key size for the key algorithm.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? ShortKeySize { get => this._shortKeySize; set => this._shortKeySize = value; }
+        public long? ShortKeySizeCount { get => this._shortKeySizeCount; set => this._shortKeySizeCount = value; }
 
-        /// <summary>Describes the type of summary.</summary>
+        /// <summary>The type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
         public string SummaryType { get => "CryptoCertificate"; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).SummaryType = "CryptoCertificate"; }
 
-        /// <summary>Backing field for <see cref="TotalCertificate" /> property.</summary>
-        private long? _totalCertificate;
+        /// <summary>Backing field for <see cref="TotalCertificateCount" /> property.</summary>
+        private long? _totalCertificateCount;
 
         /// <summary>Total number of certificates found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? TotalCertificate { get => this._totalCertificate; set => this._totalCertificate = value; }
+        public long? TotalCertificateCount { get => this._totalCertificateCount; set => this._totalCertificateCount = value; }
 
-        /// <summary>Backing field for <see cref="WeakSignature" /> property.</summary>
-        private long? _weakSignature;
+        /// <summary>Backing field for <see cref="WeakSignatureCount" /> property.</summary>
+        private long? _weakSignatureCount;
 
         /// <summary>Total number of certificates found using a weak signature algorithm.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? WeakSignature { get => this._weakSignature; set => this._weakSignature = value; }
+        public long? WeakSignatureCount { get => this._weakSignatureCount; set => this._weakSignatureCount = value; }
 
         /// <summary>Creates an new <see cref="CryptoCertificateSummaryResource" /> instance.</summary>
         public CryptoCertificateSummaryResource()
@@ -106,9 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of expired certificates found.",
-        SerializedName = @"expired",
+        SerializedName = @"expiredCertificateCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? Expired { get; set; }
+        long? ExpiredCertificateCount { get; set; }
         /// <summary>Total number of nearly expired certificates found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -117,9 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of nearly expired certificates found.",
-        SerializedName = @"expiringSoon",
+        SerializedName = @"expiringSoonCertificateCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? ExpiringSoon { get; set; }
+        long? ExpiringSoonCertificateCount { get; set; }
         /// <summary>Total number of paired private keys found for the certificates.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -128,9 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of paired private keys found for the certificates.",
-        SerializedName = @"pairedKeys",
+        SerializedName = @"pairedKeyCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? PairedKey { get; set; }
+        long? PairedKeyCount { get; set; }
         /// <summary>Total number of certificates found that are self-signed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -139,9 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of certificates found that are self-signed.",
-        SerializedName = @"selfSigned",
+        SerializedName = @"selfSignedCertificateCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? SelfSigned { get; set; }
+        long? SelfSignedCertificateCount { get; set; }
         /// <summary>
         /// Total number of certificates found that have an insecure key size for the key algorithm.
         /// </summary>
@@ -152,9 +159,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of certificates found that have an insecure key size for the key algorithm.",
-        SerializedName = @"shortKeySize",
+        SerializedName = @"shortKeySizeCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? ShortKeySize { get; set; }
+        long? ShortKeySizeCount { get; set; }
         /// <summary>Total number of certificates found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -163,9 +170,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of certificates found.",
-        SerializedName = @"totalCertificates",
+        SerializedName = @"totalCertificateCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? TotalCertificate { get; set; }
+        long? TotalCertificateCount { get; set; }
         /// <summary>Total number of certificates found using a weak signature algorithm.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -174,9 +181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of certificates found using a weak signature algorithm.",
-        SerializedName = @"weakSignature",
+        SerializedName = @"weakSignatureCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? WeakSignature { get; set; }
+        long? WeakSignatureCount { get; set; }
 
     }
     /// Properties for cryptographic certificate summary.
@@ -184,21 +191,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal
     {
         /// <summary>Total number of expired certificates found.</summary>
-        long? Expired { get; set; }
+        long? ExpiredCertificateCount { get; set; }
         /// <summary>Total number of nearly expired certificates found.</summary>
-        long? ExpiringSoon { get; set; }
+        long? ExpiringSoonCertificateCount { get; set; }
         /// <summary>Total number of paired private keys found for the certificates.</summary>
-        long? PairedKey { get; set; }
+        long? PairedKeyCount { get; set; }
         /// <summary>Total number of certificates found that are self-signed.</summary>
-        long? SelfSigned { get; set; }
+        long? SelfSignedCertificateCount { get; set; }
         /// <summary>
         /// Total number of certificates found that have an insecure key size for the key algorithm.
         /// </summary>
-        long? ShortKeySize { get; set; }
+        long? ShortKeySizeCount { get; set; }
         /// <summary>Total number of certificates found.</summary>
-        long? TotalCertificate { get; set; }
+        long? TotalCertificateCount { get; set; }
         /// <summary>Total number of certificates found using a weak signature algorithm.</summary>
-        long? WeakSignature { get; set; }
+        long? WeakSignatureCount { get; set; }
 
     }
 }

@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new Activity Log Alert rule or update an existing one.</summary>
+    /// <summary>create a new Activity Log Alert rule or create an existing one.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts/{activityLogAlertName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzActivityLogAlert_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Description(@"Create a new Activity Log Alert rule or update an existing one.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Description(@"create a new Activity Log Alert rule or create an existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts/{activityLogAlertName}", ApiVersion = "2020-10-01")]
     public partial class NewAzActivityLogAlert_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -31,12 +34,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         private string __processRecordId;
 
         /// <summary>An Activity Log Alert rule resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource _activityLogAlertRuleBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActivityLogAlertResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource _activityLogAlertRuleBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActivityLogAlertResource();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>The list of the Action Groups.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -47,13 +62,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         ReadOnly = false,
         Description = @"The list of the Action Groups.",
         SerializedName = @"actionGroups",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[] Action { get => _activityLogAlertRuleBody.ActionGroup ?? null /* arrayOf */; set => _activityLogAlertRuleBody.ActionGroup = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroup) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroup[] Action { get => _activityLogAlertRuleBody.ActionGroup?.ToArray() ?? null /* fixedArrayOf */; set => _activityLogAlertRuleBody.ActionGroup = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroup>(value) : null); }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ActivityLogAlert Client => Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Module.Instance.ClientAPI;
@@ -67,8 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         ReadOnly = false,
         Description = @"The list of Activity Log Alert rule conditions.",
         SerializedName = @"allOf",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[] Condition { get => _activityLogAlertRuleBody.ConditionAllOf ?? null /* arrayOf */; set => _activityLogAlertRuleBody.ConditionAllOf = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleAnyOfOrLeafCondition) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleAnyOfOrLeafCondition[] Condition { get => _activityLogAlertRuleBody.ConditionAllOf?.ToArray() ?? null /* fixedArrayOf */; set => _activityLogAlertRuleBody.ConditionAllOf = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleAnyOfOrLeafCondition>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -104,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Enabled { get => _activityLogAlertRuleBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _activityLogAlertRuleBody.Enabled = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -160,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -205,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         Description = @"A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.",
         SerializedName = @"scopes",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] Scope { get => _activityLogAlertRuleBody.Scope ?? null /* arrayOf */; set => _activityLogAlertRuleBody.Scope = value; }
+        public string[] Scope { get => _activityLogAlertRuleBody.Scope?.ToArray() ?? null /* fixedArrayOf */; set => _activityLogAlertRuleBody.Scope = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -221,7 +242,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -234,44 +256,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         ReadOnly = false,
         Description = @"The tags of the resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAzureResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAzureResourceTags Tag { get => _activityLogAlertRuleBody.Tag ?? null /* object */; set => _activityLogAlertRuleBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAzureResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAzureResourceTags Tag { get => _activityLogAlertRuleBody.Tag ?? null /* object */; set => _activityLogAlertRuleBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -294,6 +316,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -358,8 +385,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -369,7 +421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzActivityLogAlert_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzActivityLogAlert_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzActivityLogAlert_CreateExpanded()
         {
@@ -423,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -436,12 +488,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ActivityLogAlertsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _activityLogAlertRuleBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.ActivityLogAlertsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _activityLogAlertRuleBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_activityLogAlertRuleBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -477,12 +529,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -494,8 +546,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -503,12 +573,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -525,15 +595,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_activityLogAlertRuleBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_activityLogAlertRuleBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -543,12 +613,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -560,8 +630,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

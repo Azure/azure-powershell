@@ -41,8 +41,12 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.SubscriptionId = '07aed47b-60ad-4d6e-a07a-89b602418441'
+    $env.Tenant = '72f988bf-86f1-41af-91ab-2d7cd011db47'
+    $env.FirmwareId = '87b778ab-e9ad-032b-88cf-a3459ebc2aae'
+    $env.ResourceGroup = 'sdk-tests-rg'
+    $env.WorkspaceName = "default"
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

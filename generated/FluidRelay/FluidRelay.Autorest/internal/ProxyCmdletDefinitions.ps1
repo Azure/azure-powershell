@@ -25,12 +25,12 @@ List all operations provided by Microsoft.FluidRelay.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IOperationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayoperation
 #>
 function Get-AzFluidRelayOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.FluidRelay.private\Get-AzFluidRelayOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

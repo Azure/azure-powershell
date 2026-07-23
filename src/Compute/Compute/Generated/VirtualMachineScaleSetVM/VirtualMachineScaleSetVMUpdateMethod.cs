@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected const string DefaultParameterSetName = "DefaultParameter",
                                ResourceIdParameterSet = "ResourceIdParameter",
                                ObjectParameterSet = "ObjectParameter";
-        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
+        private VmssVMInstanceViewTypes UserDataExpand = VmssVMInstanceViewTypes.UserData;
 
         public override void ExecuteCmdlet()
         {
@@ -131,6 +131,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.UserData = this.UserData;
                     }
 
+                    if (this.IsParameterBound(c => c.ProxyAgentKeyIncarnationId))
+                    {
+                        if (parameters.SecurityProfile == null)
+                        {
+                            parameters.SecurityProfile = new SecurityProfile();
+                        }
+                        if (parameters.SecurityProfile.ProxyAgentSettings == null)
+                        {
+                            parameters.SecurityProfile.ProxyAgentSettings= new ProxyAgentSettings();
+                        }
+                        parameters.SecurityProfile.ProxyAgentSettings.KeyIncarnationId = this.ProxyAgentKeyIncarnationId;
+                    }
+
                     var result = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, instanceId, parameters);
                     var psObject = new PSVirtualMachineScaleSetVM();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
@@ -162,6 +175,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.")]
+        [Alias("KeyIncarnationId")]
+        public int? ProxyAgentKeyIncarnationId { get; set; }
 
         [Parameter(
             ValueFromPipeline = true)]

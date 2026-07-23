@@ -17,14 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFirmwareAnalysisWorkspa
 Describe 'Get-AzFirmwareAnalysisWorkspace' {
     It 'List' {
         { 
-            $config = Get-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG'
+            $config = Get-AzFirmwareAnalysisWorkspace -ResourceGroupName $env.ResourceGroup
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         { 
-            $config = Get-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default'
+            $config = Get-AzFirmwareAnalysisWorkspace -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

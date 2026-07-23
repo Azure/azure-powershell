@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.ReplicationLink.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -28,6 +29,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Sql;
 using Newtonsoft.Json;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -45,6 +47,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// Gets or sets the AzureSqlElasticPoolCommunicator which has all the needed management clients
         /// </summary>
         private AzureSqlElasticPoolCommunicator ElasticPoolCommunicator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AzureSqlDatabaseReplicationCommunicator which has all the needed management clients
+        /// </summary>
+        private AzureSqlDatabaseReplicationCommunicator ReplicationLinkCommunicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -66,6 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             _subscription = context?.Subscription;
             Communicator = new AzureSqlDatabaseCommunicator(Context);
             ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
+            ReplicationLinkCommunicator = new AzureSqlDatabaseReplicationCommunicator(Context);
         }
 
         /// <summary>
@@ -80,6 +88,34 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         {
             var resp = Communicator.Get(resourceGroupName, serverName, databaseName, oDataQuery);
             return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
+        }
+
+        /// <summary>
+        /// Check If Database has GeoDr link.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <returns>True if database has GeoDr links</returns>
+        internal bool CheckIfDatabaseHasGeoDrLink(string resourceGroupName, string serverName, string databaseName)
+        {
+            var resp = ReplicationLinkCommunicator.ListLinksV2(resourceGroupName, serverName, databaseName);
+            return resp != null && resp.Any();
+        }
+
+        /// <summary>
+        /// Check if it's a Hyperscale Pool.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="elasticPoolName">The name of the Azure Sql Database</param>
+        /// <returns>True if it's a Hyperscale elastic pool</returns>
+        internal bool CheckIfHyperscalePool(string resourceGroupName, string serverName, string elasticPoolName)
+        {
+            if (elasticPoolName == null)
+                return false;
+            var resp = ElasticPoolCommunicator.Get(resourceGroupName, serverName, elasticPoolName);
+            return resp != null && resp.Edition == "Hyperscale";
         }
 
         /// <summary>

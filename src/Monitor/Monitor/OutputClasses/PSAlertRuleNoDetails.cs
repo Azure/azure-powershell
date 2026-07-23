@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the RuleGetResponse
+    /// Wraps around the RuleGetResponse
     /// </summary>
     public class PSAlertRuleNoDetails : PSAlertRule
     {

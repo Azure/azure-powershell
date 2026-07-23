@@ -13,11 +13,10 @@ Creates a streaming job or replaces an already existing streaming job.
 ## SYNTAX
 
 ```
-New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -Location <String>
- -SkuName <StreamingJobSkuName> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-ClusterId <String>] [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>]
- [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
+New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-ClusterId <String>]
+ [-CompatibilityLevel <String>] [-DataLocale <String>] [-EventsLateArrivalMaxDelayInSecond <Int32>]
+ [-EventsOutOfOrderMaxDelayInSecond <Int32>] [-EventsOutOfOrderPolicy <String>] [-OutputErrorPolicy <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -75,7 +74,7 @@ Accept wildcard characters: False
 Controls certain runtime behaviors of the streaming job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.CompatibilityLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +153,7 @@ Accept wildcard characters: False
 Indicates the policy to apply to events that arrive out of order in the input event stream.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +246,7 @@ Accept wildcard characters: False
 Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +278,7 @@ The name of the SKU.
 Required on PUT (CreateOrReplace) requests.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -356,13 +355,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 
 ## NOTES
 

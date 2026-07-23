@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create the virtual network resource
+Create the virtual network resource
 .Description
-create the virtual network resource
+Create the virtual network resource
 .Example
 New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -MocVnetName "test-vnet"
 
@@ -72,17 +72,17 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String]
-    # ARM Id of the extended location.
-    ${CustomLocationID},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String[]]
     # List of DNS server IP Addresses associated with the network
     ${DnsServer},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # ARM Id of the extended location.
+    ${ExtendedLocationName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CustomLocation")]
@@ -229,6 +229,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.AksArc.private\New-AzAksArcVirtualNetwork_CreateExpanded';
@@ -236,8 +239,6 @@ begin {
             CreateViaJsonString = 'Az.AksArc.private\New-AzAksArcVirtualNetwork_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -246,6 +247,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

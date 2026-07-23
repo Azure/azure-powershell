@@ -14,7 +14,7 @@ Creates a Blob Range object to restores a Storage account.
 
 ```
 New-AzStorageBlobRangeToRestore [-StartRange <String>] [-EndRange <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ### -EndRange
 Specify the blob restore End range.
 End range will be excluded in restore blobs.
-Set it as empty strng to restore to the end.
+Set it as empty string to restore to the end.
 
 ```yaml
 Type: System.String
@@ -84,25 +84,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -StartRange
 Specify the blob restore start range.
 Start range will be included in restore blobs.
-Set it as empty string to restore from begining.
+Set it as empty string to restore from beginning.
 
 ```yaml
 Type: System.String

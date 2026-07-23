@@ -84,7 +84,7 @@ Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
 
 To record this test,
-1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisionning the SSIS-IR. Besides, Prepare an ARM VNet
+1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisioning the SSIS-IR. Besides, Prepare an ARM VNet
    and two public IPs (which should be in standard SKU and should have DNS names) in the same subscription and region as the SSIS-IR.
 2. If you are using a existing Azure SQL Server, make sure there is no existed database with name 'SSISDB'.
 3. Configure the Azure SQL Server and the network resources with either way below:
@@ -115,7 +115,7 @@ function Test-SsisAzure-IntegrationRuntime
             -Location $dflocation `
             -Force
 
-        # Prepare proxy selfhsoted IR
+        # Prepare proxy selfhosted IR
         $proxyIrName = "proxy-selfhosted-integrationruntime"   
         $actualProxyIr = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `

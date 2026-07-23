@@ -27,7 +27,7 @@ Get the upload location for the user to be able to upload the source.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceUploadDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceUploadDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +58,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrybuildsourceuploadurl
 #>
 function Get-AzContainerRegistryBuildSourceUploadUrl {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceUploadDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceUploadDefinition])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -85,7 +85,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -144,14 +143,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryBuildSourceUploadUrl_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryBuildSourceUploadUrl_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -160,6 +160,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -202,7 +205,7 @@ Gets the properties of the specified cache rule resource.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICacheRule
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICacheRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -229,14 +232,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrycacherule
 #>
 function Get-AzContainerRegistryCacheRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICacheRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICacheRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('CacheRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -271,8 +297,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -330,15 +361,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCacheRule_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCacheRule_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCacheRule_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCacheRule_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -347,6 +380,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -389,7 +425,7 @@ Gets the properties of the connected registry.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IConnectedRegistry
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -416,14 +452,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryconnectedregistry
 #>
 function Get-AzContainerRegistryConnectedRegistry {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IConnectedRegistry])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('ConnectedRegistryName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -458,8 +517,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Query')]
@@ -525,15 +589,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryConnectedRegistry_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryConnectedRegistry_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryConnectedRegistry_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryConnectedRegistry_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -542,6 +608,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -584,7 +653,7 @@ Gets the properties of the specified credential set resource.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICredentialSet
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialSet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -611,14 +680,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrycredentialset
 #>
 function Get-AzContainerRegistryCredentialSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICredentialSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialSet])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('CredentialSetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -653,8 +745,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -712,15 +809,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCredentialSet_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCredentialSet_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCredentialSet_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCredentialSet_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -729,6 +828,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -767,12 +869,12 @@ Lists the login credentials for the specified container registry.
  Get-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrycredential
 #>
 function Get-AzContainerRegistryCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -853,13 +955,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryCredential_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -868,6 +971,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -908,12 +1014,12 @@ Lists all of the available Azure Container Registry REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IOperationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IOperationDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryoperation
 #>
 function Get-AzContainerRegistryOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IOperationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IOperationDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -972,12 +1078,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1020,7 +1132,7 @@ Gets the detailed information for a given pipeline run.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPipelineRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPipelineRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1047,14 +1159,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrypipelinerun
 #>
 function Get-AzContainerRegistryPipelineRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPipelineRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPipelineRun])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('PipelineRunName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -1089,8 +1224,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1148,15 +1288,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPipelineRun_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPipelineRun_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPipelineRun_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPipelineRun_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1165,6 +1307,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1196,9 +1341,9 @@ end {
 
 <#
 .Synopsis
-Get the specified private endpoint connection associated with the container registry.
+Gets a private link resource by a specified group name for a container registry.
 .Description
-Get the specified private endpoint connection associated with the container registry.
+Gets a private link resource by a specified group name for a container registry.
 .Example
 {{ Add code here }}
 .Example
@@ -1207,7 +1352,7 @@ Get the specified private endpoint connection associated with the container regi
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPrivateLinkResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1234,173 +1379,8 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryprivateendpointconnection
-#>
-function Get-AzContainerRegistryPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection.
-    ${Name},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateEndpointConnection_Get';
-            GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateEndpointConnection_GetViaIdentity';
-            List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateEndpointConnection_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets a private link resource by a specified group name for a container registry.
-.Description
-Gets a private link resource by a specified group name for a container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateLinkResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CacheRuleName <String>]: The name of the cache rule.
   [ConnectedRegistryName <String>]: The name of the connected registry.
@@ -1425,10 +1405,11 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryprivatelinkresource
 #>
 function Get-AzContainerRegistryPrivateLinkResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateLinkResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPrivateLinkResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the private link resource.
@@ -1462,8 +1443,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1521,15 +1507,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateLinkResource_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateLinkResource_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateLinkResource_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryPrivateLinkResource_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1538,6 +1526,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1580,7 +1571,7 @@ Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -Registr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1607,14 +1598,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryreplication
 #>
 function Get-AzContainerRegistryReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('ReplicationName', 'ResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -1650,8 +1664,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1709,15 +1728,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryReplication_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryReplication_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryReplication_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryReplication_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1726,6 +1747,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1768,13 +1792,35 @@ Gets a link to download the run logs.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRunGetLogResult
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRunGetLogResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CacheRuleName <String>]: The name of the cache rule.
   [ConnectedRegistryName <String>]: The name of the connected registry.
@@ -1799,7 +1845,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryrunlogsasurl
 #>
 function Get-AzContainerRegistryRunLogSasUrl {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRunGetLogResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRunGetLogResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1815,6 +1861,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The run ID.
@@ -1832,8 +1879,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1891,14 +1943,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRunLogSasUrl_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRunLogSasUrl_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRunLogSasUrl_GetViaIdentityRegistry';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1907,6 +1961,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1949,7 +2006,7 @@ Gets the detailed information for a given run.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1976,14 +2033,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryrun
 #>
 function Get-AzContainerRegistryRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('RunId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -2017,8 +2097,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Query')]
@@ -2091,15 +2176,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRun_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRun_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRun_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryRun_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2108,6 +2195,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2150,13 +2240,35 @@ Returns a task with extended information that includes all secrets.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CacheRuleName <String>]: The name of the cache rule.
   [ConnectedRegistryName <String>]: The name of the connected registry.
@@ -2181,7 +2293,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrytaskdetail
 #>
 function Get-AzContainerRegistryTaskDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2205,6 +2317,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry task.
@@ -2214,8 +2327,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2273,14 +2391,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskDetail_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskDetail_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskDetail_GetViaIdentityRegistry';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2289,6 +2409,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2331,13 +2454,35 @@ Gets the detailed information for a given task run that includes all secrets.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CacheRuleName <String>]: The name of the cache rule.
   [ConnectedRegistryName <String>]: The name of the connected registry.
@@ -2362,7 +2507,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrytaskrundetail
 #>
 function Get-AzContainerRegistryTaskRunDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2386,6 +2531,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the task run.
@@ -2395,8 +2541,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2454,14 +2605,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRunDetail_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRunDetail_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRunDetail_GetViaIdentityRegistry';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2470,6 +2623,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2512,7 +2668,7 @@ Gets the detailed information for a given task run.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2539,14 +2695,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrytaskrun
 #>
 function Get-AzContainerRegistryTaskRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('TaskRunName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -2580,8 +2759,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2639,15 +2823,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRun_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRun_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRun_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTaskRun_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2656,6 +2842,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2698,7 +2887,7 @@ Get the properties of a specified task.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2725,14 +2914,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrytask
 #>
 function Get-AzContainerRegistryTask {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('TaskName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -2766,8 +2978,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2825,15 +3042,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTask_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTask_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTask_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryTask_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2842,6 +3061,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2880,12 +3102,12 @@ Lists recent events for the specified webhook.
 Get-AzContainerRegistryWebhookEvent  -ResourceGroupName lnxtest -RegistryName lnxcr -WebhookName webhook001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent
 #>
 function Get-AzContainerRegistryWebhookEvent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2972,13 +3194,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryWebhookEvent_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2987,6 +3210,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3030,7 +3256,7 @@ Get-AzContainerRegistryWebhook  -ResourceGroupName "MyResourceGroup" -RegistryNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3057,14 +3283,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhook
 #>
 function Get-AzContainerRegistryWebhook {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory)]
     [Alias('WebhookName', 'ResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -3100,8 +3349,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3159,15 +3413,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistryWebhook_Get';
             GetViaIdentity = 'Az.ContainerRegistry.private\Get-AzContainerRegistryWebhook_GetViaIdentity';
+            GetViaIdentityRegistry = 'Az.ContainerRegistry.private\Get-AzContainerRegistryWebhook_GetViaIdentityRegistry';
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryWebhook_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3176,6 +3432,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3220,7 +3479,7 @@ Get-AzContainerRegistry
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3251,7 +3510,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistry
 #>
 function Get-AzContainerRegistry {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3283,7 +3542,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3342,6 +3600,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ContainerRegistry.private\Get-AzContainerRegistry_Get';
@@ -3349,9 +3610,7 @@ begin {
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistry_List';
             List1 = 'Az.ContainerRegistry.private\Get-AzContainerRegistry_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3360,6 +3619,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3429,6 +3691,28 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/invoke-azcontainerregistrydeactivateconnectedregistry
 #>
@@ -3437,6 +3721,7 @@ function Invoke-AzContainerRegistryDeactivateConnectedRegistry {
 [CmdletBinding(DefaultParameterSetName='Deactivate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Deactivate', Mandatory)]
+    [Parameter(ParameterSetName='DeactivateViaIdentityRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the connected registry.
@@ -3467,8 +3752,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeactivateViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3544,14 +3834,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Deactivate = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryDeactivateConnectedRegistry_Deactivate';
             DeactivateViaIdentity = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryDeactivateConnectedRegistry_DeactivateViaIdentity';
+            DeactivateViaIdentityRegistry = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryDeactivateConnectedRegistry_DeactivateViaIdentityRegistry';
         }
-        if (('Deactivate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Deactivate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3560,6 +3852,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3600,11 +3895,11 @@ Schedules a new run based on the request parameters and add it to the run queue.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRunRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRunRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3641,11 +3936,13 @@ RUNREQUEST <IRunRequest>: The request parameters for scheduling a run.
 https://learn.microsoft.com/powershell/module/az.containerregistry/invoke-azcontainerregistryscheduleregistryrun
 #>
 function Invoke-AzContainerRegistryScheduleRegistryRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun])]
 [CmdletBinding(DefaultParameterSetName='ScheduleExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Schedule', Mandatory)]
     [Parameter(ParameterSetName='ScheduleExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
@@ -3653,6 +3950,8 @@ param(
 
     [Parameter(ParameterSetName='Schedule', Mandatory)]
     [Parameter(ParameterSetName='ScheduleExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
@@ -3660,6 +3959,8 @@ param(
 
     [Parameter(ParameterSetName='Schedule')]
     [Parameter(ParameterSetName='ScheduleExpanded')]
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath')]
+    [Parameter(ParameterSetName='ScheduleViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -3672,15 +3973,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Schedule', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ScheduleViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRunRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRunRequest]
     # The request parameters for scheduling a run.
-    # To construct, see NOTES section for RUNREQUEST properties and create a hash table.
     ${RunRequest},
 
     [Parameter(ParameterSetName='ScheduleExpanded', Mandatory)]
@@ -3711,6 +4010,18 @@ param(
     # The template that describes the repository and tag information for run log artifact.
     ${LogTemplate},
 
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Schedule operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ScheduleViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Schedule operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -3779,16 +4090,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Schedule = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_Schedule';
             ScheduleExpanded = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleExpanded';
             ScheduleViaIdentity = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaIdentity';
             ScheduleViaIdentityExpanded = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaIdentityExpanded';
+            ScheduleViaJsonFilePath = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaJsonFilePath';
+            ScheduleViaJsonString = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaJsonString';
         }
-        if (('Schedule', 'ScheduleExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Schedule', 'ScheduleExpanded', 'ScheduleViaJsonFilePath', 'ScheduleViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3797,6 +4111,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3828,21 +4145,49 @@ end {
 
 <#
 .Synopsis
-Creates a cache rule for a container registry with the specified parameters.
+Create a cache rule for a container registry with the specified parameters.
 .Description
-Creates a cache rule for a container registry with the specified parameters.
+Create a cache rule for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICacheRule
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICacheRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrycacherule
 #>
 function New-AzContainerRegistryCacheRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICacheRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICacheRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3852,20 +4197,26 @@ param(
     # The name of the cache rule.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -3873,23 +4224,44 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The ARM resource ID of the credential store which is associated with the cache rule.
     ${CredentialSetResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # Source repository pulled from upstream.
     ${SourceRepository},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # Target repository specified in docker pull command.Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}
     ${TargetRepository},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3959,13 +4331,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCacheRule_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCacheRule_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryCacheRule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryCacheRule_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3974,6 +4350,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4005,21 +4384,49 @@ end {
 
 <#
 .Synopsis
-Creates a connected registry for a container registry with the specified parameters.
+Create a connected registry for a container registry with the specified parameters.
 .Description
-Creates a connected registry for a container registry with the specified parameters.
+Create a connected registry for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IConnectedRegistry
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryconnectedregistry
 #>
 function New-AzContainerRegistryConnectedRegistry {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IConnectedRegistry])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4029,20 +4436,26 @@ param(
     # The name of the connected registry.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4050,72 +4463,100 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String[]]
     # The list of the ACR token resource IDs used to authenticate clients to the connected registry.
     ${ClientTokenId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AuditLogStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AuditLogStatus]
+    [System.String]
     # Indicates whether audit logs are enabled on the connected registry.
     ${LoggingAuditLogStatus},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.LogLevel])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Debug", "Information", "Warning", "Error", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.LogLevel]
+    [System.String]
     # The verbosity of logs persisted on the connected registry.
     ${LoggingLogLevel},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ConnectedRegistryMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("ReadWrite", "ReadOnly", "Registry", "Mirror")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ConnectedRegistryMode]
+    [System.String]
     # The mode of the connected registry resource that indicates the permissions of the registry.
     ${Mode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String[]]
     # The list of notifications subscription information for the connected registry.
     ${NotificationsList},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The resource ID of the parent to which the connected registry will be associated.
     ${ParentId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.TimeSpan]
     # The period of time for which a message is available to sync before it is expired.
     # Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
     ${SyncPropertyMessageTtl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The cron expression indicating the schedule that the connected registry will sync with its parent.
     ${SyncPropertySchedule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.TimeSpan]
     # The time window during which sync is enabled for each schedule occurrence.
     # Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
     ${SyncPropertySyncWindow},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The resource ID of the ACR token used to authenticate the connected registry to its parent during sync.
     ${SyncPropertyTokenId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4185,13 +4626,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryConnectedRegistry_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryConnectedRegistry_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryConnectedRegistry_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryConnectedRegistry_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4200,6 +4645,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4231,33 +4679,54 @@ end {
 
 <#
 .Synopsis
-Creates a credential set for a container registry with the specified parameters.
+Create a credential set for a container registry with the specified parameters.
 .Description
-Creates a credential set for a container registry with the specified parameters.
+Create a credential set for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICredentialSet
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialSet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AUTHCREDENTIALS <IAuthCredential[]>: List of authentication credentials stored for an upstream.Usually consists of a primary and an optional secondary credential.
-  [CredentialHealthErrorCode <String>]: Error code representing the health check error.
-  [CredentialHealthErrorMessage <String>]: Descriptive message representing the health check error.
-  [CredentialHealthStatus <CredentialHealthStatus?>]: The health status of credential.
-  [Name <CredentialName?>]: The name of the credential.
+  [Name <String>]: The name of the credential.
   [PasswordSecretIdentifier <String>]: KeyVault Secret URI for accessing the password.
   [UsernameSecretIdentifier <String>]: KeyVault Secret URI for accessing the username.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrycredentialset
 #>
 function New-AzContainerRegistryCredentialSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICredentialSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialSet])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4267,20 +4736,26 @@ param(
     # The name of the credential set.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4288,46 +4763,68 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IAuthCredential[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IAuthCredential[]]
     # List of authentication credentials stored for an upstream.Usually consists of a primary and an optional secondary credential.
-    # To construct, see NOTES section for AUTHCREDENTIALS properties and create a hash table.
     ${AuthCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The principal ID of resource identity.
     ${IdentityPrincipalId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The tenant ID of resource.
     ${IdentityTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The credentials are stored for this upstream or login server.
     ${LoginServer},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4397,13 +4894,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentialSet_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentialSet_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentialSet_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentialSet_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4412,6 +4913,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4452,7 +4956,7 @@ Generate keys for a token of a specified container registry.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IGenerateCredentialsResult
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IGenerateCredentialsResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4483,16 +4987,20 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrycredentials
 #>
 function New-AzContainerRegistryCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IGenerateCredentialsResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IGenerateCredentialsResult])]
 [CmdletBinding(DefaultParameterSetName='GenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
     [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -4500,6 +5008,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='GenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4511,27 +5021,41 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.DateTime]
     # The expiry date of the generated credentials after which the credentials become invalid.
     ${Expiry},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName])]
+    [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("password1", "password2")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName]
+    [System.String]
     # Specifies name of the password which should be regenerated if any -- password1 or password2.
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The resource ID of the token for which credentials have to be generated.
     ${TokenId},
+
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Generate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Generate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4601,14 +5125,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             GenerateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateExpanded';
             GenerateViaIdentityExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateViaIdentityExpanded';
+            GenerateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateViaJsonFilePath';
+            GenerateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateViaJsonString';
         }
-        if (('GenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('GenerateExpanded', 'GenerateViaJsonFilePath', 'GenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4617,6 +5144,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4648,21 +5178,49 @@ end {
 
 <#
 .Synopsis
-Creates a pipeline run for a container registry with the specified parameters
+Create a pipeline run for a container registry with the specified parameters
 .Description
-Creates a pipeline run for a container registry with the specified parameters
+Create a pipeline run for a container registry with the specified parameters
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPipelineRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPipelineRun
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrypipelinerun
 #>
 function New-AzContainerRegistryPipelineRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPipelineRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPipelineRun])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4672,26 +5230,4519 @@ param(
     # The name of the pipeline run.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
+    ${ForceUpdateTag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # List of source artifacts to be transferred by the pipeline.
+    # Specify an image by repository ('hello-world').
+    # This will use the 'latest' tag.Specify an image by tag ('hello-world:latest').Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
+    ${RequestArtifact},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The digest of the tar used to transfer the artifacts.
+    ${RequestCatalogDigest},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The resource ID of the pipeline to run.
+    ${RequestPipelineResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("AzureStorageBlob")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The type of the source.
+    ${RequestSourceType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("AzureStorageBlob")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The type of the target.
+    ${RequestTargetType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The name of the source.
+    ${SourceName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The name of the target.
+    ${TargetName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryPipelineRun_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryPipelineRun_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryPipelineRun_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryPipelineRun_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a replication for a container registry with the specified parameters.
+.Description
+Create a replication for a container registry with the specified parameters.
+.Example
+ New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryreplication
+#>
+function New-AzContainerRegistryReplication {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ReplicationName', 'ResourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the replication.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('ContainerRegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory)]
+    [Alias('ReplicationLocation')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The location of the resource.
+    # This cannot be changed after the resource is created.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether the replication's regional endpoint is enabled.
+    # Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
+    ${RegionEndpointEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Alias('Tags')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # The tags of the resource.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Whether or not zone redundancy is enabled for this container registry replication
+    ${ZoneRedundancy},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryReplication_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryReplication_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryReplication_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryReplication_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a task run for a container registry with the specified parameters.
+.Description
+Create a task run for a container registry with the specified parameters.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrytaskrun
+#>
+function New-AzContainerRegistryTaskRun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('TaskRunName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the task run.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # How the run should be forced to rerun even if the run request configuration has not changed
+    ${ForceUpdateTag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The principal ID of resource identity.
+    ${IdentityPrincipalId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The tenant ID of resource.
+    ${IdentityTenantId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The location of the resource
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The dedicated agent pool for the run.
+    ${RunRequestAgentPoolName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The value that indicates whether archiving is enabled for the run or not.
+    ${RunRequestIsArchiveEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The template that describes the repository and tag information for run log artifact.
+    ${RunRequestLogTemplate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The type of the run request.
+    ${RunRequestType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryTaskRun_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryTaskRun_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryTaskRun_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryTaskRun_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a task for a container registry with the specified parameters.
+.Description
+Create a task for a container registry with the specified parameters.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+TRIGGERSOURCETRIGGER <ISourceTrigger[]>: The collection of triggers based on source code repository.
+  Event <List<String>>: The source event corresponding to the trigger.
+  Name <String>: The name of the trigger.
+  SourceRepositorySourceControlType <String>: The type of source control service.
+  SourceRepositoryUrl <String>: The full URL to the source code repository
+  [SourceControlAuthPropertyExpiresIn <Int32?>]: Time in seconds that the token remains valid
+  [SourceControlAuthPropertyRefreshToken <String>]: The refresh token used to refresh the access token.
+  [SourceControlAuthPropertyScope <String>]: The scope of the access token.
+  [SourceControlAuthPropertyToken <String>]: The access token used to access the source control provider.
+  [SourceControlAuthPropertyTokenType <String>]: The type of Auth token.
+  [SourceRepositoryBranch <String>]: The branch name of the source code.
+  [Status <String>]: The current status of trigger.
+
+TRIGGERTIMERTRIGGER <ITimerTrigger[]>: The collection of timer triggers.
+  Name <String>: The name of the trigger.
+  Schedule <String>: The CRON expression for the task schedule
+  [Status <String>]: The current status of trigger.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrytask
+#>
+function New-AzContainerRegistryTask {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('TaskName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry task.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The location of the resource.
+    # This cannot be changed after the resource is created.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Int32]
+    # The CPU configuration in terms of number of cores required for the run.
+    ${AgentConfigurationCpu},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The dedicated agent pool for the task.
+    ${AgentPoolName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("All", "Runtime")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The type of the auto trigger for base image dependency updates.
+    ${BaseImageTriggerBaseImageTriggerType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The name of the trigger.
+    ${BaseImageTriggerName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The current status of trigger.
+    ${BaseImageTriggerStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The endpoint URL for receiving update triggers.
+    ${BaseImageTriggerUpdateTriggerEndpoint},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Default", "Token")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Type of Payload body for Base image update triggers.
+    ${BaseImageTriggerUpdateTriggerPayloadType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialsCustomRegistries]))]
+    [System.Collections.Hashtable]
+    # Describes the credential parameters for accessing other custom registries.
+    # The keyfor the dictionary item will be the registry login server (myregistry.azurecr.io) andthe value of the item will be the registry credentials for accessing the registry.
+    ${CredentialsCustomRegistry},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The principal ID of resource identity.
+    ${IdentityPrincipalId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The tenant ID of resource.
+    ${IdentityTenantId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The value of this property indicates whether the task resource is system task or not.
+    ${IsSystemTask},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The template that describes the repository and tag information for run log artifact.
+    ${LogTemplate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("amd64", "x86", "386", "arm", "arm64")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The OS architecture.
+    ${PlatformArchitecture},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Windows", "Linux")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The operating system type required for the run.
+    ${PlatformOS},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("v6", "v7", "v8")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Variant of the CPU.
+    ${PlatformVariant},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("None", "Default")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The authentication mode which determines the source registry login scope.
+    # The credentials for the source registrywill be generated using the given scope.
+    # These credentials will be used to login tothe source registry during the run.
+    ${SourceRegistryLoginMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The current status of task.
+    ${Status},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+    ${StepContextAccessToken},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The URL(absolute or relative) of the source context for the task step.
+    ${StepContextPath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Docker", "FileTask", "EncodedTask")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The type of the step.
+    ${StepType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Alias('Tags')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # The tags of the resource.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Int32]
+    # Run timeout in seconds.
+    ${Timeout},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger[]]
+    # The collection of triggers based on source code repository.
+    ${TriggerSourceTrigger},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger[]]
+    # The collection of timer triggers.
+    ${TriggerTimerTrigger},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryTask_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryTask_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryTask_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryTask_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a webhook for a container registry with the specified parameters.
+.Description
+Create a webhook for a container registry with the specified parameters.
+.Example
+New-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key="val"} -Location "east us" -Status Enabled -Scope "foo:*"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrywebhook
+#>
+function New-AzContainerRegistryWebhook {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('WebhookName', 'ResourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the webhook.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('ContainerRegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The location of the webhook.
+    # This cannot be changed after the resource is created.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("push", "delete", "quarantine", "chart_push", "chart_delete")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The list of actions that trigger the webhook to post notifications.
+    ${Action},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Alias('Header')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhookPropertiesCreateParametersCustomHeaders]))]
+    [System.Collections.Hashtable]
+    # Custom headers that will be added to the webhook notifications.
+    ${CustomHeader},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The scope of repositories where the event can be triggered.
+    # For example, 'foo:*' means events for all tags under repository 'foo'.
+    # 'foo:bar' means events for 'foo:bar' only.
+    # 'foo' is equivalent to 'foo:latest'.
+    # Empty means all events.
+    ${Scope},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Alias('Uri')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The service URI for the webhook to post notifications.
+    ${ServiceUri},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The status of the webhook at the time the operation was called.
+    ${Status},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Alias('Tags')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhookCreateParametersTags]))]
+    [System.Collections.Hashtable]
+    # The tags for the webhook.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryWebhook_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryWebhook_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryWebhook_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryWebhook_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a cache rule resource from a container registry.
+.Description
+Deletes a cache rule resource from a container registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrycacherule
+#>
+function Remove-AzContainerRegistryCacheRule {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory)]
+    [Alias('CacheRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the cache rule.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCacheRule_Delete';
+            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCacheRule_DeleteViaIdentity';
+            DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCacheRule_DeleteViaIdentityRegistry';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a connected registry from a container registry.
+.Description
+Deletes a connected registry from a container registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryconnectedregistry
+#>
+function Remove-AzContainerRegistryConnectedRegistry {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory)]
+    [Alias('ConnectedRegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the connected registry.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryConnectedRegistry_Delete';
+            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryConnectedRegistry_DeleteViaIdentity';
+            DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryConnectedRegistry_DeleteViaIdentityRegistry';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a credential set from a container registry.
+.Description
+Deletes a credential set from a container registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrycredentialset
+#>
+function Remove-AzContainerRegistryCredentialSet {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory)]
+    [Alias('CredentialSetName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the credential set.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCredentialSet_Delete';
+            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCredentialSet_DeleteViaIdentity';
+            DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCredentialSet_DeleteViaIdentityRegistry';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a pipeline run from a container registry.
+.Description
+Deletes a pipeline run from a container registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrypipelinerun
+#>
+function Remove-AzContainerRegistryPipelineRun {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory)]
+    [Alias('PipelineRunName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the pipeline run.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPipelineRun_Delete';
+            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPipelineRun_DeleteViaIdentity';
+            DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPipelineRun_DeleteViaIdentityRegistry';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a specified task run resource.
+.Description
+Deletes a specified task run resource.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrytaskrun
+#>
+function Remove-AzContainerRegistryTaskRun {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory)]
+    [Alias('TaskRunName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the task run.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTaskRun_Delete';
+            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTaskRun_DeleteViaIdentity';
+            DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTaskRun_DeleteViaIdentityRegistry';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a specified task.
+.Description
+Deletes a specified task.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrytask
+#>
+function Remove-AzContainerRegistryTask {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory)]
+    [Alias('TaskName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry task.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTask_Delete';
+            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTask_DeleteViaIdentity';
+            DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTask_DeleteViaIdentityRegistry';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Cancel an existing run.
+.Description
+Cancel an existing run.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/stop-azcontainerregistryrun
+#>
+function Stop-AzContainerRegistryRun {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Cancel', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaIdentityRegistry', Mandatory)]
+    [Alias('RunId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The run ID.
+    ${Id},
+
+    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Cancel')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CancelViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CancelViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Cancel = 'Az.ContainerRegistry.private\Stop-AzContainerRegistryRun_Cancel';
+            CancelViaIdentity = 'Az.ContainerRegistry.private\Stop-AzContainerRegistryRun_CancelViaIdentity';
+            CancelViaIdentityRegistry = 'Az.ContainerRegistry.private\Stop-AzContainerRegistryRun_CancelViaIdentityRegistry';
+        }
+        if (('Cancel') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Triggers a ping event to be sent to the webhook.
+.Description
+Triggers a ping event to be sent to the webhook.
+.Example
+Test-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEventInfo
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrywebhook
+#>
+function Test-AzContainerRegistryWebhook {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEventInfo])]
+[CmdletBinding(DefaultParameterSetName='Ping', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Ping', Mandatory)]
+    [Parameter(ParameterSetName='PingViaIdentityRegistry', Mandatory)]
+    [Alias('WebhookName', 'ResourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the webhook.
+    ${Name},
+
+    [Parameter(ParameterSetName='Ping', Mandatory)]
+    [Alias('ContainerRegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Ping', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Ping')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PingViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='PingViaIdentityRegistry', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Ping = 'Az.ContainerRegistry.private\Test-AzContainerRegistryWebhook_Ping';
+            PingViaIdentity = 'Az.ContainerRegistry.private\Test-AzContainerRegistryWebhook_PingViaIdentity';
+            PingViaIdentityRegistry = 'Az.ContainerRegistry.private\Test-AzContainerRegistryWebhook_PingViaIdentityRegistry';
+        }
+        if (('Ping') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a cache rule for a container registry with the specified parameters.
+.Description
+Update a cache rule for a container registry with the specified parameters.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICacheRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycacherule
+#>
+function Update-AzContainerRegistryCacheRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICacheRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('CacheRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the cache rule.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The ARM resource ID of the credential store which is associated with the Cache rule.
+    ${CredentialSetResourceId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateViaIdentityRegistryExpanded';
+            UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a connected registry with the specified parameters.
+.Description
+Update a connected registry with the specified parameters.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IConnectedRegistry
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistryconnectedregistry
+#>
+function Update-AzContainerRegistryConnectedRegistry {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IConnectedRegistry])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('ConnectedRegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the connected registry.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The list of the ACR token resource IDs used to authenticate clients to the connected registry.
+    ${ClientTokenId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Indicates whether audit logs are enabled on the connected registry.
+    ${LoggingAuditLogStatus},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Debug", "Information", "Warning", "Error", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The verbosity of logs persisted on the connected registry.
+    ${LoggingLogLevel},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The list of notifications subscription information for the connected registry.
+    ${NotificationsList},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.TimeSpan]
+    # The period of time for which a message is available to sync before it is expired.
+    # Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
+    ${SyncPropertyMessageTtl},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The cron expression indicating the schedule that the connected registry will sync with its parent.
+    ${SyncPropertySchedule},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.TimeSpan]
+    # The time window during which sync is enabled for each schedule occurrence.
+    # Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
+    ${SyncPropertySyncWindow},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateViaIdentityRegistryExpanded';
+            UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a credential set for a container registry with the specified parameters.
+.Description
+Update a credential set for a container registry with the specified parameters.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialSet
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTHCREDENTIALS <IAuthCredential[]>: List of authentication credentials stored for an upstream.Usually consists of a primary and an optional secondary credential.
+  [Name <String>]: The name of the credential.
+  [PasswordSecretIdentifier <String>]: KeyVault Secret URI for accessing the password.
+  [UsernameSecretIdentifier <String>]: KeyVault Secret URI for accessing the username.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredentialset
+#>
+function Update-AzContainerRegistryCredentialSet {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialSet])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
+    [Alias('CredentialSetName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the credential set.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IAuthCredential[]]
+    # List of authentication credentials stored for an upstream.Usually consists of a primary and an optional secondary credential.
+    ${AuthCredentials},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The principal ID of resource identity.
+    ${IdentityPrincipalId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The tenant ID of resource.
+    ${IdentityTenantId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # The credentials are stored for this upstream or login server.
+    ${LoginServer},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredentialSet_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredentialSet_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredentialSet_UpdateViaIdentityRegistryExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Regenerates one of the login credentials for the specified container registry.
+.Description
+Regenerates one of the login credentials for the specified container registry.
+.Example
+Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -PasswordName Password
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGENERATECREDENTIALPARAMETER <IRegenerateCredentialParameters>: The parameters used to regenerate the login credential.
+  Name <String>: Specifies name of the password which should be regenerated -- password or password2.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredential
+#>
+function Update-AzContainerRegistryCredential {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult])]
+[CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Alias('ContainerRegistryName', 'Name', 'ResourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Regenerate')]
+    [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters]
+    # The parameters used to regenerate the login credential.
+    ${RegenerateCredentialParameter},
+
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("password", "password2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Specifies name of the password which should be regenerated -- password or password2.
+    ${PasswordName},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Regenerate = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_Regenerate';
+            RegenerateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateExpanded';
+            RegenerateViaIdentity = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaIdentity';
+            RegenerateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaIdentityExpanded';
+            RegenerateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaJsonString';
+        }
+        if (('Regenerate', 'RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a pipeline run for a container registry with the specified parameters
+.Description
+Update a pipeline run for a container registry with the specified parameters
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPipelineRun
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+.Link
+https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrypipelinerun
+#>
+function Update-AzContainerRegistryPipelineRun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPipelineRun])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
+    [Alias('PipelineRunName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the pipeline run.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the container registry.
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -4721,16 +9772,16 @@ param(
     ${RequestPipelineResourceId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PipelineRunSourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("AzureStorageBlob")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PipelineRunSourceType]
+    [System.String]
     # The type of the source.
     ${RequestSourceType},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PipelineRunTargetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("AzureStorageBlob")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PipelineRunTargetType]
+    [System.String]
     # The type of the target.
     ${RequestTargetType},
 
@@ -4814,13 +9865,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryPipelineRun_CreateExpanded';
+            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryPipelineRun_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryPipelineRun_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryPipelineRun_UpdateViaIdentityRegistryExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4829,6 +9883,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4860,1182 +9917,9 @@ end {
 
 <#
 .Synopsis
-Update the state of specified private endpoint connection associated with the container registry.
+Update a replication for a container registry with the specified parameters.
 .Description
-Update the state of specified private endpoint connection associated with the container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryprivateendpointconnection
-#>
-function New-AzContainerRegistryPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # This is private endpoint resource created with Microsoft.Network resource provider.
-    ${PrivateEndpointId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActionsRequired])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActionsRequired]
-    # A message indicating if changes on the service provider require any updates on the consumer.
-    ${PrivateLinkServiceConnectionStateActionsRequired},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The description for connection status.
-    # For example if connection is rejected it can indicate reason for rejection.
-    ${PrivateLinkServiceConnectionStateDescription},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ConnectionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ConnectionStatus]
-    # The private link service connection status.
-    ${PrivateLinkServiceConnectionStateStatus},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryPrivateEndpointConnection_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates a replication for a container registry with the specified parameters.
-.Description
-Creates a replication for a container registry with the specified parameters.
-.Example
- New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryreplication
-#>
-function New-AzContainerRegistryReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('ReplicationName', 'ResourceName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the replication.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Alias('ContainerRegistryName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Alias('ReplicationLocation')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The location of the resource.
-    # This cannot be changed after the resource is created.
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Specifies whether the replication's regional endpoint is enabled.
-    # Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
-    ${RegionEndpointEnabled},
-
-    [Parameter()]
-    [Alias('Tags')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # The tags of the resource.
-    ${Tag},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy]
-    # Whether or not zone redundancy is enabled for this container registry replication
-    ${ZoneRedundancy},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryReplication_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates a task run for a container registry with the specified parameters.
-.Description
-Creates a task run for a container registry with the specified parameters.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrytaskrun
-#>
-function New-AzContainerRegistryTaskRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('TaskRunName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the task run.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group to which the container registry belongs.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # How the run should be forced to rerun even if the run request configuration has not changed
-    ${ForceUpdateTag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The principal ID of resource identity.
-    ${IdentityPrincipalId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The tenant ID of resource.
-    ${IdentityTenantId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The location of the resource
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The dedicated agent pool for the run.
-    ${RunRequestAgentPoolName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # The value that indicates whether archiving is enabled for the run or not.
-    ${RunRequestIsArchiveEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The template that describes the repository and tag information for run log artifact.
-    ${RunRequestLogTemplate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The type of the run request.
-    ${RunRequestType},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryTaskRun_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates a task for a container registry with the specified parameters.
-.Description
-Creates a task for a container registry with the specified parameters.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-TRIGGERSOURCETRIGGER <ISourceTrigger[]>: The collection of triggers based on source code repository.
-  Event <SourceTriggerEvent[]>: The source event corresponding to the trigger.
-  Name <String>: The name of the trigger.
-  SourceRepositorySourceControlType <SourceControlType>: The type of source control service.
-  SourceRepositoryUrl <String>: The full URL to the source code repository
-  [SourceControlAuthPropertyExpiresIn <Int32?>]: Time in seconds that the token remains valid
-  [SourceControlAuthPropertyRefreshToken <String>]: The refresh token used to refresh the access token.
-  [SourceControlAuthPropertyScope <String>]: The scope of the access token.
-  [SourceControlAuthPropertyToken <String>]: The access token used to access the source control provider.
-  [SourceControlAuthPropertyTokenType <TokenType?>]: The type of Auth token.
-  [SourceRepositoryBranch <String>]: The branch name of the source code.
-  [Status <TriggerStatus?>]: The current status of trigger.
-
-TRIGGERTIMERTRIGGER <ITimerTrigger[]>: The collection of timer triggers.
-  Name <String>: The name of the trigger.
-  Schedule <String>: The CRON expression for the task schedule
-  [Status <TriggerStatus?>]: The current status of trigger.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrytask
-#>
-function New-AzContainerRegistryTask {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('TaskName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry task.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group to which the container registry belongs.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The location of the resource.
-    # This cannot be changed after the resource is created.
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.Int32]
-    # The CPU configuration in terms of number of cores required for the run.
-    ${AgentConfigurationCpu},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The dedicated agent pool for the task.
-    ${AgentPoolName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType]
-    # The type of the auto trigger for base image dependency updates.
-    ${BaseImageTriggerBaseImageTriggerType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The name of the trigger.
-    ${BaseImageTriggerName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus]
-    # The current status of trigger.
-    ${BaseImageTriggerStatus},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The endpoint URL for receiving update triggers.
-    ${BaseImageTriggerUpdateTriggerEndpoint},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType]
-    # Type of Payload body for Base image update triggers.
-    ${BaseImageTriggerUpdateTriggerPayloadType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ICredentialsCustomRegistries]))]
-    [System.Collections.Hashtable]
-    # Describes the credential parameters for accessing other custom registries.
-    # The keyfor the dictionary item will be the registry login server (myregistry.azurecr.io) andthe value of the item will be the registry credentials for accessing the registry.
-    ${CredentialsCustomRegistry},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The principal ID of resource identity.
-    ${IdentityPrincipalId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The tenant ID of resource.
-    ${IdentityTenantId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # The value of this property indicates whether the task resource is system task or not.
-    ${IsSystemTask},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The template that describes the repository and tag information for run log artifact.
-    ${LogTemplate},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture]
-    # The OS architecture.
-    ${PlatformArchitecture},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS]
-    # The operating system type required for the run.
-    ${PlatformOS},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant]
-    # Variant of the CPU.
-    ${PlatformVariant},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode]
-    # The authentication mode which determines the source registry login scope.
-    # The credentials for the source registrywill be generated using the given scope.
-    # These credentials will be used to login tothe source registry during the run.
-    ${SourceRegistryLoginMode},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus]
-    # The current status of task.
-    ${Status},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The token (git PAT or SAS token of storage account blob) associated with the context for a step.
-    ${StepContextAccessToken},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The URL(absolute or relative) of the source context for the task step.
-    ${StepContextPath},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType]
-    # The type of the step.
-    ${StepType},
-
-    [Parameter()]
-    [Alias('Tags')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # The tags of the resource.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.Int32]
-    # Run timeout in seconds.
-    ${Timeout},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceTrigger[]]
-    # The collection of triggers based on source code repository.
-    # To construct, see NOTES section for TRIGGERSOURCETRIGGER properties and create a hash table.
-    ${TriggerSourceTrigger},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITimerTrigger[]]
-    # The collection of timer triggers.
-    # To construct, see NOTES section for TRIGGERTIMERTRIGGER properties and create a hash table.
-    ${TriggerTimerTrigger},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryTask_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates a webhook for a container registry with the specified parameters.
-.Description
-Creates a webhook for a container registry with the specified parameters.
-.Example
-New-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key="val"} -Location "east us" -Status Enabled -Scope "foo:*"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrywebhook
-#>
-function New-AzContainerRegistryWebhook {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('WebhookName', 'ResourceName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the webhook.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Alias('ContainerRegistryName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The location of the webhook.
-    # This cannot be changed after the resource is created.
-    ${Location},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookAction])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookAction[]]
-    # The list of actions that trigger the webhook to post notifications.
-    ${Action},
-
-    [Parameter()]
-    [Alias('Header')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhookPropertiesCreateParametersCustomHeaders]))]
-    [System.Collections.Hashtable]
-    # Custom headers that will be added to the webhook notifications.
-    ${CustomHeader},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The scope of repositories where the event can be triggered.
-    # For example, 'foo:*' means events for all tags under repository 'foo'.
-    # 'foo:bar' means events for 'foo:bar' only.
-    # 'foo' is equivalent to 'foo:latest'.
-    # Empty means all events.
-    ${Scope},
-
-    [Parameter()]
-    [Alias('Uri')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The service URI for the webhook to post notifications.
-    ${ServiceUri},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookStatus]
-    # The status of the webhook at the time the operation was called.
-    ${Status},
-
-    [Parameter()]
-    [Alias('Tags')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhookCreateParametersTags]))]
-    [System.Collections.Hashtable]
-    # The tags for the webhook.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryWebhook_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes a cache rule resource from a container registry.
-.Description
-Deletes a cache rule resource from a container registry.
+Update a replication for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
@@ -6044,2626 +9928,7 @@ Deletes a cache rule resource from a container registry.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrycacherule
-#>
-function Remove-AzContainerRegistryCacheRule {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('CacheRuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the cache rule.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCacheRule_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCacheRule_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes a connected registry from a container registry.
-.Description
-Deletes a connected registry from a container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryconnectedregistry
-#>
-function Remove-AzContainerRegistryConnectedRegistry {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('ConnectedRegistryName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the connected registry.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryConnectedRegistry_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryConnectedRegistry_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes a credential set from a container registry.
-.Description
-Deletes a credential set from a container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrycredentialset
-#>
-function Remove-AzContainerRegistryCredentialSet {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('CredentialSetName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the credential set.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCredentialSet_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryCredentialSet_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes a pipeline run from a container registry.
-.Description
-Deletes a pipeline run from a container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrypipelinerun
-#>
-function Remove-AzContainerRegistryPipelineRun {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('PipelineRunName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the pipeline run.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPipelineRun_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPipelineRun_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes the specified private endpoint connection associated with the container registry.
-.Description
-Deletes the specified private endpoint connection associated with the container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryprivateendpointconnection
-#>
-function Remove-AzContainerRegistryPrivateEndpointConnection {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPrivateEndpointConnection_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryPrivateEndpointConnection_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes a specified task run resource.
-.Description
-Deletes a specified task run resource.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrytaskrun
-#>
-function Remove-AzContainerRegistryTaskRun {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('TaskRunName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the task run.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group to which the container registry belongs.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTaskRun_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTaskRun_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes a specified task.
-.Description
-Deletes a specified task.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrytask
-#>
-function Remove-AzContainerRegistryTask {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('TaskName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry task.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group to which the container registry belongs.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTask_Delete';
-            DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryTask_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Update the state of specified private endpoint connection associated with the container registry.
-.Description
-Update the state of specified private endpoint connection associated with the container registry.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/set-azcontainerregistryprivateendpointconnection
-#>
-function Set-AzContainerRegistryPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # This is private endpoint resource created with Microsoft.Network resource provider.
-    ${PrivateEndpointId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActionsRequired])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActionsRequired]
-    # A message indicating if changes on the service provider require any updates on the consumer.
-    ${PrivateLinkServiceConnectionStateActionsRequired},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The description for connection status.
-    # For example if connection is rejected it can indicate reason for rejection.
-    ${PrivateLinkServiceConnectionStateDescription},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ConnectionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ConnectionStatus]
-    # The private link service connection status.
-    ${PrivateLinkServiceConnectionStateStatus},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.ContainerRegistry.private\Set-AzContainerRegistryPrivateEndpointConnection_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Cancel an existing run.
-.Description
-Cancel an existing run.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/stop-azcontainerregistryrun
-#>
-function Stop-AzContainerRegistryRun {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Cancel', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Cancel', Mandatory)]
-    [Alias('RunId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The run ID.
-    ${Id},
-
-    [Parameter(ParameterSetName='Cancel', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Cancel', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group to which the container registry belongs.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Cancel')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CancelViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Cancel = 'Az.ContainerRegistry.private\Stop-AzContainerRegistryRun_Cancel';
-            CancelViaIdentity = 'Az.ContainerRegistry.private\Stop-AzContainerRegistryRun_CancelViaIdentity';
-        }
-        if (('Cancel') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Triggers a ping event to be sent to the webhook.
-.Description
-Triggers a ping event to be sent to the webhook.
-.Example
-Test-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001"
-
-.Outputs
-System.String
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrywebhook
-#>
-function Test-AzContainerRegistryWebhook {
-[OutputType([System.String])]
-[CmdletBinding(DefaultParameterSetName='Ping', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('WebhookName', 'ResourceName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the webhook.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Alias('ContainerRegistryName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Ping = 'Az.ContainerRegistry.private\Test-AzContainerRegistryWebhook_Ping';
-        }
-        if (('Ping') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates a cache rule for a container registry with the specified parameters.
-.Description
-Updates a cache rule for a container registry with the specified parameters.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICacheRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycacherule
-#>
-function Update-AzContainerRegistryCacheRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICacheRule])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('CacheRuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the cache rule.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The ARM resource ID of the credential store which is associated with the Cache rule.
-    ${CredentialSetResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCacheRule_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates a connected registry with the specified parameters.
-.Description
-Updates a connected registry with the specified parameters.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistryconnectedregistry
-#>
-function Update-AzContainerRegistryConnectedRegistry {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('ConnectedRegistryName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the connected registry.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String[]]
-    # The list of the ACR token resource IDs used to authenticate clients to the connected registry.
-    ${ClientTokenId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AuditLogStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AuditLogStatus]
-    # Indicates whether audit logs are enabled on the connected registry.
-    ${LoggingAuditLogStatus},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.LogLevel])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.LogLevel]
-    # The verbosity of logs persisted on the connected registry.
-    ${LoggingLogLevel},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String[]]
-    # The list of notifications subscription information for the connected registry.
-    ${NotificationsList},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.TimeSpan]
-    # The period of time for which a message is available to sync before it is expired.
-    # Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
-    ${SyncPropertyMessageTtl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The cron expression indicating the schedule that the connected registry will sync with its parent.
-    ${SyncPropertySchedule},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.TimeSpan]
-    # The time window during which sync is enabled for each schedule occurrence.
-    # Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
-    ${SyncPropertySyncWindow},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryConnectedRegistry_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates a credential set for a container registry with the specified parameters.
-.Description
-Updates a credential set for a container registry with the specified parameters.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICredentialSet
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-AUTHCREDENTIALS <IAuthCredential[]>: List of authentication credentials stored for an upstream.Usually consists of a primary and an optional secondary credential.
-  [CredentialHealthErrorCode <String>]: Error code representing the health check error.
-  [CredentialHealthErrorMessage <String>]: Descriptive message representing the health check error.
-  [CredentialHealthStatus <CredentialHealthStatus?>]: The health status of credential.
-  [Name <CredentialName?>]: The name of the credential.
-  [PasswordSecretIdentifier <String>]: KeyVault Secret URI for accessing the password.
-  [UsernameSecretIdentifier <String>]: KeyVault Secret URI for accessing the username.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
-  [AgentPoolName <String>]: The name of the agent pool.
-  [CacheRuleName <String>]: The name of the cache rule.
-  [ConnectedRegistryName <String>]: The name of the connected registry.
-  [CredentialSetName <String>]: The name of the credential set.
-  [ExportPipelineName <String>]: The name of the export pipeline.
-  [GroupName <String>]: The name of the private link resource.
-  [Id <String>]: Resource identity path
-  [ImportPipelineName <String>]: The name of the import pipeline.
-  [PipelineRunName <String>]: The name of the pipeline run.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
-  [RegistryName <String>]: The name of the container registry.
-  [ReplicationName <String>]: The name of the replication.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RunId <String>]: The run ID.
-  [ScopeMapName <String>]: The name of the scope map.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [TaskName <String>]: The name of the container registry task.
-  [TaskRunName <String>]: The name of the task run.
-  [TokenName <String>]: The name of the token.
-  [WebhookName <String>]: The name of the webhook.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredentialset
-#>
-function Update-AzContainerRegistryCredentialSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICredentialSet])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('CredentialSetName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the credential set.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IAuthCredential[]]
-    # List of authentication credentials stored for an upstream.Usually consists of a primary and an optional secondary credential.
-    # To construct, see NOTES section for AUTHCREDENTIALS properties and create a hash table.
-    ${AuthCredentials},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The principal ID of resource identity.
-    ${IdentityPrincipalId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [System.String]
-    # The tenant ID of resource.
-    ${IdentityTenantId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredentialSet_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredentialSet_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Regenerates one of the login credentials for the specified container registry.
-.Description
-Regenerates one of the login credentials for the specified container registry.
-.Example
-Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -PasswordName Password
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegenerateCredentialParameters
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8691,184 +9956,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
 
-REGENERATECREDENTIALPARAMETER <IRegenerateCredentialParameters>: The parameters used to regenerate the login credential.
-  Name <PasswordName>: Specifies name of the password which should be regenerated -- password or password2.
-.Link
-https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredential
-#>
-function Update-AzContainerRegistryCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult])]
-[CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Regenerate', Mandatory)]
-    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
-    [Alias('ContainerRegistryName', 'Name', 'ResourceName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the container registry.
-    ${RegistryName},
-
-    [Parameter(ParameterSetName='Regenerate', Mandatory)]
-    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Regenerate')]
-    [Parameter(ParameterSetName='RegenerateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegenerateCredentialParameters]
-    # The parameters used to regenerate the login credential.
-    # To construct, see NOTES section for REGENERATECREDENTIALPARAMETER properties and create a hash table.
-    ${RegenerateCredentialParameter},
-
-    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PasswordName])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PasswordName]
-    # Specifies name of the password which should be regenerated -- password or password2.
-    ${PasswordName},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Regenerate = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_Regenerate';
-            RegenerateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateExpanded';
-            RegenerateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaIdentityExpanded';
-        }
-        if (('Regenerate', 'RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates a replication for a container registry with the specified parameters.
-.Description
-Updates a replication for a container registry with the specified parameters.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CacheRuleName <String>]: The name of the cache rule.
   [ConnectedRegistryName <String>]: The name of the connected registry.
@@ -8893,10 +9981,13 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistryreplication
 #>
 function Update-AzContainerRegistryReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ReplicationName', 'ResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -8904,6 +9995,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ContainerRegistryName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -8911,6 +10004,8 @@ param(
     ${RegistryName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -8918,6 +10013,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -8929,23 +10026,44 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether the replication's regional endpoint is enabled.
     # Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
     ${RegionEndpointEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
     [Alias('Tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplicationUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplicationUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # The tags for the replication.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9015,14 +10133,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryReplication_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryReplication_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryReplication_UpdateViaIdentityRegistryExpanded';
+            UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryReplication_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryReplication_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9031,6 +10153,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9073,13 +10198,35 @@ Patch the run properties.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CacheRuleName <String>]: The name of the cache rule.
   [ConnectedRegistryName <String>]: The name of the connected registry.
@@ -9104,10 +10251,13 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistryrun
 #>
 function Update-AzContainerRegistryRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('RunId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -9115,18 +10265,24 @@ param(
     ${Id},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -9138,14 +10294,33 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # The value that indicates whether archiving is enabled or not.
     ${IsArchiveEnabled},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9215,14 +10390,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryRun_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryRun_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryRun_UpdateViaIdentityRegistryExpanded';
+            UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryRun_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryRun_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9231,6 +10410,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9262,9 +10444,9 @@ end {
 
 <#
 .Synopsis
-Updates a task run with the specified parameters.
+Update a task run for a container registry with the specified parameters.
 .Description
-Updates a task run with the specified parameters.
+Update a task run for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
@@ -9273,7 +10455,7 @@ Updates a task run with the specified parameters.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9300,14 +10482,37 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TaskRunName <String>]: The name of the task run.
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrytaskrun
 #>
 function Update-AzContainerRegistryTaskRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITaskRun])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
     [Alias('TaskRunName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -9338,8 +10543,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -9358,21 +10574,6 @@ param(
     [System.String]
     # The tenant ID of resource.
     ${IdentityTenantId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -9405,12 +10606,12 @@ param(
     ${RunRequestType},
 
     [Parameter()]
-    [Alias('Tags')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskRunUpdateParametersTags]))]
-    [System.Collections.Hashtable]
-    # The ARM resource tags.
-    ${Tag},
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9480,14 +10681,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTaskRun_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTaskRun_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTaskRun_UpdateViaIdentityRegistryExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9496,6 +10699,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9527,9 +10733,9 @@ end {
 
 <#
 .Synopsis
-Updates a task with the specified parameters.
+Update a task for a container registry with the specified parameters.
 .Description
-Updates a task with the specified parameters.
+Update a task for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
@@ -9538,7 +10744,7 @@ Updates a task with the specified parameters.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9566,31 +10772,54 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
 
-TRIGGERSOURCETRIGGER <ISourceTriggerUpdateParameters[]>: The collection of triggers based on source code repository.
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+TRIGGERSOURCETRIGGER <ISourceTrigger[]>: The collection of triggers based on source code repository.
+  Event <List<String>>: The source event corresponding to the trigger.
   Name <String>: The name of the trigger.
+  SourceRepositorySourceControlType <String>: The type of source control service.
+  SourceRepositoryUrl <String>: The full URL to the source code repository
   [SourceControlAuthPropertyExpiresIn <Int32?>]: Time in seconds that the token remains valid
   [SourceControlAuthPropertyRefreshToken <String>]: The refresh token used to refresh the access token.
   [SourceControlAuthPropertyScope <String>]: The scope of the access token.
   [SourceControlAuthPropertyToken <String>]: The access token used to access the source control provider.
-  [SourceControlAuthPropertyTokenType <TokenType?>]: The type of Auth token.
+  [SourceControlAuthPropertyTokenType <String>]: The type of Auth token.
   [SourceRepositoryBranch <String>]: The branch name of the source code.
-  [SourceRepositorySourceControlType <SourceControlType?>]: The type of source control service.
-  [SourceRepositoryUrl <String>]: The full URL to the source code repository
-  [SourceTriggerEvent <SourceTriggerEvent[]>]: The source event corresponding to the trigger.
-  [Status <TriggerStatus?>]: The current status of trigger.
+  [Status <String>]: The current status of trigger.
 
-TRIGGERTIMERTRIGGER <ITimerTriggerUpdateParameters[]>: The collection of timer triggers.
+TRIGGERTIMERTRIGGER <ITimerTrigger[]>: The collection of timer triggers.
   Name <String>: The name of the trigger.
-  [Schedule <String>]: The CRON expression for the task schedule
-  [Status <TriggerStatus?>]: The current status of trigger.
+  Schedule <String>: The CRON expression for the task schedule
+  [Status <String>]: The current status of trigger.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrytask
 #>
 function Update-AzContainerRegistryTask {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
     [Alias('TaskName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -9621,8 +10850,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -9637,9 +10871,9 @@ param(
     ${AgentPoolName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("All", "Runtime")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType]
+    [System.String]
     # The type of the auto trigger for base image dependency updates.
     ${BaseImageTriggerBaseImageTriggerType},
 
@@ -9650,9 +10884,9 @@ param(
     ${BaseImageTriggerName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus]
+    [System.String]
     # The current status of trigger.
     ${BaseImageTriggerStatus},
 
@@ -9663,19 +10897,25 @@ param(
     ${BaseImageTriggerUpdateTriggerEndpoint},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Default", "Token")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType]
+    [System.String]
     # Type of Payload body for Base image update triggers.
     ${BaseImageTriggerUpdateTriggerPayloadType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ICredentialsCustomRegistries]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialsCustomRegistries]))]
     [System.Collections.Hashtable]
     # Describes the credential parameters for accessing other custom registries.
     # The keyfor the dictionary item will be the registry login server (myregistry.azurecr.io) andthe value of the item will be the registry credentials for accessing the registry.
     ${CredentialsCustomRegistry},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -9690,19 +10930,10 @@ param(
     ${IdentityTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
+    [System.Management.Automation.SwitchParameter]
+    # The value of this property indicates whether the task resource is system task or not.
+    ${IsSystemTask},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -9711,39 +10942,39 @@ param(
     ${LogTemplate},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("amd64", "x86", "386", "arm", "arm64")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture]
+    [System.String]
     # The OS architecture.
     ${PlatformArchitecture},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Windows", "Linux")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS]
+    [System.String]
     # The operating system type required for the run.
     ${PlatformOS},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("v6", "v7", "v8")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant]
+    [System.String]
     # Variant of the CPU.
     ${PlatformVariant},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("None", "Default")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode]
+    [System.String]
     # The authentication mode which determines the source registry login scope.
     # The credentials for the source registrywill be generated using the given scope.
     # These credentials will be used to login tothe source registry during the run.
     ${SourceRegistryLoginMode},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus]
+    [System.String]
     # The current status of task.
     ${Status},
 
@@ -9760,18 +10991,18 @@ param(
     ${StepContextPath},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Docker", "FileTask", "EncodedTask")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType]
+    [System.String]
     # The type of the step.
     ${StepType},
 
     [Parameter()]
     [Alias('Tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags]))]
     [System.Collections.Hashtable]
-    # The ARM resource tags.
+    # The tags of the resource.
     ${Tag},
 
     [Parameter()]
@@ -9783,18 +11014,24 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceTriggerUpdateParameters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger[]]
     # The collection of triggers based on source code repository.
-    # To construct, see NOTES section for TRIGGERSOURCETRIGGER properties and create a hash table.
     ${TriggerSourceTrigger},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITimerTriggerUpdateParameters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger[]]
     # The collection of timer triggers.
-    # To construct, see NOTES section for TRIGGERTIMERTRIGGER properties and create a hash table.
     ${TriggerTimerTrigger},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9864,14 +11101,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTask_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTask_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTask_UpdateViaIdentityRegistryExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9880,6 +11119,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

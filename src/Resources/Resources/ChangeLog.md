@@ -19,8 +19,82 @@
 -->
 
 ## Upcoming Release
+
+## Version 10.0.1
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `8.0.2` to `10.0.3`.
+
+## Version 10.0.0
+* Added ChangeSafety Support
+* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
+* Fixed `Set-AzRoleAssignment` unable to delete conditions
+* Updated Policy.Autorest to 2025-03-01: added `-Expand`, `-EnforcementMode`, `-Version`; removed `-BackwardCompatible`
+* Fixed `Get-AzRoleDefinition` null ABAC `Condition` [#29058] [#25940]
+* [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions
+
+## Version 9.1.0
+* Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
+* Improved error messages for role assignment and role definition operations to include the underlying service error code and message instead of just the HTTP status code. [#19605] [#19374]
+* Added `-PrincipalId` and `-PrincipalType` to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
+* Added `New-AzDenyAssignment` for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
+* Added `Remove-AzDenyAssignment` for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
+* Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment create and delete operations.
+* Fixed `New-AzDeployment` not reporting nested ARM (Azure Resource Manager) error details (e.g. `KeyVaultParameterReferenceSecretRetrieveFailed`) when a `MultipleErrorsOccurred` validation failure is returned. Previously, the inner errors were silently dropped and only the generic top-level error was shown. [#28308]
+
+## Version 9.0.3
+* Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
+
+## Version 9.0.1
+* Fixed issue where the PowerShell console would close when using Resources module cmdlets without being logged in. Github Issue [link](https://github.com/Azure/azure-powershell/issues/28774).
+* Fixed `Remove-AzRoleDefinition` displaying incorrect confirmation message (unformatted placeholder) and empty GUID as target when using `-Confirm` or `-WhatIf` with the `-Name` parameter [#29075]
+* Added breaking change preannouncement for `PSRoleDefinition` type changes in Az.Resources 10.0.0 [#29058]
+    - The flattened properties `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` will be removed from `PSRoleDefinition`
+    - Use `Permissions[n].Actions`, `Permissions[n].DataActions`, etc. instead to access the full permission structure with per-permission conditions
+    - Affects output for `Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, and `Remove-AzRoleDefinition` (with `-PassThru`)
+    - Affects input format for `New-AzRoleDefinition` and `Set-AzRoleDefinition` cmdlets
+    - Affects `-InputObject` parameter for `Remove-AzRoleDefinition` cmdlet
+
+## Version 9.0.0
+* Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Aligned dependency versions with other modules
+
+## Version 8.1.1
+* Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
+* Fixed bug for objectID filtering in `Get-AzRoleAssignment`. [#28640]
+
+## Version 8.1.0
+* Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
+* Added breaking change announcement for below cmdlets from array to list.
+  - `Get-AzRoleManagementPolicy`
+  - `Update-AzRoleManagementPolicy`
+* Added support for exporting resource group templates as Bicep files
+    - Added `OutputFormat` parameter to `Export-AzResourceGroup` cmdlet
+    - Supported values: `Json` (default), `Bicep`
+
+## Version 8.0.1
+* Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
+
+## Version 8.0.0
+* [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
+
+## Version 7.11.0
+* Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
+* Added PotentialChanges to WhatIf result.
+
+## Version 7.10.0
+* Fixed the issue that Get-AzReource not working with `-ExpandProperties`. [#11248]
+* Updated Resources SDK to 2024-11-01.
+* Added breaking change announcement for the following cmdlets due to API version for resource type may change.
+    - `Get-AzResource`
+    - `New-AzResource`
+    - `Set-AzResource`
+    - `Remove-AzResource`
+    - `Invoke-AzResourceAction`
+* Added ValidationLevel Parameter to WhatIf and Validate cmdlets for deployments.
+
+## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
-* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
+* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`.
 
 ## Version 7.8.1
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri

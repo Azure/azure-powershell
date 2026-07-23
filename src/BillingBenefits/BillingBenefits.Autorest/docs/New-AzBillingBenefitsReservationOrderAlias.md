@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzBillingBenefitsReservationOrderAlias
 
 ## SYNOPSIS
-Create a reservation order alias.
+create a reservation order alias.
 
 ## SYNTAX
 
@@ -17,40 +17,26 @@ Create a reservation order alias.
 New-AzBillingBenefitsReservationOrderAlias -Name <String> [-AppliedScopePropertyDisplayName <String>]
  [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
  [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
- [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>] [-BillingScopeId <String>]
- [-DisplayName <String>] [-Location <String>] [-Quantity <Int32>] [-Renew]
- [-ReservedResourcePropertyInstanceFlexibility <InstanceFlexibility>]
- [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-SkuName <String>]
- [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzBillingBenefitsReservationOrderAlias -Name <String> -Body <IReservationOrderAliasRequest>
+ [-AppliedScopeType <String>] [-BillingPlan <String>] [-BillingScopeId <String>] [-DisplayName <String>]
+ [-Location <String>] [-Quantity <Int32>] [-Renew] [-ReservedResourcePropertyInstanceFlexibility <String>]
+ [-ReservedResourceType <String>] [-ReviewDateTime <DateTime>] [-SkuName <String>] [-Term <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### CreateViaJsonFilePath
 ```
-New-AzBillingBenefitsReservationOrderAlias -InputObject <IBillingBenefitsIdentity>
- -Body <IReservationOrderAliasRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzBillingBenefitsReservationOrderAlias -Name <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaJsonString
 ```
-New-AzBillingBenefitsReservationOrderAlias -InputObject <IBillingBenefitsIdentity>
- [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
- [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
- [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>]
- [-BillingScopeId <String>] [-DisplayName <String>] [-Location <String>] [-Quantity <Int32>] [-Renew]
- [-ReservedResourcePropertyInstanceFlexibility <InstanceFlexibility>]
- [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-SkuName <String>]
- [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzBillingBenefitsReservationOrderAlias -Name <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a reservation order alias.
+create a reservation order alias.
 
 ## EXAMPLES
 
@@ -74,7 +60,7 @@ Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -89,7 +75,7 @@ Fully-qualified identifier of the management group where the benefit must be app
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -104,7 +90,7 @@ Fully-qualified identifier of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -119,7 +105,7 @@ Fully-qualified identifier of the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -134,7 +120,7 @@ Tenant ID where the benefit is applied.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -148,8 +134,8 @@ Accept wildcard characters: False
 Type of the Applied Scope.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -179,8 +165,8 @@ Represents the billing plan in ISO 8601 format.
 Required only for monthly billing plans.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -195,29 +181,13 @@ Subscription that will be charged for purchasing the benefit
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Reservation order alias
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasRequest
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -242,7 +212,7 @@ Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -252,19 +222,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -273,7 +257,7 @@ The Azure Region where the reservation benefits are applied to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -288,7 +272,7 @@ Name of the reservation order alias
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: ReservationOrderAliasName
 
 Required: True
@@ -318,7 +302,7 @@ Total Quantity of the SKUs purchased in the Reservation.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -333,7 +317,7 @@ Setting this to true will automatically purchase a new benefit on the expiration
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -347,8 +331,8 @@ Accept wildcard characters: False
 Turning this on will apply the reservation discount to other VMs in the same VM size group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.InstanceFlexibility
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -362,8 +346,8 @@ Accept wildcard characters: False
 The type of the resource that is being reserved.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.ReservedResourceType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -378,7 +362,7 @@ This is the date-time when the Azure Hybrid Benefit needs to be reviewed.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -393,7 +377,7 @@ Name of the SKU to be applied
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -407,8 +391,8 @@ Accept wildcard characters: False
 Represent benefit term in ISO 8601 format.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -454,13 +438,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponse
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IReservationOrderAliasResponse
 
 ## NOTES
 

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public System.Collections.Generic.List<string> HostMember { get => this._hostMember; set => this._hostMember = value; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).ProvisioningState = value ?? null; }
 
         /// <summary>The provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]

@@ -17,14 +17,14 @@ Renames a directory.
 Rename-AzStorageDirectory [-ShareName] <String> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-Permission <String>] [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
 Rename-AzStorageDirectory [-ShareClient] <ShareClient> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Rename-AzStorageDirectory [-ShareClient] <ShareClient> [-SourcePath] <String> [[
 ```
 Rename-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [[-DestinationPath] <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -212,23 +212,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ShareClient
-ShareClienr indicated the share where the directory would be listed.
+ShareClient indicated the share where the directory would be listed.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareClient

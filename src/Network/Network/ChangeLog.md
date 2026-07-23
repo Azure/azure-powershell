@@ -19,6 +19,216 @@
 --->
 
 ## Upcoming Release
+* Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
+* Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
+
+## Version 8.0.1
+* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+
+## Version 8.0.0
+* Added ChangeSafety Support
+* Changed `UserAssignedIdentityId` type to string[]
+
+## Version 7.27.0
+* Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
+    - Added the `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzLoadBalancerFrontendIpConfig`.
+
+## Version 7.26.0
+* Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets
+* Added EdgeZone (Extended Location) parameter support for Azure Firewall
+    - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
+    - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
+
+## Version 7.25.1
+* Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
+* Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets
+
+## Version 7.25.0
+* Added `-IpVersionType` parameter to `New-AzPrivateEndpoint` cmdlet to specify the IP version type for private IPs of the private endpoint. Allowed values are IPv4, IPv6, or DualStack.
+* Added new cmdlets for VirtualNetworkAppliance resource:
+    - `Get-AzVirtualNetworkAppliance`: Get a Virtual Network Appliance resource by name, resource group, or list all.
+    - `New-AzVirtualNetworkAppliance`: Create a new Virtual Network Appliance resource.
+    - `Remove-AzVirtualNetworkAppliance`: Remove a Virtual Network Appliance resource.
+    - `Update-AzVirtualNetworkAppliance`: Update tags on a Virtual Network Appliance resource.
+
+## Version 7.24.1
+* Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
+
+## Version 7.24.0
+* Added support for `RecordType` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` cmdlets.
+* Added property "NvaInterfaceConfiguration" to Network Virtual Appliances, as well as support for them in following cmdlets:
+    - `New-AzNetworkVirtualAppliance`
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to take the NvaInterfaceConfigurations properties on the Network Virtual Appliance:
+    - `New-AzNvaInterfaceConfiguration`  to build individual interface configuration for network virtual appliance.
+* Removed the None from the accepted value for the property 'Sensitivity'
+    - Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` cmdlet
+
+## Version 7.23.1
+* Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
+
+## Version 7.23.0
+* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
+* Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
+
+## Version 7.22.0
+
+* Added new RouteTableUsageMode property for Network Manager Routing Configuration
+  - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
+  - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet
+* Added certificate-based authentication support for VPN Gateway connections
+    - New cmdlet `New-AzVirtualNetworkGatewayCertificateAuthentication` to create certificate authentication configuration
+    - Added `-AuthenticationType` and `-CertificateAuthentication` parameters to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`
+    - Added `-UserAssignedIdentityId` parameter to `Set-AzVirtualNetworkGateway` and `New-AzVirtualNetworkGateway` for managed identity configuration
+* Upgraded the api version from 2024-10-01 to 2025-01-01
+* Added property 'EnableL4ClientIpPreservation' to Application Gateway Backend Settings, as well as support for them in the following cmdlets:
+    - `New-AzApplicationGatewayBackendSetting`
+    - `Add-AzApplicationGatewayBackendSetting`
+    - `Set-AzApplicationGatewayBackendSetting`
+* Added property 'EnableProbeProxyProtocolHeader' to Application Gateway Probes, as well as support for them in the following cmdlets:
+    - `Set-AzApplicationGatewayProbeConfig`
+	- `Add-AzApplicationGatewayProbeConfig`
+	- `New-AzApplicationGatewayProbeConfig`
+
+## Version 7.21.0
+* Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
+* Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
+* Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
+* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
+* Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
+* Added cmdlet 'Get-AzAllVirtualNetworkGatewayRadiusServerSecret' to fetch list of VirtualNetworkGateway VpnClientConfiguration Radius servers and corresponding radius secrets.
+* Added cmdlet 'Get-AzAllVpnServerConfigurationRadiusServerSecret ' to fetch list of VirtualWan VpnServerConfiguration Radius servers and corresponding radius secrets.
+
+## Version 7.20.0
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetail` to list all failover tests for a virtual network gateway.
+* Added cmdlet `Start-AzVirtualNetworkGatewaySiteFailoverTest` to initiate a site failover test on a virtual network gateway.
+* Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
+* Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayRoutesInformation` to get route information for a virtual network gateway.
+* Onboarded Maps to Private Link Common Cmdlets
+
+## Version 7.19.1
+* Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.
+    * Primary affected Cmdlet (returns the modified object directly):
+        - `New-AzApplicationGatewayFirewallPolicyManagedRuleSet`
+    * Secondary affected Cmdlets (object is nested within their returned result):
+        - `New-AzApplicationGatewayFirewallPolicyManagedRules`
+        - `Get-AzApplicationGatewayFirewallPolicy`
+        - `Set-AzApplicationGatewayFirewallPolicy`
+        - `New-AzApplicationGatewayFirewallPolicy`
+* Onboarded FileShares to Private Link Common Cmdlets
+* Updated Api version for StorageSync to Private Link Common Cmdlets
+
+## Version 7.19.0
+* Returned appgw and agc in waf policy
+* Updated cmdlet `New-AzFirewallPolicyApplicationRule` to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
+* Added `EnableDnstapLogging` parameter to `New-AzFirewall`
+* Added cmdlet 'Set-AzNetworkManagerIpamPoolStaticCidr to enable updating an IPAM pool's static cidr address prefix space or description
+
+## Version 7.18.0
+* Added a new command which creates an object for CaptureSetting, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture setting for packet capture as well as support for it for the following cmdlets:
+	- `New-AzPacketCaptureSettingsConfig`
+* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
+    - `New-AzNetworkWatcherPacketCaptureV2`
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyException`
+
+## Version 7.17.0
+* Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
+	- `New-AzNatGateway`
+	- `Set-AzNatGateway`
+* Added property 'DefaultPublicNatGateway' to VirtualNetwork.
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
+* Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
+    - `Add-AzLoadBalancerRuleConfig`
+    - `New-AzLoadBalancerRuleConfig`
+    - `Set-AzLoadBalancerRuleConfig`
+* Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
+    - `New-AzVirtualNetworkGatewayMigrationParameter`
+    - `Invoke-AzVirtualNetworkGatewayPrepareMigration`
+    - `Invoke-AzVirtualNetworkGatewayExecuteMigration`
+    - `Invoke-AzVirtualNetworkGatewayCommitMigration`
+    - `Invoke-AzVirtualNetworkGatewayAbortMigration`
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter operations
+        - `New-AzNetworkSecurityPerimeter`
+        - `Get-AzNetworkSecurityPerimeter`
+        - `Update-AzNetworkSecurityPerimeter`
+        - `Remove-AzNetworkSecurityPerimeter`
+    - Cmdlets for NetworkSecurityPerimeter profile operations
+        - `New-AzNetworkSecurityPerimeterProfile`
+        - `Get-AzNetworkSecurityPerimeterProfile`
+        - `Remove-AzNetworkSecurityPerimeterProfile`
+    - Cmdlets for NetworkSecurityPerimeter association operations
+        - `New-AzNetworkSecurityPerimeterAssociation`
+        - `Get-AzNetworkSecurityPerimeterAssociation`
+        - `Update-AzNetworkSecurityPerimeterAssociation`
+        - `Remove-AzNetworkSecurityPerimeterAssociation`
+    - Cmdlets for NetworkSecurityPerimeter access rule operations
+        - `New-AzNetworkSecurityPerimeterAccessRule`
+        - `Get-AzNetworkSecurityPerimeterAccessRule`
+        - `Update-AzNetworkSecurityPerimeterAccessRule`
+        - `Remove-AzNetworkSecurityPerimeterAccessRule`
+    - Cmdlets for NetworkSecurityPerimeter link operations
+        - `New-AzNetworkSecurityPerimeterLink`
+        - `Get-AzNetworkSecurityPerimeterLink`
+        - `Update-AzNetworkSecurityPerimeterLink`
+        - `Remove-AzNetworkSecurityPerimeterLink`
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+        - `Get-AzNetworkSecurityPerimeterLinkReference`
+        - `Remove-AzNetworkSecurityPerimeterLinkReference`
+    - Cmdlets for NetworkSecurityPerimeter logging configuration operations
+        - `New-AzNetworkSecurityPerimeterLoggingConfiguration`
+        - `Get-AzNetworkSecurityPerimeterLoggingConfiguration`
+        - `Update-AzNetworkSecurityPerimeterLoggingConfiguration`
+        - `Remove-AzNetworkSecurityPerimeterLoggingConfiguration`
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
+        - `Get-AzNetworkSecurityPerimeterAssociableResourceType`
+* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
+    - `Get-AzNetworkVirtualApplianceBootDiagnostics`
+* Added etag property to Azure Virtual Network Manager -> IpamPool, VerifierWorkspace data models
+* Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
+    - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    
+* Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
+    - `New-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGatewayConnection`
+
+* Deleted NetworkWatcher cmdlets for "Classic" Connection Monitor
+    - `Start-AzNetworkWatcherConnectionMonitor`
+    - `Get-AzNetworkWatcherConnectionMonitorReport`
+* Updated cmdlets to support topology-specific connectivity capabilities:
+    - `New-AzNetworkManagerConnectivityConfiguration`
+    - `Set-AzNetworkManagerConnectivityConfiguration`
+    - `Get-AzNetworkManagerConnectivityConfiguration`
+
+## Version 7.16.2
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
+
+## Version 7.16.1
+* Onboarded `Microsoft.DocumentDB/mongoClusters` to private link cmdlets
+
+## Version 7.16.0
+* Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.
+    - `Add-AzNetworkInterfaceIpConfig`
+    - `New-AzNetworkInterfaceIpConfig`
+
+## Version 7.15.1
+* Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+
+## Version 7.15.0
+* Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
@@ -75,7 +285,7 @@
     - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
     - `New-AzNetworkManagerSecurityUserGroupItem`
 * Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
-
+  
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links

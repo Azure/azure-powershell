@@ -58,6 +58,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public string CommunityGalleryImageId
+        {
+            get
+            {
+                return this.omObject.CommunityGalleryImageId;
+            }
+            set
+            {
+                this.omObject.CommunityGalleryImageId = value;
+            }
+        }
+        
         public string ExactVersion
         {
             get
@@ -72,6 +84,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 return this.omObject.Offer;
             }
+            set
+            {
+                this.omObject.Offer = value;
+            }
         }
         
         public string Publisher
@@ -79,6 +95,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Publisher;
+            }
+            set
+            {
+                this.omObject.Publisher = value;
+            }
+        }
+        
+        public string SharedGalleryImageId
+        {
+            get
+            {
+                return this.omObject.SharedGalleryImageId;
+            }
+            set
+            {
+                this.omObject.SharedGalleryImageId = value;
             }
         }
         
@@ -88,6 +120,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 return this.omObject.Sku;
             }
+            set
+            {
+                this.omObject.Sku = value;
+            }
         }
         
         public string Version
@@ -96,6 +132,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 return this.omObject.Version;
             }
+            set
+            {
+                this.omObject.Version = value;
+            }
         }
         
         public string VirtualMachineImageId
@@ -103,6 +143,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.VirtualMachineImageId;
+            }
+            set
+            {
+                this.omObject.VirtualMachineImageId = value;
             }
         }
     }

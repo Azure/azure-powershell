@@ -21,23 +21,24 @@ Create an in-memory object for PrometheusRule.
 Create an in-memory object for PrometheusRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleObject
+https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusruleobject
 #>
 function New-AzPrometheusRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupAction[]]
         $Action,
         [Parameter(HelpMessage="Alert rule name.")]
         [string]
         $Alert,
         [Parameter(HelpMessage="The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleAnnotations]
         $Annotation,
         [Parameter(HelpMessage="Enable/disable rule.")]
         [bool]
@@ -49,7 +50,7 @@ function New-AzPrometheusRuleObject {
         [System.TimeSpan]
         $For,
         [Parameter(HelpMessage="Labels to add or overwrite before storing the result.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleLabels]
         $Label,
         [Parameter(HelpMessage="Recorded metrics name.")]
         [string]
@@ -66,7 +67,7 @@ function New-AzPrometheusRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action

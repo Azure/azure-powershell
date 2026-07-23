@@ -15,21 +15,21 @@ Disables Blob Restore Policy on a Storage account.
 ### AccountName (Default)
 ```
 Disable-AzStorageBlobRestorePolicy [-ResourceGroupName] <String> [-StorageAccountName] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Disable-AzStorageBlobRestorePolicy -StorageAccount <PSStorageAccount> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Disable-AzStorageBlobRestorePolicy [-ResourceId] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ The **Disable-AzStorageBlobRestorePolicy** cmdlet disables Blob Restore Policy f
 
 ### Example 1: Disables Blob Restore Policy for the Azure Storage Blob service on a Storage account
 ```powershell
-Disable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount"
+Disable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 ```
 
 This command Disables Blob Restore Policy for the Azure Storage Blob service on a Storage account.
@@ -69,21 +69,6 @@ Display ServiceProperties
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

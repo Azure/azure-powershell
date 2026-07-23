@@ -1,4 +1,4 @@
-
+﻿
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -22,7 +22,13 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessage("**********************************************************************************************`n
+  * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+  * At least one change applies to this cmdlet.                                                     *`n
+  * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+  ***************************************************************************************************")]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -35,14 +41,14 @@ function New-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine]
         # Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
         ${InputObject},
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
@@ -149,19 +155,19 @@ function New-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetVmtags]
         # Specifies the tag to be used for VM creation.
         ${VMTag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetNicTags]
         # Specifies the tag to be used for NIC creation.
         ${NicTag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetDiskTags]
         # Specifies the tag to be used for disk creation.
         ${DiskTag},
 
@@ -193,11 +199,23 @@ function New-AzMigrateServerReplication {
         # Specifies the Operating System disk for the source server to be migrated.
         ${OSDiskID},
 
+        [ValidateSet("Standard" , "TrustedLaunch")]
+        [ArgumentCompleter( { "Standard" , "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security type for the Azure VM.
+        ${TargetSecurityType},
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Boolean]
+        # Specifies if secure boot needs to be enabled on target VM.
+        ${TargetVMSecureBootEnabled},
+
         [Parameter(ParameterSetName = 'ByIdDefaultUser')]
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the disk encyption set to be used.
+        # Specifies the disk encryption set to be used.
         ${DiskEncryptionSetID},
     
         [Parameter()]
@@ -214,6 +232,12 @@ function New-AzMigrateServerReplication {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+        ${TargetCapacityReservationGroupId},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -270,6 +294,8 @@ function New-AzMigrateServerReplication {
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
         $HasTargetVMSize = $PSBoundParameters.ContainsKey('TargetVMSize')
+        $HasTargetSecurityType = $PSBoundParameters.ContainsKey('TargetSecurityType')
+        $HasTargetVMSecureBootEnabled = $PSBoundParameters.ContainsKey('TargetVMSecureBootEnabled')
 
         $null = $PSBoundParameters.Remove('ReplicationContainerMapping')
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
@@ -289,6 +315,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TestSubnetName')
         $null = $PSBoundParameters.Remove('TargetVMName')
         $null = $PSBoundParameters.Remove('TargetVMSize')
+        $null = $PSBoundParameters.Remove('TargetCapacityReservationGroupId')
         $null = $PSBoundParameters.Remove('PerformAutoResync')
         $null = $PSBoundParameters.Remove('DiskType')
         $null = $PSBoundParameters.Remove('OSDiskID')
@@ -296,6 +323,8 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('LinuxLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
+        $null = $PSBoundParameters.Remove('TargetSecurityType')
+        $null = $PSBoundParameters.Remove('TargetVMSecureBootEnabled')
 
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('InputObject')
@@ -348,7 +377,7 @@ function New-AzMigrateServerReplication {
         # Get the site to get project name.
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('SiteName', $SiteName)
-        $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters
+        $siteObject = Az.Migrate.private\Get-AzMigrateSite_Get @PSBoundParameters
         if ($siteObject -and ($siteObject.Count -ge 1)) {
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
         }
@@ -363,8 +392,8 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
         $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-            
-        $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+
+        $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
         $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
             
         $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -410,7 +439,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('ResourceName', $VaultName)
         $null = $PSBoundParameters.Add('PolicyName', $policyName)
-        $policyObj = Az.Migrate\Get-AzMigrateReplicationPolicy @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        $policyObj = Az.Migrate.private\Get-AzMigrateReplicationPolicy_Get @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($policyObj -and ($policyObj.Count -ge 1)) {
             $PolicyId = $policyObj.Id
         }
@@ -423,7 +452,7 @@ function New-AzMigrateServerReplication {
 
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-        $allFabrics = Az.Migrate\Get-AzMigrateReplicationFabric @PSBoundParameters
+        $allFabrics = Az.Migrate.private\Get-AzMigrateReplicationFabric_List @PSBoundParameters
         $FabricName = ""
         if ($allFabrics -and ($allFabrics.length -gt 0)) {
             foreach ($fabric in $allFabrics) {
@@ -438,7 +467,7 @@ function New-AzMigrateServerReplication {
         }
                 
         $null = $PSBoundParameters.Add('FabricName', $FabricName)
-        $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+        $peContainers = Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_List @PSBoundParameters
         $ProtectionContainerName = ""
         if ($peContainers -and ($peContainers.length -gt 0)) {
             $ProtectionContainerName = $peContainers[0].Name
@@ -452,7 +481,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Add('MappingName', $mappingName)
         $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
-        $mappingObject = Az.Migrate\Get-AzMigrateReplicationProtectionContainerMapping @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        $mappingObject = Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_Get @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($mappingObject -and ($mappingObject.Count -ge 1)) {
             $TargetRegion = $mappingObject.ProviderSpecificDetail.TargetLocation
         }
@@ -471,7 +500,8 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('ResourceName')
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Add('Location', $TargetRegion)
-            $allAvailableSkus = Get-AzVMSize @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+            #Get-AzVMSku -Location is deprecated, replicate using Get-AzComputeResourceSKU and a where clause
+            $allAvailableSkus = Get-AzComputeResourceSKU @PSBoundParameters| Where-Object { $_.ResourceType.Contains("virtualMachines") }
             if ($null -ne $allAvailableSkus) {
                 $matchingComputeSku = $allAvailableSkus | Where-Object { $_.Name -eq $TargetVMSize }
                 if ($null -ne $matchingComputeSku) {
@@ -543,12 +573,27 @@ public static int hashForArtifact(String artifact)
         $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
         $null = $PSBoundParameters.Add("PolicyId", $PolicyId)
 
-        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtEnableMigrationInput]::new()
+        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtEnableMigrationInput]::new()
         $ProviderSpecificDetails.DataMoverRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.SnapshotRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
         $ProviderSpecificDetails.LicenseType = $LicenseType
         $ProviderSpecificDetails.PerformAutoResync = $PerformAutoResync
+        if ($HasTargetVMSecureBootEnabled) {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = $TargetVMSecureBootEnabled.ToString().ToLower()
+        } elseif ($HasTargetSecurityType -and $TargetSecurityType -eq "TrustedLaunch") {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = "true"
+        }
+
+        if ($HasTargetSecurityType -and $TargetSecurityType -ne "Standard") {
+            $ProviderSpecificDetails.TargetVMSecurityProfileTargetVmsecurityType = $TargetSecurityType
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmtpmEnabled = $true
+        } elseif ($HasTargetSecurityType -and $TargetSecurityType -eq "Standard" -and $HasTargetVMSecureBootEnabled) {
+            throw "SecureBoot is not supported when security type is 'Standard'. Please specify a supported security type such as 'TrustedLaunch' when enabling SecureBoot."
+        } elseif (-not $HasTargetSecurityType -and $HasTargetVMSecureBootEnabled) {
+            throw "TargetSecurityType must be specified (for example, 'TrustedLaunch') when enabling SecureBoot."
+        }
+
         if ($HasTargetAVSet) {
             $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
         }
@@ -653,6 +698,7 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
         $ProviderSpecificDetails.TestNetworkId = $TestNetworkId
         $ProviderSpecificDetails.TestSubnetName = $TestSubnetName
+        $ProviderSpecificDetails.TargetCapacityReservationGroupId = $TargetCapacityReservationGroupId
 
         if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
             throw "The target virtual machine name must be between 1 and 64 characters long."
@@ -675,10 +721,10 @@ public static int hashForArtifact(String artifact)
         $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
 
         if ($parameterSet -match 'DefaultUser') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]$DiskToInclude = @()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput[]]$DiskToInclude = @()
             foreach ($onPremDisk in $InputObject.Disk) {
                 if ($onPremDisk.Uuid -ne $OSDiskID) {
-                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
+                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtDiskInput]::new()
                     $DiskObject.DiskId = $onPremDisk.Uuid
                     $DiskObject.DiskType = "Standard_LRS"
                     $DiskObject.IsOSDisk = "false"
@@ -690,7 +736,7 @@ public static int hashForArtifact(String artifact)
                     $DiskToInclude += $DiskObject
                 }
             }
-            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
+            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtDiskInput]::new()
             $DiskObject.DiskId = $OSDiskID
             $DiskObject.DiskType = $DiskType
             $DiskObject.IsOSDisk = "true"
@@ -720,7 +766,7 @@ public static int hashForArtifact(String artifact)
             }
 
             if (-not $HasTargetAVZone -and $disk.DiskType -eq "PremiumV2_LRS") {
-                throw "Premium SSD V2 disk can only be attached to zonal VMs."
+                throw "The Availability zone has not been provided for the Premium SSD V2 disk."
             }
 
             $res = $uniqueDiskUuids.Add($disk.DiskId)

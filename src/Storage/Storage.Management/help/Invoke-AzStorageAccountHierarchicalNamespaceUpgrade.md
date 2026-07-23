@@ -16,13 +16,13 @@ Validates if a storage account can be upgraded to enable HierarchicalNamespace, 
 ```
 Invoke-AzStorageAccountHierarchicalNamespaceUpgrade [-ResourceGroupName] <String> [-Name] <String>
  -RequestType <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -InputObject <PSStorageAccount> -RequestType <String>
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The **Invoke-AzStorageAccountHierarchicalNamespaceUpgrade** cmdlet can validate 
 
 ## EXAMPLES
 
-### Example 1: Validate a stroage account can be upgrade to enable HierarchicalNamespace, then upgrade it to enabled HierarchicalNamespace
+### Example 1: Validate a storage account can be upgrade to enable HierarchicalNamespace, then upgrade it to enabled HierarchicalNamespace
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -44,7 +44,7 @@ $task = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $
 $task | Wait-Job
 ```
 
-The first command validates if a stroage account can be upgrade to enable HierarchicalNamespace. 
+The first command validates if a storage account can be upgrade to enable HierarchicalNamespace. 
 The second command upgrade the storage account to enable HierarchicalNamespace. Since the upgrade will take time, use '-Asjob' to run it in backend, and return a task.  Then wait for the task finish.
 
 ## PARAMETERS
@@ -119,21 +119,6 @@ Aliases: StorageAccountName, AccountName
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

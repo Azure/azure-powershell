@@ -105,6 +105,16 @@ namespace Microsoft.Azure.Commands.Compute
                     .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
                     .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
 
+                cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachineExtension, FROM.VirtualMachineExtensionsCreateOrUpdateHeaders>, TO.PSAzureOperationResponse>()
+                    .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                    .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                    .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+                cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachine, FROM.VirtualMachinesCreateOrUpdateHeaders>, TO.PSAzureOperationResponse>()
+                    .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                    .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                    .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachineCaptureResult>, TO.PSAzureOperationResponse>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
                     .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
@@ -161,7 +171,10 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<TO.PSVirtualMachineListStatus, TO.PSVirtualMachineList>();
 
                 // VirtualMachineSize => PSVirtualMachineSize
-                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
+                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>()
+                    .ForMember(c => c.MemoryInMB, o => o.MapFrom(r => r.MemoryInMb))
+                    .ForMember(c => c.OSDiskSizeInMB, o => o.MapFrom(r => r.OSDiskSizeInMb))
+                    .ForMember(c => c.ResourceDiskSizeInMB, o => o.MapFrom(r => r.ResourceDiskSizeInMb));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachineSize>, TO.PSVirtualMachineSize>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));

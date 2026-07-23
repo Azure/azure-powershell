@@ -15,7 +15,7 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 ```
 New-AzWorkloadsProviderDB2InstanceObject [-Hostname <String>] [-Name <String>] [-Password <String>]
  [-PasswordUri <String>] [-Port <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-Username <String>] [<CommonParameters>]
+ [-SslPreference <String>] [-Username <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.Db2ProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Db2ProviderInstanceProperties
 
 ## NOTES
 

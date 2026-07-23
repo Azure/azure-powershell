@@ -19,6 +19,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameters 'GeoDataReplicationMaxReplicationLagDurationInSecond', 'GeoDataReplicationLocation', and 'IPAddressType' to cmdlets 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace'
+* Added new cmdlets for doing namespace failover - 'Start-AzServiceBusNamespaceFailOver'
+* Added new cmdlets for generating replication object for Replication parameter - 'New-AzServiceBusLocationsNameObject'
+* Added new cmdlets 'Get-AzServiceBusNetworkSecurityPerimeterConfiguration', 'Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation'
+
+## Version 4.2.0
+* Added ChangeSafety Support
+
+## Version 4.1.1
 * Fixed a bug when invoke `Set-AzServiceBusNamespace` with parameter `NoWait` [#26998]
 
 ## Version 4.1.0

@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -StatusCause
-Progremmatic code for the cause of the assessment's result.
+Programmatic code for the cause of the assessment's result.
 
 ```yaml
 Type: System.String
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -StatusCode
-Progremmatic code for the result of the assessment.
+Programmatic code for the result of the assessment.
 can be "Healthy", "Unhealthy" or "NotApplicable"
 
 ```yaml

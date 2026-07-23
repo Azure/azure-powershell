@@ -25,12 +25,12 @@ Lists all of the available DigitalTwins service REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsoperation
 #>
 function Get-AzDigitalTwinsOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.DigitalTwins.private\Get-AzDigitalTwinsOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -1,17 +1,17 @@
 {
-  "Remove-AzContainerRegistryExportPipeline+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/exportPipelines/tbmdyz?api-version=2023-01-01-preview+1": {
+  "Remove-AzContainerRegistryExportPipeline+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/exportPipelines/cfskxh?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/exportPipelines/tbmdyz?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/exportPipelines/cfskxh?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "183" ],
-        "x-ms-client-request-id": [ "d293a8f0-de62-4283-8271-eac6edbc8534" ],
+        "x-ms-unique-id": [ "163" ],
+        "x-ms-client-request-id": [ "bb7f6a53-9b43-4f31-b463-32926188b34a" ],
         "CommandName": [ "Remove-AzContainerRegistryExportPipeline" ],
         "FullCommandName": [ "Remove-AzContainerRegistryExportPipeline_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.10", "Az.ContainerRegistry/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.ContainerRegistry/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,15 +22,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-request-id": [ "1f13524e-dde9-4869-b0a0-33786e8fd79e" ],
-        "x-ms-correlation-request-id": [ "1f13524e-dde9-4869-b0a0-33786e8fd79e" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230416T211448Z:1f13524e-dde9-4869-b0a0-33786e8fd79e" ],
+        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-09-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/34f7a91a-b683-4d5c-b465-b4a7d8ec4d7f" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "55ebb0bb-a74b-4a33-81c6-9d9980bc9a8a" ],
+        "x-ms-correlation-request-id": [ "55ebb0bb-a74b-4a33-81c6-9d9980bc9a8a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250909T082724Z:55ebb0bb-a74b-4a33-81c6-9d9980bc9a8a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 16 Apr 2023 21:14:48 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E5DA748F89F94123BDF9BCE7C32D5CF8 Ref B: TYO201100113027 Ref C: 2025-09-09T08:27:24Z" ],
+        "Date": [ "Tue, 09 Sep 2025 08:27:24 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter
 https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptstringexecutionparameterobject
 #>
 function New-AzVMwareScriptStringExecutionParameterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

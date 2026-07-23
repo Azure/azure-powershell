@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Example
 Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
 .Example
@@ -27,13 +27,14 @@ Get-AzElasticMonitor -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v |
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IVMIngestionDetailsResponse
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -44,7 +45,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdetailvmingestion
 #>
 function Get-AzElasticDetailVMIngestion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IVMIngestionDetailsResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse])]
 [CmdletBinding(DefaultParameterSetName='Details', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Details', Mandatory)]
@@ -72,7 +73,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -131,6 +131,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -153,9 +162,7 @@ begin {
             Details = 'Az.Elastic.private\Get-AzElasticDetailVMIngestion_Details';
             DetailsViaIdentity = 'Az.Elastic.private\Get-AzElasticDetailVMIngestion_DetailsViaIdentity';
         }
-        if (('Details') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Details') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -169,6 +176,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

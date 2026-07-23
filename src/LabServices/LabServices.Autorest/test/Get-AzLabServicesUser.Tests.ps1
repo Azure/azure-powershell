@@ -19,15 +19,15 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Get-AzLabServicesUser' {
     It 'List' {
-        Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.UserName | Should -Not -BeNullOrEmpty
     }
 
     It 'Lab' {
-        $lab = Get-AzLabServicesLab -Name $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName
-        Get-AzLabServicesUser -Lab $lab -Name $ENV:UserName | Select-Object -Property Email | Should -BeExactly "@{Email=$($ENV:UserEmail)}"
+        $lab = Get-AzLabServicesLab -Name $env.LabName -ResourceGroupName $env.ResourceGroupName
+        Get-AzLabServicesUser -Lab $lab -Name $env.UserName | Select-Object -Property Email | Should -BeExactly "@{Email=$($env.UserEmail)}"
     }
 }

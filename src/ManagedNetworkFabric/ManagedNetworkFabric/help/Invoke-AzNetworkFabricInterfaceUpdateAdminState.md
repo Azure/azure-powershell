@@ -327,7 +327,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonPostActionResponseForStateUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateAdministrativeStateResponse
 
 ## NOTES
 

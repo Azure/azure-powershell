@@ -15,5 +15,6 @@ namespace Microsoft.Azure.Management.Sql.Models
     {
         public const string AlwaysUpToDate = "AlwaysUpToDate";
         public const string SQLServer2022 = "SQLServer2022";
+        public const string SQLServer2025 = "SQLServer2025";
     }
 }

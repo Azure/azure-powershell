@@ -219,6 +219,126 @@ function Test-LoadBalancerCRUD-PublicTcpReset
 
 <#
 .SYNOPSIS
+Tests creating a public Load balancer with EnableConnectionTracking for lb rule.
+#>
+function Test-LoadBalancerCRUD-EnableConnectionTracking
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $lbruleName2 = Get-ResourceName
+    $lbruleName3 = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol https -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -ProbeThreshold 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT -EnableConnectionTracking
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Sku Standard
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual $expectedLb.Location $actualLb.Location
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-NotNull $expectedLb.ResourceGuid
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $publicip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id
+        Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+
+        Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
+
+        Assert-AreEqual $probeName $expectedLb.Probes[0].Name
+        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
+        Assert-AreEqual "https" $expectedLb.Probes[0].Protocol
+        Assert-AreEqual $probe.ProbeThreshold $expectedLb.Probes[0].ProbeThreshold
+
+        Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
+        Assert-AreEqual true $expectedLb.LoadBalancingRules[0].EnableConnectionTracking
+
+        # List
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $expectedLb.Etag $list[0].Etag
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
+        Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
+        Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
+        Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
+        Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
+
+        # Test Set Command
+        $expectedLb | Set-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT
+        $expectedLb | Set-AzLoadBalancer
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual false $expectedLb.LoadBalancingRules[0].EnableConnectionTracking
+
+        $expectedLb | Set-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT -EnableConnectionTracking
+        $expectedLb | Set-AzLoadBalancer
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual true $expectedLb.LoadBalancingRules[0].EnableConnectionTracking
+
+        # Test Add Command
+        $expectedLb | Add-AzLoadBalancerRuleConfig -Name $lbruleName2 -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 81 -BackendPort 81 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT -EnableConnectionTracking
+        $expectedLb | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual true $expectedLb.LoadBalancingRules[1].EnableConnectionTracking
+
+        $expectedLb | Add-AzLoadBalancerRuleConfig -Name $lbruleName3 -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 82 -BackendPort 82 -IdleTimeoutInMinutes 15 -EnableFloatingIP -EnableTcpReset -LoadDistribution SourceIP -DisableOutboundSNAT
+        $expectedLb | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual false $expectedLb.LoadBalancingRules[2].EnableConnectionTracking
+
+        # Delete
+        $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating an internal Load balancer with dynamic ip.
 #>
 function Test-LoadBalancerCRUD-InternalDynamic

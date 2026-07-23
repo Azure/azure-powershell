@@ -14,7 +14,7 @@ Creates an CDN profile with the specified profile name under the specified subsc
 
 ```
 New-AzCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-OriginResponseTimeoutSecond <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-OriginResponseTimeoutSecond <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -148,7 +149,7 @@ Accept wildcard characters: False
 Name of the pricing tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 
 ## NOTES
 

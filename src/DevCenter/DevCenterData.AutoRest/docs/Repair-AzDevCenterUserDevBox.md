@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenterdata
+Module Name: Az.DevCenter
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/repair-azdevcenteruserdevbox
 schema: 2.0.0
 ---
@@ -43,7 +43,7 @@ The Dev Box may restart during this operation.
 
 ## EXAMPLES
 
-### Example 1: Reapir dev box by endpoint
+### Example 1: Repair dev box by endpoint
 ```powershell
 Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name myDevBox -ProjectName DevProject
 ```
@@ -65,7 +65,7 @@ Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b18
 
 This command repairs the dev box "myDevBox".
 
-### Example 4: Reapir dev box by dev center and InputObject
+### Example 4: Repair dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
 Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
@@ -253,7 +253,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 
 ## NOTES
 

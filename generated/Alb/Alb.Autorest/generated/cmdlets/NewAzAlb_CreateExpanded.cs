@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a TrafficController</summary>
+    /// <summary>create a TrafficController</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAlb_CreateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PreviewMessage("Application Gateway for Containers is currently in Preview.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"Create a TrafficController")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"create a TrafficController")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}", ApiVersion = "2025-01-01")]
     public partial class NewAzAlb_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext
@@ -205,6 +205,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrackedResourceTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
+
+        /// <summary>Resource ID of the Waf Security Policy</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the Waf Security Policy")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Alb.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID of the Waf Security Policy",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string WafSecurityPolicyId { get => _resourceBody.WafSecurityPolicyId ?? null; set => _resourceBody.WafSecurityPolicyId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

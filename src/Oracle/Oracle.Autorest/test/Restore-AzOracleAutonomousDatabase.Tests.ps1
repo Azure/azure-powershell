@@ -18,7 +18,7 @@ Describe 'Restore-AzOracleAutonomousDatabase' {
     It 'RestoreExpanded' {
         {
             $timeStamp = Get-Date
-            Restore-AzOracleAutonomousDatabase -NoWait -Name $env.adbsName -ResourceGroupName $env.resourceGroup -Timestamp $timeStamp
+            Restore-AzOracleAutonomousDatabase -NoWait -Name $env.adbsDNDName -ResourceGroupName $env.resourceGroup -Timestamp $timeStamp
         } | Should -Not -Throw
     }
 }

@@ -43,20 +43,23 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Skus { get; set; }
     }
 
+    // VirtualMachineImageResource in API definition
     public class PSVirtualMachineImage : PSVirtualMachineImageSku
     {
         public string Version { get; set; }
 
         public string FilterExpression { get; set; }
+        public string HyperVGeneration { get; set; }
+        public ImageDeprecationStatus ImageDeprecationStatus { get; set; }
+        public string Architecture { get; set; }
     }
 
+    // VirtualMachineImage in API definition
     public class PSVirtualMachineImageDetail : PSVirtualMachineImage
     {
         public string Name { get; set; }
 
         public OSDiskImage OSDiskImage { get; set; }
-
-        public string HyperVGeneration { get; set; }
 
         [JsonIgnore]
         public string OSDiskImageText
@@ -65,8 +68,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public PurchasePlan PurchasePlan { get; set; }
-
-        public ImageDeprecationStatus ImageDeprecationStatus { get; set; }
 
         [JsonIgnore]
         public string ImageDeprecationStatusText
@@ -89,7 +90,5 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public AutomaticOSUpgradeProperties AutomaticOSUpgradeProperties { get; set; }
-
-        public string Architecture { get; set; }
     }
 }

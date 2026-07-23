@@ -28,9 +28,10 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
- [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>] 
- [-ResiliencyModel <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -48,9 +49,10 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
- [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] -Tag <Hashtable> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-ResiliencyModel <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] -Tag <Hashtable> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -522,6 +524,21 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraf
 
 In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
+### Example 13: Configure a virtual network gateway with a user-assigned managed identity
+
+```powershell
+# Create or retrieve the user-assigned managed identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroup001" -Name "myIdentity001"
+
+# Get the virtual network gateway
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+
+# Set the identity using the UserAssignedIdentityId parameter
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -UserAssignedIdentityId $identity.Id
+```
+
+This example demonstrates how to configure a virtual network gateway with a user-assigned managed identity. This uses the UserAssignedIdentityId parameter to create the managed identity object. User-assigned identities are useful for accessing Azure Key Vault certificates for gateway authentication.
+
 ## PARAMETERS
 
 ### -AadAudienceId
@@ -576,7 +593,6 @@ Property to indicate if the Express Route Gateway serves traffic when there are 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -661,7 +677,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientConnectionConfiguration
-P2S Client Connection Configuration that assiociate between address and policy group
+P2S Client Connection Configuration that associate between address and policy group
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
@@ -774,6 +790,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ, ErGwScale
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Identity
+The managed identity configuration for the virtual network gateway.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -924,7 +955,6 @@ Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SingleHomed, MultiHomed
 
 Required: False
 Position: Named
@@ -945,6 +975,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ResourceId of the user assigned identity to be assigned to virtual network gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: UserAssignedIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

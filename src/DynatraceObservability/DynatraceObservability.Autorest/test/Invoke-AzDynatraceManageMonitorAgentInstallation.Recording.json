@@ -1,0 +1,521 @@
+{
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageExpanded Install action (validation then expected failure)+Actual install expected to throw+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Install\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "189" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "0609cdaa-6d2a-4891-b5ab-62aacad2d9de" ],
+        "x-ms-correlation-request-id": [ "0609cdaa-6d2a-4891-b5ab-62aacad2d9de" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143136Z:0609cdaa-6d2a-4891-b5ab-62aacad2d9de" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB313ADA0E4D4DB4A17B7E07C78B02FC Ref B: SG2AA1070304025 Ref C: 2025-11-13T14:31:36Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143136Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u00270609cdaa-6d2a-4891-b5ab-62aacad2d9de\u0027, request correlation id \u00270609cdaa-6d2a-4891-b5ab-62aacad2d9de\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageExpanded Uninstall action (validation then expected failure)+Actual uninstall expected to throw+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Uninstall\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "191" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "55a03da1-ec28-40d3-8dc0-2d1e275f5ce1" ],
+        "x-ms-correlation-request-id": [ "55a03da1-ec28-40d3-8dc0-2d1e275f5ce1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143138Z:55a03da1-ec28-40d3-8dc0-2d1e275f5ce1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 18751CFC1C6545AA88411F2C45F62D0C Ref B: SG2AA1070303025 Ref C: 2025-11-13T14:31:38Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143138Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u002755a03da1-ec28-40d3-8dc0-2d1e275f5ce1\u0027, request correlation id \u002755a03da1-ec28-40d3-8dc0-2d1e275f5ce1\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+Manage parameter set with Request object (validation then expected failure)+Actual install with request object expected to throw+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Install\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "189" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "2baa4d2a-c269-4059-b968-fdc2fdc68df7" ],
+        "x-ms-correlation-request-id": [ "2baa4d2a-c269-4059-b968-fdc2fdc68df7" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143141Z:2baa4d2a-c269-4059-b968-fdc2fdc68df7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D07E416BC4234FD9975DAB2B48E45ED5 Ref B: SG2AA1070302052 Ref C: 2025-11-13T14:31:41Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143141Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u00272baa4d2a-c269-4059-b968-fdc2fdc68df7\u0027, request correlation id \u00272baa4d2a-c269-4059-b968-fdc2fdc68df7\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaIdentity Expanded (validation then expected failure)+Validates identity + expanded params with WhatIf (pipe monitor object)+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "57dd2e24-4e8c-4928-87db-50bdfe7ed12c" ],
+        "CommandName": [ "Get-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8b003978-0000-0100-0000-6915ea9a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9b3c9e63-d534-44df-b88a-dbdbf18911ec" ],
+        "x-ms-correlation-request-id": [ "dd9ef36f-8fca-4768-976e-b4c746d3976f" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143142Z:dd9ef36f-8fca-4768-976e-b4c746d3976f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F5A1C246EFE84153A15D00E68306C122 Ref B: SG2AA1070302052 Ref C: 2025-11-13T14:31:41Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n\",\"name\":\"dyobxdag4n\",\"type\":\"dynatrace.observability/monitors\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"arushiarora@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-13T14:23:21.0021743Z\",\"lastModifiedBy\":\"dba650ed-9577-4bc0-9b5f-ef73e2d5bdfc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-13T14:26:34.8443764Z\"},\"properties\":{\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"dynatraceEnvironmentProperties\":{\"userId\":\"51d2893a-24cd-4b52-872d-d50534fd10a5\",\"accountInfo\":{\"accountId\":\"c8c08bfe-ce8a-4f4a-ba69-965ac51e1b56\",\"regionId\":\"eastus\"},\"environmentInfo\":{\"environmentId\":\"ptv32670\",\"logsIngestionEndpoint\":\"https://ptv32670.live.dynatrace.com/api/v2/logs/ingest\",\"landingURL\":\"https://ptv32670.live.dynatrace.com/\"},\"singleSignOnProperties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Accepted\"}},\"userInfo\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"agarwalshiv@microsoft.com\"},\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview@TIDgmz7xq9ge3py\",\"effectiveDate\":\"2025-11-13T14:26:02.1128086Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaIdentity Expanded (validation then expected failure)+Actual install via identity expected to throw (backend error)+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "a6fb3c38-376d-499f-8a57-f7e3ee366274" ],
+        "CommandName": [ "Get-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8b003978-0000-0100-0000-6915ea9a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7aed776c-3871-49a1-a2d9-e37ce9738aa8" ],
+        "x-ms-correlation-request-id": [ "ab707ea2-fcc5-4db7-a1c3-3b0a41e40901" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143142Z:ab707ea2-fcc5-4db7-a1c3-3b0a41e40901" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A68EAB2BAD754BC1B657D4CB9915A4DD Ref B: SG2AA1070302052 Ref C: 2025-11-13T14:31:42Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n\",\"name\":\"dyobxdag4n\",\"type\":\"dynatrace.observability/monitors\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"arushiarora@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-13T14:23:21.0021743Z\",\"lastModifiedBy\":\"dba650ed-9577-4bc0-9b5f-ef73e2d5bdfc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-13T14:26:34.8443764Z\"},\"properties\":{\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"dynatraceEnvironmentProperties\":{\"userId\":\"51d2893a-24cd-4b52-872d-d50534fd10a5\",\"accountInfo\":{\"accountId\":\"c8c08bfe-ce8a-4f4a-ba69-965ac51e1b56\",\"regionId\":\"eastus\"},\"environmentInfo\":{\"environmentId\":\"ptv32670\",\"logsIngestionEndpoint\":\"https://ptv32670.live.dynatrace.com/api/v2/logs/ingest\",\"landingURL\":\"https://ptv32670.live.dynatrace.com/\"},\"singleSignOnProperties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Accepted\"}},\"userInfo\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"agarwalshiv@microsoft.com\"},\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview@TIDgmz7xq9ge3py\",\"effectiveDate\":\"2025-11-13T14:26:02.1128086Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaIdentity Expanded (validation then expected failure)+Actual install via identity expected to throw (backend error)+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Install\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "189" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "3200187c-8344-40ac-beaa-375d95d2562f" ],
+        "x-ms-correlation-request-id": [ "3200187c-8344-40ac-beaa-375d95d2562f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143145Z:3200187c-8344-40ac-beaa-375d95d2562f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6229082446394F18A16913FA8A2F1DF1 Ref B: SG2AA1070305036 Ref C: 2025-11-13T14:31:45Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143145Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u00273200187c-8344-40ac-beaa-375d95d2562f\u0027, request correlation id \u00273200187c-8344-40ac-beaa-375d95d2562f\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaIdentity with Request object (validation then expected failure)+Validates identity + request object with WhatIf (pipe monitor object)+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "1b7a99c3-ea67-4f0c-b726-da8b058751df" ],
+        "CommandName": [ "Get-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8b003978-0000-0100-0000-6915ea9a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0045f347-f226-47b5-baf1-d2f2e164f095" ],
+        "x-ms-correlation-request-id": [ "7cf46971-e2ca-4bbf-beba-db8a2023a196" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143145Z:7cf46971-e2ca-4bbf-beba-db8a2023a196" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CBDE8A6448564926AD51E98E5D11CE30 Ref B: SG2AA1070305036 Ref C: 2025-11-13T14:31:45Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n\",\"name\":\"dyobxdag4n\",\"type\":\"dynatrace.observability/monitors\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"arushiarora@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-13T14:23:21.0021743Z\",\"lastModifiedBy\":\"dba650ed-9577-4bc0-9b5f-ef73e2d5bdfc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-13T14:26:34.8443764Z\"},\"properties\":{\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"dynatraceEnvironmentProperties\":{\"userId\":\"51d2893a-24cd-4b52-872d-d50534fd10a5\",\"accountInfo\":{\"accountId\":\"c8c08bfe-ce8a-4f4a-ba69-965ac51e1b56\",\"regionId\":\"eastus\"},\"environmentInfo\":{\"environmentId\":\"ptv32670\",\"logsIngestionEndpoint\":\"https://ptv32670.live.dynatrace.com/api/v2/logs/ingest\",\"landingURL\":\"https://ptv32670.live.dynatrace.com/\"},\"singleSignOnProperties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Accepted\"}},\"userInfo\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"agarwalshiv@microsoft.com\"},\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview@TIDgmz7xq9ge3py\",\"effectiveDate\":\"2025-11-13T14:26:02.1128086Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaIdentity with Request object (validation then expected failure)+Actual uninstall via identity expected to throw (backend error)+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "25e9c740-13b2-4a64-92da-19e60f8025bf" ],
+        "CommandName": [ "Get-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8b003978-0000-0100-0000-6915ea9a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b310c805-198e-4acf-baec-1f70d8ad3d60" ],
+        "x-ms-correlation-request-id": [ "e2df14a6-a00d-479e-9231-cc93e7cfb5bb" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143146Z:e2df14a6-a00d-479e-9231-cc93e7cfb5bb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7C3B3E148707485BACFE41785F390044 Ref B: SG2AA1070305036 Ref C: 2025-11-13T14:31:45Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n\",\"name\":\"dyobxdag4n\",\"type\":\"dynatrace.observability/monitors\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"arushiarora@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-13T14:23:21.0021743Z\",\"lastModifiedBy\":\"dba650ed-9577-4bc0-9b5f-ef73e2d5bdfc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-13T14:26:34.8443764Z\"},\"properties\":{\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"dynatraceEnvironmentProperties\":{\"userId\":\"51d2893a-24cd-4b52-872d-d50534fd10a5\",\"accountInfo\":{\"accountId\":\"c8c08bfe-ce8a-4f4a-ba69-965ac51e1b56\",\"regionId\":\"eastus\"},\"environmentInfo\":{\"environmentId\":\"ptv32670\",\"logsIngestionEndpoint\":\"https://ptv32670.live.dynatrace.com/api/v2/logs/ingest\",\"landingURL\":\"https://ptv32670.live.dynatrace.com/\"},\"singleSignOnProperties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Accepted\"}},\"userInfo\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"agarwalshiv@microsoft.com\"},\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"azureportalintegration_privatepreview@TIDgmz7xq9ge3py\",\"effectiveDate\":\"2025-11-13T14:26:02.1128086Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaIdentity with Request object (validation then expected failure)+Actual uninstall via identity expected to throw (backend error)+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Uninstall\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "191" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "8dbc5029-887e-476c-833e-1491d5ffdc4d" ],
+        "x-ms-correlation-request-id": [ "8dbc5029-887e-476c-833e-1491d5ffdc4d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143148Z:8dbc5029-887e-476c-833e-1491d5ffdc4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CA4BDF69BD0D41BE9D1390C6E083C2EE Ref B: SG2AA1070302023 Ref C: 2025-11-13T14:31:48Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143148Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u00278dbc5029-887e-476c-833e-1491d5ffdc4d\u0027, request correlation id \u00278dbc5029-887e-476c-833e-1491d5ffdc4d\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaJsonString (validation then expected failure)+Actual JSON string install expected to throw+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Install\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "189" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "b2ad2043-53eb-454b-9da3-840441b8c143" ],
+        "x-ms-correlation-request-id": [ "b2ad2043-53eb-454b-9da3-840441b8c143" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143151Z:b2ad2043-53eb-454b-9da3-840441b8c143" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 14D8360347A14DFAAF417795B9665511 Ref B: SG2AA1070302040 Ref C: 2025-11-13T14:31:50Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143151Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u0027b2ad2043-53eb-454b-9da3-840441b8c143\u0027, request correlation id \u0027b2ad2043-53eb-454b-9da3-840441b8c143\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+ManageViaJsonFilePath (validation then expected failure)+Actual JSON file path install expected to throw+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "ewogICJtYW5hZ2VBZ2VudEluc3RhbGxhdGlvbkxpc3QiOiBbCiAgICB7CiAgICAgICJpZCI6ICIvc3Vic2NyaXB0aW9ucy8vcmVzb3VyY2VHcm91cHMvZHlvYnJnZGpncjI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvc2FtcGxlVk0xIgogICAgfQogIF0sCiAgImFjdGlvbiI6ICJJbnN0YWxsIgp9Cg==",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "190" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "360b87a8-156a-4d61-a748-1c4f0182ee10" ],
+        "x-ms-correlation-request-id": [ "360b87a8-156a-4d61-a748-1c4f0182ee10" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143154Z:360b87a8-156a-4d61-a748-1c4f0182ee10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 04DF05C98E164C5BB3483ADA1013719D Ref B: SG2AA1070301054 Ref C: 2025-11-13T14:31:53Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143154Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u0027360b87a8-156a-4d61-a748-1c4f0182ee10\u0027, request correlation id \u0027360b87a8-156a-4d61-a748-1c4f0182ee10\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+Empty resource list edge (validation only)+Actual call with empty list expected to throw+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [ ],\n  \"action\": \"Install\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/01f8d928-bac7-44d7-96ec-8d61a3aa1826" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "9248b032-8934-4edc-b712-e89f75ca1843" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "ed091ade-bb84-41ef-b378-3e7ff468794b" ],
+        "x-ms-correlation-request-id": [ "8895ab9a-3e7b-4cd5-9a67-8f885ee7afc3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143155Z:8895ab9a-3e7b-4cd5-9a67-8f885ee7afc3" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 48C14632CF454788B3E4A394B7E7777F Ref B: SG2AA1070301054 Ref C: 2025-11-13T14:31:54Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "89" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ManageAgentInstallationList is empty or null.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDynatraceManageMonitorAgentInstallation+Invalid action negative case+Throws for unsupported action value+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/manageAgentInstallation?api-version=2024-04-24",
+      "Content": "{\n  \"manageAgentInstallationList\": [\n    {\n      \"id\": \"/subscriptions//resourceGroups/dyobrgdjgr25/providers/Microsoft.Compute/virtualMachines/sampleVM1\"\n    }\n  ],\n  \"action\": \"Reinstall\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "191" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "795d2b82-b3a7-4c80-bdf3-33dd7a0dab0e" ],
+        "x-ms-correlation-request-id": [ "795d2b82-b3a7-4c80-bdf3-33dd7a0dab0e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T143157Z:795d2b82-b3a7-4c80-bdf3-33dd7a0dab0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 22AAA981224E4F94AB16B377B0B79A60 Ref B: SG2AA1070305052 Ref C: 2025-11-13T14:31:57Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:31:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalServerError\",\"message\":\"Encountered internal server error. Diagnostic information: timestamp \u002720251113T143157Z\u0027, subscription id \u0027b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\u0027, tracking id \u0027795d2b82-b3a7-4c80-bdf3-33dd7a0dab0e\u0027, request correlation id \u0027795d2b82-b3a7-4c80-bdf3-33dd7a0dab0e\u0027.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

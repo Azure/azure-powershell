@@ -297,6 +297,72 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicIpDdosProtectionStatusResult,PublicIPAddressesDdosProtectionStatusHeaders>> DdosProtectionStatusWithHttpMessagesAsync(string resourceGroupName, string publicIpAddressName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </summary>
+        /// <remarks>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameter that define which Public IP Address should be associated in place
+        /// of given Public IP Address.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicIPAddress,PublicIPAddressesReserveCloudServicePublicIPAddressHeaders>> ReserveCloudServicePublicIpAddressWithHttpMessagesAsync(string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </summary>
+        /// <remarks>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameter that define which Public IP Address should be associated in place
+        /// of given Public IP Address.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicIPAddress,PublicIPAddressesDisassociateCloudServiceReservedPublicIPHeaders>> DisassociateCloudServiceReservedPublicIpWithHttpMessagesAsync(string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets information about all public IP addresses on a virtual machine scale
         /// set level.
         /// </summary>
@@ -479,6 +545,72 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicIpDdosProtectionStatusResult,PublicIPAddressesDdosProtectionStatusHeaders>> BeginDdosProtectionStatusWithHttpMessagesAsync(string resourceGroupName, string publicIpAddressName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </summary>
+        /// <remarks>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameter that define which Public IP Address should be associated in place
+        /// of given Public IP Address.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicIPAddress,PublicIPAddressesReserveCloudServicePublicIPAddressHeaders>> BeginReserveCloudServicePublicIpAddressWithHttpMessagesAsync(string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </summary>
+        /// <remarks>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameter that define which Public IP Address should be associated in place
+        /// of given Public IP Address.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicIPAddress,PublicIPAddressesDisassociateCloudServiceReservedPublicIPHeaders>> BeginDisassociateCloudServiceReservedPublicIpWithHttpMessagesAsync(string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets information about all public IP addresses on a cloud service level.

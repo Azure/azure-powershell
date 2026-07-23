@@ -1,10 +1,15 @@
-﻿
+
 
 function New-AzDataProtectionResourceGuard
 {   
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a resource guard under a resource group')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='Subscription Id of the resource guard')]
@@ -23,7 +28,7 @@ function New-AzDataProtectionResourceGuard
         [System.String]
         ${ETag},
 
-        [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='This parameter is no longer in use and will be depricated')]
+        [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='This parameter is no longer in use and will be deprecated')]
         [System.String]
         ${IdentityType},
                 
@@ -83,7 +88,7 @@ function New-AzDataProtectionResourceGuard
             $null = $PSBoundParameters.Remove("IdentityType")
 
             # TODO : need to move this to parameter level 
-            Write-Warning "Parameter IdentityType is no longer in use and will be depricated in upcoming breaking change release"
+            Write-Warning "Parameter IdentityType is no longer in use and will be deprecated in upcoming breaking change release"
         }
         Az.DataProtection.Internal\New-AzDataProtectionResourceGuard @PSBoundParameters
     }

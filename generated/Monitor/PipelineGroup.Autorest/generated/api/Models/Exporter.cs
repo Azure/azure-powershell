@@ -34,39 +34,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporter AzureMonitorWorkspaceLog { get => (this._azureMonitorWorkspaceLog = this._azureMonitorWorkspaceLog ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsExporter()); set => this._azureMonitorWorkspaceLog = value; }
 
-        /// <summary>Max storage usage in megabytes.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? CacheMaxStorageUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).CacheMaxStorageUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).CacheMaxStorageUsage = value ?? default(int); }
-
-        /// <summary>Retention period in minutes.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? CacheRetentionPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).CacheRetentionPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).CacheRetentionPeriod = value ?? default(int); }
-
-        /// <summary>Size of the queue for log batches.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? ConcurrencyBatchQueueSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ConcurrencyBatchQueueSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ConcurrencyBatchQueueSize = value ?? default(int); }
-
-        /// <summary>Number of parallel workers processing the log queues.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? ConcurrencyWorkerCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ConcurrencyWorkerCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ConcurrencyWorkerCount = value ?? default(int); }
-
         /// <summary>Internal Acessors for ApiSchema</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISchemaMap Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.ApiSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ApiSchema; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ApiSchema = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISchemaMap Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.ApiSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ApiSchema; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).ApiSchema = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureMonitorWorkspaceLog</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporter Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.AzureMonitorWorkspaceLog { get => (this._azureMonitorWorkspaceLog = this._azureMonitorWorkspaceLog ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsExporter()); set { {_azureMonitorWorkspaceLog = value;} } }
 
         /// <summary>Internal Acessors for AzureMonitorWorkspaceLogApi</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfig Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.AzureMonitorWorkspaceLogApi { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Api; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Api = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfig Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.AzureMonitorWorkspaceLogApi { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Api; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Api = value ?? null /* model class */; }
 
-        /// <summary>Internal Acessors for AzureMonitorWorkspaceLogCache</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.AzureMonitorWorkspaceLogCache { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Cache; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Cache = value; }
+        /// <summary>Internal Acessors for AzureMonitorWorkspaceLogPersistence</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.AzureMonitorWorkspaceLogPersistence { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Persistence; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Persistence = value ?? null /* model class */; }
 
-        /// <summary>Internal Acessors for AzureMonitorWorkspaceLogConcurrency</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.AzureMonitorWorkspaceLogConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Concurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).Concurrency = value; }
-
-        /// <summary>Internal Acessors for Tcp</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITcpExporter Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.Tcp { get => (this._tcp = this._tcp ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TcpExporter()); set { {_tcp = value;} } }
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterInternal.Type { get => this._type; set { {_type = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -74,6 +55,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// <summary>The name of exporter.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>Max storage usage in gigabytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public int? PersistenceMaxStorageUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).PersistenceMaxStorageUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).PersistenceMaxStorageUsage = value ?? default(int); }
+
+        /// <summary>Retention period in minutes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public int? PersistenceRetentionPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).PersistenceRetentionPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).PersistenceRetentionPeriod = value ?? default(int); }
 
         /// <summary>Record Map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
@@ -94,23 +83,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IScopeMap> SchemaScopeMap { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).SchemaScopeMap; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)AzureMonitorWorkspaceLog).SchemaScopeMap = value ?? null /* arrayOf */; }
 
-        /// <summary>Backing field for <see cref="Tcp" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITcpExporter _tcp;
-
-        /// <summary>TCP based exporter. Used for pipelineGroup exporter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITcpExporter Tcp { get => (this._tcp = this._tcp ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TcpExporter()); set => this._tcp = value; }
-
-        /// <summary>TCP url to export.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string TcpUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITcpExporterInternal)Tcp).Url; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITcpExporterInternal)Tcp).Url = value ?? null; }
-
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
+        private string _type= @"AzureMonitorWorkspaceLogs";
 
         /// <summary>The type of exporter.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        public string Type { get => this._type; set => this._type = value; }
+        public string Type { get => this._type; }
 
         /// <summary>Creates an new <see cref="Exporter" /> instance.</summary>
         public Exporter()
@@ -157,50 +135,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"stream",
         PossibleTypes = new [] { typeof(string) })]
         string ApiStream { get; set; }
-        /// <summary>Max storage usage in megabytes.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Max storage usage in megabytes.",
-        SerializedName = @"maxStorageUsage",
-        PossibleTypes = new [] { typeof(int) })]
-        int? CacheMaxStorageUsage { get; set; }
-        /// <summary>Retention period in minutes.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Retention period in minutes.",
-        SerializedName = @"retentionPeriod",
-        PossibleTypes = new [] { typeof(int) })]
-        int? CacheRetentionPeriod { get; set; }
-        /// <summary>Size of the queue for log batches.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Size of the queue for log batches.",
-        SerializedName = @"batchQueueSize",
-        PossibleTypes = new [] { typeof(int) })]
-        int? ConcurrencyBatchQueueSize { get; set; }
-        /// <summary>Number of parallel workers processing the log queues.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Number of parallel workers processing the log queues.",
-        SerializedName = @"workerCount",
-        PossibleTypes = new [] { typeof(int) })]
-        int? ConcurrencyWorkerCount { get; set; }
         /// <summary>The name of exporter.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
@@ -212,6 +146,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
+        /// <summary>Max storage usage in gigabytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Max storage usage in gigabytes.",
+        SerializedName = @"maxStorageUsage",
+        PossibleTypes = new [] { typeof(int) })]
+        int? PersistenceMaxStorageUsage { get; set; }
+        /// <summary>Retention period in minutes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Retention period in minutes.",
+        SerializedName = @"retentionPeriod",
+        PossibleTypes = new [] { typeof(int) })]
+        int? PersistenceRetentionPeriod { get; set; }
         /// <summary>Record Map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -252,29 +208,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"scopeMap",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IScopeMap) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IScopeMap> SchemaScopeMap { get; set; }
-        /// <summary>TCP url to export.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"TCP url to export.",
-        SerializedName = @"url",
-        PossibleTypes = new [] { typeof(string) })]
-        string TcpUrl { get; set; }
         /// <summary>The type of exporter.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
         Create = true,
         Update = true,
         Description = @"The type of exporter.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("AzureMonitorWorkspaceLogs", "PipelineGroup")]
-        string Type { get; set; }
+        string Type { get;  }
 
     }
     /// Exporter Info.
@@ -295,20 +239,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporter AzureMonitorWorkspaceLog { get; set; }
         /// <summary>API configurations for Azure Monitor workspace exporter.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfig AzureMonitorWorkspaceLogApi { get; set; }
-        /// <summary>Cache configurations.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration AzureMonitorWorkspaceLogCache { get; set; }
-        /// <summary>Concurrency configuration for the exporter.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration AzureMonitorWorkspaceLogConcurrency { get; set; }
-        /// <summary>Max storage usage in megabytes.</summary>
-        int? CacheMaxStorageUsage { get; set; }
-        /// <summary>Retention period in minutes.</summary>
-        int? CacheRetentionPeriod { get; set; }
-        /// <summary>Size of the queue for log batches.</summary>
-        int? ConcurrencyBatchQueueSize { get; set; }
-        /// <summary>Number of parallel workers processing the log queues.</summary>
-        int? ConcurrencyWorkerCount { get; set; }
+        /// <summary>Persistence options for the exporter.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration AzureMonitorWorkspaceLogPersistence { get; set; }
         /// <summary>The name of exporter.</summary>
         string Name { get; set; }
+        /// <summary>Max storage usage in gigabytes.</summary>
+        int? PersistenceMaxStorageUsage { get; set; }
+        /// <summary>Retention period in minutes.</summary>
+        int? PersistenceRetentionPeriod { get; set; }
         /// <summary>Record Map.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IRecordMap> SchemaRecordMap { get; set; }
         /// <summary>
@@ -322,12 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// A scope map is a logical unit of the application code with which the emitted telemetry can be associated.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IScopeMap> SchemaScopeMap { get; set; }
-        /// <summary>TCP based exporter. Used for pipelineGroup exporter.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITcpExporter Tcp { get; set; }
-        /// <summary>TCP url to export.</summary>
-        string TcpUrl { get; set; }
         /// <summary>The type of exporter.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("AzureMonitorWorkspaceLogs", "PipelineGroup")]
         string Type { get; set; }
 
     }

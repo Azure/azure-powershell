@@ -27,7 +27,7 @@ Generally, this change will not cause a breaking change for users. In modules ge
 
 ### Removal of PassThru for Certain Cmdlets
 
-`-PassThru` is a switch parameter that we add to cmdlets that don't have outputs to enable the pipline functionality. In AutoRest.PowerShell v3, `-PassThru` was incorrectly added to some cmdlets that do have outputs. This is fixed in v4 and those extra `-PassThru` parameters are removed.
+`-PassThru` is a switch parameter that we add to cmdlets that don't have outputs to enable the pipeline functionality. In AutoRest.PowerShell v3, `-PassThru` was incorrectly added to some cmdlets that do have outputs. This is fixed in v4 and those extra `-PassThru` parameters are removed.
 
 #### How to Mitigate the Impact of Breaking Changes
 

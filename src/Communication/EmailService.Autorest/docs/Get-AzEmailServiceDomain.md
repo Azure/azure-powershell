@@ -56,7 +56,7 @@ global   customdomain.net                               07-02-2024 06:11:24 test
 
 Returns a list of all domain resources under that email services.
 
-### Example 2: Get infomation on specified Azure Email services resource
+### Example 2: Get information on specified Azure Email services resource
 ```powershell
 Get-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```

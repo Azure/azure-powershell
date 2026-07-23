@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
 online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/restore-azcosmosdbsqldatabase
@@ -14,8 +14,8 @@ Restore a deleted sql database to a given timestamp in the same account
 
 ```
 Restore-AzCosmosDBSqlDatabase -ResourceGroupName <String> -AccountName <String> -Name <String>
- -RestoreTimestampInUtc <DateTime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RestoreTimestampInUtc <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Restores the deleted sql database in the same account with the given name and ti
 
 ### Example 1
 ```powershell
-Restore-AzCosmosDBSqlDatabase -AccountName “my-pitr-sql-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
+Restore-AzCosmosDBSqlDatabase -AccountName "my-pitr-sql-account" -ResourceGroupName "my-rg" -Name "my-database" -RestoreTimestampInUtc "2022-08-25T07:16:20Z"
 ```
 
 ```output
@@ -47,21 +47,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +106,22 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

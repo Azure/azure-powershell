@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
             }
 
+            Logger.Instance.WriteDebug("Executing CreateOrUpdateWithHttpMessagesAsync");
             return BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
                  vaultName ?? BmsAdapter.GetResourceName(),
                  resourceGroupName ?? BmsAdapter.GetResourceGroupName(),

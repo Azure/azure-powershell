@@ -15,25 +15,29 @@ The Remove-AzVirtualHubBgpConnection cmdlet removes a HubBgpConnection resource 
 ### ByVirtualHubName (Default)
 ```
 Remove-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -Name <String> [-AsJob]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Remove-AzVirtualHubBgpConnection -Name <String> -VirtualHub <PSVirtualHub> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHubBgpConnectionObject
 ```
 Remove-AzVirtualHubBgpConnection -InputObject <PSBgpConnection> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHubBgpConnectionResourceId
 ```
 Remove-AzVirtualHubBgpConnection -ResourceId <String> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

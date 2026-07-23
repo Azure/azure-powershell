@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Gets a description for the specified consumer group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzEventHubConsumerGroup_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The Associatted client address pool")]
+            HelpMessage = "The Associated client address pool")]
         public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(

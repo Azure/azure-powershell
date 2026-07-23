@@ -1143,7 +1143,7 @@ $file.CloudFile | Close-AzStorageFileHandle -CloseAll
 $share = Get-AzStorageShare -ShareName $sharename -Context $ctx
 $share.ShareClient | Close-AzStorageFileHandle -CloseAll -PassThru
 
-# Pipe in ShareDirectoryClient to close file handles rescursively
+# Pipe in ShareDirectoryClient to close file handles recursively
 $dir = Get-AzStorageFile -ShareName $shareName -Path $dirpath -Context $ctx
 $dir.ShareDirectoryClient | Close-AzStorageFileHandle -Recursive -CloseAll
 
@@ -1464,7 +1464,7 @@ Remove-AzStorageDirectory -Directory $dir.CloudFileDirectory
 #### After
 ```powershell
 $share = Get-AzStorageShare -Name $sharename -Context $ctx 
-Remove-AzStorageDirectory -ShareClient $share.ShareClient -Path $dirpath -Conetxt $ctx
+Remove-AzStorageDirectory -ShareClient $share.ShareClient -Path $dirpath -Context $ctx
 
 $dir = Get-AzStorageFile -ShareName $sharename -Path $dirpath -Context $ctx 
 Remove-AzStorageDirectory -ShareDirectoryClient.ShareDirectoryClient -Context $ctx

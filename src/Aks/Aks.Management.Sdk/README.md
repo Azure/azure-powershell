@@ -22,9 +22,9 @@ payload-flattening-threshold: 1
 
 ###
 ``` yaml
-commit: d27233c75caefa067a59c37538486da5b535cf15
+commit: 0e3000dfffe6c32c8ed124140dd972dafae67cfa
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-04-01/managedClusters.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2026-03-01/managedClusters.json
 
 ### There are 2 same "type" property with same x-ms-enum.name="ResourceIdentityType" defined in both managedClusters.json and its referenced types.json. 
 ### Rename the one in types.json to avoid autorest converting error.
@@ -63,7 +63,9 @@ directive:
       property-name: PropertiesType
     set:
       property-name: AgentPoolType
-
+  - from: ManagedClusterSecurityProfile.cs
+    where: $
+    transform: $ = $.replaceAll('System.Collections.Generic.IList<byte[]?>', 'System.Collections.Generic.IList<byte[]>');
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService
 ```

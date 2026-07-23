@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Gets the specified Azure SQL Database replication link with Lagecy sdk
+        /// Gets the specified Azure SQL Database replication link with Legacy sdk
         /// </summary>
         public Management.Sql.LegacySdk.Models.ReplicationLink GetLink(string resourceGroupName, string serverName, string databaseName, Guid linkId)
         {

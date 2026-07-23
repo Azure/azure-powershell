@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="origin">The intended executor of the operation; as in Resource Based Access Control
         /// (RBAC) and audit logs UX. Default value is &#34;user,system&#34;
-        /// Possible values include: 'user', 'system', 'user,system'</param>
+        /// Possible values include: &#39;user&#39;, &#39;system&#39;, &#39;user,system&#39;</param>
 
         /// <param name="actionType">Enum. Indicates the action type. &#34;Internal&#34; refers to actions that are for
         /// internal only APIs.
-        /// Possible values include: 'Internal'</param>
+        /// Possible values include: &#39;Internal&#39;</param>
         public Operation(string name = default(string), bool? isDataAction = default(bool?), OperationDisplay display = default(OperationDisplay), string origin = default(string), string actionType = default(string))
 
         {

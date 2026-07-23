@@ -80,6 +80,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).Offer = (string) content.GetValueForProperty("Offer",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).Offer, global::System.Convert.ToString);
             }
+            if (content.Contains("ManagementNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).ManagementNetwork = (string) content.GetValueForProperty("ManagementNetwork",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).ManagementNetwork, global::System.Convert.ToString);
+            }
+            if (content.Contains("UplinkNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).UplinkNetwork = (string) content.GetValueForProperty("UplinkNetwork",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).UplinkNetwork, global::System.Convert.ToString);
+            }
             if (content.Contains("AddonType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)this).AddonType = (string) content.GetValueForProperty("AddonType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)this).AddonType, global::System.Convert.ToString);
@@ -108,6 +116,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Offer"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).Offer = (string) content.GetValueForProperty("Offer",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).Offer, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).ManagementNetwork = (string) content.GetValueForProperty("ManagementNetwork",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).ManagementNetwork, global::System.Convert.ToString);
+            }
+            if (content.Contains("UplinkNetwork"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).UplinkNetwork = (string) content.GetValueForProperty("UplinkNetwork",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonHcxPropertiesInternal)this).UplinkNetwork, global::System.Convert.ToString);
             }
             if (content.Contains("AddonType"))
             {

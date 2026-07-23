@@ -21,12 +21,13 @@ Create an in-memory object for PowerBIDataSource.
 Create an in-memory object for PowerBIDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBIDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbidatasourceobject
 #>
 function New-AzPurviewPowerBIDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBIDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,15 +39,11 @@ function New-AzPurviewPowerBIDataSourceObject {
         $CollectionType,
         [Parameter()]
         [string]
-        $Tenant,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $Tenant
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBIDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -56,9 +53,6 @@ function New-AzPurviewPowerBIDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('Tenant')) {
             $Object.Tenant = $Tenant
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

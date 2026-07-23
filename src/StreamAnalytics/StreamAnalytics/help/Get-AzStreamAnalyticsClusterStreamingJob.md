@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IClusterJob
 
 ## NOTES
 

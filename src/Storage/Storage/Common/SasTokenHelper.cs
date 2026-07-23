@@ -102,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Valiate access policy
+        /// Validate access policy
         /// </summary>
         /// <param name="policies">Access policy</param>
         /// <param name="policyIdentifier">policyIdentifier</param>
@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get a BlobSignedIdentifier from contaienr with a specific Id
+        /// Get a BlobSignedIdentifier from container with a specific Id
         /// </summary>
         public static BlobSignedIdentifier GetBlobSignedIdentifier(BlobContainerClient container, string identifierId, CancellationToken cancellationToken)
         {
@@ -501,7 +501,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
             }
         }
 
@@ -516,7 +516,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey credentail.");
+                throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey credential.");
             }
         }
 
@@ -755,6 +755,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (generateUserDelegationSas)
             {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
                 global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
                 BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, ClientOptions);
 
@@ -769,7 +773,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential.");
             }
         }
 
@@ -784,6 +788,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (generateUserDelegationSas)
             {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
                 global::Azure.Storage.Files.DataLake.Models.UserDelegationKey userDelegationKey = null;
                 DataLakeServiceClient oauthService = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, clientOptions);
 
@@ -798,7 +806,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential.");
             }
         }
 
@@ -861,7 +869,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get Track2 accunt sas SasServices
+        /// Get Track2 account sas SasServices
         /// </summary>
         public static AccountSasServices GetAccountSasServices(SharedAccessAccountServices Service)
         {
@@ -886,7 +894,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get Track2 accunt sas ResourceTypes
+        /// Get Track2 account sas ResourceTypes
         /// </summary>
         public static AccountSasResourceTypes GetAccountSasResourceTypes(SharedAccessAccountResourceTypes type)
         {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzElasticOpenAi
 
 ## SYNOPSIS
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 
 ## SYNTAX
 
@@ -19,6 +19,13 @@ Remove-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -Resource
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityMonitor
+```
+Remove-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzElasticOpenAi -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -26,7 +33,7 @@ Remove-AzElasticOpenAi -InputObject <IElasticIdentity> [-DefaultProfile <PSObjec
 ```
 
 ## DESCRIPTION
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 
 ## EXAMPLES
 
@@ -57,7 +64,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -76,13 +82,28 @@ OpenAI Integration name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityMonitor
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: DeleteViaIdentityMonitor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

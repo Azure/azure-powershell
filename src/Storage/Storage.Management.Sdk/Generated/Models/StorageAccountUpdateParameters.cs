@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Possible values include: &#39;Storage&#39;, &#39;StorageV2&#39;, &#39;BlobStorage&#39;,
         /// &#39;FileStorage&#39;, &#39;BlockBlobStorage&#39;</param>
 
+        /// <param name="zones">Optional. Gets or sets the pinned logical availability zone for the storage
+        /// account.
+        /// </param>
+
+        /// <param name="placement">Optional. Gets or sets the zonal placement details for the storage account.
+        /// </param>
+
         /// <param name="customDomain">Custom domain assigned to the storage account by the user. Name is the
         /// CNAME source. Only one custom domain is supported per storage account at
         /// this time. To clear the existing custom domain, use an empty string for the
@@ -66,7 +73,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// used for billing. The &#39;Premium&#39; access tier is the default value for
         /// premium block blobs storage account type and it cannot be changed for the
         /// premium block blobs storage account type.
-        /// Possible values include: &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;, &#39;Cold&#39;</param>
+        /// Possible values include: &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;, &#39;Cold&#39;, &#39;Smart&#39;</param>
 
         /// <param name="routingPreference">Maintains information about the network routing choice opted by the user
         /// for data transfer
@@ -94,12 +101,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// is enabled.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
+        /// <param name="dualStackEndpointPreference">Maintains information about the Internet protocol opted by the user.
+        /// </param>
+
         /// <param name="allowBlobPublicAccess">Allow or disallow public access to all blobs or containers in the storage
         /// account. The default interpretation is false for this property.
         /// </param>
 
         /// <param name="minimumTlsVersion">Set the minimum TLS version to be permitted on requests to storage. The
-        /// default interpretation is TLS 1.0 for this property.
+        /// default interpretation is TLS 1.0 for this property. Minimum TLS version
+        /// 1.3 version is not supported.
         /// Possible values include: &#39;TLS1_0&#39;, &#39;TLS1_1&#39;, &#39;TLS1_2&#39;, &#39;TLS1_3&#39;</param>
 
         /// <param name="allowSharedKeyAccess">Indicates whether the storage account permits requests to be authorized
@@ -132,20 +143,32 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="allowedCopyScope">Restrict copy to and from Storage Accounts within an AAD tenant or with
         /// Private Links to the same VNet.
-        /// Possible values include: &#39;PrivateLink&#39;, &#39;AAD&#39;</param>
+        /// Possible values include: &#39;PrivateLink&#39;, &#39;AAD&#39;, &#39;All&#39;</param>
 
         /// <param name="dnsEndpointType">Allows you to specify the type of endpoint. Set this to AzureDNSZone to
         /// create a large number of accounts in a single subscription, which creates
         /// accounts in an Azure DNS Zone and the endpoint URL will have an
         /// alphanumeric DNS Zone identifier.
         /// Possible values include: &#39;Standard&#39;, &#39;AzureDnsZone&#39;</param>
-        public StorageAccountUpdateParameters(Sku sku = default(Sku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), string kind = default(string), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), string largeFileSharesState = default(string), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), string dnsEndpointType = default(string))
+
+        /// <param name="geoPriorityReplicationStatus">Status indicating whether Geo Priority Replication is enabled for the
+        /// account.
+        /// </param>
+
+        /// <param name="allowSharedKeyAccessForServices">Indicate shared key access properties at service level
+        /// </param>
+
+        /// <param name="dataCollaborationPolicyProperties">Data Collaboration policy for the storage account.
+        /// </param>
+        public StorageAccountUpdateParameters(Sku sku = default(Sku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), string kind = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), string largeFileSharesState = default(string), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), string dnsEndpointType = default(string), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus), StorageAccountSharedKeyAccessProperties allowSharedKeyAccessForServices = default(StorageAccountSharedKeyAccessProperties), StorageDataCollaborationPolicyProperties dataCollaborationPolicyProperties = default(StorageDataCollaborationPolicyProperties))
 
         {
             this.Sku = sku;
             this.Tags = tags;
             this.Identity = identity;
             this.Kind = kind;
+            this.Zones = zones;
+            this.Placement = placement;
             this.CustomDomain = customDomain;
             this.Encryption = encryption;
             this.SasPolicy = sasPolicy;
@@ -159,6 +182,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.EnableExtendedGroups = enableExtendedGroups;
             this.NetworkRuleSet = networkRuleSet;
             this.LargeFileSharesState = largeFileSharesState;
+            this.DualStackEndpointPreference = dualStackEndpointPreference;
             this.AllowBlobPublicAccess = allowBlobPublicAccess;
             this.MinimumTlsVersion = minimumTlsVersion;
             this.AllowSharedKeyAccess = allowSharedKeyAccess;
@@ -168,6 +192,9 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.ImmutableStorageWithVersioning = immutableStorageWithVersioning;
             this.AllowedCopyScope = allowedCopyScope;
             this.DnsEndpointType = dnsEndpointType;
+            this.GeoPriorityReplicationStatus = geoPriorityReplicationStatus;
+            this.AllowSharedKeyAccessForServices = allowSharedKeyAccessForServices;
+            this.DataCollaborationPolicyProperties = dataCollaborationPolicyProperties;
             CustomInit();
         }
 
@@ -209,6 +236,20 @@ namespace Microsoft.Azure.Management.Storage.Models
         public string Kind {get; set; }
 
         /// <summary>
+        /// Gets or sets optional. Gets or sets the pinned logical availability zone
+        /// for the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
+        public System.Collections.Generic.IList<string> Zones {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Gets or sets the zonal placement details for the
+        /// storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
+        public Placement Placement {get; set; }
+
+        /// <summary>
         /// Gets or sets custom domain assigned to the storage account by the user.
         /// Name is the CNAME source. Only one custom domain is supported per storage
         /// account at this time. To clear the existing custom domain, use an empty
@@ -240,7 +281,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Gets or sets required for storage accounts where kind = BlobStorage. The
         /// access tier is used for billing. The &#39;Premium&#39; access tier is the default
         /// value for premium block blobs storage account type and it cannot be changed
-        /// for the premium block blobs storage account type. Possible values include: &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;, &#39;Cold&#39;
+        /// for the premium block blobs storage account type. Possible values include: &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;, &#39;Cold&#39;, &#39;Smart&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.accessTier")]
         public AccessTier? AccessTier {get; set; }
@@ -298,6 +339,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         public string LargeFileSharesState {get; set; }
 
         /// <summary>
+        /// Gets or sets maintains information about the Internet protocol opted by the
+        /// user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dualStackEndpointPreference")]
+        public DualStackEndpointPreference DualStackEndpointPreference {get; set; }
+
+        /// <summary>
         /// Gets or sets allow or disallow public access to all blobs or containers in
         /// the storage account. The default interpretation is false for this property.
         /// </summary>
@@ -306,7 +354,8 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets set the minimum TLS version to be permitted on requests to
-        /// storage. The default interpretation is TLS 1.0 for this property. Possible values include: &#39;TLS1_0&#39;, &#39;TLS1_1&#39;, &#39;TLS1_2&#39;, &#39;TLS1_3&#39;
+        /// storage. The default interpretation is TLS 1.0 for this property. Minimum
+        /// TLS version 1.3 version is not supported. Possible values include: &#39;TLS1_0&#39;, &#39;TLS1_1&#39;, &#39;TLS1_2&#39;, &#39;TLS1_3&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimumTlsVersion")]
         public string MinimumTlsVersion {get; set; }
@@ -358,7 +407,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets restrict copy to and from Storage Accounts within an AAD
-        /// tenant or with Private Links to the same VNet. Possible values include: &#39;PrivateLink&#39;, &#39;AAD&#39;
+        /// tenant or with Private Links to the same VNet. Possible values include: &#39;PrivateLink&#39;, &#39;AAD&#39;, &#39;All&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowedCopyScope")]
         public string AllowedCopyScope {get; set; }
@@ -371,6 +420,25 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsEndpointType")]
         public string DnsEndpointType {get; set; }
+
+        /// <summary>
+        /// Gets or sets status indicating whether Geo Priority Replication is enabled
+        /// for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.geoPriorityReplicationStatus")]
+        public GeoPriorityReplicationStatus GeoPriorityReplicationStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicate shared key access properties at service level
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowSharedKeyAccessForServices")]
+        public StorageAccountSharedKeyAccessProperties AllowSharedKeyAccessForServices {get; set; }
+
+        /// <summary>
+        /// Gets or sets data Collaboration policy for the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dataCollaborationPolicyProperties")]
+        public StorageDataCollaborationPolicyProperties DataCollaborationPolicyProperties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -388,6 +456,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 this.Identity.Validate();
             }
+
+
 
             if (this.CustomDomain != null)
             {
@@ -415,10 +485,14 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
 
+
             if (this.ImmutableStorageWithVersioning != null)
             {
                 this.ImmutableStorageWithVersioning.Validate();
             }
+
+
+
 
 
         }

@@ -25,12 +25,12 @@ $md5Key = "******"
 New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -SessionAddressProvider Peer -ConnectionIdentifier c111111111111
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection
 .Link
-https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringdirectconnectionobject
 #>
 function New-AzPeeringDirectConnectionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -106,9 +106,9 @@ param(
     ${PeeringDbFacilityId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.SessionAddressProvider])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Microsoft", "Peer")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.SessionAddressProvider]
+    [System.String]
     # The field indicating if Microsoft provides session ip addresses.
     ${SessionAddressProvider},
 
@@ -126,6 +126,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -154,6 +157,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -1,6 +1,6 @@
 ### Example 1: Create Azure MySQL data source object
 ```powershell
-New-AzPurviewAzureMySqlDataSourceObject -Kind 'AzureMySql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 3306 -ServerEndpoint 'nause.mysql.database.azure.com'
+New-AzPurviewAzureMySqlDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 3306 -ServerEndpoint 'nause.mysql.database.azure.com'
 ```
 
 ```output

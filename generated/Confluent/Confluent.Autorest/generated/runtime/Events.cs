@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
 {
     public static partial class Events
     {
@@ -22,6 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
         public const string FollowingNextLink = nameof(FollowingNextLink);
         public const string DelayBeforePolling = nameof(DelayBeforePolling);
         public const string Polling = nameof(Polling);
-
+        public const string Progress = nameof(Progress);
     }
 }

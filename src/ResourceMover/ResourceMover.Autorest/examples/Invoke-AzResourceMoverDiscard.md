@@ -1,4 +1,4 @@
-### Example 1: Validate the dependecies before Discard of  the resources.
+### Example 1: Validate the dependencies before Discard of  the resources.
 ```powershell
 Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 ```
@@ -18,7 +18,7 @@ Status         : Succeeded
 
 ```
 
-Validate the dependecies before Discard of  the resources.
+Validate the dependencies before Discard of  the resources.
 
 
 ### Example 2: Discards the move of the resources using "MoveResource Name" as input.

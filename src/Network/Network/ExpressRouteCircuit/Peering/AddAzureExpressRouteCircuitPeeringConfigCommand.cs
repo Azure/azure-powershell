@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                // Set IPv4 config even if no PeerAddressType has been specified for backward compatibility
                 this.SetIpv4PeeringParameters(peering);
             }
 

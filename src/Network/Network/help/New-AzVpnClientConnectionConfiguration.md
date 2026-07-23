@@ -19,7 +19,7 @@ New-AzVpnClientConnectionConfiguration -Name <String>
 ```
 
 ## DESCRIPTION
-Conneciton Configuration associate between the address space of the P2S client and the according virtual network gateway policy groups 
+Connection Configuration associate between the address space of the P2S client and the according virtual network gateway policy groups 
 
 ## EXAMPLES
 
@@ -29,8 +29,8 @@ $member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -Attribute
 $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
 $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
 $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
-$vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
-$vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24"
+$vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "config1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+$vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "config2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24"
 ```
 
 Create Client Connection configuration
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientAddressPool
-The Associatted client address pool
+The Associated client address pool
 
 ```yaml
 Type: System.String[]

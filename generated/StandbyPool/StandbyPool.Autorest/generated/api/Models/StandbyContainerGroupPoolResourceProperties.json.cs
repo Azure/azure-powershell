@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             {_elasticityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("elasticityProfile"), out var __jsonElasticityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfile.FromJson(__jsonElasticityProfile) : _elasticityProfile;}
             {_containerGroupProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("containerGroupProperties"), out var __jsonContainerGroupProperties) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProperties.FromJson(__jsonContainerGroupProperties) : _containerGroupProperty;}
+            {_zone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray>("zones"), out var __jsonZones) ? If( __jsonZones as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _zone;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
@@ -106,6 +107,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             AddIf( null != this._elasticityProfile ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._elasticityProfile.ToJson(null,serializationMode) : null, "elasticityProfile" ,container.Add );
             AddIf( null != this._containerGroupProperty ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._containerGroupProperty.ToJson(null,serializationMode) : null, "containerGroupProperties" ,container.Add );
+            if (null != this._zone)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.XNodeArray();
+                foreach( var __x in this._zone )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("zones",__w);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

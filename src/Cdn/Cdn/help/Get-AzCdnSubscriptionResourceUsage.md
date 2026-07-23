@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -107,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
 
 ## NOTES
 

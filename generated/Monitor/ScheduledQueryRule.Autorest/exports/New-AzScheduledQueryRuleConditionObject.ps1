@@ -24,7 +24,7 @@ $dimension = New-AzScheduledQueryRuleDimensionObject -Name Computer -Operator In
 New-AzScheduledQueryRuleConditionObject -Dimension $dimension -Query "Perf | where ObjectName == `"Processor`" and CounterName == `"% Processor Time`" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer" -TimeAggregation "Average" -MetricMeasureColumn "AggregatedValue" -Operator "GreaterThan" -Threshold "70" -FailingPeriodNumberOfEvaluationPeriod 1 -FailingPeriodMinFailingPeriodsToAlert 1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -32,20 +32,19 @@ To create the parameters described below, construct a hash table containing the 
 
 DIMENSION <IDimension[]>: List of Dimensions conditions.
   Name <String>: Name of the dimension
-  Operator <DimensionOperator>: Operator for dimension values
-  Value <String[]>: List of dimension values
+  Operator <String>: Operator for dimension values
+  Value <List<String>>: List of dimension values
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleConditionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azscheduledqueryruleconditionobject
 #>
 function New-AzScheduledQueryRuleConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IDimension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IDimension[]]
     # List of Dimensions conditions.
-    # To construct, see NOTES section for DIMENSION properties and create a hash table.
     ${Dimension},
 
     [Parameter()]
@@ -79,9 +78,9 @@ param(
     ${MetricName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.PSArgumentCompleterAttribute("Equals", "GreaterThan", "GreaterThanOrEqual", "LessThan", "LessThanOrEqual")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator]
+    [System.String]
     # The criteria operator.
     # Relevant and required only for rules of the kind LogAlert.
     ${Operator},
@@ -108,9 +107,9 @@ param(
     ${Threshold},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.TimeAggregation])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.PSArgumentCompleterAttribute("Count", "Average", "Minimum", "Maximum", "Total")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.TimeAggregation]
+    [System.String]
     # Aggregation type.
     # Relevant and required only for rules of the kind LogAlert.
     ${TimeAggregation}
@@ -123,6 +122,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -151,6 +153,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

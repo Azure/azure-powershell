@@ -30,8 +30,6 @@ $mgId = 'myManagementGroup'
 Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
 .Example
 Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
-.Example
-Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
 
 .Inputs
 System.Management.Automation.SwitchParameter
@@ -60,7 +58,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy assignment.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='IncludeDescendent', Mandatory, ValueFromPipelineByPropertyName)]
@@ -95,11 +93,13 @@ param(
     # If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}.
     ${Filter},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -157,6 +157,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -190,6 +198,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

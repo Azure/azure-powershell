@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusQueue
 
 ## SYNOPSIS
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 
 ## SYNTAX
@@ -21,7 +21,7 @@ New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>]
  [-ForwardTo <String>] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>]
  [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection]
- [-RequiresSession] [-Status <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-RequiresSession] [-Status <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,17 +33,18 @@ New-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity>
  [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobytes <Int64>]
  [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection] [-RequiresSession] [-Status <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity> -Parameter <ISbQueue>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 
 ## EXAMPLES
@@ -369,21 +370,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RequiresDuplicateDetection
 A value indicating if this queue requires duplicate detection.
 
@@ -415,7 +401,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -445,8 +432,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -456,6 +443,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserMetadata
+Gets and Sets Metadata of User.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -509,4 +511,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx)
-

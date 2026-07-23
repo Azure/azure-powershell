@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -32,10 +33,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "3027AB10104C94545CB23406FF31ADEFE896A9BB";
-            ServiceFabricCmdletBase.TestCommonNameCACert = "pstestcert";
+            ServiceFabricCmdletBase.TestThumbprint = "4D59A08F0039D124316D89680F89024C9E5EC9C4";
+            ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "D9BAB3CC41F5EA798DD086402C1A4EDADEB42B2A";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 
@@ -167,6 +168,37 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             parameterFilePath = Path.Combine(ubuntu20TemplateDirectory, Constants.ParameterFileName);
             Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
             Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string ubuntu22TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer22TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu22TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu22TemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string ubuntu24TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer24TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu24TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu24TemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AllOperatingSystemsHaveSkuMapping()
+        {
+            var cmdlet = new NewAzureRmServiceFabricCluster();
+            var allOsValues = Enum.GetValues(typeof(Models.OperatingSystem)).Cast<Models.OperatingSystem>();
+
+            foreach (var os in allOsValues)
+            {
+                Assert.True(
+                    cmdlet.OsToVmSkuString.ContainsKey(os),
+                    string.Format("OperatingSystem.{0} is missing from OsToVmSkuString dictionary", os));
+
+                Assert.False(
+                    string.IsNullOrEmpty(cmdlet.OsToVmSkuString[os]),
+                    string.Format("OperatingSystem.{0} has null or empty SKU value", os));
+            }
         }
     }
 }

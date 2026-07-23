@@ -2,125 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>GuestConfigurationAssignmentName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MachineName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ReportId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VMName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VmssName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>GuestConfigurationAssignmentName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MachineName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ReportId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VMName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VmssName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -140,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReport</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReport</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReport</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReport#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -186,9 +70,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReportDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReportDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReportDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReportDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -232,9 +116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReportResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReportResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReportResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReportResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -260,9 +144,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReportResourceComplianceReason</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReportResourceComplianceReason</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.AssignmentReportResourceComplianceReason</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentReportResourceComplianceReason#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -288,9 +172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.ConfigurationInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.ConfigurationInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -316,9 +200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.ConfigurationParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.ConfigurationParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationParameter#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -344,9 +228,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.ConfigurationSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.ConfigurationSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationSetting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -396,9 +280,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ErrorResponseError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ErrorResponseError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignment#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -430,9 +342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignmentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignmentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignmentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignmentProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -500,9 +412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignmentReport</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignmentReport</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignmentReport</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignmentReport#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -528,9 +440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignmentReportProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignmentReportProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignmentReportProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignmentReportProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -574,9 +486,73 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationNavigation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationNavigation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>GuestConfigurationAssignmentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MachineName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReportId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VmssName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>GuestConfigurationAssignmentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MachineName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReportId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VmssName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationNavigation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationNavigation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -638,105 +614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.VMInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.VMInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Uuid</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Uuid</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.VmssvmInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.VmssvmInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ComplianceStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastComplianceChecked</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LatestReportId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VMId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VMResourceId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ComplianceStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastComplianceChecked</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LatestReportId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VMId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VMResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.ErrorResponseError</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.ErrorResponseError</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -756,9 +636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -796,9 +676,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.OperationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.OperationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.OperationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.OperationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -818,9 +698,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -846,9 +726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -867,6 +747,126 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.VMInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.VMInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Uuid</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Uuid</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.VmssvmInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.VmssvmInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComplianceStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastComplianceChecked</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LatestReportId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComplianceStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastComplianceChecked</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LatestReportId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

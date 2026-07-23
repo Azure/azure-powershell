@@ -4,7 +4,7 @@
     <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -48,9 +48,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationProvider</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationProvider</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationProvider</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationProvider#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -82,9 +82,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationServiceCreationParams</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationServiceCreationParams</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationServiceCreationParams</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationServiceCreationParams#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -104,9 +104,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationServiceCreationParamsTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationServiceCreationParamsTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationServiceCreationParamsTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationServiceCreationParamsTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -126,9 +126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationServicePatchParamsTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationServicePatchParamsTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.AttestationServicePatchParamsTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.AttestationServicePatchParamsTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -148,9 +148,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.CloudErrorBody#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -176,105 +176,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.OperationsDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.JsonWebKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.OperationsDefinition</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.OperationsDisplayDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.OperationsDisplayDefinition</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Provider</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Provider</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Resource</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.StatusResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.StatusResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AttestUri</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TrustModel</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AttestUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TrustModel</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.JsonWebKey</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.JsonWebKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.JsonWebKey#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -322,9 +226,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>X</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>X5C</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Y</Label>
@@ -379,9 +280,6 @@
                 <PropertyName>X</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>X5C</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Y</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -390,9 +288,71 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.PrivateEndpointConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.OperationsDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.OperationsDefinition#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.OperationsDisplayDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.OperationsDisplayDefinition#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.PrivateEndpointConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.PrivateEndpointConnection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -418,9 +378,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.PrivateEndpointConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.PrivateEndpointConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.PrivateEndpointConnectionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -440,9 +400,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.PrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.PrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.PrivateLinkServiceConnectionState#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -474,9 +434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -496,9 +456,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.StatusResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.StatusResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AttestUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TrustModel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AttestUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TrustModel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -548,9 +542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -576,9 +570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

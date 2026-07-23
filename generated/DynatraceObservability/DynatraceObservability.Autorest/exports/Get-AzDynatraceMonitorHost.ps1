@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 .Description
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 .Example
 Get-AzDynatraceMonitorHost -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorhost
 #>
 function Get-AzDynatraceMonitorHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -49,6 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -107,6 +108,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -128,9 +138,7 @@ begin {
         $mapping = @{
             List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorHost_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -144,6 +152,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

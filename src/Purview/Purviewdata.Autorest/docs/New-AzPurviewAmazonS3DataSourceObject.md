@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonS3DataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazons3datasourceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for AmazonS3DataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAmazonS3DataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-RoleArn <String>] [-ServiceUrl <String>] [<CommonParameters>]
+New-AzPurviewAmazonS3DataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-RoleArn <String>] [-ServiceUrl <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +24,7 @@ Create an in-memory object for AmazonS3DataSource.
 
 ### Example 1: Create AmazonS3 data source object
 ```powershell
-New-AzPurviewAmazonS3DataSourceObject -Kind 'AmazonS3' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServiceUrl s3://multicloud-e2e-2
-New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'DS4' -Body $obj
+New-AzPurviewAmazonS3DataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServiceUrl s3://multicloud-e2e-2
 ```
 
 ```output
@@ -76,21 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RoleArn
 
 
@@ -128,7 +112,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3DataSource
 
 ## NOTES
 

@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzNetworkManagerRoutingConfigurationCommand : NetworkManagerRoutingConfigurationBaseCmdlet
     {
         private const string CreateByNameParameterSet = "ByName";
+        private const string DefaultRouteTableUsageMode = MNM.RouteTableUsageMode.ManagedOnly;
 
         [Alias("ResourceName")]
         [Parameter(
@@ -70,6 +71,15 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Description { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
+             ParameterSetName = CreateByNameParameterSet)]
+        [PSArgumentCompleter(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
+        [ValidateSet(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
+        public string RouteTableUsageMode { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
@@ -106,6 +116,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 routingConfig.Description = this.Description;
             }
+
+            // Set RouteTableUsageMode: use provided value or default to ManagedOnly
+            routingConfig.RouteTableUsageMode = string.IsNullOrEmpty(this.RouteTableUsageMode) ? DefaultRouteTableUsageMode : this.RouteTableUsageMode;
 
             // Map to the sdk object
             var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfig);

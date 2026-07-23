@@ -14,11 +14,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     public partial interface IReplicationProtectedItemsOperations
     {
         /// <summary>
-        /// Gets the list of ASR replication protected items in the protection container.
+        /// Gets the list of ASR replication protected items in the protection
+        /// container.
         /// </summary>
         /// <remarks>
-        /// Gets the list of ASR replication protected items in the protection container.
+        /// Gets the list of ASR replication protected items in the protection
+        /// container.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -37,7 +45,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string fabricName, string protectionContainerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the details of an ASR replication protected item.
@@ -45,8 +53,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the details of an ASR replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Fabric unique name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -66,22 +80,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> GetWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to create an ASR replication protected item (Enable replication).
+        /// The operation to create an ASR replication protected item (Enable
+        /// replication).
         /// </summary>
         /// <remarks>
-        /// The operation to create an ASR replication protected item (Enable replication).
+        /// The operation to create an ASR replication protected item (Enable
+        /// replication).
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// A name for the replication protected item.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// Enable protection input properties.
@@ -98,40 +120,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> CreateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.
+        /// The operation to update the recovery settings of an ASR replication
+        /// protected item.
         /// </summary>
         /// <remarks>
-        /// The operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.
+        /// The operation to update the recovery settings of an ASR replication
+        /// protected item.
         /// </remarks>
-        /// <param name='fabricName'>
-        /// Fabric name.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PurgeWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// The operation to update the recovery settings of an ASR replication protected item.
-        /// </summary>
-        /// <remarks>
-        /// The operation to update the recovery settings of an ASR replication protected item.
-        /// </remarks>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -156,7 +160,45 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> UpdateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to delete or purge a replication protected item. This
+        /// operation will force delete the replication protected item. Use the remove
+        /// operation on replication protected item to perform a clean disable
+        /// replication for the item.
+        /// </summary>
+        /// <remarks>
+        /// The operation to delete or purge a replication protected item. This
+        /// operation will force delete the replication protected item. Use the remove
+        /// operation on replication protected item to perform a clean disable
+        /// replication for the item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders>> PurgeWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to add disks(s) to the replication protected item.
@@ -164,8 +206,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to add disks(s) to the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -188,22 +236,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> AddDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsAddDisksHeaders>> AddDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to change the recovery point of a failed over replication protected item.
+        /// The operation to change the recovery point of a failed over replication
+        /// protected item.
         /// </summary>
         /// <remarks>
-        /// The operation to change the recovery point of a failed over replication protected item.
+        /// The operation to change the recovery point of a failed over replication
+        /// protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The ARM fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The replicated protected item name.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The input properties to apply recovery point.
@@ -220,7 +276,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> ApplyRecoveryPointWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsApplyRecoveryPointHeaders>> ApplyRecoveryPointWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to cancel the failover of the replication protected item.
@@ -228,8 +284,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to cancel the failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -249,7 +311,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> FailoverCancelWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCancelHeaders>> FailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to commit the failover of the replication protected item.
@@ -257,8 +319,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to commit the failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -278,7 +346,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> FailoverCommitWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCommitHeaders>> FailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to initiate a planned failover of the replication protected item.
@@ -286,8 +354,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to initiate a planned failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -310,106 +384,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> PlannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsPlannedFailoverHeaders>> PlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to disable replication on a replication protected item. This will also remove the item.
+        /// Operation to reprotect or reverse replicate a failed over replication
+        /// protected item.
         /// </summary>
         /// <remarks>
-        /// The operation to disable replication on a replication protected item. This will also remove the item.
+        /// Operation to reprotect or reverse replicate a failed over replication
+        /// protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='properties'>
-        /// Disable protection input properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Operation to remove disk(s) from the replication protected item.
-        /// </summary>
-        /// <remarks>
-        /// Operation to remove disk(s) from the replication protected item.
-        /// </remarks>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='properties'>
-        /// Remove disk input properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> RemoveDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// The operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.
-        /// </summary>
-        /// <remarks>
-        /// The operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.
-        /// </remarks>
-        /// <param name='fabricName'>
-        /// The name of the fabric.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// The name of the container.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// The name of the replication protected item.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> RepairReplicationWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Operation to reprotect or reverse replicate a failed over replication protected item.
-        /// </summary>
-        /// <remarks>
-        /// Operation to reprotect or reverse replicate a failed over replication protected item.
-        /// </remarks>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -432,7 +424,159 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> ReprotectWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReprotectHeaders>> ReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <remarks>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='properties'>
+        /// The properties of the reinstall mobility service request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>> ReinstallMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to disable replication on a replication protected item. This
+        /// will also remove the item.
+        /// </summary>
+        /// <remarks>
+        /// The operation to disable replication on a replication protected item. This
+        /// will also remove the item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Disable protection input properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Operation to remove disk(s) from the replication protected item.
+        /// </summary>
+        /// <remarks>
+        /// Operation to remove disk(s) from the replication protected item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Remove disk input properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRemoveDisksHeaders>> RemoveDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to start resynchronize/repair replication for a replication
+        /// protected item requiring resynchronization.
+        /// </summary>
+        /// <remarks>
+        /// The operation to start resynchronize/repair replication for a replication
+        /// protected item requiring resynchronization.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRepairReplicationHeaders>> RepairReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to resolve health issues of the replication protected item.
@@ -440,8 +584,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to resolve health issues of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -464,7 +614,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> ResolveHealthErrorsWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsResolveHealthErrorsHeaders>> ResolveHealthErrorsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to initiate a switch provider of the replication protected item.
@@ -472,8 +622,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to initiate a switch provider of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -496,7 +652,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> SwitchProviderWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsSwitchProviderHeaders>> SwitchProviderWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to perform a test failover of the replication protected item.
@@ -504,8 +660,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to perform a test failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -528,7 +690,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> TestFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverHeaders>> TestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to clean up the test failover of a replication protected item.
@@ -536,8 +698,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to clean up the test failover of a replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -560,7 +728,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> TestFailoverCleanupWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverCleanupHeaders>> TestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to initiate a failover of the replication protected item.
@@ -568,8 +736,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to initiate a failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -592,7 +766,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> UnplannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUnplannedFailoverHeaders>> UnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to update appliance of an ASR replication protected item.
@@ -600,6 +774,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to update appliance of an ASR replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -624,22 +804,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> UpdateApplianceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateApplianceHeaders>> UpdateApplianceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.
+        /// The operation to update(push update) the installed mobility service
+        /// software on a replication protected item to the latest available version.
         /// </summary>
         /// <remarks>
-        /// The operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.
+        /// The operation to update(push update) the installed mobility service
+        /// software on a replication protected item to the latest available version.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric containing the protected item.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the container containing the protected item.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The name of the protected item on which the agent is to be updated.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The properties of the update mobility service request.
@@ -656,7 +844,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> UpdateMobilityServiceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> UpdateMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the list of ASR replication protected items in the vault.
@@ -664,11 +852,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the list of ASR replication protected items in the vault.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='skipToken'>
-        /// The pagination token. Possible values: &#34;FabricId&#34; or &#34;FabricId_CloudId&#34; or null.
+        /// The pagination token. Possible values: &#34;FabricId&#34; or &#34;FabricId_CloudId&#34; or
+        /// null.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -682,22 +877,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<ProtectedItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectedItemsQueryParameter>), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, string skipToken = default(string), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to create an ASR replication protected item (Enable replication).
+        /// The operation to create an ASR replication protected item (Enable
+        /// replication).
         /// </summary>
         /// <remarks>
-        /// The operation to create an ASR replication protected item (Enable replication).
+        /// The operation to create an ASR replication protected item (Enable
+        /// replication).
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// A name for the replication protected item.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// Enable protection input properties.
@@ -714,40 +917,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginCreateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.
+        /// The operation to update the recovery settings of an ASR replication
+        /// protected item.
         /// </summary>
         /// <remarks>
-        /// The operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.
+        /// The operation to update the recovery settings of an ASR replication
+        /// protected item.
         /// </remarks>
-        /// <param name='fabricName'>
-        /// Fabric name.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPurgeWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// The operation to update the recovery settings of an ASR replication protected item.
-        /// </summary>
-        /// <remarks>
-        /// The operation to update the recovery settings of an ASR replication protected item.
-        /// </remarks>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -772,7 +957,45 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginUpdateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to delete or purge a replication protected item. This
+        /// operation will force delete the replication protected item. Use the remove
+        /// operation on replication protected item to perform a clean disable
+        /// replication for the item.
+        /// </summary>
+        /// <remarks>
+        /// The operation to delete or purge a replication protected item. This
+        /// operation will force delete the replication protected item. Use the remove
+        /// operation on replication protected item to perform a clean disable
+        /// replication for the item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders>> BeginPurgeWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to add disks(s) to the replication protected item.
@@ -780,8 +1003,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to add disks(s) to the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -804,22 +1033,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginAddDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsAddDisksHeaders>> BeginAddDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to change the recovery point of a failed over replication protected item.
+        /// The operation to change the recovery point of a failed over replication
+        /// protected item.
         /// </summary>
         /// <remarks>
-        /// The operation to change the recovery point of a failed over replication protected item.
+        /// The operation to change the recovery point of a failed over replication
+        /// protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The ARM fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The replicated protected item name.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The input properties to apply recovery point.
@@ -836,7 +1073,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginApplyRecoveryPointWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsApplyRecoveryPointHeaders>> BeginApplyRecoveryPointWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to cancel the failover of the replication protected item.
@@ -844,8 +1081,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to cancel the failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -865,7 +1108,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginFailoverCancelWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCancelHeaders>> BeginFailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to commit the failover of the replication protected item.
@@ -873,8 +1116,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to commit the failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -894,7 +1143,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginFailoverCommitWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCommitHeaders>> BeginFailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to initiate a planned failover of the replication protected item.
@@ -902,8 +1151,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to initiate a planned failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -926,106 +1181,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginPlannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsPlannedFailoverHeaders>> BeginPlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to disable replication on a replication protected item. This will also remove the item.
+        /// Operation to reprotect or reverse replicate a failed over replication
+        /// protected item.
         /// </summary>
         /// <remarks>
-        /// The operation to disable replication on a replication protected item. This will also remove the item.
+        /// Operation to reprotect or reverse replicate a failed over replication
+        /// protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='properties'>
-        /// Disable protection input properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Operation to remove disk(s) from the replication protected item.
-        /// </summary>
-        /// <remarks>
-        /// Operation to remove disk(s) from the replication protected item.
-        /// </remarks>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='properties'>
-        /// Remove disk input properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginRemoveDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// The operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.
-        /// </summary>
-        /// <remarks>
-        /// The operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.
-        /// </remarks>
-        /// <param name='fabricName'>
-        /// The name of the fabric.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// The name of the container.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// The name of the replication protected item.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginRepairReplicationWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Operation to reprotect or reverse replicate a failed over replication protected item.
-        /// </summary>
-        /// <remarks>
-        /// Operation to reprotect or reverse replicate a failed over replication protected item.
-        /// </remarks>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1048,7 +1221,159 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginReprotectWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReprotectHeaders>> BeginReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <remarks>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='properties'>
+        /// The properties of the reinstall mobility service request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>> BeginReinstallMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to disable replication on a replication protected item. This
+        /// will also remove the item.
+        /// </summary>
+        /// <remarks>
+        /// The operation to disable replication on a replication protected item. This
+        /// will also remove the item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Disable protection input properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Operation to remove disk(s) from the replication protected item.
+        /// </summary>
+        /// <remarks>
+        /// Operation to remove disk(s) from the replication protected item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Remove disk input properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRemoveDisksHeaders>> BeginRemoveDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to start resynchronize/repair replication for a replication
+        /// protected item requiring resynchronization.
+        /// </summary>
+        /// <remarks>
+        /// The operation to start resynchronize/repair replication for a replication
+        /// protected item requiring resynchronization.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRepairReplicationHeaders>> BeginRepairReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to resolve health issues of the replication protected item.
@@ -1056,8 +1381,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to resolve health issues of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1080,7 +1411,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginResolveHealthErrorsWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsResolveHealthErrorsHeaders>> BeginResolveHealthErrorsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to initiate a switch provider of the replication protected item.
@@ -1088,8 +1419,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to initiate a switch provider of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1112,7 +1449,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginSwitchProviderWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsSwitchProviderHeaders>> BeginSwitchProviderWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to perform a test failover of the replication protected item.
@@ -1120,8 +1457,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to perform a test failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1144,7 +1487,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginTestFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverHeaders>> BeginTestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to clean up the test failover of a replication protected item.
@@ -1152,8 +1495,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to clean up the test failover of a replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1176,7 +1525,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginTestFailoverCleanupWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverCleanupHeaders>> BeginTestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to initiate a failover of the replication protected item.
@@ -1184,8 +1533,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Operation to initiate a failover of the replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1208,7 +1563,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginUnplannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUnplannedFailoverHeaders>> BeginUnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to update appliance of an ASR replication protected item.
@@ -1216,6 +1571,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to update appliance of an ASR replication protected item.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -1240,22 +1601,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginUpdateApplianceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateApplianceHeaders>> BeginUpdateApplianceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.
+        /// The operation to update(push update) the installed mobility service
+        /// software on a replication protected item to the latest available version.
         /// </summary>
         /// <remarks>
-        /// The operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.
+        /// The operation to update(push update) the installed mobility service
+        /// software on a replication protected item to the latest available version.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric containing the protected item.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the container containing the protected item.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The name of the protected item on which the agent is to be updated.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The properties of the update mobility service request.
@@ -1272,13 +1641,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> BeginUpdateMobilityServiceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> BeginUpdateMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of ASR replication protected items in the protection container.
+        /// Gets the list of ASR replication protected items in the protection
+        /// container.
         /// </summary>
         /// <remarks>
-        /// Gets the list of ASR replication protected items in the protection container.
+        /// Gets the list of ASR replication protected items in the protection
+        /// container.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

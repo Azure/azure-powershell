@@ -37,24 +37,23 @@ Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId "e0b1f446-568
 ```output
 Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope
 ----                                 -----------                          ----------------                                                                        -----
-00001111-aaaa-2222-bbbb-3333cccc4444 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
+5c545baf-2ef5-4016-9c31-6e0e23c397a0 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
 ```
 
 Elevate savings plan order
 
-### Example 2: Elevate savings plan order via identiy
+### Example 2: Elevate savings plan order via identity	
 ```powershell
-$identity = @{
-            SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"
-}
-
+$identity = @{	
+            SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"	
+}	
 $response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject $identity
 ```
 
 ```output
-Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope
-----                                 -----------                          ----------------                                                                        -----
-00001111-aaaa-2222-bbbb-3333cccc4444 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
+Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope	
+----                                 -----------                          ----------------                                                                        -----	
+5c545baf-2ef5-4016-9c31-6e0e23c397a0 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
 ```
 
 Elevate savings plan order
@@ -79,7 +78,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
@@ -148,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRoleAssignmentEntity
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IRoleAssignmentEntity
 
 ## NOTES
 

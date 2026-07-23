@@ -84,22 +84,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for HsmPoolResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.HsmPoolResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).HsmPoolResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).HsmPoolResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.HsmPoolResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).HsmPoolResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).HsmPoolResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for NetworkAcls</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.NetworkAcls { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).NetworkAcls; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).NetworkAcls = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.NetworkAcls { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).NetworkAcls; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).NetworkAcls = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItem> Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).PrivateEndpointConnection = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItem> Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.VaultProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).SkuFamily = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParametersInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPropertiesInternal)Property).SkuFamily = value ; }
 
         /// <summary>
         /// Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'.

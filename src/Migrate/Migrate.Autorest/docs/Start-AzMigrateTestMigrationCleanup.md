@@ -114,10 +114,9 @@ Accept wildcard characters: False
 ### -InputObject
 Specifies the replicating server for which the test migration cleanup needs to be initiated.
 The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -166,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 
 ## NOTES
 

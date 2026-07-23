@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingIntent
-The routing intent resource to which this rouing policy has to be added. 
+The routing intent resource to which this routing policy has to be added. 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent

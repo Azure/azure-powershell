@@ -1,0 +1,52 @@
+{
+  "resourceType": "locations/giVersions/giMinorVersions",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleGiMinorVersion",
+      "description": "Get a GiMinorVersion",
+      "path": "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/giVersions/{giversionname}/giMinorVersions/{giMinorVersionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoraclegiminorversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Giversionname <String>",
+              "-Location <String>",
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a GiMinorVersion",
+          "parameters": [
+            {
+              "name": "-Giversionname",
+              "value": "[Path.giversionname]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.giMinorVersionName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

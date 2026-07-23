@@ -36,16 +36,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountProperty { get => (this._newRelicAccountProperty = this._newRelicAccountProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicAccountProperties()); set { {_newRelicAccountProperty = value;} } }
 
         /// <summary>Internal Acessors for NewRelicAccountPropertyAccountInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountPropertyAccountInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).AccountInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).AccountInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountPropertyAccountInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).AccountInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).AccountInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NewRelicAccountPropertyOrganizationInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountPropertyOrganizationInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).OrganizationInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).OrganizationInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountPropertyOrganizationInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).OrganizationInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).OrganizationInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NewRelicAccountPropertySingleSignOnProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).SingleSignOnProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.NewRelicAccountPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountPropertiesInternal)NewRelicAccountProperty).SingleSignOnProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PlanData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.PlanData { get => (this._planData = this._planData ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.PlanData()); set { {_planData = value;} } }
+
+        /// <summary>Internal Acessors for SaaSData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.SaaSData { get => (this._saaSData = this._saaSData ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSData()); set { {_saaSData = value;} } }
 
         /// <summary>Internal Acessors for UserInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdatePropertiesInternal.UserInfo { get => (this._userInfo = this._userInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.UserInfo()); set { {_userInfo = value;} } }
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData PlanData { get => (this._planData = this._planData ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.PlanData()); set => this._planData = value; }
 
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
         public string PlanDataBillingCycle { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataInternal)PlanData).BillingCycle; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataInternal)PlanData).BillingCycle = value ?? null; }
 
@@ -94,6 +97,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         /// <summary>Different usage type like PAYG/COMMITTED. this could be enum</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
         public string PlanDataUsageType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataInternal)PlanData).UsageType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataInternal)PlanData).UsageType = value ?? null; }
+
+        /// <summary>Backing field for <see cref="SaaSData" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData _saaSData;
+
+        /// <summary>SaaS details</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData SaaSData { get => (this._saaSData = this._saaSData ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSData()); set => this._saaSData = value; }
+
+        /// <summary>SaaS resource id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
+        public string SaaSDataSaaSresourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSDataInternal)SaaSData).SaaSResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSDataInternal)SaaSData).SaaSResourceId = value ?? null; }
 
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
@@ -227,17 +241,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         SerializedName = @"organizationId",
         PossibleTypes = new [] { typeof(string) })]
         string OrganizationInfoOrganizationId { get; set; }
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Different billing cycles like MONTHLY/WEEKLY. this could be enum",
+        Description = @"Different billing cycles like Monthly/Weekly.",
         SerializedName = @"billingCycle",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
         string PlanDataBillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
@@ -273,6 +286,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("PAYG", "COMMITTED")]
         string PlanDataUsageType { get; set; }
+        /// <summary>SaaS resource id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"SaaS resource id",
+        SerializedName = @"saaSResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SaaSDataSaaSresourceId { get; set; }
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
@@ -406,8 +430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         string OrganizationInfoOrganizationId { get; set; }
         /// <summary>Plan details</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData PlanData { get; set; }
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         string PlanDataBillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         global::System.DateTime? PlanDataEffectiveDate { get; set; }
@@ -416,6 +439,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         /// <summary>Different usage type like PAYG/COMMITTED. this could be enum</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("PAYG", "COMMITTED")]
         string PlanDataUsageType { get; set; }
+        /// <summary>SaaS details</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData SaaSData { get; set; }
+        /// <summary>SaaS resource id</summary>
+        string SaaSDataSaaSresourceId { get; set; }
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         string SingleSignOnPropertyEnterpriseAppId { get; set; }
         /// <summary>Provisioning state</summary>

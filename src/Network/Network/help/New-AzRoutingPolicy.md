@@ -14,7 +14,8 @@ Returns an in-memory routing policy object.
 
 ```
 New-AzRoutingPolicy -Destination <String[]> -NextHop <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

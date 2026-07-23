@@ -16,19 +16,24 @@ Updates MSIdentity to the recovery services vault.
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-IdentityId <String[]>]
  [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DisableClassicAlerts <Boolean>]
- [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-DisableEmailNotificationsForSiteRecovery <Boolean>]
+ [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
+ [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
- [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultAddMSIdentity
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
  [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableEmailNotificationsForSiteRecovery <Boolean>]
+ [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
+ [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +92,7 @@ The first cmdlet fetches the recovery services vault.
 The second cmdlet removes the SystemAssigned identity from the vault.
 The third cmdlet fetches all the user MSIs as a list from the vault.
 The fourth cmdlet removes all the user MSIs from the vault. In case you want, you can provide selected user identities to be removed as comma separated, like in previous example.
-The fifth cmdlet shows the identities in the vault, as we removed all the identites, Type is displayed as None.
+The fifth cmdlet shows the identities in the vault, as we removed all the identities, Type is displayed as None.
 
 ### Example 4: Update PublicNetworkAccess, ImmutabilityState of recovery services vault
 ```powershell
@@ -154,8 +159,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableAzureMonitorAlertsForAllFailoverIssue
+Enables or disables monitor alerts for failover issue in RS vault.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAzureMonitorAlertsForAllReplicationIssue
+Enables or disables monitor alerts for replication issue in RS vault.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableAzureMonitorAlertsForJobFailure
-Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
+Boolean parameter to specify whether built-in Azure Monitor alerts should be received for every job failure.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -170,7 +205,22 @@ Accept wildcard characters: False
 ```
 
 ### -DisableClassicAlerts
-Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+Boolean parameter to specify whether backup alerts from the classic solution should be disabled or enabled.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableEmailNotificationsForSiteRecovery
+Enables or disables classic email notifications for Site Recovery in RS vault.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -280,7 +330,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveUserAssigned
-Provide this switch to remove UserAssigned Identity from the vault. Also, provide IdenityId parameter along with this switch.
+Provide this switch to remove UserAssigned Identity from the vault. Also, provide IdentityId parameter along with this switch.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -305,6 +355,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

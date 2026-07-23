@@ -1,0 +1,95 @@
+{
+  "resourceType": "instances/dataflowEndpoints",
+  "apiVersion": "2024-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzIoTOperationsServiceDataflowEndpoint",
+      "description": "Get a DataflowEndpointResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/get-aziotoperationsservicedataflowendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DataflowEndpointResource",
+          "parameters": [
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.dataflowEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzIoTOperationsServiceDataflowEndpoint",
+      "description": "Delete a DataflowEndpointResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/remove-aziotoperationsservicedataflowendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DataflowEndpointResource",
+          "parameters": [
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.dataflowEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

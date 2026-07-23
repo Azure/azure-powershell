@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSManagedIdentitySqlControlSettingsModel(ManagedIdentitySqlControlSettingsModel model)
             :base(model?.Id, model?.Name, model?.Type)
         {
-            this.DesiredState = model?.GrantSqlControlToManagedIdentity?.DesiredState;
-            this.ActualState = model?.GrantSqlControlToManagedIdentity?.ActualState;
+            this.DesiredState = model?.GrantSqlControlToManagedIdentity?.DesiredState.ToString();
+            this.ActualState = model?.GrantSqlControlToManagedIdentity?.ActualState.ToString();
         }
 
         public string DesiredState { get; set; }

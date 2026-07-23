@@ -14,7 +14,8 @@ Updates a network manager security admin configuration.
 
 ```
 Set-AzNetworkManagerSecurityAdminConfiguration -InputObject <PSNetworkManagerSecurityAdminConfiguration>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

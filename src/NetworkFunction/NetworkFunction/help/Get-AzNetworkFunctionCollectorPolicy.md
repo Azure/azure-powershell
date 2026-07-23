@@ -26,6 +26,13 @@ Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <
  [<CommonParameters>]
 ```
 
+### GetViaIdentityAzureTrafficCollector
+```
+Get-AzNetworkFunctionCollectorPolicy -Name <String>
+ -AzureTrafficCollectorInputObject <INetworkFunctionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzNetworkFunctionCollectorPolicy -InputObject <INetworkFunctionIdentity> [-DefaultProfile <PSObject>]
@@ -75,6 +82,21 @@ This cmdlet gets list of traffic collector policies by atc name and resource gro
 
 ## PARAMETERS
 
+### -AzureTrafficCollectorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
+Parameter Sets: GetViaIdentityAzureTrafficCollector
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AzureTrafficCollectorName
 Azure Traffic Collector name
 
@@ -108,7 +130,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
@@ -127,7 +148,7 @@ Collector Policy Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityAzureTrafficCollector
 Aliases: CollectorPolicyName
 
 Required: True
@@ -176,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 
 ## NOTES
 

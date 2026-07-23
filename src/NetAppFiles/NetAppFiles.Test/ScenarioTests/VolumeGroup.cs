@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
         }
 
-        [Fact(Skip = "Doesn't work at the moment")]
+        [Fact]
         //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeGroupCrud()
@@ -30,6 +30,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-VolumeGroupCrud");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOracleVolumeGroupCrud()
+        {
+            TestRunner.RunTestScript("Test-OracleVolumeGroupCrud");
+        }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOracleVolumeGroupToManyVolumes()
+        {
+            TestRunner.RunTestScript("Test-OracleVolumeGroupToManyVolumes");
+        }
     }
 }

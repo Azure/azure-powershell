@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? LdapOverTls {get; set; }
 
         /// <summary>
-        /// Gets or sets  If enabled, NFS client local users can also (in addition to
+        /// Gets or sets if enabled, NFS client local users can also (in addition to
         /// LDAP users) access the NFS volumes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowLocalNfsUsersWithLdap")]

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a PrivateCloud</summary>
+    /// <summary>update a PrivateCloud</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwarePrivateCloud_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a PrivateCloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"update a PrivateCloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwarePrivateCloud_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>A private cloud resource</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud _privateCloudBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloud();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -90,8 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
         public string DnsZoneType { get => _privateCloudBody.DnsZoneType ?? null; set => _privateCloudBody.DnsZoneType = value; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Status of customer managed encryption key</summary>
@@ -389,6 +380,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
         public System.Security.SecureString VcenterPassword { get => _privateCloudBody.VcenterPassword ?? null; set => _privateCloudBody.VcenterPassword = value; }
 
+        /// <summary>The availability zones.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The availability zones.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The availability zones.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] Zone { get => _privateCloudBody.Zone?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudBody.Zone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -455,11 +458,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -752,6 +750,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             {
                 this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
             }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Zone")))
+            {
+                this.Zone = (string[])(this.MyInvocation?.BoundParameters["Zone"]);
+            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuName")))
             {
                 this.SkuName = (string)(this.MyInvocation?.BoundParameters["SkuName"]);
@@ -908,24 +910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

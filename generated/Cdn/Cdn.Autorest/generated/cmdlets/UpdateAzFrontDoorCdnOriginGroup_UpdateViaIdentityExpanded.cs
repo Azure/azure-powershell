@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates an existing origin group within a profile.</summary>
+    /// <summary>update an existing origin group within a profile.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFrontDoorCdnOriginGroup_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Updates an existing origin group within a profile.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update an existing origin group within a profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}", ApiVersion = "2024-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}", ApiVersion = "2026-04-01-preview")]
     public partial class UpdateAzFrontDoorCdnOriginGroup_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,18 +37,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>AFDOrigin group properties needed for origin group creation or update.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupUpdateParameters _originGroupUpdatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupUpdateParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters _originGroupUpdatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupUpdateParameters();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be \"https://storage.azure.com/.default\".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be ""https://storage.azure.com/.default"".",
+        SerializedName = @"scope",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AuthenticationScope { get => _originGroupUpdatePropertiesBody.AuthenticationScope ?? null; set => _originGroupUpdatePropertiesBody.AuthenticationScope = value; }
+
+        /// <summary>
+        /// The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
+        /// If not specified, the service will use the `Authorization` header for backward compatibility.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.",
+        SerializedName = @"tokenDestinationHeader",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Authorization", "X-Azure-Authorization")]
+        public string AuthenticationTokenDestinationHeader { get => _originGroupUpdatePropertiesBody.AuthenticationTokenDestinationHeader ?? null; set => _originGroupUpdatePropertiesBody.AuthenticationTokenDestinationHeader = value; }
+
+        /// <summary>The type of the authentication for the origin.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the authentication for the origin.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of the authentication for the origin.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        public string AuthenticationType { get => _originGroupUpdatePropertiesBody.AuthenticationType ?? null; set => _originGroupUpdatePropertiesBody.AuthenticationType = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn Client => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.ClientAPI;
@@ -60,6 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>
         /// Health probe settings to the origin that is used to determine the health of the origin.
         /// </summary>
@@ -70,8 +122,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"Health probe settings to the origin that is used to determine the health of the origin.",
         SerializedName = @"healthProbeSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters HealthProbeSetting { get => _originGroupUpdatePropertiesBody.HealthProbeSetting ?? null /* object */; set => _originGroupUpdatePropertiesBody.HealthProbeSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get => _originGroupUpdatePropertiesBody.HealthProbeSetting ?? null /* object */; set => _originGroupUpdatePropertiesBody.HealthProbeSetting = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -104,8 +156,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"Load balancing settings for a backend pool",
         SerializedName = @"loadBalancingSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadBalancingSettingsParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadBalancingSettingsParameters LoadBalancingSetting { get => _originGroupUpdatePropertiesBody.LoadBalancingSetting ?? null /* object */; set => _originGroupUpdatePropertiesBody.LoadBalancingSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParameters LoadBalancingSetting { get => _originGroupUpdatePropertiesBody.LoadBalancingSetting ?? null /* object */; set => _originGroupUpdatePropertiesBody.LoadBalancingSetting = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -126,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -154,9 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'",
         SerializedName = @"sessionAffinityState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState SessionAffinityState { get => _originGroupUpdatePropertiesBody.SessionAffinityState ?? ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState)""); set => _originGroupUpdatePropertiesBody.SessionAffinityState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string SessionAffinityState { get => _originGroupUpdatePropertiesBody.SessionAffinityState ?? null; set => _originGroupUpdatePropertiesBody.SessionAffinityState = value; }
 
         /// <summary>
         /// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint
@@ -172,29 +224,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int TrafficRestorationTimeToHealedOrNewEndpointsInMinute { get => _originGroupUpdatePropertiesBody.TrafficRestorationTimeToHealedOrNewEndpointsInMinute ?? default(int); set => _originGroupUpdatePropertiesBody.TrafficRestorationTimeToHealedOrNewEndpointsInMinute = value; }
 
+        /// <summary>Resource ID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserAssignedIdentityId { get => _originGroupUpdatePropertiesBody.UserAssignedIdentityId ?? null; set => _originGroupUpdatePropertiesBody.UserAssignedIdentityId = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -304,11 +367,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -320,10 +408,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -391,7 +495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -406,11 +510,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.AfdOriginGroupsUpdateViaIdentity(InputObject.Id, _originGroupUpdatePropertiesBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.AfdOriginGroupsUpdateViaIdentity(InputObject.Id, _originGroupUpdatePropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
                         // try to call with PATH parameters from Input Object
+                        if (null == InputObject.SubscriptionId)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
                         if (null == InputObject.ResourceGroupName)
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
@@ -423,17 +531,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.OriginGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        if (null == InputObject.SubscriptionId)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        await this.Client.AfdOriginGroupsUpdate(InputObject.ResourceGroupName ?? null, InputObject.ProfileName ?? null, InputObject.OriginGroupName ?? null, InputObject.SubscriptionId ?? null, _originGroupUpdatePropertiesBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.AfdOriginGroupsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ProfileName ?? null, InputObject.OriginGroupName ?? null, _originGroupUpdatePropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_originGroupUpdatePropertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -453,7 +557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzFrontDoorCdnOriginGroup_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzFrontDoorCdnOriginGroup_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzFrontDoorCdnOriginGroup_UpdateViaIdentityExpanded()
         {
@@ -479,12 +583,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -501,15 +605,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_originGroupUpdatePropertiesBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_originGroupUpdatePropertiesBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -519,12 +623,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> response)
         {
             using( NoSynchronizationContext )
             {
@@ -536,8 +640,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

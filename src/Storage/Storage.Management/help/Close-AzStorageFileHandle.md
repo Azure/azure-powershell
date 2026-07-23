@@ -17,14 +17,14 @@ Closes file handles of a file share, a file directory or a file.
 Close-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-Recursive] [-CloseAll]
  [-DisAllowTrailingDot] [-PassThru] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareNameCloseSingle
 ```
 Close-AzStorageFileHandle [-ShareName] <String> -FileHandle <PSFileHandle> [-DisAllowTrailingDot] [-PassThru]
  [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Close-AzStorageFileHandle [-ShareName] <String> -FileHandle <PSFileHandle> [-Dis
 ```
 Close-AzStorageFileHandle [-ShareClient] <ShareClient> [[-Path] <String>] [-Recursive] [-CloseAll] [-PassThru]
  [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Close-AzStorageFileHandle [-ShareClient] <ShareClient> [[-Path] <String>] [-Recu
 ```
 Close-AzStorageFileHandle [-ShareClient] <ShareClient> -FileHandle <PSFileHandle> [-PassThru] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,14 +49,14 @@ Close-AzStorageFileHandle [-ShareClient] <ShareClient> -FileHandle <PSFileHandle
 Close-AzStorageFileHandle [-ShareDirectoryClient] <ShareDirectoryClient> [[-Path] <String>] [-Recursive]
  [-CloseAll] [-PassThru] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileCloseAll
 ```
 Close-AzStorageFileHandle [-ShareFileClient] <ShareFileClient> [-CloseAll] [-PassThru] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -245,21 +245,6 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

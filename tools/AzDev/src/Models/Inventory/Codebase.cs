@@ -24,14 +24,14 @@ namespace AzDev.Models.Inventory
         public string Path { get; internal set; }
         public IEnumerable<Module> Modules { get; internal set; }
 
-        internal static Codebase FromFileSystem(IFileSystem fs, string path)
+        internal static Codebase FromFileSystem(IFileSystem fs, ILogger logger, string path)
         {
             return new Codebase()
             {
                 Path = path,
                 Modules = fs.Directory.GetDirectories(path)
                     .Where(dir => !Conventions.IsExcludedModuleDirectory(dir))
-                    .Select(dir => Module.FromFileSystem(fs, dir))
+                    .Select(dir => Module.FromFileSystem(fs, logger, dir))
                     .Where(module => module != null)
                     .ToList()
             };

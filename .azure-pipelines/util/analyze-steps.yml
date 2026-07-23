@@ -11,7 +11,7 @@ steps:
 - task: NodeTool@0
   displayName: Install autorest
   inputs:
-    versionSpec: '14.17.1'
+    versionSpec: '24.16.0'
     command: custom
     verbose: false
     customCommand: install autorest@latest
@@ -21,12 +21,11 @@ steps:
     targetType: inline
     script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
     pwsh: true
-
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 6.0.x'
+  displayName: 'Use .NET SDK'
   inputs:
     packageType: sdk
-    version: 6.0.x
+    version: 8.x
 
 - pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'
@@ -41,7 +40,7 @@ steps:
       tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
       . Az-Cmdlets-latest/InstallModule.ps1
     pwsh: true
-  
+
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
   inputs:

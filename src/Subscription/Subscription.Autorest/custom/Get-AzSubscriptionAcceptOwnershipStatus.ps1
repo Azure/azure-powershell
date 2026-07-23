@@ -28,7 +28,7 @@ Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId $subIdArray
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IAcceptOwnershipStatusResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,7 +44,7 @@ INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownershipstatus
 #>
 function Get-AzSubscriptionAcceptOwnershipStatus {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IAcceptOwnershipStatusResponse])]
     [CmdletBinding(DefaultParameterSetName = 'AcceptExpanded', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'AcceptExpanded', Mandatory)]

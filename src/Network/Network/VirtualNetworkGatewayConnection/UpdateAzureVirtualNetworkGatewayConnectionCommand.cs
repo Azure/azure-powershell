@@ -108,6 +108,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Authentication type for this VPN connection: PSK or Certificate")]
+        [ValidateSet(
+            MNM.ConnectionAuthenticationType.PSK,
+            MNM.ConnectionAuthenticationType.Certificate,
+            IgnoreCase = true)]
+        public string AuthenticationType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Certificate authentication configuration for this VPN connection")]
+        public PSCertificateAuthentication CertificateAuthentication { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -137,6 +153,16 @@ namespace Microsoft.Azure.Commands.Network
                     if (!String.IsNullOrEmpty(this.ConnectionMode))
                     {
                         this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
+                    }
+
+                    if (!String.IsNullOrEmpty(this.AuthenticationType))
+                    {
+                        this.VirtualNetworkGatewayConnection.AuthenticationType = this.AuthenticationType;
+                    }
+
+                    if (this.CertificateAuthentication != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.CertificateAuthentication = this.CertificateAuthentication;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
@@ -225,6 +251,25 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     }
 
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    List<string> resourceIds = new List<string>();
+
+                    // Get the aux header for the LNG2/VNG2
+                    if (this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2 != null)
+                    {
+                        resourceIds.Add(this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2.Id);
+                    }
+
+                    if (this.VirtualNetworkGatewayConnection.LocalNetworkGateway2 != null)
+                    {
+                        resourceIds.Add(this.VirtualNetworkGatewayConnection.LocalNetworkGateway2.Id);
+                    }
+                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                    {
+                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    }
+
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
                     
                     vnetGatewayConnectionModel.Tags =
@@ -232,9 +277,8 @@ namespace Microsoft.Azure.Commands.Network
                         TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
                         TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
 
-                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
-                        this.VirtualNetworkGatewayConnection.ResourceGroupName,
-                        this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel);
+                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel, auxAuthHeader).GetAwaiter().GetResult();
+
                     var getvnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name);
                     WriteObject(getvnetGatewayConnection);
                 });

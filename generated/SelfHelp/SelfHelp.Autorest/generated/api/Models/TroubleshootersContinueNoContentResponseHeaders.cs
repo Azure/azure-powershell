@@ -42,6 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"Location",
         PossibleTypes = new [] { typeof(string) })]

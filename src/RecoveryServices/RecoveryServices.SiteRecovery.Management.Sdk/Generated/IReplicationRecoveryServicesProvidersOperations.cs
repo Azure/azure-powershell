@@ -19,6 +19,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Lists the registered recovery services providers for the specified fabric.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -34,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryServicesProvider>>> ListByReplicationFabricsWithHttpMessagesAsync(string fabricName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryServicesProvider>>> ListByReplicationFabricsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the details of registered recovery services provider.
@@ -42,6 +48,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the details of registered recovery services provider.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -60,7 +72,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider>> GetWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to add a recovery services provider.
@@ -68,6 +80,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to add a recovery services provider.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -89,14 +107,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider>> CreateWithHttpMessagesAsync(string fabricName, string providerName, AddRecoveryServicesProviderInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider,ReplicationRecoveryServicesProvidersCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, AddRecoveryServicesProviderInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to purge(force delete) a recovery services provider from the vault.
+        /// The operation to purge(force delete) a recovery services provider from the
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// The operation to purge(force delete) a recovery services provider from the vault.
+        /// The operation to purge(force delete) a recovery services provider from the
+        /// vault.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -112,14 +138,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PurgeWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationRecoveryServicesProvidersPurgeHeaders>> PurgeWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to refresh the information from the recovery services provider.
+        /// The operation to refresh the information from the recovery services
+        /// provider.
         /// </summary>
         /// <remarks>
-        /// The operation to refresh the information from the recovery services provider.
+        /// The operation to refresh the information from the recovery services
+        /// provider.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -138,14 +172,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider>> RefreshProviderWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider,ReplicationRecoveryServicesProvidersRefreshProviderHeaders>> RefreshProviderWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to removes/delete(unregister) a recovery services provider from the vault.
+        /// The operation to removes/delete(unregister) a recovery services provider
+        /// from the vault.
         /// </summary>
         /// <remarks>
-        /// The operation to removes/delete(unregister) a recovery services provider from the vault.
+        /// The operation to removes/delete(unregister) a recovery services provider
+        /// from the vault.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -161,7 +203,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationRecoveryServicesProvidersDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the registered recovery services providers in the vault.
@@ -169,6 +211,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Lists the registered recovery services providers in the vault.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -181,7 +229,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryServicesProvider>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryServicesProvider>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to add a recovery services provider.
@@ -189,6 +237,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// The operation to add a recovery services provider.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -210,14 +264,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider>> BeginCreateWithHttpMessagesAsync(string fabricName, string providerName, AddRecoveryServicesProviderInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider,ReplicationRecoveryServicesProvidersCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, AddRecoveryServicesProviderInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to purge(force delete) a recovery services provider from the vault.
+        /// The operation to purge(force delete) a recovery services provider from the
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// The operation to purge(force delete) a recovery services provider from the vault.
+        /// The operation to purge(force delete) a recovery services provider from the
+        /// vault.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -233,14 +295,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPurgeWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationRecoveryServicesProvidersPurgeHeaders>> BeginPurgeWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to refresh the information from the recovery services provider.
+        /// The operation to refresh the information from the recovery services
+        /// provider.
         /// </summary>
         /// <remarks>
-        /// The operation to refresh the information from the recovery services provider.
+        /// The operation to refresh the information from the recovery services
+        /// provider.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -259,14 +329,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider>> BeginRefreshProviderWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryServicesProvider,ReplicationRecoveryServicesProvidersRefreshProviderHeaders>> BeginRefreshProviderWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The operation to removes/delete(unregister) a recovery services provider from the vault.
+        /// The operation to removes/delete(unregister) a recovery services provider
+        /// from the vault.
         /// </summary>
         /// <remarks>
-        /// The operation to removes/delete(unregister) a recovery services provider from the vault.
+        /// The operation to removes/delete(unregister) a recovery services provider
+        /// from the vault.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -282,7 +360,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationRecoveryServicesProvidersDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string providerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the registered recovery services providers for the specified fabric.

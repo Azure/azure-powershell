@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string CloudServiceAutoScaleParameterSet = "CloudServiceAndAutoScale";
         internal const string VirtualMachineTargetDedicatedParameterSet = "VirtualMachineAndTargetDedicated";
         internal const string VirtualMachineAutoScaleParameterSet = "VirtualMachineAndAutoScale";
+        public const string ChangeDesc = "Parameter is being deprecated without being replaced";
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The id of the pool to create.")]
         [ValidateNotNullOrEmpty]
@@ -83,10 +84,6 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.")]
-        [ValidateNotNullOrEmpty]
-        public IDictionary ResourceTag { get; set; }
-
         [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
@@ -99,28 +96,13 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        [Alias("CertificateReference")]
-        public PSCertificateReference[] CertificateReferences { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
         [Alias("ApplicationPackageReference")]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        [Alias("ApplicationLicense")]
-        public List<string> ApplicationLicenses { get; set; }
 
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
-
-        [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
-        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -133,15 +115,6 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         [ValidateNotNullOrEmpty]
         public PSUserAccount[] UserAccount { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public NodeCommunicationMode CurrentNodeCommunicationMode { get; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Default", "Classic", "Simplified")]
-        public NodeCommunicationMode TargetNodeCommunicationMode { get; set; }
 
         protected override void ExecuteCmdletImpl()
         {
@@ -160,16 +133,11 @@ namespace Microsoft.Azure.Commands.Batch
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
-                CertificateReferences = this.CertificateReferences,
                 ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
-                CloudServiceConfiguration = this.CloudServiceConfiguration,
                 NetworkConfiguration = this.NetworkConfiguration,
                 UserAccounts = this.UserAccount,
-                ApplicationLicenses = this.ApplicationLicenses,
-                MountConfiguration = this.MountConfiguration,
-                TargetCommunicationMode = this.TargetNodeCommunicationMode,
-                ResourceTags = this.ResourceTag,
+                MountConfiguration = this.MountConfiguration
             };
 
             if (ShouldProcess("AzureBatchPool"))

@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         private const string SasPermissionParameterSet = "SasPermission";
 
         /// <summary>
-        /// Sas policy paremeter set name
+        /// Sas policy parameter set name
         /// </summary>
         private const string SasPolicyParmeterSet = "SasPolicy";
 

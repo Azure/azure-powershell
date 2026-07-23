@@ -27,7 +27,7 @@ Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Update-AzDy
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,19 +35,22 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitor
 #>
 function Update-AzDynatraceMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('MonitorName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
@@ -55,6 +58,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -62,163 +67,87 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # Account Id of the account this environment is linked to
-    ${AccountId},
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Region in which the account is created
-    ${AccountRegionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Id of the environment created
-    ${EnvironmentId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Ingestion key of the environment
-    ${EnvironmentIngestionKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Landing URL for Dynatrace environment
-    ${EnvironmentLandingUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Ingestion endpoint used for sending logs
-    ${EnvironmentLogsIngestionEndpoint},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # User id
-    ${EnvironmentUserId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus]
-    # Marketplace subscription status.
-    ${MarketplaceSubscriptionStatus},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus]
-    # Status of the monitor.
-    ${MonitoringStatus},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # different billing cycles like MONTHLY/WEEKLY.
     # this could be enum
     ${PlanBillingCycle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # plan id as published by Dynatrace
     ${PlanDetail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.DateTime]
     # date when plan was applied
     ${PlanEffectiveDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # different usage type like PAYG/COMMITTED.
     # this could be enum
     ${PlanUsageType},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String[]]
-    # array of Aad(azure active directory) domains
-    ${SingleSignOnAadDomain},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Version of the Dynatrace agent installed on the VM.
-    ${SingleSignOnEnterpriseAppId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates]
-    # State of Single Sign On
-    ${SingleSignOnState},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # The login URL specific to this Dynatrace Environment
-    ${SingleSignOnUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Country of the user
-    ${UserCountry},
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # Email of the user used by Dynatrace for contacting them if needed
-    ${UserEmailAddress},
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # First Name of the user
-    ${UserFirstName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Last Name of the user
-    ${UserLastName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Phone number of the user used by Dynatrace for contacting them if needed
-    ${UserPhoneNumber},
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -276,6 +205,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -297,10 +235,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -314,6 +252,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

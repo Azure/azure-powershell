@@ -42,11 +42,15 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
         /// <param name="identity">Apply server with newly discovered ApplicationId if available.
         /// </param>
-        public RegisteredServerUpdateParameters(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? identity = default(bool?))
+
+        /// <param name="applicationId">Apply server with new ServicePrincipal Id
+        /// </param>
+        public RegisteredServerUpdateParameters(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? identity = default(bool?), string applicationId = default(string))
 
         : base(id, name, type, systemData)
         {
             this.Identity = identity;
+            this.ApplicationId = applicationId;
             CustomInit();
         }
 
@@ -61,5 +65,11 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.identity")]
         public bool? Identity {get; set; }
+
+        /// <summary>
+        /// Gets or sets apply server with new ServicePrincipal Id
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationId")]
+        public string ApplicationId {get; set; }
     }
 }

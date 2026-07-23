@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 if(originalTokenCacheProvider is SharedTokenCacheProvider)
                 {
                     var token = originalTokenCacheProvider.ReadTokenData();
-                    //must explicitely use type PowerShellTokenCacheProvider
+                    //must explicitly use type PowerShellTokenCacheProvider
                     PowerShellTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider(token);
                     AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
                 }

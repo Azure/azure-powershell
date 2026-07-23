@@ -25,12 +25,12 @@ Retrieves a list of available API operations
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IResourceProviderOperationDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledgeroperation
 #>
 function Get-AzConfidentialLedgerOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IResourceProviderOperationDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ConfidentialLedger.private\Get-AzConfidentialLedgerOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

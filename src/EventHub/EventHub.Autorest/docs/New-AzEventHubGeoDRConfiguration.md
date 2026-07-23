@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubGeoDRConfiguration
 
 ## SYNOPSIS
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceInputObject <IEventHub
 ```
 
 ## DESCRIPTION
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
@@ -166,7 +166,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group within the azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -181,8 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

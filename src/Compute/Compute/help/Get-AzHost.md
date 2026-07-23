@@ -113,7 +113,7 @@ myrg01              myhost02   eastus {[key1, val2]} ESv3-Type1  1
 
 This command returns all hosts in the given host group.
 
-### Example 4: This command retuns a Host for provided -ResourceId.
+### Example 4: This command returns a Host for provided -ResourceId.
 ```powershell
 $rgname = "rgname"
 $loc = "eastus"
@@ -124,7 +124,7 @@ $Sku = "ESv3-Type1"
 New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1 -Zone "2"
 New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku
 
-# Fetch Host using -ResouceId
+# Fetch Host using -ResourceId
 $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName
 $host = Get-AzHost -ResourceId $dedicatedHost.Id
 ```

@@ -34,7 +34,8 @@
             Hashtable templateObject = null,
             Hashtable templateParametersObject = null,
             WhatIfResultFormat resultFormat = WhatIfResultFormat.FullResourcePayloads,
-            string[] excludeChangeTypes = null)
+            string[] excludeChangeTypes = null,
+            string validationLevel = null)
         {
             this.DeploymentName = deploymentName ?? this.GenerateDeployName();
             this.ScopeType = scopeType;
@@ -53,6 +54,7 @@
                 .Select(changeType => changeType.ToLowerInvariant())
                 .Distinct()
                 .Select(changeType => (ChangeType)Enum.Parse(typeof(ChangeType), changeType, true));
+            this.ValidationLevel = validationLevel;
         }
 
         public string DeploymentName
@@ -86,6 +88,8 @@
         public WhatIfResultFormat ResultFormat { get; set; }
 
         public IEnumerable<ChangeType> ExcludeChangeTypes { get; }
+
+        public string ValidationLevel { get; set; }
 
         public DeploymentWhatIf ToDeploymentWhatIf()
         {
@@ -132,6 +136,11 @@
                 properties.Parameters = !string.IsNullOrEmpty(parametersContent)
                     ? parametersContent.FromJson<Dictionary<string, DeploymentParameter>>()
                     : null;
+            }
+
+            if (!string.IsNullOrEmpty(this.ValidationLevel))
+            {
+                properties.ValidationLevel = this.ValidationLevel;
             }
 
             return new DeploymentWhatIf(properties, this.Location);

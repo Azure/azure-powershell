@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule
 https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-azelasticsanvirtualnetworkruleobject
 #>
 function New-AzElasticSanVirtualNetworkRuleObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

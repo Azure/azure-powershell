@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                throw new PSArgumentException($"Data export {parameters.DataExportName} under resourceGroup {resourceGroupName} worspace:{parameters.WorkspaceName} does not exist, please use 'New-AzOperationalInsightsDataExport' instead.");
+                throw new PSArgumentException($"Data export {parameters.DataExportName} under resourceGroup {resourceGroupName} workspace:{parameters.WorkspaceName} does not exist, please use 'New-AzOperationalInsightsDataExport' instead.");
             }
 
             //validate user input parameters were not null - if they were then use existing values so they wont be ran over by null values

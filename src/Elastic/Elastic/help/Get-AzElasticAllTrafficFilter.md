@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticAllTrafficFilter
 
 ## SYNOPSIS
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticAllTrafficFilter -MonitorName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 
 ## EXAMPLES
 
@@ -132,7 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticTrafficFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse
 
 ## NOTES
 

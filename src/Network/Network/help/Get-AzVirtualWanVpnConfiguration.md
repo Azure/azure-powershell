@@ -16,37 +16,43 @@ configuration to a storage blob specified by the customer.
 ### ByVirtualWanNameByVpnSiteObject (Default)
 ```
 Get-AzVirtualWanVpnConfiguration -ResourceGroupName <String> -Name <String> -StorageSasUrl <String>
- -VpnSite <PSVpnSite[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VpnSite <PSVpnSite[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanNameByVpnSiteResourceId
 ```
 Get-AzVirtualWanVpnConfiguration -ResourceGroupName <String> -Name <String> -StorageSasUrl <String>
- -VpnSiteId <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VpnSiteId <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteObject
 ```
 Get-AzVirtualWanVpnConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String> -VpnSite <PSVpnSite[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteResourceId
 ```
 Get-AzVirtualWanVpnConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String> -VpnSiteId <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteObject
 ```
 Get-AzVirtualWanVpnConfiguration -ResourceId <String> -StorageSasUrl <String> -VpnSite <PSVpnSite[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteResourceId
 ```
 Get-AzVirtualWanVpnConfiguration -ResourceId <String> -StorageSasUrl <String> -VpnSiteId <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,9 +93,9 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 Once the gateway has been created, it is connected to the VpnSite using the New-AzVpnConnection command.
 
-The configuration is then downloaded using this commandlet.
+The configuration is then downloaded using this cmdlet.
 
-If the commandlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl. Below is an example for how the URL will look like :
+If the cmdlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl. Below is an example for how the URL will look like :
 https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
 
 ## PARAMETERS

@@ -64,12 +64,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_diskPoolName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("diskPoolName"), out var __jsonDiskPoolName) ? (string)__jsonDiskPoolName : (string)DiskPoolName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_iscsiTargetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("iscsiTargetName"), out var __jsonIscsiTargetName) ? (string)__jsonIscsiTargetName : (string)IscsiTargetName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_diskPoolName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("diskPoolName"), out var __jsonDiskPoolName) ? (string)__jsonDiskPoolName : (string)_diskPoolName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_iscsiTargetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("iscsiTargetName"), out var __jsonIscsiTargetName) ? (string)__jsonIscsiTargetName : (string)_iscsiTargetName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

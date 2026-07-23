@@ -17,7 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFirmwareAnalysisFirm
 Describe 'Remove-AzFirmwareAnalysisFirmware' {
     It 'Delete' {
         { 
-            $config = Remove-AzFirmwareAnalysisFirmware -Id 'd46d4be7-12bc-4fb2-82ea-fa460c2c4c7e' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default'
+            $fwidToDelete = '28960948-fca5-bc38-b261-881ebde4539e' #This was manually uploaded to the workspace to be deleted
+            $config = Remove-AzFirmwareAnalysisFirmware -Id $fwidToDelete -ResourceGroupName $env.ResourceGroup -WorkspaceName 'testworkspace'
             $config.Count | Should -eq 0
         } | Should -Not -Throw
     }

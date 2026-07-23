@@ -8,27 +8,35 @@ schema: 2.0.0
 # Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion
 
 ## SYNOPSIS
-Upgrades the database Redis version to the latest available.
+Updates the database Redis version to the latest available.
 
 ## SYNTAX
 
+### Update (Default)
 ```
-Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName <String> -DatabaseName <String>
+Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -DatabaseName <String> -ClusterName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityRedisEnterprise
+```
+Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -DatabaseName <String>
+ -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Upgrades the database Redis version to the latest available.
+Updates the database Redis version to the latest available.
 
 ## EXAMPLES
 
-### Example 1: Upgrade database Redis version
+### Example 1: Update database Redis version
 ```powershell
 Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -DatabaseName "default"
 ```
 
-Upgrades the database Redis version to the latest available.
+Updates the database Redis version to the latest available.
 
 ## PARAMETERS
 
@@ -49,10 +57,13 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -108,13 +119,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedisEnterpriseInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
+Parameter Sets: UpdateViaIdentityRedisEnterprise
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -129,7 +170,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -174,6 +215,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
 ## OUTPUTS
 

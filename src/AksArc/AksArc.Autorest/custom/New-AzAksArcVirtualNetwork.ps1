@@ -175,12 +175,12 @@ param(
 )
 
 process {
-    # Format custom location
-    $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
-    $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
-    $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
-    $null = $PSBoundParameters.Remove("CustomLocationName")
-
+    if ($PSCmdlet.ParameterSetName -eq "CreateExpanded") {
+      $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
+      $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
+      $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
+      $null = $PSBoundParameters.Remove("CustomLocationName")
+    } 
     Az.AksArc.internal\New-AzAksArcVirtualNetwork @PSBoundParameters
 }
 }

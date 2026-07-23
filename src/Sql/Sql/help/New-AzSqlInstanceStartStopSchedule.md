@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleList
-Array of valid SheduleItem objects.
+Array of valid ScheduleItem objects.
 
 ```yaml
 Type: ScheduleItem[]

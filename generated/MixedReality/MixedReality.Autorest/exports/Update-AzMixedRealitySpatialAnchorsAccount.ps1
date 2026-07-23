@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Updating a Spatial Anchors Account
+Creating or Updating a Spatial Anchors Account.
 .Description
-Updating a Spatial Anchors Account
+Creating or Updating a Spatial Anchors Account.
 .Example
-Update-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
+Update-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group -Tag @{"a"="1"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
+Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,7 +41,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityspatialanchorsaccount
 #>
 function Update-AzMixedRealitySpatialAnchorsAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -69,21 +69,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
@@ -114,16 +106,16 @@ param(
     ${KindSize},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${KindTier},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PSArgumentCompleterAttribute("SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType]
+    [System.String]
     # The identity type.
     ${PlanType},
 
@@ -156,9 +148,9 @@ param(
     ${SkuSize},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
@@ -170,7 +162,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -231,6 +223,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -253,9 +254,7 @@ begin {
             UpdateExpanded = 'Az.MixedReality.private\Update-AzMixedRealitySpatialAnchorsAccount_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.MixedReality.private\Update-AzMixedRealitySpatialAnchorsAccount_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -269,6 +268,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

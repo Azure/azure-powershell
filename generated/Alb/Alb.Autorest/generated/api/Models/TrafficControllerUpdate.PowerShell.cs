@@ -130,6 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdatePropertiesTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -150,6 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdateTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdatePropertiesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

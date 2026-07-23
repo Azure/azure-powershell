@@ -28,12 +28,12 @@ $obj.JobSecret | Format-List
 $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentials
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentials
 .Link
 https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
 #>
 function Get-AzDataBoxJobCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentials])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentials])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

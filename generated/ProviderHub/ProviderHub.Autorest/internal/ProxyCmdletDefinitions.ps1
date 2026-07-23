@@ -25,12 +25,12 @@ Lists all the operations supported by Microsoft.ProviderHub.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhuboperation
 #>
 function Get-AzProviderHubOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List1', Mandatory)]
@@ -102,14 +102,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ProviderHub.private\Get-AzProviderHubOperation_List';
             List1 = 'Az.ProviderHub.private\Get-AzProviderHubOperation_List1';
         }
-        if (('List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -118,6 +119,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -162,7 +166,7 @@ Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -179,11 +183,23 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [RolloutName <String>]: The rollout name.
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
 #>
 function Get-AzProviderHubResourceTypeRegistration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -194,6 +210,7 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
@@ -211,8 +228,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -270,15 +292,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_Get';
             GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_GetViaIdentity';
+            GetViaIdentityProviderRegistration = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_GetViaIdentityProviderRegistration';
             List = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -287,6 +311,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -329,13 +356,49 @@ Gets the sku details for the given resource type and sku name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION1INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [NestedResourceTypeFirst <String>]: The first child resource type.
   [NestedResourceTypeSecond <String>]: The second child resource type.
@@ -350,10 +413,12 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypefirst
 #>
 function Get-AzProviderHubSkuNestedResourceTypeFirst {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
@@ -366,12 +431,16 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -388,8 +457,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration1InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -447,14 +533,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeFirst_Get';
             GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeFirst_GetViaIdentity';
+            GetViaIdentityProviderRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeFirst_GetViaIdentityProviderRegistration';
+            GetViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeFirst_GetViaIdentityResourcetypeRegistration';
+            GetViaIdentityResourcetypeRegistration1 = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeFirst_GetViaIdentityResourcetypeRegistration1';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -463,6 +553,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -505,13 +598,61 @@ Gets the sku details for the given resource type and sku name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION1INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION2INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [NestedResourceTypeFirst <String>]: The first child resource type.
   [NestedResourceTypeSecond <String>]: The second child resource type.
@@ -526,16 +667,21 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypesecond
 #>
 function Get-AzProviderHubSkuNestedResourceTypeSecond {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
     ${NestedResourceTypeFirst},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The second child resource type.
@@ -548,12 +694,17 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -570,8 +721,31 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration1InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration2InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -629,14 +803,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeSecond_Get';
             GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeSecond_GetViaIdentity';
+            GetViaIdentityProviderRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeSecond_GetViaIdentityProviderRegistration';
+            GetViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeSecond_GetViaIdentityResourcetypeRegistration';
+            GetViaIdentityResourcetypeRegistration1 = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeSecond_GetViaIdentityResourcetypeRegistration1';
+            GetViaIdentityResourcetypeRegistration2 = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeSecond_GetViaIdentityResourcetypeRegistration2';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -645,6 +824,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -687,7 +869,7 @@ Gets the sku details for the given resource type and sku name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -704,26 +886,95 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [RolloutName <String>]: The rollout name.
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION1INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION2INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION3INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypethird
 #>
 function Get-AzProviderHubSkuNestedResourceTypeThird {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
     ${NestedResourceTypeFirst},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The second child resource type.
     ${NestedResourceTypeSecond},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The third child resource type.
@@ -736,12 +987,18 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -758,8 +1015,37 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration1InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration2InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration3', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration3InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -817,14 +1103,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_Get';
             GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_GetViaIdentity';
+            GetViaIdentityProviderRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_GetViaIdentityProviderRegistration';
+            GetViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_GetViaIdentityResourcetypeRegistration';
+            GetViaIdentityResourcetypeRegistration1 = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_GetViaIdentityResourcetypeRegistration1';
+            GetViaIdentityResourcetypeRegistration2 = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_GetViaIdentityResourcetypeRegistration2';
+            GetViaIdentityResourcetypeRegistration3 = 'Az.ProviderHub.private\Get-AzProviderHubSkuNestedResourceTypeThird_GetViaIdentityResourcetypeRegistration3';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -833,6 +1125,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -875,7 +1170,7 @@ Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testR
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -892,11 +1187,35 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [RolloutName <String>]: The rollout name.
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku
 #>
 function Get-AzProviderHubSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -910,6 +1229,7 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
@@ -920,6 +1240,8 @@ param(
     ${ResourceType},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -940,8 +1262,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
 
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
@@ -1020,18 +1353,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ProviderHub.private\Get-AzProviderHubSku_Get';
             GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubSku_GetViaIdentity';
+            GetViaIdentityProviderRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSku_GetViaIdentityProviderRegistration';
+            GetViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Get-AzProviderHubSku_GetViaIdentityResourcetypeRegistration';
             List = 'Az.ProviderHub.private\Get-AzProviderHubSku_List';
             List1 = 'Az.ProviderHub.private\Get-AzProviderHubSku_List1';
             List2 = 'Az.ProviderHub.private\Get-AzProviderHubSku_List2';
             List3 = 'Az.ProviderHub.private\Get-AzProviderHubSku_List3';
         }
-        if (('Get', 'List', 'List1', 'List2', 'List3') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1', 'List2', 'List3') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1040,6 +1376,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1071,16 +1410,16 @@ end {
 
 <#
 .Synopsis
-Creates or updates the operation supported by the given provider.
+Create the operation supported by the given provider.
 .Description
-Creates or updates the operation supported by the given provider.
+Create the operation supported by the given provider.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsContent
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsContent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1092,15 +1431,15 @@ CONTENT <IOperationsDefinition[]>: .
   DisplayProvider <String>: 
   DisplayResource <String>: 
   Name <String>: Name of the operation.
-  [ActionType <OperationActionType?>]: 
+  [ActionType <String>]: 
   [IsDataAction <Boolean?>]: Indicates whether the operation applies to data-plane.
-  [Origin <OperationOrigins?>]: 
-  [Property <IAny>]: Any object
+  [Origin <String>]: 
+  [Property <IAny>]: Anything
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhuboperation
 #>
 function New-AzProviderHubOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsContent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsContent])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1116,13 +1455,24 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsDefinition[]]
     # .
-    # To construct, see NOTES section for CONTENT properties and create a hash table.
     ${Content},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1180,13 +1530,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubOperation_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubOperation_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubOperation_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1195,6 +1548,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1237,7 +1593,7 @@ Generates the operations api for the given provider.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1258,7 +1614,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistrationoperation
 #>
 function New-AzProviderHubProviderRegistrationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsDefinition])]
 [CmdletBinding(DefaultParameterSetName='Generate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Generate', Mandatory)]
@@ -1278,7 +1634,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1337,14 +1692,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Generate = 'Az.ProviderHub.private\New-AzProviderHubProviderRegistrationOperation_Generate';
             GenerateViaIdentity = 'Az.ProviderHub.private\New-AzProviderHubProviderRegistrationOperation_GenerateViaIdentity';
         }
-        if (('Generate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Generate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1353,6 +1709,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1384,16 +1743,18 @@ end {
 
 <#
 .Synopsis
-Creates or updates a resource type.
+Create a resource type.
 .Description
-Creates or updates a resource type.
+Create a resource type.
 .Example
 New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
 .Example
 New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -RoutingType "Default" -Regionality "Global" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = ""; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" }
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1404,15 +1765,15 @@ AUTHORIZATIONACTIONMAPPING <IAuthorizationActionMapping[]>: .
   [Original <String>]: 
 
 ENDPOINT <IResourceTypeEndpoint[]>: .
-  [ApiVersion <String[]>]: 
+  [ApiVersion <List<String>>]: 
   [Enabled <Boolean?>]: 
-  [Extension <IResourceTypeExtension[]>]: 
+  [Extension <List<IResourceTypeExtension>>]: 
     [EndpointUri <String>]: 
-    [ExtensionCategory <ExtensionCategory[]>]: 
+    [ExtensionCategory <List<String>>]: 
     [Timeout <TimeSpan?>]: 
   [FeatureRuleRequiredFeaturesPolicy <String>]: 
-  [Location <String[]>]: 
-  [RequiredFeature <String[]>]: 
+  [Location <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
   [Timeout <TimeSpan?>]: 
 
 EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
@@ -1428,312 +1789,372 @@ LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
 
 LOGGINGRULE <ILoggingRule[]>: .
   Action <String>: 
-  DetailLevel <LoggingDetails>: 
-  Direction <LoggingDirections>: 
-  [HiddenPropertyPathHiddenPathsOnRequest <String[]>]: 
-  [HiddenPropertyPathHiddenPathsOnResponse <String[]>]: 
+  DetailLevel <String>: 
+  Direction <String>: 
+  [HiddenPropertyPathHiddenPathsOnRequest <List<String>>]: 
+  [HiddenPropertyPathHiddenPathsOnResponse <List<String>>]: 
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 SERVICETREEINFO <IServiceTreeInfo[]>: .
   [ComponentId <String>]: 
   [ServiceId <String>]: 
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  Action <SubscriptionNotificationOperation>: 
-  State <SubscriptionTransitioningState>: 
+  Action <String>: 
+  State <String>: 
 
 SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
-  [AllowedAction <String[]>]: 
-  [State <SubscriptionState?>]: 
+  [AllowedAction <List<String>>]: 
+  [State <String>]: 
 
 SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
-  [ApiVersion <String[]>]: 
+  [ApiVersion <List<String>>]: 
   [SwaggerSpecFolderUri <String>]: 
 
 THROTTLINGRULE <IThrottlingRule[]>: .
   Action <String>: 
-  Metric <IThrottlingMetric[]>: 
+  Metric <List<IThrottlingMetric>>: 
     Limit <Int64>: 
-    Type <ThrottlingMetricType>: 
+    Type <String>: 
     [Interval <TimeSpan?>]: 
-  [RequiredFeature <String[]>]: 
+  [RequiredFeature <List<String>>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 #>
 function New-AzProviderHubResourceTypeRegistration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The name of the resource provider hosted within ProviderHub.
-    ${ProviderNamespace},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${AllowedUnauthorizedAction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IAuthorizationActionMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAuthorizationActionMapping[]]
     # .
-    # To construct, see NOTES section for AUTHORIZATIONACTIONMAPPING properties and create a hash table.
     ${AuthorizationActionMapping},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${CheckNameAvailabilitySpecificationEnableDefaultValidation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # .
     ${DefaultApiVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${DisallowedActionVerb},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${EnableAsyncOperation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${EnableThirdPartyS2S},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeEndpoint[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeEndpoint[]]
     # .
-    # To construct, see NOTES section for ENDPOINT properties and create a hash table.
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IExtendedLocationOptions[]]
     # .
-    # To construct, see NOTES section for EXTENDEDLOCATION properties and create a hash table.
     ${ExtendedLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "DoNotMergeExistingReadOnlyAndSecretProperties", "IncludeInternalMetadata")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String[]]
+    # .
+    ${ExtensionOptionResourceCreationBeginRequest},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "DoNotMergeExistingReadOnlyAndSecretProperties", "IncludeInternalMetadata")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String[]]
+    # .
+    ${ExtensionOptionResourceCreationBeginResponse},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # .
     ${FeatureRuleRequiredFeaturesPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # .
     ${IdentityManagementApplicationId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "SystemAssigned", "UserAssigned", "Actor", "DelegatedResourceIdentity")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes]
+    [System.String]
     # .
     ${IdentityManagementType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${IsPureProxy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILinkedAccessCheck[]]
     # .
-    # To construct, see NOTES section for LINKEDACCESSCHECK properties and create a hash table.
     ${LinkedAccessCheck},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILoggingRule[]]
     # .
-    # To construct, see NOTES section for LOGGINGRULE properties and create a hash table.
     ${LoggingRule},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MarketplaceType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "AddOn", "Bypass", "Store")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MarketplaceType]
+    [System.String]
     # .
     ${MarketplaceType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Global", "Regional")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality]
+    [System.String]
     # .
     ${Regionality},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "SignedUserToken", "ClientGroupMembership", "SignedAuxiliaryTokens", "UnboundedClientGroupMembership")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType]
+    [System.String]
     # .
     ${RequestHeaderOptionOptInHeader},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${RequiredFeature},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "CascadeDeleteAll", "CascadeDeleteProxyOnlyChildren")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]]
-    # .
-    ${ResourceCreationBeginRequest},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]]
-    # .
-    ${ResourceCreationBeginResponse},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy]
+    [System.String]
     # .
     ${ResourceDeletionPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ResourceMovePolicyCrossResourceGroupMoveEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ResourceMovePolicyCrossSubscriptionMoveEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ResourceMovePolicyValidationRequired},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("Default", "ProxyOnly", "HostBased", "Extension", "Tenant", "Fanout", "LocationBased", "Failover", "CascadeExtension")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType]
+    [System.String]
     # .
     ${RoutingType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo[]]
     # .
-    # To construct, see NOTES section for SERVICETREEINFO properties and create a hash table.
     ${ServiceTreeInfo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.TimeSpan]
     # .
     ${SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction[]]
     # .
-    # To construct, see NOTES section for SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION properties and create a hash table.
     ${SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateRule[]]
     # .
-    # To construct, see NOTES section for SUBSCRIPTIONSTATERULE properties and create a hash table.
     ${SubscriptionStateRule},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISwaggerSpecification[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISwaggerSpecification[]]
     # .
-    # To construct, see NOTES section for SWAGGERSPECIFICATION properties and create a hash table.
     ${SwaggerSpecification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("None", "ContinueDeploymentOnFailure", "DefaultValidationOnly")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]]
+    [System.String[]]
     # .
     ${TemplateDeploymentOptionPreflightOption},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${TemplateDeploymentOptionPreflightSupported},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IThrottlingRule[]]
     # .
-    # To construct, see NOTES section for THROTTLINGRULE properties and create a hash table.
     ${ThrottlingRule},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1803,13 +2224,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubResourceTypeRegistration_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1818,6 +2243,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1849,101 +2277,168 @@ end {
 
 <#
 .Synopsis
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Description
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 SKUSETTING <ISkuSetting[]>: .
   Name <String>: 
-  [Capability <ISkuCapability[]>]: 
+  [Capability <List<ISkuCapability>>]: 
     Name <String>: 
     Value <String>: 
   [CapacityDefault <Int32?>]: 
   [CapacityMaximum <Int32?>]: 
   [CapacityMinimum <Int32?>]: 
-  [CapacityScaleType <SkuScaleType?>]: 
-  [Cost <ISkuCost[]>]: 
+  [CapacityScaleType <String>]: 
+  [Cost <List<ISkuCost>>]: 
     MeterId <String>: 
     [ExtendedUnit <String>]: 
     [Quantity <Int32?>]: 
   [Family <String>]: 
   [Kind <String>]: 
-  [Location <String[]>]: 
-  [LocationInfo <ISkuLocationInfo[]>]: 
+  [Location <List<String>>]: 
+  [LocationInfo <List<ISkuLocationInfo>>]: 
     Location <String>: 
-    [ExtendedLocation <String[]>]: 
-    [Type <ExtendedLocationType?>]: 
-    [Zone <String[]>]: 
-    [ZoneDetail <ISkuZoneDetail[]>]: 
-      [Capability <ISkuCapability[]>]: 
-      [Name <String[]>]: 
-  [RequiredFeature <String[]>]: 
-  [RequiredQuotaId <String[]>]: 
+    [ExtendedLocation <List<String>>]: 
+    [Type <String>]: 
+    [Zone <List<String>>]: 
+    [ZoneDetail <List<ISkuZoneDetail>>]: 
+      [Capability <List<ISkuCapability>>]: 
+      [Name <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
+  [RequiredQuotaId <List<String>>]: 
   [Size <String>]: 
   [Tier <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypefirst
 #>
 function New-AzProviderHubSkuNestedResourceTypeFirst {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The first child resource type.
-    ${NestedResourceTypeFirst},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The name of the resource provider hosted within ProviderHub.
-    ${ProviderNamespace},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The resource type.
-    ${ResourceType},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The first child resource type.
+    ${NestedResourceTypeFirst},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The resource type.
+    ${ResourceType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuSetting[]]
     # .
-    # To construct, see NOTES section for SKUSETTING properties and create a hash table.
     ${SkuSetting},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2001,13 +2496,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeFirst_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeFirst_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeFirst_CreateViaIdentityResourcetypeRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded1 = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeFirst_CreateViaIdentityResourcetypeRegistrationExpanded1';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeFirst_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeFirst_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2016,6 +2517,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2047,107 +2551,182 @@ end {
 
 <#
 .Synopsis
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Description
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 SKUSETTING <ISkuSetting[]>: .
   Name <String>: 
-  [Capability <ISkuCapability[]>]: 
+  [Capability <List<ISkuCapability>>]: 
     Name <String>: 
     Value <String>: 
   [CapacityDefault <Int32?>]: 
   [CapacityMaximum <Int32?>]: 
   [CapacityMinimum <Int32?>]: 
-  [CapacityScaleType <SkuScaleType?>]: 
-  [Cost <ISkuCost[]>]: 
+  [CapacityScaleType <String>]: 
+  [Cost <List<ISkuCost>>]: 
     MeterId <String>: 
     [ExtendedUnit <String>]: 
     [Quantity <Int32?>]: 
   [Family <String>]: 
   [Kind <String>]: 
-  [Location <String[]>]: 
-  [LocationInfo <ISkuLocationInfo[]>]: 
+  [Location <List<String>>]: 
+  [LocationInfo <List<ISkuLocationInfo>>]: 
     Location <String>: 
-    [ExtendedLocation <String[]>]: 
-    [Type <ExtendedLocationType?>]: 
-    [Zone <String[]>]: 
-    [ZoneDetail <ISkuZoneDetail[]>]: 
-      [Capability <ISkuCapability[]>]: 
-      [Name <String[]>]: 
-  [RequiredFeature <String[]>]: 
-  [RequiredQuotaId <String[]>]: 
+    [ExtendedLocation <List<String>>]: 
+    [Type <String>]: 
+    [Zone <List<String>>]: 
+    [ZoneDetail <List<ISkuZoneDetail>>]: 
+      [Capability <List<ISkuCapability>>]: 
+      [Name <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
+  [RequiredQuotaId <List<String>>]: 
   [Size <String>]: 
   [Tier <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypesecond
 #>
 function New-AzProviderHubSkuNestedResourceTypeSecond {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The first child resource type.
-    ${NestedResourceTypeFirst},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The second child resource type.
-    ${NestedResourceTypeSecond},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The name of the resource provider hosted within ProviderHub.
-    ${ProviderNamespace},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The resource type.
-    ${ResourceType},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The first child resource type.
+    ${NestedResourceTypeFirst},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The second child resource type.
+    ${NestedResourceTypeSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The resource type.
+    ${ResourceType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuSetting[]]
     # .
-    # To construct, see NOTES section for SKUSETTING properties and create a hash table.
     ${SkuSetting},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2205,13 +2784,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateViaIdentityResourcetypeRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded1 = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateViaIdentityResourcetypeRegistrationExpanded1';
+            CreateViaIdentityResourcetypeRegistrationExpanded2 = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateViaIdentityResourcetypeRegistrationExpanded2';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeSecond_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2220,6 +2806,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2251,113 +2840,197 @@ end {
 
 <#
 .Synopsis
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Description
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 SKUSETTING <ISkuSetting[]>: .
   Name <String>: 
-  [Capability <ISkuCapability[]>]: 
+  [Capability <List<ISkuCapability>>]: 
     Name <String>: 
     Value <String>: 
   [CapacityDefault <Int32?>]: 
   [CapacityMaximum <Int32?>]: 
   [CapacityMinimum <Int32?>]: 
-  [CapacityScaleType <SkuScaleType?>]: 
-  [Cost <ISkuCost[]>]: 
+  [CapacityScaleType <String>]: 
+  [Cost <List<ISkuCost>>]: 
     MeterId <String>: 
     [ExtendedUnit <String>]: 
     [Quantity <Int32?>]: 
   [Family <String>]: 
   [Kind <String>]: 
-  [Location <String[]>]: 
-  [LocationInfo <ISkuLocationInfo[]>]: 
+  [Location <List<String>>]: 
+  [LocationInfo <List<ISkuLocationInfo>>]: 
     Location <String>: 
-    [ExtendedLocation <String[]>]: 
-    [Type <ExtendedLocationType?>]: 
-    [Zone <String[]>]: 
-    [ZoneDetail <ISkuZoneDetail[]>]: 
-      [Capability <ISkuCapability[]>]: 
-      [Name <String[]>]: 
-  [RequiredFeature <String[]>]: 
-  [RequiredQuotaId <String[]>]: 
+    [ExtendedLocation <List<String>>]: 
+    [Type <String>]: 
+    [Zone <List<String>>]: 
+    [ZoneDetail <List<ISkuZoneDetail>>]: 
+      [Capability <List<ISkuCapability>>]: 
+      [Name <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
+  [RequiredQuotaId <List<String>>]: 
   [Size <String>]: 
   [Tier <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypethird
 #>
 function New-AzProviderHubSkuNestedResourceTypeThird {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The first child resource type.
-    ${NestedResourceTypeFirst},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The second child resource type.
-    ${NestedResourceTypeSecond},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The third child resource type.
-    ${NestedResourceTypeThird},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The name of the resource provider hosted within ProviderHub.
-    ${ProviderNamespace},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The resource type.
-    ${ResourceType},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The first child resource type.
+    ${NestedResourceTypeFirst},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The second child resource type.
+    ${NestedResourceTypeSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The third child resource type.
+    ${NestedResourceTypeThird},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The resource type.
+    ${ResourceType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded3', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded3')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded1')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded2')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded3')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuSetting[]]
     # .
-    # To construct, see NOTES section for SKUSETTING properties and create a hash table.
     ${SkuSetting},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2415,13 +3088,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaIdentityResourcetypeRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded1 = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaIdentityResourcetypeRegistrationExpanded1';
+            CreateViaIdentityResourcetypeRegistrationExpanded2 = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaIdentityResourcetypeRegistrationExpanded2';
+            CreateViaIdentityResourcetypeRegistrationExpanded3 = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaIdentityResourcetypeRegistrationExpanded3';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubSkuNestedResourceTypeThird_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2430,6 +3111,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2461,100 +3145,160 @@ end {
 
 <#
 .Synopsis
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Description
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 .Example
-$skuSetting1 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSetting" -Property @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
-$skuSetting2 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSetting" -Property @{Name = "freeSku2"; Tier = "Tier1"; Kind = "Standard"}
+$skuSetting1 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.SkuSetting" -Property @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
+$skuSetting2 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.SkuSetting" -Property @{Name = "freeSku2"; Tier = "Tier1"; Kind = "Standard"}
 
 New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting $skuSetting1, $skuSetting2
 .Example
-$skuSetting1 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSetting" -Property @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
+$skuSetting1 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.SkuSetting" -Property @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
 
 New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -Sku "default" -SkuSetting $skuSetting1
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 SKUSETTING <ISkuSetting[]>: .
   Name <String>: 
-  [Capability <ISkuCapability[]>]: 
+  [Capability <List<ISkuCapability>>]: 
     Name <String>: 
     Value <String>: 
   [CapacityDefault <Int32?>]: 
   [CapacityMaximum <Int32?>]: 
   [CapacityMinimum <Int32?>]: 
-  [CapacityScaleType <SkuScaleType?>]: 
-  [Cost <ISkuCost[]>]: 
+  [CapacityScaleType <String>]: 
+  [Cost <List<ISkuCost>>]: 
     MeterId <String>: 
     [ExtendedUnit <String>]: 
     [Quantity <Int32?>]: 
   [Family <String>]: 
   [Kind <String>]: 
-  [Location <String[]>]: 
-  [LocationInfo <ISkuLocationInfo[]>]: 
+  [Location <List<String>>]: 
+  [LocationInfo <List<ISkuLocationInfo>>]: 
     Location <String>: 
-    [ExtendedLocation <String[]>]: 
-    [Type <ExtendedLocationType?>]: 
-    [Zone <String[]>]: 
-    [ZoneDetail <ISkuZoneDetail[]>]: 
-      [Capability <ISkuCapability[]>]: 
-      [Name <String[]>]: 
-  [RequiredFeature <String[]>]: 
-  [RequiredQuotaId <String[]>]: 
+    [ExtendedLocation <List<String>>]: 
+    [Type <String>]: 
+    [Zone <List<String>>]: 
+    [ZoneDetail <List<ISkuZoneDetail>>]: 
+      [Capability <List<ISkuCapability>>]: 
+      [Name <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
+  [RequiredQuotaId <List<String>>]: 
   [Size <String>]: 
   [Tier <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
 #>
 function New-AzProviderHubSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The name of the resource provider hosted within ProviderHub.
-    ${ProviderNamespace},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The resource type.
-    ${ResourceType},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The resource type.
+    ${ResourceType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourcetypeRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuSetting[]]
     # .
-    # To construct, see NOTES section for SKUSETTING properties and create a hash table.
     ${SkuSetting},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2612,13 +3356,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubSku_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSku_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaIdentityResourcetypeRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubSku_CreateViaIdentityResourcetypeRegistrationExpanded';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubSku_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubSku_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2627,6 +3376,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2710,7 +3462,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2775,14 +3526,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubOperation_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubOperation_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2791,6 +3543,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2850,6 +3605,18 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [RolloutName <String>]: The rollout name.
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
 #>
@@ -2864,6 +3631,7 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
@@ -2880,8 +3648,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2945,14 +3718,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubResourceTypeRegistration_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubResourceTypeRegistration_DeleteViaIdentity';
+            DeleteViaIdentityProviderRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubResourceTypeRegistration_DeleteViaIdentityProviderRegistration';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2961,6 +3736,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3010,6 +3788,42 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION1INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [NestedResourceTypeFirst <String>]: The first child resource type.
   [NestedResourceTypeSecond <String>]: The second child resource type.
@@ -3028,6 +3842,8 @@ function Remove-AzProviderHubSkuNestedResourceTypeFirst {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
@@ -3040,12 +3856,16 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -3062,8 +3882,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration1InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3127,14 +3964,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeFirst_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeFirst_DeleteViaIdentity';
+            DeleteViaIdentityProviderRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeFirst_DeleteViaIdentityProviderRegistration';
+            DeleteViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeFirst_DeleteViaIdentityResourcetypeRegistration';
+            DeleteViaIdentityResourcetypeRegistration1 = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeFirst_DeleteViaIdentityResourcetypeRegistration1';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3143,6 +3984,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3192,6 +4036,54 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION1INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION2INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [NestedResourceTypeFirst <String>]: The first child resource type.
   [NestedResourceTypeSecond <String>]: The second child resource type.
@@ -3210,12 +4102,17 @@ function Remove-AzProviderHubSkuNestedResourceTypeSecond {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
     ${NestedResourceTypeFirst},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The second child resource type.
@@ -3228,12 +4125,17 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -3250,8 +4152,31 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration1InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration2InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3315,14 +4240,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeSecond_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeSecond_DeleteViaIdentity';
+            DeleteViaIdentityProviderRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeSecond_DeleteViaIdentityProviderRegistration';
+            DeleteViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeSecond_DeleteViaIdentityResourcetypeRegistration';
+            DeleteViaIdentityResourcetypeRegistration1 = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeSecond_DeleteViaIdentityResourcetypeRegistration1';
+            DeleteViaIdentityResourcetypeRegistration2 = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeSecond_DeleteViaIdentityResourcetypeRegistration2';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3331,6 +4261,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3390,6 +4323,66 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [RolloutName <String>]: The rollout name.
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION1INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION2INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATION3INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypethird
 #>
@@ -3398,18 +4391,27 @@ function Remove-AzProviderHubSkuNestedResourceTypeThird {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
     ${NestedResourceTypeFirst},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The second child resource type.
     ${NestedResourceTypeSecond},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The third child resource type.
@@ -3422,12 +4424,18 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -3444,8 +4452,37 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration1InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration2InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration3', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistration3InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3509,14 +4546,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_DeleteViaIdentity';
+            DeleteViaIdentityProviderRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_DeleteViaIdentityProviderRegistration';
+            DeleteViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_DeleteViaIdentityResourcetypeRegistration';
+            DeleteViaIdentityResourcetypeRegistration1 = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_DeleteViaIdentityResourcetypeRegistration1';
+            DeleteViaIdentityResourcetypeRegistration2 = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_DeleteViaIdentityResourcetypeRegistration2';
+            DeleteViaIdentityResourcetypeRegistration3 = 'Az.ProviderHub.private\Remove-AzProviderHubSkuNestedResourceTypeThird_DeleteViaIdentityResourcetypeRegistration3';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3525,6 +4568,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3584,6 +4630,30 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [RolloutName <String>]: The rollout name.
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku
 #>
@@ -3598,12 +4668,15 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -3620,8 +4693,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3685,14 +4769,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubSku_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentity';
+            DeleteViaIdentityProviderRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentityProviderRegistration';
+            DeleteViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentityResourcetypeRegistration';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3701,6 +4788,302 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update the resource type skus in the given resource type.
+.Description
+Update the resource type skus in the given resource type.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCETYPEREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+SKUSETTING <ISkuSetting[]>: .
+  Name <String>: 
+  [Capability <List<ISkuCapability>>]: 
+    Name <String>: 
+    Value <String>: 
+  [CapacityDefault <Int32?>]: 
+  [CapacityMaximum <Int32?>]: 
+  [CapacityMinimum <Int32?>]: 
+  [CapacityScaleType <String>]: 
+  [Cost <List<ISkuCost>>]: 
+    MeterId <String>: 
+    [ExtendedUnit <String>]: 
+    [Quantity <Int32?>]: 
+  [Family <String>]: 
+  [Kind <String>]: 
+  [Location <List<String>>]: 
+  [LocationInfo <List<ISkuLocationInfo>>]: 
+    Location <String>: 
+    [ExtendedLocation <List<String>>]: 
+    [Type <String>]: 
+    [Zone <List<String>>]: 
+    [ZoneDetail <List<ISkuZoneDetail>>]: 
+      [Capability <List<ISkuCapability>>]: 
+      [Name <List<String>>]: 
+  [RequiredFeature <List<String>>]: 
+  [RequiredQuotaId <List<String>>]: 
+  [Size <String>]: 
+  [Tier <String>]: 
+.Link
+https://learn.microsoft.com/powershell/module/az.providerhub/update-azproviderhubskunestedresourcetypethird
+#>
+function Update-AzProviderHubSkuNestedResourceTypeThird {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The first child resource type.
+    ${NestedResourceTypeFirst},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The second child resource type.
+    ${NestedResourceTypeSecond},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The third child resource type.
+    ${NestedResourceTypeThird},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The name of the resource provider hosted within ProviderHub.
+    ${ProviderNamespace},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The resource type.
+    ${ResourceType},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProviderRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The SKU.
+    ${Sku},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded2', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourcetypeRegistrationExpanded3', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ResourcetypeRegistrationInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # .
+    ${ProvisioningState},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISkuSetting[]]
+    # .
+    ${SkuSetting},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateViaIdentityExpanded';
+            UpdateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateViaIdentityProviderRegistrationExpanded';
+            UpdateViaIdentityResourcetypeRegistrationExpanded = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateViaIdentityResourcetypeRegistrationExpanded';
+            UpdateViaIdentityResourcetypeRegistrationExpanded1 = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateViaIdentityResourcetypeRegistrationExpanded1';
+            UpdateViaIdentityResourcetypeRegistrationExpanded2 = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateViaIdentityResourcetypeRegistrationExpanded2';
+            UpdateViaIdentityResourcetypeRegistrationExpanded3 = 'Az.ProviderHub.private\Update-AzProviderHubSkuNestedResourceTypeThird_UpdateViaIdentityResourcetypeRegistrationExpanded3';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

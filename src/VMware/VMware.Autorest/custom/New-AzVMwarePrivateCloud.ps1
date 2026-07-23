@@ -46,6 +46,9 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [SecondaryServer <String>]: Secondary server URL
   [Ssl <String?>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+
+VCFLICENSE <IVcfLicense>: The VMware Cloud Foundation (VCF) license for the private cloud. Use New-AzVMwareVcf5LicenseObject to create the license object.
+  [Kind <String>]: License kind (e.g. vcf5)
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
@@ -201,6 +204,14 @@ function New-AzVMwarePrivateCloud {
         [System.String]
         # Optionally, set the vCenter admin password when the private cloud is created
         ${VcenterPassword},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense]
+        # The VMware Cloud Foundation (VCF) license for the private cloud.
+        # To construct, see NOTES section for VCFLICENSE properties and create a hash table,
+        # or use New-AzVMwareVcf5LicenseObject to create a Vcf5License object.
+        ${VcfLicense},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]

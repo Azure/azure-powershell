@@ -12,52 +12,79 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to update a lab schedule.
+.Description
+Operation to update a lab schedule.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
+#>
 function Update-AzLabServicesSchedule_ResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource ID of lab service schedule to update.
     ${ResourceId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # Notes for this schedule.
     ${Note},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.DateTime]
+    # When the recurrence will expire.
+    # This date is inclusive.
     ${RecurrencePatternExpirationDate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Daily", "Weekly")]
+    [System.String]
+    # The frequency of the recurrence.
     ${RecurrencePatternFrequency},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Int32]
+    # The interval to invoke the schedule on.
+    # For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days.
+    # When no interval is supplied, an interval of 1 is used.
     ${RecurrencePatternInterval},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [System.String[]]
+    # The week days the schedule runs.
+    # Used for when the Frequency is set to Weekly.
     ${RecurrencePatternWeekDay},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.DateTime]
+    # When lab user virtual machines will be started.
+    # Timestamp offsets will be ignored and timeZoneId is used instead.
     ${StartAt},
     
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.DateTime]
+    # When lab user virtual machines will be stopped.
+    # Timestamp offsets will be ignored and timeZoneId is used instead.
     ${StopAt},
     
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The IANA timezone id for the schedule.
     ${TimeZoneId},
 
     [Parameter()]
@@ -116,7 +143,8 @@ param(
 )
 
 process {
-    $resourceHash = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
+    $HandleScheduleResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleScheduleResourceId.ps1'
+    $resourceHash = . $HandleScheduleResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId")
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {

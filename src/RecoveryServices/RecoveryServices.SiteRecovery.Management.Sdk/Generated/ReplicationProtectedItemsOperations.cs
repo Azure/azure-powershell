@@ -39,8 +39,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public SiteRecoveryManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the list of ASR replication protected items in the protection container.
+        /// Gets the list of ASR replication protected items in the protection
+        /// container.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -68,7 +75,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string fabricName, string protectionContainerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -79,19 +86,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -111,6 +124,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
 
@@ -122,9 +137,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
 
@@ -266,8 +281,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets the details of an ASR replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Fabric unique name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -296,7 +317,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> GetWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -307,19 +328,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -344,6 +371,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -356,9 +385,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -499,16 +528,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// The operation to create an ASR replication protected item (Enable replication).
+        /// The operation to create an ASR replication protected item (Enable
+        /// replication).
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// A name for the replication protected item.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// Enable protection input properties.
@@ -519,41 +555,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> CreateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginCreateWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// The operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.
+        /// The operation to update the recovery settings of an ASR replication
+        /// protected item.
         /// </summary>
-        /// <param name='fabricName'>
-        /// Fabric name.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PurgeWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginPurgeWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// The operation to update the recovery settings of an ASR replication protected item.
-        /// </summary>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -572,18 +590,58 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> UpdateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginUpdateWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// The operation to delete or purge a replication protected item. This
+        /// operation will force delete the replication protected item. Use the remove
+        /// operation on replication protected item to perform a clean disable
+        /// replication for the item.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders>> PurgeWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders> _response = await BeginPurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to add disks(s) to the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -600,24 +658,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> AddDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsAddDisksHeaders>> AddDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginAddDisksWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsAddDisksHeaders> _response = await BeginAddDisksWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// The operation to change the recovery point of a failed over replication protected item.
+        /// The operation to change the recovery point of a failed over replication
+        /// protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The ARM fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The replicated protected item name.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The input properties to apply recovery point.
@@ -628,18 +693,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> ApplyRecoveryPointWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsApplyRecoveryPointHeaders>> ApplyRecoveryPointWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginApplyRecoveryPointWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsApplyRecoveryPointHeaders> _response = await BeginApplyRecoveryPointWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to cancel the failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -653,18 +724,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> FailoverCancelWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCancelHeaders>> FailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginFailoverCancelWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCancelHeaders> _response = await BeginFailoverCancelWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to commit the failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -678,18 +755,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> FailoverCommitWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCommitHeaders>> FailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginFailoverCommitWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCommitHeaders> _response = await BeginFailoverCommitWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to initiate a planned failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -706,16 +789,93 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> PlannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsPlannedFailoverHeaders>> PlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginPlannedFailoverWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsPlannedFailoverHeaders> _response = await BeginPlannedFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// The operation to disable replication on a replication protected item. This will also remove the item.
+        /// Operation to reprotect or reverse replicate a failed over replication
+        /// protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Reverse replication properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReprotectHeaders>> ReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReprotectHeaders> _response = await BeginReprotectWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='properties'>
+        /// The properties of the reinstall mobility service request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>> ReinstallMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders> _response = await BeginReinstallMobilityServiceWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// The operation to disable replication on a replication protected item. This
+        /// will also remove the item.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -734,18 +894,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to remove disk(s) from the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -762,43 +928,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> RemoveDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRemoveDisksHeaders>> RemoveDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginRemoveDisksWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRemoveDisksHeaders> _response = await BeginRemoveDisksWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// The operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.
+        /// The operation to start resynchronize/repair replication for a replication
+        /// protected item requiring resynchronization.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// The name of the container.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// The name of the replication protected item.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> RepairReplicationWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginRepairReplicationWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Operation to reprotect or reverse replicate a failed over replication protected item.
-        /// </summary>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -806,27 +954,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='replicatedProtectedItemName'>
         /// Replication protected item name.
         /// </param>
-        /// <param name='properties'>
-        /// Reverse replication properties.
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> ReprotectWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRepairReplicationHeaders>> RepairReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginReprotectWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRepairReplicationHeaders> _response = await BeginRepairReplicationWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to resolve health issues of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -843,18 +994,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> ResolveHealthErrorsWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsResolveHealthErrorsHeaders>> ResolveHealthErrorsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginResolveHealthErrorsWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsResolveHealthErrorsHeaders> _response = await BeginResolveHealthErrorsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to initiate a switch provider of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -871,18 +1028,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> SwitchProviderWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsSwitchProviderHeaders>> SwitchProviderWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginSwitchProviderWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsSwitchProviderHeaders> _response = await BeginSwitchProviderWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to perform a test failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -899,18 +1062,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> TestFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverHeaders>> TestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginTestFailoverWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverHeaders> _response = await BeginTestFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to clean up the test failover of a replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -927,18 +1096,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> TestFailoverCleanupWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverCleanupHeaders>> TestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginTestFailoverCleanupWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverCleanupHeaders> _response = await BeginTestFailoverCleanupWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Operation to initiate a failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -955,16 +1130,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> UnplannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUnplannedFailoverHeaders>> UnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginUnplannedFailoverWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUnplannedFailoverHeaders> _response = await BeginUnplannedFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// The operation to update appliance of an ASR replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -983,24 +1164,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> UpdateApplianceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateApplianceHeaders>> UpdateApplianceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem> _response = await BeginUpdateApplianceWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateApplianceHeaders> _response = await BeginUpdateApplianceWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// The operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.
+        /// The operation to update(push update) the installed mobility service
+        /// software on a replication protected item to the latest available version.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric containing the protected item.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the container containing the protected item.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The name of the protected item on which the agent is to be updated.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The properties of the update mobility service request.
@@ -1011,21 +1199,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> UpdateMobilityServiceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> UpdateMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders> _response = await BeginUpdateMobilityServiceWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders> _response = await BeginUpdateMobilityServiceWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Gets the list of ASR replication protected items in the vault.
         /// </summary>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='skipToken'>
-        /// The pagination token. Possible values: &#34;FabricId&#34; or &#34;FabricId_CloudId&#34; or null.
+        /// The pagination token. Possible values: &#34;FabricId&#34; or &#34;FabricId_CloudId&#34; or
+        /// null.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1048,32 +1243,38 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<ProtectedItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectedItemsQueryParameter>), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ReplicationProtectedItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, string skipToken = default(string), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
-
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
+
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
-            if (this.Client.ResourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
 
 
             // Tracing
@@ -1083,8 +1284,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("odataQuery", odataQuery);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("skipToken", skipToken);
+                tracingParameters.Add("filter", filter);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1094,19 +1297,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (odataQuery != null)
-            {
-                var _protectedItemsQueryParameter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_protectedItemsQueryParameter))
-                {
-                    _queryParameters.Add(_protectedItemsQueryParameter);
-                }
-            }
             if (this.Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
@@ -1114,6 +1309,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             if (skipToken != null)
             {
                 _queryParameters.Add(string.Format("skipToken={0}", System.Uri.EscapeDataString(skipToken)));
+            }
+            if (filter != null)
+            {
+                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1246,16 +1445,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// The operation to create an ASR replication protected item (Enable replication).
+        /// The operation to create an ASR replication protected item (Enable
+        /// replication).
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// A name for the replication protected item.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// Enable protection input properties.
@@ -1281,7 +1487,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginCreateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, EnableProtectionInputProperties properties = default(EnableProtectionInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1292,19 +1498,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -1334,6 +1546,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -1347,9 +1561,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -1458,7 +1672,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsCreateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1484,219 +1698,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
-            if (_shouldTrace)
+            try
             {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsCreateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
             }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// The operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.
-        /// </summary>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPurgeWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (this.Client.ApiVersion == null)
+            catch (Newtonsoft.Json.JsonException ex)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
-
-            if (this.Client.ResourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (fabricName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
-            }
-
-            if (protectionContainerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
-            }
-
-            if (replicatedProtectedItemName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
-            }
-
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("fabricName", fabricName);
-                tracingParameters.Add("protectionContainerName", protectionContainerName);
-                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
-
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginPurge", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
-            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
-            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("DELETE");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 202 && (int)_statusCode != 204)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
                 _httpRequest.Dispose();
                 if (_httpResponse != null)
                 {
                     _httpResponse.Dispose();
                 }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -1710,8 +1723,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// The operation to update the recovery settings of an ASR replication protected item.
+        /// The operation to update the recovery settings of an ASR replication
+        /// protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -1745,7 +1765,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginUpdateWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateReplicationProtectedItemInputProperties properties = default(UpdateReplicationProtectedItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1756,19 +1776,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -1798,6 +1824,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -1811,9 +1839,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -1922,7 +1950,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1948,6 +1976,263 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsUpdateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// The operation to delete or purge a replication protected item. This
+        /// operation will force delete the replication protected item. Use the remove
+        /// operation on replication protected item to perform a clean disable
+        /// replication for the item.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders>> BeginPurgeWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
+            }
+
+            if (fabricName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
+            }
+
+            if (protectionContainerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
+            }
+
+            if (replicatedProtectedItemName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("fabricName", fabricName);
+                tracingParameters.Add("protectionContainerName", protectionContainerName);
+                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginPurge", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
+            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
+            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
+            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("DELETE");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsPurgeHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -1962,8 +2247,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to add disks(s) to the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -1995,7 +2286,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginAddDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsAddDisksHeaders>> BeginAddDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, AddDisksInputProperties properties = default(AddDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -2006,19 +2297,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -2048,6 +2345,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -2061,9 +2360,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/addDisks").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -2172,7 +2471,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsAddDisksHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -2198,6 +2497,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsAddDisksHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -2210,16 +2522,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// The operation to change the recovery point of a failed over replication protected item.
+        /// The operation to change the recovery point of a failed over replication
+        /// protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The ARM fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The replicated protected item name.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The input properties to apply recovery point.
@@ -2245,7 +2564,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginApplyRecoveryPointWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsApplyRecoveryPointHeaders>> BeginApplyRecoveryPointWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ApplyRecoveryPointInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -2256,19 +2575,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -2298,6 +2623,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -2311,9 +2638,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/applyRecoveryPoint").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -2422,7 +2749,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsApplyRecoveryPointHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -2447,6 +2774,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     }
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsApplyRecoveryPointHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -2462,8 +2802,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to cancel the failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -2492,7 +2838,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginFailoverCancelWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCancelHeaders>> BeginFailoverCancelWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -2503,19 +2849,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -2540,6 +2892,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -2552,9 +2906,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCancel").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -2657,7 +3011,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCancelHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -2682,6 +3036,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     }
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsFailoverCancelHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -2697,8 +3064,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to commit the failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -2727,7 +3100,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginFailoverCommitWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCommitHeaders>> BeginFailoverCommitWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -2738,19 +3111,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -2775,6 +3154,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -2787,9 +3168,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCommit").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -2892,7 +3273,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsFailoverCommitHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -2918,6 +3299,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsFailoverCommitHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -2932,8 +3326,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to initiate a planned failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -2965,7 +3365,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginPlannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsPlannedFailoverHeaders>> BeginPlannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, PlannedFailoverInputProperties properties = default(PlannedFailoverInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -2976,19 +3376,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -3018,6 +3424,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -3031,9 +3439,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/plannedFailover").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -3142,7 +3550,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsPlannedFailoverHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -3168,6 +3576,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsPlannedFailoverHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -3180,724 +3601,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// The operation to disable replication on a replication protected item. This will also remove the item.
+        /// Operation to reprotect or reverse replicate a failed over replication
+        /// protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='properties'>
-        /// Disable protection input properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
-
-            if (this.Client.ResourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (fabricName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
-            }
-
-            if (protectionContainerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
-            }
-
-            if (replicatedProtectedItemName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
-            }
-
-            DisableProtectionInput disableProtectionInput = new DisableProtectionInput();
-            if(properties != null)
-            {
-                disableProtectionInput.Properties = properties;
-            }
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("fabricName", fabricName);
-                tracingParameters.Add("protectionContainerName", protectionContainerName);
-                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
-
-                tracingParameters.Add("disableProtectionInput", disableProtectionInput);
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
-            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
-            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            if(disableProtectionInput != null)
-            {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(disableProtectionInput, this.Client.SerializationSettings);
-                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 202 && (int)_statusCode != 204)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// Operation to remove disk(s) from the replication protected item.
-        /// </summary>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// Replication protected item name.
-        /// </param>
-        /// <param name='properties'>
-        /// Remove disk input properties.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginRemoveDisksWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
-
-            if (this.Client.ResourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (fabricName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
-            }
-
-            if (protectionContainerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
-            }
-
-            if (replicatedProtectedItemName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
-            }
-
-            RemoveDisksInput removeDisksInput = new RemoveDisksInput();
-            if(properties != null)
-            {
-                removeDisksInput.Properties = properties;
-            }
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("fabricName", fabricName);
-                tracingParameters.Add("protectionContainerName", protectionContainerName);
-                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
-
-                tracingParameters.Add("removeDisksInput", removeDisksInput);
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginRemoveDisks", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/removeDisks").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
-            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
-            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            if(removeDisksInput != null)
-            {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(removeDisksInput, this.Client.SerializationSettings);
-                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ReplicationProtectedItem>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// The operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.
-        /// </summary>
-        /// <param name='fabricName'>
-        /// The name of the fabric.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// The name of the container.
-        /// </param>
-        /// <param name='replicatedProtectedItemName'>
-        /// The name of the replication protected item.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginRepairReplicationWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
-
-            if (this.Client.ResourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (fabricName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
-            }
-
-            if (protectionContainerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
-            }
-
-            if (replicatedProtectedItemName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
-            }
-
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("fabricName", fabricName);
-                tracingParameters.Add("protectionContainerName", protectionContainerName);
-                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
-
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginRepairReplication", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/repairReplication").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
-            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
-            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ReplicationProtectedItem>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// Operation to reprotect or reverse replicate a failed over replication protected item.
-        /// </summary>
-        /// <param name='fabricName'>
-        /// Unique fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -3929,7 +3643,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginReprotectWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReprotectHeaders>> BeginReprotectWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReverseReplicationInputProperties properties = default(ReverseReplicationInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -3940,19 +3654,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -3982,6 +3702,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -3995,9 +3717,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reProtect").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -4106,7 +3828,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReprotectHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -4132,6 +3854,1113 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsReprotectHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='properties'>
+        /// The properties of the reinstall mobility service request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>> BeginReinstallMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
+            }
+            if (resourceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceName, "^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceName", "^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$");
+                }
+            }
+            if (fabricName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
+            }
+            if (fabricName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(fabricName, "^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "fabricName", "^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$");
+                }
+            }
+            if (protectionContainerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
+            }
+            if (protectionContainerName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(protectionContainerName, ".*"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "protectionContainerName", ".*");
+                }
+            }
+            if (replicatedProtectedItemName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
+            }
+            if (replicatedProtectedItemName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(replicatedProtectedItemName, "^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "replicatedProtectedItemName", "^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$");
+                }
+            }
+            ReinstallMobilityServiceRequest updateMobilityServiceRequest = new ReinstallMobilityServiceRequest();
+            if(properties != null)
+            {
+                updateMobilityServiceRequest.Properties = properties;
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("fabricName", fabricName);
+                tracingParameters.Add("protectionContainerName", protectionContainerName);
+                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
+
+                tracingParameters.Add("updateMobilityServiceRequest", updateMobilityServiceRequest);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginReinstallMobilityService", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reinstallMobilityService").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
+            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
+            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
+            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(updateMobilityServiceRequest != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(updateMobilityServiceRequest, this.Client.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ReplicationProtectedItem>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsReinstallMobilityServiceHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// The operation to disable replication on a replication protected item. This
+        /// will also remove the item.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Disable protection input properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, DisableProtectionInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
+            }
+
+            if (fabricName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
+            }
+
+            if (protectionContainerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
+            }
+
+            if (replicatedProtectedItemName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
+            }
+
+            DisableProtectionInput disableProtectionInput = new DisableProtectionInput();
+            if(properties != null)
+            {
+                disableProtectionInput.Properties = properties;
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("fabricName", fabricName);
+                tracingParameters.Add("protectionContainerName", protectionContainerName);
+                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
+
+                tracingParameters.Add("disableProtectionInput", disableProtectionInput);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
+            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
+            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
+            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(disableProtectionInput != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(disableProtectionInput, this.Client.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsDeleteHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Operation to remove disk(s) from the replication protected item.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='properties'>
+        /// Remove disk input properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRemoveDisksHeaders>> BeginRemoveDisksWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, RemoveDisksInputProperties properties = default(RemoveDisksInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
+            }
+
+            if (fabricName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
+            }
+
+            if (protectionContainerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
+            }
+
+            if (replicatedProtectedItemName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
+            }
+
+            RemoveDisksInput removeDisksInput = new RemoveDisksInput();
+            if(properties != null)
+            {
+                removeDisksInput.Properties = properties;
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("fabricName", fabricName);
+                tracingParameters.Add("protectionContainerName", protectionContainerName);
+                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
+
+                tracingParameters.Add("removeDisksInput", removeDisksInput);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginRemoveDisks", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/removeDisks").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
+            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
+            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
+            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(removeDisksInput != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(removeDisksInput, this.Client.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRemoveDisksHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ReplicationProtectedItem>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsRemoveDisksHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// The operation to start resynchronize/repair replication for a replication
+        /// protected item requiring resynchronization.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// Replication protected item name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRepairReplicationHeaders>> BeginRepairReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
+            }
+
+            if (fabricName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fabricName");
+            }
+
+            if (protectionContainerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectionContainerName");
+            }
+
+            if (replicatedProtectedItemName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "replicatedProtectedItemName");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("fabricName", fabricName);
+                tracingParameters.Add("protectionContainerName", protectionContainerName);
+                tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginRepairReplication", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/repairReplication").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
+            _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
+            _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
+            _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsRepairReplicationHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ReplicationProtectedItem>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsRepairReplicationHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -4146,8 +4975,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to resolve health issues of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -4179,7 +5014,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginResolveHealthErrorsWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsResolveHealthErrorsHeaders>> BeginResolveHealthErrorsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ResolveHealthInputProperties properties = default(ResolveHealthInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -4190,19 +5025,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -4232,6 +5073,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -4245,9 +5088,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/resolveHealthErrors").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -4356,7 +5199,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsResolveHealthErrorsHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -4382,6 +5225,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsResolveHealthErrorsHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -4396,8 +5252,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to initiate a switch provider of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -4429,7 +5291,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginSwitchProviderWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsSwitchProviderHeaders>> BeginSwitchProviderWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, SwitchProviderInputProperties properties = default(SwitchProviderInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -4440,19 +5302,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -4482,6 +5350,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -4495,9 +5365,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/switchProvider").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -4606,7 +5476,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsSwitchProviderHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -4632,6 +5502,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsSwitchProviderHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -4646,8 +5529,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to perform a test failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -4679,7 +5568,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginTestFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverHeaders>> BeginTestFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -4690,19 +5579,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -4732,6 +5627,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -4745,9 +5642,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailover").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -4856,7 +5753,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -4882,6 +5779,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsTestFailoverHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -4896,8 +5806,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to clean up the test failover of a replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -4929,7 +5845,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginTestFailoverCleanupWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverCleanupHeaders>> BeginTestFailoverCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, TestFailoverCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -4940,19 +5856,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -4982,6 +5904,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -4995,9 +5919,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailoverCleanup").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -5106,7 +6030,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsTestFailoverCleanupHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -5132,6 +6056,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsTestFailoverCleanupHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -5146,8 +6083,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// Operation to initiate a failover of the replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -5179,7 +6122,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginUnplannedFailoverWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUnplannedFailoverHeaders>> BeginUnplannedFailoverWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UnplannedFailoverInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -5190,19 +6133,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -5232,6 +6181,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -5245,9 +6196,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/unplannedFailover").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -5356,7 +6307,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUnplannedFailoverHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -5382,6 +6333,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsUnplannedFailoverHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -5396,6 +6360,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// The operation to update appliance of an ASR replication protected item.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -5429,7 +6399,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>> BeginUpdateApplianceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateApplianceHeaders>> BeginUpdateApplianceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateApplianceForReplicationProtectedItemInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -5440,19 +6410,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -5482,6 +6458,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -5495,9 +6473,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateAppliance").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -5606,7 +6584,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateApplianceHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -5632,6 +6610,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectedItemsUpdateApplianceHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
             if (_shouldTrace)
             {
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
@@ -5644,16 +6635,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// The operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.
+        /// The operation to update(push update) the installed mobility service
+        /// software on a replication protected item to the latest available version.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric containing the protected item.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the container containing the protected item.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The name of the protected item on which the agent is to be updated.
+        /// Replication protected item name.
         /// </param>
         /// <param name='properties'>
         /// The properties of the update mobility service request.
@@ -5679,7 +6677,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> BeginUpdateMobilityServiceWithHttpMessagesAsync(string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> BeginUpdateMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -5690,19 +6688,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
-            }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (resourceGroupName != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (fabricName == null)
@@ -5732,6 +6736,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("protectionContainerName", protectionContainerName);
                 tracingParameters.Add("replicatedProtectedItemName", replicatedProtectedItemName);
@@ -5745,9 +6751,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateMobilityService").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{fabricName}", System.Uri.EscapeDataString(fabricName));
             _url = _url.Replace("{protectionContainerName}", System.Uri.EscapeDataString(protectionContainerName));
             _url = _url.Replace("{replicatedProtectedItemName}", System.Uri.EscapeDataString(replicatedProtectedItemName));
@@ -5907,7 +6913,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// Gets the list of ASR replication protected items in the protection container.
+        /// Gets the list of ASR replication protected items in the protection
+        /// container.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

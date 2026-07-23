@@ -12,13 +12,25 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to delete a schedule resource.
+.Description
+Operation to delete a schedule resource.
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
+#>
 function Remove-AzLabServicesSchedule_ResourceId {
 [OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource Id of lab service schedule.
     ${ResourceId},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -92,7 +104,8 @@ param(
 )
 
 process {
-    $resourceHash = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
+    $HandleScheduleResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleScheduleResourceId.ps1'
+    $resourceHash = . $HandleScheduleResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId") > $null
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {

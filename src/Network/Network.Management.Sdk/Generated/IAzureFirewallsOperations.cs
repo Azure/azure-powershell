@@ -218,6 +218,35 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsPacketCaptureHeaders>> PacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </summary>
+        /// <remarks>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the azure firewall.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to run packet capture on azure firewall.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse,AzureFirewallsPacketCaptureOperationHeaders>> PacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Deletes the specified Azure Firewall.
         /// </summary>
         /// <remarks>
@@ -351,6 +380,35 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsPacketCaptureHeaders>> BeginPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </summary>
+        /// <remarks>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the azure firewall.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to run packet capture on azure firewall.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse,AzureFirewallsPacketCaptureOperationHeaders>> BeginPacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all Azure Firewalls in a resource group.

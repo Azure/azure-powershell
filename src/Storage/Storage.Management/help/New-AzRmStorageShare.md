@@ -18,7 +18,7 @@ New-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String
  [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-AccessTier <String>] [-Snapshot] [-EnabledProtocol <String>]
  [-RootSquash <String>] [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>] [-PaidBurstingEnabled]
  [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-QuotaGi
  [-Metadata <Hashtable>] [-AccessTier <String>] [-Snapshot] [-EnabledProtocol <String>] [-RootSquash <String>]
  [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>] [-PaidBurstingEnabled]
  [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ myshare                                                                       20
 
 This command creates a Storage file share snapshot of an existing base file share.
 
-### Example 5: Create a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash property as NoRootSquash
+### Example 5: Create a Storage file share with EnabledProtocol property as NFS, and RootSquash property as NoRootSquash
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -118,7 +118,7 @@ $share.RootSquash
 NoRootSquash
 ```
 
-This command creates a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash proeprty as NoRootSquash.
+This command creates a Storage file share with EnabledProtocol property as NFS, and RootSquash property as NoRootSquash.
 
 ### Example 6: Create a Storage file share with provisioned bandwidth and IOPS
 ```powershell
@@ -250,21 +250,6 @@ The maximum paid bursting IOPS for the share. This property is only for file sha
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

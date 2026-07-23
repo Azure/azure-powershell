@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a host pool.
+Create a host pool.
 .Description
-create a host pool.
+Create a host pool.
 .Example
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -107,7 +107,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='FullScenarioCreate', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst", "Persistent")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst", "Persistent", "MultiplePersistent")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The type of the load balancer.
@@ -151,7 +151,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
+    # Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0.
     # Must be set if useLocalTime is true.
     ${AgentUpdateMaintenanceWindowTimeZone},
 
@@ -193,17 +193,16 @@ param(
     ${FriendlyName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("SystemAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The identity type.
+    # Type of managed service identity (either system assigned, or none).
     ${IdentityType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-    # E.g.
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
@@ -444,6 +443,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -469,8 +476,6 @@ begin {
             FullScenarioCreate = 'Az.DesktopVirtualization.custom\New-AzWvdHostPool_FullScenarioCreate';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'FullScenarioCreate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -484,6 +489,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

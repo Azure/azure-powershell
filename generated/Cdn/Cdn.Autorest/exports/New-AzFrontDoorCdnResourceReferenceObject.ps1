@@ -24,12 +24,12 @@ $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -Profile
 New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnresourcereferenceobject
 #>
 function New-AzFrontDoorCdnResourceReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -46,6 +46,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -74,6 +77,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

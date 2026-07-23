@@ -1,29 +1,52 @@
 # Cmdlet Best Practices
 
-### Cmdlet Naming Conventions
+- [Cmdlet Naming Conventions](#cmdlet-naming-conventions)
+  - [Verb-Noun Format](#verb-noun-format)
+  - [Noun Prefix](#noun-prefix)
+  - [Pascal Case](#pascal-case)
+  - [Acronyms](#acronyms)
+  - [Specific Noun and Noun Singularity](#specific-noun-and-noun-singularity)
+  - [Set vs. Update](#set-vs-update)
+  - [Cmdlet Alias](#cmdlet-alias)
+- [Output Type](#output-type)
+  - [Valid Output Types](#valid-output-types)
+  - [Returning Wrapped SDK Types](#returning-wrapped-sdk-types)
+  - [Returning No Output](#returning-no-output)
+  - [Enumerate Collection When WriteObject()](#enumerate-collection-when-writeobject)
+- [Output Format](#output-format)
+- [`ShouldProcess`](#shouldprocess)
+  - [When to Add the Force Parameter](#when-to-add-the-force-parameter)
+- [`AsJob`](#asjob)
+- [Required Parameter Sets](#required-parameter-sets)
+  - [Interactive Parameter Set](#interactive-parameter-set)
+  - [ResourceId Parameter Set](#resourceid-parameter-set)
+  - [InputObject Parameter Set](#inputobject-parameter-set)
+
+
+## Cmdlet Naming Conventions
 
 The following are naming conventions to keep in mind when coming up with a name for your cmdlet.
 
-#### Verb-Noun Format
+### Verb-Noun Format
 
 Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
 
-#### Noun Prefix
+### Noun Prefix
 
 For ARM cmdlets, the noun must be prefixed with `Az`.
 
-#### Pascal Case
+### Pascal Case
 
 From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-pascal-case-for-cmdlet-names-sd02):
 
 > _Use Pascal case for cmdlet names. In other words, capitalize the first letter of the verb and all terms used in the noun. For example, "Clear-ItemProperty"._
 
-#### Acronyms
+### Acronyms
 Do capitalize both characters of two-character acronyms. For example, New-Az*VM*, Remove-AzCosmos*DB*Table.
 
-Do capitalize only the first character of acronyms with three or more characters, which aligned with Pascal case. for example, Restart-Az*Vmss*, New-Az*Sql*Database. 
+Do capitalize only the first character of acronyms with three or more characters, which aligned with Pascal case. for example, Restart-Az*Vmss*, New-Az*Sql*Database.
 
-#### Specific Noun and Noun Singularity
+### Specific Noun and Noun Singularity
 
 From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-a-specific-noun-for-a-cmdlet-name-sd01):
 
@@ -31,33 +54,33 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 >
 > _To enhance the user experience, the noun that you choose for a cmdlet name should be singular. For example, use the name `Get-Process` instead of `Get-Processes`. It is best to follow this rule for all cmdlet names, even when a cmdlet is likely to act upon more than one item._
 
-#### Set vs. Update
+### Set vs. Update
 
 If your cmdlet is performing a **PATCH** operation (_i.e._, a partial replacement on the server), then the cmdlet should use the verb `Update`.
 
 If your cmdlet is performing a **PUT** operation (_i.e._, a full replacement on the server), the cmdlet should use the verb `Set`.
 
-#### Cmdlet Alias
+### Cmdlet Alias
 
 If you there is a separate nomenclature for your service and/or resource, or if you would like to shorten the name of the cmdlet so it's easier to remember, you can add an alias attribute to your cmdlet to allow for this functionality.
 
-### Output Type
+## Output Type
 
 Specified by the `OutputType` attribute, this piece of metadata lets the user know what the type of the object returned by the cmdlet is (found in the **Outputs** section of a cmdlet's help content). The type specified here should always be a single element and not an enumeration of elements (_e.g._, `PSVirtualMachine` instead of `List<PSVirtualMachine>`).
 
-#### Valid Output Types
+### Valid Output Types
 
 If the cmdlet returns an object, the type of the object returned must be defined; the output type for a cmdlet should _never_ be `object`, `PSObject`, `PSCustomObject` or the like. Returning these types of objects makes it difficult for the user to anticipate what properties will be found on the object returned from the cmdlet, as well as makes it impossible for the breaking change analyzer to detect if a breaking change was introduced to the cmdlet as the type is not defined.
 
 In order to preserve proper piping scenarios, the output type for a cmdlet should _never_ be a `string`. If a cmdlet is expected to return a `string`, the suggestion is to introduce a new type that encapsulates the `string` information as a property and return that object. The PowerShell language revolves around objects and passing them around cmdlets; returning `string` objects can introduce inconsistencies in the piping experience for users.
 
-#### Returning Wrapped SDK Types
+### Returning Wrapped SDK Types
 
 In most cases, cmdlets will be returning an object corresponding to a resource that a user is performing an action on. Rather than returning the .NET SDK type for that resource (exposing .NET SDK types in PowerShell cmdlets is _strongly_ discouraged), we suggest creating a new class that wraps this .NET SDK type, allowing for breaking changes in the underlying type while avoiding breaking changes in the PowerShell type.
 
 For example, the `Get-AzVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` type and recreating the value, thus avoiding a breaking change in the corresponding cmdlet(s).
 
-#### Returning No Output
+### Returning No Output
 
 In the case where your cmdlet doesn't return any output (_e.g._, deleting, starting, stopping a resource), the cmdlet should implement the `-PassThru` parameter and the `OutputType` should be set to `bool`. The `-PassThru` parameter is a `SwitchParameter` set by the user to signal that they would like to receive output from a cmdlet which does not return anything. If the `-PassThru` parameter is provided, you should return the value `true` so the user is made aware that the operation was successful. If the operation was unsuccessful, then the cmdlet should throw an exception.
 
@@ -88,7 +111,7 @@ public class MySampleCmdlet : MyBaseCmdlet
 }
 ```
 
-#### Enumerate Collection When WriteObject()
+### Enumerate Collection When WriteObject()
 
 When returning a collection of objects, the cmdlet should enumerate the collection. This ensures that the objects are written to the pipeline one at a time, which is the expected behavior for PowerShell cmdlets.
 
@@ -109,7 +132,32 @@ foreach (var resource in resources)
 WriteObject(resources, true);
 ```
 
-### `ShouldProcess`
+## Output Format
+
+PowerShell supports several output formats, including `table`, `list`, and `wide`. The default output format for Azure PowerShell cmdlets is `table`, which is the most readable for displaying a list of resources. Here's an example:
+
+```powershell
+PS > Get-AzVM
+
+ResourceGroupName    Name       Location          VmSize  OsType            NIC
+-----------------    ----       --------          ------  ------            ---
+TEST1               test1         eastus Standard_DS1_v2 Windows          test1
+TEST1               test2         westus Standard_DS1_v2 Windows          test2
+TEST1               test3         eastus Standard_DS1_v2 Windows          test3
+TEST2               test4         westus Standard_DS1_v2 Windows          test4
+TEST2               test5         eastus Standard_DS1_v2 Windows          test5
+```
+
+The idea about table format is for users to be able to quickly scan the output and find the information they are looking for. To achieve this, follow the golden rule of thumb: **show only the MVPs (most valuable properties)**.
+
+It's obvious that important properties need to be displayed, but be careful not to overcrowd the output with too many properties. PowerShell console has a limited width, so if there are too many columns, the output may be truncated and lose the meaning of being quickly readable.
+
+A practical way of designing the table format is:
+
+1. List the properties from the most important to the least important.
+2. Take the most important properties until (a) the width of the console is filled or (b) the rest of the properties are not important enough to be displayed.
+
+## `ShouldProcess`
 
 If a cmdlet makes any changes to an object on the server (_e.g._, create, delete, update, start, stop a resource), the cmdlet should implement `ShouldProcess`. This property adds the `-WhatIf` and `-Confirm` parameters to the cmdlet:
 
@@ -138,13 +186,13 @@ public class MySampleCmdlet : MyBaseCmdlet
 
 More information about `ShouldProcess` can be found in the [_Should Process and Confirm Impact_](./should-process-confirm-impact.md) document.
 
-#### When to Add the Force Parameter
+### When to Add the Force Parameter
 
 The `-Force` parameter is reserved for special scenarios where additional confirmation from the user is required. From the above document on [_Should Process and Confirm Impact_](./should-process-confirm-impact.md) document:
 
 > _Some cmdlets require additional confirmation. For example, if a cmdlet would destroy existing resources in some circumstances, the cmdlet might detect that condition and prompt the user to verify before continuing. Overwriting an existing resource during resource creation, overwriting a file when downloading data, deleting a resource that is currently in use, or deleting a container that contains additional resources are all example of this pattern. To implement additional confirmation, and allow scripts to opt out of additional prompts, the above pattern is enhanced with calls to `ShouldContinue()` and the `-Force` parameter._
 
-### `AsJob`
+## `AsJob`
 
 All long running operations must implement the `-AsJob` parameter, which will allow the user to create jobs in the background. For more information about PowerShell jobs and the `-AsJob` parameter, read [this doc](https://learn.microsoft.com/en-us/powershell/azure/using-psjobs).
 
@@ -167,20 +215,20 @@ $subscriptions = $job | Receive-Job
 
 To set a custom job name, please use [`SetBackgroupJobDescription`](https://github.com/Azure/azure-powershell-common/blob/main/src/Common/AzurePSCmdlet.cs#L810). The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
 
-### Required Parameter Sets
+## Required Parameter Sets
 
 In most Azure PowerShell cmdlets, there is a bare minimum of three parameter sets that need to be implemented.
 
-#### Interactive Parameter Set
+### Interactive Parameter Set
 
 This parameter set should be implemented by _every_ cmdlet - in most cases, the user provides the name of the resource that they are acting upon (`-Name`) and the resource group in which they are acting in (`-ResourceGroupName`).
 
 The interactive parameter set **will always be the default parameter set** for a cmdlet (specified by the `DefaultParameterSetName` property in the `Cmdlet` attribute). This means that when PowerShell is unable to determine which parameter set a user is in, it will default to the interactive parameter set and prompt the user to provide values for the missing mandatory parameters.
 
-#### ResourceId Parameter Set
+### ResourceId Parameter Set
 
 This parameter set should be implemented by _every_ cmdlet - the user is able to provide a `-ResourceId` string or GUID from the Azure Portal, or from one of the generic resources cmdlets (more information about this scenario can be found in the [`piping-best-practices.md`](./piping-best-practices.md#using-the--resourceid-parameter) document), and act upon the given resource associated with the id. The typical `-Name` and `-ResourceGroupName` parameters are replaced by a single `-ResourceId` parameter of type string.
 
-#### InputObject Parameter Set
+### InputObject Parameter Set
 
 This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `-InputObject` parameter for a cmdlet that acts upon the same resource (more information about this scenario can be found in the [`piping-best-practices.md`](./piping-best-practices.md#using-the--inputobject-parameter) document). The typical `-Name` and `-ResourceGroupName` parameters are retrieved from the `-InputObject` that the user is passing through.

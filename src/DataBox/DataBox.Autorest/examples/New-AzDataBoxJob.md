@@ -24,26 +24,26 @@ $resource.Detail.ShippingAddress
 ```output
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
-ImportTest WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+ImportTest WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 
 
 Action                     :
 ChainOfCustodySasKey       :
-ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
+ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails
 CopyLogDetail              :
 CopyProgress               :
 DataExportDetail           :
-DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetails}
-DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
+DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataImportDetails}
+DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails
 DevicePassword             :
 ExpectedDataSizeInTeraByte : 0
 JobStage                   :
-KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKey
-LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJob
-Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.Preferences
-ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
+KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
+LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.LastMitigationActionOnJob
+Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Preferences
+ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails
 ReverseShipmentLabelSasKey :
-ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
+ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
 Type                       : DataBox
 
 
@@ -68,7 +68,7 @@ $resource = New-AzDataBoxJob -Name "ExportTest" -SubscriptionId "SubscriptionId"
 ```output
 Name      Location Status        TransferType    SkuName IdentityType DeliveryType Detail
 ----      -------- ------        ------------    ------- ------------ ------------ ------
-ExportTest WestUS   DeviceOrdered ExportFromAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+ExportTest WestUS   DeviceOrdered ExportFromAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Creates a databox export job. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
@@ -85,7 +85,7 @@ New-AzDataBoxJob -Name "PwshManagedDisk" -SubscriptionId "SubscriptionId" -Resou
 ```output
 Name            Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----            -------- ------        ------------  ------- ------------ ------------ ------
-PwshManagedDisk WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+PwshManagedDisk WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Creates a databox import job with managed disk account. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
@@ -104,7 +104,7 @@ New-AzDataBoxJob -Name "PowershellMSI" -SubscriptionId "SubscriptionId" -Resourc
 ```output
 Name          Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----          -------- ------        ------------  ------- ------------ ------------ ------
-PowershellMSI WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+PowershellMSI WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Creates a databox import job with user assigned identity. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
@@ -121,7 +121,7 @@ $resource = New-AzDataBoxJob -Name "PowershellBYOK" -SubscriptionId "Subscriptio
 ```output
 Name           Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----           -------- ------        ------------  ------- ------------ ------------ ------
-PowershellBYOK WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+PowershellBYOK WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Creates a databox job with your own key. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
@@ -138,7 +138,7 @@ $resource = New-AzDataBoxJob -Name "DbxHeavy" -SubscriptionId "SubscriptionId" -
 ```output
 Name    Location Status        TransferType  SkuName      IdentityType DeliveryType Detail
 ----    -------- ------        ------------  -------      ------------ ------------ ------
-DbxHeavy WestUS  DeviceOrdered ImportToAzure DataBoxHeavy  None        NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxHeavyJobDetails
+DbxHeavy WestUS  DeviceOrdered ImportToAzure DataBoxHeavy  None        NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails
 ```
 
 Creates a databoxHeavy job with your own key. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
@@ -155,7 +155,7 @@ New-AzDataBoxJob -Name "pwshDisk" -SubscriptionId "SubscriptionId" -ResourceGrou
 ```output
 Name     Location Status        TransferType  SkuName     IdentityType DeliveryType Detail
 ----     -------- ------        ------------  -------     ------------ ------------ ------
-pwshDisk WestUS   DeviceOrdered ImportToAzure DataBoxDisk None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
+pwshDisk WestUS   DeviceOrdered ImportToAzure DataBoxDisk None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 ```
 
 Creates a databoxDisky job with your own Passkey. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 
@@ -172,7 +172,7 @@ New-AzDataBoxJob -Name "pwshDoubEncy" -SubscriptionId "SubscriptionId" -Resource
 ```output
 Name        Location Status        TransferType  SkuName     IdentityType DeliveryType Detail
 ----        -------- ------        ------------  -------     ------------ ------------ ------
-pwshDoubEncy WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
+pwshDoubEncy WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 ```
 
 Creates a databox job with double encryption enabled. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1 

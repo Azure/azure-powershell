@@ -16,31 +16,38 @@
 
 <#
 .Synopsis
-Creates or updates a Collector Policy resource
+create a Collector Policy resource
 .Description
-Creates or updates a Collector Policy resource
+create a Collector Policy resource
 .Example
 New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AZURETRAFFICCOLLECTORINPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
+  [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
+  [CollectorPolicyName <String>]: Collector Policy Name
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
 EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
-  [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
-    [DestinationType <DestinationType?>]: Emission destination type.
-  [EmissionType <EmissionType?>]: Emission format type.
+  [EmissionDestination <List<IEmissionPolicyDestination>>]: Emission policy destinations.
+    [DestinationType <String>]: Emission destination type.
+  [EmissionType <String>]: Emission format type.
 
 INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
   [ResourceId <String>]: Resource ID.
-  [SourceType <SourceType?>]: Ingestion source type.
+  [SourceType <String>]: Ingestion source type.
 
 INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
@@ -51,30 +58,27 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
 
 PARAMETER <ICollectorPolicy>: Collector policy resource.
   Location <String>: Resource location.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-    [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
-      [DestinationType <DestinationType?>]: Emission destination type.
-    [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
+  [EmissionPolicy <List<IEmissionPoliciesPropertiesFormat>>]: Emission policies.
+    [EmissionDestination <List<IEmissionPolicyDestination>>]: Emission policy destinations.
+      [DestinationType <String>]: Emission destination type.
+    [EmissionType <String>]: Emission format type.
+  [IngestionPolicyIngestionSource <List<IIngestionSourcesPropertiesFormat>>]: Ingestion Sources.
     [ResourceId <String>]: Resource ID.
-    [SourceType <SourceType?>]: Ingestion source type.
-  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
+    [SourceType <String>]: Ingestion source type.
+  [IngestionPolicyIngestionType <String>]: The ingestion type.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
 function New-AzNetworkFunctionCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
@@ -82,6 +86,10 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollector', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('CollectorPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
@@ -90,6 +98,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -97,6 +107,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -108,18 +120,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollector', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity]
+    # Identity Parameter
+    ${AzureTrafficCollectorInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollector', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy]
     # Collector policy resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
     [System.String]
@@ -127,38 +146,52 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]]
     # Emission policies.
-    # To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
     ${EmissionPolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]]
     # Ingestion Sources.
-    # To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
     ${IngestionPolicyIngestionSource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PSArgumentCompleterAttribute("IPFIX")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType]
+    [System.String]
     # The ingestion type.
     ${IngestionPolicyIngestionType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -228,16 +261,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_Create';
             CreateExpanded = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateExpanded';
             CreateViaIdentity = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentity';
+            CreateViaIdentityAzureTrafficCollector = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentityAzureTrafficCollector';
+            CreateViaIdentityAzureTrafficCollectorExpanded = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentityAzureTrafficCollectorExpanded';
             CreateViaIdentityExpanded = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -246,6 +284,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

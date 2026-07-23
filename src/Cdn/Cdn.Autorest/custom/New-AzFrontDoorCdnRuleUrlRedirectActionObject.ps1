@@ -21,12 +21,13 @@ Create an in-memory object for UrlRedirectAction.
 Create an in-memory object for UrlRedirectAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRedirectActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleurlredirectactionobject
 #>
 function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,21 +44,22 @@ function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
         [string]
         $ParameterCustomQueryString,
         [Parameter(HelpMessage="Protocol to use for the redirect. The default value is MatchRequest.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DestinationProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DestinationProtocol]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("MatchRequest", "Http", "Https")]
+        [string]
         $ParameterDestinationProtocol,
         [Parameter(Mandatory, HelpMessage="The redirect type the rule will use when redirecting traffic.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RedirectType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RedirectType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
+        [string]
         $ParameterRedirectType,
-        [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
-        $Name
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
+        [string]
+        [alias('Name')]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterCustomFragment')) {
             $Object.ParameterCustomFragment = $ParameterCustomFragment
@@ -77,8 +79,8 @@ function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
         if ($PSBoundParameters.ContainsKey('ParameterRedirectType')) {
             $Object.ParameterRedirectType = $ParameterRedirectType
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         return $Object
     }

@@ -15,13 +15,15 @@ Starts the migration for the replicating server.
 ### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>]
- [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-TargetCapacityReservationGroupId <String>] [-TurnOffSourceServer]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-OsUpgradeVersion <String>]
- [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-TargetCapacityReservationGroupId <String>] [-TurnOffSourceServer]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,10 +81,9 @@ Accept wildcard characters: False
 ### -InputObject
 Specifies the replicating server for which migration needs to be initiated.
 The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -120,6 +121,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -162,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 
 ## NOTES
 

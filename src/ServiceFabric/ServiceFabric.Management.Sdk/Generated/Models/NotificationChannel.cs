@@ -14,11 +14,14 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     public static class NotificationChannel
     {
         /// <summary>
-        /// For email user receivers. In this case, the parameter receivers should be a list of email addresses that will receive the notifications.
+        /// For email user receivers. In this case, the parameter receivers should be a
+        /// list of email addresses that will receive the notifications.
         /// </summary>
         public const string EmailUser = "EmailUser";
         /// <summary>
-        /// For subscription receivers. In this case, the parameter receivers should be a list of roles of the subscription for the cluster (eg. Owner, AccountAdmin, etc) that will receive the notifications.
+        /// For subscription receivers. In this case, the parameter receivers should be
+        /// a list of roles of the subscription for the cluster (eg. Owner,
+        /// AccountAdmin, etc) that will receive the notifications.
         /// </summary>
         public const string EmailSubscription = "EmailSubscription";
     }

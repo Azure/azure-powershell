@@ -13,7 +13,7 @@ Create a new Kubernetes Cluster Extension.
 
 ### Example 2: Create a Flux Cluster Extension.
 ```powershell
-New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -IdentityType 'SystemAssigned'
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -EnableSystemAssignedIdentity
 ```
 
 ```output

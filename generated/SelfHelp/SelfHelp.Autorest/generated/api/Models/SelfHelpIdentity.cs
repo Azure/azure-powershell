@@ -85,6 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Unique resource name for insight resources",
         SerializedName = @"diagnosticsResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -93,6 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -103,6 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read ",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
@@ -111,6 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Simplified Solutions Resource Name.",
         SerializedName = @"simplifiedSolutionsResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP",
         SerializedName = @"solutionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,6 +144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Solution resource Name.",
         SerializedName = @"solutionResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +155,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -145,6 +166,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Troubleshooter resource Name.",
         SerializedName = @"troubleshooterName",
         PossibleTypes = new [] { typeof(string) })]

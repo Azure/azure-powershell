@@ -23,11 +23,9 @@ Checks whether the configuration store name is available for use.
 Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.ICheckNameAvailabilityParameters
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ICheckNameAvailabilityParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,42 +33,24 @@ To create the parameters described below, construct a hash table containing the 
 
 CHECKNAMEAVAILABILITYPARAMETER <ICheckNameAvailabilityParameters>: Parameters used for checking whether a resource name is available.
   Name <String>: The name to check for availability.
-
-INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
-  [ConfigStoreName <String>]: The name of the configuration store.
-  [GroupName <String>]: The name of the private link resource group.
-  [Id <String>]: Resource identity path
-  [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
-  [Location <String>]: The location in which uniqueness will be verified.
-  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
-  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
-  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 #>
 function Test-AzAppConfigurationStoreNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus])]
 [CmdletBinding(DefaultParameterSetName='Check', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Check')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Microsoft Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.ICheckNameAvailabilityParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ICheckNameAvailabilityParameters]
     # Parameters used for checking whether a resource name is available.
-    # To construct, see NOTES section for CHECKNAMEAVAILABILITYPARAMETER properties and create a hash table.
     ${CheckNameAvailabilityParameter},
 
     [Parameter()]
@@ -129,14 +109,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Check = 'Az.AppConfiguration.private\Test-AzAppConfigurationStoreNameAvailability_Check';
-            CheckViaIdentity = 'Az.AppConfiguration.private\Test-AzAppConfigurationStoreNameAvailability_CheckViaIdentity';
         }
-        if (('Check') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Check') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -145,6 +125,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

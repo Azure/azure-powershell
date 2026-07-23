@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsCheckNameAvailability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult> ManagedHsmsCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsCheckNameAvailabilityViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult> ManagedHsmsCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult> ManagedHsmsCheckNameAvailabilityWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsCreateOrUpdate(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the managed HSM Pool</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the managed HSM Pool</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -754,16 +754,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -776,7 +777,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -907,16 +911,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -929,7 +934,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1072,7 +1080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsDelete(string subscriptionId, string resourceGroupName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1114,7 +1122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1173,17 +1181,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1196,7 +1205,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1342,7 +1354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsGet(string subscriptionId, string resourceGroupName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1386,7 +1398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsGetDeleted(string subscriptionId, string name, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1427,7 +1439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsGetDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1478,7 +1490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsm> ManagedHsmsGetDeletedViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1532,7 +1544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsm> ManagedHsmsGetDeletedWithResult(string subscriptionId, string name, string location, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1706,7 +1718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1757,7 +1769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1811,7 +1823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsGetWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2002,7 +2014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2048,7 +2060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2103,7 +2115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult> ManagedHsmsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2160,7 +2172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult> ManagedHsmsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2339,7 +2351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsListBySubscription(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2382,7 +2394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsListBySubscriptionViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2433,7 +2445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult> ManagedHsmsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2485,7 +2497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmListResult> ManagedHsmsListBySubscriptionWithResult(string subscriptionId, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2659,7 +2671,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsListDeleted(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2699,7 +2711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsListDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2747,7 +2759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmListResult> ManagedHsmsListDeletedViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2796,7 +2808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmListResult> ManagedHsmsListDeletedWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2955,6 +2967,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// ID forms part of the URI for every service call.</param>
         /// <param name="name">The name of the soft-deleted managed HSM.</param>
         /// <param name="location">The location of the soft-deleted managed HSM.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2962,9 +2975,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedHsmsPurgeDeleted(string subscriptionId, string name, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedHsmsPurgeDeleted(string subscriptionId, string name, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2990,12 +3003,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedHsmsPurgeDeleted_Call (request, onDefault,eventListener,sender);
+                await this.ManagedHsmsPurgeDeleted_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Permanently deletes the specified managed HSM.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3003,9 +3017,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedHsmsPurgeDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedHsmsPurgeDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3043,12 +3057,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedHsmsPurgeDeleted_Call (request, onDefault,eventListener,sender);
+                await this.ManagedHsmsPurgeDeleted_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "ManagedHsmsPurgeDeleted" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3056,24 +3071,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedHsmsPurgeDeleted_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedHsmsPurgeDeleted_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3086,7 +3102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3164,6 +3183,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3204,7 +3229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3221,7 +3246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsUpdate(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3254,7 +3279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the managed HSM Pool</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3268,7 +3293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3313,7 +3338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the managed HSM Pool</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3325,7 +3350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3370,7 +3395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3386,7 +3411,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedHsmsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3419,7 +3444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3433,7 +3458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3466,7 +3491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3481,7 +3506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm> ManagedHsmsUpdateWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3529,16 +3554,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3551,7 +3577,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3682,16 +3711,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3704,7 +3734,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3850,7 +3883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3896,7 +3929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3952,7 +3985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsDeleteViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4012,7 +4045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsDeleteWithResult(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4060,17 +4093,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4083,7 +4117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4222,17 +4259,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4245,7 +4283,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4395,7 +4436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4440,7 +4481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4496,7 +4537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4556,7 +4597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4740,7 +4781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsListByResource(string subscriptionId, string resourceGroupName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4784,7 +4825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsListByResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4838,7 +4879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionsListResult> MhsmPrivateEndpointConnectionsListByResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4895,7 +4936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionsListResult> MhsmPrivateEndpointConnectionsListByResourceWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5062,7 +5103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5081,7 +5122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsPut(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5117,7 +5158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
@@ -5132,7 +5173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5181,7 +5222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
@@ -5194,7 +5235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsPutViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5243,7 +5284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5261,7 +5302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateEndpointConnectionsPutViaJsonString(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5297,7 +5338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5313,7 +5354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsPutViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5349,7 +5390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5366,7 +5407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> MhsmPrivateEndpointConnectionsPutWithResult(string subscriptionId, string resourceGroupName, string name, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5555,7 +5596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateLinkResourcesListByMhsmResource(string subscriptionId, string resourceGroupName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5597,7 +5638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmPrivateLinkResourcesListByMhsmResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5649,7 +5690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResourceListResult> MhsmPrivateLinkResourcesListByMhsmResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5704,7 +5745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResourceListResult> MhsmPrivateLinkResourcesListByMhsmResourceWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5887,7 +5928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmRegionsListByResource(string subscriptionId, string resourceGroupName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmRegionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5931,7 +5972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task MhsmRegionsListByResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmRegionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5985,7 +6026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmRegionsListResult> MhsmRegionsListByResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6042,7 +6083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmRegionsListResult> MhsmRegionsListByResourceWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6225,7 +6266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6271,7 +6312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6327,7 +6368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsDeleteViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6387,7 +6428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsDeleteWithResult(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6435,17 +6476,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6458,7 +6500,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6595,17 +6640,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6618,7 +6664,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6768,7 +6817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6812,7 +6861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6866,7 +6915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6924,7 +6973,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7121,7 +7170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByResource(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7165,7 +7214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7219,7 +7268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListByResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7276,7 +7325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListByResourceWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7443,7 +7492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7461,7 +7510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7496,7 +7545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7510,7 +7559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7558,7 +7607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7570,7 +7619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7618,7 +7667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7635,7 +7684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7670,7 +7719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7685,7 +7734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7720,7 +7769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7736,7 +7785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutWithResult(string subscriptionId, string resourceGroupName, string vaultName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7926,7 +7975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByVault(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7968,7 +8017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByVaultViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8020,7 +8069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListByVaultViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8075,7 +8124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListByVaultWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8255,7 +8304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsCheckNameAvailability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCheckNameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8299,7 +8348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCheckNameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8351,7 +8400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult> VaultsCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCheckNameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8405,7 +8454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsCheckNameAvailabilityViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8447,7 +8496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult> VaultsCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8490,7 +8539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult> VaultsCheckNameAvailabilityWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCheckNameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8653,7 +8702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8670,7 +8719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsCreateOrUpdate(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8703,7 +8752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8717,7 +8766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8762,7 +8811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8774,7 +8823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8819,7 +8868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8835,7 +8884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8868,7 +8917,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8882,7 +8931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8915,7 +8964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8930,7 +8979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultCreateOrUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8978,16 +9027,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9000,7 +9050,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9131,16 +9184,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9153,7 +9207,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9297,7 +9354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsDelete(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9339,7 +9396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9474,7 +9531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsGet(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9518,7 +9575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsGetDeleted(string subscriptionId, string vaultName, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9559,7 +9616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsGetDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9610,7 +9667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault> VaultsGetDeletedViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9664,7 +9721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault> VaultsGetDeletedWithResult(string subscriptionId, string vaultName, string location, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9837,7 +9894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9888,7 +9945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9942,7 +9999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10120,7 +10177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         public async global::System.Threading.Tasks.Task VaultsList(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
             var Filter = @"resourceType eq 'Microsoft.KeyVault/vaults'";
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10168,7 +10225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10214,7 +10271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10269,7 +10326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult> VaultsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10326,7 +10383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult> VaultsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10505,7 +10562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsListBySubscription(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10548,7 +10605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsListBySubscriptionViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10599,7 +10656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult> VaultsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10651,7 +10708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultListResult> VaultsListBySubscriptionWithResult(string subscriptionId, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10821,7 +10878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsListDeleted(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10859,7 +10916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsListDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10905,7 +10962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultListResult> VaultsListDeletedViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10952,7 +11009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultListResult> VaultsListDeletedWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11122,7 +11179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         public async global::System.Threading.Tasks.Task VaultsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
             var Filter = @"resourceType eq 'Microsoft.KeyVault/vaults'";
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11176,7 +11233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResult> VaultsListViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
             var Filter = @"resourceType eq 'Microsoft.KeyVault/vaults'";
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11231,7 +11288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResult> VaultsListWithResult(string subscriptionId, int? Top, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
             var Filter = @"resourceType eq 'Microsoft.KeyVault/vaults'";
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11407,7 +11464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsPurgeDeleted(string subscriptionId, string vaultName, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11451,7 +11508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsPurgeDeletedViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11510,17 +11567,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -11533,7 +11591,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11657,7 +11718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -11675,7 +11736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsUpdate(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11708,7 +11769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -11727,7 +11788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsUpdateAccessPolicy(string subscriptionId, string resourceGroupName, string vaultName, string operationKind, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11762,7 +11823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Access policy to merge into the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11777,7 +11838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsUpdateAccessPolicyViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11825,7 +11886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Access policy to merge into the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11837,7 +11898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters> VaultsUpdateAccessPolicyViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11885,7 +11946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -11903,7 +11964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsUpdateAccessPolicyViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string operationKind, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11938,7 +11999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -11953,7 +12014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters> VaultsUpdateAccessPolicyViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string operationKind, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11988,7 +12049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -12004,7 +12065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters> VaultsUpdateAccessPolicyWithResult(string subscriptionId, string resourceGroupName, string vaultName, string operationKind, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultAccessPolicyParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12190,7 +12251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12205,7 +12266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12250,7 +12311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12262,7 +12323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12307,7 +12368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -12324,7 +12385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task VaultsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12357,7 +12418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -12371,7 +12432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12404,7 +12465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -12419,7 +12480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVault> VaultsUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParameters body, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-02-01";
+            var apiVersion = @"2024-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

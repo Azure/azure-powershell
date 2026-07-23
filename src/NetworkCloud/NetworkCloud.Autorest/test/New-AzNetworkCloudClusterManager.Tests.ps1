@@ -21,19 +21,14 @@ Describe 'New-AzNetworkCloudClusterManager' {
                 $cmconfig.tagsKey1 = $cmconfig.tagsValue1
                 $cmconfig.tagsKey2 = $cmconfig.tagsValue2
             }
-            $uai = @{}
-            $uaiHash = @{
-                $cmconfig.identityResourceId = $uai
-            }
             New-AzNetworkCloudClusterManager -Name $cmconfig.clusterManagerName `
                 -ResourceGroupName $cmconfig.resourceGroup `
                 -Location $common.Location -Tag $tagshash `
                 -AnalyticsWorkspaceId $cmconfig.analyticsWorkspaceId `
                 -FabricControllerId $cmconfig.fabricControllerId `
                 -SubscriptionId $cmconfig.subscriptionId `
-                -IdentityType $cmconfig.identityTypeBoth `
-                -IdentityUserAssignedIdentity $uaiHash
-
+                -EnableSystemAssignedIdentity `
+                -UserAssignedIdentity $uaiHash
         } | Should -Not -Throw
     }
     It 'Create ClusterManager with UserAssigned Identity' {
@@ -54,8 +49,7 @@ Describe 'New-AzNetworkCloudClusterManager' {
                 -AnalyticsWorkspaceId $cmconfig.analyticsWorkspaceId `
                 -FabricControllerId $cmconfig.fabricControllerId `
                 -SubscriptionId $cmconfig.subscriptionId `
-                -IdentityType $cmconfig.identityTypeUA `
-                -IdentityUserAssignedIdentity $uaiHash
+                -UserAssignedIdentity $uaiHash
         } | Should -Not -Throw
     }
     It 'Create ClusterManager with SystemAssigned Identity' {
@@ -72,7 +66,7 @@ Describe 'New-AzNetworkCloudClusterManager' {
                 -AnalyticsWorkspaceId $cmconfig.analyticsWorkspaceId `
                 -FabricControllerId $cmconfig.fabricControllerId `
                 -SubscriptionId $cmconfig.subscriptionId `
-                -IdentityType $cmconfig.identityTypeSA
+                -EnableSystemAssignedIdentity
         } | Should -Not -Throw
     }
 }

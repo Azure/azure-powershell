@@ -19,7 +19,8 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
  [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String> -BandwidthInMbps <Int32>
  [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ExpressRoutePort
@@ -28,7 +29,8 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
  [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
  [-AuthorizationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -23,57 +23,53 @@ Create an in-memory object for Preferences.
 $preference = New-AzEdgeOrderPreferencesObject -EncryptionPreference @{DoubleEncryptionStatus = "Disabled"} -TransportPreference @{PreferredShipmentType = "MicrosoftManaged"} -ManagementResourcePreference @{PreferredManagementResourceId = "/subscriptions/managementSubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.DataBoxEdge/DataBoxEdgeDevices/1GPUtest"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Preferences
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 ENCRYPTIONPREFERENCE <IEncryptionPreferences>: Preferences related to the Encryption.
-  [DoubleEncryptionStatus <DoubleEncryptionStatus?>]: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
+  [DoubleEncryptionStatus <String>]: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
 
 MANAGEMENTRESOURCEPREFERENCE <IManagementResourcePreferences>: Preferences related to the Management resource.
   [PreferredManagementResourceId <String>]: Customer preferred Management resource ARM ID
 
 NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preferences.
   SendNotification <Boolean>: Notification is required or not.
-  StageName <NotificationStageName>: Name of the stage.
+  StageName <String>: Name of the stage.
 
 TRANSPORTPREFERENCE <ITransportPreferences>: Preferences related to the shipment logistics of the order.
-  PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
+  PreferredShipmentType <String>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderPreferencesObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderpreferencesobject
 #>
 function New-AzEdgeOrderPreferencesObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Preferences])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IEncryptionPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEncryptionPreferences]
     # Preferences related to the Encryption.
-    # To construct, see NOTES section for ENCRYPTIONPREFERENCE properties and create a hash table.
     ${EncryptionPreference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IManagementResourcePreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IManagementResourcePreferences]
     # Preferences related to the Management resource.
-    # To construct, see NOTES section for MANAGEMENTRESOURCEPREFERENCE properties and create a hash table.
     ${ManagementResourcePreference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.INotificationPreference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.INotificationPreference[]]
     # Notification preferences.
-    # To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
     ${NotificationPreference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ITransportPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITransportPreferences]
     # Preferences related to the shipment logistics of the order.
-    # To construct, see NOTES section for TRANSPORTPREFERENCE properties and create a hash table.
     ${TransportPreference}
 )
 
@@ -84,6 +80,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -112,6 +111,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

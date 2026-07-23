@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the KubernetesVersionCapabilities class.
         /// </summary>
 
-        /// <param name="supportPlan">
+        /// <param name="supportPlan">Kubernetes support plans available for this version.
         /// </param>
         public KubernetesVersionCapabilities(System.Collections.Generic.IList<string> supportPlan = default(System.Collections.Generic.IList<string>))
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets
+        /// Gets or sets kubernetes support plans available for this version.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportPlan")]
         public System.Collections.Generic.IList<string> SupportPlan {get; set; }

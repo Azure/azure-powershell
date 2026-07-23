@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Deletes an EventHub schema group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}", ApiVersion = "2024-05-01-preview")]
     public partial class RemoveAzEventHubSchemaGroup_DeleteViaIdentityNamespace : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

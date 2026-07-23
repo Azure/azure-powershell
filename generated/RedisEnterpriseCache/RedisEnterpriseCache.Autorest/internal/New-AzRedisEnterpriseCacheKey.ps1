@@ -25,19 +25,22 @@ New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyT
 New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 #>
 function New-AzRedisEnterpriseCacheKey {
 [Alias('New-AzRedisEnterpriseCacheDatabaseKey', 'New-AzRedisEnterpriseCacheAccessKey')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(Mandatory)]
@@ -60,12 +63,24 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType])]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Primary", "Secondary")]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType]
+    [System.String]
     # Which access key to regenerate.
     ${KeyType},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -135,13 +150,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             RegenerateExpanded = 'Az.RedisEnterpriseCache.private\New-AzRedisEnterpriseCacheKey_RegenerateExpanded';
+            RegenerateViaJsonFilePath = 'Az.RedisEnterpriseCache.private\New-AzRedisEnterpriseCacheKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.RedisEnterpriseCache.private\New-AzRedisEnterpriseCacheKey_RegenerateViaJsonString';
         }
-        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -150,6 +168,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -30,6 +30,12 @@ Get-AzPeeringConnectionMonitorTest -InputObject <IPeeringIdentity> [-DefaultProf
  [<CommonParameters>]
 ```
 
+### GetViaIdentityPeeringService
+```
+Get-AzPeeringConnectionMonitorTest -Name <String> -PeeringServiceInputObject <IPeeringIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 
@@ -82,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
@@ -101,13 +106,28 @@ The name of the connection monitor test
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityPeeringService
 Aliases: ConnectionMonitorTestName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringServiceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: GetViaIdentityPeeringService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IConnectionMonitorTest
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTest
 
 ## NOTES
 

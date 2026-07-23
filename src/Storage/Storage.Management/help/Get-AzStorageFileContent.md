@@ -18,7 +18,7 @@ Downloads the contents of a file.
 Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-AsJob] [-DisAllowTrailingDot] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] 
 Get-AzStorageFileContent [-ShareClient] <ShareClient> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
@@ -35,7 +35,7 @@ Get-AzStorageFileContent [-ShareClient] <ShareClient> [-Path] <String> [[-Destin
 Get-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
  [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Get-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] 
 Get-AzStorageFileContent [-ShareFileClient] <ShareFileClient> [[-Destination] <String>] [-CheckMd5] [-PassThru]
  [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,12 +67,12 @@ Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq "Azure
 
 This example downloads the files under sample file share
 
-### Example 3: Download an Azure file to a local file, and perserve the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
+### Example 3: Download an Azure file to a local file, and preserve the Azure File SMB properties (File Attributes, File Creation Time, File Last Write Time) in the local file.
 ```powershell
 Get-AzStorageFileContent -ShareName sample -Path "dir1/file1" -Destination $localFilePath -PreserveSMBAttribute
 ```
 
-This example downloads an Azure file to a local file, and perserves the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
+This example downloads an Azure file to a local file, and preserves the Azure File SMB properties (File Attributes, File Creation Time, File Last Write Time) in the local file.
 
 ## PARAMETERS
 
@@ -252,27 +252,12 @@ Accept wildcard characters: False
 ```
 
 ### -PreserveSMBAttribute
-Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
+Keep the source File SMB properties (File Attributes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

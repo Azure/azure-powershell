@@ -12,13 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Action used to manually kick off an AAD group sync job.
+.Description
+Action used to manually kick off an AAD group sync job.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabuser
+#>
 function Sync-AzLabServicesLabUser_Lab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The object of lab service lab to synchronize users in.
     ${Lab},
 
     [Parameter()]

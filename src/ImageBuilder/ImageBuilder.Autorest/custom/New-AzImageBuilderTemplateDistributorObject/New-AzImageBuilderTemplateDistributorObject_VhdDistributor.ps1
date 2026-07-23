@@ -21,12 +21,13 @@ Create an in-memory object for ImageTemplateDistributor.
 Create an in-memory object for ImageTemplateDistributor.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_VhdDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,22 +35,18 @@ function New-AzImageBuilderTemplateDistributorObject_VhdDistributor {
         [string]
         $Uri,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
         [Parameter(Mandatory, HelpMessage="The name to be used for the associated RunOutput.")]
         [string]
         $RunOutputName,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="Type of distribution.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Distribute via VHD in a storage account.")]
         [Switch]
         $VhdDistributor
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor]::New()
 
         if ($PSBoundParameters.ContainsKey('Uri')) {
             $Object.Uri = $Uri
@@ -59,9 +56,6 @@ function New-AzImageBuilderTemplateDistributorObject_VhdDistributor {
         }
         if ($PSBoundParameters.ContainsKey('RunOutputName')) {
             $Object.RunOutputName = $RunOutputName
-        }
-        if ($VhdDistributor.IsPresent) {
-            $Object.Type = "VHD"
         }
         return $Object
     }

@@ -32,7 +32,7 @@ Get-AzImportExport -InputObject $Id
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IImportExportIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexport
 #>
 function Get-AzImportExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -78,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -158,6 +157,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -182,9 +190,7 @@ begin {
             List = 'Az.ImportExport.private\Get-AzImportExport_List';
             List1 = 'Az.ImportExport.private\Get-AzImportExport_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -198,6 +204,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

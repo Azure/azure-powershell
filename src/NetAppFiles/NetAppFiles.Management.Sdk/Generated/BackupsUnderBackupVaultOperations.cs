@@ -121,6 +121,11 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 body.Validate();
             }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -174,11 +179,6 @@ namespace Microsoft.Azure.Management.NetApp
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "backupName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_.]{0,255}$");
                 }
             }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

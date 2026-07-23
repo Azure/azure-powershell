@@ -20,43 +20,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Additional information about the planned maintenance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string AdditionalDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail; }
+        public string AdditionalDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail = value ?? null; }
 
         /// <summary>The OCID of the backup IP address associated with the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string BackupIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId; }
+        public string BackupIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId = value ?? null; }
 
         /// <summary>The OCID of the second backup VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string BackupVnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id; }
+        public string BackupVnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id = value ?? null; }
 
         /// <summary>The OCID of the backup VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string BackupVnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId; }
+        public string BackupVnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId = value ?? null; }
 
         /// <summary>The number of CPU cores enabled on the Db node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? CpuCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount; }
+        public int? CpuCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount = value ?? default(int); }
 
         /// <summary>The OCID of the Exacc Db server associated with the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string DbServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId; }
+        public string DbServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId = value ?? null; }
 
         /// <summary>The OCID of the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string DbSystemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId; }
+        public string DbSystemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId = value ?? null; }
 
         /// <summary>The name of the Fault Domain the instance is contained in.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string FaultDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain; }
+        public string FaultDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain = value ?? null; }
 
         /// <summary>The OCID of the host IP address associated with the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string HostIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId; }
+        public string HostIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId = value ?? null; }
 
         /// <summary>The host name for the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string Hostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname; }
+        public string Hostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname = value ?? null; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -66,103 +66,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Lifecycle details of Db Node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail; }
+        public string LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail = value ?? null; }
 
         /// <summary>The current state of the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState; }
+        public string LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState = value ?? null; }
 
         /// <summary>The type of database node maintenance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string MaintenanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType; }
+        public string MaintenanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType = value ?? null; }
 
         /// <summary>The allocated memory in GBs on the Db node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb; }
-
-        /// <summary>Internal Acessors for AdditionalDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.AdditionalDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail = value; }
-
-        /// <summary>Internal Acessors for BackupIPId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId = value; }
-
-        /// <summary>Internal Acessors for BackupVnic2Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupVnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id = value; }
-
-        /// <summary>Internal Acessors for BackupVnicId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupVnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId = value; }
-
-        /// <summary>Internal Acessors for CpuCoreCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.CpuCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount = value; }
-
-        /// <summary>Internal Acessors for DbServerId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.DbServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId = value; }
-
-        /// <summary>Internal Acessors for DbSystemId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.DbSystemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId = value; }
-
-        /// <summary>Internal Acessors for FaultDomain</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.FaultDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain = value; }
-
-        /// <summary>Internal Acessors for HostIPId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.HostIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId = value; }
-
-        /// <summary>Internal Acessors for Hostname</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Hostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname = value; }
-
-        /// <summary>Internal Acessors for LifecycleDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail = value; }
-
-        /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState = value; }
-
-        /// <summary>Internal Acessors for MaintenanceType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.MaintenanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType = value; }
-
-        /// <summary>Internal Acessors for MemorySizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb = value; }
-
-        /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid = value; }
+        public int? MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbNodeProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState = value; }
-
-        /// <summary>Internal Acessors for SoftwareStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.SoftwareStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb = value; }
-
-        /// <summary>Internal Acessors for StorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.StorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb = value; }
-
-        /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated = value; }
-
-        /// <summary>Internal Acessors for TimeMaintenanceWindowEnd</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeMaintenanceWindowEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd = value; }
-
-        /// <summary>Internal Acessors for TimeMaintenanceWindowStart</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeMaintenanceWindowStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart = value; }
-
-        /// <summary>Internal Acessors for Vnic2Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Vnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id = value; }
-
-        /// <summary>Internal Acessors for VnicId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.VnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -170,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>DbNode OCID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid; }
+        public string Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeProperties _property;
@@ -192,53 +144,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// DB systems.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? SoftwareStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb; }
+        public int? SoftwareStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb = value ?? default(int); }
 
         /// <summary>The allocated local node storage in GBs on the Db node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public int? StorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb; }
+        public int? StorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb = value ?? default(int); }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>The date and time that the database node was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public global::System.DateTime? TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated; }
+        public global::System.DateTime? TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated = value ?? default(global::System.DateTime); }
 
         /// <summary>End date and time of maintenance window.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public global::System.DateTime? TimeMaintenanceWindowEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd; }
+        public global::System.DateTime? TimeMaintenanceWindowEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd = value ?? default(global::System.DateTime); }
 
         /// <summary>Start date and time of maintenance window.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public global::System.DateTime? TimeMaintenanceWindowStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart; }
+        public global::System.DateTime? TimeMaintenanceWindowStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart = value ?? default(global::System.DateTime); }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -248,11 +200,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The OCID of the second VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string Vnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id; }
+        public string Vnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id = value ?? null; }
 
         /// <summary>The OCID of the VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string VnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId; }
+        public string VnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId = value ?? null; }
 
         /// <summary>Creates an new <see cref="DbNode" /> instance.</summary>
         public DbNode()
@@ -280,170 +232,170 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Additional information about the planned maintenance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Additional information about the planned maintenance.",
         SerializedName = @"additionalDetails",
         PossibleTypes = new [] { typeof(string) })]
-        string AdditionalDetail { get;  }
+        string AdditionalDetail { get; set; }
         /// <summary>The OCID of the backup IP address associated with the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the backup IP address associated with the database node.",
         SerializedName = @"backupIpId",
         PossibleTypes = new [] { typeof(string) })]
-        string BackupIPId { get;  }
+        string BackupIPId { get; set; }
         /// <summary>The OCID of the second backup VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the second backup VNIC.",
         SerializedName = @"backupVnic2Id",
         PossibleTypes = new [] { typeof(string) })]
-        string BackupVnic2Id { get;  }
+        string BackupVnic2Id { get; set; }
         /// <summary>The OCID of the backup VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the backup VNIC.",
         SerializedName = @"backupVnicId",
         PossibleTypes = new [] { typeof(string) })]
-        string BackupVnicId { get;  }
+        string BackupVnicId { get; set; }
         /// <summary>The number of CPU cores enabled on the Db node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The number of CPU cores enabled on the Db node.",
         SerializedName = @"cpuCoreCount",
         PossibleTypes = new [] { typeof(int) })]
-        int? CpuCoreCount { get;  }
+        int? CpuCoreCount { get; set; }
         /// <summary>The OCID of the Exacc Db server associated with the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the Exacc Db server associated with the database node.",
         SerializedName = @"dbServerId",
         PossibleTypes = new [] { typeof(string) })]
-        string DbServerId { get;  }
+        string DbServerId { get; set; }
         /// <summary>The OCID of the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the DB system.",
         SerializedName = @"dbSystemId",
         PossibleTypes = new [] { typeof(string) })]
-        string DbSystemId { get;  }
+        string DbSystemId { get; set; }
         /// <summary>The name of the Fault Domain the instance is contained in.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The name of the Fault Domain the instance is contained in.",
         SerializedName = @"faultDomain",
         PossibleTypes = new [] { typeof(string) })]
-        string FaultDomain { get;  }
+        string FaultDomain { get; set; }
         /// <summary>The OCID of the host IP address associated with the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the host IP address associated with the database node.",
         SerializedName = @"hostIpId",
         PossibleTypes = new [] { typeof(string) })]
-        string HostIPId { get;  }
+        string HostIPId { get; set; }
         /// <summary>The host name for the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The host name for the database node.",
         SerializedName = @"hostname",
         PossibleTypes = new [] { typeof(string) })]
-        string Hostname { get;  }
+        string Hostname { get; set; }
         /// <summary>Lifecycle details of Db Node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Lifecycle details of Db Node.",
         SerializedName = @"lifecycleDetails",
         PossibleTypes = new [] { typeof(string) })]
-        string LifecycleDetail { get;  }
+        string LifecycleDetail { get; set; }
         /// <summary>The current state of the database node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The current state of the database node.",
         SerializedName = @"lifecycleState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Provisioning", "Available", "Updating", "Stopping", "Stopped", "Starting", "Terminating", "Terminated", "Failed")]
-        string LifecycleState { get;  }
+        string LifecycleState { get; set; }
         /// <summary>The type of database node maintenance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The type of database node maintenance.",
         SerializedName = @"maintenanceType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("VmdbRebootMigration")]
-        string MaintenanceType { get;  }
+        string MaintenanceType { get; set; }
         /// <summary>The allocated memory in GBs on the Db node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The allocated memory in GBs on the Db node.",
         SerializedName = @"memorySizeInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? MemorySizeInGb { get;  }
+        int? MemorySizeInGb { get; set; }
         /// <summary>DbNode OCID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"DbNode OCID",
         SerializedName = @"ocid",
         PossibleTypes = new [] { typeof(string) })]
-        string Ocid { get;  }
+        string Ocid { get; set; }
         /// <summary>Azure resource provisioning state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -462,80 +414,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The size (in GB) of the block storage volume allocation for the DB system. This attribute applies only for virtual machine DB systems.",
         SerializedName = @"softwareStorageSizeInGb",
         PossibleTypes = new [] { typeof(int) })]
-        int? SoftwareStorageSizeInGb { get;  }
+        int? SoftwareStorageSizeInGb { get; set; }
         /// <summary>The allocated local node storage in GBs on the Db node.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The allocated local node storage in GBs on the Db node.",
         SerializedName = @"dbNodeStorageSizeInGbs",
         PossibleTypes = new [] { typeof(int) })]
-        int? StorageSizeInGb { get;  }
+        int? StorageSizeInGb { get; set; }
         /// <summary>The date and time that the database node was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The date and time that the database node was created.",
         SerializedName = @"timeCreated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? TimeCreated { get;  }
+        global::System.DateTime? TimeCreated { get; set; }
         /// <summary>End date and time of maintenance window.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"End date and time of maintenance window.",
         SerializedName = @"timeMaintenanceWindowEnd",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? TimeMaintenanceWindowEnd { get;  }
+        global::System.DateTime? TimeMaintenanceWindowEnd { get; set; }
         /// <summary>Start date and time of maintenance window.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Start date and time of maintenance window.",
         SerializedName = @"timeMaintenanceWindowStart",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? TimeMaintenanceWindowStart { get;  }
+        global::System.DateTime? TimeMaintenanceWindowStart { get; set; }
         /// <summary>The OCID of the second VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the second VNIC.",
         SerializedName = @"vnic2Id",
         PossibleTypes = new [] { typeof(string) })]
-        string Vnic2Id { get;  }
+        string Vnic2Id { get; set; }
         /// <summary>The OCID of the VNIC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The OCID of the VNIC.",
         SerializedName = @"vnicId",
         PossibleTypes = new [] { typeof(string) })]
-        string VnicId { get;  }
+        string VnicId { get; set; }
 
     }
     /// The DbNode resource belonging to vmCluster

@@ -19,11 +19,14 @@ $reservationToReturn1 = @{
     Quantity = 1
     ReservationId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
 }
+# $reservationToReturn3 = "Quantity=1;reservationId=/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
 $reservationToReturn2 = @{
     Quantity = 1
     ReservationId = "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000003/reservations/40000000-aaaa-bbbb-cccc-100000000002"
 }
+# $reservationToReturn4 = "Quantity=1;reservationId=/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000003/reservations/40000000-aaaa-bbbb-cccc-100000000002"
 $reservationsToReturn = @($reservationToReturn1, $reservationToReturn2)
+$reservationsToReturn2 = $reservationsToReturn | ConvertTo-Json
 $reservationToPurchase1Properties = @{
     AppliedScopeType = "Shared"
     BillingPlan = "Upfront"
@@ -53,6 +56,7 @@ $reservationToPurchase2 = @{
     Properties = $reservationToPurchase2Properties
 }
 $reservationsToPurchase = @($reservationToPurchase1, $reservationToPurchase2)
+$reservationToPurchase2 = $reservationsToPurchase | ConvertTo-Json
 
 function ExecuteTestCases([object]$response) {
     $response | Should -Not -Be $null
@@ -76,11 +80,8 @@ Describe 'Invoke-AzReservationCalculateExchange' {
     }
 
     It 'Post' {
-        $request = @{
-            ReservationsToExchange = $reservationsToReturn
-            ReservationsToPurchase = $reservationsToPurchase
-        }
-        $response = Invoke-AzReservationCalculateExchange -Body $request
+        $request = "ReservationsToExchange=$reservationsToReturn2;ReservationsToPurchase=$reservationsToPurchase2"
+        $response = Invoke-AzReservationCalculateExchange -JsonString $request
         ExecuteTestCases($response)
     }
 }

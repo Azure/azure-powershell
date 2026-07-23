@@ -76,11 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
             {
                 return;
             }
-            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
-            {_registrationDefinitionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("registrationDefinitionId"), out var __jsonRegistrationDefinitionId) ? (string)__jsonRegistrationDefinitionId : (string)RegistrationDefinitionId;}
-            {_registrationAssignmentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("registrationAssignmentId"), out var __jsonRegistrationAssignmentId) ? (string)__jsonRegistrationAssignmentId : (string)RegistrationAssignmentId;}
-            {_marketplaceIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("marketplaceIdentifier"), out var __jsonMarketplaceIdentifier) ? (string)__jsonMarketplaceIdentifier : (string)MarketplaceIdentifier;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
+            {_registrationDefinitionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("registrationDefinitionId"), out var __jsonRegistrationDefinitionId) ? (string)__jsonRegistrationDefinitionId : (string)_registrationDefinitionId;}
+            {_registrationAssignmentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("registrationAssignmentId"), out var __jsonRegistrationAssignmentId) ? (string)__jsonRegistrationAssignmentId : (string)_registrationAssignmentId;}
+            {_marketplaceIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("marketplaceIdentifier"), out var __jsonMarketplaceIdentifier) ? (string)__jsonMarketplaceIdentifier : (string)_marketplaceIdentifier;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Creates a Bot Service.
+create a Bot Service.
 Bot Service is a resource group wide resource type.
 .Description
-Creates a Bot Service.
+create a Bot Service.
 Bot Service is a resource group wide resource type.
 .Example
 New-AzBotService -resourcegroupname BotTest-rg -name BotTest1 -ApplicationId "af5fce4d-ee68-4b25-be09-f3222582e133" -Location global -Sku F0 -Description "123134" -Registration
@@ -27,12 +27,12 @@ New-AzBotService -resourcegroupname BotTest-rg -name BotTest1 -ApplicationId "af
 New-AzBotService -resourcegroupname BotTest-rg -name BotTest2 -ApplicationId "b1ab1727-0465-4255-a1bb-976210af972c" -Location global -Sku F0 -Description "123134" -Webapp
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot
 .Link
 https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -55,208 +55,220 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotPropertiesAllSettings]))]
     [System.Collections.Hashtable]
     # Contains resource all settings defined as key/value pairs.
     ${AllSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The hint (e.g.
     # keyVault secret resourceId) on how to fetch the app secret
     ${AppPasswordHint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The CMK Url
     ${CmekKeyVaultUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The description of the bot
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Application Insights key
     ${DeveloperAppInsightKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Application Insights Api Key
     ${DeveloperAppInsightsApiKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Application Insights App Id
     ${DeveloperAppInsightsApplicationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
     ${DisableLocalAuth},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Name of the bot
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The bot's endpoint
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Entity Tag
     ${Etag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Icon Url of the bot
     ${IconUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether Cmek is enabled
     ${IsCmekEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether the bot is streaming supported
     ${IsStreamingSupported},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("sdk", "designer", "bot", "function", "azurebot")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind]
+    [System.String]
     # Required.
     # Gets or sets the Kind of the resource.
     ${Kind},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Specifies the location of the resource.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String[]]
     # Collection of LUIS App Ids
     ${LuisAppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The LUIS Key
     ${LuisKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The bot's manifest url
     ${ManifestUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Microsoft App Id for the bot
     ${MsaAppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Microsoft App Managed Identity Resource Id for the bot
     ${MsaAppMsiResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Microsoft App Tenant Id for the bot
     ${MsaAppTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("UserAssignedMSI", "SingleTenant", "MultiTenant")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]
+    [System.String]
     # Microsoft App Type for the bot
     ${MsaAppType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The hint to browser (e.g.
     # protocol handler) on how to open the bot for authoring
     ${OpenWithHint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotPropertiesParameters]))]
     [System.Collections.Hashtable]
     # Contains resource parameters defined as key/value pairs.
     ${Parameter},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]
+    [System.String]
     # Whether the bot is in an isolated network
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Publishing credentials of the resource
     ${PublishingCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The channel schema transformation version for the bot
     ${SchemaTransformationVersion},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("F0", "S1")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName]
+    [System.String]
     # The sku name
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The storage resourceId for the bot
     ${StorageResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Contains resource tags defined as key/value pairs.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Tenant Id for the bot
     ${TenantId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -314,13 +326,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.BotService.private\New-AzBotService_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.BotService.private\New-AzBotService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.BotService.private\New-AzBotService_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -329,6 +344,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

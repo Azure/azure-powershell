@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a AutonomousDatabase</summary>
+    /// <summary>create a AutonomousDatabase</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzOracleAutonomousDatabase_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"Create a AutonomousDatabase")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a AutonomousDatabase")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleAutonomousDatabase_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>Autonomous Database resource model.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabase _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabase();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>Admin password.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Admin password.")]
@@ -179,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         Description = @"Database type to be created.",
         SerializedName = @"dataBaseType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Regular", "Clone")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Regular", "Clone", "CloneFromBackupTimestamp", "CrossRegionDisasterRecovery")]
         public string DataBaseType { get => _resourceBody.DataBaseType ?? null; set => _resourceBody.DataBaseType = value; }
 
         /// <summary>
@@ -217,18 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("StandardEdition", "EnterpriseEdition")]
         public string DatabaseEdition { get => _resourceBody.DatabaseEdition ?? null; set => _resourceBody.DatabaseEdition = value; }
-
-        /// <summary>Name of the day of the week.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the day of the week.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of the day of the week.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-        public string DayOfWeekName { get => _resourceBody.DayOfWeekName ?? null; set => _resourceBody.DayOfWeekName = value; }
 
         /// <summary>A valid Oracle Database version for Autonomous Database.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A valid Oracle Database version for Autonomous Database.")]
@@ -475,27 +454,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "auto start time. value must be of ISO-8601 format HH:mm")]
+        /// <summary>The list of scheduled operations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of scheduled operations.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"auto start time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStartTime",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ScheduledStartTime { get => _resourceBody.ScheduledOperationScheduledStartTime ?? null; set => _resourceBody.ScheduledOperationScheduledStartTime = value; }
-
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "auto stop time. value must be of ISO-8601 format HH:mm")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"auto stop time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStopTime",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ScheduledStopTime { get => _resourceBody.ScheduledOperationScheduledStopTime ?? null; set => _resourceBody.ScheduledOperationScheduledStopTime = value; }
+        Description = @"The list of scheduled operations.",
+        SerializedName = @"scheduledOperationsList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType[] ScheduledOperationsList { get => _resourceBody.ScheduledOperationsList?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ScheduledOperationsList = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>(value) : null); }
 
         /// <summary>Client subnet</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Client subnet")]
@@ -634,11 +603,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Oracle.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -954,24 +918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabase
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

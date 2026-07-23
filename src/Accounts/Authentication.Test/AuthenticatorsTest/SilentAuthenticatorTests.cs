@@ -25,6 +25,7 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 
 namespace Common.Authenticators.Test
 {
@@ -53,6 +54,7 @@ namespace Common.Authenticators.Test
         public SilentAuthenticatorTests(ITestOutputHelper output)
         {
             AzureSessionInitializer.InitializeAzureSession();
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             Output = output;
         }
 
@@ -64,7 +66,9 @@ namespace Common.Authenticators.Test
 
             //Setup
             var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // Type or member is obsolete
             mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock());
+#pragma warning restore CS0618 // Type or member is obsolete
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
             InMemoryTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
 

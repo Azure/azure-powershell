@@ -16,27 +16,27 @@ Deletes a subscription from the specified topic.
 ```
 Remove-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityTopic
 ```
 Remove-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityNamespace
 ```
 Remove-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputObject <IServiceBusIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,23 +144,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -175,8 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -267,4 +253,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://msdn.microsoft.com/en-us/library/azure/mt639381.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639381.aspx)
-

@@ -23,9 +23,11 @@ Operation to invite a user to a lab.
 Send-AzLabServicesUserInvite -ResourceGroupName "Group Name" -LabName "Lab Name" -UserName "User Name" -Text "Welcome to the lab."
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Outputs
 System.Boolean
 .Notes
@@ -33,23 +35,43 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-USER <User>: 
-  Email <String>: Email address of the user.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+USER <User>: The object of lab service user to invite.
   [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Email <String>]: Email address of the user.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
 #>
 function Send-AzLabServicesUserInvite {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the lab that uniquely identifies it within containing lab account.
@@ -57,13 +79,19 @@ param(
     ${LabName},
 
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath')]
+    [Parameter(ParameterSetName='InviteViaJsonString')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='Users')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -71,27 +99,59 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the user that uniquely identifies it within containing lab.
     # Used in resource URIs.
     ${UserName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InviteViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='Users')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Custom text for the invite email.
     ${Text},
 
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Invite operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Invite operation
+    ${JsonString},
+
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service user.
     ${ResourceId},
 
     [Parameter(ParameterSetName='Users', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user to invite.
     ${User},
 
     [Parameter()]
@@ -136,6 +196,10 @@ param(
     ${NoWait},
 
     [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath')]
+    [Parameter(ParameterSetName='InviteViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
@@ -168,6 +232,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -188,12 +261,14 @@ begin {
 
         $mapping = @{
             InviteExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteExpanded';
+            InviteViaIdentityExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaIdentityExpanded';
+            InviteViaIdentityLabExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaIdentityLabExpanded';
+            InviteViaJsonFilePath = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaJsonFilePath';
+            InviteViaJsonString = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaJsonString';
             ResourceId = 'Az.LabServices.custom\Send-AzLabServicesUserInvite_ResourceId';
             Users = 'Az.LabServices.custom\Send-AzLabServicesUserInvite_Users';
         }
-        if (('InviteExpanded', 'ResourceId', 'Users') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('InviteExpanded', 'InviteViaJsonFilePath', 'InviteViaJsonString', 'ResourceId', 'Users') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -207,6 +282,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

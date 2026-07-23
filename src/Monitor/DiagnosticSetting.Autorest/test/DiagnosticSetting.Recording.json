@@ -1,17 +1,17 @@
 {
-  "DiagnosticSetting+[NoContext]+CRUD+$GET+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettingsCategories?api-version=2021-05-01-preview+1": {
+  "DiagnosticSetting+[NoContext]+CRUD+$GET+https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettingsCategories?api-version=2021-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettingsCategories?api-version=2021-05-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettingsCategories?api-version=2021-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "6b13707b-7787-44d8-b2a3-850e9eabd74e" ],
+        "x-ms-client-request-id": [ "e343c3d7-0cc3-4621-815b-e6709b8c5c24" ],
         "CommandName": [ "Get-AzDiagnosticSettingCategory" ],
         "FullCommandName": [ "Get-AzDiagnosticSettingCategory_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.DiagnosticSetting/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,34 +23,37 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "67447332-5015-4464-9cd2-70ca2912e4cc" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "003c7107-2578-4390-b8b4-633a8dfd9102" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T073556Z:003c7107-2578-4390-b8b4-633a8dfd9102" ],
+        "x-ms-request-id": [ "a8e36354-4261-4b8f-a99e-da4759f24a55" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/05c0663d-a0a7-4a3d-87e1-4da8290c33a4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "6a2fa38b-30b3-40a6-a901-1980eb0e50d5" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033717Z:6a2fa38b-30b3-40a6-a901-1980eb0e50d5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 07:35:55 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 74D3A41DB4E645CA80595CDF75A04B5A Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:16Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "935" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.network/virtualnetworks/test-vnetijbg90/providers/microsoft.insights/diagnosticSettingsCategories/VMProtectionAlerts\",\"type\":\"microsoft.insights/diagnosticSettingsCategories\",\"name\":\"VMProtectionAlerts\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"displayName\":\"VM protection alerts\",\"categoryType\":\"Logs\",\"categoryGroups\":[\"allLogs\"]},\"identity\":null},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.network/virtualnetworks/test-vnetijbg90/providers/microsoft.insights/diagnosticSettingsCategories/AllMetrics\",\"type\":\"microsoft.insights/diagnosticSettingsCategories\",\"name\":\"AllMetrics\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"displayName\":\"AllMetrics\",\"categoryType\":\"Metrics\"},\"identity\":null}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/diagnostic-setting-groupt9vaw5/providers/microsoft.network/virtualnetworks/test-vnetxhjrie/providers/microsoft.insights/diagnosticSettingsCategories/VMProtectionAlerts\",\"type\":\"microsoft.insights/diagnosticSettingsCategories\",\"name\":\"VMProtectionAlerts\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"displayName\":\"VM protection alerts\",\"categoryType\":\"Logs\",\"categoryGroups\":[\"allLogs\"]},\"identity\":null},{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/diagnostic-setting-groupt9vaw5/providers/microsoft.network/virtualnetworks/test-vnetxhjrie/providers/microsoft.insights/diagnosticSettingsCategories/AllMetrics\",\"type\":\"microsoft.insights/diagnosticSettingsCategories\",\"name\":\"AllMetrics\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"displayName\":\"AllMetrics\",\"categoryType\":\"Metrics\"},\"identity\":null}]}",
       "isContentBase64": false
     }
   },
-  "DiagnosticSetting+[NoContext]+CRUD+$PUT+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting1eqp5r?api-version=2021-05-01-preview+2": {
+  "DiagnosticSetting+[NoContext]+CRUD+$PUT+https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting1eqp5r?api-version=2021-05-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"metrics\": [\r\n      {\r\n        \"retentionPolicy\": {\r\n          \"enabled\": true,\r\n          \"days\": 7\r\n        },\r\n        \"category\": \"AllMetrics\",\r\n        \"enabled\": true\r\n      }\r\n    ],\r\n    \"logs\": [\r\n      {\r\n        \"retentionPolicy\": {\r\n          \"enabled\": true,\r\n          \"days\": 7\r\n        },\r\n        \"category\": \"VMProtectionAlerts\",\r\n        \"enabled\": true\r\n      }\r\n    ],\r\n    \"workspaceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.operationalinsights/workspaces/test-workspace8z9pt3\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"metrics\": [\r\n      {\r\n        \"category\": \"AllMetrics\",\r\n        \"enabled\": true\r\n      }\r\n    ],\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"VMProtectionAlerts\",\r\n        \"enabled\": true\r\n      }\r\n    ],\r\n    \"workspaceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "615" ]
+        "Content-Length": [ "433" ]
       }
     },
     "Response": {
@@ -59,36 +62,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "23cc55bb-f9b0-4b07-af72-0abdece53c27" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "149" ],
-        "x-ms-correlation-request-id": [ "d10a52e0-f962-4d82-a77d-605e2e352dc8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T073603Z:d10a52e0-f962-4d82-a77d-605e2e352dc8" ],
+        "x-ms-request-id": [ "cd30c318-1093-41e7-bb65-3d2cf74a3c8e" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/575293c4-80db-4d79-875d-bb283f80731f" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "ec638afc-adc1-40a8-a4c0-0949842d20d6" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033724Z:ec638afc-adc1-40a8-a4c0-0949842d20d6" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 07:36:02 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BC4F34DC131A46B4AACC223FDDB5DCB4 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:17Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "964" ],
+        "Content-Length": [ "966" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.network/virtualnetworks/test-vnetijbg90/providers/microsoft.insights/diagnosticSettings/test-diagnostic-setting1eqp5r\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-setting1eqp5r\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"storageAccountId\":null,\"serviceBusRuleId\":null,\"workspaceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.operationalinsights/workspaces/test-workspace8z9pt3\",\"eventHubAuthorizationRuleId\":null,\"eventHubName\":null,\"metrics\":[{\"timeGrain\":\"PT1M\",\"category\":\"AllMetrics\",\"enabled\":true,\"retentionPolicy\":{\"enabled\":true,\"days\":7}}],\"logs\":[{\"category\":\"VMProtectionAlerts\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"enabled\":true,\"days\":7}}],\"logAnalyticsDestinationType\":null},\"identity\":null}",
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/diagnostic-setting-groupt9vaw5/providers/microsoft.network/virtualnetworks/test-vnetxhjrie/providers/microsoft.insights/diagnosticSettings/test-diagnostic-settingt1kbc6\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-settingt1kbc6\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"storageAccountId\":null,\"serviceBusRuleId\":null,\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"eventHubAuthorizationRuleId\":null,\"eventHubName\":null,\"metrics\":[{\"timeGrain\":\"PT1M\",\"category\":\"AllMetrics\",\"enabled\":true,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logs\":[{\"category\":\"VMProtectionAlerts\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logAnalyticsDestinationType\":null},\"identity\":null}",
       "isContentBase64": false
     }
   },
-  "DiagnosticSetting+[NoContext]+CRUD+$GET+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting1eqp5r?api-version=2021-05-01-preview+3": {
+  "DiagnosticSetting+[NoContext]+CRUD+$GET+https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting1eqp5r?api-version=2021-05-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "9cbb31f3-0861-47ea-a6f5-e31680ba2d33" ],
+        "x-ms-client-request-id": [ "fcbcc9d5-b03f-4fa8-afb0-869a532811bc" ],
         "CommandName": [ "Get-AzDiagnosticSetting" ],
         "FullCommandName": [ "Get-AzDiagnosticSetting_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.DiagnosticSetting/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -100,36 +105,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "35f4ee3b-0299-490c-a299-6969de0377af" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "f25b9a8c-f0b9-4018-b5e9-7ad909983000" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T073604Z:f25b9a8c-f0b9-4018-b5e9-7ad909983000" ],
+        "x-ms-request-id": [ "97003294-3343-42f9-ac87-3b4ab060ce59" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/82a6b586-a4b4-416d-8695-c625ac9be35b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "5796db39-7f6e-4160-9069-584aa6bb8235" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033726Z:5796db39-7f6e-4160-9069-584aa6bb8235" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 07:36:04 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 34F6E7A7264440CF85693D41C44B9841 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:25Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "945" ],
+        "Content-Length": [ "951" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.network/virtualnetworks/test-vnetijbg90/providers/microsoft.insights/diagnosticSettings/test-diagnostic-setting1eqp5r\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-setting1eqp5r\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"storageAccountId\":null,\"serviceBusRuleId\":null,\"workspaceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/diagnostic-setting-groupwi87al/providers/microsoft.operationalinsights/workspaces/test-workspace8z9pt3\",\"eventHubAuthorizationRuleId\":null,\"eventHubName\":null,\"metrics\":[{\"category\":\"AllMetrics\",\"enabled\":true,\"retentionPolicy\":{\"enabled\":true,\"days\":7}}],\"logs\":[{\"category\":\"VMProtectionAlerts\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"enabled\":true,\"days\":7}}],\"logAnalyticsDestinationType\":null},\"identity\":null}",
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/diagnostic-setting-groupt9vaw5/providers/microsoft.network/virtualnetworks/test-vnetxhjrie/providers/microsoft.insights/diagnosticSettings/test-diagnostic-settingt1kbc6\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-settingt1kbc6\",\"location\":\"eastus\",\"kind\":null,\"tags\":null,\"properties\":{\"storageAccountId\":null,\"serviceBusRuleId\":null,\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"eventHubAuthorizationRuleId\":null,\"eventHubName\":null,\"metrics\":[{\"category\":\"AllMetrics\",\"enabled\":true,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logs\":[{\"category\":\"VMProtectionAlerts\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logAnalyticsDestinationType\":null},\"identity\":null}",
       "isContentBase64": false
     }
   },
-  "DiagnosticSetting+[NoContext]+CRUD+$DELETE+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting1eqp5r?api-version=2021-05-01-preview+4": {
+  "DiagnosticSetting+[NoContext]+CRUD+$GET+https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview+4": {
     "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/diagnostic-setting-groupwi87al/providers/Microsoft.Network/virtualNetworks/test-vnetijbg90/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting1eqp5r?api-version=2021-05-01-preview",
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "0b555ba7-c280-4a89-a94a-51f70f078af3" ],
-        "CommandName": [ "Remove-AzDiagnosticSetting" ],
-        "FullCommandName": [ "Remove-AzDiagnosticSetting_Delete" ],
+        "x-ms-client-request-id": [ "ca1358f1-1aae-4cc9-8494-87de3b020b81" ],
+        "CommandName": [ "Update-AzDiagnosticSetting" ],
+        "FullCommandName": [ "Update-AzDiagnosticSetting_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.DiagnosticSetting/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -141,13 +149,305 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "62e184af-2a7b-463a-b385-c3a516fb8cdc" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "b7c72ab8-8a5e-4f70-a397-d29be80d89e2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T073608Z:b7c72ab8-8a5e-4f70-a397-d29be80d89e2" ],
+        "x-ms-request-id": [ "5eba6aff-1fab-4e5c-8d59-220ebd54e07b" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/f8b77ab8-b094-4e3c-9a57-4e05047d7eca" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "6ef72ad8-7590-4d9e-98d4-ce2deb0469c9" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033727Z:6ef72ad8-7590-4d9e-98d4-ce2deb0469c9" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 07:36:07 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 99FB056CF08B4E85A7D45295E72AAB2C Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:26Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "951" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/diagnostic-setting-groupt9vaw5/providers/microsoft.network/virtualnetworks/test-vnetxhjrie/providers/microsoft.insights/diagnosticSettings/test-diagnostic-settingt1kbc6\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-settingt1kbc6\",\"location\":\"eastus\",\"kind\":null,\"tags\":null,\"properties\":{\"storageAccountId\":null,\"serviceBusRuleId\":null,\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"eventHubAuthorizationRuleId\":null,\"eventHubName\":null,\"metrics\":[{\"category\":\"AllMetrics\",\"enabled\":true,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logs\":[{\"category\":\"VMProtectionAlerts\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logAnalyticsDestinationType\":null},\"identity\":null}",
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+CRUD+$PUT+https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"metrics\": [\r\n      {\r\n        \"category\": \"AllMetrics\",\r\n        \"enabled\": false\r\n      }\r\n    ],\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"VMProtectionAlerts\",\r\n        \"enabled\": false\r\n      }\r\n    ],\r\n    \"workspaceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "435" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b0b5137c-edb4-4d88-8b67-bc04c05f6dd0" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/f0be1d09-d08d-4e23-9d81-d429763a883c" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "8dcd29bf-2aa0-496d-a5c5-420060397635" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033731Z:8dcd29bf-2aa0-496d-a5c5-420060397635" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F355648E4BCF4B47A4B7EA48FF160DEC Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:27Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "968" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/diagnostic-setting-groupt9vaw5/providers/microsoft.network/virtualnetworks/test-vnetxhjrie/providers/microsoft.insights/diagnosticSettings/test-diagnostic-settingt1kbc6\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-settingt1kbc6\",\"location\":null,\"kind\":null,\"tags\":null,\"properties\":{\"storageAccountId\":null,\"serviceBusRuleId\":null,\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"eventHubAuthorizationRuleId\":null,\"eventHubName\":null,\"metrics\":[{\"timeGrain\":\"PT1M\",\"category\":\"AllMetrics\",\"enabled\":false,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logs\":[{\"category\":\"VMProtectionAlerts\",\"categoryGroup\":null,\"enabled\":false,\"retentionPolicy\":{\"enabled\":false,\"days\":0}}],\"logAnalyticsDestinationType\":null},\"identity\":null}",
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+CRUD+$DELETE+https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.Network/virtualNetworks/test-vnetxhjrie/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-settingt1kbc6?api-version=2021-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "772045b4-1b49-4ee9-8ff4-96a184e53a88" ],
+        "CommandName": [ "Remove-AzDiagnosticSetting" ],
+        "FullCommandName": [ "Remove-AzDiagnosticSetting_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "bcfbf24e-aba6-4087-bf80-37685617aad2" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/cb333e5b-f0c8-4b08-80c7-fdd03521ba1e" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "1a21353d-395d-4362-b555-0db803f9d366" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033734Z:1a21353d-395d-4362-b555-0db803f9d366" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1AFF29FF1C9B4F3F92202550AA46C307 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:32Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+SubCRUD+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"Recommendation\",\r\n        \"enabled\": true\r\n      }\r\n    ],\r\n    \"workspaceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "325" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "49b8a49a-98aa-46e4-b055-e3f1b60d3712" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/bfa70e04-3a6d-4154-9c21-11765388e621" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "04b3a9e8-4371-4089-a78e-2351191772de" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033736Z:04b3a9e8-4371-4089-a78e-2351191772de" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 11E1306B886041108CB496CB055249B6 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:34Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "520" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/microsoft.insights/diagnosticSettings/test-diagnostic-setting4jksw1\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-setting4jksw1\",\"location\":\"global\",\"properties\":{\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"logs\":[{\"category\":\"Recommendation\",\"enabled\":true,\"categoryGroup\":null}]}}",
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+SubCRUD+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "e3b599a4-d0aa-41ee-9c5e-d6fb4b7fc731" ],
+        "CommandName": [ "Update-AzSubscriptionDiagnosticSetting" ],
+        "FullCommandName": [ "Update-AzSubscriptionDiagnosticSetting_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "edf0df3d-c602-4f87-b152-acfe5040f41d" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/0d4202b0-551b-4fef-b319-3486edc86bbe" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "31cd5141-9d26-45b5-8ad9-a09e5a9ed889" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033737Z:31cd5141-9d26-45b5-8ad9-a09e5a9ed889" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 037608EDA20942A89FA03A68EB9C4EC2 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:37Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "960" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/microsoft.insights/diagnosticSettings/test-diagnostic-setting4jksw1\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-setting4jksw1\",\"location\":\"global\",\"properties\":{\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"logs\":[{\"category\":\"Recommendation\",\"enabled\":true,\"categoryGroup\":null},{\"category\":\"Administrative\",\"enabled\":false,\"categoryGroup\":null},{\"category\":\"Security\",\"enabled\":false,\"categoryGroup\":null},{\"category\":\"ServiceHealth\",\"enabled\":false,\"categoryGroup\":null},{\"category\":\"Alert\",\"enabled\":false,\"categoryGroup\":null},{\"category\":\"Policy\",\"enabled\":false,\"categoryGroup\":null},{\"category\":\"Autoscale\",\"enabled\":false,\"categoryGroup\":null},{\"category\":\"ResourceHealth\",\"enabled\":false,\"categoryGroup\":null}]}}",
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+SubCRUD+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logs\": [\r\n      {\r\n        \"category\": \"Recommendation\",\r\n        \"enabled\": false\r\n      }\r\n    ],\r\n    \"workspaceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "326" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "237352e8-2723-4b90-86ab-cfe7e98d00c3" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/24dfac12-4ba8-47de-b88c-e031354a9c66" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "e79a6a6d-667f-4d1f-afd4-145614b7bf01" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033740Z:e79a6a6d-667f-4d1f-afd4-145614b7bf01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E7565E5FEA38496497162DB1A3221B93 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:37Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/microsoft.insights/diagnosticSettings/test-diagnostic-setting4jksw1\",\"type\":\"Microsoft.Insights/diagnosticSettings\",\"name\":\"test-diagnostic-setting4jksw1\",\"location\":\"global\",\"properties\":{\"workspaceId\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/diagnostic-setting-groupt9vaw5/providers/Microsoft.OperationalInsights/workspaces/test-workspace87u3fy\",\"logs\":[{\"category\":\"Recommendation\",\"enabled\":false,\"categoryGroup\":null}]}}",
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+SubCRUD+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings?api-version=2021-05-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings?api-version=2021-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "81fc09f5-3f8f-4dfc-a9d7-d0d31037a0ce" ],
+        "CommandName": [ "Get-AzSubscriptionDiagnosticSetting" ],
+        "FullCommandName": [ "Get-AzSubscriptionDiagnosticSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1f206ec8-885d-44f4-87cf-f3ce37d673fb" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/56832a24-be77-4258-a3d8-db0972d534ea" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "bd33189c-cf23-4ad8-9cfa-448b964db57e" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033741Z:bd33189c-cf23-4ad8-9cfa-448b964db57e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C404BFD8BE964CD4B9AC2D33ED721AE8 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:40Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "DiagnosticSetting+[NoContext]+SubCRUD+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Insights/diagnosticSettings/test-diagnostic-setting4jksw1?api-version=2021-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "bb5461ee-d6c2-40f5-b7b5-2796decf2eb9" ],
+        "CommandName": [ "Remove-AzSubscriptionDiagnosticSetting" ],
+        "FullCommandName": [ "Remove-AzSubscriptionDiagnosticSetting_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5a58b4dc-49e3-4f36-a3fd-a2f65a5a89b8" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/9c485815-3fb0-44dc-9c4b-d40da313f2af" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "db98b2bc-ca7f-45d8-b440-1c622c0f008d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033742Z:db98b2bc-ca7f-45d8-b440-1c622c0f008d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 237733D5C4344C8681B7E8D9D5D4F997 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:42Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:42 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

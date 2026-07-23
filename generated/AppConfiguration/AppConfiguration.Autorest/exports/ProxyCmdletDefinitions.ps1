@@ -38,7 +38,9 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/clear-azappconfigurationdeletedstore
@@ -70,7 +72,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -147,6 +148,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -169,9 +178,7 @@ begin {
             Purge = 'Az.AppConfiguration.private\Clear-AzAppConfigurationDeletedStore_Purge';
             PurgeViaIdentity = 'Az.AppConfiguration.private\Clear-AzAppConfigurationDeletedStore_PurgeViaIdentity';
         }
-        if (('Purge') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Purge') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -185,6 +192,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -243,7 +253,7 @@ Get-AzAppConfigurationDeletedStore -Location eastus -Name azpstestappstore
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IDeletedConfigurationStore
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStore
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -256,13 +266,15 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationdeletedstore
 #>
 function Get-AzAppConfigurationDeletedStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IDeletedConfigurationStore])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStore])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -289,7 +301,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -348,6 +359,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -371,9 +390,7 @@ begin {
             GetViaIdentity = 'Az.AppConfiguration.private\Get-AzAppConfigurationDeletedStore_GetViaIdentity';
             List = 'Az.AppConfiguration.private\Get-AzAppConfigurationDeletedStore_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -387,6 +404,248 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the properties of the specified replica.
+.Description
+Gets the properties of the specified replica.
+.Example
+Get-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp
+.Example
+Get-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp -Name westus2replica
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IReplica
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONFIGURATIONSTOREINPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+  [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
+  [Location <String>]: The location in which uniqueness will be verified.
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
+  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
+  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
+
+INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+  [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
+  [Location <String>]: The location in which uniqueness will be verified.
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
+  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
+  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
+.Link
+https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationreplica
+#>
+function Get-AzAppConfigurationReplica {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IReplica])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the configuration store.
+    ${ConfigStoreName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationStore', Mandatory)]
+    [Alias('ReplicaName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the replica.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The Microsoft Azure subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationStore', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
+    # Identity Parameter
+    ${ConfigurationStoreInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.AppConfiguration.private\Get-AzAppConfigurationReplica_Get';
+            GetViaIdentity = 'Az.AppConfiguration.private\Get-AzAppConfigurationReplica_GetViaIdentity';
+            GetViaIdentityConfigurationStore = 'Az.AppConfiguration.private\Get-AzAppConfigurationReplica_GetViaIdentityConfigurationStore';
+            List = 'Az.AppConfiguration.private\Get-AzAppConfigurationReplica_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -439,12 +698,12 @@ Lists the access key for the specified configuration store.
 Get-AzAppConfigurationStoreKey -Name azpstest-appstore -ResourceGroupName azpstest_gp
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
 #>
 function Get-AzAppConfigurationStoreKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -522,6 +781,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -543,9 +810,7 @@ begin {
         $mapping = @{
             List = 'Az.AppConfiguration.private\Get-AzAppConfigurationStoreKey_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -559,6 +824,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -617,7 +885,7 @@ Get-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -630,13 +898,15 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore
 #>
 function Get-AzAppConfigurationStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -665,7 +935,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -724,6 +993,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -748,9 +1025,7 @@ begin {
             List = 'Az.AppConfiguration.private\Get-AzAppConfigurationStore_List';
             List1 = 'Az.AppConfiguration.private\Get-AzAppConfigurationStore_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -764,6 +1039,261 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a replica with the specified parameters.
+.Description
+Create a replica with the specified parameters.
+.Example
+New-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp -Name westus2replica -Location westus2
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IReplica
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONFIGURATIONSTOREINPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+  [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
+  [Location <String>]: The location in which uniqueness will be verified.
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
+  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
+  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
+.Link
+https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationreplica
+#>
+function New-AzAppConfigurationReplica {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IReplica])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ReplicaName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the replica.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the configuration store.
+    ${ConfigStoreName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The Microsoft Azure subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityConfigurationStoreExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
+    # Identity Parameter
+    ${ConfigurationStoreInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityConfigurationStoreExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The location of the replica.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.AppConfiguration.private\New-AzAppConfigurationReplica_CreateExpanded';
+            CreateViaIdentityConfigurationStoreExpanded = 'Az.AppConfiguration.private\New-AzAppConfigurationReplica_CreateViaIdentityConfigurationStoreExpanded';
+            CreateViaJsonFilePath = 'Az.AppConfiguration.private\New-AzAppConfigurationReplica_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.AppConfiguration.private\New-AzAppConfigurationReplica_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -819,7 +1349,7 @@ New-AzAppConfigurationStoreKey -Name azpstest-appstore -ResourceGroupName azpste
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -832,28 +1362,36 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
 #>
 function New-AzAppConfigurationStoreKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the configuration store.
     ${Name},
 
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -864,14 +1402,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
     [System.String]
     # The id of the key to regenerate.
     ${Id},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -929,6 +1479,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -950,10 +1508,10 @@ begin {
         $mapping = @{
             RegenerateExpanded = 'Az.AppConfiguration.private\New-AzAppConfigurationStoreKey_RegenerateExpanded';
             RegenerateViaIdentityExpanded = 'Az.AppConfiguration.private\New-AzAppConfigurationStoreKey_RegenerateViaIdentityExpanded';
+            RegenerateViaJsonFilePath = 'Az.AppConfiguration.private\New-AzAppConfigurationStoreKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.AppConfiguration.private\New-AzAppConfigurationStoreKey_RegenerateViaJsonString';
         }
-        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -967,6 +1525,577 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a configuration store with the specified parameters.
+.Description
+Create a configuration store with the specified parameters.
+.Example
+New-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -Location eastus -Sku Standard
+.Example
+$storeName = "azpstest-appstore-recover"
+$resourceGroupName = "azpstest_gp"
+$location = "eastus"
+New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard
+Remove-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName
+Get-AzAppConfigurationDeletedStore -Location $location -Name $storeName
+New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard -CreateMode 'Recover'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
+.Link
+https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
+#>
+function New-AzAppConfigurationStore {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the configuration store.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The Microsoft Azure subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The SKU name of the configuration store.
+    ${Sku},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Recover", "Default")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Indicates whether the configuration store need to be recovered.
+    ${CreateMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The data plane proxy authentication mode.
+    # This property manages the authentication mode of request to the data plane resources.
+    ${DataPlaneProxyAuthenticationMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The data plane proxy private link delegation.
+    # This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+    ${DataPlaneProxyPrivateLinkDelegation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Int64]
+    # The duration in seconds to retain new key value revisions.
+    # Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.
+    ${DefaultKeyValueRevisionRetentionPeriodInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Disables all authentication methods other than AAD authentication.
+    ${DisableLocalAuth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Property specifying whether protection against purge is enabled for this configuration store.
+    ${EnablePurgeProtection},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The URI of the key vault key used to encrypt data.
+    ${EncryptionKeyIdentifier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The client id of the identity which will be used to access key vault.
+    ${KeyVaultIdentityClientId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+    ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Int32]
+    # The amount of time in days that the configuration store will be retained when it is soft deleted.
+    ${SoftDeleteRetentionInDay},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.AppConfiguration.private\New-AzAppConfigurationStore_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.AppConfiguration.private\New-AzAppConfigurationStore_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.AppConfiguration.private\New-AzAppConfigurationStore_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a replica.
+.Description
+Deletes a replica.
+.Example
+Remove-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp -Name westus2replica
+.Example
+Get-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupName azpstest_gp -Name westus2replica | Remove-AzAppConfigurationReplica
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONFIGURATIONSTOREINPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+  [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
+  [Location <String>]: The location in which uniqueness will be verified.
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
+  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
+  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
+
+INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
+  [ConfigStoreName <String>]: The name of the configuration store.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
+  [Location <String>]: The location in which uniqueness will be verified.
+  [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
+  [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
+  [SubscriptionId <String>]: The Microsoft Azure subscription ID.
+.Link
+https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationreplica
+#>
+function Remove-AzAppConfigurationReplica {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the configuration store.
+    ${ConfigStoreName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityConfigurationStore', Mandatory)]
+    [Alias('ReplicaName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the replica.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [System.String]
+    # The name of the resource group to which the container registry belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The Microsoft Azure subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityConfigurationStore', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
+    # Identity Parameter
+    ${ConfigurationStoreInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.AppConfiguration.private\Remove-AzAppConfigurationReplica_Delete';
+            DeleteViaIdentity = 'Az.AppConfiguration.private\Remove-AzAppConfigurationReplica_DeleteViaIdentity';
+            DeleteViaIdentityConfigurationStore = 'Az.AppConfiguration.private\Remove-AzAppConfigurationReplica_DeleteViaIdentityConfigurationStore';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1036,7 +2165,9 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationstore
@@ -1068,7 +2199,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1145,6 +2275,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1167,9 +2305,7 @@ begin {
             Delete = 'Az.AppConfiguration.private\Remove-AzAppConfigurationStore_Delete';
             DeleteViaIdentity = 'Az.AppConfiguration.private\Remove-AzAppConfigurationStore_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1183,6 +2319,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1235,12 +2374,12 @@ Checks whether the configuration store name is available for use.
 Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 #>
 function Test-AzAppConfigurationStoreNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -1250,11 +2389,23 @@ param(
     # The Microsoft Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
     [System.String]
     # The name to check for availability.
     ${Name},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1312,6 +2463,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1332,10 +2491,10 @@ begin {
 
         $mapping = @{
             CheckExpanded = 'Az.AppConfiguration.private\Test-AzAppConfigurationStoreNameAvailability_CheckExpanded';
+            CheckViaJsonFilePath = 'Az.AppConfiguration.private\Test-AzAppConfigurationStoreNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.AppConfiguration.private\Test-AzAppConfigurationStoreNameAvailability_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1349,6 +2508,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1394,280 +2556,9 @@ end {
 
 <#
 .Synopsis
-Creates a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 .Description
-Creates a configuration store with the specified parameters.
-.Example
-New-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -Location eastus -Sku Standard
-.Example
-$storeName = "azpstest-appstore-recover"
-$resourceGroupName = "azpstest_gp"
-$location = "eastus"
-New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard
-Remove-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName
-Get-AzAppConfigurationDeletedStore -Location $location -Name $storeName
-New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard -CreateMode 'Recover'
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
-.Link
-https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
-#>
-function New-AzAppConfigurationStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-    [System.String]
-    # The name of the configuration store.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-    [System.String]
-    # The name of the resource group to which the container registry belongs.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The Microsoft Azure subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.String]
-    # The SKU name of the configuration store.
-    ${Sku},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.CreateMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.CreateMode]
-    # Indicates whether the configuration store need to be recovered.
-    ${CreateMode},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Disables all authentication methods other than AAD authentication.
-    ${DisableLocalAuth},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Property specifying whether protection against purge is enabled for this configuration store.
-    ${EnablePurgeProtection},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.String]
-    # The URI of the key vault key used to encrypt data.
-    ${EncryptionKeyIdentifier},
-
-    [Parameter()]
-    [ArgumentCompleter({'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'})]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
-    # The type of managed identity used.
-    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-    # The type 'None' will remove any identities.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.String]
-    # The client id of the identity which will be used to access key vault.
-    ${KeyVaultIdentityClientId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess])]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess]
-    # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-    ${PublicNetworkAccess},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [System.Int32]
-    # The amount of time in days that the configuration store will be retained when it is soft deleted.
-    ${SoftDeleteRetentionInDay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IResourceIdentityUserAssignedIdentities]))]
-    [System.String[]]
-    # The list of user-assigned identities associated with the resource.
-    # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${UserAssignedIdentity},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.AppConfiguration.custom\New-AzAppConfigurationStore';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates a configuration store with the specified parameters.
-.Description
-Updates a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 .Example
 Update-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -DisableLocalAuth -EnablePurgeProtection -PublicNetworkAccess 'Enabled'
 .Example
@@ -1676,7 +2567,7 @@ Get-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1689,13 +2580,15 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
 #>
 function Update-AzAppConfigurationStore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1721,8 +2614,30 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The data plane proxy authentication mode.
+    # This property manages the authentication mode of request to the data plane resources.
+    ${DataPlaneProxyAuthenticationMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The data plane proxy private link delegation.
+    # This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+    ${DataPlaneProxyPrivateLinkDelegation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Int64]
+    # The duration in seconds to retain new key value revisions.
+    # Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.
+    ${DefaultKeyValueRevisionRetentionPeriodInSecond},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
@@ -1738,18 +2653,15 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
     [System.String]
     # The URI of the key vault key used to encrypt data.
     ${EncryptionKeyIdentifier},
-
-    [Parameter()]
-    [ArgumentCompleter({'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'})]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
-    # The type of managed identity used.
-    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-    # The type 'None' will remove any identities.
-    ${IdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
@@ -1758,9 +2670,9 @@ param(
     ${KeyVaultIdentityClientId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess]
+    [System.String]
     # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
     ${PublicNetworkAccess},
 
@@ -1772,17 +2684,23 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStoreUpdateParametersTags]))]
-    [System.Collections.Hashtable]
-    # The ARM resource tags.
-    ${Tag},
+    [System.Int32]
+    # The amount of time in days that the configuration store will be retained when it is soft deleted.
+    ${SoftDeleteRetentionInDay},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IResourceIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
     [System.String[]]
-    # The list of user-assigned identities associated with the resource.
-    # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]
@@ -1790,7 +2708,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1852,6 +2771,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1871,12 +2798,10 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.AppConfiguration.custom\Update-AzAppConfigurationStore';
-            UpdateViaIdentityExpanded = 'Az.AppConfiguration.custom\Update-AzAppConfigurationStore';
+            UpdateExpanded = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.AppConfiguration.private\Update-AzAppConfigurationStore_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1890,6 +2815,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

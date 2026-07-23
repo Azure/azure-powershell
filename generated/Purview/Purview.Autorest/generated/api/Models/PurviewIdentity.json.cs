@@ -76,12 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_accountName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("accountName"), out var __jsonAccountName) ? (string)__jsonAccountName : (string)AccountName;}
-            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
-            {_groupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("groupId"), out var __jsonGroupId) ? (string)__jsonGroupId : (string)GroupId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_accountName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("accountName"), out var __jsonAccountName) ? (string)__jsonAccountName : (string)_accountName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
+            {_groupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("groupId"), out var __jsonGroupId) ? (string)__jsonGroupId : (string)_groupId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

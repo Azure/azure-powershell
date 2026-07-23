@@ -8,36 +8,39 @@ schema: 2.0.0
 # Update-AzFluidRelayServer
 
 ## SYNOPSIS
-Update a Fluid Relay server.
+update a Fluid Relay server.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzFluidRelayServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-Location <String>] [-Tag <Hashtable>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFluidRelayServer -InputObject <IFluidRelayIdentity> [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-Location <String>] [-Tag <Hashtable>]
+Update-AzFluidRelayServer -InputObject <IFluidRelayIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityResourceGroupExpanded
+```
+Update-AzFluidRelayServer -Name <String> -ResourceGroupInputObject <IFluidRelayIdentity>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a Fluid Relay server.
+update a Fluid Relay server.
 
 ## EXAMPLES
 
 ### Example 1: Update a Fluid Relay server.
 ```powershell
-Update-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned' -Tag @{"Category"="sales"} -IdentityUserAssignedIdentity @{"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" = @{};} -IdentityType 'UserAssigned'
+Update-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -EnableSystemAssignedIdentity $true
 ```
 
 ```output
@@ -49,25 +52,6 @@ westus2  azps-fluidrelay azpstest-gp
 Update a Fluid Relay server.
 
 ## PARAMETERS
-
-### -CustomerManagedKeyEncryptionKeyUrl
-key encryption key Url, with or without a version.
-Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-Key auto rotation is enabled by providing a key uri without version.
-Otherwise, customer is responsible for rotating the key.
-The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -85,26 +69,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the resource.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
@@ -131,59 +99,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyEncryptionKeyIdentityType
-Values can be SystemAssigned or UserAssigned
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId
-user assigned identity to use for accessing key encryption key Url.
-Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-Mutually exclusive with identityType systemAssignedIdentity.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityResourceGroupExpanded
 Aliases: FluidRelayServerName
 
 Required: True
@@ -208,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
+Parameter Sets: UpdateViaIdentityResourceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription id (GUID) for this resource.
 
@@ -228,6 +164,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer
 
 ## NOTES
 

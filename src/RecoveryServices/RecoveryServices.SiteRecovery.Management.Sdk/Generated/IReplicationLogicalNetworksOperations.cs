@@ -19,8 +19,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Lists all the logical networks of the Azure Site Recovery fabric.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LogicalNetwork>>> ListByReplicationFabricsWithHttpMessagesAsync(string fabricName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LogicalNetwork>>> ListByReplicationFabricsWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the details of a logical network.
@@ -42,8 +48,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the details of a logical network.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         /// <param name='logicalNetworkName'>
         /// Logical network name.
@@ -60,7 +72,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalNetwork>> GetWithHttpMessagesAsync(string fabricName, string logicalNetworkName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalNetwork>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string logicalNetworkName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all the logical networks of the Azure Site Recovery fabric.

@@ -334,3 +334,39 @@ function Test-DedicatedHostUpdateAndSize
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Update-AzHost with Redeploy parameter.
+#>
+function Test-DedicatedHostRedeploy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $hostGroupName = $rgname + 'hostgroup';
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1 -Zone "2" -Tag @{key1 = "val1"};
+
+        $hostName = $rgname + 'host';
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "DSv3-Type3" -Tag @{key1 = "val2"};
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-NotNull $dedicatedHost;
+
+        # Test Update-AzHost with Redeploy parameter
+        $updateHost = Update-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Redeploy;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

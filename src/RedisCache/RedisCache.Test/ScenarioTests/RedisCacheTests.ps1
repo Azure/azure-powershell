@@ -664,7 +664,7 @@ function Test-GeoReplication
     Assert-NotNull $linkCreated.LinkedRedisCacheLocation
 
     ############################# GetAzureRedisCacheLink #############################
-    # Get single links and wait for creation to comeplte
+    # Get single links and wait for creation to complete
     for ($i = 0; $i -le 60; $i++)
     {
         Start-TestSleep -Seconds 30
@@ -1088,7 +1088,7 @@ function Test-AuthenticationCache
     $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -AccessPolicyName $accessPolicyName -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1a" -ObjectIdAlias "aad testing app"
     Assert-AreEqual "aad testing app" $accessPolicyAssignment.ObjectIdAlias
 
-    # Get an access policy assigment
+    # Get an access policy assignment
     $accessPolicies = Get-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName
     Assert-AreEqual $accessPolicyAssignmentName $accessPolicyAssignment.AccessPolicyAssignmentName
     Assert-AreEqual $accessPolicyName $accessPolicyAssignment.AccessPolicyName

@@ -109,10 +109,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("PrimaryEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("PrimaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
-            }
             if (content.Contains("CustomDomain"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomain = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICustomDomain) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CustomDomainTypeConverter.ConvertFrom);
@@ -128,10 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("KeyCreationTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyCreationTime = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyCreationTime) content.GetValueForProperty("KeyCreationTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyCreationTime, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyCreationTimeTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SecondaryEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("SecondaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
             }
             if (content.Contains("AzureFilesIdentityBasedAuthentication"))
             {
@@ -149,6 +141,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreference = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference) content.GetValueForProperty("RoutingPreference",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreference, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.RoutingPreferenceTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DualStackEndpointPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreference = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDualStackEndpointPreference) content.GetValueForProperty("DualStackEndpointPreference",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreference, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DualStackEndpointPreferenceTypeConverter.ConvertFrom);
+            }
             if (content.Contains("BlobRestoreStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus) content.GetValueForProperty("BlobRestoreStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreStatusTypeConverter.ConvertFrom);
@@ -160,6 +156,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("StorageAccountSkuConversionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSkuConversionStatus) content.GetValueForProperty("StorageAccountSkuConversionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountSkuConversionStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GeoPriorityReplicationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus) content.GetValueForProperty("GeoPriorityReplicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AllowSharedKeyAccessForService"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForService = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForService",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForService, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataCollaborationPolicyProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyProperty = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyProperties) content.GetValueForProperty("DataCollaborationPolicyProperty",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyProperty, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageDataCollaborationPolicyPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -269,6 +277,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AccountMigrationInProgress = (bool?) content.GetValueForProperty("AccountMigrationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AccountMigrationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("PrimaryEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("PrimaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecondaryEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("SecondaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Encryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionTypeConverter.ConvertFrom);
@@ -297,6 +313,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("NetworkRuleSetIPRule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NetworkRuleSetIpv6Rule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIpv6Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("NetworkRuleSetIpv6Rule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIpv6Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
+            }
             if (content.Contains("NetworkRuleSetDefaultAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetDefaultAction = (string) content.GetValueForProperty("NetworkRuleSetDefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetDefaultAction, global::System.Convert.ToString);
@@ -321,38 +341,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusEndTime = (string) content.GetValueForProperty("StorageAccountSkuConversionStatusEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusEndTime, global::System.Convert.ToString);
             }
-            if (content.Contains("PrimaryEndpointMicrosoftEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointMicrosoftEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints) content.GetValueForProperty("PrimaryEndpointMicrosoftEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointMicrosoftEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PrimaryEndpointInternetEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointInternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("PrimaryEndpointInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointInternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PrimaryEndpointBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointBlob = (string) content.GetValueForProperty("PrimaryEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointQueue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointQueue = (string) content.GetValueForProperty("PrimaryEndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointQueue, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointTable"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointTable = (string) content.GetValueForProperty("PrimaryEndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointTable, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointFile = (string) content.GetValueForProperty("PrimaryEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointWeb = (string) content.GetValueForProperty("PrimaryEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointDf = (string) content.GetValueForProperty("PrimaryEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointDf, global::System.Convert.ToString);
-            }
             if (content.Contains("CustomDomainUseSubDomainName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomainUseSubDomainName = (bool?) content.GetValueForProperty("CustomDomainUseSubDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomainUseSubDomainName, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -363,43 +351,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("KeyPolicyKeyExpirationPeriodInDay"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("SecondaryEndpointMicrosoftEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointMicrosoftEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints) content.GetValueForProperty("SecondaryEndpointMicrosoftEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointMicrosoftEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SecondaryEndpointInternetEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointInternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("SecondaryEndpointInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointInternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SecondaryEndpointBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointBlob = (string) content.GetValueForProperty("SecondaryEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointQueue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointQueue = (string) content.GetValueForProperty("SecondaryEndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointQueue, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointTable"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointTable = (string) content.GetValueForProperty("SecondaryEndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointTable, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointFile = (string) content.GetValueForProperty("SecondaryEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointWeb = (string) content.GetValueForProperty("SecondaryEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointDf = (string) content.GetValueForProperty("SecondaryEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int?) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AzureFileIdentityBasedAuthenticationActiveDirectoryProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties) content.GetValueForProperty("AzureFileIdentityBasedAuthenticationActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureFileIdentityBasedAuthenticationSmbOAuthSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationSmbOAuthSetting = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings) content.GetValueForProperty("AzureFileIdentityBasedAuthenticationSmbOAuthSetting",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationSmbOAuthSetting, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbOAuthSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("AzureFileIdentityBasedAuthenticationDirectoryServiceOption"))
             {
@@ -469,6 +429,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreferencePublishInternetEndpoint = (bool?) content.GetValueForProperty("RoutingPreferencePublishInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreferencePublishInternetEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("DualStackEndpointPreferencePublishIpv6Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreferencePublishIpv6Endpoint = (bool?) content.GetValueForProperty("DualStackEndpointPreferencePublishIpv6Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreferencePublishIpv6Endpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("BlobRestoreStatusParameter"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatusParameter = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters) content.GetValueForProperty("BlobRestoreStatusParameter",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatusParameter, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreParametersTypeConverter.ConvertFrom);
@@ -493,85 +457,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusTargetSkuName = (string) content.GetValueForProperty("StorageAccountSkuConversionStatusTargetSkuName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusTargetSkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsBlob"))
+            if (content.Contains("GeoPriorityReplicationStatusIsBlobEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsBlob = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatusIsBlobEnabled = (bool?) content.GetValueForProperty("GeoPriorityReplicationStatusIsBlobEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatusIsBlobEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsQueue"))
+            if (content.Contains("AllowSharedKeyAccessForServiceBlob"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsQueue = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsQueue, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceBlob = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceBlob, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsTable"))
+            if (content.Contains("AllowSharedKeyAccessForServiceFile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsTable = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsTable, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceFile = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceFile, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsFile"))
+            if (content.Contains("AllowSharedKeyAccessForServiceTable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsFile = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsFile, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceTable = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceTable, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsWeb"))
+            if (content.Contains("AllowSharedKeyAccessForServiceQueue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsWeb = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsWeb, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceQueue = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceQueue, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsDf"))
+            if (content.Contains("DataCollaborationPolicyPropertyAllowStorageConnector"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsDf = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowStorageConnector",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsBlob"))
+            if (content.Contains("DataCollaborationPolicyPropertyAllowStorageDataShare"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsBlob = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageDataShare = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowStorageDataShare",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageDataShare, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsFile"))
+            if (content.Contains("DataCollaborationPolicyPropertyAllowCrossTenantDataSharing"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsFile = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsWeb = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsDf = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsDf, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsBlob = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsQueue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsQueue = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsQueue, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsTable"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsTable = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsTable, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsFile = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsWeb = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsDf = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsDf, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsBlob = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsFile = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsWeb = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsDf = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowCrossTenantDataSharing = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowCrossTenantDataSharing",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowCrossTenantDataSharing, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ActiveDirectoryPropertyNetBiosDomainName"))
             {
@@ -585,9 +501,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ActiveDirectoryPropertySamAccountName = (string) content.GetValueForProperty("ActiveDirectoryPropertySamAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ActiveDirectoryPropertySamAccountName, global::System.Convert.ToString);
             }
+            if (content.Contains("SmbOAuthSettingIsSmbOauthEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SmbOAuthSettingIsSmbOauthEnabled = (bool?) content.GetValueForProperty("SmbOAuthSettingIsSmbOauthEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SmbOAuthSettingIsSmbOauthEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("ParameterTimeToRestore"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime?) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ParameterBlobRange"))
             {
@@ -604,6 +524,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ImmutabilityPolicyAllowProtectedAppendWrite"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ImmutabilityPolicyAllowProtectedAppendWrite = (bool?) content.GetValueForProperty("ImmutabilityPolicyAllowProtectedAppendWrite",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ImmutabilityPolicyAllowProtectedAppendWrite, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlobEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobEnabled = (bool?) content.GetValueForProperty("BlobEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).FileEnabled = (bool?) content.GetValueForProperty("FileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).FileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TableEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).TableEnabled = (bool?) content.GetValueForProperty("TableEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).TableEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("QueueEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).QueueEnabled = (bool?) content.GetValueForProperty("QueueEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).QueueEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -622,10 +558,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("PrimaryEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("PrimaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
-            }
             if (content.Contains("CustomDomain"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomain = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICustomDomain) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CustomDomainTypeConverter.ConvertFrom);
@@ -641,10 +573,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("KeyCreationTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyCreationTime = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyCreationTime) content.GetValueForProperty("KeyCreationTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyCreationTime, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyCreationTimeTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SecondaryEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("SecondaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
             }
             if (content.Contains("AzureFilesIdentityBasedAuthentication"))
             {
@@ -662,6 +590,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreference = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference) content.GetValueForProperty("RoutingPreference",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreference, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.RoutingPreferenceTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DualStackEndpointPreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreference = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDualStackEndpointPreference) content.GetValueForProperty("DualStackEndpointPreference",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreference, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DualStackEndpointPreferenceTypeConverter.ConvertFrom);
+            }
             if (content.Contains("BlobRestoreStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus) content.GetValueForProperty("BlobRestoreStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreStatusTypeConverter.ConvertFrom);
@@ -673,6 +605,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("StorageAccountSkuConversionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSkuConversionStatus) content.GetValueForProperty("StorageAccountSkuConversionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountSkuConversionStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GeoPriorityReplicationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus) content.GetValueForProperty("GeoPriorityReplicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AllowSharedKeyAccessForService"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForService = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForService",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForService, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataCollaborationPolicyProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyProperty = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyProperties) content.GetValueForProperty("DataCollaborationPolicyProperty",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyProperty, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageDataCollaborationPolicyPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -782,6 +726,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AccountMigrationInProgress = (bool?) content.GetValueForProperty("AccountMigrationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AccountMigrationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("PrimaryEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("PrimaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecondaryEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("SecondaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Encryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionTypeConverter.ConvertFrom);
@@ -810,6 +762,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("NetworkRuleSetIPRule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NetworkRuleSetIpv6Rule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIpv6Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("NetworkRuleSetIpv6Rule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetIpv6Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
+            }
             if (content.Contains("NetworkRuleSetDefaultAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetDefaultAction = (string) content.GetValueForProperty("NetworkRuleSetDefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).NetworkRuleSetDefaultAction, global::System.Convert.ToString);
@@ -834,38 +790,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusEndTime = (string) content.GetValueForProperty("StorageAccountSkuConversionStatusEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusEndTime, global::System.Convert.ToString);
             }
-            if (content.Contains("PrimaryEndpointMicrosoftEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointMicrosoftEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints) content.GetValueForProperty("PrimaryEndpointMicrosoftEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointMicrosoftEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PrimaryEndpointInternetEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointInternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("PrimaryEndpointInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointInternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PrimaryEndpointBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointBlob = (string) content.GetValueForProperty("PrimaryEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointQueue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointQueue = (string) content.GetValueForProperty("PrimaryEndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointQueue, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointTable"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointTable = (string) content.GetValueForProperty("PrimaryEndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointTable, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointFile = (string) content.GetValueForProperty("PrimaryEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointWeb = (string) content.GetValueForProperty("PrimaryEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointDf = (string) content.GetValueForProperty("PrimaryEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointDf, global::System.Convert.ToString);
-            }
             if (content.Contains("CustomDomainUseSubDomainName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomainUseSubDomainName = (bool?) content.GetValueForProperty("CustomDomainUseSubDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).CustomDomainUseSubDomainName, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -876,43 +800,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("KeyPolicyKeyExpirationPeriodInDay"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("SecondaryEndpointMicrosoftEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointMicrosoftEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints) content.GetValueForProperty("SecondaryEndpointMicrosoftEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointMicrosoftEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SecondaryEndpointInternetEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointInternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("SecondaryEndpointInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointInternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SecondaryEndpointBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointBlob = (string) content.GetValueForProperty("SecondaryEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointQueue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointQueue = (string) content.GetValueForProperty("SecondaryEndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointQueue, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointTable"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointTable = (string) content.GetValueForProperty("SecondaryEndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointTable, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointFile = (string) content.GetValueForProperty("SecondaryEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointWeb = (string) content.GetValueForProperty("SecondaryEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointDf = (string) content.GetValueForProperty("SecondaryEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int?) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AzureFileIdentityBasedAuthenticationActiveDirectoryProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties) content.GetValueForProperty("AzureFileIdentityBasedAuthenticationActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureFileIdentityBasedAuthenticationSmbOAuthSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationSmbOAuthSetting = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings) content.GetValueForProperty("AzureFileIdentityBasedAuthenticationSmbOAuthSetting",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AzureFileIdentityBasedAuthenticationSmbOAuthSetting, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbOAuthSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("AzureFileIdentityBasedAuthenticationDirectoryServiceOption"))
             {
@@ -982,6 +878,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreferencePublishInternetEndpoint = (bool?) content.GetValueForProperty("RoutingPreferencePublishInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).RoutingPreferencePublishInternetEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("DualStackEndpointPreferencePublishIpv6Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreferencePublishIpv6Endpoint = (bool?) content.GetValueForProperty("DualStackEndpointPreferencePublishIpv6Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DualStackEndpointPreferencePublishIpv6Endpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("BlobRestoreStatusParameter"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatusParameter = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters) content.GetValueForProperty("BlobRestoreStatusParameter",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobRestoreStatusParameter, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreParametersTypeConverter.ConvertFrom);
@@ -1006,85 +906,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusTargetSkuName = (string) content.GetValueForProperty("StorageAccountSkuConversionStatusTargetSkuName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).StorageAccountSkuConversionStatusTargetSkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsBlob"))
+            if (content.Contains("GeoPriorityReplicationStatusIsBlobEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsBlob = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatusIsBlobEnabled = (bool?) content.GetValueForProperty("GeoPriorityReplicationStatusIsBlobEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).GeoPriorityReplicationStatusIsBlobEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsQueue"))
+            if (content.Contains("AllowSharedKeyAccessForServiceBlob"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsQueue = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsQueue, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceBlob = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceBlob, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsTable"))
+            if (content.Contains("AllowSharedKeyAccessForServiceFile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsTable = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsTable, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceFile = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceFile, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsFile"))
+            if (content.Contains("AllowSharedKeyAccessForServiceTable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsFile = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsFile, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceTable = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceTable, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsWeb"))
+            if (content.Contains("AllowSharedKeyAccessForServiceQueue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsWeb = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsWeb, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceQueue = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties) content.GetValueForProperty("AllowSharedKeyAccessForServiceQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).AllowSharedKeyAccessForServiceQueue, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSharedKeyAccessPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("PrimaryEndpointsMicrosoftEndpointsDf"))
+            if (content.Contains("DataCollaborationPolicyPropertyAllowStorageConnector"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsDf = (string) content.GetValueForProperty("PrimaryEndpointsMicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsMicrosoftEndpointsDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowStorageConnector",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsBlob"))
+            if (content.Contains("DataCollaborationPolicyPropertyAllowStorageDataShare"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsBlob = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageDataShare = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowStorageDataShare",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowStorageDataShare, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsFile"))
+            if (content.Contains("DataCollaborationPolicyPropertyAllowCrossTenantDataSharing"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsFile = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsWeb = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryEndpointsInternetEndpointsDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsDf = (string) content.GetValueForProperty("PrimaryEndpointsInternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).PrimaryEndpointsInternetEndpointsDf, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsBlob = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsQueue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsQueue = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsQueue, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsTable"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsTable = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsTable, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsFile = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsWeb = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsMicrosoftEndpointsDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsDf = (string) content.GetValueForProperty("SecondaryEndpointsMicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsMicrosoftEndpointsDf, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsBlob"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsBlob = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsBlob, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsFile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsFile = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsFile, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsWeb"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsWeb = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsWeb, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryEndpointsInternetEndpointsDf"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsDf = (string) content.GetValueForProperty("SecondaryEndpointsInternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SecondaryEndpointsInternetEndpointsDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowCrossTenantDataSharing = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowCrossTenantDataSharing",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).DataCollaborationPolicyPropertyAllowCrossTenantDataSharing, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ActiveDirectoryPropertyNetBiosDomainName"))
             {
@@ -1098,9 +950,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ActiveDirectoryPropertySamAccountName = (string) content.GetValueForProperty("ActiveDirectoryPropertySamAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ActiveDirectoryPropertySamAccountName, global::System.Convert.ToString);
             }
+            if (content.Contains("SmbOAuthSettingIsSmbOauthEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SmbOAuthSettingIsSmbOauthEnabled = (bool?) content.GetValueForProperty("SmbOAuthSettingIsSmbOauthEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).SmbOAuthSettingIsSmbOauthEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("ParameterTimeToRestore"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime?) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ParameterBlobRange"))
             {
@@ -1117,6 +973,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ImmutabilityPolicyAllowProtectedAppendWrite"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ImmutabilityPolicyAllowProtectedAppendWrite = (bool?) content.GetValueForProperty("ImmutabilityPolicyAllowProtectedAppendWrite",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ImmutabilityPolicyAllowProtectedAppendWrite, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlobEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobEnabled = (bool?) content.GetValueForProperty("BlobEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).BlobEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).FileEnabled = (bool?) content.GetValueForProperty("FileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).FileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TableEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).TableEnabled = (bool?) content.GetValueForProperty("TableEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).TableEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("QueueEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).QueueEnabled = (bool?) content.GetValueForProperty("QueueEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).QueueEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

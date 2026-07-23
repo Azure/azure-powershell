@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>NetAppFiles</PsModuleName>
@@ -11,17 +11,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />	
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NetAppFiles\NetAppFiles.csproj" />
-	<ProjectReference Include="..\NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj" />
-	<PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
+	  <ProjectReference Include="..\NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="ScenarioTests\QueryRegionInfoTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ScenarioTests\BucketTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ScenarioTests\CacheTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

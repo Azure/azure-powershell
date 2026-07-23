@@ -737,10 +737,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<object> _response = await BeginValidateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult> _response = await BeginValidateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1835,10 +1835,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<object> _response = await BeginValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult> _response = await BeginValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -3005,10 +3005,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<object> _response = await BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult> _response = await BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -4167,10 +4167,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<object> _response = await BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult> _response = await BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -5384,10 +5384,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<object> _response = await BeginValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult> _response = await BeginValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -6592,7 +6592,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -6761,7 +6761,7 @@ namespace Microsoft.Azure.Management.Resources
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<object>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -6775,7 +6775,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentExtended>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -6793,7 +6793,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidationError>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -7293,7 +7293,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -7455,7 +7455,7 @@ namespace Microsoft.Azure.Management.Resources
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<object>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -7469,7 +7469,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentExtended>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -7487,7 +7487,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidationError>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -8273,7 +8273,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -8452,7 +8452,7 @@ namespace Microsoft.Azure.Management.Resources
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<object>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -8466,7 +8466,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentExtended>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -8484,7 +8484,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidationError>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -9259,7 +9259,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -9427,7 +9427,7 @@ namespace Microsoft.Azure.Management.Resources
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<object>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -9441,7 +9441,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentExtended>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -9459,7 +9459,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidationError>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -10275,7 +10275,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -10464,7 +10464,7 @@ namespace Microsoft.Azure.Management.Resources
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<object>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -10478,7 +10478,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentExtended>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -10496,7 +10496,7 @@ namespace Microsoft.Azure.Management.Resources
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidationError>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DeploymentValidateResult>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

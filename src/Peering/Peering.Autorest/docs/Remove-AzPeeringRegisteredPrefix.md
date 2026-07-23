@@ -24,6 +24,12 @@ Remove-AzPeeringRegisteredPrefix -InputObject <IPeeringIdentity> [-DefaultProfil
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityPeering
+```
+Remove-AzPeeringRegisteredPrefix -Name <String> -PeeringInputObject <IPeeringIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes an existing registered prefix with the specified name under the given subscription, resource group and peering.
 
@@ -56,7 +62,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
@@ -75,7 +80,7 @@ The name of the registered prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPeering
 Aliases: RegisteredPrefixName
 
 Required: True
@@ -97,6 +102,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: DeleteViaIdentityPeering
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

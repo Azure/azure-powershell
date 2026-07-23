@@ -15,26 +15,29 @@ Update a route map of a VirtualHub.
 ### ByRouteMapName (Default)
 ```
 Update-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>]
- [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Update-AzRouteMap [-Name <String>] [-VirtualHubObject <PSVirtualHub>] [-RouteMapRule <PSRouteMapRule[]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRouteMapObject
 ```
 Update-AzRouteMap [-InputObject <PSRouteMap>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRouteMapResourceId
 ```
 Update-AzRouteMap [-ResourceId <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

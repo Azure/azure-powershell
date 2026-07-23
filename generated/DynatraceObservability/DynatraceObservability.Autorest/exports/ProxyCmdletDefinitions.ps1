@@ -23,12 +23,12 @@ Gets list of App Services with Dynatrace PaaS OneAgent enabled
 Get-AzDynatraceMonitorAppService -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IAppServiceInfo
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAppServiceInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorappservice
 #>
 function Get-AzDynatraceMonitorAppService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IAppServiceInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAppServiceInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -49,6 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -107,6 +108,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -128,9 +138,7 @@ begin {
         $mapping = @{
             List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorAppService_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -144,6 +152,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -195,14 +206,23 @@ List the resources currently being monitored by the Dynatrace monitor resource.
 .Example
 Get-AzDynatraceMonitoredResource -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitoredResource
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REQUEST <ILogStatusRequest>: Request for getting log status for given monitored resource Ids
+  [MonitoredResourceId <List<String>>]: List of azure resource Id of monitored resources for which we get the log status
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredresource
 #>
 function Get-AzDynatraceMonitoredResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitoredResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResource])]
+[CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
@@ -222,7 +242,33 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest]
+    # Request for getting log status for given monitored resource Ids
+    ${Request},
+
+    [Parameter(ParameterSetName='ListExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String[]]
+    # List of azure resource Id of monitored resources for which we get the log status
+    ${MonitoredResourceId},
+
+    [Parameter(ParameterSetName='ListViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the List operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ListViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the List operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -280,6 +326,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -300,10 +355,11 @@ begin {
 
         $mapping = @{
             List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredResource_List';
+            ListExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredResource_ListExpanded';
+            ListViaJsonFilePath = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredResource_ListViaJsonFilePath';
+            ListViaJsonString = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredResource_ListViaJsonString';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'ListExpanded', 'ListViaJsonFilePath', 'ListViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -317,6 +373,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -362,382 +421,40 @@ end {
 
 <#
 .Synopsis
-List the compute resources currently being monitored by the Dynatrace resource.
+List the subscriptions currently being monitored by the Dynatrace monitor resource.
 .Description
-List the compute resources currently being monitored by the Dynatrace resource.
+List the subscriptions currently being monitored by the Dynatrace monitor resource.
 .Example
-Get-AzDynatraceMonitorHost -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo
-.Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorhost
-#>
-function Get-AzDynatraceMonitorHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # Monitor resource name
-    ${MonitorName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorHost_List';
-        }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets all the Dynatrace environments that a user can link a azure resource to
-.Description
-Gets all the Dynatrace environments that a user can link a azure resource to
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$subs = Get-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor
+$subs | Select-Object Id, Name, Type
 .Example
-Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName dyobrg -Name dyob-pwsh01 -Region 'East US' -UserPrincipal 'user@microsoft.com' -TenantId 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxx'
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ILinkableEnvironmentResponse
-.Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorlinkableenv
-#>
-function Get-AzDynatraceMonitorLinkableEnv {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ILinkableEnvironmentResponse])]
-[CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # Monitor resource name
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Azure region in which we want to link the environment
-    ${Region},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Tenant Id of the user in which they want to link the environment
-    ${TenantId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # user principal id of the user
-    ${UserPrincipal},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            ListExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorLinkableEnv_ListExpanded';
-        }
-        if (('ListExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get a DynatraceSingleSignOnResource
-.Description
-Get a DynatraceSingleSignOnResource
+$monitorObj = Get-AzDynatraceMonitor -ResourceGroupName "myResourceGroup" -Name "myDynatraceMonitor" | Select-Object -First 1
+$monitorObj | Get-AzDynatraceMonitoredSubscription | Select-Object -First 1 -Property Id, Name
 .Example
-Get-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+$all = Get-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor
+($all[0] | Get-AzDynatraceMonitoredSubscription) | Format-List Id, Name, Type, Properties
 .Example
-New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" | Get-AzDynatraceMonitorSSOConfig
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"; $currentSub = (Get-AzContext).Subscription.Id
+$subs = Get-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor | Where-Object { $_.Id -like "/subscriptions/$currentSub/*" }
+$subs | Select-Object Id, Name
+.Example
+$count = (Get-AzDynatraceMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myDynatraceMonitor").Count
+Write-Host "Total monitored subscriptions: $count"
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+$subs = Get-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -ErrorAction SilentlyContinue
+if (-not $subs -or $subs.Count -eq 0) { Write-Warning "No monitored subscriptions found." } else { $subs | Select-Object -First 5 }
+.Example
+Get-AzDynatraceMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myDynatraceMonitor" | 
+	Select-Object Id,@{n='SubscriptionGuid';e={ ($_).Id.Split('/')[2] }}, Name | Export-Csv -Path monitoredSubs.csv -NoTypeInformation
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -745,25 +462,28 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssoconfig
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredsubscription
 #>
-function Get-AzDynatraceMonitorSSOConfig {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource])]
+function Get-AzDynatraceMonitoredSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
     # Monitor resource name
     ${MonitorName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -771,17 +491,18 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -840,6 +561,1098 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredSubscription_Get';
+            GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredSubscription_GetViaIdentity';
+            List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitoredSubscription_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
+.Description
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
+.Example
+Get-AzDynatraceMonitorHost -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMInfo
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorhost
+#>
+function Get-AzDynatraceMonitorHost {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMInfo])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorHost_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets all the Dynatrace environments that a user can link a azure resource to
+.Description
+Gets all the Dynatrace environments that a user can link a azure resource to
+.Example
+Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName dyobrg -Name dyob-pwsh01 -Region 'East US' -UserPrincipal 'user@microsoft.com' -TenantId 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxx'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentResponse
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorlinkableenv
+#>
+function Get-AzDynatraceMonitorLinkableEnv {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentResponse])]
+[CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ListExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Azure region in which we want to link the environment
+    ${Region},
+
+    [Parameter(ParameterSetName='ListExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Tenant Id of the user in which they want to link the environment
+    ${TenantId},
+
+    [Parameter(ParameterSetName='ListExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # user principal id of the user
+    ${UserPrincipal},
+
+    [Parameter(ParameterSetName='ListViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the List operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ListViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the List operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            ListExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorLinkableEnv_ListExpanded';
+            ListViaJsonFilePath = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorLinkableEnv_ListViaJsonFilePath';
+            ListViaJsonString = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorLinkableEnv_ListViaJsonString';
+        }
+        if (('ListExpanded', 'ListViaJsonFilePath', 'ListViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get Marketplace SaaS resource details
+.Description
+Get Marketplace SaaS resource details
+.Example
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -TenantId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REQUEST <IMarketplaceSaaSResourceDetailsRequest>: Request for getting Marketplace SaaS resource details for a tenant Id
+  TenantId <String>: Tenant Id
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitormarketplacesaasresourcedetail
+#>
+function Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest]
+    # Request for getting Marketplace SaaS resource details for a tenant Id
+    ${Request},
+
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Tenant Id
+    ${TenantId},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail_Get';
+            GetExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail_GetExpanded';
+            GetViaJsonFilePath = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail_GetViaJsonString';
+        }
+        if (('Get', 'GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get metric status
+.Description
+Get metric status
+.Example
+Get-AzDynatraceMonitorMetricStatus -MonitorName dyob4hzw1d -ResourceGroupName dyobrg1lpgdr
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+REQUEST <IMetricStatusRequest>: Request for getting metric status for given monitored resource Ids
+  [MonitoredResourceId <List<String>>]: List of azure resource Id of monitored resources for which we get the metric status
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitormetricstatus
+#>
+function Get-AzDynatraceMonitorMetricStatus {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Name of the Monitors resource
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaJsonFilePath')]
+    [Parameter(ParameterSetName='GetViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest]
+    # Request for getting metric status for given monitored resource Ids
+    ${Request},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String[]]
+    # List of azure resource Id of monitored resources for which we get the metric status
+    ${MonitoredResourceId},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMetricStatus_Get';
+            GetExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMetricStatus_GetExpanded';
+            GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMetricStatus_GetViaIdentity';
+            GetViaIdentityExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMetricStatus_GetViaIdentityExpanded';
+            GetViaJsonFilePath = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMetricStatus_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorMetricStatus_GetViaJsonString';
+        }
+        if (('Get', 'GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a DynatraceSingleSignOnResource
+.Description
+Get a DynatraceSingleSignOnResource
+.Example
+Get-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+.Example
+New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" | Get-AzDynatraceMonitorSSOConfig
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssoconfig
+#>
+function Get-AzDynatraceMonitorSSOConfig {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -861,18 +1674,17 @@ begin {
         $mapping = @{
             Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSOConfig_Get';
             GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSOConfig_GetViaIdentity';
+            GetViaIdentityMonitor = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSOConfig_GetViaIdentityMonitor';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'GetViaIdentityMonitor') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -881,6 +1693,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -933,13 +1748,13 @@ Gets the SSO configuration details from the partner.
 Get-AzDynatraceMonitorSSODetail -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -UserPrincipal "user@microsoft.com"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssodetail
 #>
 function Get-AzDynatraceMonitorSSODetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse])]
-[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
@@ -959,13 +1774,954 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # user principal id of the user
     ${UserPrincipal},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            GetExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSODetail_GetExpanded';
+            GetViaJsonFilePath = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSODetail_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSODetail_GetViaJsonString';
+        }
+        if (('GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a TagRule
+.Description
+Get a TagRule
+.Example
+Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+.Example
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter | Get-AzDynatraceMonitorTagRule
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitortagrule
+#>
+function Get-AzDynatraceMonitorTagRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorTagRule_Get';
+            GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorTagRule_GetViaIdentity';
+            GetViaIdentityMonitor = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorTagRule_GetViaIdentityMonitor';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('Get', 'GetViaIdentityMonitor') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+.Description
+Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+.Example
+Get-AzDynatraceMonitorVMHostPayload -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
+#>
+function Get-AzDynatraceMonitorVMHostPayload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorVMHostPayload_Get';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a MonitorResource
+.Description
+Get a MonitorResource
+.Example
+Get-AzDynatraceMonitor
+.Example
+Get-AzDynatraceMonitor -ResourceGroupName dyobrg
+.Example
+Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh01
+.Example
+New-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh01 -Location eastus2euap -UserFirstName 'First' -UserLastName 'Last' -UserEmailAddress 'xxxx@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "xxxx.onmicrosoft.com" | Get-AzDynatraceMonitor
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitor
+#>
+function Get-AzDynatraceMonitor {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('MonitorName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_Get';
+            GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_GetViaIdentity';
+            List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_List';
+            List1 = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Performs Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of resources.
+.Description
+Performs Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of resources.
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/$rg/providers/Microsoft.Compute/virtualMachines/myVm01"
+$entry = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentList]::new(); $entry.Id = $vmId
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName $rg -MonitorName $monitor -Action Install -ManageAgentInstallationList @($entry) -PassThru
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+$vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/$rg/providers/Microsoft.Compute/virtualMachines/myVm01"
+$entry = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentList]::new(); $entry.Id = $vmId
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName $rg -MonitorName $monitor -Action Uninstall -ManageAgentInstallationList @($entry) -PassThru
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"; $vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/$rg/providers/Microsoft.Compute/virtualMachines/myVm02"
+$listEntry = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentList]::new(); $listEntry.Id = $vmId
+$request = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentInstallationRequest]::new()
+$request.Action = 'Install'
+$request.ManageAgentInstallationList = @($listEntry)
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName $rg -MonitorName $monitor -Request $request -PassThru
+.Example
+$monitorObj = Get-AzDynatraceMonitor -ResourceGroupName "myResourceGroup" -Name "myDynatraceMonitor" | Select-Object -First 1
+$vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm03"
+$entry = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentList]::new(); $entry.Id = $vmId
+$monitorObj | Invoke-AzDynatraceManageMonitorAgentInstallation -Action Install -ManageAgentInstallationList @($entry) -PassThru
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"; $vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/$rg/providers/Microsoft.Compute/virtualMachines/myVm04"
+$json = '{"action":"Install","manageAgentInstallationList":[{"id":"' + $vmId + '"}]}'
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName $rg -MonitorName $monitor -JsonString $json -PassThru
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"; $vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/$rg/providers/Microsoft.Compute/virtualMachines/myVm05"
+$path = Join-Path $PWD 'agent-install.json'
+@{ action = 'Install'; manageAgentInstallationList = @(@{ id = $vmId }) } | ConvertTo-Json -Depth 4 | Set-Content -Path $path -Encoding UTF8
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName $rg -MonitorName $monitor -JsonFilePath $path -PassThru
+.Example
+$monitorObj = Get-AzDynatraceMonitor -ResourceGroupName "myResourceGroup" -Name "myDynatraceMonitor" | Select-Object -First 1
+$vmId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm09"
+$entry = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentList]::new(); $entry.Id = $vmId
+$req = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentInstallationRequest]::new(); $req.Action = 'Uninstall'; $req.ManageAgentInstallationList = @($entry)
+$monitorObj | Invoke-AzDynatraceManageMonitorAgentInstallation -Request $req -PassThru
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManageAgentInstallationRequest
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MANAGEAGENTINSTALLATIONLIST <IManageAgentList[]>: The list of resources.
+  [Id <String>]: The ARM id of the resource to install/uninstall agent.
+
+REQUEST <IManageAgentInstallationRequest>: Request for performing Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of agent resources.
+  Action <String>: Install/Uninstall action.
+  ManageAgentInstallationList <List<IManageAgentList>>: The list of resources.
+    [Id <String>]: The ARM id of the resource to install/uninstall agent.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/invoke-azdynatracemanagemonitoragentinstallation
+#>
+function Invoke-AzDynatraceManageMonitorAgentInstallation {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='ManageViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Manage', Mandatory)]
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Manage', Mandatory)]
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Manage')]
+    [Parameter(ParameterSetName='ManageExpanded')]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath')]
+    [Parameter(ParameterSetName='ManageViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ManageViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ManageViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Manage', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ManageViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManageAgentInstallationRequest]
+    # Request for performing Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of agent resources.
+    ${Request},
+
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Install", "Uninstall")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Install/Uninstall action.
+    ${Action},
+
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManageAgentList[]]
+    # The list of resources.
+    ${ManageAgentInstallationList},
+
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Manage operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Manage operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1029,6 +2785,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1048,11 +2813,14 @@ begin {
         }
 
         $mapping = @{
-            GetExpanded = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorSSODetail_GetExpanded';
+            Manage = 'Az.DynatraceObservability.private\Invoke-AzDynatraceManageMonitorAgentInstallation_Manage';
+            ManageExpanded = 'Az.DynatraceObservability.private\Invoke-AzDynatraceManageMonitorAgentInstallation_ManageExpanded';
+            ManageViaIdentity = 'Az.DynatraceObservability.private\Invoke-AzDynatraceManageMonitorAgentInstallation_ManageViaIdentity';
+            ManageViaIdentityExpanded = 'Az.DynatraceObservability.private\Invoke-AzDynatraceManageMonitorAgentInstallation_ManageViaIdentityExpanded';
+            ManageViaJsonFilePath = 'Az.DynatraceObservability.private\Invoke-AzDynatraceManageMonitorAgentInstallation_ManageViaJsonFilePath';
+            ManageViaJsonString = 'Az.DynatraceObservability.private\Invoke-AzDynatraceManageMonitorAgentInstallation_ManageViaJsonString';
         }
-        if (('GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Manage', 'ManageExpanded', 'ManageViaJsonFilePath', 'ManageViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1066,6 +2834,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1111,600 +2882,82 @@ end {
 
 <#
 .Synopsis
-Get a TagRule
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 .Description
-Get a TagRule
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 .Example
-Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
-.Example
-$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
-New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter | Get-AzDynatraceMonitorTagRule
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$subscriptionId = (Get-AzContext).Subscription.Id
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+# Initiate monitoring relationship (AddBegin)
+$subs = @([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new())
+$subs[0].Id = "/subscriptions/$subscriptionId"
+New-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -MonitoredSubscriptionList $subs -Operation AddBegin
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$subscriptionId = (Get-AzContext).Subscription.Id
+$subs = @([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new())
+$subs[0].Id = "/subscriptions/$subscriptionId"
+New-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -MonitoredSubscriptionList $subs -Operation AddComplete
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$subscriptionId = (Get-AzContext).Subscription.Id
+$json = '{"monitoredSubscriptionList":[{"id":"/subscriptions/' + $subscriptionId + '"}],"operation":"AddBegin"}'
+New-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -JsonString $json
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$subscriptionId = (Get-AzContext).Subscription.Id
+$path = Join-Path $PWD 'monitored-subscription.json'
+@{ monitoredSubscriptionList = @(@{ id = "/subscriptions/$subscriptionId" }); operation = 'AddBegin' } | ConvertTo-Json -Depth 5 | Set-Content -Path $path -Encoding UTF8
+New-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -JsonFilePath $path
+.Example
+$monitorObj = Get-AzDynatraceMonitor -ResourceGroupName "myResourceGroup" -Name "myDynatraceMonitor"
+$subscriptionId = (Get-AzContext).Subscription.Id
+$subObj = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new(); $subObj.Id = "/subscriptions/$subscriptionId"
+($monitorObj | New-AzDynatraceMonitoredSubscription -MonitoredSubscriptionList @($subObj) -Operation AddBegin)
+.Example
+$subscriptionId = (Get-AzContext).Subscription.Id
+$subObj = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new(); $subObj.Id = "/subscriptions/$subscriptionId"
+New-AzDynatraceMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myDynatraceMonitor" -MonitoredSubscriptionList @($subObj) -Operation AddBegin -WhatIf
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"; $sid = (Get-AzContext).Subscription.Id
+$jsonBegin = '{"monitoredSubscriptionList":[{"id":"/subscriptions/' + $sid + '"}],"operation":"AddBegin"}'
+New-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -JsonString $jsonBegin | Out-Null
+$jsonComplete = '{"monitoredSubscriptionList":[{"id":"/subscriptions/' + $sid + '"}],"operation":"AddComplete"}'
+New-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -JsonString $jsonComplete
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+Get-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor | Select-Object -First 1 | Format-List Id,Name,Type
+
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
-  [ConfigurationName <String>]: Single Sign On Configuration Name
-  [Id <String>]: Resource identity path
-  [MonitorName <String>]: Monitor resource name
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+MONITOREDSUBSCRIPTIONLIST <IMonitoredSubscription[]>: List of subscriptions and the state of the monitoring.
+  SubscriptionId <String>: The subscriptionId to be monitored.
+  [Error <String>]: The reason of not monitoring the subscription.
+  [LogRuleFilteringTag <List<IFilteringTag>>]: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured.         If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+    [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+    [Name <String>]: The name (also known as the key) of the tag.
+    [Value <String>]: The value of the tag.
+  [LogRuleSendAadLog <String>]: Flag specifying if AAD logs should be sent for the Monitor resource.
+  [LogRuleSendActivityLog <String>]: Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
+  [LogRuleSendSubscriptionLog <String>]: Flag specifying if subscription logs should be sent for the Monitor resource.
+  [MetricRuleFilteringTag <List<IFilteringTag>>]: List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+  [MetricRuleSendingMetric <String>]: Flag specifying if metrics from Azure resources should be sent for the Monitor resource.
+  [Status <String>]: The state of monitoring.
 .Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitortagrule
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitoredsubscription
 #>
-function Get-AzDynatraceMonitorTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # Monitor resource name
-    ${MonitorName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorTagRule_Get';
-            GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorTagRule_GetViaIdentity';
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
-.Description
-Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
-.Example
-Get-AzDynatraceMonitorVMHostPayload -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMExtensionPayload
-.Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
-#>
-function Get-AzDynatraceMonitorVMHostPayload {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMExtensionPayload])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # Monitor resource name
-    ${MonitorName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitorVMHostPayload_Get';
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get a MonitorResource
-.Description
-Get a MonitorResource
-.Example
-Get-AzDynatraceMonitor
-.Example
-Get-AzDynatraceMonitor -ResourceGroupName dyobrg
-.Example
-Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh01
-.Example
-New-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh01 -Location eastus2euap -UserFirstName 'First' -UserLastName 'Last' -UserEmailAddress 'xxxx@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "xxxx.onmicrosoft.com" | Get-AzDynatraceMonitor
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
-  [ConfigurationName <String>]: Single Sign On Configuration Name
-  [Id <String>]: Resource identity path
-  [MonitorName <String>]: Monitor resource name
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitor
-#>
-function Get-AzDynatraceMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('MonitorName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # Monitor resource name
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_Get';
-            GetViaIdentity = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_GetViaIdentity';
-            List = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_List';
-            List1 = 'Az.DynatraceObservability.private\Get-AzDynatraceMonitor_List1';
-        }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create a DynatraceSingleSignOnResource
-.Description
-Create a DynatraceSingleSignOnResource
-.Example
-New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource
-.Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorssoconfig
-#>
-function New-AzDynatraceMonitorSSOConfig {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource])]
+function New-AzDynatraceMonitoredSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1725,33 +2978,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String[]]
-    # array of Aad(azure active directory) domains
-    ${AadDomain},
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscription[]]
+    # List of subscriptions and the state of the monitoring.
+    ${MonitoredSubscriptionList},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("AddBegin", "AddComplete", "DeleteBegin", "DeleteComplete", "Active")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # Version of the Dynatrace agent installed on the VM.
-    ${EnterpriseAppId},
+    # The operation for the patch on the resource.
+    ${Operation},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates]
-    # State of Single Sign On
-    ${SingleSignOnState},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # The login URL specific to this Dynatrace Environment
-    ${SingleSignOnUrl},
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1821,6 +3075,282 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.DynatraceObservability.private\New-AzDynatraceMonitoredSubscription_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DynatraceObservability.private\New-AzDynatraceMonitoredSubscription_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DynatraceObservability.private\New-AzDynatraceMonitoredSubscription_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a DynatraceSingleSignOnResource
+.Description
+Create a DynatraceSingleSignOnResource
+.Example
+New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorssoconfig
+#>
+function New-AzDynatraceMonitorSSOConfig {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String[]]
+    # array of Aad(azure active directory) domains
+    ${AadDomain},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Version of the Dynatrace agent installed on the VM.
+    ${EnterpriseAppId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Initial", "Enable", "Disable", "Existing")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # State of Single Sign On
+    ${SingleSignOnState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # The login URL specific to this Dynatrace Environment
+    ${SingleSignOnUrl},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1841,18 +3371,19 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorSSOConfig_CreateExpanded';
+            CreateViaIdentityMonitorExpanded = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorSSOConfig_CreateViaIdentityMonitorExpanded';
+            CreateViaJsonFilePath = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorSSOConfig_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorSSOConfig_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('CreateExpanded', 'CreateViaIdentityMonitorExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1861,6 +3392,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1913,91 +3447,138 @@ Create a TagRule
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  [Action <TagAction?>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 
 METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  [Action <TagAction?>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitortagrule
 #>
 function New-AzDynatraceMonitorTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
     # Monitor resource name
     ${MonitorName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IFilteringTag[]]
     # List of filtering tags to be used for capturing logs.
     # This only takes effect if SendActivityLogs flag is enabled.
     # If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.
     # If Include actions are specified, the rules will only include resources with the associated tags.
-    # To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
     ${LogRuleFilteringTag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendAadLogsStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendAadLogsStatus]
+    [System.String]
     # Flag specifying if AAD logs should be sent for the Monitor resource.
     ${LogRuleSendAadLog},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendActivityLogsStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendActivityLogsStatus]
+    [System.String]
     # Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
     ${LogRuleSendActivityLog},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendSubscriptionLogsStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendSubscriptionLogsStatus]
+    [System.String]
     # Flag specifying if subscription logs should be sent for the Monitor resource.
     ${LogRuleSendSubscriptionLog},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IFilteringTag[]]
     # List of filtering tags to be used for capturing metrics.
     # If empty, all resources will be captured.
     # If only Exclude action is specified, the rules will apply to the list of all available resources.
     # If Include actions are specified, the rules will only include resources with the associated tags.
-    # To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
     ${MetricRuleFilteringTag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Flag specifying if metrics from Azure resources should be sent for the Monitor resource.
+    ${MetricRuleSendingMetric},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2067,6 +3648,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2087,18 +3677,19 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorTagRule_CreateExpanded';
+            CreateViaIdentityMonitorExpanded = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorTagRule_CreateViaIdentityMonitorExpanded';
+            CreateViaJsonFilePath = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorTagRule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DynatraceObservability.private\New-AzDynatraceMonitorTagRule_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('CreateExpanded', 'CreateViaIdentityMonitorExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2107,6 +3698,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2159,12 +3753,12 @@ Create a MonitorResource
 New-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 -Location eastus2euap -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'v-diya@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitor
 #>
 function New-AzDynatraceMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2186,172 +3780,199 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Account Id of the account this environment is linked to
     ${AccountId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Name of the customer account / company
+    ${AccountInfoCompanyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Region in which the account is created
     ${AccountRegionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Id of the environment created
     ${EnvironmentId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Ingestion key of the environment
     ${EnvironmentIngestionKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Landing URL for Dynatrace environment
     ${EnvironmentLandingUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Ingestion endpoint used for sending logs
     ${EnvironmentLogsIngestionEndpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # User id
     ${EnvironmentUserId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.ManagedIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAndUserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.ManagedIdentityType]
+    [System.String]
     # The type of managed identity assigned to this resource.
     ${IdentityType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("On", "Off")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus]
+    [System.String]
+    # Marketplace resource autorenew flag
+    ${MarketplaceSaasAutoRenew},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended", "Unsubscribed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
     # Marketplace subscription status.
     ${MarketplaceSubscriptionStatus},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus]
+    [System.String]
     # Status of the monitor.
     ${MonitoringStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # different billing cycles like MONTHLY/WEEKLY.
     # this could be enum
     ${PlanBillingCycle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # plan id as published by Dynatrace
     ${PlanDetail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.DateTime]
     # date when plan was applied
     ${PlanEffectiveDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # different usage type like PAYG/COMMITTED.
     # this could be enum
     ${PlanUsageType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String[]]
     # array of Aad(azure active directory) domains
     ${SingleSignOnAadDomain},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Version of the Dynatrace agent installed on the VM.
     ${SingleSignOnEnterpriseAppId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Initial", "Enable", "Disable", "Existing")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates]
+    [System.String]
     # State of Single Sign On
     ${SingleSignOnState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # The login URL specific to this Dynatrace Environment
     ${SingleSignOnUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The identities assigned to this resource by the user.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Country of the user
     ${UserCountry},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Email of the user used by Dynatrace for contacting them if needed
     ${UserEmailAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # First Name of the user
     ${UserFirstName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Last Name of the user
     ${UserLastName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # Phone number of the user used by Dynatrace for contacting them if needed
     ${UserPhoneNumber},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2421,6 +4042,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2441,10 +4071,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DynatraceObservability.private\New-AzDynatraceMonitor_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DynatraceObservability.private\New-AzDynatraceMonitor_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DynatraceObservability.private\New-AzDynatraceMonitor_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2458,6 +4088,250 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete the subscriptions that are being monitored by the Dynatrace monitor resource
+.Description
+Delete the subscriptions that are being monitored by the Dynatrace monitor resource
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -WhatIf
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false -ErrorAction SilentlyContinue
+.Example
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+try {
+	Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
+} catch {
+	Write-Warning "Deletion failed: $($_.Exception.Message). Retry after confirming the monitored subscription was fully created." 
+}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitoredsubscription
+#>
+function Remove-AzDynatraceMonitoredSubscription {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitoredSubscription_Delete';
+            DeleteViaIdentity = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitoredSubscription_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2522,11 +4396,21 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitortagrule
 #>
@@ -2552,14 +4436,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2635,6 +4525,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2656,18 +4555,17 @@ begin {
         $mapping = @{
             Delete = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitorTagRule_Delete';
             DeleteViaIdentity = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitorTagRule_DeleteViaIdentity';
+            DeleteViaIdentityMonitor = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitorTagRule_DeleteViaIdentityMonitor';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Delete', 'DeleteViaIdentityMonitor') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2676,6 +4574,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2740,11 +4641,12 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitor
 #>
@@ -2771,13 +4673,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2854,6 +4756,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2876,9 +4787,7 @@ begin {
             Delete = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitor_Delete';
             DeleteViaIdentity = 'Az.DynatraceObservability.private\Remove-AzDynatraceMonitor_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2892,6 +4801,611 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Upgrades the billing Plan for Dynatrace monitor resource.
+.Description
+Upgrades the billing Plan for Dynatrace monitor resource.
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+
+# Move from trial/preview plan to committed monthly plan
+$result = Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor `
+	-PlanDataUsageType COMMITTED `
+	-PlanDataBillingCycle "1-Month" `
+	-PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" `
+	-PlanDataEffectiveDate (Get-Date) -PassThru
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+
+# Construct upgrade request object
+$req = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UpgradePlanRequest]::new()
+$req.PlanData = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.PlanData]::new()
+$req.PlanData.UsageType = "COMMITTED"
+$req.PlanData.BillingCycle = "1-Month"
+$req.PlanData.PlanDetails = "dynatrace_azure_enterprise@TIDgmz7xq9ge3py"
+$req.PlanData.EffectiveDate = Get-Date
+
+$ok = Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -Request $req -PassThru
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+
+Get-AzDynatraceMonitor -ResourceGroupName $rg -Name $monitor | \
+	Update-AzDynatraceMonitorPlan -PlanDataUsageType COMMITTED -PlanDataBillingCycle "1-Month" -PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" -PassThru
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$json = '{"planData":{"usageType":"COMMITTED","billingCycle":"1-Month","planDetails":"dynatrace_azure_enterprise@TIDgmz7xq9ge3py","effectiveDate":"' + (Get-Date).ToString("o") + '"}}'
+Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -JsonString $json -PassThru
+.Example
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+$jsonPath = Join-Path $PWD 'upgrade-plan.json'
+@{ planData = @{ usageType = 'COMMITTED'; billingCycle = '1-Month'; planDetails = 'dynatrace_azure_enterprise@TIDgmz7xq9ge3py'; effectiveDate = (Get-Date) } } | ConvertTo-Json -Depth 5 | Set-Content -Path $jsonPath -Encoding UTF8
+Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -JsonFilePath $jsonPath -PassThru
+.Example
+Update-AzDynatraceMonitorPlan -ResourceGroupName "myResourceGroup" -MonitorName "myDynatraceMonitor" -PlanDataUsageType COMMITTED -PlanDataBillingCycle "1-Month" -PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" -WhatIf
+.Example
+Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -PlanDataUsageType COMMITTED -PlanDataBillingCycle "1-Month" -PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" -PassThru | Out-Null
+$updated = Get-AzDynatraceMonitor -ResourceGroupName $rg -Name $monitor
+$updated.planData | Format-List UsageType,BillingCycle,PlanDetails,EffectiveDate
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUpgradePlanRequest
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+REQUEST <IUpgradePlanRequest>: The billing plan properties for the upgrade plan call.
+  [PlanDataBillingCycle <String>]: different billing cycles like MONTHLY/WEEKLY. this could be enum
+  [PlanDataEffectiveDate <DateTime?>]: date when plan was applied
+  [PlanDataPlanDetail <String>]: plan id as published by Dynatrace
+  [PlanDataUsageType <String>]: different usage type like PAYG/COMMITTED. this could be enum
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitorplan
+#>
+function Update-AzDynatraceMonitorPlan {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='UpgradeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUpgradePlanRequest]
+    # The billing plan properties for the upgrade plan call.
+    ${Request},
+
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # different billing cycles like MONTHLY/WEEKLY.
+    # this could be enum
+    ${PlanDataBillingCycle},
+
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.DateTime]
+    # date when plan was applied
+    ${PlanDataEffectiveDate},
+
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # plan id as published by Dynatrace
+    ${PlanDataPlanDetail},
+
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # different usage type like PAYG/COMMITTED.
+    # this could be enum
+    ${PlanDataUsageType},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Upgrade operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Json string supplied to the Upgrade operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Upgrade = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorPlan_Upgrade';
+            UpgradeExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorPlan_UpgradeExpanded';
+            UpgradeViaIdentity = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorPlan_UpgradeViaIdentity';
+            UpgradeViaIdentityExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorPlan_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorPlan_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorPlan_UpgradeViaJsonString';
+        }
+        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a DynatraceSingleSignOnResource
+.Description
+Update a DynatraceSingleSignOnResource
+.Example
+Update-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitorssoconfig
+#>
+function Update-AzDynatraceMonitorSSOConfig {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String[]]
+    # array of Aad(azure active directory) domains
+    ${AadDomain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Version of the Dynatrace agent installed on the VM.
+    ${EnterpriseAppId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Initial", "Enable", "Disable", "Existing")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # State of Single Sign On
+    ${SingleSignOnState},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # The login URL specific to this Dynatrace Environment
+    ${SingleSignOnUrl},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorSSOConfig_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorSSOConfig_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMonitorExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorSSOConfig_UpdateViaIdentityMonitorExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('UpdateExpanded', 'UpdateViaIdentityMonitorExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2943,14 +5457,11 @@ Update a TagRule
 .Example
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 Update-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
-.Example
-$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
-Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 | Update-AzDynatraceMonitorTagRule -LogRuleFilteringTag $tagFilter
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2958,26 +5469,36 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  [Action <TagAction?>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 
 METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  [Action <TagAction?>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
+
+MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Monitor resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitortagrule
 #>
 function Update-AzDynatraceMonitorTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2998,57 +5519,68 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IFilteringTag[]]
     # List of filtering tags to be used for capturing logs.
     # This only takes effect if SendActivityLogs flag is enabled.
     # If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.
     # If Include actions are specified, the rules will only include resources with the associated tags.
-    # To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
     ${LogRuleFilteringTag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendAadLogsStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendAadLogsStatus]
+    [System.String]
     # Flag specifying if AAD logs should be sent for the Monitor resource.
     ${LogRuleSendAadLog},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendActivityLogsStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendActivityLogsStatus]
+    [System.String]
     # Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
     ${LogRuleSendActivityLog},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendSubscriptionLogsStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendSubscriptionLogsStatus]
+    [System.String]
     # Flag specifying if subscription logs should be sent for the Monitor resource.
     ${LogRuleSendSubscriptionLog},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IFilteringTag[]]
     # List of filtering tags to be used for capturing metrics.
     # If empty, all resources will be captured.
     # If only Exclude action is specified, the rules will apply to the list of all available resources.
     # If Include actions are specified, the rules will only include resources with the associated tags.
-    # To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
     ${MetricRuleFilteringTag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [System.String]
+    # Flag specifying if metrics from Azure resources should be sent for the Monitor resource.
+    ${MetricRuleSendingMetric},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3058,6 +5590,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
@@ -3078,6 +5616,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Runtime')]
@@ -3106,6 +5650,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3127,18 +5680,17 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorTagRule_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorTagRule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMonitorExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitorTagRule_UpdateViaIdentityMonitorExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('UpdateExpanded', 'UpdateViaIdentityMonitorExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3147,6 +5699,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3203,7 +5758,7 @@ Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Update-AzDy
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3211,19 +5766,22 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitor
 #>
 function Update-AzDynatraceMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('MonitorName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
@@ -3231,6 +5789,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -3238,163 +5798,87 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # Account Id of the account this environment is linked to
-    ${AccountId},
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Region in which the account is created
-    ${AccountRegionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Id of the environment created
-    ${EnvironmentId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Ingestion key of the environment
-    ${EnvironmentIngestionKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Landing URL for Dynatrace environment
-    ${EnvironmentLandingUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Ingestion endpoint used for sending logs
-    ${EnvironmentLogsIngestionEndpoint},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # User id
-    ${EnvironmentUserId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus]
-    # Marketplace subscription status.
-    ${MarketplaceSubscriptionStatus},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus]
-    # Status of the monitor.
-    ${MonitoringStatus},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # different billing cycles like MONTHLY/WEEKLY.
     # this could be enum
     ${PlanBillingCycle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # plan id as published by Dynatrace
     ${PlanDetail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.DateTime]
     # date when plan was applied
     ${PlanEffectiveDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # different usage type like PAYG/COMMITTED.
     # this could be enum
     ${PlanUsageType},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String[]]
-    # array of Aad(azure active directory) domains
-    ${SingleSignOnAadDomain},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Version of the Dynatrace agent installed on the VM.
-    ${SingleSignOnEnterpriseAppId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates]
-    # State of Single Sign On
-    ${SingleSignOnState},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # The login URL specific to this Dynatrace Environment
-    ${SingleSignOnUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Country of the user
-    ${UserCountry},
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # Email of the user used by Dynatrace for contacting them if needed
-    ${UserEmailAddress},
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
-    # First Name of the user
-    ${UserFirstName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Last Name of the user
-    ${UserLastName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Phone number of the user used by Dynatrace for contacting them if needed
-    ${UserPhoneNumber},
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3452,6 +5936,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3473,10 +5966,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DynatraceObservability.private\Update-AzDynatraceMonitor_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3490,6 +5983,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3542,18 +6038,18 @@ Create an in-memory object for FilteringTag.
 New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag
 .Link
-https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorfilteringtagobject
+https://learn.microsoft.com/powershell/module/Az.DynatraceObservability/new-azdynatracemonitorfilteringtagobject
 #>
 function New-AzDynatraceMonitorFilteringTagObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Include", "Exclude")]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction]
+    [System.String]
     # Valid actions for a filtering tag.
     # Exclusion takes priority over inclusion.
     ${Action},
@@ -3578,6 +6074,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3606,6 +6105,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

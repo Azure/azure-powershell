@@ -481,6 +481,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             deployment.Tags = parameters?.Tags == null ? null : new Dictionary<string, string>(parameters.Tags);
             deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
+            if (!string.IsNullOrEmpty(parameters.ValidationLevel))
+            {
+                deployment.Properties.ValidationLevel = parameters.ValidationLevel;
+            }
+
             return deployment;
         }
 
@@ -489,36 +494,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             try
             {
                 var validationResult = this.ValidateDeployment(parameters, deployment);
-                switch (validationResult)
-                {
-                    case DeploymentExtended deploymentExtended:
-                        return new TemplateValidationInfo(deploymentExtended.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentExtended.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
-                    case DeploymentValidationError deploymentValidationError:
-                        return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
-                    case JObject obj:
-                        // 202 Response is not deserialized in DeploymentsOperations so we should attempt to deserialize the object here before failing
-                        // Should attempt to deserialize for success(DeploymentExtended)
-                        try
-                        {
-                            var deploymentDeserialized = SafeJsonConvert.DeserializeObject<DeploymentExtended>(validationResult.ToString(), ResourceManagementClient.DeserializationSettings);
-                            return new TemplateValidationInfo(deploymentDeserialized?.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentDeserialized?.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
-                        }
-                        catch (Newtonsoft.Json.JsonException)
-                        { 
-                            throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
-                        }
-                    default:
-                        throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
-                }
+                return new TemplateValidationInfo(validationResult);
             }
             catch (Exception ex)
             {
                 var error = HandleError(ex).FirstOrDefault();
-                return new TemplateValidationInfo(new List<Provider>(), error.AsArray().ToList(), new List<DeploymentDiagnosticsDefinition>());
+                return new TemplateValidationInfo(new DeploymentValidateResult(error));
             }
         }
 
-        private object ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
             var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
 
@@ -547,27 +532,66 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private List<ErrorDetail> HandleError(Exception ex)
+        private List<ErrorResponse> HandleError(Exception ex)
         {
             if (ex == null)
             {
                 return null;
             }
 
-            ErrorDetail error = null;
-            var innerException = HandleError(ex.InnerException);
-            if (ex is CloudException)
+            ErrorResponse error;
+            if (ex is CloudException cloudEx)
             {
-                var cloudEx = ex as CloudException;
-                error = new ErrorDetail(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                // Map ARM API error details from the CloudException body, preserving the full nested error hierarchy.
+                // Using ex.InnerException when ARM details are present would traverse the .NET exception chain rather than
+                // the ARM error details, causing nested ARM errors (e.g. MultipleErrorsOccurred sub-errors) to be silently dropped.
+                // Fall back to ex.InnerException only when the ARM body carries no details (e.g. when Body itself is null).
+                var details = cloudEx.Body?.Details?
+                    .Select(ConvertCloudErrorToErrorResponse)
+                    .ToList();
+                var nestedDetails = details?.Count > 0
+                    ? details
+                    : HandleError(ex.InnerException);
+                var message = string.IsNullOrEmpty(cloudEx.Body?.Message)
+                    ? cloudEx.Message
+                    : cloudEx.Body.Message;
+
+                error = new ErrorResponse(
+                    cloudEx.Body?.Code,
+                    message,
+                    cloudEx.Body?.Target,
+                    nestedDetails);
             }
             else
             {
-                error = new ErrorDetail(null, ex.Message, null, innerException);
+                var innerException = HandleError(ex.InnerException);
+                error = new ErrorResponse(null, ex.Message, null, innerException);
             }
 
-            return new List<ErrorDetail> { error };
+            return new List<ErrorResponse> { error };
+        }
 
+        /// <summary>
+        /// Recursively converts an ARM <see cref="CloudError"/> to an <see cref="ErrorResponse"/>,
+        /// preserving all nested error details.
+        /// </summary>
+        private static ErrorResponse ConvertCloudErrorToErrorResponse(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return null;
+            }
+
+            var subDetails = cloudError.Details?
+                .Select(ConvertCloudErrorToErrorResponse)
+                .Where(d => d != null)
+                .ToList();
+
+            return new ErrorResponse(
+                cloudError.Code,
+                cloudError.Message,
+                cloudError.Target,
+                subDetails?.Count > 0 ? subDetails : null);
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(PSDeploymentCmdletParameters parameters)
@@ -890,14 +914,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="tag">The resource group tag.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <param name="location">The resource group location.</param>
+        /// <param name="expand">The expand parameter for optional response properties.</param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            var resourceGroupFilter = new ODataQuery<ResourceGroupFilterWithExpand>();
 
-            ODataQuery<ResourceGroupFilter> resourceGroupFilter = null;
-
-            if (tag != null && tag.Count >= 1)
+            if (tag?.Count >= 1)
             {
                 PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null || tag.Count > 1)
@@ -906,8 +930,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
-                    ? new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name)
-                    : new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+                    ? new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name)
+                    : new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+            }
+
+            if (expand) {
+                resourceGroupFilter.Expand = "createdTime,changedTime";
             }
 
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
@@ -939,7 +967,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
-                    PSResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    PSResourceGroup resourceGroup = expand 
+                        ? ResourceManagementClient.ResourceGroups.Get(name, expand: "createdTime,changedTime").ToPSResourceGroup()
+                        : ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    
                     if (string.IsNullOrEmpty(location) || resourceGroup.Location.EqualsAsLocation(location))
                     {
                         result.Add(resourceGroup);
@@ -1529,7 +1560,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return ProvisionDeploymentStatus(parameters, deployment);
         }
 
-        private void DisplayInnerDetailErrorMessage(ErrorDetail error)
+        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
             if (error.Details != null)

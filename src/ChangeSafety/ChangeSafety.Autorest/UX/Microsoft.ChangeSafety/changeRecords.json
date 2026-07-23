@@ -1,0 +1,123 @@
+{
+  "resourceType": "changeRecords",
+  "apiVersion": "2026-01-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.changesafety"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChangeSafetyChangeRecord",
+      "description": "Get a ChangeRecord",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ChangeSafety/changeRecords/{changeRecordName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.changesafety/get-azchangesafetychangerecord"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ChangeRecord",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Get a ChangeRecord",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzChangeSafetyChangeRecord",
+      "description": "Delete a ChangeRecord",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ChangeSafety/changeRecords/{changeRecordName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.changesafety/remove-azchangesafetychangerecord"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ChangeRecord",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Delete a ChangeRecord",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

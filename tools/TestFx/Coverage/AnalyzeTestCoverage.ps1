@@ -61,17 +61,19 @@ $cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "Report.csv"
 ({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgReportCsv -Encoding utf8 -Force
 
 $allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
+$testedModules = $allModules
 
 if ($CalcBaseline.IsPresent) {
-    $testedModules = $allModules
     $cvgBaselineCsv = Join-Path -Path $cvgResultsDir -ChildPath "Baseline.csv"
     ({} | Select-Object "Module", "CommandCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgBaselineCsv -Encoding utf8 -Force
 }
 else {
     $ciPlanFilePath = Join-Path -Path $artifactsDir -ChildPath "PipelineResult" | Join-Path -ChildPath "CIPlan.json"
-    $ciPlan = Get-Content -Path $ciPlanFilePath -Raw | ConvertFrom-Json
-    if ($ciPlan.test.Length -gt 0) {
-        $testedModules = $allModules | Where-Object { $_.Substring(3) -in $ciPlan.test }
+    if (Test-Path -Path $ciPlanFilePath -PathType Leaf) {
+        $ciPlan = Get-Content -Path $ciPlanFilePath -Raw | ConvertFrom-Json
+        if ($ciPlan.test.Length -gt 0) {
+            $testedModules = $allModules | Where-Object { $_.Substring(3) -in $ciPlan.test }
+        }
     }
 }
 
@@ -120,6 +122,7 @@ foreach ($moduleName in $testedModules) {
 
     if ($hasRawData) {
         (Import-Csv -Path $cvgRawCsv) |
+        Where-Object { $_.CommandName -in $moduleCommands } |
         Select-Object `
         @{ Name = "Module"; Expression = { $simpleModuleName } }, `
         @{ Name = "CommandName"; Expression = { $_.CommandName } }, `
@@ -137,11 +140,11 @@ foreach ($moduleName in $testedModules) {
 
         $rawCsv = Import-Csv -LiteralPath $cvgRawCsv | Where-Object IsSuccess -eq $true | Select-Object CommandName, ParameterSetName, Parameters -Unique
 
-        $csvGroupByCommand = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName | Select-Object -ExpandProperty CommandName -Unique
+        $csvGroupByCommand = $rawCsv | Sort-Object CommandName | Select-Object -ExpandProperty CommandName -Unique
         $totalTestedCommandsCount = $csvGroupByCommand.Count
         $overallTestedCommandsCount += $totalTestedCommandsCount
 
-        $csvGroupByParameterSet = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName, ParameterSetName | Select-Object CommandName, ParameterSetName -Unique | Group-Object CommandName
+        $csvGroupByParameterSet = $rawCsv | Sort-Object CommandName, ParameterSetName | Select-Object CommandName, ParameterSetName -Unique | Group-Object CommandName
         $totalTestedParameterSetsCount = ($csvGroupByParameterSet | Measure-Object -Property Count -Sum).Sum
 
         $csvGroupByParameterSet | ForEach-Object {
@@ -157,7 +160,7 @@ foreach ($moduleName in $testedModules) {
             $commandExec.UntestedCommands += $_
         }
 
-        $csvGroupByParameter = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName, ParameterSetName, Parameters | Select-Object CommandName, ParameterSetName, Parameters -Unique | Group-Object CommandName, ParameterSetName
+        $csvGroupByParameter = $rawCsv | Sort-Object CommandName, ParameterSetName, Parameters | Select-Object CommandName, ParameterSetName, Parameters -Unique | Group-Object CommandName, ParameterSetName
         $totalTestedParametersCount = 0
         $csvGroupByParameter | ForEach-Object {
             $testedParams = @()
@@ -195,8 +198,8 @@ foreach ($moduleName in $testedModules) {
 
     if ($CalcBaseline.IsPresent) {
         $cvgBaseline = [PSCustomObject]@{
-            Module               = $simpleModuleName
-            CommandCoverage      = $cvgCommand
+            Module          = $simpleModuleName
+            CommandCoverage = $cvgCommand
         }
         $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
     }

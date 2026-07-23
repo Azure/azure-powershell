@@ -9,4 +9,4 @@ Name            ResourceGroupName
 testVhd       test-rg
 ```
 
-This command updates an exisiting virtual hard disk in the specified resource group.
+This command updates an existing virtual hard disk in the specified resource group.

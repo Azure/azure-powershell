@@ -137,7 +137,7 @@ function Test-BudgetAtResourceGroupLevel
 		Assert-AreEqual $budgetName $budgetSet1.Name
 		Assert-AreEqual 1 $budgetSet1.Notification.Count
 
-		Write-Debug "Update the budget $budgetName with a second notificaiton $notificationKey when cost reaches a threshold of 150 percent of amount"
+		Write-Debug "Update the budget $budgetName with a second notification $notificationKey when cost reaches a threshold of 150 percent of amount"
 		$budgetSet2 = Set-AzConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -NotificationKey $notificationKey2 -NotificationEnabled -NotificationThreshold 150 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
 		Assert-NotNull $budgetSet2
 		Assert-AreEqual $budgetName $budgetSet2.Name

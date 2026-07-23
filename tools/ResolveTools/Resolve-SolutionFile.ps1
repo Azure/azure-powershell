@@ -43,7 +43,11 @@ function Resolve($solutionFilePath) {
             $dependentModuleFolderPath += (Get-Item (Resolve-Path $csprojPath)).Directory.FullName
         }
         else {
-            $dependentModuleName = $csprojPath.Split("/src/")[1].Split("/")[0]
+            if ($csprojPath.Contains("/src")) {
+                $dependentModuleName = $csprojPath.Split("/src/")[1].Split("/")[0]
+            } elseif ($csprojPath.Contains("/generated")) {
+                $dependentModuleName = $csprojPath.Split("/generated/")[1].Split("/")[0]
+            }
             $dependentModuleFolderPath += "../$dependentModuleName"
         }
     }

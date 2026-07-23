@@ -8,18 +8,19 @@ schema: 2.0.0
 # New-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
-The operation to Create a firmware analysis workspace.
+The operation to create a firmware analysis workspace.
 
 ## SYNTAX
 
 ```
 New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ -Location <String> [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Create a firmware analysis workspace.
+The operation to create a firmware analysis workspace.
 
 ## EXAMPLES
 
@@ -104,6 +105,86 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+If the SKU supports scale out/in then the capacity integer should be included.
+If scale out/in is not possible for the resource this may be omitted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+If the service has different generations of hardware, for the same SKU, then that can be captured here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the SKU.
+E.g.
+P3.
+It is typically a letter+number code
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+When the name field is the combination of tier and some other value, this would be the standalone code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

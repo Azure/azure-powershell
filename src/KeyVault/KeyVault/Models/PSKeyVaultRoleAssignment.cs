@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         /// <summary>
         /// Name of the HSM where the role assignment belongs to.
-        /// Note: hsm name is not included in the service's respones;
+        /// Note: hsm name is not included in the service's responses;
         /// It is added to support powershell piping;
         /// It needs to be maintained by client-side code.
         /// </summary>

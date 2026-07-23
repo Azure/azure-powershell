@@ -87,13 +87,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ProfileName, global::System.Convert.ToString);
             }
-            if (content.Contains("CustomDomainName"))
+            if (content.Contains("PolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName = (string) content.GetValueForProperty("CustomDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).PolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("EndpointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EndpointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RouteName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName = (string) content.GetValueForProperty("RouteName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName = (string) content.GetValueForProperty("CustomDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName, global::System.Convert.ToString);
             }
             if (content.Contains("OriginGroupName"))
             {
@@ -103,10 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).OriginName = (string) content.GetValueForProperty("OriginName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).OriginName, global::System.Convert.ToString);
             }
-            if (content.Contains("RouteName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName = (string) content.GetValueForProperty("RouteName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName, global::System.Convert.ToString);
-            }
             if (content.Contains("RuleSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
@@ -115,13 +119,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleName = (string) content.GetValueForProperty("RuleName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleName, global::System.Convert.ToString);
             }
+            if (content.Contains("SecretName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName, global::System.Convert.ToString);
+            }
             if (content.Contains("SecurityPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName = (string) content.GetValueForProperty("SecurityPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName, global::System.Convert.ToString);
             }
-            if (content.Contains("SecretName"))
+            if (content.Contains("EdgeActionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName = (string) content.GetValueForProperty("EdgeActionName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExecutionFilter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter = (string) content.GetValueForProperty("ExecutionFilter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -156,13 +172,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ProfileName, global::System.Convert.ToString);
             }
-            if (content.Contains("CustomDomainName"))
+            if (content.Contains("PolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName = (string) content.GetValueForProperty("CustomDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).PolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("EndpointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EndpointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RouteName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName = (string) content.GetValueForProperty("RouteName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomDomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName = (string) content.GetValueForProperty("CustomDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName, global::System.Convert.ToString);
             }
             if (content.Contains("OriginGroupName"))
             {
@@ -172,10 +196,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).OriginName = (string) content.GetValueForProperty("OriginName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).OriginName, global::System.Convert.ToString);
             }
-            if (content.Contains("RouteName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName = (string) content.GetValueForProperty("RouteName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName, global::System.Convert.ToString);
-            }
             if (content.Contains("RuleSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
@@ -184,13 +204,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleName = (string) content.GetValueForProperty("RuleName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RuleName, global::System.Convert.ToString);
             }
+            if (content.Contains("SecretName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName, global::System.Convert.ToString);
+            }
             if (content.Contains("SecurityPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName = (string) content.GetValueForProperty("SecurityPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName, global::System.Convert.ToString);
             }
-            if (content.Contains("SecretName"))
+            if (content.Contains("EdgeActionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName = (string) content.GetValueForProperty("EdgeActionName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExecutionFilter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter = (string) content.GetValueForProperty("ExecutionFilter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

@@ -30,7 +30,9 @@ Get-AzPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
 .Example
 Get-AzPolicySetDefinition | Where-Object {$_.metadata.category -eq "Virtual Machine"}
 .Example
-Get-AzPolicySetDefinition -BackwardCompatible | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition -Id '/providers/Microsoft.Authorization/policySetDefinitions/1bb84455-9e6e-434c-8db6-fa6d03a67e87' -Version "1.1.1"
+.Example
+Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -ListVersion
 
 .Inputs
 System.Management.Automation.SwitchParameter
@@ -46,24 +48,13 @@ function Get-AzPolicySetDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Alias('PolicySetDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The name of the policy definition to get.
+    # The name of the policy set definition to get.
     ${Name},
-
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The full Id of the policy definition to get.
-    ${Id},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
@@ -81,6 +72,22 @@ param(
     # The name of the management group.
     ${ManagementGroupName},
 
+    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [System.String]
+    # The full Id of the policy set definition to get.
+    ${Id},
+
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return only custom policy set definition versions.
+    ${ListVersion},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -93,35 +100,36 @@ param(
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
 
-    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
-    ${ListVersion},
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter(ParameterSetName='Custom', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
+    # Causes cmdlet to return only custom policy set definitions.
     ${Custom},
 
     [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only built-in policy definitions.
+    # Causes cmdlet to return only built-in policy set definitions.
     ${Builtin},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
-
-    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Alias('PolicySetDefinitionVersion')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
-    # The policy definition version in #.#.# format.
+    # The policy set definition version in #.#.# format.
     ${Version},
 
     [Parameter()]
@@ -180,6 +188,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -200,8 +216,6 @@ begin {
 
         $mapping = @{
             Name = 'Az.Policy.custom\Get-AzPolicySetDefinition';
-            ListVersion = 'Az.Policy.custom\Get-AzPolicySetDefinition';
-            Version = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             SubscriptionId = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicySetDefinition';
@@ -215,6 +229,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

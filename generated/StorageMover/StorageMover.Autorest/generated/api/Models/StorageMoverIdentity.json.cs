@@ -76,15 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_storageMoverName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("storageMoverName"), out var __jsonStorageMoverName) ? (string)__jsonStorageMoverName : (string)StorageMoverName;}
-            {_agentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentName"), out var __jsonAgentName) ? (string)__jsonAgentName : (string)AgentName;}
-            {_endpointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endpointName"), out var __jsonEndpointName) ? (string)__jsonEndpointName : (string)EndpointName;}
-            {_projectName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("projectName"), out var __jsonProjectName) ? (string)__jsonProjectName : (string)ProjectName;}
-            {_jobDefinitionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobDefinitionName"), out var __jsonJobDefinitionName) ? (string)__jsonJobDefinitionName : (string)JobDefinitionName;}
-            {_jobRunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobRunName"), out var __jsonJobRunName) ? (string)__jsonJobRunName : (string)JobRunName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_storageMoverName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("storageMoverName"), out var __jsonStorageMoverName) ? (string)__jsonStorageMoverName : (string)_storageMoverName;}
+            {_agentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentName"), out var __jsonAgentName) ? (string)__jsonAgentName : (string)_agentName;}
+            {_connectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("connectionName"), out var __jsonConnectionName) ? (string)__jsonConnectionName : (string)_connectionName;}
+            {_endpointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endpointName"), out var __jsonEndpointName) ? (string)__jsonEndpointName : (string)_endpointName;}
+            {_projectName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("projectName"), out var __jsonProjectName) ? (string)__jsonProjectName : (string)_projectName;}
+            {_jobDefinitionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobDefinitionName"), out var __jsonJobDefinitionName) ? (string)__jsonJobDefinitionName : (string)_jobDefinitionName;}
+            {_jobRunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobRunName"), out var __jsonJobRunName) ? (string)__jsonJobRunName : (string)_jobRunName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -111,6 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._storageMoverName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._storageMoverName.ToString()) : null, "storageMoverName" ,container.Add );
             AddIf( null != (((object)this._agentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._agentName.ToString()) : null, "agentName" ,container.Add );
+            AddIf( null != (((object)this._connectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._connectionName.ToString()) : null, "connectionName" ,container.Add );
             AddIf( null != (((object)this._endpointName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._endpointName.ToString()) : null, "endpointName" ,container.Add );
             AddIf( null != (((object)this._projectName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._projectName.ToString()) : null, "projectName" ,container.Add );
             AddIf( null != (((object)this._jobDefinitionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._jobDefinitionName.ToString()) : null, "jobDefinitionName" ,container.Add );

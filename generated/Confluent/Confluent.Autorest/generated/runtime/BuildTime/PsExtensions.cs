@@ -9,10 +9,17 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PowerShell
 {
     internal static class PsExtensions
     {
+        public static PSObject AddMultipleTypeNameIntoPSObject(this object obj, string multipleTag = "#Multiple")
+        {
+            var psObj = new PSObject(obj);
+            psObj.TypeNames.Insert(0, $"{psObj.TypeNames[0]}{multipleTag}");
+            return psObj;
+        }
+
         // https://stackoverflow.com/a/863944/294804
         // https://stackoverflow.com/a/4452598/294804
         // https://stackoverflow.com/a/28701974/294804

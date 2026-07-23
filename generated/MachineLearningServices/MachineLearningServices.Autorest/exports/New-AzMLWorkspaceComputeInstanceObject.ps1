@@ -23,35 +23,65 @@ Create an in-memory object for ComputeInstance.
 New-AzMLWorkspaceComputeInstanceObject
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CUSTOMSERVICE <ICustomService[]>: List of Custom Services added to the compute.
+  [Docker <IDocker>]: Describes the docker settings for the image
+    [(Any) <Object>]: This indicates any property can be added to this object.
+    [Privileged <Boolean?>]: Indicate whether container shall run in privileged or non-privileged mode.
+  [Endpoint <List<IEndpoint>>]: Configuring the endpoints for the container
+    [HostIP <String>]: Host IP over which the application is exposed from the container
+    [Name <String>]: Name of the Endpoint
+    [Protocol <String>]: Protocol over which communication will happen over this endpoint
+    [Published <Int32?>]: Port over which the application is exposed from container.
+    [Target <Int32?>]: Application port inside the container.
+  [EnvironmentVariable <ICustomServiceEnvironmentVariables>]: Environment Variable for the container
+    [(Any) <IEnvironmentVariable>]: This indicates any property can be added to this object.
+      [(Any) <Object>]: This indicates any property can be added to this object.
+  [Image <IImage>]: Describes the Image Specifications
+    [(Any) <Object>]: This indicates any property can be added to this object.
+    [Reference <String>]: Image reference
+    [Type <String>]: Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
+  [Name <String>]: Name of the Custom Service
+  [Volume <List<IVolumeDefinition>>]: Configuring the volumes for the container
+    [BindCreateHostPath <Boolean?>]: Indicate whether to create host path.
+    [BindPropagation <String>]: Type of Bind Option
+    [BindSelinux <String>]: Mention the selinux options.
+    [Consistency <String>]: Consistency of the volume
+    [ReadOnly <Boolean?>]: Indicate whether to mount volume as readOnly. Default value for this is false.
+    [Source <String>]: Source of the mount. For bind mounts this is the host path.
+    [Target <String>]: Target of the mount. For bind mounts this is the path in the container.
+    [TmpfSize <Int32?>]: Mention the Tmpfs size
+    [Type <String>]: Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
+    [VolumeNocopy <Boolean?>]: Indicate whether volume is nocopy
+
 SCHEDULECOMPUTESTARTSTOP <IComputeStartStopSchedule[]>: The list of compute start stop schedules to be applied.
-  [Action <ComputePowerAction?>]: [Required] The compute power action.
+  [Action <String>]: [Required] The compute power action.
   [CronExpression <String>]: [Required] Specifies cron expression of schedule.         The expression should follow NCronTab format.
   [CronStartTime <String>]: The start time in yyyy-MM-ddTHH:mm:ss format.
   [CronTimeZone <String>]: Specifies time zone in which the schedule runs.         TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-  [RecurrenceFrequency <ComputeRecurrenceFrequency?>]: [Required] The frequency to trigger schedule.
+  [RecurrenceFrequency <String>]: [Required] The frequency to trigger schedule.
   [RecurrenceInterval <Int32?>]: [Required] Specifies schedule interval in conjunction with frequency
   [RecurrenceStartTime <String>]: The start time in yyyy-MM-ddTHH:mm:ss format.
   [RecurrenceTimeZone <String>]: Specifies time zone in which the schedule runs.         TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-  [ScheduleHour <Int32[]>]: [Required] List of hours for the schedule.
+  [ScheduleHour <List<Int32>>]: [Required] List of hours for the schedule.
   [ScheduleId <String>]: A system assigned id for the schedule.
-  [ScheduleMinute <Int32[]>]: [Required] List of minutes for the schedule.
-  [ScheduleMonthDay <Int32[]>]: List of month days for the schedule
-  [ScheduleProvisioningStatus <ScheduleProvisioningState?>]: The current deployment state of schedule.
-  [ScheduleStatus <ScheduleStatus?>]: Is the schedule enabled or disabled?
-  [ScheduleWeekDay <ComputeWeekDay[]>]: List of days for the schedule.
-  [Status <ScheduleStatus?>]: Is the schedule enabled or disabled?
-  [TriggerType <ComputeTriggerType?>]: [Required] The schedule trigger type.
+  [ScheduleMinute <List<Int32>>]: [Required] List of minutes for the schedule.
+  [ScheduleMonthDay <List<Int32>>]: List of month days for the schedule
+  [ScheduleProvisioningStatus <String>]: The current deployment state of schedule.
+  [ScheduleStatus <String>]: Is the schedule enabled or disabled?
+  [ScheduleWeekDay <List<String>>]: List of days for the schedule.
+  [Status <String>]: Is the schedule enabled or disabled?
+  [TriggerType <String>]: [Required] The schedule trigger type.
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeInstanceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecomputeinstanceobject
 #>
 function New-AzMLWorkspaceComputeInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -69,13 +99,19 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
+    # Location for the underlying compute.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
     # ARM resource id of the underlying compute.
     ${ResourceId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Personal", "Shared")]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy]
+    [System.String]
     # Policy for sharing applications on this compute instance among users of parent workspace.
     # If Personal, only the creator can access applications on this compute instance.
     # When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
@@ -84,19 +120,19 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # User's AAD Object Id.
+    # User’s AAD Object Id.
     ${AssignedUserObjectId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # User's AAD Tenant Id.
+    # User’s AAD Tenant Id.
     ${AssignedUserTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("personal")]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType]
+    [System.String]
     # The Compute Instance Authorization type.
     # Available values are personal (default).
     ${AuthorizationType},
@@ -116,7 +152,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # The storage source of the script: inline, workspace.
+    # The storage source of the script: workspace.
     ${CreationScriptSource},
 
     [Parameter()]
@@ -127,6 +163,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICustomService[]]
+    # List of Custom Services added to the compute.
+    ${CustomService},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.Boolean]
     # Enable or disable node public IP address provisioning.
     # Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned.
@@ -134,37 +176,9 @@ param(
     ${EnableNodePublicIP},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName])]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName]
-    # Name of the last operation.
-    ${LastOperationName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus]
-    # Operation status.
-    ${LastOperationStatus},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [System.DateTime]
-    # Time of the last operation.
-    ${LastOperationTime},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger]
-    # Trigger of operation.
-    ${LastOperationTrigger},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComputeStartStopSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeStartStopSchedule[]]
     # The list of compute start stop schedules to be applied.
-    # To construct, see NOTES section for SCHEDULECOMPUTESTARTSTOP properties and create a hash table.
     ${ScheduleComputeStartStop},
 
     [Parameter()]
@@ -175,9 +189,9 @@ param(
     ${SshSettingAdminPublicKey},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess]
+    [System.String]
     # State of the public SSH port.
     # Possible values are: Disabled - Indicates that the public ssh port is closed on this instance.
     # Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
@@ -198,7 +212,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # The storage source of the script: inline, workspace.
+    # The storage source of the script: workspace.
     ${StartupScriptSource},
 
     [Parameter()]
@@ -217,13 +231,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
     # Virtual Machine Size.
-    ${VMSize},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [System.String]
-    # Runtime of compute instance.
-    ${VersionRuntime}
+    ${VMSize}
 )
 
 begin {
@@ -233,6 +241,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -261,6 +272,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

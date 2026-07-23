@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginCreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     policyName,
                     input.Properties,
                     this.GetRequestHeaders(true))
@@ -54,6 +56,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     policyName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -69,7 +73,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<Policy> GetAzureSiteRecoveryPolicy()
         {
             var firstPage = this.GetSiteRecoveryClient()
-                .ReplicationPolicies.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ReplicationPolicies.ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -95,6 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationPolicies.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     PolicyName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -114,6 +123,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginUpdateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     policyName,
                     input.Properties,
                     this.GetRequestHeaders(true))

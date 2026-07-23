@@ -22,86 +22,112 @@ Creates or updates a Collector Policy resource
 .Example
 New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus | Format-List
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AZURETRAFFICCOLLECTORINPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
+  [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
+  [CollectorPolicyName <String>]: Collector Policy Name
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
 EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
-  [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
-    [DestinationType <DestinationType?>]: Emission destination type.
-  [EmissionType <EmissionType?>]: Emission format type.
+  [EmissionDestination <List<IEmissionPolicyDestination>>]: Emission policy destinations.
+    [DestinationType <String>]: Emission destination type.
+  [EmissionType <String>]: Emission format type.
 
 INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
   [ResourceId <String>]: Resource ID.
-  [SourceType <SourceType?>]: Ingestion source type.
+  [SourceType <String>]: Ingestion source type.
+  INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
+  [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
+  [CollectorPolicyName <String>]: Collector Policy Name
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: Azure Subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
 function New-AzNetworkFunctionCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess)]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # Azure Traffic Collector name
     ${AzureTrafficCollectorName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded', Mandatory)]
     [Alias('CollectorPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # Collector Policy Name
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity]
+    # Identity Parameter
+    ${AzureTrafficCollectorInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]]
     # Emission policies.
-    # To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
     ${EmissionPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]]
     # Ingestion Sources.
     # To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
     ${IngestionPolicyIngestionSource},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.PSArgumentCompleterAttribute("IPFIX")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType]
+    [System.String]
     # The ingestion type.
     ${IngestionPolicyIngestionType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAzureTrafficCollectorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets resource Id of replication protected item / recovery plan for cleaningup test failover.
+        ///     Gets or sets resource Id of replication protected item / recovery plan for cleaning up test failover.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByResourceId,

@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionsIdentity"
         /// />.
         /// </summary>
@@ -314,7 +322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             }
             if (content.Contains("BasicAuthName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName?) content.GetValueForProperty("BasicAuthName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName = (string) content.GetValueForProperty("BasicAuthName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName, global::System.Convert.ToString);
             }
             if (content.Contains("LinkedBackendName"))
             {
@@ -346,7 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             }
             if (content.Contains("ManagementPolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName?) content.GetValueForProperty("ManagementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName = (string) content.GetValueForProperty("ManagementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("BlobServicesName"))
             {
@@ -360,13 +368,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("KeyId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
-            }
             if (content.Contains("PurgeId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId = (string) content.GetValueForProperty("PurgeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
             }
             if (content.Contains("Scope"))
             {
@@ -607,7 +615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             }
             if (content.Contains("BasicAuthName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName?) content.GetValueForProperty("BasicAuthName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName = (string) content.GetValueForProperty("BasicAuthName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName, global::System.Convert.ToString);
             }
             if (content.Contains("LinkedBackendName"))
             {
@@ -639,7 +647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             }
             if (content.Contains("ManagementPolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName?) content.GetValueForProperty("ManagementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName = (string) content.GetValueForProperty("ManagementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ManagementPolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("BlobServicesName"))
             {
@@ -653,13 +661,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("KeyId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
-            }
             if (content.Contains("PurgeId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId = (string) content.GetValueForProperty("PurgeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
             }
             if (content.Contains("Scope"))
             {
@@ -676,6 +684,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(FunctionsIdentityTypeConverter))]
     public partial interface IFunctionsIdentity

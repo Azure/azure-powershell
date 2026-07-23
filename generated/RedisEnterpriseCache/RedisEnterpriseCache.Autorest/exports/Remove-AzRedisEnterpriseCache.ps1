@@ -35,7 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -55,6 +55,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -75,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -152,6 +154,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -174,9 +184,7 @@ begin {
             Delete = 'Az.RedisEnterpriseCache.private\Remove-AzRedisEnterpriseCache_Delete';
             DeleteViaIdentity = 'Az.RedisEnterpriseCache.private\Remove-AzRedisEnterpriseCache_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -190,6 +198,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

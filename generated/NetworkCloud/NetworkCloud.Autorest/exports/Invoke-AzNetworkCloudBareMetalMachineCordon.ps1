@@ -62,12 +62,16 @@ function Invoke-AzNetworkCloudBareMetalMachineCordon {
 [CmdletBinding(DefaultParameterSetName='CordonExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CordonExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CordonViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CordonViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the bare metal machine.
     ${BareMetalMachineName},
 
     [Parameter(ParameterSetName='CordonExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CordonViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CordonViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -75,6 +79,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CordonExpanded')]
+    [Parameter(ParameterSetName='CordonViaJsonFilePath')]
+    [Parameter(ParameterSetName='CordonViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -86,15 +92,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BareMetalMachineEvacuate])]
+    [Parameter(ParameterSetName='CordonExpanded')]
+    [Parameter(ParameterSetName='CordonViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BareMetalMachineEvacuate]
+    [System.String]
     # The indicator of whether to evacuate the node workload when the bare metal machine is cordoned.
     ${Evacuate},
+
+    [Parameter(ParameterSetName='CordonViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Cordon operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CordonViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Cordon operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -170,6 +188,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -191,10 +217,10 @@ begin {
         $mapping = @{
             CordonExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineCordon_CordonExpanded';
             CordonViaIdentityExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineCordon_CordonViaIdentityExpanded';
+            CordonViaJsonFilePath = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineCordon_CordonViaJsonFilePath';
+            CordonViaJsonString = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineCordon_CordonViaJsonString';
         }
-        if (('CordonExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CordonExpanded', 'CordonViaJsonFilePath', 'CordonViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -208,6 +234,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -25,11 +25,18 @@ Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName test -resourcegr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AZURETRAFFICCOLLECTORINPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
+  [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
+  [CollectorPolicyName <String>]: Collector Policy Name
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: Azure Subscription ID.
 
 INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [AzureTrafficCollectorName <String>]: Azure Traffic Collector name
@@ -41,7 +48,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctioncollectorpolicy
 #>
 function Get-AzNetworkFunctionCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -52,6 +59,7 @@ param(
     ${AzureTrafficCollectorName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAzureTrafficCollector', Mandatory)]
     [Alias('CollectorPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [System.String]
@@ -77,8 +85,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAzureTrafficCollector', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity]
+    # Identity Parameter
+    ${AzureTrafficCollectorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -136,6 +149,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -157,11 +179,10 @@ begin {
         $mapping = @{
             Get = 'Az.NetworkFunction.private\Get-AzNetworkFunctionCollectorPolicy_Get';
             GetViaIdentity = 'Az.NetworkFunction.private\Get-AzNetworkFunctionCollectorPolicy_GetViaIdentity';
+            GetViaIdentityAzureTrafficCollector = 'Az.NetworkFunction.private\Get-AzNetworkFunctionCollectorPolicy_GetViaIdentityAzureTrafficCollector';
             List = 'Az.NetworkFunction.private\Get-AzNetworkFunctionCollectorPolicy_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -175,6 +196,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

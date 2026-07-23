@@ -60,6 +60,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSPacketCaptureFilter> Filters { get; set; }
 
+        [JsonProperty(Order = 2)]
+        public bool? ContinuousCapture { get; set; }
+
+        [JsonProperty(Order = 3)]
+        public PSPacketCaptureSettings CaptureSettings { get; set; }
+
         [JsonIgnore]
         public string FiltersText
         {
@@ -82,6 +88,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PacketCaptureErrorText
         {
             get { return JsonConvert.SerializeObject(this.PacketCaptureError, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CaptureSettingsText
+        {
+            get { return JsonConvert.SerializeObject(this.CaptureSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializePacketCaptureError()

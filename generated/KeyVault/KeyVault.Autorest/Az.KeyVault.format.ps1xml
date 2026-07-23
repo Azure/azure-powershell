@@ -9,6 +9,15 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>IdentityPrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityTenantId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -45,6 +54,15 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityPrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityTenantId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityType</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
@@ -784,6 +802,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmGeoReplicatedRegion</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmGeoReplicatedRegion#Multiple</TypeName>
@@ -875,6 +921,15 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>IdentityPrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityTenantId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -920,6 +975,15 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityPrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityTenantId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityType</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
@@ -1041,6 +1105,15 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>IdentityPrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityTenantId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1074,6 +1147,15 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityPrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityTenantId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityType</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
@@ -1563,6 +1645,34 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

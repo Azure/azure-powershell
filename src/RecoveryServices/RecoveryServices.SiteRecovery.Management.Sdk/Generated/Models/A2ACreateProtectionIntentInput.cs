@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="recoveryAvailabilityType">The recovery availability type of the virtual machine.
-        /// Possible values include: 'Single', 'AvailabilitySet', 'AvailabilityZone'</param>
+        /// Possible values include: &#39;Single&#39;, &#39;AvailabilitySet&#39;, &#39;AvailabilityZone&#39;</param>
 
         /// <param name="protectionProfileCustomInput">The protection profile custom inputs.
         /// </param>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="autoProtectionOfDataDisk">A value indicating whether the auto protection is enabled.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="vmDisks">The list of vm disk inputs.
         /// </param>
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="agentAutoUpdateStatus">A value indicating whether the auto update is enabled.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="automationAccountAuthenticationType">A value indicating the authentication type for automation account. The
         /// default value is &#34;RunAsAccount&#34;.
-        /// Possible values include: 'RunAsAccount', 'SystemAssignedIdentity'</param>
+        /// Possible values include: &#39;RunAsAccount&#39;, &#39;SystemAssignedIdentity&#39;</param>
 
         /// <param name="automationAccountArmId">The automation account arm id.
         /// </param>

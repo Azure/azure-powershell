@@ -19,16 +19,17 @@ API to get lab schedule.
 API to get lab schedule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
 #>
-function Get-AzLabServicesSchedule_LabObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+function Get-AzLabServicesSchedule_ResourceId {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service schedule.
         ${ResourceId},
 
         [Parameter()]
@@ -87,8 +88,8 @@ function Get-AzLabServicesSchedule_LabObject {
     )
     
     process {
-
-        $resourceHash = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
+        $HandleScheduleResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleScheduleResourceId.ps1'
+        $resourceHash = . $HandleScheduleResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {

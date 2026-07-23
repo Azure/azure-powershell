@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Creates an input or replaces an already existing input under an existing streaming job.
+Create an input or replaces an already existing input under an existing streaming job.
 .Description
-Creates an input or replaces an already existing input under an existing streaming job.
+Create an input or replaces an already existing input under an existing streaming job.
 .Example
 New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name input-01 -File .\test\template-json\EventHub.json
 .Example
 New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name input-01 -File .\test\template-json\IotHub.json
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ INPUT <IInput>: An input object, containing all information associated with the 
       Type <String>: 
     [PartitionKey <String>]: partitionKey Describes a key in the input data which is used for partitioning the input data
     [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-      Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+      Type <String>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the cluster.
@@ -63,16 +63,30 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
     Type <String>: 
   [PartitionKey <String>]: partitionKey Describes a key in the input data which is used for partitioning the input data
   [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-    Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+    Type <String>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+
+STREAMINGJOBINPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the cluster.
+  [FunctionName <String>]: The name of the function.
+  [Id <String>]: Resource identity path
+  [InputName <String>]: The name of the input.
+  [JobName <String>]: The name of the streaming job.
+  [Location <String>]: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
+  [OutputName <String>]: The name of the output.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TransformationName <String>]: The name of the transformation.
 .Link
 https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 #>
 function New-AzStreamAnalyticsInput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the streaming job.
@@ -80,6 +94,10 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjob', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjobExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('InputName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
@@ -88,6 +106,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -96,6 +116,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -107,8 +129,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjobExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
+    # Identity Parameter
+    ${StreamingjobInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Header')]
@@ -127,21 +155,33 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput]
     # An input object, containing all information associated with the named input.
     # All inputs are contained under a streaming job.
-    # To construct, see NOTES section for INPUT properties and create a hash table.
     ${Input},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInputProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInputProperties]
     # The properties that are associated with an input.
     # Required on PUT (CreateOrReplace) requests.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -199,16 +239,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_Create';
             CreateExpanded = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateExpanded';
             CreateViaIdentity = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateViaIdentityExpanded';
+            CreateViaIdentityStreamingjob = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateViaIdentityStreamingjob';
+            CreateViaIdentityStreamingjobExpanded = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateViaIdentityStreamingjobExpanded';
+            CreateViaJsonFilePath = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsInput_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -217,6 +262,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

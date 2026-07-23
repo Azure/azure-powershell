@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Update a firmware analysis workspaces.
+The operation to update a firmware analysis workspaces.
 .Description
-The operation to Update a firmware analysis workspaces.
+The operation to update a firmware analysis workspaces.
 .Example
 Update-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
 
@@ -34,9 +34,10 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IFirmwareAnalysisIdentity>: Identity Parameter
   [FirmwareId <String>]: The id of the firmware.
   [Id <String>]: Resource identity path
+  [Name <String>]: The Firmware analysis summary name describing the type of summary.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [SummaryName <String>]: The Firmware analysis summary name describing the type of summary.
+  [SummaryType <String>]: The Firmware analysis summary name describing the type of summary.
   [WorkspaceName <String>]: The name of the firmware analysis workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.firmwareanalysis/update-azfirmwareanalysisworkspace
@@ -72,6 +73,48 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # Ex - P3.
+    # It is typically a letter+number code
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
+    [System.String]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -129,6 +172,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -152,8 +204,6 @@ begin {
             UpdateViaIdentityExpanded = 'Az.FirmwareAnalysis.private\Update-AzFirmwareAnalysisWorkspace_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -167,6 +217,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

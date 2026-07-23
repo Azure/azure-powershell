@@ -21,7 +21,9 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationType <String>] [-CertificateAuthentication <PSCertificateAuthentication>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -32,7 +34,9 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] -Tag <Hashtable> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationType <String>] [-CertificateAuthentication <PSCertificateAuthentication>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -265,6 +269,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthenticationType
+Authentication type for this VPN connection: PSK or Certificate
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: PSK, Certificate
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CertificateAuthentication
+Certificate authentication configuration for this VPN connection
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSCertificateAuthentication
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

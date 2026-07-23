@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOracleCloudVMCluster
 Describe 'Remove-AzOracleCloudVMClusterVM' {
     It 'RemoveExpanded' {
         {
-            $dbServerList = Get-AzOracleDbServer -Cloudexadatainfrastructurename $env.exaInfraName -ResourceGroupName $env.resourceGroup
+            $dbServerList = Get-AzOracleDbServer -Cloudexadatainfrastructurename $env.ExaInfraDNDName -ResourceGroupName $env.resourceGroup
             $dbServerOcid1 = $dbServerList[0].Ocid
             $dbServersToRemove = @($dbServerOcid1)
             
-            Remove-AzOracleCloudVMClusterVM -NoWait -Cloudvmclustername $env.vmClusterName -ResourceGroupName $env.resourceGroup -DbServer $dbServersToRemove
+            Remove-AzOracleCloudVMClusterVM -NoWait -Cloudvmclustername $env.VmClusterDNDName -ResourceGroupName $env.resourceGroup -DbServer $dbServersToRemove
         } | Should -Not -Throw
     }
 }

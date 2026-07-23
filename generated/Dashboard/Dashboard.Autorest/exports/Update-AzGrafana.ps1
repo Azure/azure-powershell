@@ -17,24 +17,29 @@
 <#
 .Synopsis
 Update a workspace for Grafana resource.
+This API is idempotent, so user can either update a new grafana or update an existing grafana.
 .Description
 Update a workspace for Grafana resource.
+This API is idempotent, so user can either update a new grafana or update an existing grafana.
 .Example
-Update-AzGrafana -GrafanaName azpstest-grafana -ResourceGroupName azpstest-gp -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
+Update-AzGrafana -GrafanaName azpstest-grafana -ResourceGroupName azpstest-gp -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity $true -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
 .Example
-Get-AzGrafana -ResourceGroupName azpstest-gp -GrafanaName azpstest-grafana | Update-AzGrafana -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
+Get-AzGrafana -ResourceGroupName azpstest-gp -GrafanaName azpstest-grafana | Update-AzGrafana -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity $true -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana
+Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDashboardIdentity>: Identity Parameter
+  [DashboardName <String>]: The name of the Azure Managed Dashboard.
   [Id <String>]: Resource identity path
+  [IntegrationFabricName <String>]: The integration fabric name of Azure Managed Grafana.
+  [ManagedPrivateEndpointName <String>]: The managed private endpoint name of Azure Managed Grafana.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name of Azure Managed Grafana.
   [PrivateLinkResourceName <String>]: 
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -47,7 +52,7 @@ MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>: The MonitorWo
 https://learn.microsoft.com/powershell/module/az.dashboard/update-azgrafana
 #>
 function Update-AzGrafana {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -75,65 +80,186 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey]
+    [System.String]
     # The api key setting of the Grafana instance.
     ${ApiKey},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP]
+    [System.String]
+    # The creator will have admin access for the Grafana instance.
+    ${CreatorCanAdmin},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
     # Whether a Grafana instance uses deterministic outbound IPs.
     ${DeterministicOutboundIP},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # The AutoRenew setting of the Enterprise subscription
+    ${EnterpriseConfigurationMarketplaceAutoRenew},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IUserAssignedIdentities]))]
+    [System.String]
+    # The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+    ${EnterpriseConfigurationMarketplacePlanId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # The major Grafana software version to target.
+    ${GrafanaMajorVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesGrafanaPlugins]))]
     [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
+    # Installed plugin list of the Grafana instance.
+    # Key is plugin id, value is plugin definition.
+    ${GrafanaPlugin},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration[]]
     # The MonitorWorkspaceIntegration of Azure Managed Grafana.
-    # To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
     ${MonitorWorkspaceIntegration},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess]
+    [System.String]
     # Indicate the state for enable or disable traffic over the public interface.
     ${PublicNetworkAccess},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaUpdateParametersTags]))]
+    [System.Management.Automation.SwitchParameter]
+    # Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+    ${SecurityCsrfAlwaysCheck},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # The Sku of the grafana resource.
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable this to allow Grafana to send email.
+    # Default is false
+    ${SmtpEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # Address used when sending out emailshttps://pkg.go.dev/net/mail#Address
+    ${SmtpFromAddress},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # Name to be used when sending out emails.
+    # Default is "Azure Managed Grafana Notification"https://pkg.go.dev/net/mail#Address
+    ${SmtpFromName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # SMTP server hostname with port, e.g.
+    # test.email.net:587
+    ${SmtpHost},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.Security.SecureString]
+    # Password of SMTP auth.
+    # If the password contains # or ;, then you have to wrap it with triple quotes
+    ${SmtpPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Verify SSL for SMTP server.
+    # Default is falsehttps://pkg.go.dev/crypto/tls#Config
+    ${SmtpSkipVerify},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("OpportunisticStartTLS", "MandatoryStartTLS", "NoStartTLS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # The StartTLSPolicy setting of the SMTP configurationhttps://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+    ${SmtpStartTlsPolicy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
+    # User of SMTP auth
+    ${SmtpUser},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Set to false to disable external snapshot publish endpoint
+    ${SnapshotExternalEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTags]))]
     [System.Collections.Hashtable]
-    # The new tags of the grafana resource.
+    # Resource tags.
     ${Tag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy])]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy]
+    [System.Management.Automation.SwitchParameter]
+    # Set to false to disable capture screenshot in Unified Alert due to performance issue.
+    ${UnifiedAlertingScreenshotCaptureEnabled},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Set to true so editors can administrate dashboards, folders and teams they create.
+    ${UserEditorsCanAdmin},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to.
+    # They cannot save their changes.
+    ${UserViewersCanEdit},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [System.String]
     # The zone redundancy setting of the Grafana instance.
     ${ZoneRedundancy},
 
@@ -145,6 +271,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Runtime')]
@@ -165,6 +297,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Runtime')]
@@ -193,6 +331,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -215,9 +362,7 @@ begin {
             UpdateExpanded = 'Az.Dashboard.private\Update-AzGrafana_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Dashboard.private\Update-AzGrafana_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -231,6 +376,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

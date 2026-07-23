@@ -13,8 +13,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class DiskAccountType
     {
+        /// <summary>
+        /// Standard_LRS
+        /// </summary>
         public const string StandardLRS = "Standard_LRS";
+        /// <summary>
+        /// Premium_LRS
+        /// </summary>
         public const string PremiumLRS = "Premium_LRS";
+        /// <summary>
+        /// StandardSSD_LRS
+        /// </summary>
         public const string StandardSSDLRS = "StandardSSD_LRS";
+        /// <summary>
+        /// PremiumV2_LRS
+        /// </summary>
+        public const string PremiumV2LRS = "PremiumV2_LRS";
+        /// <summary>
+        /// UltraSSD_LRS
+        /// </summary>
+        public const string UltraSSDLRS = "UltraSSD_LRS";
+        /// <summary>
+        /// StandardSSD_ZRS
+        /// </summary>
+        public const string StandardSSDZRS = "StandardSSD_ZRS";
+        /// <summary>
+        /// Premium_ZRS
+        /// </summary>
+        public const string PremiumZRS = "Premium_ZRS";
     }
 }

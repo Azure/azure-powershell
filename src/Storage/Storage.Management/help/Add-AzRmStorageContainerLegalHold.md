@@ -16,21 +16,21 @@ Adds legal hold tags to a Storage blob container
 ```
 Add-AzRmStorageContainerLegalHold [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  -Tag <String[]> [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Add-AzRmStorageContainerLegalHold -Name <String> -StorageAccount <PSStorageAccount> -Tag <String[]>
  [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerObject
 ```
 Add-AzRmStorageContainerLegalHold -Container <PSContainer> -Tag <String[]>
  [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ This command adds legal hold tags to all Storage blob containers in a Storage ac
 ## PARAMETERS
 
 ### -AllowProtectedAppendWriteAll
-When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. 
+When enabled, new blocks can be written to both 'Append and Block Blobs' while maintaining immutability protection and compliance. 
 Only new blocks can be added and any existing blocks cannot be modified or deleted.
 
 ```yaml
@@ -120,21 +120,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

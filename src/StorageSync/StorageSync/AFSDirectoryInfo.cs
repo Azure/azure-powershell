@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         }
 
         /// <summary>
-        /// Existses this instance.
+        /// Exists this instance.
         /// </summary>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Exists()

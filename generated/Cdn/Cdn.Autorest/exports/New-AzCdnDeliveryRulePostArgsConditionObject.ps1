@@ -23,27 +23,27 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 New-AzCdnDeliveryRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRulePostArgsCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulepostargsconditionobject
 #>
 function New-AzCdnDeliveryRulePostArgsConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRulePostArgsCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.PostArgsOperator])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "Equal", "Contains", "BeginsWith", "EndsWith", "LessThan", "LessThanOrEqual", "GreaterThan", "GreaterThanOrEqual", "RegEx")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.PostArgsOperator]
+    [System.String]
     # Describes operator to be matched.
     ${ParameterOperator},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
+    [Alias('Name')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
-    # The name of the condition for the delivery rule.
-    ${Name},
+    [System.String]
+    ${ParameterTypeName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -64,9 +64,9 @@ param(
     ${ParameterSelector},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+    [System.String[]]
     # List of transforms.
     ${ParameterTransform}
 )
@@ -78,6 +78,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -106,6 +109,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

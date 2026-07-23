@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Description
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Example
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 
@@ -36,14 +36,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -137,12 +138,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\Start-AzServiceBusMigration_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

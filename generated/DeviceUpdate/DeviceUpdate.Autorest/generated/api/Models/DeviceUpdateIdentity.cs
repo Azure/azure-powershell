@@ -81,6 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Account name.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
@@ -89,6 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The group ID of the private link resource.",
         SerializedName = @"groupId",
         PossibleTypes = new [] { typeof(string) })]
@@ -97,6 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Instance name.",
         SerializedName = @"instanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection associated with the Azure resource",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the private endpoint connection proxy object.",
         SerializedName = @"privateEndpointConnectionProxyId",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,6 +147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource group name.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

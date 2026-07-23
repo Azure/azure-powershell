@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzArcResourceBridge
 
 ## SYNOPSIS
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 
 ## SYNTAX
 
@@ -19,6 +19,20 @@ Update-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-Subscrip
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzArcResourceBridge -InputObject <IArcResourceBridgeIdentity> [-Tag <Hashtable>]
@@ -26,7 +40,7 @@ Update-AzArcResourceBridge -InputObject <IArcResourceBridgeIdentity> [-Tag <Hash
 ```
 
 ## DESCRIPTION
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 
 ## EXAMPLES
 
@@ -76,7 +90,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
@@ -90,12 +103,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Appliances name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -111,7 +154,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -126,7 +169,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -141,7 +184,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -191,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 
 ## NOTES
 

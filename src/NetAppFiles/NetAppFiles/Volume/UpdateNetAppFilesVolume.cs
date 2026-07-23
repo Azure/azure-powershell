@@ -169,6 +169,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "CoolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: \n Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default.\n SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.")]
+        [PSArgumentCompleter("Auto", "SnapshotOnly")]
+        public string CoolAccessTieringPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
         public SwitchParameter SnapshotDirectoryVisible { get; set; }
 
@@ -190,6 +196,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume")]
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string SmbNonBrowsable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DesiredRansomwareProtectionState { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -242,7 +254,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Location = InputObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 Name = NameParts[2];
@@ -251,7 +263,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
@@ -260,12 +272,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //    ExecuteCmdlet_2022_11_01(tagPairs);
             //}
             PSNetAppFilesVolumeDataProtection dataProtection = null;
-            if (SnapshotPolicyId != null || Backup != null)
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
             {
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
-                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                    Backup = Backup
+                    Snapshot = !string.IsNullOrWhiteSpace(SnapshotPolicyId) ? new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId } : null,
+                    Backup = Backup,
+                    RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                 };
             }
 
@@ -284,6 +297,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                 SmbNonBrowsable = SmbNonBrowsable,
                 CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
+                CoolAccessTieringPolicy = CoolAccessTieringPolicy,
                 ProtocolTypes = ProtocolType
             };            
 

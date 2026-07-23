@@ -19,11 +19,15 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-EnableBurstCapacity <Boolean>]
- [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-DisableLocalAuth <Boolean>]
+ [-EnableAnalyticalStorage <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>]
+ [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
+ [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
+ [-DefaultPriorityLevel <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,20 +160,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBurstCapacity
-Bool to indicate if Burst Capacity is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackupStorageRedundancy
 The redundancy type of the backup Storage account
 
@@ -186,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -Capabilities
-Add a location to the Cosmos DB database account. Array of strings, ordered by failover priority.
+List of Cosmos DB capabilities for the account. e.g. EnableMongo, EnablePerPartitionFailoverPreview, DisableRateLimitingResponses.
 
 ```yaml
 Type: System.String[]
@@ -207,6 +197,7 @@ The tier of continuous backups mode on the Cosmos DB account. Accepted values: C
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -217,6 +208,22 @@ Accept wildcard characters: False
 ### -DefaultConsistencyLevel
 Default consistency level of the Cosmos DB database account.
 Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultPriorityLevel
+Default priority level of requests for Cosmos DB database account.
+Accepted values: High, Low
 
 ```yaml
 Type: System.String
@@ -260,8 +267,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAnalyticalStorage
-Bool to indicate if AnalyticalStorage is enabled on the account.
+### -DisableLocalAuth
+Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -275,9 +282,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnablePartitionMerge
-Bool to indicate if PartitionMerge is enabled on the account.
-Accepted Values: false, true
+### -EnableAnalyticalStorage
+Bool to indicate if AnalyticalStorage is enabled on the account.
+
 ```yaml
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
@@ -297,6 +304,21 @@ Accepted values: false, true
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableBurstCapacity
+Bool to indicate if Burst Capacity is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -328,6 +350,53 @@ Accepted values: false, true
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePartitionMerge
+Bool to indicate if PartitionMerge is enabled on the account.
+Accepted Values: false, true
+
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePerRegionPerPartitionAutoscale
+Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePriorityBasedExecution
+Bool to indicate if Priority Based Execution is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -452,6 +521,21 @@ Accepted range for this value is 1 - 2,147,483,647.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

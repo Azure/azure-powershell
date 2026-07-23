@@ -15,7 +15,8 @@ Gets the CosmosDB MongoDB Role Definition for the specified resource group and a
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> [-Id <String>]
- [-DatabaseName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DatabaseName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

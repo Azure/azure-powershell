@@ -108,6 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -115,10 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("NamespaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("AuthorizationRuleName"))
             {
@@ -161,6 +161,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -168,10 +172,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("NamespaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("AuthorizationRuleName"))
             {

@@ -21,12 +21,13 @@ Create an in-memory object for ServicePrincipalSecretAuthInfo.
 Create an in-memory object for ServicePrincipalSecretAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ServicePrincipalSecretAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ServicePrincipalSecretAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerserviceprincipalsecretauthinfoobject
 #>
 function New-AzServiceLinkerServicePrincipalSecretAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ServicePrincipalSecretAuthInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ServicePrincipalSecretAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,18 +37,19 @@ function New-AzServiceLinkerServicePrincipalSecretAuthInfoObject {
         [Parameter(Mandatory, HelpMessage="Principal Id for servicePrincipal auth.")]
         [string]
         $PrincipalId,
+        [Parameter(HelpMessage="Optional, this value specifies the Azure roles to be assigned. Automatically .")]
+        [string[]]
+        $Role,
         [Parameter(Mandatory, HelpMessage="Secret for servicePrincipal auth.")]
         [string]
         $Secret,
-        [Parameter(DontShow, HelpMessage="The authentication type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"servicePrincipalSecret"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
-        $AuthType
+        [Parameter(HelpMessage="Username created in the database which is mapped to a user in AAD.")]
+        [string]
+        $UserName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ServicePrincipalSecretAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ServicePrincipalSecretAuthInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('ClientId')) {
             $Object.ClientId = $ClientId
@@ -55,11 +57,14 @@ function New-AzServiceLinkerServicePrincipalSecretAuthInfoObject {
         if ($PSBoundParameters.ContainsKey('PrincipalId')) {
             $Object.PrincipalId = $PrincipalId
         }
+        if ($PSBoundParameters.ContainsKey('Role')) {
+            $Object.Role = $Role
+        }
         if ($PSBoundParameters.ContainsKey('Secret')) {
             $Object.Secret = $Secret
         }
-        if ($PSBoundParameters.ContainsKey('AuthType')) {
-            $Object.AuthType = $AuthType
+        if ($PSBoundParameters.ContainsKey('UserName')) {
+            $Object.UserName = $UserName
         }
         return $Object
     }

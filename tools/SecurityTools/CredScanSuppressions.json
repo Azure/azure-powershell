@@ -466,6 +466,14 @@
       "_justification": "Legitimate test certificate file"
     },
     {
+      "file": "src\\Network\\Network.Test\\ScenarioTests\\Data\\VpnGatewayoutboundcert.pfx",
+      "_justification": "Legitimate test certificate file"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\\TestVirtualNetworkGatewayConnectionWithCertificateAuth.json",
+      "_justification": "Legitimate test session record, resources are deleted after the test run in Record mode."
+    },
+    {
       "file": "src\\Relay\\Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
       "_justification": "The Authorization rule is deleted Rule is"
     },
@@ -788,6 +796,10 @@
     {
       "file": "src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestValidateMigrationInputSqlSqlDbMiSync.json",
       "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+    {
+      "file": "src\\DataMigration\\DataMigration.Autorest\\test\\Remove-AzDataMigrationToSqlDb.Recording.json",
+      "_justification": "Legitimate session record, Resources will be deleted after test"
     },
     {
       "file": "src\\RedisCache\\RedisCache\\help\\Export-AzRedisCache.md",
@@ -1350,11 +1362,43 @@
       "_justification": "False positive, there are no cred in this file."
     },
     {
+      "file": "generated\\Resources\\MSGraph.Autorest\\exports\\ProxyCmdletDefinitions.ps1",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
       "file": "src\\Resources\\MSGraph.Autorest\\exports\\New-AzADUser.ps1",
       "_justification": "False positive, there are no cred in this file."
     },
     {
+      "file": "generated\\Resources\\MSGraph.Autorest\\exports\\New-AzADUser.ps1",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
       "file": "src\\RecoveryServices\\RecoveryServices.Backup.Providers\\Providers\\IaasVmPsBackupProvider.cs",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Tests.ps1",
+      "_justification": "The test is for a scenario where the customer chooses to use a password of their choice. There are validations in place for the password. So having it as *** will cause the test to fail"
+    },
+    {
+      "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Recording.json",
+      "_justification": "Recording of the test New-AzDataBoxJob.Tests.ps1, which is also a part of the cred scan supression."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\env.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\Get-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubGeoDRConfiguration.Recording.json",
       "_justification": "False positive, there are no cred in this file."
     }
   ]

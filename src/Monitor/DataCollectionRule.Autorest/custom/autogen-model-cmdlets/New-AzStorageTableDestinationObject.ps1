@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDes
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azstoragetabledestinationobject
 #>
 function New-AzStorageTableDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

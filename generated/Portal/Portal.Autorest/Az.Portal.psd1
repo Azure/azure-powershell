@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Portal.private.dll'
   FormatsToProcess = './Az.Portal.format.ps1xml'
-  FunctionsToExport = 'Get-AzPortalDashboard', 'New-AzPortalDashboard', 'Remove-AzPortalDashboard', 'Set-AzPortalDashboard', 'Update-AzPortalDashboard', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzPortalDashboard', 'New-AzPortalDashboard', 'Remove-AzPortalDashboard', 'Set-AzPortalDashboard', 'Update-AzPortalDashboard'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Portal', 'Dashboard'

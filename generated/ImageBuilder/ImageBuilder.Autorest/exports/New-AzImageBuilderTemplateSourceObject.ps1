@@ -22,21 +22,21 @@ Create an in-memory object for ImageTemplateSource.
 .Example
 New-AzImageBuilderTemplateSourceObject -ManagedImageSource -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
 .Example
-New-AzImageBuilderTemplateSourceObject -SharedImageVersionSource -ImageVersionId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image/versions/1.0.0" 
+New-AzImageBuilderTemplateSourceObject -ImageVersionId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image/versions/1.0.0" 
 .Example
-New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
+New-AzImageBuilderTemplateSourceObject -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageSource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePlatformImageSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePlatformImageSource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageVersionSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageVersionSource
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 #>
 function New-AzImageBuilderTemplateSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePlatformImageSource], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageVersionSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageSource], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePlatformImageSource], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageVersionSource])]
 [CmdletBinding(DefaultParameterSetName='PlatformImageSource', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ManagedImageSource', Mandatory)]
@@ -122,6 +122,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -152,6 +155,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

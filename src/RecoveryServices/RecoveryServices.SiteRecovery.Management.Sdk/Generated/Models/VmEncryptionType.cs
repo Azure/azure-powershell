@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class VmEncryptionType
     {
+        /// <summary>
+        /// NotEncrypted
+        /// </summary>
         public const string NotEncrypted = "NotEncrypted";
+        /// <summary>
+        /// OnePassEncrypted
+        /// </summary>
         public const string OnePassEncrypted = "OnePassEncrypted";
+        /// <summary>
+        /// TwoPassEncrypted
+        /// </summary>
         public const string TwoPassEncrypted = "TwoPassEncrypted";
     }
 }

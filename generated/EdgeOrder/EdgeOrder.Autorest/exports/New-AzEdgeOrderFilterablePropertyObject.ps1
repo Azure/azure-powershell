@@ -24,12 +24,12 @@ $filterableProperty = New-AzEdgeOrderFilterablePropertyObject -Type "ShipToCount
 $filterableProperty | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderfilterablepropertyobject
 #>
 function New-AzEdgeOrderFilterablePropertyObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -39,9 +39,9 @@ param(
     ${SupportedValue},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PSArgumentCompleterAttribute("ShipToCountries", "DoubleEncryptionStatus")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes]
+    [System.String]
     # Type of product filter.
     ${Type}
 )
@@ -53,6 +53,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -81,6 +84,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

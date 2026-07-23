@@ -7,11 +7,11 @@ Connect-AzureRmAccount
 
 Set-AzureRmSubscription -SubscriptionId $subscription
 
-$agggregate = get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
+$aggregate = get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
 
-Write-Host $agggregate.NextLink
-Write-Host "Result count: " + $agggregate.UsageAggregations.Count
+Write-Host $aggregate.NextLink
+Write-Host "Result count: " + $aggregate.UsageAggregations.Count
 
-$agggregate.UsageAggregations | ForEach-Object {
+$aggregate.UsageAggregations | ForEach-Object {
 	Write-Host $_.Name
 }

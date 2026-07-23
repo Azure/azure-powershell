@@ -27,7 +27,7 @@ Get-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myS
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAgent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +35,19 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -47,10 +60,11 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
 #>
 function Get-AzStorageMoverAgent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAgent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Alias('AgentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -84,8 +98,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -143,6 +162,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -164,11 +191,10 @@ begin {
         $mapping = @{
             Get = 'Az.StorageMover.private\Get-AzStorageMoverAgent_Get';
             GetViaIdentity = 'Az.StorageMover.private\Get-AzStorageMoverAgent_GetViaIdentity';
+            GetViaIdentityStorageMover = 'Az.StorageMover.private\Get-AzStorageMoverAgent_GetViaIdentityStorageMover';
             List = 'Az.StorageMover.private\Get-AzStorageMoverAgent_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -182,6 +208,249 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a Connection resource.
+.Description
+Gets a Connection resource.
+.Example
+Get-AzStorageMoverConnection -ResourceGroupName "examples-rg" -StorageMoverName "examples-storageMoverName"
+.Example
+Get-AzStorageMoverConnection -ResourceGroupName "examples-rg" -StorageMoverName "examples-storageMoverName" -Name "example-connection"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IConnection
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverconnection
+#>
+function Get-AzStorageMoverConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IConnection])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
+    [Alias('ConnectionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Connection resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.StorageMover.private\Get-AzStorageMoverConnection_Get';
+            GetViaIdentity = 'Az.StorageMover.private\Get-AzStorageMoverConnection_GetViaIdentity';
+            GetViaIdentityStorageMover = 'Az.StorageMover.private\Get-AzStorageMoverConnection_GetViaIdentityStorageMover';
+            List = 'Az.StorageMover.private\Get-AzStorageMoverConnection_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -238,7 +507,7 @@ Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroupName -StorageMoverN
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -246,6 +515,19 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -258,10 +540,11 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverendpoint
 #>
 function Get-AzStorageMoverEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Alias('EndpointName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -295,8 +578,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -354,6 +642,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -375,11 +671,10 @@ begin {
         $mapping = @{
             Get = 'Az.StorageMover.private\Get-AzStorageMoverEndpoint_Get';
             GetViaIdentity = 'Az.StorageMover.private\Get-AzStorageMoverEndpoint_GetViaIdentity';
+            GetViaIdentityStorageMover = 'Az.StorageMover.private\Get-AzStorageMoverEndpoint_GetViaIdentityStorageMover';
             List = 'Az.StorageMover.private\Get-AzStorageMoverEndpoint_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -393,6 +688,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -449,7 +747,7 @@ Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myReso
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -457,6 +755,31 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -469,10 +792,12 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
 #>
 function Get-AzStorageMoverJobDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Alias('JobDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -480,6 +805,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -513,8 +839,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -572,6 +909,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -593,11 +938,11 @@ begin {
         $mapping = @{
             Get = 'Az.StorageMover.private\Get-AzStorageMoverJobDefinition_Get';
             GetViaIdentity = 'Az.StorageMover.private\Get-AzStorageMoverJobDefinition_GetViaIdentity';
+            GetViaIdentityProject = 'Az.StorageMover.private\Get-AzStorageMoverJobDefinition_GetViaIdentityProject';
+            GetViaIdentityStorageMover = 'Az.StorageMover.private\Get-AzStorageMoverJobDefinition_GetViaIdentityStorageMover';
             List = 'Az.StorageMover.private\Get-AzStorageMoverJobDefinition_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -611,6 +956,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -667,7 +1015,7 @@ Get-AzStorageMoverJobRun -Name myJobRun -JobDefinitionName myJobDefinition -Reso
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -675,6 +1023,43 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+JOBDEFINITIONINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -687,10 +1072,12 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobrun
 #>
 function Get-AzStorageMoverJobRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRun])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -698,6 +1085,9 @@ param(
     ${JobDefinitionName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityJobDefinition', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Alias('JobRunName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -705,6 +1095,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -738,8 +1129,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityJobDefinition', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${JobDefinitionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -797,6 +1205,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -818,11 +1234,12 @@ begin {
         $mapping = @{
             Get = 'Az.StorageMover.private\Get-AzStorageMoverJobRun_Get';
             GetViaIdentity = 'Az.StorageMover.private\Get-AzStorageMoverJobRun_GetViaIdentity';
+            GetViaIdentityJobDefinition = 'Az.StorageMover.private\Get-AzStorageMoverJobRun_GetViaIdentityJobDefinition';
+            GetViaIdentityProject = 'Az.StorageMover.private\Get-AzStorageMoverJobRun_GetViaIdentityProject';
+            GetViaIdentityStorageMover = 'Az.StorageMover.private\Get-AzStorageMoverJobRun_GetViaIdentityStorageMover';
             List = 'Az.StorageMover.private\Get-AzStorageMoverJobRun_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -836,6 +1253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -892,7 +1312,7 @@ $projectList = Get-AzStorageMoverProject -ResourceGroupName myResourceGroup -Sto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -900,6 +1320,19 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -912,10 +1345,11 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
 #>
 function Get-AzStorageMoverProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory)]
     [Alias('ProjectName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -949,8 +1383,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1008,6 +1447,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1029,11 +1476,10 @@ begin {
         $mapping = @{
             Get = 'Az.StorageMover.private\Get-AzStorageMoverProject_Get';
             GetViaIdentity = 'Az.StorageMover.private\Get-AzStorageMoverProject_GetViaIdentity';
+            GetViaIdentityStorageMover = 'Az.StorageMover.private\Get-AzStorageMoverProject_GetViaIdentityStorageMover';
             List = 'Az.StorageMover.private\Get-AzStorageMoverProject_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1047,6 +1493,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1105,7 +1554,7 @@ Get-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover1
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1113,6 +1562,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -1125,7 +1575,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemover
 #>
 function Get-AzStorageMover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1156,7 +1606,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1215,6 +1664,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1239,9 +1696,7 @@ begin {
             List = 'Az.StorageMover.private\Get-AzStorageMover_List';
             List1 = 'Az.StorageMover.private\Get-AzStorageMover_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1255,6 +1710,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1300,40 +1758,305 @@ end {
 
 <#
 .Synopsis
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Connection resource.
 .Description
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Connection resource.
 .Example
-New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
+New-AzStorageMoverConnection -Name "example-connection" -ResourceGroupName "examples-rg" -StorageMoverName "examples-storageMoverName" -PrivateLinkServiceId "/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Network/privateLinkServices/example-pls" -Description "Example Connection Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-JOBDEFINITION <IJobDefinition>: The Job Definition resource.
-  CopyMode <CopyMode>: Strategy to use for copy.
-  SourceName <String>: The name of the source Endpoint.
-  TargetName <String>: The name of the target Endpoint.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [AgentName <String>]: Name of the Agent to assign for new Job Runs of this Job Definition.
-  [Description <String>]: A description for the Job Definition.
-  [SourceSubpath <String>]: The subpath to use when reading from the source Endpoint.
-  [TargetSubpath <String>]: The subpath to use when writing to the target Endpoint.
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverconnection
+#>
+function New-AzStorageMoverConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IConnection])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ConnectionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Connection resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The PrivateLinkServiceId for the connection.
+    ${PrivateLinkServiceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the Connection.
+    ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # List of job definitions associated with this connection.
+    ${JobList},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageMover.private\New-AzStorageMoverConnection_CreateExpanded';
+            CreateViaIdentityStorageMoverExpanded = 'Az.StorageMover.private\New-AzStorageMoverConnection_CreateViaIdentityStorageMoverExpanded';
+            CreateViaJsonFilePath = 'Az.StorageMover.private\New-AzStorageMoverConnection_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageMover.private\New-AzStorageMoverConnection_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+.Description
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+.Example
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
 #>
 function New-AzStorageMoverJobDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1343,81 +2066,238 @@ param(
     # The name of the Job Definition resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Project resource.
     ${ProjectName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${StorageMoverName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition]
-    # The Job Definition resource.
-    # To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
-    ${JobDefinition},
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode])]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Additive", "Mirror")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode]
+    [System.String]
     # Strategy to use for copy.
     ${CopyMode},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The name of the source Endpoint.
     ${SourceName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The name of the target Endpoint.
     ${TargetName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Name of the Agent to assign for new Job Runs of this Job Definition.
     ${AgentName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # List of connections associated to this job
+    ${Connection},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SaveVerifyFileMD5", "SaveFileMD5", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The checksum validation mode for the job definition.
+    ${DataIntegrityValidation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # A description for the Job Definition.
+    # OnPremToCloud is for migrating data from on-premises to cloud.
+    # CloudToCloud is for migrating data between cloud to cloud.
     ${Description},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Int32]
+    # The hour element of the time.
+    # Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+    # Hour value 24 cannot be combined with any other minute value but 0.
+    ${ExecutionTimeHour},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Single]
+    # The minute element of the time.
+    # Allowed values are 0 and 30.
+    # If not specified, its value defaults to 0.
+    ${ExecutionTimeMinute},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The type of the Job.
+    ${JobType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Boolean to preserve permissions or not.
+    ${PreservePermission},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Optional CRON expression for advanced scheduling
+    ${ScheduleCronExpression},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Int32[]]
+    # Days of the month for monthly schedules
+    ${ScheduleDaysOfMonth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # Days of the week for weekly schedules
+    ${ScheduleDaysOfWeek},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # End time of the schedule (in UTC)
+    ${ScheduleEndDate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Type of schedule — Monthly, Weekly, or Daily
+    ${ScheduleFrequency},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether the schedule is currently active
+    ${ScheduleIsActive},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # Specific one-time execution date and time
+    ${ScheduleStartDate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The subpath to use when reading from the source Endpoint.
     ${SourceSubpath},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The subpath to use when writing to the target Endpoint.
     ${TargetSubpath},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1475,6 +2355,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1494,12 +2382,13 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.StorageMover.private\New-AzStorageMoverJobDefinition_Create';
             CreateExpanded = 'Az.StorageMover.private\New-AzStorageMoverJobDefinition_CreateExpanded';
+            CreateViaIdentityProjectExpanded = 'Az.StorageMover.private\New-AzStorageMoverJobDefinition_CreateViaIdentityProjectExpanded';
+            CreateViaIdentityStorageMoverExpanded = 'Az.StorageMover.private\New-AzStorageMoverJobDefinition_CreateViaIdentityStorageMoverExpanded';
+            CreateViaJsonFilePath = 'Az.StorageMover.private\New-AzStorageMoverJobDefinition_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageMover.private\New-AzStorageMoverJobDefinition_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1513,6 +2402,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1558,34 +2450,37 @@ end {
 
 <#
 .Synopsis
-Creates or updates a Project resource, which is a logical grouping of related jobs.
+Create a Project resource, which is a logical grouping of related jobs.
 .Description
-Creates or updates a Project resource, which is a logical grouping of related jobs.
+Create a Project resource, which is a logical grouping of related jobs.
 .Example
 New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-PROJECT <IProject>: The Project resource.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Description <String>]: A description for the Project.
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
 #>
 function New-AzStorageMoverProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1595,38 +2490,56 @@ param(
     # The name of the Project resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${StorageMoverName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject]
-    # The Project resource.
-    # To construct, see NOTES section for PROJECT properties and create a hash table.
-    ${Project},
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # A description for the Project.
     ${Description},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1684,6 +2597,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1703,12 +2624,12 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.StorageMover.private\New-AzStorageMoverProject_Create';
             CreateExpanded = 'Az.StorageMover.private\New-AzStorageMoverProject_CreateExpanded';
+            CreateViaIdentityStorageMoverExpanded = 'Az.StorageMover.private\New-AzStorageMoverProject_CreateViaIdentityStorageMoverExpanded';
+            CreateViaJsonFilePath = 'Az.StorageMover.private\New-AzStorageMoverProject_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageMover.private\New-AzStorageMoverProject_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1722,6 +2643,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1767,37 +2691,19 @@ end {
 
 <#
 .Synopsis
-Creates or updates a top-level Storage Mover resource.
+Create a top-level Storage Mover resource.
 .Description
-Creates or updates a top-level Storage Mover resource.
+Create a top-level Storage Mover resource.
 .Example
 New-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Location eastus -Description "Description"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-STORAGEMOVER <IStorageMover>: The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
-  Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Description <String>]: A description for the Storage Mover.
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
 #>
 function New-AzStorageMover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1821,13 +2727,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover]
-    # The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
-    # To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
-    ${StorageMover},
-
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
@@ -1842,10 +2741,22 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1903,6 +2814,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1922,12 +2841,11 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.StorageMover.private\New-AzStorageMover_Create';
             CreateExpanded = 'Az.StorageMover.private\New-AzStorageMover_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.StorageMover.private\New-AzStorageMover_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageMover.private\New-AzStorageMover_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1941,6 +2859,261 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+.Description
+Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+.Example
+Remove-AzStorageMoverConnection -ResourceGroupName "examples-rg" -StorageMoverName "examples-storageMoverName" -Name "example-connection"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverconnection
+#>
+function Remove-AzStorageMoverConnection {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory)]
+    [Alias('ConnectionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Connection resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.StorageMover.private\Remove-AzStorageMoverConnection_Delete';
+            DeleteViaIdentity = 'Az.StorageMover.private\Remove-AzStorageMoverConnection_DeleteViaIdentity';
+            DeleteViaIdentityStorageMover = 'Az.StorageMover.private\Remove-AzStorageMoverConnection_DeleteViaIdentityStorageMover';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2003,6 +3176,19 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -2019,6 +3205,7 @@ function Remove-AzStorageMoverEndpoint {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory)]
     [Alias('EndpointName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -2049,8 +3236,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2126,6 +3318,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2147,10 +3347,9 @@ begin {
         $mapping = @{
             Delete = 'Az.StorageMover.private\Remove-AzStorageMoverEndpoint_Delete';
             DeleteViaIdentity = 'Az.StorageMover.private\Remove-AzStorageMoverEndpoint_DeleteViaIdentity';
+            DeleteViaIdentityStorageMover = 'Az.StorageMover.private\Remove-AzStorageMoverEndpoint_DeleteViaIdentityStorageMover';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2164,6 +3363,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2226,6 +3428,31 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -2242,6 +3469,8 @@ function Remove-AzStorageMoverJobDefinition {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory)]
     [Alias('JobDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -2249,6 +3478,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Project resource.
@@ -2278,8 +3508,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2355,6 +3596,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2376,10 +3625,10 @@ begin {
         $mapping = @{
             Delete = 'Az.StorageMover.private\Remove-AzStorageMoverJobDefinition_Delete';
             DeleteViaIdentity = 'Az.StorageMover.private\Remove-AzStorageMoverJobDefinition_DeleteViaIdentity';
+            DeleteViaIdentityProject = 'Az.StorageMover.private\Remove-AzStorageMoverJobDefinition_DeleteViaIdentityProject';
+            DeleteViaIdentityStorageMover = 'Az.StorageMover.private\Remove-AzStorageMoverJobDefinition_DeleteViaIdentityStorageMover';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2393,6 +3642,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2455,6 +3707,19 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -2471,6 +3736,7 @@ function Remove-AzStorageMoverProject {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory)]
     [Alias('ProjectName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
@@ -2501,8 +3767,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2578,6 +3849,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2599,10 +3878,9 @@ begin {
         $mapping = @{
             Delete = 'Az.StorageMover.private\Remove-AzStorageMoverProject_Delete';
             DeleteViaIdentity = 'Az.StorageMover.private\Remove-AzStorageMoverProject_DeleteViaIdentity';
+            DeleteViaIdentityStorageMover = 'Az.StorageMover.private\Remove-AzStorageMoverProject_DeleteViaIdentityStorageMover';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2616,6 +3894,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2661,9 +3942,9 @@ end {
 
 <#
 .Synopsis
-Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
+Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 .Description
-Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
+Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 .Example
 New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "description"
 
@@ -2676,7 +3957,7 @@ Start-AzStorageMoverJobDefinition -JobDefinitionName myJobDefinition -ProjectNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2684,6 +3965,31 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -2696,16 +4002,19 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
 #>
 function Start-AzStorageMoverJobDefinition {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId])]
 [CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityStorageMover', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Job Definition resource.
     ${JobDefinitionName},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityStorageMover', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Project resource.
@@ -2735,8 +4044,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='StartViaIdentityProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='StartViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2794,6 +4114,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2815,10 +4143,10 @@ begin {
         $mapping = @{
             Start = 'Az.StorageMover.private\Start-AzStorageMoverJobDefinition_Start';
             StartViaIdentity = 'Az.StorageMover.private\Start-AzStorageMoverJobDefinition_StartViaIdentity';
+            StartViaIdentityProject = 'Az.StorageMover.private\Start-AzStorageMoverJobDefinition_StartViaIdentityProject';
+            StartViaIdentityStorageMover = 'Az.StorageMover.private\Start-AzStorageMoverJobDefinition_StartViaIdentityStorageMover';
         }
-        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2832,6 +4160,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2886,7 +4217,7 @@ Stop-AzStorageMoverJobDefinition -JobDefinitionName myJobDefinition -ProjectName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2894,6 +4225,31 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -2906,16 +4262,19 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/stop-azstoragemoverjobdefinition
 #>
 function Stop-AzStorageMoverJobDefinition {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId])]
 [CmdletBinding(DefaultParameterSetName='Stop', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityStorageMover', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Job Definition resource.
     ${JobDefinitionName},
 
     [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityStorageMover', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Project resource.
@@ -2945,8 +4304,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='StopViaIdentityProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='StopViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3004,6 +4374,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3025,10 +4403,10 @@ begin {
         $mapping = @{
             Stop = 'Az.StorageMover.private\Stop-AzStorageMoverJobDefinition_Stop';
             StopViaIdentity = 'Az.StorageMover.private\Stop-AzStorageMoverJobDefinition_StopViaIdentity';
+            StopViaIdentityProject = 'Az.StorageMover.private\Stop-AzStorageMoverJobDefinition_StopViaIdentityProject';
+            StopViaIdentityStorageMover = 'Az.StorageMover.private\Stop-AzStorageMoverJobDefinition_StopViaIdentityStorageMover';
         }
-        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3042,6 +4420,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3087,36 +4468,37 @@ end {
 
 <#
 .Synopsis
-Creates or updates an Agent resource.
+Update an Agent resource.
 .Description
-Creates or updates an Agent resource.
+Update an Agent resource.
 .Example
 $recurrence = New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
 Update-AzStorageMoverAgent -ResourceGroupName myresourcegroup -StorageMoverName mystoragemover -Name myagent -Description "Update description" -UploadLimitScheduleWeeklyRecurrence $recurrence
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAgent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-AGENT <IAgentUpdateParameters>: The Agent resource.
-  [Description <String>]: A description for the Agent.
-  [UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>]: The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-    Day <DayOfWeek[]>: The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.
-    EndTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
-    StartTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
-    LimitInMbps <Int32>: The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.
-    [EndTimeMinute <Int32?>]: The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-    [StartTimeMinute <Int32?>]: The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -3127,7 +4509,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
 
 UPLOADLIMITSCHEDULEWEEKLYRECURRENCE <IUploadLimitWeeklyRecurrence[]>: The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-  Day <DayOfWeek[]>: The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.
+  Day <List<String>>: The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.
   EndTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
   StartTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
   LimitInMbps <Int32>: The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.
@@ -3137,58 +4519,60 @@ UPLOADLIMITSCHEDULEWEEKLYRECURRENCE <IUploadLimitWeeklyRecurrence[]>: The set of
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
 #>
 function Update-AzStorageMoverAgent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAgent])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('AgentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Agent resource.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${StorageMoverName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters]
-    # The Agent resource.
-    # To construct, see NOTES section for AGENT properties and create a hash table.
-    ${Agent},
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # A description for the Agent.
@@ -3196,12 +4580,24 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IUploadLimitWeeklyRecurrence[]]
     # The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-    # To construct, see NOTES section for UPLOADLIMITSCHEDULEWEEKLYRECURRENCE properties and create a hash table.
     ${UploadLimitScheduleWeeklyRecurrence},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3259,6 +4655,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3278,14 +4682,13 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.StorageMover.private\Update-AzStorageMoverAgent_Update';
             UpdateExpanded = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateExpanded';
-            UpdateViaIdentity = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateViaIdentityExpanded';
+            UpdateViaIdentityStorageMoverExpanded = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateViaIdentityStorageMoverExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3299,6 +4702,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3344,20 +4750,18 @@ end {
 
 <#
 .Synopsis
-Updates properties for a Job Definition resource.
+Update properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
 .Description
-Updates properties for a Job Definition resource.
+Update properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
 .Example
 Update-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3365,6 +4769,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -3374,73 +4779,104 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-JOBDEFINITION <IJobDefinitionUpdateParameters>: The Job Definition resource.
-  [AgentName <String>]: Name of the Agent to assign for new Job Runs of this Job Definition.
-  [CopyMode <CopyMode?>]: Strategy to use for copy.
-  [Description <String>]: A description for the Job Definition.
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
 #>
 function Update-AzStorageMoverJobDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('JobDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Job Definition resource.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Project resource.
     ${ProjectName},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${StorageMoverName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters]
-    # The Job Definition resource.
-    # To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
-    ${JobDefinition},
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Name of the Agent to assign for new Job Runs of this Job Definition.
@@ -3448,18 +4884,143 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode])]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode]
+    [System.String[]]
+    # List of connections associated to this job
+    ${Connection},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Additive", "Mirror")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
     # Strategy to use for copy.
     ${CopyMode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SaveVerifyFileMD5", "SaveFileMD5", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Data Integrity Validation mode.
+    ${DataIntegrityValidation},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # A description for the Job Definition.
     ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Int32]
+    # The hour element of the time.
+    # Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+    # Hour value 24 cannot be combined with any other minute value but 0.
+    ${ExecutionTimeHour},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Single]
+    # The minute element of the time.
+    # Allowed values are 0 and 30.
+    # If not specified, its value defaults to 0.
+    ${ExecutionTimeMinute},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Optional CRON expression for advanced scheduling
+    ${ScheduleCronExpression},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Int32[]]
+    # Days of the month for monthly schedules
+    ${ScheduleDaysOfMonth},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # Days of the week for weekly schedules
+    ${ScheduleDaysOfWeek},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # End time of the schedule (in UTC)
+    ${ScheduleEndDate},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Type of schedule — Monthly, Weekly, or Daily
+    ${ScheduleFrequency},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether the schedule is currently active
+    ${ScheduleIsActive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # Specific one-time execution date and time
+    ${ScheduleStartDate},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3517,6 +5078,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3536,14 +5105,14 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_Update';
             UpdateExpanded = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateExpanded';
-            UpdateViaIdentity = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateViaIdentityExpanded';
+            UpdateViaIdentityProjectExpanded = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateViaIdentityProjectExpanded';
+            UpdateViaIdentityStorageMoverExpanded = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateViaIdentityStorageMoverExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageMover.private\Update-AzStorageMoverJobDefinition_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3557,6 +5126,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3602,20 +5174,18 @@ end {
 
 <#
 .Synopsis
-Updates properties for a Project resource.
+Update properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 .Description
-Updates properties for a Project resource.
+Update properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 .Example
 Update-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3623,6 +5193,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -3632,68 +5203,91 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-PROJECT <IProjectUpdateParameters>: The Project resource.
-  [Description <String>]: A description for the Project.
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverproject
 #>
 function Update-AzStorageMoverProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ProjectName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Project resource.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${StorageMoverName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters]
-    # The Project resource.
-    # To construct, see NOTES section for PROJECT properties and create a hash table.
-    ${Project},
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # A description for the Project.
     ${Description},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3751,6 +5345,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3770,14 +5372,13 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.StorageMover.private\Update-AzStorageMoverProject_Update';
             UpdateExpanded = 'Az.StorageMover.private\Update-AzStorageMoverProject_UpdateExpanded';
-            UpdateViaIdentity = 'Az.StorageMover.private\Update-AzStorageMoverProject_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.StorageMover.private\Update-AzStorageMoverProject_UpdateViaIdentityExpanded';
+            UpdateViaIdentityStorageMoverExpanded = 'Az.StorageMover.private\Update-AzStorageMoverProject_UpdateViaIdentityStorageMoverExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageMover.private\Update-AzStorageMoverProject_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageMover.private\Update-AzStorageMoverProject_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3791,6 +5392,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3836,20 +5440,18 @@ end {
 
 <#
 .Synopsis
-Updates properties for a Storage Mover resource.
+Update properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 .Description
-Updates properties for a Storage Mover resource.
+Update properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 .Example
 Update-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Description "Update description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3857,6 +5459,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -3865,57 +5468,45 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
-
-STORAGEMOVER <IStorageMoverUpdateParameters>: The Storage Mover resource.
-  [Description <String>]: A description for the Storage Mover.
-  [Tag <IStorageMoverUpdateParametersTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 #>
 function Update-AzStorageMover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('StorageMoverName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters]
-    # The Storage Mover resource.
-    # To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
-    ${StorageMover},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -3927,10 +5518,22 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3988,6 +5591,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4007,14 +5618,12 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.StorageMover.private\Update-AzStorageMover_Update';
             UpdateExpanded = 'Az.StorageMover.private\Update-AzStorageMover_UpdateExpanded';
-            UpdateViaIdentity = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4028,6 +5637,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4073,24 +5685,23 @@ end {
 
 <#
 .Synopsis
-Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+Creates a Nfs file share endpoint resource, which represents a data transfer source or destination.
 .Description
-Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+Creates a Nfs file share endpoint resource, which represents a data transfer source or destination.
 .Example
-New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
+New-AzStorageMoverAzNfsFileShareEndpoint -Name "my-nfs-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -FileShareName "examples-fileshare" -StorageAccountResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa" -Description "Example Storage File Share Endpoint Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoveraznfsfileshareendpoint
 #>
-function New-AzStorageMoverAzSmbFileShareEndpoint {
-[Alias('New-AzStorageMoverSmbFileShareEndpoint')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+function New-AzStorageMoverAzNfsFileShareEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4193,6 +5804,225 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverAzNfsFileShareEndpoint';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+.Description
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+.Example
+New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
+#>
+function New-AzStorageMoverAzSmbFileShareEndpoint {
+[Alias('New-AzStorageMoverSmbFileShareEndpoint')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('EndpointName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the endpoint resource.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Resource ID of the storage account that is the target destination.
+    ${StorageAccountResourceId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The name of the Azure Storage file share.
+    ${FileShareName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the endpoint.
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4214,9 +6044,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverAzSmbFileShareEndpoint';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4230,6 +6058,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4282,16 +6113,16 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazstoragecontainerendpoint
 #>
 function New-AzStorageMoverAzStorageContainerEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4394,6 +6225,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4415,9 +6254,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverAzStorageContainerEndpoint';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4431,6 +6268,219 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates a multicloud connector endpoint resource, which represents a data transfer source or destination.
+.Description
+Creates a Multi-Cloud Connector endpoint resource, which represents a data transfer source or destination.
+.Example
+New-AzStorageMoverMultiCloudConnectorEndpoint -Name "my-mc-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -AWSS3BucketId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.AWSConnector/s3Buckets/testBucket" -MultiCloudConnectorId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.HybridConnectivity/publicCloudConnectors/TestConnector" -Description "Example multi cloud connector resource id"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovermulticloudconnectorendpoint
+#>
+function New-AzStorageMoverMultiCloudConnectorEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('EndpointName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the endpoint resource.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Resource ID of the multi-cloud connector.
+    ${MultiCloudConnectorId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Resource ID of the AWS S3 bucket listed in the multi cloud connector.
+    ${AWSS3BucketId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the endpoint.
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverMultiCloudConnectorEndpoint';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4483,16 +6533,16 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
  New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovernfsendpoint
 #>
 function New-AzStorageMoverNfsEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4535,9 +6585,9 @@ param(
     ${Export},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion]
+    [System.String]
     # The NFS protocol version.
     ${NfsVersion},
 
@@ -4602,6 +6652,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4623,9 +6681,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverNfsEndpoint';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4639,6 +6695,239 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates an S3 with HMAC endpoint resource, which represents a data transfer source or destination.
+.Description
+Creates an S3 with HMAC endpoint resource, which represents a data transfer source or destination.
+.Example
+New-AzStorageMoverS3WithHmacEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -SourceUri "https://s3.example.com/bucket" -SourceType "MINIO" -CredentialsAccessKeyUri "https://examples-azureKeyVault.vault.azure.net/secrets/accesskey" -CredentialsSecretKeyUri "https://examples-azureKeyVault.vault.azure.net/secrets/secretkey" -Description "S3 endpoint"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovers3withhmacendpoint
+#>
+function New-AzStorageMoverS3WithHmacEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('EndpointName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the endpoint resource.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The URI which points to the S3 compatible source.
+    ${SourceUri},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The source type of the S3 compatible endpoint.
+    # Valid values: MINIO, IBM, GCS, ALIBABA, DELL_EMC, OTHER.
+    ${SourceType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Key Vault secret URI which stores the access key.
+    ${CredentialsAccessKeyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Key Vault secret URI which stores the secret key.
+    ${CredentialsSecretKeyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The description for other source type.
+    # Required when SourceType is OTHER.
+    ${OtherSourceTypeDescription},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the endpoint.
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverS3WithHmacEndpoint';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4691,16 +6980,16 @@ Creates an SMB endpoint resource, which represents a data transfer source or des
 New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.1" -ShareName "testshare" -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username1" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbendpoint
 #>
 function New-AzStorageMoverSmbEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4817,6 +7106,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4838,9 +7135,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.StorageMover.custom\New-AzStorageMoverSmbEndpoint';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4854,6 +7149,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4906,18 +7204,18 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence
 .Link
 https://learn.microsoft.com/powershell/module/Az.StorageMover/new-AzStorageMoverUploadLimitWeeklyRecurrenceObject
 #>
 function New-AzStorageMoverUploadLimitWeeklyRecurrenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek[]]
+    [System.String[]]
     # The set of days of week for the schedule recurrence.
     # A day must not be specified more than once in a recurrence.
     ${Day},
@@ -4974,6 +7272,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5002,6 +7303,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5062,8 +7366,9 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -5185,6 +7490,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5207,9 +7520,7 @@ begin {
             Delete = 'Az.StorageMover.custom\Remove-AzStorageMover';
             DeleteViaIdentity = 'Az.StorageMover.custom\Remove-AzStorageMover';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5223,6 +7534,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5283,8 +7597,9 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -5412,6 +7727,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5434,9 +7757,7 @@ begin {
             Delete = 'Az.StorageMover.custom\Unregister-AzStorageMoverAgent';
             DeleteViaIdentity = 'Az.StorageMover.custom\Unregister-AzStorageMoverAgent';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5450,6 +7771,231 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Updates properties for a Nfs File Share endpoint resource.
+Properties not specified in the request body will be unchanged.
+.Description
+Updates properties for a Nfs File Share endpoint resource.
+Properties not specified in the request body will be unchanged.
+.Example
+Update-AzStorageMoverAzNfsFileShareEndpoint -Name "my-nfs-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -Description "My updated NFS endpoint"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveraznfsfileshareendpoint
+#>
+function Update-AzStorageMoverAzNfsFileShareEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('EndpointName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the endpoint resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the endpoint.
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverAzNfsFileShareEndpoint';
+            UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverAzNfsFileShareEndpoint';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5508,14 +8054,15 @@ Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -5529,7 +8076,7 @@ https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemo
 #>
 function Update-AzStorageMoverAzSmbFileShareEndpoint {
 [Alias('Update-AzStorageMoverSmbFileShareEndpoint')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -5627,6 +8174,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5649,9 +8204,7 @@ begin {
             UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverAzSmbFileShareEndpoint';
             UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverAzSmbFileShareEndpoint';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5665,6 +8218,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5721,14 +8277,15 @@ Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupN
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -5741,7 +8298,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazstoragecontainerendpoint
 #>
 function Update-AzStorageMoverAzStorageContainerEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -5839,6 +8396,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5861,9 +8426,7 @@ begin {
             UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverAzStorageContainerEndpoint';
             UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverAzStorageContainerEndpoint';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5877,6 +8440,231 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Updates properties for a MultiCloudConnector endpoint resource.
+Properties not specified in the request body will be unchanged.
+.Description
+Updates properties for a MultiCloudConnector endpoint resource.
+Properties not specified in the request body will be unchanged.
+.Example
+Update-AzStorageMoverMultiCloudConnectorEndpoint -Name "my-mc-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -Description "My updated Multi-Cloud endpoint"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovermulticloudconnectorendpoint
+#>
+function Update-AzStorageMoverMultiCloudConnectorEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('EndpointName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the endpoint resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the endpoint.
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverMultiCloudConnectorEndpoint';
+            UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverMultiCloudConnectorEndpoint';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5933,14 +8721,15 @@ Update-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceG
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -5953,7 +8742,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovernfsendpoint
 #>
 function Update-AzStorageMoverNfsEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -6051,6 +8840,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6073,9 +8870,7 @@ begin {
             UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverNfsEndpoint';
             UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverNfsEndpoint';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6089,6 +8884,245 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Updates properties for an S3 with HMAC endpoint resource.
+Properties not specified in the request body will be unchanged.
+.Description
+Updates properties for an S3 with HMAC endpoint resource.
+Properties not specified in the request body will be unchanged.
+.Example
+Update-AzStorageMoverS3WithHmacEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -CredentialsAccessKeyUri "https://examples-azureKeyVault.vault.azure.net/secrets/accesskey2" -CredentialsSecretKeyUri "https://examples-azureKeyVault.vault.azure.net/secrets/secretkey2" -Description "updated S3 endpoint"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovers3withhmacendpoint
+#>
+function Update-AzStorageMoverS3WithHmacEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('EndpointName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the endpoint resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Key Vault secret URI which stores the access key.
+    # Use empty string to clean-up existing value.
+    ${CredentialsAccessKeyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure Key Vault secret URI which stores the secret key.
+    # Use empty string to clean-up existing value.
+    ${CredentialsSecretKeyUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # A description for the endpoint.
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverS3WithHmacEndpoint';
+            UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverS3WithHmacEndpoint';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6147,14 +9181,15 @@ Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -6167,7 +9202,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbendpoint
 #>
 function Update-AzStorageMoverSmbEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -6279,6 +9314,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6301,9 +9344,7 @@ begin {
             UpdateExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverSmbEndpoint';
             UpdateViaIdentityExpanded = 'Az.StorageMover.custom\Update-AzStorageMoverSmbEndpoint';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6317,6 +9358,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Version = splitUri.SecretVersion;
             }
 
-            // Check Version/s of Sceret to get.
+            // Check Version/s of Secret to get.
             if (!string.IsNullOrEmpty(Version))
             {
                 secret = DataServiceClient.GetSecret(VaultName, Name, Version);

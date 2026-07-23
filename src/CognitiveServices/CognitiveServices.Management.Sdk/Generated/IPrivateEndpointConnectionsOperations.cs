@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public partial interface IPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// Gets the private endpoint connections associated with the Cognitive Services account.
+        /// Gets the private endpoint connections associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <remarks>
-        /// Gets the private endpoint connections associated with the Cognitive Services account.
+        /// Gets the private endpoint connections associated with the Cognitive
+        /// Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnectionListResult>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the Cognitive Services account.
+        /// Gets the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Gets the specified private endpoint connection associated with the Cognitive Services account.
+        /// Gets the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -52,7 +56,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,10 +74,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -81,7 +88,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='properties'>
         /// Resource properties.
@@ -104,10 +112,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), string location = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -116,7 +126,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,10 +141,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -142,7 +155,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='properties'>
         /// Resource properties.
@@ -165,10 +179,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), string location = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -177,7 +193,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

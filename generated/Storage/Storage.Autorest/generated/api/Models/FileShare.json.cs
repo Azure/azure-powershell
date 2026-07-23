@@ -65,7 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            __azureEntityResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AzureEntityResource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ProxyResource(json);
+            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -99,7 +100,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return container;
             }
-            __azureEntityResource?.ToJson(container, serializationMode);
+            __proxyResource?.ToJson(container, serializationMode);
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._etag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._etag.ToString()) : null, "etag" ,container.Add );
+            }
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

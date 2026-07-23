@@ -67,6 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             __addonProperties = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonProperties(json);
             {_offer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("offer"), out var __jsonOffer) ? (string)__jsonOffer : (string)_offer;}
+            {_managementNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("managementNetwork"), out var __jsonManagementNetwork) ? (string)__jsonManagementNetwork : (string)_managementNetwork;}
+            {_uplinkNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("uplinkNetwork"), out var __jsonUplinkNetwork) ? (string)__jsonUplinkNetwork : (string)_uplinkNetwork;}
             AfterFromJson(json);
         }
 
@@ -103,6 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             __addonProperties?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._offer)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._offer.ToString()) : null, "offer" ,container.Add );
+            AddIf( null != (((object)this._managementNetwork)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._managementNetwork.ToString()) : null, "managementNetwork" ,container.Add );
+            AddIf( null != (((object)this._uplinkNetwork)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._uplinkNetwork.ToString()) : null, "uplinkNetwork" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

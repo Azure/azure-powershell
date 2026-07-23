@@ -12,7 +12,7 @@ Gets a Virtual Instance for SAP solutions resource
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWorkloadsSapVirtualInstance [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity> [-D
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWorkloadsSapVirtualInstance -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -102,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -137,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -149,6 +148,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -171,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
 
 ## NOTES
 

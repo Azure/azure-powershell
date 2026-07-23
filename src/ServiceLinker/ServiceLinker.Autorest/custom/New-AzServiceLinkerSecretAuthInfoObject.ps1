@@ -21,12 +21,13 @@ Create an in-memory object for SecretAuthInfo.
 Create an in-memory object for SecretAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
 #>
 function New-AzServiceLinkerSecretAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +35,7 @@ function New-AzServiceLinkerSecretAuthInfoObject {
         [string]
         $Name,
         [Parameter(DontShow, HelpMessage="Password or key vault secret for secret auth.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISecretInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ISecretInfoBase]
         $SecretInfo,
 
         [Parameter(HelpMessage="Raw value of secret.")]
@@ -43,38 +44,30 @@ function New-AzServiceLinkerSecretAuthInfoObject {
         [Parameter(HelpMessage="The Key Vault Uri of secret.")]
         [string]
         $SecretKeyVaultUri,
-        [Parameter(HelpMessage="The name of secret in keyvault refenced by -SecretStoreKeyVaultId.")]
+        [Parameter(HelpMessage="The name of secret in keyvault referenced by -SecretStoreKeyVaultId.")]
         [string]
-        $SecretNameInKeyVault,
-        [Parameter(DontShow, HelpMessage="The authentication type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"secret"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
-        $AuthType
+        $SecretNameInKeyVault
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
         
         if ($PSBoundParameters.ContainsKey('SecretValue')) {
-            $Object.SecretInfo = New-AzServiceLinkerValueSecretInfoObject -SecretType rawValue -Value $SecretValue
+            $Object.SecretInfo = New-AzServiceLinkerValueSecretInfoObject -Value $SecretValue
         }
         elseif ($PSBoundParameters.ContainsKey('SecretKeyVaultUri')) {
-            $Object.SecretInfo = New-AzServiceLinkerKeyVaultSecretUriSecretInfoObject -SecretType keyVaultSecretUri -Value $SecretKeyVaultUri
+            $Object.SecretInfo = New-AzServiceLinkerKeyVaultSecretUriSecretInfoObject -Value $SecretKeyVaultUri
         }
         elseif ($PSBoundParameters.ContainsKey('SecretNameInKeyVault'))
         {
-            $Object.SecretInfo = New-AzServiceLinkerKeyVaultSecretReferenceSecretInfoObject -SecretType keyVaultSecretReference -Name $SecretNameInKeyVault
+            $Object.SecretInfo = New-AzServiceLinkerKeyVaultSecretReferenceSecretInfoObject -Name $SecretNameInKeyVault
         } 
         else {
-            $Object.SecretInfo = New-AzServiceLinkerValueSecretInfoObject -SecretType rawValue
-        }
-        if ($PSBoundParameters.ContainsKey('AuthType')) {
-            $Object.AuthType = $AuthType
+            $Object.SecretInfo = New-AzServiceLinkerValueSecretInfoObject
         }
         return $Object
     }

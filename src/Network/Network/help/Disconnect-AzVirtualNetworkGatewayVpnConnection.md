@@ -15,21 +15,22 @@ Disconnect given connected vpn client connections with a given virtual network g
 ### ByFactoryName (Default)
 ```
 Disconnect-AzVirtualNetworkGatewayVpnConnection -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
- -VpnConnectionId <String[]> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -VpnConnectionId <String[]> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceId <String> -VpnConnectionId <String[]> [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
 Disconnect-AzVirtualNetworkGatewayVpnConnection [-InputObject <PSVirtualNetworkGateway>]
- -VpnConnectionId <String[]> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -VpnConnectionId <String[]> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

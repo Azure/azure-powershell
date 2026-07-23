@@ -7,73 +7,209 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Extensions;
 
-    /// <summary>The type used for update operations of the PipelineGroup.</summary>
+    /// <summary>A pipeline group definition.</summary>
     public partial class PipelineGroupUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate"
+        /// />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate();
+
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public int? DistributionMaxInstancesPerHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).DistributionMaxInstancesPerHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).DistributionMaxInstancesPerHost = value ?? default(int); }
+
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint> ExecutionPlacementConstraint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ExecutionPlacementConstraint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ExecutionPlacementConstraint = value ?? null /* arrayOf */; }
 
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Exporter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Exporter = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Exporter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Exporter = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; }
+
+        /// <summary>Internal Acessors for ExecutionPlacement</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.ExecutionPlacement { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ExecutionPlacement; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ExecutionPlacement = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ExecutionPlacementDistribution</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IDistributionPolicy Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.ExecutionPlacementDistribution { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ExecutionPlacementDistribution; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ExecutionPlacementDistribution = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateProperties()); set { {_property = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupPropertiesUpdate()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Service</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IService Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.Service { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Service; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Service = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceUpdate Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.Service { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Service; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Service = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ServicePersistence</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.ServicePersistence { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).ServicePersistence; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).ServicePersistence = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurationsUpdate Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateInternal.ServicePersistence { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ServicePersistence; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ServicePersistence = value ?? null /* model class */; }
 
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> NetworkingConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).NetworkingConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).NetworkingConfiguration = value ?? null /* arrayOf */; }
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type = value ?? null; }
+
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; }
 
         /// <summary>The name of the mounted persistent volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string PersistencePersistentVolumeName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).PersistencePersistentVolumeName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).PersistencePersistentVolumeName = value ?? null; }
+        public string PersistencePersistentVolumeName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).PersistencePersistentVolumeName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).PersistencePersistentVolumeName = value ?? null; }
 
         /// <summary>The processors specified for a pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessor> Processor { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Processor; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Processor = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessor> Processor { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Processor; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Processor = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdate _property;
 
         /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateProperties()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdate Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupPropertiesUpdate()); set => this._property = value; }
 
         /// <summary>The receivers specified for a pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiver> Receiver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Receiver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Receiver = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiver> Receiver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Receiver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Receiver = value ?? null /* arrayOf */; }
 
         /// <summary>Defines the amount of replicas of the pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? Replica { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Replica; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).Replica = value ?? default(int); }
+        public int? Replica { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Replica; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).Replica = value ?? default(int); }
 
         /// <summary>Pipelines belonging to a given pipeline group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).ServicePipeline; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdatePropertiesInternal)Property).ServicePipeline = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ServicePipeline; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).ServicePipeline = value ?? null /* arrayOf */; }
 
-        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags _tag;
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateTags()); set => this._tag = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag = value ?? null /* model class */; }
+
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> TlsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).TlsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdateInternal)Property).TlsConfiguration = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; }
 
         /// <summary>Creates an new <see cref="PipelineGroupUpdate" /> instance.</summary>
         public PipelineGroupUpdate()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
+            await eventListener.AssertObjectIsValid(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
+        }
     }
-    /// The type used for update operations of the PipelineGroup.
+    /// A pipeline group definition.
     public partial interface IPipelineGroupUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate
     {
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.",
+        SerializedName = @"maxInstancesPerHost",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DistributionMaxInstancesPerHost { get; set; }
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of placement constraints to guide where pipelineGroup instances should run.",
+        SerializedName = @"constraints",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint> ExecutionPlacementConstraint { get; set; }
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -85,17 +221,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"exporters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get; set; }
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Networking configurations for the pipeline group instance.",
-        SerializedName = @"networkingConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> NetworkingConfiguration { get; set; }
         /// <summary>The name of the mounted persistent volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -151,45 +276,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"pipelines",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get; set; }
-        /// <summary>Resource tags.</summary>
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Resource tags.",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags Tag { get; set; }
+        Description = @"TLS configurations for the pipeline group instance.",
+        SerializedName = @"tlsConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> TlsConfiguration { get; set; }
 
     }
-    /// The type used for update operations of the PipelineGroup.
-    internal partial interface IPipelineGroupUpdateInternal
-
+    /// A pipeline group definition.
+    internal partial interface IPipelineGroupUpdateInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal
     {
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        int? DistributionMaxInstancesPerHost { get; set; }
+        /// <summary>Constraints for guiding the execution environment of the pipeline group.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement ExecutionPlacement { get; set; }
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint> ExecutionPlacementConstraint { get; set; }
+        /// <summary>Distribution policy for spreading instances across compute units (nodes/VMs).</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IDistributionPolicy ExecutionPlacementDistribution { get; set; }
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get; set; }
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> NetworkingConfiguration { get; set; }
         /// <summary>The name of the mounted persistent volume.</summary>
         string PersistencePersistentVolumeName { get; set; }
         /// <summary>The processors specified for a pipeline group instance.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessor> Processor { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesUpdate Property { get; set; }
         /// <summary>The receivers specified for a pipeline group instance.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiver> Receiver { get; set; }
         /// <summary>Defines the amount of replicas of the pipeline group instance.</summary>
         int? Replica { get; set; }
         /// <summary>The service section for a given pipeline group instance.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IService Service { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceUpdate Service { get; set; }
         /// <summary>Persistence options to all pipelines in the instance.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations ServicePersistence { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurationsUpdate ServicePersistence { get; set; }
         /// <summary>Pipelines belonging to a given pipeline group.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get; set; }
-        /// <summary>Resource tags.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags Tag { get; set; }
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> TlsConfiguration { get; set; }
 
     }
 }

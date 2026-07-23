@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusRule
 
 ## SYNOPSIS
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <
  [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <String>] [-Label <String>]
  [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
  [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopicExpanded
@@ -30,14 +30,14 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject
  [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
  [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing]
- [-To <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-To <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopic
 ```
 New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject <IServiceBusIdentity>
- -Parameter <IRule> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -Parameter <IRule> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicName <Strin
  [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing]
  [-CorrelationId <String>] [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing]
- [-To <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-To <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -56,7 +56,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicName <Strin
 ```
 New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicName <String>
  -NamespaceInputObject <IServiceBusIdentity> -Parameter <IRule> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySubscriptionExpanded
@@ -66,18 +66,18 @@ New-AzServiceBusRule -Name <String> -SubscriptionInputObject <IServiceBusIdentit
  [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
  [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing]
- [-To <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-To <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySubscription
 ```
 New-AzServiceBusRule -Name <String> -SubscriptionInputObject <IServiceBusIdentity> -Parameter <IRule>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ## EXAMPLES
 
@@ -359,21 +359,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ReplyTo
 Address of the queue to reply to.
 
@@ -405,7 +390,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -467,8 +453,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

@@ -18,18 +18,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
         /// Replication protected item name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<TargetComputeSize> ListByReplicationProtectedItems(this ITargetComputeSizesOperations operations, string fabricName, string protectionContainerName, string replicatedProtectedItemName)
+        public static Microsoft.Rest.Azure.IPage<TargetComputeSize> ListByReplicationProtectedItems(this ITargetComputeSizesOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName)
         {
-                return ((ITargetComputeSizesOperations)operations).ListByReplicationProtectedItemsAsync(fabricName, protectionContainerName, replicatedProtectedItemName).GetAwaiter().GetResult();
+                return ((ITargetComputeSizesOperations)operations).ListByReplicationProtectedItemsAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -38,11 +44,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
         /// Replication protected item name.
@@ -50,9 +62,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TargetComputeSize>> ListByReplicationProtectedItemsAsync(this ITargetComputeSizesOperations operations, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TargetComputeSize>> ListByReplicationProtectedItemsAsync(this ITargetComputeSizesOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationProtectedItemsWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationProtectedItemsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

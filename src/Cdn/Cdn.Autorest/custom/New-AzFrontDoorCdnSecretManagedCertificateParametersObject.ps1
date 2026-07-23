@@ -21,27 +21,23 @@ Create an in-memory object for ManagedCertificateParameters.
 Create an in-memory object for ManagedCertificateParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedCertificateParameters
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecretmanagedcertificateparametersobject
 #>
 function New-AzFrontDoorCdnSecretManagedCertificateParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedCertificateParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
-        [Parameter(Mandatory, HelpMessage="The type of the secret resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType]
+        [Parameter(HelpMessage="Type.")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedCertificateParameters]::New()
 
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
-        }
         return $Object
     }
 }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Checks that the resource name is valid and is not already in use.
         /// </remarks>
         /// <param name='location'>
-        /// the region
+        /// The region
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the operation.
@@ -66,8 +66,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Handles requests to list all resources in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -90,8 +89,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Get the resource and its properties.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -117,8 +115,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Create or update a resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -147,8 +144,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Operation to delete a resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -171,8 +167,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Operation to update an exiting resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -192,7 +187,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, SignalRResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRResource,SignalRUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, SignalRResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get the access keys of the resource.
@@ -201,8 +196,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Get the access keys of the resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -230,8 +224,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// cannot be regenerated at the same time.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -251,7 +244,36 @@ namespace Microsoft.Azure.Management.SignalR
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRKeys>> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string resourceName, RegenerateKeyParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRKeys,SignalRRegenerateKeyHeaders>> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string resourceName, RegenerateKeyParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List all available skus of the replica resource.
+        /// </summary>
+        /// <remarks>
+        /// List all available skus of the replica resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='replicaName'>
+        /// The name of the replica.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SkuList>> ListReplicaSkusWithHttpMessagesAsync(string resourceGroupName, string resourceName, string replicaName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to restart a resource.
@@ -260,8 +282,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Operation to restart a resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -275,7 +296,33 @@ namespace Microsoft.Azure.Management.SignalR
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestartWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SignalRRestartHeaders>> RestartWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List all available skus of the resource.
+        /// </summary>
+        /// <remarks>
+        /// List all available skus of the resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SkuList>> ListSkusWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update a resource.
@@ -284,8 +331,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Create or update a resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -314,8 +360,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Operation to delete a resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -338,8 +383,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Operation to update an exiting resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -359,7 +403,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, SignalRResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRResource,SignalRUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, SignalRResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Regenerate the access key for the resource. PrimaryKey and SecondaryKey
@@ -370,8 +414,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// cannot be regenerated at the same time.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -391,7 +434,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRKeys>> BeginRegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string resourceName, RegenerateKeyParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SignalRKeys,SignalRRegenerateKeyHeaders>> BeginRegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string resourceName, RegenerateKeyParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operation to restart a resource.
@@ -400,8 +443,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// Operation to restart a resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -415,7 +457,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SignalRRestartHeaders>> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Handles requests to list all resources in a subscription.

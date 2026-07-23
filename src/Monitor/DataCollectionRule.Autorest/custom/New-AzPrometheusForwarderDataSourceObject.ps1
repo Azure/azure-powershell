@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwa
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azprometheusforwarderdatasourceobject
 #>
 function New-AzPrometheusForwarderDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

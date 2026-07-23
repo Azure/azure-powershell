@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleGiVersion'))
 }
 
 Describe 'Get-AzOracleGiVersion' {
-    It 'List' {
+    It 'List'  {
         {
             $giVersionList = Get-AzOracleGiVersion -Location $env.location
             $giVersionList.Count | Should -BeGreaterThan 0

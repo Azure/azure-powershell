@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to get a url for file upload.
+Generate a URL for uploading a firmware image.
 .Description
-The operation to get a url for file upload.
+Generate a URL for uploading a firmware image.
 .Example
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -FirmwareId firmwareId
 
@@ -33,15 +33,16 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-GENERATEUPLOADURL <IGenerateUploadUrlRequest>: Properties for generating an upload URL
+BODY <IGenerateUploadUrlRequest>: Properties for generating an upload URL
   [FirmwareId <String>]: A unique ID for the firmware to be uploaded.
 
 INPUTOBJECT <IFirmwareAnalysisIdentity>: Identity Parameter
   [FirmwareId <String>]: The id of the firmware.
   [Id <String>]: Resource identity path
+  [Name <String>]: The Firmware analysis summary name describing the type of summary.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [SummaryName <String>]: The Firmware analysis summary name describing the type of summary.
+  [SummaryType <String>]: The Firmware analysis summary name describing the type of summary.
   [WorkspaceName <String>]: The name of the firmware analysis workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.firmwareanalysis/new-azfirmwareanalysisworkspaceuploadurl
@@ -92,7 +93,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest]
     # Properties for generating an upload URL
-    ${GenerateUploadUrl},
+    ${Body},
 
     [Parameter(ParameterSetName='GenerateExpanded')]
     [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
@@ -169,6 +170,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -196,8 +206,6 @@ begin {
             GenerateViaJsonString = 'Az.FirmwareAnalysis.private\New-AzFirmwareAnalysisWorkspaceUploadUrl_GenerateViaJsonString';
         }
         if (('Generate', 'GenerateExpanded', 'GenerateViaJsonFilePath', 'GenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -211,6 +219,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
