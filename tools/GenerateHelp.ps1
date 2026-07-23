@@ -1,4 +1,4 @@
-#Requires -Modules platyPS
+#Requires -Modules @{ ModuleName = 'Microsoft.PowerShell.PlatyPS'; ModuleVersion = '1.0.2' }
 [CmdletBinding()]
 Param(
     [Parameter()]

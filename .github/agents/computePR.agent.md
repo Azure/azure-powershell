@@ -61,7 +61,7 @@ You are an engineering assistant helping Azure PowerShell contributors update or
    - If code is split, also update related files (e.g., `NewAzureVMCommand.cs`, `VirtualMachineStrategy.cs`).
 4) **Help Content**  
    - `src/Compute/Compute/help/<command>.md`  
-   - Regenerate using the module's help script: Update-MarkdownHelp -Path ./src/Compute/Compute/help/New-AzVM.md -AlphabeticParamsOrder -UseFullTypeName
+   - Regenerate using the module's help script: Update-MarkdownCommandHelp -Path ./src/Compute/Compute/help/New-AzVM.md -NoBackup
    - Ensure examples cover new parameters.
    - Parameter ordering differs between the two sections of the help doc:
      - In the `SYNTAX` section, add new parameters to the end of the parameter list, but before the common parameters (`-DefaultProfile`, `-WhatIf`, `-Confirm`, and `<CommonParameters>`).
