@@ -17,28 +17,28 @@ Update a NetworkAnchor
 Update-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IsOracleDnsForwardingEndpointEnabled] [-IsOracleDnsListeningEndpointEnabled]
  [-IsOracleToAzureDnsZoneSyncEnabled] [-OciBackupCidrBlock <String>] [-Tag <Hashtable>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzOracleNetworkAnchor -InputObject <IOracleIdentity> [-IsOracleDnsForwardingEndpointEnabled]
  [-IsOracleDnsListeningEndpointEnabled] [-IsOracleToAzureDnsZoneSyncEnabled] [-OciBackupCidrBlock <String>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

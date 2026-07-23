@@ -19,20 +19,20 @@ New-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -Location <
  [-DnsListeningEndpointAllowedCidr <String>] [-IsOracleDnsForwardingEndpointEnabled]
  [-IsOracleDnsListeningEndpointEnabled] [-IsOracleToAzureDnsZoneSyncEnabled] [-OciBackupCidrBlock <String>]
  [-OciVcnDnsLabel <String>] [-ResourceAnchorId <String>] [-SubnetId <String>] [-Tag <Hashtable>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
