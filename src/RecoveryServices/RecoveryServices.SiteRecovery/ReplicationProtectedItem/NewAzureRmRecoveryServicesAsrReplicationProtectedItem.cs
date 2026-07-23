@@ -417,6 +417,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryCapacityReservationGroupId { get; set; }
 
         /// <summary>
+        /// Gets or sets the confidential data disk encryption (CDDE) user-assigned managed identity ARM Id.
+        /// Required when protecting a CMK confidential VM with encrypted data disks.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential Vm in target recovery region.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryConfidentialDataDiskEncryptionIdentity { get; set; }
+
+        /// <summary>
         /// Gets or sets ID of the AvailabilitySet to recover the machine to in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
@@ -1005,6 +1014,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 PlatformFaultDomain = this.PlatformFaultDomain,
             };
 
+            if (this.IsParameterBound(c => c.RecoveryConfidentialDataDiskEncryptionIdentity))
+            {
+                providerSettings.RecoveryConfidentialDataDiskEncryptionIdentity =
+                    this.RecoveryConfidentialDataDiskEncryptionIdentity;
+            }
+
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))
             {
                 providerSettings.MultiVMGroupName = this.ReplicationGroupName;
@@ -1112,24 +1127,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     if (disk.IsManagedDisk)
                     {
-                        providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
-                        {
-                            DiskId = disk.DiskId,
-                            RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
-                            PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
-                            RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                            RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                            RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
-                            DiskEncryptionInfo =
-                                Utilities.A2AEncryptionDetails(
-                                    disk.DiskEncryptionSecretUrl,
-                                    disk.DiskEncryptionVaultId,
-                                    disk.KeyEncryptionKeyUrl,
-                                    disk.KeyEncryptionVaultId),
-                            RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy,
-                            RecoveryDiskAccessId = disk.RecoveryDiskAccessId,
-                            RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess
-                        });
+                        providerSettings.VMManagedDisks.Add(
+                            Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: true));
 
                     }
                     else

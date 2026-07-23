@@ -245,6 +245,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "autoProtectionOfDataDisk")]
         public string AutoProtectionOfDataDisk {get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential data disk encryption (CDDE) user-assigned
+        /// managed identity ARM Id. Required at enable for CMK confidential VM data
+        /// disks and consumed at failover.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryConfidentialDataDiskEncryptionIdentity")]
+        public string RecoveryConfidentialDataDiskEncryptionIdentity {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

@@ -33,6 +33,7 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>]
  [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-TestNetworkId <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -410,6 +411,21 @@ Accept wildcard characters: False
 
 ### -RecoveryCloudServiceId
 The resource ID of the recovery cloud service to failover this virtual machine to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryConfidentialDataDiskEncryptionIdentity
+Specifies the confidential data disk encryption user-assigned managed identity ARM Id for a CMK confidential VM replication protected item.
 
 ```yaml
 Type: System.String

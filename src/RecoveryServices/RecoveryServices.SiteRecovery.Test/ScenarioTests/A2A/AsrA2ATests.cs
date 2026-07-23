@@ -81,6 +81,16 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
         }
 
+        [Fact(Skip = "to be re-recorded in next release")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewA2AManagedDiskReplicationConfigWithConfidentialDes()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-NewA2AManagedDiskReplicationConfigurationWithConfidentialDes");
+        }
+
         //#if NETSTANDARD
         //        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
         //#else

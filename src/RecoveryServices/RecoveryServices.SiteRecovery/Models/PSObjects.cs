@@ -2791,6 +2791,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryDiskEncryptionSetId;
 
         /// <summary>
+        /// Gets or sets the replica confidential disk encryption set ARM Id (CMK confidential VM disks only).
+        /// </summary>
+        public string ReplicaConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target confidential disk encryption set ARM Id (CMK confidential VM disks only).
+        /// </summary>
+        public string TargetConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
         public string DiskEncryptionVaultId { get; set; }

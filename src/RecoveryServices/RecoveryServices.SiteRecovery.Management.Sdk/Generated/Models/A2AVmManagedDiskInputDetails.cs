@@ -123,6 +123,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public DiskEncryptionInfo DiskEncryptionInfo {get; set; }
 
         /// <summary>
+        /// Gets or sets the confidential disk encryption information. Present only for
+        /// CMK confidential VM disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionInfo")]
+        public ConfidentialDiskEncryptionInfo ConfidentialDiskEncryptionInfo {get; set; }
+
+        /// <summary>
         /// Gets or sets the network access policy for the recovery managed disk. Possible values include: &#39;AllowAll&#39;, &#39;AllowPrivate&#39;, &#39;DenyAll&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryNetworkAccessPolicy")]

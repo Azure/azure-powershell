@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             this.ReplicationVaultSetting = new ReplicationVaultSettingOperations(this);
             this.ReplicationEligibilityResults = new ReplicationEligibilityResultsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-02-01";
+            this.ApiVersion = "2026-06-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

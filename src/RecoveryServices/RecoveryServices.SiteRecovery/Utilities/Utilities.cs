@@ -674,7 +674,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     disk.KeyEncryptionVaultId);
             }
 
+            details.ConfidentialDiskEncryptionInfo = A2AConfidentialDiskEncryptionDetails(
+                disk.ReplicaConfidentialDiskEncryptionSetId,
+                disk.TargetConfidentialDiskEncryptionSetId);
+
             return details;
+        }
+
+        /// <summary>
+        /// Builds a <see cref="ConfidentialDiskEncryptionInfo"/> from the per-disk replica and
+        /// target confidential disk encryption set Ids. Returns <c>null</c> when neither Id is
+        /// supplied so the field is omitted for non-confidential (or PMK) disks.
+        /// </summary>
+        /// <param name="replicaConfidentialDiskEncryptionSetId">Replica confidential DES ARM Id.</param>
+        /// <param name="targetConfidentialDiskEncryptionSetId">Target confidential DES ARM Id.</param>
+        /// <returns>The confidential disk encryption info, or <c>null</c> when not applicable.</returns>
+        public static ConfidentialDiskEncryptionInfo A2AConfidentialDiskEncryptionDetails(
+            string replicaConfidentialDiskEncryptionSetId,
+            string targetConfidentialDiskEncryptionSetId)
+        {
+            if (string.IsNullOrEmpty(replicaConfidentialDiskEncryptionSetId) &&
+                string.IsNullOrEmpty(targetConfidentialDiskEncryptionSetId))
+            {
+                return null;
+            }
+
+            return new ConfidentialDiskEncryptionInfo
+            {
+                RecoveryReplicaConfidentialDiskEncryptionSetId = replicaConfidentialDiskEncryptionSetId,
+                RecoveryTargetConfidentialDiskEncryptionSetId = targetConfidentialDiskEncryptionSetId,
+            };
         }
 
         /// <summary>

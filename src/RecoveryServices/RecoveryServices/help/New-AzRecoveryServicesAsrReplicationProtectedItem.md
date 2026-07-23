@@ -89,6 +89,7 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure]
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
  [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [-WaitForCompletion] [-RecoveryExtendedLocation <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -104,6 +105,7 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure] -AzureVmId <St
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
  [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -793,6 +795,21 @@ Specifies the resource ID of the recovery cloud service to failover this virtual
 ```yaml
 Type: System.String
 Parameter Sets: AzureToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryConfidentialDataDiskEncryptionIdentity
+Specify the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential VM in target recovery region. Applicable to CMK confidential VMs with encrypted data disks.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False

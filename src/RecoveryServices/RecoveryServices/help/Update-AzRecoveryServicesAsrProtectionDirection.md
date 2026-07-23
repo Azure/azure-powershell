@@ -79,6 +79,7 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-RecoveryAvailabilityZone <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [<CommonParameters>]
 ```
 
@@ -95,6 +96,7 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-RecoveryAvailabilityZone <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [<CommonParameters>]
 ```
 
@@ -589,6 +591,21 @@ Accept wildcard characters: False
 
 ### -RecoveryCloudServiceId
 The resource ID of the recovery cloud service to failover this virtual machine to.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryConfidentialDataDiskEncryptionIdentity
+Specifies the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential VM. Applicable when reprotecting a CMK confidential VM with encrypted data disks.
 
 ```yaml
 Type: System.String

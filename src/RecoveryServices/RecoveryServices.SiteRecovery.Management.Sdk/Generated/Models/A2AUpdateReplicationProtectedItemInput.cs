@@ -145,5 +145,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "platformFaultDomain")]
         public int? PlatformFaultDomain {get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential data disk encryption (CDDE) user-assigned
+        /// managed identity ARM Id. Applicable to CMK confidential VM data disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryConfidentialDataDiskEncryptionIdentity")]
+        public string RecoveryConfidentialDataDiskEncryptionIdentity {get; set; }
     }
 }

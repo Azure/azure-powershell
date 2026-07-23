@@ -201,6 +201,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryCapacityReservationGroupId { get; set; }
 
         /// <summary>
+        ///     Gets or sets the confidential data disk encryption (CDDE) user-assigned managed identity ARM Id
+        ///     for a CMK confidential VM replication protected item.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryConfidentialDataDiskEncryptionIdentity { get; set; }
+
+        /// <summary>
         ///     Gets or sets the availability set for replication protected item after failover.
         /// </summary>
         [Parameter]
@@ -742,7 +750,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         managedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails>();
                         foreach (var managedDisk in this.AzureToAzureUpdateReplicationConfiguration)
                         {
-                            managedDiskUpdateDetails.Add(
+                            var diskUpdateDetails =
                                 new A2AVmManagedDiskUpdateDetails(
                                     managedDisk.DiskId,
                                     managedDisk.RecoveryTargetDiskAccountType,
@@ -753,7 +761,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         managedDisk.DiskEncryptionSecretUrl,
                                         managedDisk.DiskEncryptionVaultId,
                                         managedDisk.KeyEncryptionKeyUrl,
-                                        managedDisk.KeyEncryptionVaultId)));
+                                        managedDisk.KeyEncryptionVaultId));
+
+                            if (!string.IsNullOrEmpty(managedDisk.TargetConfidentialDiskEncryptionSetId))
+                            {
+                                diskUpdateDetails.ConfidentialDiskEncryptionInfo =
+                                    new UpdateConfidentialDiskEncryptionInfo
+                                    {
+                                        RecoveryTargetConfidentialDiskEncryptionSetId =
+                                            managedDisk.TargetConfidentialDiskEncryptionSetId
+                                    };
+                            }
+
+                            managedDiskUpdateDetails.Add(diskUpdateDetails);
                         }
                     }
 
@@ -773,7 +793,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             this.KeyEncryptionKeyUrl,
                             this.KeyEncryptionVaultId),
                         RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
-                        PlatformFaultDomain = this.PlatformFaultDomain
+                        PlatformFaultDomain = this.PlatformFaultDomain,
+                        RecoveryConfidentialDataDiskEncryptionIdentity =
+                            this.IsParameterBound(c => c.RecoveryConfidentialDataDiskEncryptionIdentity)
+                                ? this.RecoveryConfidentialDataDiskEncryptionIdentity
+                                : null
                     };
 
                     if (this.ASRVMNicConfiguration != null &&

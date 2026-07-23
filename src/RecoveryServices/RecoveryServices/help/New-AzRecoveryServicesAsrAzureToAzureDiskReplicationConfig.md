@@ -24,6 +24,7 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri <String> -Log
 New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig [-ManagedDisk] -LogStorageAccountId <String>
  -DiskId <String> -RecoveryResourceGroupId <String> -RecoveryReplicaDiskAccountType <String>
  -RecoveryTargetDiskAccountType <String> [-RecoveryDiskEncryptionSetId <String>]
+ [-ReplicaConfidentialDiskEncryptionSetId <String>] [-TargetConfidentialDiskEncryptionSetId <String>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-FailoverDiskName <String>] [-TfoDiskName <String>]
  [-RecoveryNetworkAccessPolicy <String>] [-RecoveryDiskAccessId <String>]
@@ -76,6 +77,15 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStor
 ```
 
 Create a managed disk mapping object that restricts the recovery disk to private network access using the specified disk access resource.Used during Azure to Azure EnableDr and re-protect operation.
+
+### Example 6
+```powershell
+New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
+-RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType `
+-ReplicaConfidentialDiskEncryptionSetId $replicaConfidentialDesId -TargetConfidentialDiskEncryptionSetId $targetConfidentialDesId
+```
+
+Create a managed disk mapping object for a CMK confidential VM disk with replica and target confidential disk encryption sets.Used during Azure to Azure EnableDr and re-protect operation.
 
 ## PARAMETERS
 
@@ -332,6 +342,36 @@ Aliases:
 Accepted values: Premium_LRS, Premium_ZRS, Standard_LRS, StandardSSD_LRS, StandardSSD_ZRS
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicaConfidentialDiskEncryptionSetId
+Specifies the replica confidential disk encryption set ARM Id used to create the seed disk. Applicable only to CMK confidential VM disks.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetConfidentialDiskEncryptionSetId
+Specifies the target confidential disk encryption set ARM Id applied to the failed-over disk. Applicable only to CMK confidential VM disks.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

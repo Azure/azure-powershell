@@ -94,5 +94,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tfoDiskName")]
         public string TfoDiskName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential disk encryption information to update. Only the
+        /// target confidential disk encryption set is mutable; present only for CMK
+        /// confidential VM disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionInfo")]
+        public UpdateConfidentialDiskEncryptionInfo ConfidentialDiskEncryptionInfo {get; set; }
     }
 }
