@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
-                .DeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError: bypassStackOutOfSyncError ? (bool?)true : null)
+                .DeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError)
                 .GetAwaiter()
                 .GetResult();
 
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourcesWithoutDeleteSupport
         )
         {
-            var deleteResponse = DeploymentStacksClient.DeploymentStacks.DeleteAtSubscriptionWithHttpMessagesAsync(name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError: bypassStackOutOfSyncError ? (bool?)true : null)
+            var deleteResponse = DeploymentStacksClient.DeploymentStacks.DeleteAtSubscriptionWithHttpMessagesAsync(name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError)
                 .GetAwaiter()
                 .GetResult();
 
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
-                    .DeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError: bypassStackOutOfSyncError ? (bool?)true : null)
+                    .DeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError)
                     .GetAwaiter()
                     .GetResult();
 

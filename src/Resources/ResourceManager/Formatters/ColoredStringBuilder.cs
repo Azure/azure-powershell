@@ -160,9 +160,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             string currentText = this.stringBuilder.ToString();
             int existingNewlines = 0;
 
-            for (int i = currentText.Length - 1; i >= 0 && currentText[i] == '\n'; i--)
+            for (int i = currentText.Length - 1; i >= 0;)
             {
-                existingNewlines++;
+                if (currentText[i] == '\n')
+                {
+                    existingNewlines++;
+                    i--;
+                    if (i >= 0 && currentText[i] == '\r')
+                    {
+                        i--;
+                    }
+                }
+                else if (currentText[i] == '\r')
+                {
+                    existingNewlines++;
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
             }
 
             int remainingNewlines = numNewLines - existingNewlines;

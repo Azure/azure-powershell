@@ -232,6 +232,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 if (!string.IsNullOrEmpty(resourceGroupName))
                 {
+                    if (string.IsNullOrEmpty(azureContext?.Subscription?.Id))
+                    {
+                        throw new PSArgumentException("A subscription context is required to construct the deployment stack resource ID.");
+                    }
+
                     resolvedStackResourceId = $"/subscriptions/{azureContext.Subscription.Id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}";
                 }
                 else if (!string.IsNullOrEmpty(managementGroupId))
@@ -240,6 +245,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
+                    if (string.IsNullOrEmpty(azureContext?.Subscription?.Id))
+                    {
+                        throw new PSArgumentException("A subscription context is required to construct the deployment stack resource ID.");
+                    }
+
                     resolvedStackResourceId = $"/subscriptions/{azureContext.Subscription.Id}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}";
                 }
             }
