@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         private class HttpRetryTimes
         {
             private const string maxRetriesVariableName = "AZURE_PS_HTTP_MAX_RETRIES";
+            private const string legacyMaxRetriesVariableName = "PS_HTTP_MAX_RETRIES";
             private const string maxRetriesFor429VariableName = "AZURE_PS_HTTP_MAX_RETRIES_FOR_429";
+            private const string legacyMaxRetriesFor429VariableName = "PS_HTTP_MAX_RETRIES_FOR_429";
 
             public static int? AzurePsHttpMaxRetries
             {
@@ -56,12 +58,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
             private static int? TryGetAzurePsHttpMaxRetries()
             {
-                return TryGetValue(maxRetriesVariableName);
+                if (Environment.GetEnvironmentVariable(maxRetriesVariableName) != null)
+                {
+                    return TryGetValue(maxRetriesVariableName);
+                }
+                return TryGetValue(legacyMaxRetriesVariableName);
             }
 
             private static int? TryGetAzurePsHttpMaxRetriesFor429()
             {
-                return TryGetValue(maxRetriesFor429VariableName);
+                if (Environment.GetEnvironmentVariable(maxRetriesFor429VariableName) != null)
+                {
+                    return TryGetValue(maxRetriesFor429VariableName);
+                }
+                return TryGetValue(legacyMaxRetriesFor429VariableName);
             }
         }
 

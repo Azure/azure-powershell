@@ -116,13 +116,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Pinecone.Runtime
 
             try
             {
-                try
+                var customRetry = System.Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES_FOR_429");
+                if (customRetry == null)
                 {
-                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("PS_HTTP_MAX_RETRIES_FOR_429"));
+                    customRetry = System.Environment.GetEnvironmentVariable("PS_HTTP_MAX_RETRIES_FOR_429");
                 }
-                finally
+                if (customRetry != null)
                 {
-                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES_FOR_429"));
+                    retryCount = int.Parse(customRetry);
                 }
             }
             catch (System.Exception)
@@ -175,13 +176,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Pinecone.Runtime
 
             try
             {
-                try
+                var customRetry = System.Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES");
+                if (customRetry == null)
                 {
-                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("PS_HTTP_MAX_RETRIES"));
+                    customRetry = System.Environment.GetEnvironmentVariable("PS_HTTP_MAX_RETRIES");
                 }
-                finally
+                if (customRetry != null)
                 {
-                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES"));
+                    retryCount = int.Parse(customRetry);
                 }
             }
             catch (System.Exception)
