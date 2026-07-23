@@ -26,11 +26,12 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-EnableSubvolume] [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-AcceptGrowCapacityPoolForShortTermCloneSplit <String>]
  [-DesiredRansomwareProtectionState <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -46,12 +47,12 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-EnableSubvolume] [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-AcceptGrowCapacityPoolForShortTermCloneSplit <String>]
  [-DesiredRansomwareProtectionState <String>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +135,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AvsDataStore
 Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose (Enabled, Disabled)
 
@@ -179,8 +195,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BreakthroughMode
+Specifies whether the volume operates in Breakthrough Mode. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CapacityPoolResourceId
 Pool Resource Id used in case of creating a volume through volume group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
 
 ```yaml
 Type: System.String
@@ -556,6 +602,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
