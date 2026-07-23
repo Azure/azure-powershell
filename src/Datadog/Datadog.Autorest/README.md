@@ -34,7 +34,7 @@ input-file:
   - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/preview/2025-12-26-preview/datadog.json
   
 title: Datadog
-module-version: 0.1.1
+module-version: 0.3.0
 subject-prefix: Datadog
 
 directive:
