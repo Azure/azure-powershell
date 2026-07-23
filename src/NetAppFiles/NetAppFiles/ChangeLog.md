@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
  * Added FileAccessLogs to `Get-AzNetAppFilesCache` output.
  * Added Breakthrough Mode support for Azure NetApp Files volumes:
      - Added `-BreakthroughMode` to `New-AzNetAppFilesVolume` and `New-AzNetAppFilesVolumeGroup`.
