@@ -19,7 +19,8 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-ResourceModifierReference <NamespacedNameResource>]
  [-RestoreHookReference <NamespacedNameResource[]>] [-StagingResourceGroupId <String>]
- [-StagingStorageAccountId <String>] [<CommonParameters>]
+ [-StagingStorageAccountId <String>] [-ResourceIdentifier <String[]>] [-ResourceNameOverride <Hashtable>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,33 @@ KubernetesClusterRestoreCriteria Skip           {excludeNS1, excludeNS2}        
 
 This command can be used to create a restore configuration client object used for Kubernetes cluster restore.
 RestoreHookReferences is a list of references to RestoreHooks that should be executed during restore.
+
+### Example 2: Create a RestoreConfiguration for restoring with AzureElasticSAN
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1")
+```
+
+```output
+ObjectType                         ResourceSelector
+----------                         ----------------
+GenericRestoreDatasourceCriteria   Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria
+```
+
+This command creates a restore configuration client object for restoring an Azure Elastic SAN volume to an alternate volume group.
+The service currently supports restoring exactly one volume per restore request, so ResourceIdentifier must contain a single source volume name.
+
+### Example 3: Create a RestoreConfiguration for AzureElasticSAN with a target volume name override
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
+```
+
+```output
+ObjectType                         ResourceSelector
+----------                         ----------------
+GenericRestoreDatasourceCriteria   Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria
+```
+
+This command creates a restore configuration client object that restores the source volume into a renamed target volume using ResourceNameOverride.
 
 ## PARAMETERS
 

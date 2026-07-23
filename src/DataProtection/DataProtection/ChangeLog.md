@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `AzureElasticSAN` (Azure Elastic SAN) datasource support for backup and restore
+    - Added `-ResourceSelector` parameter to `New-AzDataProtectionBackupConfigurationClientObject` for selecting the volume to back up (the service currently supports one volume per backup instance)
+    - Added `-ResourceIdentifier` and `-ResourceNameOverride` parameters to `New-AzDataProtectionRestoreConfigurationClientObject` for selecting and optionally renaming the volume to restore
+    - Enabled `AzureElasticSAN` in `Initialize-AzDataProtectionRestoreRequest` and `Set-AzDataProtectionMSIPermission`
 
 ## Version 3.0.1
 * Deprecated the `-OverwriteLifeCycle` parameter on `Edit-AzDataProtectionPolicyRetentionRuleClientObject`
