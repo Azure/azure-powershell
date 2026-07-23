@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
 * Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
+* Fixed an issue where `VerifyClientAuthMode` was not preserved during PowerShell and SDK model conversions for Application Gateway client authentication configuration
 
 ## Version 8.0.1
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
