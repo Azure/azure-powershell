@@ -2179,6 +2179,11 @@ function GetRuntimeName
 
     $name = $settingHashTable['FUNCTIONS_WORKER_RUNTIME']
 
+    if ([string]::IsNullOrWhiteSpace($name))
+    {
+        return 'Unknown'
+    }
+
     if ($RuntimeToFormattedName.ContainsKey($name))
     {
         return $RuntimeToFormattedName[$name]
