@@ -112,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             if (content.Contains("ExpressRouteAuthorizationKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey = (string) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey = (System.Security.SecureString) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializeDictionary(content);
         }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             if (content.Contains("ExpressRouteAuthorizationKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey = (string) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey = (System.Security.SecureString) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformationInternal)this).ExpressRouteAuthorizationKey, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializePSObject(content);
         }

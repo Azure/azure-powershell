@@ -105,6 +105,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet("Disabled", "Unlocked")]
         public ImmutabilityState? ImmutabilityState { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cost management granularity for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Cost Management Granularity for the vault. Allowed values are \"VaultLevel\", \"ProtectedItemLevel\", \"ProtectedItemWithParentTag\".")]
+        [ValidateSet("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        public CostManagementGranularity? CostManagementGranularity { get; set; }
+
         #endregion
 
         /// <summary>
@@ -164,6 +171,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         vaultCreateArgs.Properties.PublicNetworkAccess = "Enabled";                        
                         Logger.Instance.WriteWarning(String.Format(Resources.PublicNetworkAccessEnabledByDefault));
+                    }
+
+                    if (vaultCreateArgs.Properties.CostManagementSettings == null) { vaultCreateArgs.Properties.CostManagementSettings = new CostManagementSettings(); }
+                    if (CostManagementGranularity != null)
+                    {
+                        vaultCreateArgs.Properties.CostManagementSettings.GranularityLevel = CostManagementGranularity.ToString();
+                    }
+                    else
+                    {
+                        vaultCreateArgs.Properties.CostManagementSettings.GranularityLevel = "VaultLevel";
                     }
 
                     if (ImmutabilityState != null)

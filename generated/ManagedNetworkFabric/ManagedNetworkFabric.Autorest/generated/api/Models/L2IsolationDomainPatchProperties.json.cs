@@ -81,6 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
             {_mtu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("mtu"), out var __jsonMtu) ? (int?)__jsonMtu : _mtu;}
+            {_extendedVlan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("extendedVlan"), out var __jsonExtendedVlan) ? (string)__jsonExtendedVlan : (string)_extendedVlan;}
+            {_networkToNetworkInterconnectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("networkToNetworkInterconnectId"), out var __jsonNetworkToNetworkInterconnectId) ? (string)__jsonNetworkToNetworkInterconnectId : (string)_networkToNetworkInterconnectId;}
             AfterFromJson(json);
         }
 
@@ -105,6 +107,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             __annotationResource?.ToJson(container, serializationMode);
             AddIf( null != this._mtu ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._mtu) : null, "mtu" ,container.Add );
+            AddIf( null != (((object)this._extendedVlan)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._extendedVlan.ToString()) : null, "extendedVlan" ,container.Add );
+            AddIf( null != (((object)this._networkToNetworkInterconnectId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._networkToNetworkInterconnectId.ToString()) : null, "networkToNetworkInterconnectId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

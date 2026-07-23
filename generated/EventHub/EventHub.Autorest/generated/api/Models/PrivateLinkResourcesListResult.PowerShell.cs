@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>Result of the List private link resources operation.</summary>
+    /// <summary>Paged collection of PrivateLinkResource items</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateLinkResourcesListResultTypeConverter))]
     public partial class PrivateLinkResourcesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// Result of the List private link resources operation.
+    /// Paged collection of PrivateLinkResource items
     [System.ComponentModel.TypeConverter(typeof(PrivateLinkResourcesListResultTypeConverter))]
     public partial interface IPrivateLinkResourcesListResult
 

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The response of the List Namespace operation</summary>
+    /// <summary>The response of a EHNamespace list operation.</summary>
     public partial class EhNamespaceListResult
     {
 

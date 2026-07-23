@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of NetworkPacketBrokers.</summary>
+    /// <summary>Paged collection of NetworkPacketBroker items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkPacketBrokersListResultTypeConverter))]
     public partial class NetworkPacketBrokersListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of NetworkPacketBrokers.
+    /// Paged collection of NetworkPacketBroker items
     [System.ComponentModel.TypeConverter(typeof(NetworkPacketBrokersListResultTypeConverter))]
     public partial interface INetworkPacketBrokersListResult
 

@@ -25,12 +25,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
 
+        /// <summary>Backing field for <see cref="ExtendedVlan" /> property.</summary>
+        private string _extendedVlan;
+
+        /// <summary>Extended VLAN status.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string ExtendedVlan { get => this._extendedVlan; set => this._extendedVlan = value; }
+
         /// <summary>Backing field for <see cref="Mtu" /> property.</summary>
         private int? _mtu;
 
         /// <summary>Maximum transmission unit. Default value is 1500.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public int? Mtu { get => this._mtu; set => this._mtu = value; }
+
+        /// <summary>Backing field for <see cref="NetworkToNetworkInterconnectId" /> property.</summary>
+        private string _networkToNetworkInterconnectId;
+
+        /// <summary>ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string NetworkToNetworkInterconnectId { get => this._networkToNetworkInterconnectId; set => this._networkToNetworkInterconnectId = value; }
 
         /// <summary>Creates an new <see cref="L2IsolationDomainPatchProperties" /> instance.</summary>
         public L2IsolationDomainPatchProperties()
@@ -55,6 +69,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource
     {
+        /// <summary>Extended VLAN status.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Extended VLAN status.",
+        SerializedName = @"extendedVlan",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string ExtendedVlan { get; set; }
         /// <summary>Maximum transmission unit. Default value is 1500.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -66,14 +92,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"mtu",
         PossibleTypes = new [] { typeof(int) })]
         int? Mtu { get; set; }
+        /// <summary>ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource.",
+        SerializedName = @"networkToNetworkInterconnectId",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkToNetworkInterconnectId { get; set; }
 
     }
     /// L2 Isolation Domain Patch Properties defines the patchable properties of the resource.
     internal partial interface IL2IsolationDomainPatchPropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal
     {
+        /// <summary>Extended VLAN status.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string ExtendedVlan { get; set; }
         /// <summary>Maximum transmission unit. Default value is 1500.</summary>
         int? Mtu { get; set; }
+        /// <summary>ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource.</summary>
+        string NetworkToNetworkInterconnectId { get; set; }
 
     }
 }

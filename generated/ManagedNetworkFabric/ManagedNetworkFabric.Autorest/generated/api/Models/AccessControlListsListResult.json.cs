@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of Access Control Lists.</summary>
+    /// <summary>Paged collection of AccessControlList items</summary>
     public partial class AccessControlListsListResult
     {
 

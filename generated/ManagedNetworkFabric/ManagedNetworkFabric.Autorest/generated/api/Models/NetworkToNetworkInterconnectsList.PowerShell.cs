@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of Network To Network Interconnects.</summary>
+    /// <summary>Paged collection of NetworkToNetworkInterconnect items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkToNetworkInterconnectsListTypeConverter))]
     public partial class NetworkToNetworkInterconnectsList
     {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of Network To Network Interconnects.
+    /// Paged collection of NetworkToNetworkInterconnect items
     [System.ComponentModel.TypeConverter(typeof(NetworkToNetworkInterconnectsListTypeConverter))]
     public partial interface INetworkToNetworkInterconnectsList
 
