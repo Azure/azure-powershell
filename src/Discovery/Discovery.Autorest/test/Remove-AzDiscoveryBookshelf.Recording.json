@@ -1,0 +1,50 @@
+{
+  "Remove-AzDiscoveryBookshelf+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/bookshelves/pstest-newbs01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/bookshelves/pstest-newbs01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "712" ],
+        "x-ms-client-request-id": [ "dc259966-bc5f-41f3-be97-28e4bf273032" ],
+        "CommandName": [ "Remove-AzDiscoveryBookshelf" ],
+        "FullCommandName": [ "Remove-AzDiscoveryBookshelf_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/5a586989-c155-4cf0-8c14-76d1f425bb01" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6a8a0b07-b878-4719-9726-e6849a7dbf1b" ],
+        "x-ms-build-version": [ "1" ],
+        "x-ms-correlation-request-id": [ "ec568c44-6621-4cbc-a32a-16b7511a9649" ],
+        "x-azure-ref": [ "20260723T211756Z-158d98898d4f6kxzhC1DUBydas0000000dtg000000006h0b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "800" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "12000" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T211810Z:ec568c44-6621-4cbc-a32a-16b7511a9649" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 2F8691B019DE4140A9A640D631F7414C Ref B: BL2AA2011003052 Ref C: 2026-07-23T21:17:55Z" ],
+        "Date": [ "Thu, 23 Jul 2026 21:18:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "248" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Resource deletion validation failed\",\"details\":[{\"code\":\"InternalError\",\"target\":\"knowledgeBases\",\"message\":\"An error occurred while validating knowledge base state for bookshelf deletion. Please retry.\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}

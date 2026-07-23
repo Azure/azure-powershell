@@ -1,0 +1,182 @@
+{
+  "Get-AzDiscoveryWorkspacePrivateLinkResource+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "138" ],
+        "x-ms-client-request-id": [ "bd16e3ad-3553-4e3b-a185-46c2ecbbe9fd" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/51837eaf-cddf-4005-9bed-57b78c1d9427" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "378f079b-145e-4054-91d2-04dcbedff1d5" ],
+        "x-ms-correlation-request-id": [ "ae56887b-d51f-4856-ba2c-372a57be768e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164833Z:ae56887b-d51f-4856-ba2c-372a57be768e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D90FB153CC1D4AD5810C388746BF255B Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:33Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "395" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace\",\"name\":\"workspace\",\"type\":\"workspaces/privateLinkResources\",\"properties\":{\"groupId\":\"workspace\",\"requiredMembers\":[\"workspace\"],\"requiredZoneNames\":[\"privatelink.workspace.discovery.azure.com\"]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateLinkResource+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "139" ],
+        "x-ms-client-request-id": [ "fd043375-599f-40ed-b716-ad9aa5734766" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/6cbdbc87-5d6e-4a87-860b-5a24331fcd45" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ae8daa45-a96a-45ac-a754-1dde907b8dfa" ],
+        "x-ms-correlation-request-id": [ "acd24bf4-9f3a-44cd-a88b-2f108b022515" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164833Z:acd24bf4-9f3a-44cd-a88b-2f108b022515" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 74D23A5A78304F078B4D680A753DAA7F Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:33Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "383" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace\",\"name\":\"workspace\",\"type\":\"workspaces/privateLinkResources\",\"properties\":{\"groupId\":\"workspace\",\"requiredMembers\":[\"workspace\"],\"requiredZoneNames\":[\"privatelink.workspace.discovery.azure.com\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateLinkResource+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "140" ],
+        "x-ms-client-request-id": [ "7b33791a-3998-4fac-9d5b-344e9bcbc195" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/7bcfbaa6-53ca-4722-9cc9-abe00b4e16bf" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4d4f2aa3-5830-467f-b256-0d47fd7a275f" ],
+        "x-ms-correlation-request-id": [ "4979defd-38cc-4754-b0ed-f6b7a79be14b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164834Z:4979defd-38cc-4754-b0ed-f6b7a79be14b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 04DB0369D4E94FBEA7AEB290E439199C Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:34Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "383" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace\",\"name\":\"workspace\",\"type\":\"workspaces/privateLinkResources\",\"properties\":{\"groupId\":\"workspace\",\"requiredMembers\":[\"workspace\"],\"requiredZoneNames\":[\"privatelink.workspace.discovery.azure.com\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateLinkResource+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "141" ],
+        "x-ms-client-request-id": [ "81ed21da-e382-4727-b798-0181e930075e" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateLinkResource_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/3a68343d-ded7-42ee-afce-527fd2e12d06" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3e016e03-c0ce-4b26-8327-9716fd6cc60e" ],
+        "x-ms-correlation-request-id": [ "d65e5b19-67de-4fe8-a99c-ea7878fbe8aa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164835Z:d65e5b19-67de-4fe8-a99c-ea7878fbe8aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 55DF8B979D344CF0A5BA6DD34323C639 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:34Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "383" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateLinkResources/workspace\",\"name\":\"workspace\",\"type\":\"workspaces/privateLinkResources\",\"properties\":{\"groupId\":\"workspace\",\"requiredMembers\":[\"workspace\"],\"requiredZoneNames\":[\"privatelink.workspace.discovery.azure.com\"]}}",
+      "isContentBase64": false
+    }
+  }
+}
