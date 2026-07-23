@@ -149,29 +149,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySet = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList) content.GetValueForProperty("IPExtendedCommunityPropertySet",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySet, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdListTypeConverter.ConvertFrom);
             }
-            if (content.Contains("IPCommunityPropertyAddIpcommunityId"))
+            if (content.Contains("AddIPCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyAddIpcommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityPropertyAddIpcommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyAddIpcommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("AddIPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPCommunityPropertyDeleteIpcommunityId"))
+            if (content.Contains("DeleteIPCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyDeleteIpcommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityPropertyDeleteIpcommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyDeleteIpcommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("DeleteIPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPCommunityPropertySetIpcommunityId"))
+            if (content.Contains("SetIPCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertySetIpcommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityPropertySetIpcommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertySetIpcommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("SetIPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPExtendedCommunityPropertyAddIpextendedCommunityId"))
+            if (content.Contains("AddIPExtendedCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyAddIpextendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityPropertyAddIpextendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyAddIpextendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("AddIPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPExtendedCommunityPropertyDeleteIpextendedCommunityId"))
+            if (content.Contains("DeleteIPExtendedCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyDeleteIpextendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityPropertyDeleteIpextendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyDeleteIpextendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("DeleteIPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPExtendedCommunityPropertySetIpextendedCommunityId"))
+            if (content.Contains("SetIPExtendedCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySetIpextendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityPropertySetIpextendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySetIpextendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("SetIPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializeDictionary(content);
         }
@@ -230,29 +230,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySet = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList) content.GetValueForProperty("IPExtendedCommunityPropertySet",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySet, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdListTypeConverter.ConvertFrom);
             }
-            if (content.Contains("IPCommunityPropertyAddIpcommunityId"))
+            if (content.Contains("AddIPCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyAddIpcommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityPropertyAddIpcommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyAddIpcommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("AddIPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPCommunityPropertyDeleteIpcommunityId"))
+            if (content.Contains("DeleteIPCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyDeleteIpcommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityPropertyDeleteIpcommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertyDeleteIpcommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("DeleteIPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPCommunityPropertySetIpcommunityId"))
+            if (content.Contains("SetIPCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertySetIpcommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityPropertySetIpcommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPCommunityPropertySetIpcommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("SetIPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPExtendedCommunityPropertyAddIpextendedCommunityId"))
+            if (content.Contains("AddIPExtendedCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyAddIpextendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityPropertyAddIpextendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyAddIpextendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("AddIPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).AddIPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPExtendedCommunityPropertyDeleteIpextendedCommunityId"))
+            if (content.Contains("DeleteIPExtendedCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyDeleteIpextendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityPropertyDeleteIpextendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertyDeleteIpextendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("DeleteIPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).DeleteIPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("IPExtendedCommunityPropertySetIpextendedCommunityId"))
+            if (content.Contains("SetIPExtendedCommunityId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySetIpextendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityPropertySetIpextendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).IPExtendedCommunityPropertySetIpextendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("SetIPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)this).SetIPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

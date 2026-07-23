@@ -124,14 +124,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 AddIf( null != this._profile ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._profile.ToJson(null,serializationMode) : null, "profile" ,container.Add );
             }
             AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            if (null != this._provisioningIssue)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.XNodeArray();
-                foreach( var __x in this._provisioningIssue )
+                if (null != this._provisioningIssue)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._provisioningIssue )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("provisioningIssues",__w);
                 }
-                container.Add("provisioningIssues",__w);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))
             {

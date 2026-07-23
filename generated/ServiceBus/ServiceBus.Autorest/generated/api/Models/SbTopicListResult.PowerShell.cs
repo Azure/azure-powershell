@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The response to the List Topics operation.</summary>
+    /// <summary>The response of a SBTopic list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(SbTopicListResultTypeConverter))]
     public partial class SbTopicListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The response to the List Topics operation.
+    /// The response of a SBTopic list operation.
     [System.ComponentModel.TypeConverter(typeof(SbTopicListResultTypeConverter))]
     public partial interface ISbTopicListResult
 

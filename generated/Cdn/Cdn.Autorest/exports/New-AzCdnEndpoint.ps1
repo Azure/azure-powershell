@@ -68,7 +68,7 @@ ENDPOINT <IEndpoint>: CDN endpoint is the entity within a CDN profile containing
   [IsHttpsAllowed <Boolean?>]: Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
   [OptimizationType <String>]: Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
   [Origin <List<IDeepCreatedOrigin>>]: The source of the content being delivered via CDN.
-    Name <String>: Origin name which must be unique within the endpoint. 
+    Name <String>: Origin name which must be unique within the endpoint.
     [Enabled <Boolean?>]: Origin is enabled for load balancing or not. By default, origin is always enabled.
     [HostName <String>]: The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.
     [HttpPort <Int32?>]: The value of the HTTP port. Must be between 1 and 65535.
@@ -115,7 +115,7 @@ GEOFILTER <IGeoFilter[]>: List of rules defining the user's geo access within a 
   RelativePath <String>: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
 
 ORIGIN <IDeepCreatedOrigin[]>: The source of the content being delivered via CDN.
-  Name <String>: Origin name which must be unique within the endpoint. 
+  Name <String>: Origin name which must be unique within the endpoint.
   [Enabled <Boolean?>]: Origin is enabled for load balancing or not. By default, origin is always enabled.
   [HostName <String>]: The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.
   [HttpPort <Int32?>]: The value of the HTTP port. Must be between 1 and 65535.
@@ -152,8 +152,9 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -189,7 +190,7 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the CDN profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

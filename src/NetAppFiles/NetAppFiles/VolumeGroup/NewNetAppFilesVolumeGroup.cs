@@ -379,6 +379,60 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Default Breakthrough Mode applied to all volumes in the group unless overridden per volume type. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string BreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for data volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DataBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for log volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string LogBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for shared volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string SharedBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for data-backup volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DataBackupBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for log-backup volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string LogBackupBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for binary volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string BinaryBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for backup volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string BackupBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Breakthrough Mode override for log-mirror volumes. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string LogMirrorBreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'")]
         public string KeyVaultPrivateEndpointResourceId { get; set; }
 
@@ -819,6 +873,51 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 return CreateHostVolumeGroup(name, ApplicationIdentifier, poolResourceId, tagPairs, BackupProtocolType, volumeExportPolicy, StartingHostId, HostCount, SystemRole);
             }            
         }
+
+        private string ResolveBreakthroughMode(string volumeSpecName)
+        {
+            if (volumeSpecName == SapVolumeType.Data)
+            {
+                return DataBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == SapVolumeType.Log)
+            {
+                return LogBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == SapVolumeType.Shared)
+            {
+                return SharedBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == SapVolumeType.DataBackup)
+            {
+                return DataBackupBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == SapVolumeType.LogBackup)
+            {
+                return LogBackupBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == OracleVolumeType.Binary)
+            {
+                return BinaryBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == OracleVolumeType.Backup)
+            {
+                return BackupBreakthroughMode ?? BreakthroughMode;
+            }
+
+            if (volumeSpecName == OracleVolumeType.LogMirror)
+            {
+                return LogMirrorBreakthroughMode ?? BreakthroughMode;
+            }
+
+            return BreakthroughMode;
+        }
         
         private VolumeGroupDetails CreateHostVolumeGroup(string name, string sid, string poolResourceId, IDictionary<string, string> tagPairs, string[] volumeBackupProtocolTypes, VolumePropertiesExportPolicy volumeExportPolicy, int startingHostId,  int hostCount, string systemRole)
         {
@@ -861,7 +960,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     Zones = zoneList,
                     KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                     EncryptionKeySource = this.EncryptionKeySource,
-                    NetworkFeatures = this.NetworkFeature
+                    NetworkFeatures = this.NetworkFeature,
+                    BreakthroughMode = ResolveBreakthroughMode(SapVolumeType.Data)
                 };
                 if (systemRole == SystemRoles.DR)
                 {
@@ -888,7 +988,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     Zones = zoneList,
                     KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                     EncryptionKeySource = this.EncryptionKeySource,
-                    NetworkFeatures = this.NetworkFeature
+                    NetworkFeatures = this.NetworkFeature,
+                    BreakthroughMode = ResolveBreakthroughMode(SapVolumeType.Log)
                 };
                 if (systemRole == SystemRoles.DR)
                 {
@@ -918,7 +1019,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         Zones = zoneList,
                         KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                         EncryptionKeySource = this.EncryptionKeySource,
-                        NetworkFeatures = this.NetworkFeature
+                        NetworkFeatures = this.NetworkFeature,
+                        BreakthroughMode = ResolveBreakthroughMode(SapVolumeType.Shared)
                     };
                     if (this.Zone != null)
                     {
@@ -950,7 +1052,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         Zones = zoneList,
                         KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                         EncryptionKeySource = this.EncryptionKeySource,
-                        NetworkFeatures = this.NetworkFeature
+                        NetworkFeatures = this.NetworkFeature,
+                        BreakthroughMode = ResolveBreakthroughMode(SapVolumeType.LogBackup)
                     };
                     if (this.Zone != null)
                     {
@@ -990,7 +1093,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         Zones = zoneList,
                         KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                         EncryptionKeySource = this.EncryptionKeySource,
-                        NetworkFeatures = this.NetworkFeature
+                        NetworkFeatures = this.NetworkFeature,
+                        BreakthroughMode = ResolveBreakthroughMode(SapVolumeType.DataBackup)
                     };
                     if (this.Zone != null)
                     {
@@ -1181,7 +1285,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     Zones = zoneList,
                     KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                     EncryptionKeySource = this.EncryptionKeySource,
-                    NetworkFeatures = this.NetworkFeature
+                    NetworkFeatures = this.NetworkFeature,
+                    BreakthroughMode = ResolveBreakthroughMode(OracleVolumeType.Data)
                 };
                 if (systemRole == SystemRoles.DR)
                 {                    
@@ -1215,7 +1320,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 Zones = zoneList,
                 KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                 EncryptionKeySource = this.EncryptionKeySource,
-                NetworkFeatures = this.NetworkFeature
+                NetworkFeatures = this.NetworkFeature,
+                BreakthroughMode = ResolveBreakthroughMode(OracleVolumeType.Log)
             };
             if (systemRole == SystemRoles.DR)
             {
@@ -1243,7 +1349,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 Zones = zoneList,
                 KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                 EncryptionKeySource = this.EncryptionKeySource,
-                NetworkFeatures = this.NetworkFeature
+                NetworkFeatures = this.NetworkFeature,
+                BreakthroughMode = ResolveBreakthroughMode(OracleVolumeType.Binary)
             };
             if (this.Zone != null)
             {
@@ -1275,7 +1382,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 Zones = zoneList,
                 KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                 EncryptionKeySource = this.EncryptionKeySource,
-                NetworkFeatures = this.NetworkFeature
+                NetworkFeatures = this.NetworkFeature,
+                BreakthroughMode = ResolveBreakthroughMode(OracleVolumeType.LogMirror)
             };
             if (this.Zone != null)
             {
@@ -1307,7 +1415,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 Zones = zoneList,
                 KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
                 EncryptionKeySource = this.EncryptionKeySource,
-                NetworkFeatures = this.NetworkFeature
+                NetworkFeatures = this.NetworkFeature,
+                BreakthroughMode = ResolveBreakthroughMode(OracleVolumeType.Backup)
             };
             if (this.Zone != null)
             {

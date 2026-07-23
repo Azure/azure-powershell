@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of NetworkInterfaces.</summary>
+    /// <summary>Paged collection of NetworkInterface items</summary>
     public partial class NetworkInterfacesList
     {
 

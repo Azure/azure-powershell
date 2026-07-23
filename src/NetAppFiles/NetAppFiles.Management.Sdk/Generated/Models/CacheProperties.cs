@@ -118,7 +118,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="writeBack">Flag indicating whether writeback is enabled for the cache.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public CacheProperties(string filePath, long size, string cacheSubnetResourceId, string peeringSubnetResourceId, string encryptionKeySource, OriginClusterInformation originClusterInformation, CachePropertiesExportPolicy exportPolicy = default(CachePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string cacheState = default(string), System.Collections.Generic.IList<CacheMountTargetProperties> mountTargets = default(System.Collections.Generic.IList<CacheMountTargetProperties>), string kerberos = default(string), SmbSettings smbSettings = default(SmbSettings), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string keyVaultPrivateEndpointResourceId = default(string), long? maximumNumberOfFiles = default(long?), string encryption = default(string), string language = default(string), string ldap = default(string), string ldapServerType = default(string), string cifsChangeNotifications = default(string), string globalFileLocking = default(string), string writeBack = default(string))
+
+        /// <param name="fileAccessLogs">Flag indicating whether file access logs are enabled for the Cache, based
+        /// on active diagnostic settings present on the Cache.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public CacheProperties(string filePath, long size, string cacheSubnetResourceId, string peeringSubnetResourceId, string encryptionKeySource, OriginClusterInformation originClusterInformation, CachePropertiesExportPolicy exportPolicy = default(CachePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string cacheState = default(string), System.Collections.Generic.IList<CacheMountTargetProperties> mountTargets = default(System.Collections.Generic.IList<CacheMountTargetProperties>), string kerberos = default(string), SmbSettings smbSettings = default(SmbSettings), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string keyVaultPrivateEndpointResourceId = default(string), long? maximumNumberOfFiles = default(long?), string encryption = default(string), string language = default(string), string ldap = default(string), string ldapServerType = default(string), string cifsChangeNotifications = default(string), string globalFileLocking = default(string), string writeBack = default(string), string fileAccessLogs = default(string))
 
         {
             this.FilePath = filePath;
@@ -145,6 +149,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.CifsChangeNotifications = cifsChangeNotifications;
             this.GlobalFileLocking = globalFileLocking;
             this.WriteBack = writeBack;
+            this.FileAccessLogs = fileAccessLogs;
             CustomInit();
         }
 
@@ -310,6 +315,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "writeBack")]
         public string WriteBack {get; set; }
+
+        /// <summary>
+        /// Gets flag indicating whether file access logs are enabled for the Cache,
+        /// based on active diagnostic settings present on the Cache. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "fileAccessLogs")]
+        public string FileAccessLogs {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -389,6 +401,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.OriginClusterInformation.Validate();
             }
+
 
 
 
