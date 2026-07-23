@@ -16,24 +16,27 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 ```
 Invoke-AzCosmosDBCassandraTableThroughputMigration -KeyspaceName <String> [-Name <String>]
  -ResourceGroupName <String> -AccountName <String> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Invoke-AzCosmosDBCassandraTableThroughputMigration [-Name <String>]
  -ParentObject <PSCassandraKeyspaceGetResults> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Invoke-AzCosmosDBCassandraTableThroughputMigration [-Name <String>] -InputObject <PSCassandraTableGetResults>
- -ThroughputType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ThroughputType <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-ThroughpyteType paramter defines the throughput to which you want to migrate to.
+ThroughputType parameter defines the throughput to which you want to migrate to.
 
 ## EXAMPLES
 

@@ -21,12 +21,13 @@ Create an in-memory object for CheckServiceProviderAvailabilityInput.
 Create an in-memory object for CheckServiceProviderAvailabilityInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringCheckServiceProviderAvailabilityInputObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringcheckserviceprovideravailabilityinputobject
 #>
 function New-AzPeeringCheckServiceProviderAvailabilityInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzPeeringCheckServiceProviderAvailabilityInputObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput]::New()
 
         if ($PSBoundParameters.ContainsKey('PeeringServiceLocation')) {
             $Object.PeeringServiceLocation = $PeeringServiceLocation

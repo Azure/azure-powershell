@@ -36,42 +36,45 @@ To create the parameters described below, construct a hash table containing the 
 DISASTERRECOVERYCONFIGINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -112,7 +115,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -120,8 +124,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -198,6 +202,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_Get';
@@ -207,8 +214,6 @@ begin {
             List = 'Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -217,6 +222,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -288,15 +296,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -355,13 +364,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigKey_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -370,6 +380,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -421,28 +434,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -474,7 +489,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -482,8 +498,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -554,6 +570,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get';
@@ -562,8 +581,6 @@ begin {
             List = 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -572,6 +589,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -637,15 +657,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -704,13 +725,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ServiceBus.private\Get-AzServiceBusNamespaceKey_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -719,6 +741,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -750,9 +775,9 @@ end {
 
 <#
 .Synopsis
-Lists all of the available ServiceBus REST API operations.
+List the operations for the provider
 .Description
-Lists all of the available ServiceBus REST API operations.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
@@ -823,12 +848,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ServiceBus.private\Get-AzServiceBusOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -880,42 +911,45 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 QUEUEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -956,7 +990,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -964,8 +999,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1042,6 +1077,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get';
@@ -1051,8 +1089,6 @@ begin {
             List = 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1061,6 +1097,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1132,15 +1171,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -1199,13 +1239,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ServiceBus.private\Get-AzServiceBusQueueKey_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1214,6 +1255,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1265,42 +1309,45 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 TOPICINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -1333,7 +1380,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -1341,8 +1389,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1427,6 +1475,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get';
@@ -1436,8 +1487,6 @@ begin {
             List = 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1446,6 +1495,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1511,7 +1563,8 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
@@ -1524,8 +1577,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -1584,13 +1637,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ServiceBus.private\Get-AzServiceBusTopicKey_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1599,6 +1653,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1650,28 +1707,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -1697,15 +1756,16 @@ param(
     [Parameter(ParameterSetName='Break', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Break')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='BreakViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1782,6 +1842,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Break = 'Az.ServiceBus.private\Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing_Break';
@@ -1789,8 +1852,6 @@ begin {
             BreakViaIdentityNamespace = 'Az.ServiceBus.private\Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing_BreakViaIdentityNamespace';
         }
         if (('Break') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1799,6 +1860,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1839,7 +1903,7 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
@@ -1852,32 +1916,34 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
-PARAMETER <IFailoverProperties>: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
+PARAMETER <INamespaceFailoverProperties>: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
   [IsSafeFailover <Boolean?>]: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover
@@ -1912,7 +1978,8 @@ param(
     [Parameter(ParameterSetName='FailViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Fail')]
@@ -1922,8 +1989,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='FailViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1944,7 +2011,7 @@ param(
     [Parameter(ParameterSetName='FailViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FailViaIdentityNamespace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties]
     # Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
     ${Parameter},
 
@@ -2030,6 +2097,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Fail = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_Fail';
@@ -2042,8 +2112,6 @@ begin {
             FailViaJsonString = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaJsonString';
         }
         if (('Fail', 'FailExpanded', 'FailViaJsonFilePath', 'FailViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2052,6 +2120,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2083,9 +2154,9 @@ end {
 
 <#
 .Synopsis
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Description
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Example
 New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace"
 
@@ -2103,14 +2174,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -2165,12 +2237,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
     [System.Uri]
@@ -2198,12 +2264,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusGeoDRConfiguration_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2235,9 +2307,9 @@ end {
 
 <#
 .Synopsis
-create an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 .Description
-create an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -2257,28 +2329,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -2310,15 +2384,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2406,6 +2481,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusNamespaceAuthorizationRule_CreateExpanded';
@@ -2414,8 +2492,6 @@ begin {
             CreateViaIdentityNamespaceExpanded = 'Az.ServiceBus.private\New-AzServiceBusNamespaceAuthorizationRule_CreateViaIdentityNamespaceExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2424,6 +2500,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2477,14 +2556,15 @@ To create the parameters described below, construct a hash table containing the 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -2519,7 +2599,8 @@ param(
     [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Regenerate')]
@@ -2528,8 +2609,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RegenerateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
@@ -2627,6 +2708,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Regenerate = 'Az.ServiceBus.private\New-AzServiceBusNamespaceKey_Regenerate';
@@ -2636,8 +2720,6 @@ begin {
             RegenerateViaJsonString = 'Az.ServiceBus.private\New-AzServiceBusNamespaceKey_RegenerateViaJsonString';
         }
         if (('Regenerate', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2646,6 +2728,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2677,11 +2762,11 @@ end {
 
 <#
 .Synopsis
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -2706,17 +2791,22 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: A list of regions where replicas of the namespace are maintained.
+  [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+  [RoleType <String>]: GeoDR Role Types
+
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -2727,11 +2817,17 @@ KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
 
 PARAMETER <ISbNamespace>: Description of a namespace resource.
-  Location <String>: The Geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name for namespace
+  [ConfidentialComputeMode <String>]: Setting to Enable or Disable Confidential Compute
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Service Bus namespace.
+  [GeoDataReplicationLocation <List<INamespaceReplicaLocation>>]: A list of regions where replicas of the namespace are maintained.
+    [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+    [RoleType <String>]: GeoDR Role Types
+  [GeoDataReplicationMaxReplicationLagDurationInSecond <Int32?>]: The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+  [IPAddressType <String>]: The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
   [IdentityType <String>]: Type of managed service identity.
   [KeySource <String>]: Enumerates the possible value of keySource for Encryption
   [KeyVaultProperty <List<IKeyVaultProperties>>]: Properties of KeyVault
@@ -2773,21 +2869,22 @@ param(
     [Alias('NamespaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # The namespace name.
+    # The namespace name
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2799,7 +2896,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
-    # The Geo-location where the resource lives
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2809,10 +2906,40 @@ param(
     ${AlternateName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # This property disables SAS authentication for the Service Bus namespace.
     ${DisableLocalAuth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+    # A list of regions where replicas of the namespace are maintained.
+    ${GeoDataReplicationLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+    # When the lag exceeds the configured amount, operations on the primary replica will be failed.
+    # The allowed values are 0 and 5 minutes to 1 day.
+    ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+    ${IPAddressType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None")]
@@ -2836,7 +2963,7 @@ param(
     ${KeyVaultProperty},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
     # The minimum TLS version for the cluster to support, e.g.
@@ -2899,7 +3026,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Resource tags
+    # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2989,14 +3116,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateExpanded';
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3005,6 +3133,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3036,9 +3167,9 @@ end {
 
 <#
 .Synopsis
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3058,14 +3189,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -3103,15 +3235,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -3217,14 +3350,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusNetworkRuleSet_CreateExpanded';
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusNetworkRuleSet_CreateViaIdentity';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3233,6 +3367,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3264,9 +3401,9 @@ end {
 
 <#
 .Synopsis
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Description
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3286,28 +3423,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -3343,15 +3482,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -3460,6 +3600,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusPrivateEndpointConnection_CreateExpanded';
@@ -3468,8 +3611,6 @@ begin {
             CreateViaIdentityNamespaceExpanded = 'Az.ServiceBus.private\New-AzServiceBusPrivateEndpointConnection_CreateViaIdentityNamespaceExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3478,6 +3619,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3509,9 +3653,9 @@ end {
 
 <#
 .Synopsis
-create an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Description
-create an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Example
 {{ Add code here }}
 .Example
@@ -3531,28 +3675,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -3562,14 +3708,15 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
 QUEUEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -3606,15 +3753,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -3711,6 +3859,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateExpanded';
@@ -3721,8 +3872,6 @@ begin {
             CreateViaIdentityQueueExpanded = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentityQueueExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3731,6 +3880,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3784,14 +3936,15 @@ To create the parameters described below, construct a hash table containing the 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -3802,14 +3955,15 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
 QUEUEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -3850,7 +4004,8 @@ param(
     [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Regenerate')]
@@ -3859,8 +4014,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RegenerateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
@@ -3968,6 +4123,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Regenerate = 'Az.ServiceBus.private\New-AzServiceBusQueueKey_Regenerate';
@@ -3979,8 +4137,6 @@ begin {
             RegenerateViaJsonString = 'Az.ServiceBus.private\New-AzServiceBusQueueKey_RegenerateViaJsonString';
         }
         if (('Regenerate', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3989,6 +4145,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4020,10 +4179,10 @@ end {
 
 <#
 .Synopsis
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 .Description
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 .Example
 New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 5) -EnablePartitioning
@@ -4042,14 +4201,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -4070,6 +4230,7 @@ PARAMETER <ISbQueue>: Description of queue Resource.
   [RequiresDuplicateDetection <Boolean?>]: A value indicating if this queue requires duplicate detection.
   [RequiresSession <Boolean?>]: A value that indicates whether the queue supports the concept of sessions.
   [Status <String>]: Enumerates the possible values for the status of a messaging entity.
+  [UserMetadata <String>]: Gets and Sets Metadata of User.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
 .Link
@@ -4147,12 +4308,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusQueue_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4184,9 +4351,9 @@ end {
 
 <#
 .Synopsis
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 .Description
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 .Example
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -FilterType CorrelationFilter -ContentType contenttype -CorrelationFilterProperty @{a='b';c='d'} -SessionId sessionid -CorrelationId correlationid -MessageId messageid -Label label -ReplyTo replyto -ReplyToSessionId replytosessionid
 .Example
@@ -4206,14 +4373,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -4311,12 +4479,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusRule_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4348,9 +4522,9 @@ end {
 
 <#
 .Synopsis
-create a topic subscription.
+Create a topic subscription.
 .Description
-create a topic subscription.
+Create a topic subscription.
 .Example
 New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 
@@ -4368,14 +4542,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -4396,6 +4571,7 @@ PARAMETER <ISbSubscription>: Description of subscription resource.
   [MaxDeliveryCount <Int32?>]: Number of maximum deliveries.
   [RequiresSession <Boolean?>]: Value indicating if a subscription supports the concept of sessions.
   [Status <String>]: Enumerates the possible values for the status of a messaging entity.
+  [UserMetadata <String>]: Gets and Sets Metadata of User.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
 .Link
@@ -4473,12 +4649,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4510,9 +4692,9 @@ end {
 
 <#
 .Synopsis
-create an authorization rule for the specified topic.
+Create an authorization rule for the specified topic.
 .Description
-create an authorization rule for the specified topic.
+Create an authorization rule for the specified topic.
 .Example
 {{ Add code here }}
 .Example
@@ -4532,28 +4714,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -4563,14 +4747,15 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
 TOPICINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -4601,15 +4786,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -4714,6 +4900,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusTopicAuthorizationRule_CreateExpanded';
@@ -4724,8 +4913,6 @@ begin {
             CreateViaIdentityTopicExpanded = 'Az.ServiceBus.private\New-AzServiceBusTopicAuthorizationRule_CreateViaIdentityTopicExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4734,6 +4921,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4787,14 +4977,15 @@ To create the parameters described below, construct a hash table containing the 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -4805,14 +4996,15 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
 TOPICINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -4843,7 +5035,8 @@ param(
     [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Regenerate')]
@@ -4852,8 +5045,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Regenerate', Mandatory)]
@@ -4971,6 +5164,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Regenerate = 'Az.ServiceBus.private\New-AzServiceBusTopicKey_Regenerate';
@@ -4982,8 +5178,6 @@ begin {
             RegenerateViaJsonString = 'Az.ServiceBus.private\New-AzServiceBusTopicKey_RegenerateViaJsonString';
         }
         if (('Regenerate', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4992,6 +5186,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5023,9 +5220,9 @@ end {
 
 <#
 .Synopsis
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 .Description
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 .Example
 New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 18) -EnableBatchedOperations
 
@@ -5043,14 +5240,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -5066,6 +5264,7 @@ PARAMETER <ISbTopic>: Description of topic resource.
   [RequiresDuplicateDetection <Boolean?>]: Value indicating if this topic requires duplicate detection.
   [Status <String>]: Enumerates the possible values for the status of a messaging entity.
   [SupportOrdering <Boolean?>]: Value that indicates whether the topic supports ordering.
+  [UserMetadata <String>]: Gets and Sets Metadata of User.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
 .Link
@@ -5143,12 +5342,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusTopic_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5200,28 +5405,30 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -5249,15 +5456,16 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -5334,6 +5542,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ServiceBus.private\Remove-AzServiceBusNamespaceAuthorizationRule_Delete';
@@ -5341,8 +5552,6 @@ begin {
             DeleteViaIdentityNamespace = 'Az.ServiceBus.private\Remove-AzServiceBusNamespaceAuthorizationRule_DeleteViaIdentityNamespace';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5351,6 +5560,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5402,42 +5614,45 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 QUEUEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -5473,15 +5688,16 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -5564,6 +5780,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ServiceBus.private\Remove-AzServiceBusQueueAuthorizationRule_Delete';
@@ -5572,8 +5791,6 @@ begin {
             DeleteViaIdentityQueue = 'Az.ServiceBus.private\Remove-AzServiceBusQueueAuthorizationRule_DeleteViaIdentityQueue';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5582,6 +5799,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5633,42 +5853,45 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
 TOPICINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
@@ -5697,15 +5920,16 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -5795,6 +6019,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ServiceBus.private\Remove-AzServiceBusTopicAuthorizationRule_Delete';
@@ -5803,8 +6030,6 @@ begin {
             DeleteViaIdentityTopic = 'Az.ServiceBus.private\Remove-AzServiceBusTopicAuthorizationRule_DeleteViaIdentityTopic';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5813,6 +6038,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5844,9 +6072,2610 @@ end {
 
 <#
 .Synopsis
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Update a new Alias(Disaster Recovery configuration)
 .Description
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Update a new Alias(Disaster Recovery configuration)
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfiguration
+#>
+function Set-AzServiceBusGeoDRConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The Disaster Recovery configuration name
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+    ${AlternateName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+    ${PartnerNamespace},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusGeoDRConfiguration_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusGeoDRConfiguration_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusGeoDRConfiguration_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an authorization rule for a namespace.
+.Description
+Update an authorization rule for a namespace.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnamespaceauthorizationrule
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639410.aspx
+#>
+function Set-AzServiceBusNamespaceAuthorizationRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The authorization rule name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String[]]
+    # The rights associated with the rule.
+    ${Rights},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusNamespaceAuthorizationRule_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusNamespaceAuthorizationRule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusNamespaceAuthorizationRule_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+GeoDR Failover
+.Description
+GeoDR Failover
+.Example
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$newKeyVaultProperty = New-AzServiceBusKeyVaultPropertiesObject -KeyName key6 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$serviceBusNamespace.KeyVaultProperty += $newKeyVaultProperty
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+.Example
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$serviceBusNamespace.KeyVaultProperty = $serviceBusNamespace.KeyVaultProperty[0,2]
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+.Example
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$id1 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$id2 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $id1, $id2
+.Example
+$id1 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity" 
+$id2 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+$serviceBusNamespace = New-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $id1,$id2
+$serviceBusNamespace = Set-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ENCRYPTIONKEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
+  [KeyName <String>]: Name of the Key from KeyVault
+  [KeyVaultUri <String>]: Uri of KeyVault
+  [KeyVersion <String>]: Version of KeyVault
+  [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
+
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: A list of regions where replicas of the namespace are maintained.
+  [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+  [RoleType <String>]: GeoDR Role Types
+
+PARAMETER <IFailOver>: .
+  [Force <Boolean?>]: If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced failover is attempted with possible data loss.
+  [PrimaryLocation <String>]: Query parameter for the new primary location after failover.
+
+PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections.
+  [ConnectionState <String>]: Status of the connection.
+  [Description <String>]: Description of the connection state.
+  [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
+  [ProvisioningState <String>]: Provisioning state of the Private Endpoint Connection.
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnamespace
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639408.aspx
+#>
+function Set-AzServiceBusNamespace {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver], [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace])]
+[CmdletBinding(DefaultParameterSetName='FailoverExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('NamespaceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Failover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver]
+    # .
+    ${Parameter},
+
+    [Parameter(ParameterSetName='FailoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If Force is false then graceful failover is attempted after ensuring no data loss.
+    # If Force flag is set to true, Forced failover is attempted with possible data loss.
+    ${Force},
+
+    [Parameter(ParameterSetName='FailoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Query parameter for the new primary location after failover.
+    ${PrimaryLocation},
+
+    [Parameter(ParameterSetName='FailoverViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Failover operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='FailoverViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Failover operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Alternate name for namespace
+    ${AlternateName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # This property disables SAS authentication for the Service Bus namespace.
+    ${DisableLocalAuth},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Microsoft.KeyVault")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Enumerates the possible value of keySource for Encryption
+    ${EncryptionKeySource},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]]
+    # Properties of KeyVault
+    ${EncryptionKeyVaultProperty},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable Infrastructure Encryption (Double Encryption)
+    ${EncryptionRequireInfrastructureEncryption},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+    # A list of regions where replicas of the namespace are maintained.
+    ${GeoDataReplicationLocation},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+    # When the lag exceeds the configured amount, operations on the primary replica will be failed.
+    # The allowed values are 0 and 5 minutes to 1 day.
+    ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+    ${IPAddressType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Type of managed service identity.
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # Properties for User Assigned Identities
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The minimum TLS version for the cluster to support, e.g.
+    # '1.2'
+    ${MinimumTlsVersion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The number of partitions of a Service Bus namespace.
+    # This property is only applicable to Premium SKU namespaces.
+    # The default value is 1 and possible values are 1, 2 and 4
+    ${PremiumMessagingPartition},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection[]]
+    # List of private endpoint connections.
+    ${PrivateEndpointConnection},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # This determines if traffic is allowed over public network.
+    # By default it is enabled.
+    ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # Messaging units for your service bus premium namespace.
+    # Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting.
+    # For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16.
+    # If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
+    ${SkuCapacity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Name of this SKU.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The billing tier of this particular SKU.
+    ${SkuTier},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+    ${ZoneRedundant},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Failover = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_Failover';
+            FailoverExpanded = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_FailoverExpanded';
+            FailoverViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_FailoverViaJsonFilePath';
+            FailoverViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_FailoverViaJsonString';
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusNamespace_UpdateViaJsonString';
+        }
+        if (('Failover', 'FailoverExpanded', 'FailoverViaJsonFilePath', 'FailoverViaJsonString', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update NetworkRuleSet for a Namespace.
+.Description
+Update NetworkRuleSet for a Namespace.
+.Example
+$ipRule1 = New-AzServiceBusIPRuleConfig -IPMask 2.2.2.2 -Action Allow
+$ipRule2 = New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow
+$virtualNetworkRule1 = New-AzServiceBusVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
+$networkRuleSet = Get-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$networkRuleSet.IPRule += $ipRule1
+$networkRuleSet.IPRule += $ipRule2
+$networkRuleSet.VirtualNetworkRule += $virtualNetworkRule1
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -IPRule $ipRule1,$ipRule2 -VirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2,$virtualNetworkRule3
+.Example
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TrustedServiceAccessEnabled
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+IPRULE <INwRuleSetIPRules[]>: List of IpRules
+  [Action <String>]: The IP Filter Action
+  [IPMask <String>]: IP Mask
+
+VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List VirtualNetwork Rules
+  [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing VNet Service Endpoint
+  [SubnetId <String>]: Resource ID of Virtual Network Subnet
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnetworkruleset
+#>
+function Set-AzServiceBusNetworkRuleSet {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Allow", "Deny")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Default Action for Network Rule Set
+    ${DefaultAction},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules[]]
+    # List of IpRules
+    ${IPRule},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # This determines if traffic is allowed over public network.
+    # By default it is enabled.
+    ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether Trusted Service Access is Enabled or not.
+    ${TrustedServiceAccessEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules[]]
+    # List VirtualNetwork Rules
+    ${VirtualNetworkRule},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusNetworkRuleSet_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusNetworkRuleSet_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusNetworkRuleSet_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update PrivateEndpointConnections of service namespace.
+.Description
+Update PrivateEndpointConnections of service namespace.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusprivateendpointconnection
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639408.aspx
+#>
+function Set-AzServiceBusPrivateEndpointConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('PrivateEndpointConnectionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The PrivateEndpointConnection name
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The ARM identifier for Private Endpoint.
+    ${PrivateEndpointId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Description of the connection state.
+    ${PrivateLinkServiceConnectionStateDescription},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Pending", "Approved", "Rejected", "Disconnected")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Status of the connection.
+    ${PrivateLinkServiceConnectionStateStatus},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Creating", "Updating", "Deleting", "Succeeded", "Canceled", "Failed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Provisioning state of the Private Endpoint Connection.
+    ${ProvisioningState},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusPrivateEndpointConnection_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusPrivateEndpointConnection_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusPrivateEndpointConnection_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an authorization rule for a queue.
+.Description
+Update an authorization rule for a queue.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusqueueauthorizationrule
+#>
+function Set-AzServiceBusQueueAuthorizationRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The authorization rule name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The queue name.
+    ${QueueName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String[]]
+    # The rights associated with the rule.
+    ${Rights},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusQueueAuthorizationRule_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusQueueAuthorizationRule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusQueueAuthorizationRule_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a Service Bus queue.
+This operation is idempotent.
+.Description
+Update a Service Bus queue.
+This operation is idempotent.
+.Example
+Set-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 4 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 9)
+.Example
+$queue = Get-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue
+Set-AzServiceBusQueue -InputObject $queue -AutoDeleteOnIdle (New-TimeSpan -Days 4 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 9)
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusqueue
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx
+#>
+function Set-AzServiceBusQueue {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('QueueName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The queue name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Idle interval after which the queue is automatically deleted.
+    # The minimum duration is 5 minutes.
+    ${AutoDeleteOnIdle},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A value that indicates whether this queue has dead letter support when a message expires.
+    ${DeadLetteringOnMessageExpiration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # This is the duration after which the message expires, starting from when the message is sent to Service Bus.
+    # This is the default value used when TimeToLive is not set on a message itself.
+    ${DefaultMessageTimeToLive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Defines the duration of the duplicate detection history.
+    # The default value is 10 minutes.
+    ${DuplicateDetectionHistoryTimeWindow},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether server-side batched operations are enabled.
+    ${EnableBatchedOperations},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A value that indicates whether Express Entities are enabled.
+    # An express queue holds a message in memory temporarily before writing it to persistent storage.
+    ${EnableExpress},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A value that indicates whether the queue is to be partitioned across multiple message brokers.
+    ${EnablePartitioning},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Queue/Topic name to forward the Dead Letter message
+    ${ForwardDeadLetteredMessagesTo},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Queue/Topic name to forward the messages
+    ${ForwardTo},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
+    # The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
+    ${LockDuration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The maximum delivery count.
+    # A message is automatically deadlettered after this number of deliveries.
+    # default value is 10.
+    ${MaxDeliveryCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int64]
+    # Maximum size (in KB) of the message payload that can be accepted by the queue.
+    # This property is only used in Premium today and default is 1024.
+    ${MaxMessageSizeInKilobytes},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
+    # Default is 1024.
+    ${MaxSizeInMegabytes},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A value indicating if this queue requires duplicate detection.
+    ${RequiresDuplicateDetection},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A value that indicates whether the queue supports the concept of sessions.
+    ${RequiresSession},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Active", "Disabled", "Restoring", "SendDisabled", "ReceiveDisabled", "Creating", "Deleting", "Renaming", "Unknown")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Enumerates the possible values for the status of a messaging entity.
+    ${Status},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Gets and Sets Metadata of User.
+    ${UserMetadata},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusQueue_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusQueue_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusQueue_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a new rule and update an existing rule
+.Description
+Update a new rule and update an existing rule
+.Example
+Set-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -ContentType updatedContentType -ReplyToSessionId updatedReplyToSessionId
+.Example
+$rule = Get-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name mySqlRule
+Set-AzServiceBusRule -InputObject $rule -SqlExpression 5=3
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusrule
+#>
+function Set-AzServiceBusRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('RuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The rule name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The subscription name.
+    ${SubscriptionName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The topic name.
+    ${TopicName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # This property is reserved for future use.
+    # An integer value showing the compatibility level, currently hard-coded to 20.
+    ${ActionCompatibilityLevel},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether the rule action requires preprocessing.
+    ${ActionRequiresPreprocessing},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # SQL expression.
+    # e.g.
+    # MyProperty='ABC'
+    ${ActionSqlExpression},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Content type of the message.
+    ${CorrelationFilterContentType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Identifier of the correlation.
+    ${CorrelationFilterCorrelationId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Application specific label.
+    ${CorrelationFilterLabel},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Identifier of the message.
+    ${CorrelationFilterMessageId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICorrelationFilterProperties]))]
+    [System.Collections.Hashtable]
+    # dictionary object for custom filters
+    ${CorrelationFilterProperty},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Address of the queue to reply to.
+    ${CorrelationFilterReplyTo},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Session identifier to reply to.
+    ${CorrelationFilterReplyToSessionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether the rule action requires preprocessing.
+    ${CorrelationFilterRequiresPreprocessing},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Session identifier.
+    ${CorrelationFilterSessionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Address to send to.
+    ${CorrelationFilterTo},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("SqlFilter", "CorrelationFilter")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Filter type that is evaluated against a BrokeredMessage.
+    ${FilterType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # This property is reserved for future use.
+    # An integer value showing the compatibility level, currently hard-coded to 20.
+    ${SqlFilterCompatibilityLevel},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether the rule action requires preprocessing.
+    ${SqlFilterRequiresPreprocessing},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The SQL expression.
+    # e.g.
+    # MyProperty='ABC'
+    ${SqlFilterSqlExpression},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusRule_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusRule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusRule_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a topic subscription.
+.Description
+Update a topic subscription.
+.Example
+Set-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 10) -EnableBatchedOperations
+.Example
+$subscription = Get-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription
+Set-AzServiceBusSubscription -InputObject $subscription -DefaultMessageTimeToLive (New-TimeSpan -Days 10) -EnableBatchedOperations
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebussubscription
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx
+#>
+function Set-AzServiceBusSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('SubscriptionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The subscription name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The topic name.
+    ${TopicName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Idle interval after which the queue is automatically deleted.
+    # The minimum duration is 5 minutes.
+    ${AutoDeleteOnIdle},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Indicates the Client ID of the application that created the client-affine subscription.
+    ${ClientAffinePropertyClientId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # For client-affine subscriptions, this value indicates whether the subscription is durable or not.
+    ${ClientAffinePropertyIsDurable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # For client-affine subscriptions, this value indicates whether the subscription is shared or not.
+    ${ClientAffinePropertyIsShared},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
+    ${DeadLetteringOnFilterEvaluationException},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether a subscription has dead letter support when a message expires.
+    ${DeadLetteringOnMessageExpiration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # This is the duration after which the message expires, starting from when the message is sent to Service Bus.
+    # This is the default value used when TimeToLive is not set on a message itself.
+    ${DefaultMessageTimeToLive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Defines the duration of the duplicate detection history.
+    # The default value is 10 minutes.
+    ${DuplicateDetectionHistoryTimeWindow},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether server-side batched operations are enabled.
+    ${EnableBatchedOperations},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Queue/Topic name to forward the Dead Letter message
+    ${ForwardDeadLetteredMessagesTo},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Queue/Topic name to forward the messages
+    ${ForwardTo},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether the subscription has an affinity to the client id.
+    ${IsClientAffine},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
+    # The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
+    ${LockDuration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # Number of maximum deliveries.
+    ${MaxDeliveryCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value indicating if a subscription supports the concept of sessions.
+    ${RequiresSession},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Active", "Disabled", "Restoring", "SendDisabled", "ReceiveDisabled", "Creating", "Deleting", "Renaming", "Unknown")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Enumerates the possible values for the status of a messaging entity.
+    ${Status},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Gets and Sets Metadata of User.
+    ${UserMetadata},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusSubscription_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusSubscription_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusSubscription_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an authorization rule for the specified topic.
+.Description
+Update an authorization rule for the specified topic.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebustopicauthorizationrule
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt720678.aspx
+#>
+function Set-AzServiceBusTopicAuthorizationRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The authorization rule name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The topic name.
+    ${TopicName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String[]]
+    # The rights associated with the rule.
+    ${Rights},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusTopicAuthorizationRule_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusTopicAuthorizationRule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusTopicAuthorizationRule_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a topic in the specified namespace.
+.Description
+Update a topic in the specified namespace.
+.Example
+Set-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 20) -MaxMessageSizeInKilobytes 102400
+.Example
+$topic = Get-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic
+Set-AzServiceBusTopic -InputObject $topic -DefaultMessageTimeToLive (New-TimeSpan -Days 20) -MaxMessageSizeInKilobytes 102400
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
+.Link
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebustopic
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639409.aspx
+#>
+function Set-AzServiceBusTopic {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('TopicName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The topic name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Idle interval after which the queue is automatically deleted.
+    # The minimum duration is 5 minutes.
+    ${AutoDeleteOnIdle},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # This is the duration after which the message expires, starting from when the message is sent to Service Bus.
+    # This is the default value used when TimeToLive is not set on a message itself.
+    ${DefaultMessageTimeToLive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.TimeSpan]
+    # Defines the duration of the duplicate detection history.
+    # The default value is 10 minutes.
+    ${DuplicateDetectionHistoryTimeWindow},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether server-side batched operations are enabled.
+    ${EnableBatchedOperations},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether Express Entities are enabled.
+    # An express topic holds a message in memory temporarily before writing it to persistent storage.
+    ${EnableExpress},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether the topic to be partitioned across multiple message brokers is enabled.
+    ${EnablePartitioning},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int64]
+    # Maximum size (in KB) of the message payload that can be accepted by the topic.
+    # This property is only used in Premium today and default is 1024.
+    ${MaxMessageSizeInKilobytes},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic.
+    # Default is 1024.
+    ${MaxSizeInMegabytes},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value indicating if this topic requires duplicate detection.
+    ${RequiresDuplicateDetection},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Active", "Disabled", "Restoring", "SendDisabled", "ReceiveDisabled", "Creating", "Deleting", "Renaming", "Unknown")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Enumerates the possible values for the status of a messaging entity.
+    ${Status},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether the topic supports ordering.
+    ${SupportOrdering},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Gets and Sets Metadata of User.
+    ${UserMetadata},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceBus.private\Set-AzServiceBusTopic_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ServiceBus.private\Set-AzServiceBusTopic_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ServiceBus.private\Set-AzServiceBusTopic_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
+.Description
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Example
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 
@@ -5864,14 +8693,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -5965,12 +8795,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.ServiceBus.private\Start-AzServiceBusMigration_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6024,14 +8860,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -6059,7 +8896,8 @@ param(
     [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Check')]
@@ -6069,8 +8907,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
@@ -6163,6 +9001,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Check = 'Az.ServiceBus.private\Test-AzServiceBusDisasterRecoveryConfigNameAvailability_Check';
@@ -6173,8 +9014,6 @@ begin {
             CheckViaJsonString = 'Az.ServiceBus.private\Test-AzServiceBusDisasterRecoveryConfigNameAvailability_CheckViaJsonString';
         }
         if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6183,6 +9022,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6244,8 +9086,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
@@ -6329,6 +9171,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Check = 'Az.ServiceBus.private\Test-AzServiceBusNamespaceNameAvailability_Check';
@@ -6337,8 +9182,6 @@ begin {
             CheckViaJsonString = 'Az.ServiceBus.private\Test-AzServiceBusNamespaceNameAvailability_CheckViaJsonString';
         }
         if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6347,6 +9190,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

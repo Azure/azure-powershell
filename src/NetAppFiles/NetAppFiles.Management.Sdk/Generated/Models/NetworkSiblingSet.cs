@@ -10,9 +10,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Describes the contents of a network sibling set.
     /// </summary>
-    /// <remarks>
-    /// Describes the contents of a network sibling set.
-    /// </remarks>
     public partial class NetworkSiblingSet
     {
         /// <summary>

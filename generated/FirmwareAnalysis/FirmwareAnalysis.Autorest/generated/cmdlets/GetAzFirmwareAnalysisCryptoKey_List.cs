@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Lists cryptographic key analysis results found in a firmware.</summary>
+    /// <summary>Lists crypto key analysis results of a firmware.</summary>
     /// <remarks>
     /// [OpenAPI] ListByFirmware=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoKeys"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFirmwareAnalysisCryptoKey_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Lists cryptographic key analysis results found in a firmware.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Lists crypto key analysis results of a firmware.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoKeys", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoKeys", ApiVersion = "2025-08-02")]
     public partial class GetAzFirmwareAnalysisCryptoKey_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
@@ -201,12 +201,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult">Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -484,12 +484,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult">Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
                 // pageable / value / nextLink

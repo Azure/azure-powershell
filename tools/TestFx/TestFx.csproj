@@ -30,10 +30,11 @@
   <ItemGroup>
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+	<ProjectReference Include="$(RepoSrc)Accounts\Authenticators\Authenticators.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="Moq" Version="4.20.72" />
   </ItemGroup>
 
 </Project>

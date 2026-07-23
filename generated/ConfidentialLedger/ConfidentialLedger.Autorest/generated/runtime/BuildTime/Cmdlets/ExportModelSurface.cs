@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PowerShe
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

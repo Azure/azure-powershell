@@ -56,6 +56,11 @@ In this directory, run AutoRest:
 #module-version: 4.0.0
 require: 
   - $(this-folder)/../../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/components_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentApiKeys_API.json
+
+subject-prefix: ''
 ```
 
 ## Multi-API/Profile support for AutoRest v3 generators 
@@ -64,24 +69,11 @@ AutoRest V3 generators require the use of `--tag=all-api-versions` to select api
 
 This block is updated by an automatic script. Edits may be lost!
 
-``` yaml
-apprepo: https://github.com/Azure/azure-rest-api-specs/blob/e0d9ceb1ca85e76a31b8496201499a7312824c09
-# include the azure profile definitions from the standard location
-appinsights: $(apprepo)/specification/applicationinsights/resource-manager
-
-# all the input files across all versions
-input-file:
-  - $(appinsights)/Microsoft.Insights/stable/2015-05-01/componentApiKeys_API.json
-  - $(appinsights)/Microsoft.Insights/stable/2015-05-01/components_API.json
-
-subject-prefix: ''
-```
-
 # Directives
 ``` yaml
 directive:
   - where:
-      verb: Clear|Remove|Set
+      verb: Clear|Set
       subject: ^Component$
     remove: true
   - where:
@@ -105,7 +97,7 @@ directive:
     set:
       subject: AppInsightsApiKey
   - where:
-      verb: Get|New
+      verb: Get|New|Remove
       subject: ^AppInsights$
     hide: true
   - where:

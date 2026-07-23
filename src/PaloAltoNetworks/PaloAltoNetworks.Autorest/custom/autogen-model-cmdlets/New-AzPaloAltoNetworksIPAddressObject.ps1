@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksipaddressobject
 #>
 function New-AzPaloAltoNetworksIPAddressObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

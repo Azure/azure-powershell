@@ -14,7 +14,7 @@ Creates a ManagementPolicy BlobIndexMatch object, which can be used in New-AzSto
 
 ```
 New-AzStorageAccountManagementPolicyBlobIndexMatchObject [-Name <String>] [-Value <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ PrefixMatch        BlobTypes   BlobIndexMatch
 {prefix1, prefix2} {blockBlob} {tag1, tag2}
 ```
 
-This command creates 2 ManagementPolicy BlobIndexMatch objects, then add themto a management policy rule filter.
+This command creates 2 ManagementPolicy BlobIndexMatch objects, then add them to a management policy rule filter.
 
 ## PARAMETERS
 
@@ -70,21 +70,6 @@ Gets or sets this is the filter tag name, it can have 1 - 128 characters
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -2,421 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OrbitalIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AuthorizedGroundstation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OrbitalIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ContactName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ContactProfileName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OperationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SpacecraftName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ContactName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ContactProfileName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OperationId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SpacecraftName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.Operation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ActionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDataAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Origin</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ActionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Origin</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.OperationDisplay</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.OperationDisplay</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Provider</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Provider</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Resource</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.OperationListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.OperationListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.TrackedResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.TrackedResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.TrackedResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AuthorizedGroundstation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AuthorizedGroundstation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AuthorizedGroundstation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -442,9 +30,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContacts</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContacts</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContacts</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContacts#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -506,9 +94,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContactsListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContactsListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -528,9 +116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContactsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContactsProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -598,9 +186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -638,9 +226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -660,9 +248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -712,9 +300,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationPropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStationPropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableGroundStationPropertiesAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -764,9 +352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Contact</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Contact</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Contact</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Contact#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -816,9 +404,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactInstanceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactInstanceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactInstanceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactInstanceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -886,9 +474,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -908,9 +496,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -942,9 +530,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -982,9 +570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1028,9 +616,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1086,9 +674,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1108,9 +696,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1160,9 +748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfilesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfilesProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1206,9 +794,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesPropertiesNetworkConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfilesPropertiesNetworkConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesPropertiesNetworkConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfilesPropertiesNetworkConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1228,9 +816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileThirdPartyConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileThirdPartyConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileThirdPartyConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileThirdPartyConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1256,9 +844,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1362,17 +950,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsPropertiesAntennaConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsPropertiesAntennaConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsPropertiesAntennaConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsPropertiesAntennaConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>DestinationIP</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceIP</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1381,18 +966,15 @@
               <TableColumnItem>
                 <PropertyName>DestinationIP</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceIP</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.EndPoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.EndPoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.EndPoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.EndPoint#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1430,9 +1012,145 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Operation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Operation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDataAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Origin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Origin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationDisplay#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1488,9 +1206,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResultErrorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationResultErrorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResultErrorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OperationResultErrorProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1516,9 +1234,147 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ResourceIdListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OrbitalIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ResourceIdListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.OrbitalIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ContactName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContactProfileName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SpacecraftName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ContactName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContactProfileName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SpacecraftName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ProxyResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ResourceIdListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ResourceIdListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1538,9 +1394,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Spacecraft</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Spacecraft#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1584,9 +1440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1630,9 +1486,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1652,9 +1508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftsProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1698,9 +1554,147 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.TagsObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.TagsObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.TagsObjectTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.TagsObjectTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.TrackedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

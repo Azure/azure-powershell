@@ -23,12 +23,12 @@ Create an in-memory object for DistributeVersionerLatest.
 New-AzImageBuilderTemplateDistributeVersionerLatestObject -Major 10
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.DistributeVersionerLatest
 .Link
 https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionerlatestobject
 #>
 function New-AzImageBuilderTemplateDistributeVersionerLatestObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.DistributeVersionerLatest])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -47,6 +47,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -75,6 +78,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

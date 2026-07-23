@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -45,17 +45,22 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: A list of regions where replicas of the namespace are maintained.
+  [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+  [RoleType <String>]: GeoDR Role Types
+
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -66,11 +71,17 @@ KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
 
 PARAMETER <ISbNamespace>: Description of a namespace resource.
-  Location <String>: The Geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name for namespace
+  [ConfidentialComputeMode <String>]: Setting to Enable or Disable Confidential Compute
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Service Bus namespace.
+  [GeoDataReplicationLocation <List<INamespaceReplicaLocation>>]: A list of regions where replicas of the namespace are maintained.
+    [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+    [RoleType <String>]: GeoDR Role Types
+  [GeoDataReplicationMaxReplicationLagDurationInSecond <Int32?>]: The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+  [IPAddressType <String>]: The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
   [IdentityType <String>]: Type of managed service identity.
   [KeySource <String>]: Enumerates the possible value of keySource for Encryption
   [KeyVaultProperty <List<IKeyVaultProperties>>]: Properties of KeyVault
@@ -112,21 +123,22 @@ param(
     [Alias('NamespaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # The namespace name.
+    # The namespace name
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -138,7 +150,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
-    # The Geo-location where the resource lives
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -148,10 +160,40 @@ param(
     ${AlternateName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # This property disables SAS authentication for the Service Bus namespace.
     ${DisableLocalAuth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+    # A list of regions where replicas of the namespace are maintained.
+    ${GeoDataReplicationLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+    # When the lag exceeds the configured amount, operations on the primary replica will be failed.
+    # The allowed values are 0 and 5 minutes to 1 day.
+    ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+    ${IPAddressType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None")]
@@ -175,7 +217,7 @@ param(
     ${KeyVaultProperty},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
     # The minimum TLS version for the cluster to support, e.g.
@@ -238,7 +280,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Resource tags
+    # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -328,14 +370,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateExpanded';
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -344,6 +387,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

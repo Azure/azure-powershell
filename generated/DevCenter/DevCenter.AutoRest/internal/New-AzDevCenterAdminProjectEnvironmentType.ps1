@@ -50,7 +50,7 @@ New-AzDevCenterAdminProjectEnvironmentType -InputObject $envType -CreatorRoleAss
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,6 +58,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
@@ -66,14 +67,14 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
-  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
-  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -83,7 +84,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminprojectenvironmenttype
 #>
 function New-AzDevCenterAdminProjectEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -121,7 +122,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
     [System.Collections.Hashtable]
     # A map of roles to assign to the environment creator.
     ${CreatorRoleAssignmentRole},
@@ -170,14 +171,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
     [System.Collections.Hashtable]
     # Role Assignments created on environment backing resources.
     # This is a mapping from a user object ID to an object of role definition IDs.

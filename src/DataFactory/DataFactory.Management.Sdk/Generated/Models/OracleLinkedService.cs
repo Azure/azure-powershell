@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public OracleLinkedService(object connectionString, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object server = default(object), string authenticationType = default(string), object username = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), object encryptionClient = default(object), object encryptionTypesClient = default(object), object cryptoChecksumClient = default(object), object cryptoChecksumTypesClient = default(object), object initialLobFetchSize = default(object), object fetchSize = default(object), object statementCacheSize = default(object), object initializationString = default(object), object enableBulkLoad = default(object), object supportV1DataTypes = default(object), object fetchTswtzAsTimestamp = default(object), string encryptedCredential = default(string))
+        public OracleLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), object server = default(object), string authenticationType = default(string), object username = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), object encryptionClient = default(object), object encryptionTypesClient = default(object), object cryptoChecksumClient = default(object), object cryptoChecksumTypesClient = default(object), object initialLobFetchSize = default(object), object fetchSize = default(object), object statementCacheSize = default(object), object initializationString = default(object), object enableBulkLoad = default(object), object supportV1DataTypes = default(object), object fetchTswtzAsTimestamp = default(object), string encryptedCredential = default(string))
 
         : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
@@ -299,10 +299,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
-            if (this.ConnectionString == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectionString");
-            }
 
 
 

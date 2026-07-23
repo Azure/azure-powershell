@@ -71,16 +71,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public bool? EnabledForTemplateDeployment { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).EnabledForTemplateDeployment; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).EnabledForTemplateDeployment = value ?? default(bool); }
 
         /// <summary>Internal Acessors for NetworkAcls</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.NetworkAcls { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).NetworkAcls; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).NetworkAcls = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.NetworkAcls { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).NetworkAcls; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).NetworkAcls = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.VaultPatchProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).SkuFamily = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchPropertiesInternal)Property).SkuFamily = value ?? null; }
 
         /// <summary>
         /// Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'.

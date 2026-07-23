@@ -61,6 +61,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMicrosoftPeeringPrefixValidationCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMicrosoftPeeringPrefixValidationCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationCRUD");

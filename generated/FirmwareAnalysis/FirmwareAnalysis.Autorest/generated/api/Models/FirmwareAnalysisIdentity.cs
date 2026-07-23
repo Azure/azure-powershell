@@ -26,6 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public string Name { get => this._name; set => this._name = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -40,12 +47,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Backing field for <see cref="SummaryName" /> property.</summary>
-        private string _summaryName;
+        /// <summary>Backing field for <see cref="SummaryType" /> property.</summary>
+        private string _summaryType;
 
         /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public string SummaryName { get => this._summaryName; set => this._summaryName = value; }
+        public string SummaryType { get => this._summaryType; set => this._summaryType = value; }
 
         /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
         private string _workspaceName;
@@ -85,6 +92,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The Firmware analysis summary name describing the type of summary.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -115,10 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The Firmware analysis summary name describing the type of summary.",
-        SerializedName = @"summaryName",
+        SerializedName = @"summaryType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CVE", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
-        string SummaryName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CommonVulnerabilitiesAndExposures", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
+        string SummaryType { get; set; }
         /// <summary>The name of the firmware analysis workspace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -139,13 +157,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string FirmwareId { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
+        string Name { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CVE", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
-        string SummaryName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CommonVulnerabilitiesAndExposures", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
+        string SummaryType { get; set; }
         /// <summary>The name of the firmware analysis workspace.</summary>
         string WorkspaceName { get; set; }
 

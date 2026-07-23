@@ -48,6 +48,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Id; }
 
+        /// <summary>Managed service identity (system assigned and/or user assigned identities)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity Identity { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Identity; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Identity = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityPrincipalId; }
+
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityTenantId; }
+
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityType = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityUserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityUserAssignedIdentity = value ?? null /* model class */; }
+
         /// <summary>Array of initial administrators object ids for this managed hsm pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> InitialAdminObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).InitialAdminObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).InitialAdminObjectId = value ?? null /* arrayOf */; }
@@ -57,52 +87,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for HsmUri</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.HsmUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).HsmUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).HsmUri = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.HsmUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).HsmUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).HsmUri = value ?? null; }
 
         /// <summary>Internal Acessors for NetworkAcls</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.NetworkAcls { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).NetworkAcls; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).NetworkAcls = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.NetworkAcls { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).NetworkAcls; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).NetworkAcls = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionItem> Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).PrivateEndpointConnection = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionItem> Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ScheduledPurgeDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ScheduledPurgeDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).ScheduledPurgeDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SecurityDomainProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.SecurityDomainProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.SecurityDomainProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecurityDomainPropertyActivationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.SecurityDomainPropertyActivationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.SecurityDomainPropertyActivationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for SecurityDomainPropertyActivationStatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.SecurityDomainPropertyActivationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatusMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.SecurityDomainPropertyActivationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).SecurityDomainPropertyActivationStatusMessage = value ?? null; }
 
         /// <summary>Internal Acessors for StatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).StatusMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal)Property).StatusMessage = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Identity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Identity { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Identity; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Identity = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityPrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityPrincipalId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityTenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).IdentityTenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Sku = value; }
-
-        /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SkuFamily = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSku Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).Type = value ?? null; }
 
         /// <summary>The name of the managed HSM Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
@@ -174,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
         /// <summary>SKU Family of the managed HSM Pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SkuFamily; }
+        public string SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SkuFamily = value ?? null; }
 
         /// <summary>SKU of the managed HSM Pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
@@ -195,31 +249,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// Metadata pertaining to creation and last modification of the key vault resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of the key vault resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of the key vault resource last modification (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)__managedHsmResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]

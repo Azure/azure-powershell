@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="action">Describes the override action to be applied when rule matches.
         /// Possible values include: &#39;AnomalyScoring&#39;, &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;,
-        /// &#39;JSChallenge&#39;</param>
+        /// &#39;JSChallenge&#39;, &#39;CAPTCHA&#39;</param>
 
         /// <param name="sensitivity">Describes the override sensitivity to be applied when rule matches.
-        /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
+        /// Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
         public ManagedRuleOverride(string ruleId, string state = default(string), string action = default(string), string sensitivity = default(string))
 
         {
@@ -66,14 +66,14 @@ namespace Microsoft.Azure.Management.Network.Models
         public string State {get; set; }
 
         /// <summary>
-        /// Gets or sets describes the override action to be applied when rule matches. Possible values include: &#39;AnomalyScoring&#39;, &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;, &#39;JSChallenge&#39;
+        /// Gets or sets describes the override action to be applied when rule matches. Possible values include: &#39;AnomalyScoring&#39;, &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;, &#39;JSChallenge&#39;, &#39;CAPTCHA&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "action")]
         public string Action {get; set; }
 
         /// <summary>
         /// Gets or sets describes the override sensitivity to be applied when rule
-        /// matches. Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
+        /// matches. Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sensitivity")]
         public string Sensitivity {get; set; }

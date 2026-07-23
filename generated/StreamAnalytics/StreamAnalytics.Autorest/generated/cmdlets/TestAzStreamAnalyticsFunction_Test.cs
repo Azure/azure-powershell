@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Cmdlets;
     using System;
 
     /// <summary>
@@ -17,12 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzStreamAnalyticsFunction_Test", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"Tests if the information provided for a function is valid. This can range from testing the connection to the underlying web service behind the function or making sure the function code provided is syntactically correct.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}/test", ApiVersion = "2017-04-01-preview")]
     public partial class TestAzStreamAnalyticsFunction_Test : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -38,6 +41,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Runtime)]
@@ -47,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.StreamAnalytics Client => Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.ClientAPI;
@@ -61,8 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>Backing field for <see cref="Function" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction _function;
+        private Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction _function;
 
         /// <summary>
         /// A function object, containing all information associated with the named function. All functions are contained under a
@@ -74,8 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"A function object, containing all information associated with the named function. All functions are contained under a streaming job.",
         SerializedName = @"function",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction Function { get => this._function; set => this._function = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Body)]
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction Function { get => this._function; set => this._function = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -140,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -186,7 +199,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -195,12 +209,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -312,11 +326,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -328,10 +367,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -399,7 +454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -417,7 +472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,JobName=JobName,Name=Name,body=Function})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,JobName=JobName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -437,7 +492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="TestAzStreamAnalyticsFunction_Test" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="TestAzStreamAnalyticsFunction_Test" /> cmdlet class.
         /// </summary>
         public TestAzStreamAnalyticsFunction_Test()
         {
@@ -461,12 +516,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus> response)
         {
             using( NoSynchronizationContext )
             {
@@ -478,8 +533,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

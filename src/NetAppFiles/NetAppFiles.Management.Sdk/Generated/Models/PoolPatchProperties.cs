@@ -33,12 +33,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="coolAccess">If enabled (true) the pool can contain cool Access enabled volumes.
         /// </param>
-        public PoolPatchProperties(long? size = default(long?), string qosType = default(string), bool? coolAccess = default(bool?))
+
+        /// <param name="customThroughputMibps">Maximum throughput in MiB/s that can be achieved by this pool and this will
+        /// be accepted as input only for manual qosType pool with Flexible service
+        /// level
+        /// </param>
+        public PoolPatchProperties(long? size = default(long?), string qosType = default(string), bool? coolAccess = default(bool?), int? customThroughputMibps = default(int?))
 
         {
             this.Size = size;
             this.QosType = qosType;
             this.CoolAccess = coolAccess;
+            this.CustomThroughputMibps = customThroughputMibps;
             CustomInit();
         }
 
@@ -67,5 +73,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "coolAccess")]
         public bool? CoolAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by this pool
+        /// and this will be accepted as input only for manual qosType pool with
+        /// Flexible service level
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customThroughputMibps")]
+        public int? CustomThroughputMibps {get; set; }
     }
 }

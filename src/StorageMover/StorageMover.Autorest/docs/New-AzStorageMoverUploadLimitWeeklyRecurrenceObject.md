@@ -13,9 +13,8 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 ## SYNTAX
 
 ```
-New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day <DayOfWeek[]> -EndTimeHour <Int32>
- -LimitInMbps <Int32> -StartTimeHour <Int32> [-EndTimeMinute <Int32>] [-StartTimeMinute <Int32>]
- [<CommonParameters>]
+New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day <String[]> -EndTimeHour <Int32> -LimitInMbps <Int32>
+ -StartTimeHour <Int32> [-EndTimeMinute <Int32>] [-StartTimeMinute <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +42,7 @@ The set of days of week for the schedule recurrence.
 A day must not be specified more than once in a recurrence.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence
 
 ## NOTES
 

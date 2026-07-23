@@ -2,9 +2,87 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Association</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Association#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.AssociationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.AssociationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.AssociationsList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.AssociationsList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomProvidersIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomProvidersIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomProvidersIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -48,81 +126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.Association</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpActionRouteDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.Association</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.AssociationProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.AssociationProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TargetResourceId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TargetResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.AssociationsList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.AssociationsList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpActionRouteDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpActionRouteDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpActionRouteDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -154,9 +160,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpManifest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpManifest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpManifest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpManifest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -165,6 +171,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -176,15 +185,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpManifestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpManifestProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpManifestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpManifestProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -204,9 +216,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpResourceTypeRouteDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpResourceTypeRouteDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpResourceTypeRouteDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpResourceTypeRouteDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -238,9 +250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpRouteDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpRouteDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpRouteDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpRouteDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -266,9 +278,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpValidations</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpValidations</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.CustomRpValidations</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpValidations#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -294,9 +306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ErrorDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ErrorDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ErrorDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ErrorDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -322,9 +334,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ListByCustomRpManifest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ListByCustomRpManifest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ListByCustomRpManifest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ListByCustomRpManifest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -344,9 +356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -372,9 +384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProviderOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProviderOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProviderOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProviderOperation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -394,9 +406,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProviderOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProviderOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProviderOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProviderOperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -434,9 +446,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProviderOperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProviderOperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProviderOperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProviderOperationList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -456,9 +468,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProvidersUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProvidersUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceProvidersUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceProvidersUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,9 +490,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSou
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azlogfilesdatasourceobject
 #>
 function New-AzLogFilesDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

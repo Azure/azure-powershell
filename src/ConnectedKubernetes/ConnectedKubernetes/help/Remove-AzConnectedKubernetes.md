@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -KubeContext
-Kubconfig context from current machine
+Kubeconfig context from current machine
 
 ```yaml
 Type: System.String

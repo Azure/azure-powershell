@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the MetricSettings
+    /// Wraps around the MetricSettings
     /// </summary>
     public class PSMetricSettings : PSDiagnosticDetailSettings
     {

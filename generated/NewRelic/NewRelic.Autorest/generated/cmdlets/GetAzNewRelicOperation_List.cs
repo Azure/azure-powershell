@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/providers/NewRelic.Observability/operations", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/providers/NewRelic.Observability/operations", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

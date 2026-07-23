@@ -15,26 +15,23 @@ Unsubscribe the event trigger to external service events.
 ### RemoveByName (Default)
 ```
 Remove-AzSynapseTriggerSubscription -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByObject
 ```
 Remove-AzSynapseTriggerSubscription -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
 Remove-AzSynapseTriggerSubscription -InputObject <PSTriggerResource> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseTriggerSubscription** cmdlet unsubscribes the event trigger to the specified external service events from the trigger defintion.
+The **Remove-AzSynapseTriggerSubscription** cmdlet unsubscribes the event trigger to the specified external service events from the trigger definition.
 
 ## EXAMPLES
 
@@ -43,7 +40,7 @@ The **Remove-AzSynapseTriggerSubscription** cmdlet unsubscribes the event trigge
 Remove-AzSynapseTriggerSubscription -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
-This command will unsubscribe trigger called ContosoTrigger to the specified events from the trigger defintion.
+This command will unsubscribe trigger called ContosoTrigger to the specified events from the trigger definition.
 
 ### Example 2
 ```powershell
@@ -51,7 +48,7 @@ $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | Remove-AzSynapseTriggerSubscription -Name ContosoTrigger
 ```
 
-This command will unsubscribe trigger called ContosoTrigger to the specified events from the trigger defintion through pipeline.
+This command will unsubscribe trigger called ContosoTrigger to the specified events from the trigger definition through pipeline.
 
 ### Example 3
 ```powershell
@@ -59,7 +56,7 @@ $trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTri
 $trigger | Remove-AzSynapseTriggerSubscription
 ```
 
-This command will unsubscribe trigger called ContosoTrigger to the specified events from the trigger defintion through pipeline.
+This command will unsubscribe trigger called ContosoTrigger to the specified events from the trigger definition through pipeline.
 
 ## PARAMETERS
 

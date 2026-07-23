@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzSapMonitor
 
 ## SYNOPSIS
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSapMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-EnableCustomerAnalytic] [-LogAnalyticsWorkspaceId <String>] [-LogAnalyticsWorkspaceResourceId <String>]
@@ -20,8 +21,22 @@ New-AzSapMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzSapMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSapMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## EXAMPLES
 
@@ -78,10 +93,40 @@ The value indicating whether to send analytics to Microsoft
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,7 +138,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -108,7 +153,7 @@ The workspace ID of the log analytics workspace to be used for monitoring
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -123,7 +168,7 @@ The ARM ID of the Log Analytics Workspace that is used for monitoring
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -138,7 +183,7 @@ The shared key of the log analytics workspace that is used for monitoring
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -154,7 +199,7 @@ It should be the same subnet of HANA database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -230,7 +275,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -278,7 +323,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitor
 
 ## NOTES
 

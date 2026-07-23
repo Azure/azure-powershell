@@ -25,11 +25,11 @@ Properties not specified in the request body will be unchanged.
 Update-AzStorageMoverSmbEndpoint -Name myendpoint -ResourceGroupName myresourcegroup -StorageMoverName mystoragemover -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username2" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password2" -Description "update endpoint"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbendpoint
 #>
 function Update-AzStorageMoverSmbEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -158,8 +158,7 @@ function Update-AzStorageMoverSmbEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.SmbMountEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'SmbMount'
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.SmbMountEndpointUpdateProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description

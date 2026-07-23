@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdHostPool
 
 ## SYNOPSIS
-update a host pool.
+Update a host pool.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-FriendlyName <String>] [-LoadBalancerType <String>] [-MaxSessionLimit <Int32>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-LoadBalancerType <String>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>]
  [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
  [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
@@ -32,7 +32,7 @@ Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-FriendlyName <String>] [-LoadBalancerType <String>] [-MaxSessionLimit <Int32>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-LoadBalancerType <String>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>]
  [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
  [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
@@ -53,7 +53,7 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-update a host pool.
+Update a host pool.
 
 ## EXAMPLES
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -190,6 +190,21 @@ Accept wildcard characters: False
 
 ### -FriendlyName
 Friendly name of HostPool.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (either system assigned, or none).
 
 ```yaml
 Type: System.String

@@ -6,7 +6,7 @@ Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.Zhou@microsoft.com
+CreatedBy                        : xxxxx.xxxxx@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
@@ -38,17 +38,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.Zhou@microsoft.com",
+                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
+                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
+SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -67,7 +67,7 @@ Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.Zhou@microsoft.com
+CreatedBy                        : xxxxx.xxxxx@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
@@ -99,17 +99,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.Zhou@microsoft.com",
+                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
+                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
+SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"

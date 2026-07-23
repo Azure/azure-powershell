@@ -34,12 +34,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
-        /// container pipeline paremeter set name with permission
+        /// container pipeline parameter set name with permission
         /// </summary>
         private const string BlobNamePipelineParmeterSetWithPermission = "BlobNameWithPermission";
 
         /// <summary>
-        /// container pipeline paremeter set name with policy
+        /// container pipeline parameter set name with policy
         /// </summary>
         private const string BlobNamePipelineParmeterSetWithPolicy = "BlobNameWithPolicy";
 
@@ -202,7 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 blobClient = AzureStorageBlob.GetTrack2BlobClient(blob, Channel.StorageContext, this.ClientOptions);
             }
 
-            // Get contaienr saved policy if any
+            // Get container saved policy if any
             BlobSignedIdentifier identifier = null;
             if (ParameterSetName == BlobNamePipelineParmeterSetWithPolicy || ParameterSetName == BlobPipelineParameterSetWithPolicy)
             {

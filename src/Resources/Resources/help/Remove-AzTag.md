@@ -93,7 +93,7 @@ Properties :
              Status   Normal
 ```
 
-This command deletes the entire set of tags on the resource with {resourceId}. It returns the deleted oject when passing in "-PassThru".
+This command deletes the entire set of tags on the resource with {resourceId}. It returns the deleted object when passing in "-PassThru".
 
 ## PARAMETERS
 

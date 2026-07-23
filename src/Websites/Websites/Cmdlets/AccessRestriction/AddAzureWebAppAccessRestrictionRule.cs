@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         var subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
                         //Fetch RG of given SubNet
                         var subNetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(subnet, VirtualNetworkName);
-                        //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
+                        //If unable to fetch SubNet rg from above step, use the input RG to get validation error from api call.
                         subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
                         var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
                         CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);

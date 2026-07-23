@@ -1,8 +1,8 @@
 {
-  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn?api-version=2022-06-01+1": {
+  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$PUT+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2?api-version=2022-06-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2?api-version=2022-06-01",
       "Content": "{\r\n  \"location\": \"westus2\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,31 +17,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"020019d5-0000-0100-0000-62b12cfa0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"e0011420-0000-0800-0000-680b01130000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japaneast/7492815b-69b2-4da1-97c9-334e4b987d46" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-client-request-id": [ "b25cf017-bf40-441a-b46b-f4399d668f94" ],
-        "x-ms-correlation-request-id": [ "45de0882-7619-45a6-99b3-9cbda1ef82fa" ],
+        "x-correlation-id": [ "fa816118-889d-4ba0-acae-fa422c033b27" ],
+        "x-ms-client-request-id": [ "db3c36f3-54e7-4b60-a051-b4247e0d0bb5" ],
+        "x-ms-correlation-request-id": [ "fa816118-889d-4ba0-acae-fa422c033b27" ],
+        "x-envoy-upstream-service-time": [ "22" ],
+        "x-envoy-decorator-operation": [ "frsprod-eastus-001-echo.default.svc.cluster.local:80/*" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "86aaa305-0658-484f-adf3-5cd29d2dcb68" ],
+        "Content-Security-Policy": [ "default-src \u0027none\u0027; base-uri \u0027none\u0027; sandbox;" ],
+        "x-azure-ref": [ "20250425T032712Z-15d6c4d9988l8z2phC1YVRhdd00000000uk000000000qu6e" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "2bc2e71c-812a-41f6-8446-b7a9083a74e9" ],
         "X-Powered-By": [ "Express" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220621T022915Z:45de0882-7619-45a6-99b3-9cbda1ef82fa" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20250425T032715Z:a76a4adc-df6d-419a-913c-e9cc725ed6e8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 21 Jun 2022 02:29:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E503CDBB9F574D94BB9F289A01B9953F Ref B: TYO201100114035 Ref C: 2025-04-25T03:27:11Z" ],
+        "Date": [ "Fri, 25 Apr 2025 03:27:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "837" ],
+        "Content-Length": [ "768" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn\",\"name\":\"fluidrelayserveryofn\",\"type\":\"microsoft.fluidrelay/fluidrelayservers\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-06-21T02:29:12.8626424Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-06-21T02:29:12.8626424Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"frsTenantId\":\"d33f1ee9-3bd7-4ca2-94fb-beadf831220f\",\"fluidRelayEndpoints\":{\"ordererEndpoints\":[\"https://alfred.westus2.fluidrelay.azure.com\"],\"storageEndpoints\":[\"https://historian.westus2.fluidrelay.azure.com\"],\"serviceEndpoints\":[\"https://us.fluidrelay.azure.com\"]},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2\",\"name\":\"fluidrelayserverdfv2\",\"type\":\"microsoft.fluidrelay/fluidrelayservers\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-25T03:27:12.4909357Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-25T03:27:12.4909357Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"frsTenantId\":\"d2d2d7a5-7340-4b69-8614-8f493c66d554\",\"fluidRelayEndpoints\":{\"ordererEndpoints\":[],\"storageEndpoints\":[],\"serviceEndpoints\":[\"https://us.fluidrelay.azure.com\"]},\"storagesku\":\"standard\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn/regenerateKey?api-version=2022-06-01+2": {
+  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/regenerateKey?api-version=2022-06-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn/regenerateKey?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/regenerateKey?api-version=2022-06-01",
       "Content": "{\r\n  \"keyName\": \"key1\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -56,40 +66,50 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "W/\"55-6oEaO/rD71jVgI9G47qpzOJKs6k\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "W/\"bd-PuA3JTGB9lPmLgG+WMOggDfaPvM\"" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japaneast/c4ab22b3-fd53-48e5-a5fd-2d4075180ab9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-client-request-id": [ "ad4dcf19-d728-43ff-83e3-dbdb7f00ea08" ],
-        "x-ms-correlation-request-id": [ "95ba129f-b770-4728-8ba6-11c0493bb47e" ],
+        "x-correlation-id": [ "7b5f3b3b-6dbb-4e67-834f-ba6311e2d327" ],
+        "x-ms-client-request-id": [ "ba28005c-4516-4e61-aaef-48f5fd13bd47" ],
+        "x-ms-correlation-request-id": [ "7b5f3b3b-6dbb-4e67-834f-ba6311e2d327" ],
+        "x-envoy-upstream-service-time": [ "866" ],
+        "x-envoy-decorator-operation": [ "frsprod-eastus-001-echo.default.svc.cluster.local:80/*" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e6db8aac-1ffb-49c4-9889-dca58c7233aa" ],
+        "Content-Security-Policy": [ "default-src \u0027none\u0027; base-uri \u0027none\u0027; sandbox;" ],
+        "x-azure-ref": [ "20250425T032715Z-r1fdc4c8d84cfq85hC1CO1dcxc00000005y0000000000ecr" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "5df29af5-bc1d-4f1e-aeb2-e1a2bf6a6fd8" ],
         "X-Powered-By": [ "Express" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220621T022917Z:95ba129f-b770-4728-8ba6-11c0493bb47e" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20250425T032716Z:5e11e62e-a331-4bc0-b134-b8f1ab332e63" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 21 Jun 2022 02:29:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 699798FCC6F14DD1959D913850317243 Ref B: TYO201100114035 Ref C: 2025-04-25T03:27:15Z" ],
+        "Date": [ "Fri, 25 Apr 2025 03:27:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "85" ],
+        "Content-Length": [ "189" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"key1\":\"338ae1e40d4b87ecf453046c6adf0b93\",\"key2\":\"78499f287c36602ea269f18dee956636\"}",
+      "Content": "{\"key1\":\"2CtKKqQSOSELqtTSweSPlb72BZ6aOG79dhi3sMulroSEHR16NgscJQQJ99BDACjcPUyy71xuAAAAAZFR1IJm\",\"key2\":\"29vYBF6irsRdobtdwwJOb9sKRKFkpTES2pi1Zc4RXRpBgXLUpj91JQQJ99BDACRsaBGy71xuAAAAAZFRz4d8\"}",
       "isContentBase64": false
     }
   },
-  "AzFluidRelayServerKey+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn/listKeys?api-version=2022-06-01+1": {
+  "AzFluidRelayServerKey+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/listKeys?api-version=2022-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup61ve/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserveryofn/listKeys?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/listKeys?api-version=2022-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "16029ee0-f2d1-4222-853f-52b8bf76a69c" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "5feacab6-21dc-43bf-bfd4-f444afb781ca" ],
         "CommandName": [ "Get-AzFluidRelayServerKey" ],
         "FullCommandName": [ "Get-AzFluidRelayServerKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.FluidRelay/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.7", "Az.FluidRelay/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -100,24 +120,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "W/\"55-6oEaO/rD71jVgI9G47qpzOJKs6k\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "W/\"bd-PuA3JTGB9lPmLgG+WMOggDfaPvM\"" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japaneast/4658cbf5-8e9d-4c41-aa07-e3cb56ae2db5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-client-request-id": [ "c2343315-6895-4a9c-aaa4-0b1c5d7a4e82" ],
-        "x-ms-correlation-request-id": [ "848f35a2-3ae2-4905-b189-18d1130ddd6d" ],
+        "x-correlation-id": [ "646d75d0-2fb4-4f2e-83f3-d2d3d3189433" ],
+        "x-ms-client-request-id": [ "5feacab6-21dc-43bf-bfd4-f444afb781ca" ],
+        "x-ms-correlation-request-id": [ "646d75d0-2fb4-4f2e-83f3-d2d3d3189433" ],
+        "x-envoy-upstream-service-time": [ "779" ],
+        "x-envoy-decorator-operation": [ "frsprod-southcentralus-003-echo.default.svc.cluster.local:80/*" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a10a1f1a-9ebc-4f95-bfff-dce895854f6a" ],
+        "Content-Security-Policy": [ "default-src \u0027none\u0027; base-uri \u0027none\u0027; sandbox;" ],
+        "x-azure-ref": [ "20250425T032717Z-15d6c4d9988jkmdshC1YVRdkkc0000000ung00000000mx45" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "74f0285a-93b9-4c4d-a255-0ced484a4922" ],
         "X-Powered-By": [ "Express" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220621T022919Z:848f35a2-3ae2-4905-b189-18d1130ddd6d" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20250425T032718Z:838aac9a-6e25-4ee9-901a-cac4998b4251" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 21 Jun 2022 02:29:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6256DDAF8BF245429CF0CE79C5136C78 Ref B: TYO201100114035 Ref C: 2025-04-25T03:27:17Z" ],
+        "Date": [ "Fri, 25 Apr 2025 03:27:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "85" ],
+        "Content-Length": [ "189" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"key1\":\"338ae1e40d4b87ecf453046c6adf0b93\",\"key2\":\"78499f287c36602ea269f18dee956636\"}",
+      "Content": "{\"key1\":\"2CtKKqQSOSELqtTSweSPlb72BZ6aOG79dhi3sMulroSEHR16NgscJQQJ99BDACjcPUyy71xuAAAAAZFR1IJm\",\"key2\":\"29vYBF6irsRdobtdwwJOb9sKRKFkpTES2pi1Zc4RXRpBgXLUpj91JQQJ99BDACRsaBGy71xuAAAAAZFRz4d8\"}",
       "isContentBase64": false
     }
   }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a Disk pool.
+update a Disk pool.
 .Description
-Update a Disk pool.
+update a Disk pool.
 .Example
 Update-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -DiskId @()
 .Example
@@ -27,7 +27,7 @@ Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Up
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,10 +47,12 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
 #>
 function Update-AzDiskPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('DiskPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
@@ -58,6 +60,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -65,6 +69,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -75,49 +81,65 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDisk[]]
     # List of Azure Managed Disks to attach to a Disk Pool.
-    # To construct, see NOTES section for DISK properties and create a hash table.
     ${Disk},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Azure resource id.
     # Indicates if this resource is managed by another Azure resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of Azure resource ids that manage this resource.
     ${ManagedByExtended},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Sku name
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Sku tier
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -187,14 +209,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.DiskPool.private\Update-AzDiskPool_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DiskPool.private\Update-AzDiskPool_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DiskPool.private\Update-AzDiskPool_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DiskPool.private\Update-AzDiskPool_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -203,6 +228,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

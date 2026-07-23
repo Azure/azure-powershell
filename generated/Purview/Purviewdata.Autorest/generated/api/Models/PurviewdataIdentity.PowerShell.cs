@@ -138,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
             }
             if (content.Contains("DataSourceType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType = (Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType?) content.GetValueForProperty("DataSourceType",((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType = (string) content.GetValueForProperty("DataSourceType",((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType, global::System.Convert.ToString);
             }
             if (content.Contains("Version"))
             {
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
             }
             if (content.Contains("DataSourceType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType = (Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType?) content.GetValueForProperty("DataSourceType",((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType = (string) content.GetValueForProperty("DataSourceType",((Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentityInternal)this).DataSourceType, global::System.Convert.ToString);
             }
             if (content.Contains("Version"))
             {

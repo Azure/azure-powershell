@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdScalingPlanPersonalSchedule
 
 ## SYNOPSIS
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 
 ## SYNTAX
 
@@ -88,7 +88,7 @@ Update-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIden
 ```
 
 ## DESCRIPTION
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 

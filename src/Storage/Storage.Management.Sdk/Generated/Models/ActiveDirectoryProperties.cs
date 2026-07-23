@@ -25,29 +25,58 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="domainName">Specifies the primary domain that the AD DNS server is authoritative for.
+        /// This property is required if directoryServiceOptions is set to AD (AD DS
+        /// authentication). If directoryServiceOptions is set to AADDS (Entra DS
+        /// authentication), providing this property is optional, as it will be
+        /// inferred automatically if omitted. If directoryServiceOptions is set to
+        /// AADKERB (Entra authentication), this property is optional; it is needed to
+        /// support configuration of directory- and file-level permissions via Windows
+        /// File Explorer, but is not required for authentication.
         /// </param>
 
-        /// <param name="netBiosDomainName">Specifies the NetBIOS domain name.
+        /// <param name="netBiosDomainName">Specifies the NetBIOS domain name. If directoryServiceOptions is set to AD
+        /// (AD DS authentication), this property is required. Otherwise, it can be
+        /// omitted.
         /// </param>
 
-        /// <param name="forestName">Specifies the Active Directory forest to get.
+        /// <param name="forestName">Specifies the Active Directory forest to get. If directoryServiceOptions is
+        /// set to AD (AD DS authentication), this property is required. Otherwise, it
+        /// can be omitted.
         /// </param>
 
-        /// <param name="domainGuid">Specifies the domain GUID.
+        /// <param name="domainGuid">Specifies the domain GUID. If directoryServiceOptions is set to AD (AD DS
+        /// authentication), this property is required. If directoryServiceOptions is
+        /// set to AADDS (Entra DS authentication), this property can be omitted. If
+        /// directoryServiceOptions is set to AADKERB (Entra authentication), this
+        /// property is optional; it is needed to support configuration of directory-
+        /// and file-level permissions via Windows File Explorer, but is not required
+        /// for authentication.
         /// </param>
 
-        /// <param name="domainSid">Specifies the security identifier (SID).
+        /// <param name="domainSid">Specifies the security identifier (SID) of the AD domain. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
         /// </param>
 
-        /// <param name="azureStorageSid">Specifies the security identifier (SID) for Azure Storage.
+        /// <param name="azureStorageSid">Specifies the security identifier (SID) for Azure Storage. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
         /// </param>
 
-        /// <param name="samAccountName">Specifies the Active Directory SAMAccountName for Azure Storage.
+        /// <param name="samAccountName">Specifies the Active Directory SAMAccountName for Azure Storage. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is optional. If provided, accountType should also be provided. For
+        /// directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra
+        /// authentication), this property can be omitted.
         /// </param>
 
-        /// <param name="accountType">Specifies the Active Directory account type for Azure Storage.
+        /// <param name="accountType">Specifies the Active Directory account type for Azure Storage. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is optional. If provided, samAccountName should also be provided. For
+        /// directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra
+        /// authentication), this property can be omitted.
         /// Possible values include: &#39;User&#39;, &#39;Computer&#39;</param>
-        public ActiveDirectoryProperties(string domainName, string domainGuid, string netBiosDomainName = default(string), string forestName = default(string), string domainSid = default(string), string azureStorageSid = default(string), string samAccountName = default(string), string accountType = default(string))
+        public ActiveDirectoryProperties(string domainName = default(string), string netBiosDomainName = default(string), string forestName = default(string), string domainGuid = default(string), string domainSid = default(string), string azureStorageSid = default(string), string samAccountName = default(string), string accountType = default(string))
 
         {
             this.DomainName = domainName;
@@ -69,77 +98,79 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets specifies the primary domain that the AD DNS server is
-        /// authoritative for.
+        /// authoritative for. This property is required if directoryServiceOptions is
+        /// set to AD (AD DS authentication). If directoryServiceOptions is set to
+        /// AADDS (Entra DS authentication), providing this property is optional, as it
+        /// will be inferred automatically if omitted. If directoryServiceOptions is
+        /// set to AADKERB (Entra authentication), this property is optional; it is
+        /// needed to support configuration of directory- and file-level permissions
+        /// via Windows File Explorer, but is not required for authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "domainName")]
         public string DomainName {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the NetBIOS domain name.
+        /// Gets or sets specifies the NetBIOS domain name. If directoryServiceOptions
+        /// is set to AD (AD DS authentication), this property is required. Otherwise,
+        /// it can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "netBiosDomainName")]
         public string NetBiosDomainName {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the Active Directory forest to get.
+        /// Gets or sets specifies the Active Directory forest to get. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "forestName")]
         public string ForestName {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the domain GUID.
+        /// Gets or sets specifies the domain GUID. If directoryServiceOptions is set
+        /// to AD (AD DS authentication), this property is required. If
+        /// directoryServiceOptions is set to AADDS (Entra DS authentication), this
+        /// property can be omitted. If directoryServiceOptions is set to AADKERB
+        /// (Entra authentication), this property is optional; it is needed to support
+        /// configuration of directory- and file-level permissions via Windows File
+        /// Explorer, but is not required for authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "domainGuid")]
         public string DomainGuid {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the security identifier (SID).
+        /// Gets or sets specifies the security identifier (SID) of the AD domain. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "domainSid")]
         public string DomainSid {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the security identifier (SID) for Azure Storage.
+        /// Gets or sets specifies the security identifier (SID) for Azure Storage. If
+        /// directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "azureStorageSid")]
         public string AzureStorageSid {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the Active Directory SAMAccountName for Azure
-        /// Storage.
+        /// Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, accountType should also be
+        /// provided. For directoryServiceOptions AADDS (Entra DS authentication) or
+        /// AADKERB (Entra authentication), this property can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "samAccountName")]
         public string SamAccountName {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the Active Directory account type for Azure Storage. Possible values include: &#39;User&#39;, &#39;Computer&#39;
+        /// Gets or sets specifies the Active Directory account type for Azure Storage.
+        /// If directoryServiceOptions is set to AD (AD DS authentication), this
+        /// property is optional. If provided, samAccountName should also be provided.
+        /// For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB
+        /// (Entra authentication), this property can be omitted. Possible values include: &#39;User&#39;, &#39;Computer&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "accountType")]
         public string AccountType {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.DomainName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "DomainName");
-            }
-            if (this.DomainGuid == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "DomainGuid");
-            }
-
-
-
-
-
-
-
-
-        }
     }
 }

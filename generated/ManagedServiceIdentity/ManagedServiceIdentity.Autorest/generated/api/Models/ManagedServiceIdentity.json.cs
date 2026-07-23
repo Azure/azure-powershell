@@ -76,12 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
             {
                 return;
             }
-            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
-            {_federatedIdentityCredentialResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("federatedIdentityCredentialResourceName"), out var __jsonFederatedIdentityCredentialResourceName) ? (string)__jsonFederatedIdentityCredentialResourceName : (string)FederatedIdentityCredentialResourceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
+            {_federatedIdentityCredentialResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("federatedIdentityCredentialResourceName"), out var __jsonFederatedIdentityCredentialResourceName) ? (string)__jsonFederatedIdentityCredentialResourceName : (string)_federatedIdentityCredentialResourceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

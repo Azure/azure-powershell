@@ -16,195 +16,139 @@
 
 <#
 .Synopsis
-Create a savings plan.
+create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 .Description
-Create a savings plan.
+create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 .Example
 New-AzBillingBenefitsSavingsPlanOrderAlias -Name "PSTest1" -AppliedScopeType "Shared" -BillingPlan "P1M" `
 -BillingScopeId "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47" -CommitmentAmount 0.001 -CommitmentCurrencyCode "USD" -CommitmentGrain "Hourly" -SkuName "Compute_Savings_Plan" -DisplayName "PSTest199" -Term "P3Y"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModel
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <ISavingsPlanOrderAliasModel>: Savings plan order alias
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [AppliedScopePropertyDisplayName <String>]: Display name
-  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
-  [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
-  [CommitmentAmount <Double?>]: 
-  [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
-  [DisplayName <String>]: Display name
-  [Kind <String>]: Resource provider kind
-  [SkuName <String>]: Name of the SKU to be applied
-  [Term <Term?>]: Represent benefit term in ISO 8601 format.
-
-INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ReservationOrderAliasName <String>]: Name of the reservation order alias
-  [SavingsPlanId <String>]: ID of the savings plan
-  [SavingsPlanOrderAliasName <String>]: Name of the savings plan order alias
-  [SavingsPlanOrderId <String>]: Order ID of the savings plan
+Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanOrderAliasModel
 .Link
 https://learn.microsoft.com/powershell/module/az.billingbenefits/new-azbillingbenefitssavingsplanorderalias
+.Link
+https://go.microsoft.com/fwlink/?linkid=2215851/
 #>
 function New-AzBillingBenefitsSavingsPlanOrderAlias {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanOrderAliasModel])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Alias('SavingsPlanOrderAliasName')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Path')]
     [System.String]
     # Name of the savings plan order alias
     ${Name},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModel]
-    # Savings plan order alias
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
-
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Display name
     ${AppliedScopePropertyDisplayName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the management group where the benefit must be applied.
     ${AppliedScopePropertyManagementGroupId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the resource group.
     ${AppliedScopePropertyResourceGroupId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the subscription.
     ${AppliedScopePropertySubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Tenant ID where the benefit is applied.
     ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PSArgumentCompleterAttribute("Single", "Shared", "ManagementGroup")]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType]
+    [System.String]
     # Type of the Applied Scope.
     ${AppliedScopeType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PSArgumentCompleterAttribute("P1M")]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan]
+    [System.String]
     # Represents the billing plan in ISO 8601 format.
     # Required only for monthly billing plans.
     ${BillingPlan},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Subscription that will be charged for purchasing the benefit
     ${BillingScopeId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.Double]
     # .
     ${CommitmentAmount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # The ISO 4217 3-letter currency code for the currency used by this purchase record.
     ${CommitmentCurrencyCode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PSArgumentCompleterAttribute("Hourly")]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain]
+    [System.String]
     # Commitment grain.
     ${CommitmentGrain},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Display name
     ${DisplayName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Resource provider kind
     ${Kind},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Name of the SKU to be applied
     ${SkuName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PSArgumentCompleterAttribute("P1Y", "P3Y", "P5Y")]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term]
+    [System.String]
     # Represent benefit term in ISO 8601 format.
     ${Term},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -274,6 +218,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -293,10 +246,9 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.BillingBenefits.private\New-AzBillingBenefitsSavingsPlanOrderAlias_Create';
             CreateExpanded = 'Az.BillingBenefits.private\New-AzBillingBenefitsSavingsPlanOrderAlias_CreateExpanded';
-            CreateViaIdentity = 'Az.BillingBenefits.private\New-AzBillingBenefitsSavingsPlanOrderAlias_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'Az.BillingBenefits.private\New-AzBillingBenefitsSavingsPlanOrderAlias_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.BillingBenefits.private\New-AzBillingBenefitsSavingsPlanOrderAlias_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.BillingBenefits.private\New-AzBillingBenefitsSavingsPlanOrderAlias_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -305,6 +257,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

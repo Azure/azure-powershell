@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
 
         /// <param name="name">The name of a managed cluster SKU.
-        /// Possible values include: &#39;Base&#39;</param>
+        /// Possible values include: &#39;Base&#39;, &#39;Automatic&#39;</param>
 
-        /// <param name="tier">If not specified, the default is &#39;Free&#39;. See [AKS Pricing
+        /// <param name="tier">The tier of a managed cluster SKU. If not specified, the default is &#39;Free&#39;.
+        /// See [AKS Pricing
         /// Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
         /// for more details.
         /// Possible values include: &#39;Premium&#39;, &#39;Standard&#39;, &#39;Free&#39;</param>
@@ -46,13 +47,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets the name of a managed cluster SKU. Possible values include: &#39;Base&#39;
+        /// Gets or sets the name of a managed cluster SKU. Possible values include: &#39;Base&#39;, &#39;Automatic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default is &#39;Free&#39;. See [AKS Pricing
+        /// Gets or sets the tier of a managed cluster SKU. If not specified, the
+        /// default is &#39;Free&#39;. See [AKS Pricing
         /// Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
         /// for more details. Possible values include: &#39;Premium&#39;, &#39;Standard&#39;, &#39;Free&#39;
         /// </summary>

@@ -102,7 +102,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Constants.Standard_LRS,
             Constants.Standard_SSD,
             Constants.StandardSSD_LRS,
-            Constants.StandardSSD_ZRS)]
+            Constants.StandardSSD_ZRS,
+            Constants.PremiumV2_LRS,
+            Constants.UltraSSD_LRS)]
         public string RecoveryTargetDiskAccountType { get; set; }
 
         /// <summary>
@@ -153,6 +155,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string TfoDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network access policy for the recovery managed disk.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false,
+            HelpMessage = "Specifies the network access policy for the recovery managed disk. Allowed values are AllowAll, AllowPrivate, DenyAll.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.AllowAll,
+            Constants.AllowPrivate,
+            Constants.DenyAll)]
+        public string RecoveryNetworkAccessPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk access ARM Id.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false,
+            HelpMessage = "Specifies the disk access ARM Id used when RecoveryNetworkAccessPolicy is AllowPrivate.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryDiskAccessId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the public network access setting for the recovery managed disk.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false,
+            HelpMessage = "Specifies the public network access setting for the recovery managed disk. Allowed values are Enabled, Disabled.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.Enabled,
+            Constants.Disabled)]
+        public string RecoveryPublicNetworkAccess { get; set; }
 
         #endregion Parameters
 
@@ -212,7 +245,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             KeyEncryptionVaultId = this.KeyEncryptionVaultId,
                             RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId,
                             FailoverDiskName = this.FailoverDiskName,
-                            TfoDiskName = this.TfoDiskName
+                            TfoDiskName = this.TfoDiskName,
+                            RecoveryNetworkAccessPolicy = this.RecoveryNetworkAccessPolicy,
+                            RecoveryDiskAccessId = this.RecoveryDiskAccessId,
+                            RecoveryPublicNetworkAccess = this.RecoveryPublicNetworkAccess
                         };
                         break;
                 }

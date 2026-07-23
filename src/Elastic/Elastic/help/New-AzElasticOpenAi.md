@@ -8,39 +8,48 @@ schema: 2.0.0
 # New-AzElasticOpenAi
 
 ## SYNOPSIS
-Create or update a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Key <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IOpenAiIntegrationRpmodel> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiResourceEndpoint <String>]
+ [-SubscriptionId <String>] [-Key <String>] [-OpenAiConnectorId <String>] [-OpenAiResourceEndpoint <String>]
  [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### CreateViaJsonString
 ```
-New-AzElasticOpenAi -InputObject <IElasticIdentity> -Body <IOpenAiIntegrationRpmodel>
+New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityMonitorExpanded
+```
+New-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdentity> [-Key <String>]
+ [-OpenAiConnectorId <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiConnectorId <String>]
+ [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 
 ## EXAMPLES
 
@@ -58,22 +67,6 @@ default                      Active            elastic-rg-3eytki
 This command Creates or updates a OpenAI integration rule for a given monitor resource.
 
 ## PARAMETERS
-
-### -Body
-Capture properties of Open AI resource Integration.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -93,11 +86,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -112,7 +104,37 @@ OpenAI Integration name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityMonitorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -127,7 +149,7 @@ Value of API key for Open AI resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,15 +159,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: CreateViaIdentityMonitorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OpenAiConnectorId
+The connector id of Open AI resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,7 +209,7 @@ The API endpoint for Open AI resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -172,7 +224,7 @@ The resource name of Open AI resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -188,7 +240,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -204,7 +256,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -250,13 +302,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel
 
 ## NOTES
 

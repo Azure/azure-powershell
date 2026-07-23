@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
     "Get",
     ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesNameAvailability",
     DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSRegionInfo))]
-    [Alias("Get-AnfQuotaAvailability")]
+    [Alias("Get-AnfNameAvailability")]
     public class GetAzureRmNetAppFilesNameAvailability : AzureNetAppFilesCmdletBase
     {
         [Parameter(
@@ -66,7 +66,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
         {
             try
             {
-                var anfCheckAvailabilityResponse = AzureNetAppFilesManagementClient.NetAppResource.CheckNameAvailability(location: Location, name: Name, type: Type, resourceGroup: ResourceGroupName);
+                ResourceNameAvailabilityRequest resourceNameAvailabilityRequest = new ResourceNameAvailabilityRequest
+                {
+                    Name = Name,
+                    Type = Type,
+                    ResourceGroup = ResourceGroupName
+                };
+                var anfCheckAvailabilityResponse = AzureNetAppFilesManagementClient.NetAppResource.CheckNameAvailability(location: Location, resourceNameAvailabilityRequest);
                 WriteObject(anfCheckAvailabilityResponse.ConvertToPs());
             }
             catch (ErrorResponseException ex)

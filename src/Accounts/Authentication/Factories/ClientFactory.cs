@@ -16,6 +16,8 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
@@ -56,12 +58,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
+            return CreateArmClient<TClient>(context, endpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint, ICmdletContext cmdletContext) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
             if (context == null)
             {
                 throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
             }
 
-            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint, cmdletContext);
             var baseUri = context.Environment.GetEndpointAsUri(endpoint);
             TClient client = CreateCustomArmClient<TClient>(baseUri, creds);
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
@@ -377,7 +384,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         /// <summary>
-        /// AddUserAgent is method from ClientFactory singleten. When user terminate cmdlet execution on Console, the module name in 
+        /// AddUserAgent is method from ClientFactory singleton. When user terminate cmdlet execution on Console, the module name in 
         /// useragent cannot be removed. It leads multiple module names in useragent if user execute cmdlet of another module after 
         /// previous terminated cmdlet. The solution here is to share the same key to all modules which name leads "Az.". It is not accurate
         /// but can cover the majority of cases.

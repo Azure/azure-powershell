@@ -13,15 +13,46 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class ManagedResourceProvisioningState
     {
+        /// <summary>
+        /// The resource does not have a provisioning state.
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// The resource is being created.
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// The resource is created.
+        /// </summary>
         public const string Created = "Created";
+        /// <summary>
+        /// The resource is being updated.
+        /// </summary>
         public const string Updating = "Updating";
+        /// <summary>
+        /// The resource provisioning has succeeded.
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// The resource provisioning has failed.
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// The resource provisioning has been canceled.
+        /// </summary>
         public const string Canceled = "Canceled";
+        /// <summary>
+        /// The resource is being deleted.
+        /// </summary>
         public const string Deleting = "Deleting";
+        /// <summary>
+        /// The resource has been deleted.
+        /// </summary>
         public const string Deleted = "Deleted";
+        /// <summary>
+        /// The resource provisioning state is a state other than the previously
+        /// specified states.
+        /// </summary>
         public const string Other = "Other";
     }
 }

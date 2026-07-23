@@ -42,6 +42,18 @@ INPUTOBJECT <IPeeringIdentity>: Identity Parameter
   [RegisteredPrefixName <String>]: The name of the registered prefix.
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID.
+
+PEERINGSERVICEINPUTOBJECT <IPeeringIdentity>: Identity Parameter
+  [ConnectionMonitorTestName <String>]: The name of the connection monitor test
+  [Id <String>]: Resource identity path
+  [PeerAsnName <String>]: The peer ASN name.
+  [PeeringName <String>]: The name of the peering.
+  [PeeringServiceName <String>]: The name of the peering service.
+  [PrefixName <String>]: The name of the prefix.
+  [RegisteredAsnName <String>]: The name of the registered ASN.
+  [RegisteredPrefixName <String>]: The name of the registered prefix.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/remove-azpeeringserviceprefix
 #>
@@ -50,6 +62,7 @@ function Remove-AzPeeringServicePrefix {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPeeringService', Mandatory)]
     [Alias('PrefixName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [System.String]
@@ -79,8 +92,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityPeeringService', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
+    # Identity Parameter
+    ${PeeringServiceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -144,6 +162,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -165,10 +192,9 @@ begin {
         $mapping = @{
             Delete = 'Az.Peering.private\Remove-AzPeeringServicePrefix_Delete';
             DeleteViaIdentity = 'Az.Peering.private\Remove-AzPeeringServicePrefix_DeleteViaIdentity';
+            DeleteViaIdentityPeeringService = 'Az.Peering.private\Remove-AzPeeringServicePrefix_DeleteViaIdentityPeeringService';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -182,6 +208,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

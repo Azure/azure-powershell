@@ -8,17 +8,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// See [planned
+    /// Planned maintenance configuration, used to configure when updates can be
+    /// deployed to a Managed Cluster. See [planned
     /// maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for
     /// more information about planned maintenance.
     /// </summary>
-    /// <remarks>
-    /// See [planned
-    /// maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for
-    /// more information about planned maintenance.
-    /// </remarks>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class MaintenanceConfiguration : SubResource
+    public partial class MaintenanceConfiguration : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the MaintenanceConfiguration class.
@@ -32,30 +28,36 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the MaintenanceConfiguration class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">The system metadata relating to this resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="timeInWeek">If two array entries specify the same day of the week, the applied
+        /// <param name="maintenanceWindow">Maintenance window for the maintenance configuration.
+        /// </param>
+
+        /// <param name="timeInWeek">Time slots during the week when planned maintenance is allowed to proceed.
+        /// If two array entries specify the same day of the week, the applied
         /// configuration is the union of times in both entries.
         /// </param>
 
         /// <param name="notAllowedTime">Time slots on which upgrade is not allowed.
         /// </param>
-        public MaintenanceConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IList<TimeInWeek> timeInWeek = default(System.Collections.Generic.IList<TimeInWeek>), System.Collections.Generic.IList<TimeSpan> notAllowedTime = default(System.Collections.Generic.IList<TimeSpan>))
+        public MaintenanceConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), MaintenanceWindow maintenanceWindow = default(MaintenanceWindow), System.Collections.Generic.IList<TimeInWeek> timeInWeek = default(System.Collections.Generic.IList<TimeInWeek>), System.Collections.Generic.IList<TimeSpan> notAllowedTime = default(System.Collections.Generic.IList<TimeSpan>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
+            this.MaintenanceWindow = maintenanceWindow;
             this.TimeInWeek = timeInWeek;
             this.NotAllowedTime = notAllowedTime;
             CustomInit();
@@ -68,13 +70,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets the system metadata relating to this resource.
+        /// Gets or sets maintenance window for the maintenance configuration.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceWindow")]
+        public MaintenanceWindow MaintenanceWindow {get; set; }
 
         /// <summary>
-        /// Gets or sets if two array entries specify the same day of the week, the
+        /// Gets or sets time slots during the week when planned maintenance is allowed
+        /// to proceed. If two array entries specify the same day of the week, the
         /// applied configuration is the union of times in both entries.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeInWeek")]
@@ -85,5 +88,20 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.notAllowedTime")]
         public System.Collections.Generic.IList<TimeSpan> NotAllowedTime {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.MaintenanceWindow != null)
+            {
+                this.MaintenanceWindow.Validate();
+            }
+
+
+        }
     }
 }

@@ -67,7 +67,7 @@ Kind Location   Name               Type
 
 This commands list all static web applications under a resource group.
 
-### Example 3: Get a satic web application by name
+### Example 3: Get a static web application by name
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
@@ -78,9 +78,9 @@ Kind Location   Name               Type
      Central US staticweb-portal04 Microsoft.Web/staticSites
 ```
 
-This commands gets a satic web application by name.
+This commands gets a static web application by name.
 
-### Example 4: Get a satic web application by pipline
+### Example 4: Get a static web application by pipeline
 ```powershell
 New-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' | Get-AzStaticWebApp
 ```
@@ -91,7 +91,7 @@ Kind Location   Name               Type
      Central US staticweb-portal04 Microsoft.Web/staticSites
 ```
 
-This commands gets a satic web application by pipline.
+This commands gets a static web application by pipeline.
 
 ## PARAMETERS
 
@@ -113,7 +113,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -183,7 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteArmResource
 
 ## NOTES
 

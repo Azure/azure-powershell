@@ -15,7 +15,7 @@ Updates the state of a Vmss VM.
 ### DefaultParameter (Default)
 ```
 Update-AzVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String>
- [-DataDisk <PSVirtualMachineDataDisk[]>] [-ProtectFromScaleIn <Boolean>]
+ [-ProxyAgentKeyIncarnationId <Int32>] [-DataDisk <PSVirtualMachineDataDisk[]>] [-ProtectFromScaleIn <Boolean>]
  [-ProtectFromScaleSetAction <Boolean>] [-AsJob] [-UserData <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,18 +23,18 @@ Update-AzVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Insta
 
 ### ResourceIdParameter
 ```
-Update-AzVmssVM [-DataDisk <PSVirtualMachineDataDisk[]>] [-ProtectFromScaleIn <Boolean>]
- [-ProtectFromScaleSetAction <Boolean>] [-ResourceId] <String> [-AsJob] [-UserData <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzVmssVM [-ProxyAgentKeyIncarnationId <Int32>] [-DataDisk <PSVirtualMachineDataDisk[]>]
+ [-ProtectFromScaleIn <Boolean>] [-ProtectFromScaleSetAction <Boolean>] [-ResourceId] <String> [-AsJob]
+ [-UserData <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
-Update-AzVmssVM [-DataDisk <PSVirtualMachineDataDisk[]>] [-ProtectFromScaleIn <Boolean>]
- [-ProtectFromScaleSetAction <Boolean>] [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzVmssVM [-ProxyAgentKeyIncarnationId <Int32>] [-DataDisk <PSVirtualMachineDataDisk[]>]
+ [-ProtectFromScaleIn <Boolean>] [-ProtectFromScaleSetAction <Boolean>]
+ [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +167,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyAgentKeyIncarnationId
+Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases: KeyIncarnationId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

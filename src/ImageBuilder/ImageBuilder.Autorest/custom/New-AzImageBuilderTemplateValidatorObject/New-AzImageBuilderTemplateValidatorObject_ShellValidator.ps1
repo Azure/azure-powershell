@@ -21,12 +21,13 @@ Create an in-memory object for ImageTemplateValidator.
 Create an in-memory object for ImageTemplateValidator.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellValidator
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellValidator
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatevalidatorobject
 #>
 function New-AzImageBuilderTemplateValidatorObject_ShellValidator {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellValidator')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellValidator')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,17 +43,13 @@ function New-AzImageBuilderTemplateValidatorObject_ShellValidator {
         [Parameter(HelpMessage="Friendly Name to provide context on what this validation step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of validation you want to use on the Image. For example, `"Shell`" can be shell validation.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Runs the specified shell script during the validation phase (Linux). Corresponds to Packer shell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.")]
         [Switch]
         $ShellValidator
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellValidator]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellValidator]::New()
 
         if ($PSBoundParameters.ContainsKey('Inline')) {
             $Object.Inline = $Inline
@@ -65,9 +62,6 @@ function New-AzImageBuilderTemplateValidatorObject_ShellValidator {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($ShellValidator.IsPresent) {
-            $Object.Type = "Shell"
         }
         return $Object
     }

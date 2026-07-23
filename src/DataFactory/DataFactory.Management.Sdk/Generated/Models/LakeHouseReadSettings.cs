@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// Microsoft Fabric LakeHouse Files read settings.
+    /// Microsoft Fabric Lakehouse Files read settings.
     /// </summary>
     [Newtonsoft.Json.JsonObject("LakeHouseReadSettings")]
     public partial class LakeHouseReadSettings : StoreReadSettings
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// true. Type: boolean (or Expression with resultType boolean).
         /// </param>
 
-        /// <param name="wildcardFolderPath">Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or
+        /// <param name="wildcardFolderPath">Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or
         /// Expression with resultType string).
         /// </param>
 
-        /// <param name="wildcardFileName">Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or
+        /// <param name="wildcardFileName">Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or
         /// Expression with resultType string).
         /// </param>
 
@@ -103,14 +103,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object Recursive {get; set; }
 
         /// <summary>
-        /// Gets or sets microsoft Fabric LakeHouse Files wildcardFolderPath. Type:
+        /// Gets or sets microsoft Fabric Lakehouse Files wildcardFolderPath. Type:
         /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "wildcardFolderPath")]
         public object WildcardFolderPath {get; set; }
 
         /// <summary>
-        /// Gets or sets microsoft Fabric LakeHouse Files wildcardFileName. Type:
+        /// Gets or sets microsoft Fabric Lakehouse Files wildcardFileName. Type:
         /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "wildcardFileName")]

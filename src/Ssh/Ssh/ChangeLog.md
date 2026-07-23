@@ -20,6 +20,15 @@
 
 ## Upcoming Release
 
+## Version 0.3.1
+* Added Service Principal support for SSH with Entra ID (AAD) login
+
+## Version 0.3.0
+* Added ChangeSafety Support
+
+## Version 0.2.3
+* Implemented code refactoring, no behavior changes expected.
+
 ## Version 0.2.2
 * Upgraded nuget package to signed package.
 

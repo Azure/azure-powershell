@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).SapVirtualInstanceName = (string) content.GetValueForProperty("SapVirtualInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).SapVirtualInstanceName, global::System.Convert.ToString);
             }
+            if (content.Contains("ApplicationInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName = (string) content.GetValueForProperty("ApplicationInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName, global::System.Convert.ToString);
+            }
             if (content.Contains("CentralInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).CentralInstanceName = (string) content.GetValueForProperty("CentralInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).CentralInstanceName, global::System.Convert.ToString);
@@ -133,10 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
             if (content.Contains("DatabaseInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).DatabaseInstanceName = (string) content.GetValueForProperty("DatabaseInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).DatabaseInstanceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ApplicationInstanceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName = (string) content.GetValueForProperty("ApplicationInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -175,6 +175,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).SapVirtualInstanceName = (string) content.GetValueForProperty("SapVirtualInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).SapVirtualInstanceName, global::System.Convert.ToString);
             }
+            if (content.Contains("ApplicationInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName = (string) content.GetValueForProperty("ApplicationInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName, global::System.Convert.ToString);
+            }
             if (content.Contains("CentralInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).CentralInstanceName = (string) content.GetValueForProperty("CentralInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).CentralInstanceName, global::System.Convert.ToString);
@@ -182,10 +186,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
             if (content.Contains("DatabaseInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).DatabaseInstanceName = (string) content.GetValueForProperty("DatabaseInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).DatabaseInstanceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ApplicationInstanceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName = (string) content.GetValueForProperty("ApplicationInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentityInternal)this).ApplicationInstanceName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

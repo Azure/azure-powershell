@@ -15,7 +15,8 @@ Removes a NAT rule associated with VpnGateway.
 ### ByVpnGatewayNatRuleName (Default)
 ```
 Remove-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayNatRuleResourceId
@@ -27,7 +28,8 @@ Remove-AzVpnGatewayNatRule -ResourceId <String> [-Force] [-PassThru] [-DefaultPr
 ### ByVpnGatewayNatRuleObject
 ```
 Remove-AzVpnGatewayNatRule -InputObject <PSVpnGatewayNatRule> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

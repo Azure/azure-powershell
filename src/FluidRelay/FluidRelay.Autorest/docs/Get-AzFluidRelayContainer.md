@@ -29,6 +29,18 @@ Get-AzFluidRelayContainer -FluidRelayServerName <String> -Name <String> -Resourc
 Get-AzFluidRelayContainer -InputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityFluidRelayServer
+```
+Get-AzFluidRelayContainer -FluidRelayServerInputObject <IFluidRelayIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityResourceGroup
+```
+Get-AzFluidRelayContainer -FluidRelayServerName <String> -Name <String>
+ -ResourceGroupInputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a Fluid Relay container.
 
@@ -81,12 +93,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FluidRelayServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
+Parameter Sets: GetViaIdentityFluidRelayServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -FluidRelayServerName
 The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityResourceGroup, List
 Aliases:
 
 Required: True
@@ -98,7 +125,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
@@ -117,7 +143,7 @@ The Fluid Relay container resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityFluidRelayServer, GetViaIdentityResourceGroup
 Aliases: FluidRelayContainerName
 
 Required: True
@@ -139,6 +165,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
+Parameter Sets: GetViaIdentityResourceGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -166,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayContainer
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainer
 
 ## NOTES
 

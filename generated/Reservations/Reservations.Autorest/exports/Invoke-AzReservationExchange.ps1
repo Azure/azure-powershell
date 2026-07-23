@@ -22,36 +22,32 @@ Returns one or more `Reservations` in exchange for one or more `Reservation` pur
 .Example
 Invoke-AzReservationExchange -SessionId 8982593c-679e-4d4e-b971-c48b6d824cba
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IExchangeRequest>: Exchange request
-  [SessionId <String>]: SessionId that was returned by CalculateExchange API.
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IExchangeOperationResultResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 #>
 function Invoke-AzReservationExchange {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IExchangeOperationResultResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest]
-    # Exchange request
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
-
     [Parameter(ParameterSetName='PostExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # SessionId that was returned by CalculateExchange API.
     ${SessionId},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -121,6 +117,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -140,8 +145,9 @@ begin {
         }
 
         $mapping = @{
-            Post = 'Az.Reservations.private\Invoke-AzReservationExchange_Post';
             PostExpanded = 'Az.Reservations.private\Invoke-AzReservationExchange_PostExpanded';
+            PostViaJsonFilePath = 'Az.Reservations.private\Invoke-AzReservationExchange_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.Reservations.private\Invoke-AzReservationExchange_PostViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -150,6 +156,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

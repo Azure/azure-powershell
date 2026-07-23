@@ -95,6 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the connection monitor test",
         SerializedName = @"connectionMonitorTestName",
         PossibleTypes = new [] { typeof(string) })]
@@ -103,6 +106,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -111,6 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The peer ASN name.",
         SerializedName = @"peerAsnName",
         PossibleTypes = new [] { typeof(string) })]
@@ -119,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the peering.",
         SerializedName = @"peeringName",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the peering service.",
         SerializedName = @"peeringServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the prefix.",
         SerializedName = @"prefixName",
         PossibleTypes = new [] { typeof(string) })]
@@ -143,6 +161,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the registered ASN.",
         SerializedName = @"registeredAsnName",
         PossibleTypes = new [] { typeof(string) })]
@@ -151,6 +172,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the registered prefix.",
         SerializedName = @"registeredPrefixName",
         PossibleTypes = new [] { typeof(string) })]
@@ -159,6 +183,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -167,6 +194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

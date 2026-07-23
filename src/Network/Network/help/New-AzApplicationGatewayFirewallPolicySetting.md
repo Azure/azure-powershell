@@ -18,7 +18,8 @@ New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>]
  [-MaxRequestBodySizeInKb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-MaxFileUploadInMb <Int32>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>]
- [-JSChallengeCookieExpirationInMins <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-JSChallengeCookieExpirationInMins <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableRequestBodyCheck
-Diables the requestBodyCheck in policy settings of the firewall policy.
+Disables the requestBodyCheck in policy settings of the firewall policy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

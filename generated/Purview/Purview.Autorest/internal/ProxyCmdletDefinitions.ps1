@@ -49,18 +49,24 @@ function Add-AzPurviewAccountRootCollectionAdmin {
 [CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [System.String]
     # The name of the account.
     ${AccountName},
 
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [System.String]
     # The resource group name.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='AddExpanded')]
+    [Parameter(ParameterSetName='AddViaJsonFilePath')]
+    [Parameter(ParameterSetName='AddViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -71,14 +77,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AddExpanded')]
+    [Parameter(ParameterSetName='AddViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # Gets or sets the object identifier of the admin.
     ${ObjectId},
+
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -142,14 +160,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             AddExpanded = 'Az.Purview.private\Add-AzPurviewAccountRootCollectionAdmin_AddExpanded';
             AddViaIdentityExpanded = 'Az.Purview.private\Add-AzPurviewAccountRootCollectionAdmin_AddViaIdentityExpanded';
+            AddViaJsonFilePath = 'Az.Purview.private\Add-AzPurviewAccountRootCollectionAdmin_AddViaJsonFilePath';
+            AddViaJsonString = 'Az.Purview.private\Add-AzPurviewAccountRootCollectionAdmin_AddViaJsonString';
         }
-        if (('AddExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('AddExpanded', 'AddViaJsonFilePath', 'AddViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -158,6 +179,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -198,12 +222,12 @@ List of available operations
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewoperation
 #>
 function Get-AzPurviewOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -262,12 +286,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Purview.private\Get-AzPurviewOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -299,366 +329,19 @@ end {
 
 <#
 .Synopsis
-Get a private endpoint connection
+Create an account
 .Description
-Get a private endpoint connection
+Create an account
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the account.
-  [GroupId <String>]: The group identifier.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ResourceGroupName <String>]: The resource group name.
-  [SubscriptionId <String>]: The subscription identifier
-.Link
-https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewprivateendpointconnection
-#>
-function Get-AzPurviewPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The name of the account.
-    ${AccountName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # Name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The resource group name.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The subscription identifier
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Query')]
-    [System.String]
-    # The skip token.
-    ${SkipToken},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.Purview.private\Get-AzPurviewPrivateEndpointConnection_Get';
-            GetViaIdentity = 'Az.Purview.private\Get-AzPurviewPrivateEndpointConnection_GetViaIdentity';
-            List = 'Az.Purview.private\Get-AzPurviewPrivateEndpointConnection_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets a privately linkable resources for an account with given group identifier
-.Description
-Gets a privately linkable resources for an account with given group identifier
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateLinkResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the account.
-  [GroupId <String>]: The group identifier.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ResourceGroupName <String>]: The resource group name.
-  [SubscriptionId <String>]: The subscription identifier
-.Link
-https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewprivatelinkresource
-#>
-function Get-AzPurviewPrivateLinkResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateLinkResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The name of the account.
-    ${AccountName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The group identifier.
-    ${GroupId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The resource group name.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The subscription identifier
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.Purview.private\Get-AzPurviewPrivateLinkResource_Get';
-            GetViaIdentity = 'Az.Purview.private\Get-AzPurviewPrivateLinkResource_GetViaIdentity';
-            List = 'Az.Purview.private\Get-AzPurviewPrivateLinkResource_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates or updates an account
-.Description
-Creates or updates an account
-.Example
-New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -IdentityType SystemAssigned -SkuCapacity 4 -SkuName Standard
+New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -EnableSystemAssignedIdentity:$true -SkuCapacity 4 -SkuName Standard
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
 #>
 function New-AzPurviewAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -681,53 +364,64 @@ param(
     # The subscription identifier
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Type])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Type]
-    # Identity Type
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # Gets or sets the location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # Gets or sets the managed resource group name
     ${ManagedResourceGroupName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.PSArgumentCompleterAttribute("NotSpecified", "Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess]
+    [System.String]
     # Gets or sets the public network access.
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.Int32]
     # Gets or sets the sku capacity.
     # Possible values include: 4, 16
     ${SkuCapacity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Name])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.PSArgumentCompleterAttribute("Standard")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Name]
+    [System.String]
     # Gets or sets the sku name.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags on the azure resource.
     ${Tag},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -796,13 +490,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Purview.private\New-AzPurviewAccount_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Purview.private\New-AzPurviewAccount_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purview.private\New-AzPurviewAccount_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -811,373 +508,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update a private endpoint connection
-.Description
-Create or update a private endpoint connection
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewprivateendpointconnection
-#>
-function New-AzPurviewPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The name of the account.
-    ${AccountName},
-
-    [Parameter(Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # Name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The resource group name.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [System.String]
-    # The private endpoint identifier.
-    ${PrivateEndpointId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [System.String]
-    # The required actions.
-    ${PrivateLinkServiceConnectionStateActionsRequired},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [System.String]
-    # The description.
-    ${PrivateLinkServiceConnectionStateDescription},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Status])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Status]
-    # The status.
-    ${PrivateLinkServiceConnectionStateStatus},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.Purview.private\New-AzPurviewPrivateEndpointConnection_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Delete a private endpoint connection
-.Description
-Delete a private endpoint connection
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the account.
-  [GroupId <String>]: The group identifier.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ResourceGroupName <String>]: The resource group name.
-  [SubscriptionId <String>]: The subscription identifier
-.Link
-https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewprivateendpointconnection
-#>
-function Remove-AzPurviewPrivateEndpointConnection {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The name of the account.
-    ${AccountName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # Name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The resource group name.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.Purview.private\Remove-AzPurviewPrivateEndpointConnection_Delete';
-            DeleteViaIdentity = 'Az.Purview.private\Remove-AzPurviewPrivateEndpointConnection_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1216,53 +549,65 @@ Sets the default account for the scope.
 Set-AzPurviewDefaultAccount -AccountName test-pa -ResourceGroupName test-rg -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 #>
 function Set-AzPurviewDefaultAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The name of the account that is set as the default.
     ${AccountName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The resource group name of the account that is set as the default.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The scope object ID.
     # For example, sub ID or tenant ID.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The scope tenant in which the default account is set.
     ${ScopeTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType])]
+    [Parameter(ParameterSetName='SetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.PSArgumentCompleterAttribute("Tenant", "Subscription")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType]
+    [System.String]
     # The scope where the default account is set.
     ${ScopeType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription ID of the account that is set as the default.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='SetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Set operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Set operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -1319,13 +664,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             SetExpanded = 'Az.Purview.private\Set-AzPurviewDefaultAccount_SetExpanded';
+            SetViaJsonFilePath = 'Az.Purview.private\Set-AzPurviewDefaultAccount_SetViaJsonFilePath';
+            SetViaJsonString = 'Az.Purview.private\Set-AzPurviewDefaultAccount_SetViaJsonString';
         }
-        if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1334,188 +682,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update a private endpoint connection
-.Description
-Create or update a private endpoint connection
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewprivateendpointconnection
-#>
-function Set-AzPurviewPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The name of the account.
-    ${AccountName},
-
-    [Parameter(Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # Name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [System.String]
-    # The resource group name.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [System.String]
-    # The private endpoint identifier.
-    ${PrivateEndpointId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [System.String]
-    # The required actions.
-    ${PrivateLinkServiceConnectionStateActionsRequired},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [System.String]
-    # The description.
-    ${PrivateLinkServiceConnectionStateDescription},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Status])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Status]
-    # The status.
-    ${PrivateLinkServiceConnectionStateStatus},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.Purview.private\Set-AzPurviewPrivateEndpointConnection_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1554,12 +723,12 @@ Checks if account name is available.
 Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ICheckNameAvailabilityResult
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
 #>
 function Test-AzPurviewAccountNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -1569,17 +738,29 @@ param(
     # The subscription identifier
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # Resource name to verify for availability
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # Fully qualified resource type which includes provider namespace
     ${Type},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1637,13 +818,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CheckExpanded = 'Az.Purview.private\Test-AzPurviewAccountNameAvailability_CheckExpanded';
+            CheckViaJsonFilePath = 'Az.Purview.private\Test-AzPurviewAccountNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.Purview.private\Test-AzPurviewAccountNameAvailability_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1652,6 +836,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

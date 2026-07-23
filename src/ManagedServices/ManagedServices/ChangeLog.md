@@ -19,6 +19,26 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 3.1.3
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+## Version 3.1.2
+* Update the outputs of breaking change announcements.
+
+## Version 3.1.1
+* Added breaking change announcement for below commands from array or single object to list.
+    - 'Get-AzManagedServicesAssignment'
+    - 'Get-AzManagedServicesDefinition'
+    - 'Get-AzManagedServicesMarketplaceDefinition'
+    - 'New-AzManagedServicesAssignment'
+    - 'New-AzManagedServicesAuthorizationObject'
+    - 'New-AzManagedServicesDefinition'
+    - 'New-AzManagedServicesEligibleApproverObject'
+    - 'New-AzManagedServicesEligibleAuthorizationObject' 
+
 ## Version 3.1.0
 * Upgraded nuget package to signed package.
 

@@ -15,7 +15,7 @@ Set ACL recursively on the specified path.
 ```
 Set-AzDataLakeGen2AclRecursive [-FileSystem] <String> [[-Path] <String>] [-ContinuationToken <String>]
  -Acl <PSPathAccessControlEntry[]> [-ContinueOnFailure] [-BatchSize <Int32>] [-MaxBatchCount <Int32>] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ echo "ContinuationToken: `t`t`t`t`t$($token)"
 echo "FailedEntries:"$($FailedEntries | ft)
 ```
 
-This script sets ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 200 in this script.
+This script sets ACL recursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 200 in this script.
 
 ### Example 4: Set ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContinueOnFailure
-Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
+Set this parameter to ignore failures and continue processing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -300,21 +300,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

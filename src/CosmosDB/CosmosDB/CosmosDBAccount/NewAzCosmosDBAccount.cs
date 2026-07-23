@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSLocation[] LocationObject { get; set; }
         
         // As of 03082022, using this list only for Mongo Accounts >= 3.6
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.CapabilitiesHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string[] Capabilities { get; set; }
 
@@ -165,13 +165,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            databaseAccountCreateUpdateParameters.DisableLocalAuth = DisableLocalAuth;
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             Collection<string> networkAclBypassResourceId = NetworkAclBypassResourceId != null ? new Collection<string>(NetworkAclBypassResourceId) : new Collection<string>();
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            databaseAccountCreateUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            databaseAccountCreateUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
             databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            databaseAccountCreateUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
 
             if (IpRule != null && IpRule.Length > 0)
             {
@@ -232,7 +236,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableTable" } };
                             break;
                         case "Sql":
-                            break;
+                            {
+                                if (Capabilities != null && Capabilities.Length > 0)
+                                {
+                                    List<Capability> capabilitiesList = new List<Capability>();
+
+                                    foreach (string capability in Capabilities)
+                                    {
+                                        capabilitiesList.Add(new Capability { Name = capability });
+                                    }
+
+                                    databaseAccountCreateUpdateParameters.Capabilities = capabilitiesList;
+                                }
+
+                                break;
+                            }
                     }
 
                     ApiKind = null;
@@ -313,13 +331,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public new object GetDynamicParameters()
         {
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+
             if (FromPointInTimeBackup)
             {
                 restoreContext = new RestoreRequestDynamicParameters();
                 return restoreContext;
             }
 
-            return null;
+            return parameters;
         }
 
         private RestoreRequestDynamicParameters restoreContext;

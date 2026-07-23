@@ -15,19 +15,22 @@ Removes or Delete a Virtual Network Gateway NatRule.
 ### ByVirtualNetworkGatewayNatRuleName (Default)
 ```
 Remove-AzVirtualNetworkGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayNatRuleResourceId
 ```
 Remove-AzVirtualNetworkGatewayNatRule -ResourceId <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayNatRuleObject
 ```
 Remove-AzVirtualNetworkGatewayNatRule -InputObject <PSVirtualNetworkGatewayNatRule> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

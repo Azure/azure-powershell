@@ -15,11 +15,10 @@ Invokes another instance of a trigger run.
 ### InvokeByName (Default)
 ```
 Invoke-AzSynapseTriggerRun -WorkspaceName <String> -Name <String> -TriggerRunId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokByInputObject
+### InvokeByInputObject
 ```
 Invoke-AzSynapseTriggerRun -InputObject <PSTriggerRun> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -28,8 +27,7 @@ Invoke-AzSynapseTriggerRun -InputObject <PSTriggerRun> [-PassThru] [-DefaultProf
 ### InvokeByWorkspaceObject
 ```
 Invoke-AzSynapseTriggerRun -WorkspaceObject <PSSynapseWorkspace> -Name <String> -TriggerRunId <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +80,7 @@ The information about the trigger run.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSTriggerRun
-Parameter Sets: InvokByInputObject
+Parameter Sets: InvokeByInputObject
 Aliases:
 
 Required: True

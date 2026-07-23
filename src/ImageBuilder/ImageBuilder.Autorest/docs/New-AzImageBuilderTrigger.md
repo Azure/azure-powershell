@@ -8,18 +8,39 @@ schema: 2.0.0
 # New-AzImageBuilderTrigger
 
 ## SYNOPSIS
-Create or update a trigger for the specified virtual machine image template
+create a trigger for the specified virtual machine image template
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityImageTemplateExpanded
+```
+New-AzImageBuilderTrigger -ImageTemplateInputObject <IImageBuilderIdentity> -Name <String> [-Kind <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a trigger for the specified virtual machine image template
+create a trigger for the specified virtual machine image template
 
 ## EXAMPLES
 
@@ -69,12 +90,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImageTemplateInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
+Parameter Sets: CreateViaIdentityImageTemplateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ImageTemplateName
 The name of the image Template
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -89,7 +155,7 @@ The kind of trigger.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityImageTemplateExpanded
 Aliases:
 
 Required: False
@@ -134,7 +200,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -150,7 +216,7 @@ The subscription Id forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -196,9 +262,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITrigger
 
 ## NOTES
 

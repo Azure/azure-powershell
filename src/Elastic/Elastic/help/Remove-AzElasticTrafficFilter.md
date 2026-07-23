@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzElasticTrafficFilter
 
 ## SYNOPSIS
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Remove-AzElasticTrafficFilter -InputObject <IElasticIdentity> [-RulesetId <Strin
 ```
 
 ## DESCRIPTION
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## EXAMPLES
 
@@ -58,7 +58,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity

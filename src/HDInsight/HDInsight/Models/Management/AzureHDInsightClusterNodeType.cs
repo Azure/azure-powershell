@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         WorkerNode=1,
 
         /// <summary>
-        /// The zookeper nodes of the cluster.
+        /// The zookeeper nodes of the cluster.
         /// </summary>
         ZookeeperNode=2,
 

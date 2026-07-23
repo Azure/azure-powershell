@@ -15,8 +15,8 @@ Creates the virtual network gateway natRule object.
 ```
 New-AzVirtualNetworkGatewayNatRule -Name <String> -Type <String> -Mode <String> -InternalMapping <String[]>
  -ExternalMapping <String[]> [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>]
- [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -NatRule $natRule
 ```
 
 The first command gets a virtual network gateway named gw1 that belongs to resource group myRg and stores it to the variable named $gateway
-The second command creates a new PSVirtualNetworkGatewayNatRuleirtual object.
+The second command creates a new PSVirtualNetworkGatewayNatRule virtual object.
 The third command updates the virtual network gateway gw1 with the with newly added natRule.
 
 ## PARAMETERS

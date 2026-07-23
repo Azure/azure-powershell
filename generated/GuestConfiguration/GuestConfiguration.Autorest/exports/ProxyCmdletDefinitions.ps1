@@ -25,12 +25,14 @@ Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-
 Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignmentReport
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignmentReport
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignmentReportList
 .Link
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
 #>
 function Get-AzGuestConfigurationAssignmentReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignmentReport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignmentReport], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignmentReportList])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -148,6 +150,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -174,9 +185,7 @@ begin {
             List1 = 'Az.GuestConfiguration.private\Get-AzGuestConfigurationAssignmentReport_List1';
             List2 = 'Az.GuestConfiguration.private\Get-AzGuestConfigurationAssignmentReport_List2';
         }
-        if (('Get', 'Get1', 'Get2', 'List', 'List1', 'List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'Get1', 'Get2', 'List', 'List1', 'List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -190,6 +199,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -252,12 +264,12 @@ Get-AzGuestConfigurationAssignment -ResourceGroupName test-rg
 Get-AzGuestConfigurationAssignment -SubscriptionId xxxxx-xxxx-xxxxx-xxx
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignment
 #>
 function Get-AzGuestConfigurationAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -373,6 +385,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -401,9 +422,7 @@ begin {
             List3 = 'Az.GuestConfiguration.private\Get-AzGuestConfigurationAssignment_List3';
             List4 = 'Az.GuestConfiguration.private\Get-AzGuestConfigurationAssignment_List4';
         }
-        if (('Get', 'Get1', 'Get2', 'List', 'List1', 'List2', 'List3', 'List4') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'Get1', 'Get2', 'List', 'List1', 'List2', 'List3', 'List4') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -417,6 +436,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -462,16 +484,16 @@ end {
 
 <#
 .Synopsis
-Creates an association between a VM and guest configuration
+create an association between a VM and guest configuration
 .Description
-Creates an association between a VM and guest configuration
+create an association between a VM and guest configuration
 .Example
 New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 .Example
 New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -486,12 +508,12 @@ GUESTCONFIGURATIONPROTECTEDPARAMETER <IConfigurationParameter[]>: The protected 
   [Value <String>]: Value of the configuration parameter.
 
 LATESTASSIGNMENTREPORTRESOURCE <IAssignmentReportResource[]>: The list of resources for which guest configuration assignment compliance is checked.
-  [Reason <IAssignmentReportResourceComplianceReason[]>]: Compliance reason and reason code for a resource.
+  [Reason <List<IAssignmentReportResourceComplianceReason>>]: Compliance reason and reason code for a resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
 #>
 function New-AzGuestConfigurationAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -515,40 +537,346 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
     [System.String]
     # The name of the virtual machine.
     ${VMName},
 
     [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
     [System.String]
     # The name of the ARC machine.
     ${MachineName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
     [System.String]
     # Combined hash of the guest configuration package and configuration parameters.
     ${GuestConfigurationContentHash},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
     [System.String]
     # Uri of the storage where guest configuration package is uploaded.
     ${GuestConfigurationContentUri},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
     [System.String]
     # Name of the guest configuration.
     ${GuestConfigurationName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
     [System.String]
     # Version of the guest configuration.
     ${GuestConfigurationVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # The source which initiated the guest configuration assignment.
+    # Ex: Azure Policy
+    ${Context},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.PSArgumentCompleterAttribute("Audit", "DeployAndAutoCorrect", "ApplyAndAutoCorrect", "ApplyAndMonitor")]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Specifies the assignment type and execution of the configuration.
+    # Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
+    ${GuestConfigurationAssignmentType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.PSArgumentCompleterAttribute("DSC")]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Kind of the guest configuration.
+    # For example:DSC
+    ${GuestConfigurationKind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]]
+    # The configuration parameters for the guest configuration.
+    ${GuestConfigurationParameter},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]]
+    # The protected configuration parameters for the guest configuration.
+    ${GuestConfigurationProtectedParameter},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Region where the VM is located.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Name of the guest configuration assignment.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateExpanded';
+            CreateExpanded1 = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateExpanded1';
+            CreateViaJsonFilePath = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateViaJsonFilePath';
+            CreateViaJsonFilePath1 = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateViaJsonFilePath1';
+            CreateViaJsonString = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateViaJsonString';
+            CreateViaJsonString1 = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateViaJsonString1';
+        }
+        if (('CreateExpanded', 'CreateExpanded1', 'CreateViaJsonFilePath', 'CreateViaJsonFilePath1', 'CreateViaJsonString', 'CreateViaJsonString1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update an association between a ARC machine and guest configuration
+.Description
+update an association between a ARC machine and guest configuration
+.Example
+Update-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GUESTCONFIGURATIONPARAMETER <IConfigurationParameter[]>: The configuration parameters for the guest configuration.
+  [Name <String>]: Name of the configuration parameter.
+  [Value <String>]: Value of the configuration parameter.
+
+GUESTCONFIGURATIONPROTECTEDPARAMETER <IConfigurationParameter[]>: The protected configuration parameters for the guest configuration.
+  [Name <String>]: Name of the configuration parameter.
+  [Value <String>]: Value of the configuration parameter.
+
+INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
+  [GuestConfigurationAssignmentName <String>]: Name of the guest configuration assignment.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the ARC machine.
+  [Name <String>]: The guest configuration assignment name.
+  [ReportId <String>]: The GUID for the guest configuration assignment report.
+  [ResourceGroupName <String>]: The resource group name.
+  [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine.
+  [VmssName <String>]: The name of the virtual machine scale set.
+
+LATESTASSIGNMENTREPORTRESOURCE <IAssignmentReportResource[]>: The list of resources for which guest configuration assignment compliance is checked.
+  [Reason <List<IAssignmentReportResourceComplianceReason>>]: Compliance reason and reason code for a resource.
+.Link
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/update-azguestconfigurationassignment
+#>
+function Update-AzGuestConfigurationAssignment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
+    [System.String]
+    # Name of the guest configuration assignment.
+    ${GuestConfigurationAssignmentName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
+    [System.String]
+    # The name of the ARC machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
+    [System.String]
+    # The resource group name.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription ID which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
@@ -558,36 +886,58 @@ param(
     ${Context},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.AssignmentType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.PSArgumentCompleterAttribute("Audit", "DeployAndAutoCorrect", "ApplyAndAutoCorrect", "ApplyAndMonitor")]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.AssignmentType]
+    [System.String]
     # Specifies the assignment type and execution of the configuration.
     # Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
     ${GuestConfigurationAssignmentType},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.Kind])]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.Kind]
+    [System.String]
+    # Combined hash of the guest configuration package and configuration parameters.
+    ${GuestConfigurationContentHash},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Uri of the storage where guest configuration package is uploaded.
+    ${GuestConfigurationContentUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.PSArgumentCompleterAttribute("DSC")]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
     # Kind of the guest configuration.
     # For example:DSC
     ${GuestConfigurationKind},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Name of the guest configuration.
+    ${GuestConfigurationName},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]]
     # The configuration parameters for the guest configuration.
-    # To construct, see NOTES section for GUESTCONFIGURATIONPARAMETER properties and create a hash table.
     ${GuestConfigurationParameter},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]]
     # The protected configuration parameters for the guest configuration.
-    # To construct, see NOTES section for GUESTCONFIGURATIONPROTECTEDPARAMETER properties and create a hash table.
     ${GuestConfigurationProtectedParameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
+    [System.String]
+    # Version of the guest configuration.
+    ${GuestConfigurationVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Body')]
@@ -657,6 +1007,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -676,12 +1035,10 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateExpanded';
-            CreateExpanded1 = 'Az.GuestConfiguration.private\New-AzGuestConfigurationAssignment_CreateExpanded1';
+            UpdateExpanded = 'Az.GuestConfiguration.private\Update-AzGuestConfigurationAssignment_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.GuestConfiguration.private\Update-AzGuestConfigurationAssignment_UpdateViaIdentityExpanded';
         }
-        if (('CreateExpanded', 'CreateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -695,6 +1052,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -751,7 +1111,7 @@ Get-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -N
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
 .Outputs
 System.Boolean
 .Notes
@@ -773,7 +1133,7 @@ INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 #>
 function Remove-AzGuestConfigurationAssignment {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -825,7 +1185,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -833,7 +1192,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -889,6 +1249,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -913,9 +1282,7 @@ begin {
             Delete1 = 'Az.GuestConfiguration.custom\Remove-AzGuestConfigurationAssignment';
             DeleteViaIdentity = 'Az.GuestConfiguration.custom\Remove-AzGuestConfigurationAssignment';
         }
-        if (('Delete', 'Delete2', 'Delete1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete', 'Delete2', 'Delete1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -929,6 +1296,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

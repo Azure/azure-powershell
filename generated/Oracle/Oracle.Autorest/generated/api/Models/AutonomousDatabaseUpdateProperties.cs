@@ -78,10 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string DatabaseEdition { get => this._databaseEdition; set => this._databaseEdition = value; }
 
-        /// <summary>Name of the day of the week.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string DayOfWeekName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeekName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeekName = value ?? null; }
-
         /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
         private string _displayName;
 
@@ -171,12 +167,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Internal Acessors for LongTermBackupSchedule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal.LongTermBackupSchedule { get => (this._longTermBackupSchedule = this._longTermBackupSchedule ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.LongTermBackUpScheduleDetails()); set { {_longTermBackupSchedule = value;} } }
 
-        /// <summary>Internal Acessors for ScheduledOperation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal.ScheduledOperation { get => (this._scheduledOperation = this._scheduledOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdate()); set { {_scheduledOperation = value;} } }
-
-        /// <summary>Internal Acessors for ScheduledOperationDayOfWeek</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeek = value; }
-
         /// <summary>Backing field for <see cref="OpenMode" /> property.</summary>
         private string _openMode;
 
@@ -188,8 +178,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         private string _peerDbId;
 
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string PeerDbId { get => this._peerDbId; set => this._peerDbId = value; }
@@ -210,20 +200,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Role { get => this._role; set => this._role = value; }
 
-        /// <summary>Backing field for <see cref="ScheduledOperation" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate _scheduledOperation;
+        /// <summary>Backing field for <see cref="ScheduledOperationsList" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate> _scheduledOperationsList;
 
         /// <summary>The list of scheduled operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate ScheduledOperation { get => (this._scheduledOperation = this._scheduledOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdate()); set => this._scheduledOperation = value; }
-
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string ScheduledOperationScheduledStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).ScheduledStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).ScheduledStartTime = value ?? null; }
-
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string ScheduledOperationScheduledStopTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).ScheduledStopTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).ScheduledStopTime = value ?? null; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate> ScheduledOperationsList { get => this._scheduledOperationsList; set => this._scheduledOperationsList = value; }
 
         /// <summary>Backing field for <see cref="WhitelistedIP" /> property.</summary>
         private System.Collections.Generic.List<string> _whitelistedIP;
@@ -348,18 +330,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("StandardEdition", "EnterpriseEdition")]
         string DatabaseEdition { get; set; }
-        /// <summary>Name of the day of the week.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the day of the week.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-        string DayOfWeekName { get; set; }
         /// <summary>The user-friendly name for the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -510,8 +480,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ReadOnly", "ReadWrite")]
         string OpenMode { get; set; }
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -519,7 +489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Read = false,
         Create = false,
         Update = true,
-        Description = @"The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
+        Description = @"The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.",
         SerializedName = @"peerDbId",
         PossibleTypes = new [] { typeof(string) })]
         string PeerDbId { get; set; }
@@ -549,28 +519,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Primary", "Standby", "DisabledStandby", "BackupCopy", "SnapshotStandby")]
         string Role { get; set; }
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
+        /// <summary>The list of scheduled operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"auto start time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStartTime",
-        PossibleTypes = new [] { typeof(string) })]
-        string ScheduledOperationScheduledStartTime { get; set; }
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"auto stop time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStopTime",
-        PossibleTypes = new [] { typeof(string) })]
-        string ScheduledOperationScheduledStopTime { get; set; }
+        Description = @"The list of scheduled operations.",
+        SerializedName = @"scheduledOperationsList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate> ScheduledOperationsList { get; set; }
         /// <summary>
         /// The client IP access control list (ACL). This is an array of CIDR notations and/or IP addresses. Values should be separate
         /// strings, separated by commas. Example: ['1.1.1.1','1.1.1.0/24','1.1.2.25']
@@ -613,9 +572,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>The Oracle Database Edition that applies to the Autonomous databases.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("StandardEdition", "EnterpriseEdition")]
         string DatabaseEdition { get; set; }
-        /// <summary>Name of the day of the week.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-        string DayOfWeekName { get; set; }
         /// <summary>The user-friendly name for the Autonomous Database.</summary>
         string DisplayName { get; set; }
         /// <summary>
@@ -660,8 +616,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ReadOnly", "ReadWrite")]
         string OpenMode { get; set; }
         /// <summary>
-        /// The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer
-        /// database.
+        /// The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current
+        /// peer database.
         /// </summary>
         string PeerDbId { get; set; }
         /// <summary>The Autonomous Database permission level.</summary>
@@ -673,13 +629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Primary", "Standby", "DisabledStandby", "BackupCopy", "SnapshotStandby")]
         string Role { get; set; }
         /// <summary>The list of scheduled operations.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate ScheduledOperation { get; set; }
-        /// <summary>Day of week</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate ScheduledOperationDayOfWeek { get; set; }
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
-        string ScheduledOperationScheduledStartTime { get; set; }
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        string ScheduledOperationScheduledStopTime { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate> ScheduledOperationsList { get; set; }
         /// <summary>
         /// The client IP access control list (ACL). This is an array of CIDR notations and/or IP addresses. Values should be separate
         /// strings, separated by commas. Example: ['1.1.1.1','1.1.1.0/24','1.1.2.25']

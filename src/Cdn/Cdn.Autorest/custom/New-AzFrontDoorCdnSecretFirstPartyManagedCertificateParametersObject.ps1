@@ -21,26 +21,29 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AzureFirstPartyManagedCertificateParameters
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecretfirstpartymanagedcertificateparametersobject
 #>
 function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificateParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AzureFirstPartyManagedCertificateParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="The type of the secret resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType]
+        [Parameter(HelpMessage="The list of SANs.")]
+        [string[]]
+        $SubjectAlternativeName,
+        [Parameter(HelpMessage="Type.")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificateParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AzureFirstPartyManagedCertificateParameters]::New()
 
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
+        if ($PSBoundParameters.ContainsKey('SubjectAlternativeName')) {
+            $Object.SubjectAlternativeName = $SubjectAlternativeName
         }
         return $Object
     }

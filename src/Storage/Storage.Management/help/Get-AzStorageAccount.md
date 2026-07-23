@@ -16,19 +16,19 @@ Gets a Storage account.
 ### ResourceGroupParameterSet
 ```
 Get-AzStorageAccount [[-ResourceGroupName] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
 Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeGeoReplicationStats] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BlobRestoreStatusParameterSet
 ```
 Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeBlobRestoreStatus] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Get-AzStorageAccount
 
 This command gets all of the Storage accounts in the subscription.
 
-### Example 4:  Get a Storage accounts with its blob restore status
+### Example 4:  Get a Storage account with its blob restore status
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName "myresourcegoup" -Name "mystorageaccount" -IncludeBlobRestoreStatus
 
@@ -70,7 +70,26 @@ Status     RestoreId                            FailureReason Parameters.TimeToR
 InProgress a70cd4a1-f223-4c86-959f-cc13eb4795a8               2020-02-10T13:45:04.7155962Z [container1/blob1 -> container2/blob2]
 ```
 
-This command gets a Storage accounts with its blob restore status, and show the blob restore status.
+This command gets a Storage account with its blob restore status, and show the blob restore status.
+
+### Example 5: Get a Storage account with its geo-replication stats
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name myaccount -IncludeGeoReplicationStats
+$account.GeoReplicationStats
+```
+
+```output
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
+```
+
+ 
+
+This command gets a Storage account with its geo-replication stats, and shows the geo-replication stats.
 
 ## PARAMETERS
 
@@ -146,21 +165,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMapsAccount
 
 ## SYNOPSIS
-Updates a Maps Account.
+update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 
 ## SYNTAX
@@ -16,18 +16,30 @@ Only a subset of the parameters may be updated after creation, such as Sku, Tags
 ### UpdateExpanded (Default)
 ```
 Update-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DisableLocalAuth]
- [-Kind <Kind>] [-SkuName <Name>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-Kind <String>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMapsAccount -InputObject <IMapsIdentity> [-DisableLocalAuth] [-Kind <Kind>] [-SkuName <Name>]
+Update-AzMapsAccount -InputObject <IMapsIdentity> [-DisableLocalAuth] [-Kind <String>] [-SkuName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzMapsAccount -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzMapsAccount -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates a Maps Account.
+update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 
 ## EXAMPLES
@@ -84,7 +96,7 @@ This will disable Shared Keys authentication from any usage.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -96,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
@@ -110,12 +121,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Get or Set Kind property.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -130,7 +171,7 @@ The name of the Maps Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AccountName
 
 Required: True
@@ -146,7 +187,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -160,8 +201,8 @@ Accept wildcard characters: False
 The name of the SKU, in standard format (such as S0).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +217,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -194,7 +235,7 @@ Each tag must have a key no greater than 128 characters and value no greater tha
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -244,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount
 
 ## NOTES
 

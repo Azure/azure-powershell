@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzAksManagedClusterCommand
 
 ## SYNOPSIS
-AKS will create a pod to run the command.
+AKS will run a pod to run the command.
 This is primarily useful for private clusters.
 For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 
@@ -17,19 +17,38 @@ For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/
 ### RunExpanded (Default)
 ```
 Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -Command <String> [-ClusterToken <String>] [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Command <String> [-ClusterToken <String>] [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonString
+```
+Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonFilePath
+```
+Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaIdentityExpanded
 ```
 Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -Command <String> [-ClusterToken <String>]
- [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-AKS will create a pod to run the command.
+AKS will run a pod to run the command.
 This is primarily useful for private clusters.
 For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 
@@ -92,12 +111,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterToken
 AuthToken issued for AKS AAD Server App.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -112,7 +146,7 @@ The command to run.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -127,7 +161,7 @@ A base64 encoded zip file containing the files required by the command.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -153,9 +187,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -166,6 +229,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -184,13 +277,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
 Aliases:
 
 Required: True
@@ -205,7 +343,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
 Aliases:
 
 Required: True
@@ -217,10 +355,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
 Aliases:
 
 Required: False
@@ -270,7 +409,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResult
 
 ## NOTES
 

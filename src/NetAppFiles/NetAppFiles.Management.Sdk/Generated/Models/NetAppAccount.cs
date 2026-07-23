@@ -46,10 +46,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="etag">&#34;If etag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.&#34;)
         /// </param>
 
-        /// <param name="identity">The identity used for the resource.
+        /// <param name="identity">The managed service identities assigned to this resource.
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -64,7 +68,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="disableShowmount">Shows the status of disableShowmount for all volumes under the
         /// subscription, null equals false
         /// </param>
-        public NetAppAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?))
+
+        /// <param name="nfsV4IdDomain">Domain for NFSv4 user ID mapping. This property will be set for all NetApp
+        /// accounts in the subscription and region and only affect non ldap NFSv4
+        /// volumes.
+        /// </param>
+
+        /// <param name="multiAdStatus">MultiAD Status for the account
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+        public NetAppAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -74,6 +86,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.ActiveDirectories = activeDirectories;
             this.Encryption = encryption;
             this.DisableShowmount = disableShowmount;
+            this.NfsV4IdDomain = nfsV4IdDomain;
+            this.MultiAdStatus = multiAdStatus;
             CustomInit();
         }
 
@@ -84,14 +98,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
+        /// Gets &#34;If etag is provided in the response body, it may also be provided as
+        /// a header per the normal etag convention.  Entity tags are used for
+        /// comparing two or more entities from the same requested resource. HTTP/1.1
+        /// uses entity tags in the etag (section 14.19), If-Match (section 14.24),
+        /// If-None-Match (section 14.26), and If-Range (section 14.27) header
+        /// fields.&#34;)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets or sets the identity used for the resource.
+        /// Gets or sets the managed service identities assigned to this resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedServiceIdentity Identity {get; set; }
@@ -120,6 +138,20 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableShowmount")]
         public bool? DisableShowmount {get; private set; }
+
+        /// <summary>
+        /// Gets or sets domain for NFSv4 user ID mapping. This property will be set
+        /// for all NetApp accounts in the subscription and region and only affect non
+        /// ldap NFSv4 volumes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nfsV4IDDomain")]
+        public string NfsV4IdDomain {get; set; }
+
+        /// <summary>
+        /// Gets multiAD Status for the account Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.multiAdStatus")]
+        public string MultiAdStatus {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -149,6 +181,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.Encryption.Validate();
             }
+            if (this.NfsV4IdDomain != null)
+            {
+                if (this.NfsV4IdDomain.Length > 255)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "NfsV4IdDomain", 255);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.NfsV4IdDomain, "^[a-zA-Z0-9][a-zA-Z0-9.-]{0,253}[a-zA-Z0-9]$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "NfsV4IdDomain", "^[a-zA-Z0-9][a-zA-Z0-9.-]{0,253}[a-zA-Z0-9]$");
+                }
+            }
+
         }
     }
 }

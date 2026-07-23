@@ -64,11 +64,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
             {
                 return;
             }
-            {_savingsPlanOrderAliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("savingsPlanOrderAliasName"), out var __jsonSavingsPlanOrderAliasName) ? (string)__jsonSavingsPlanOrderAliasName : (string)SavingsPlanOrderAliasName;}
-            {_savingsPlanOrderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("savingsPlanOrderId"), out var __jsonSavingsPlanOrderId) ? (string)__jsonSavingsPlanOrderId : (string)SavingsPlanOrderId;}
-            {_savingsPlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("savingsPlanId"), out var __jsonSavingsPlanId) ? (string)__jsonSavingsPlanId : (string)SavingsPlanId;}
-            {_reservationOrderAliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("reservationOrderAliasName"), out var __jsonReservationOrderAliasName) ? (string)__jsonReservationOrderAliasName : (string)ReservationOrderAliasName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_savingsPlanOrderAliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("savingsPlanOrderAliasName"), out var __jsonSavingsPlanOrderAliasName) ? (string)__jsonSavingsPlanOrderAliasName : (string)_savingsPlanOrderAliasName;}
+            {_savingsPlanOrderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("savingsPlanOrderId"), out var __jsonSavingsPlanOrderId) ? (string)__jsonSavingsPlanOrderId : (string)_savingsPlanOrderId;}
+            {_savingsPlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("savingsPlanId"), out var __jsonSavingsPlanId) ? (string)__jsonSavingsPlanId : (string)_savingsPlanId;}
+            {_reservationOrderAliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("reservationOrderAliasName"), out var __jsonReservationOrderAliasName) ? (string)__jsonReservationOrderAliasName : (string)_reservationOrderAliasName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models
             }
             if (content.Contains("Enabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled = (bool) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("EmailReceiver"))
             {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models
             }
             if (content.Contains("Enabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled = (bool) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("EmailReceiver"))
             {

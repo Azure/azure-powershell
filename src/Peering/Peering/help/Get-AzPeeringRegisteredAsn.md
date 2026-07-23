@@ -18,6 +18,12 @@ Get-AzPeeringRegisteredAsn -PeeringName <String> -ResourceGroupName <String> [-S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityPeering
+```
+Get-AzPeeringRegisteredAsn -Name <String> -PeeringInputObject <IPeeringIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzPeeringRegisteredAsn -Name <String> -PeeringName <String> -ResourceGroupName <String>
@@ -84,7 +90,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
@@ -103,13 +108,28 @@ The name of the registered ASN.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityPeering, Get
 Aliases: RegisteredAsnName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: GetViaIdentityPeering
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -167,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringRegisteredAsn
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredAsn
 
 ## NOTES
 

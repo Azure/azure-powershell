@@ -16,11 +16,9 @@
 
 <#
 .Synopsis
-Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag updates can be done independently.
+Update a new virtual machine or update the properties of the existing virtual machine.
 .Description
-Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag updates can be done independently.
+Update a new virtual machine or update the properties of the existing virtual machine.
 .Example
 $tagUpdatedHash = @{
     tag1 = "tag1"
@@ -33,7 +31,7 @@ Update-AzNetworkCloudVirtualMachine -Name vmName -ResourceGroupName resourceGrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +64,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudvirtualmachine
 #>
 function Update-AzNetworkCloudVirtualMachine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -95,15 +93,43 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # The ETag of the transformation.
+    # Omit this value to always overwrite the current resource.
+    # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+    # Other values will result in error from server as they are not supported.
+    ${IfNoneMatch},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachinePatchParametersTags]))]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # The Azure resource tags that will replace the existing ones.
+    # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
@@ -191,6 +217,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -213,9 +247,7 @@ begin {
             UpdateExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudVirtualMachine_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudVirtualMachine_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -229,6 +261,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

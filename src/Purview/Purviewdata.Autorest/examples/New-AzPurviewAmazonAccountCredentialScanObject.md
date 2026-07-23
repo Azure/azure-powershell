@@ -1,6 +1,6 @@
 ### Example 1: Create Amazon Account Credential scan object
 ```powershell
-New-AzPurviewAmazonAccountCredentialScanObject -Kind 'AmazonAccountCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'rolearncred' -CredentialType 'AmazonARN'
+New-AzPurviewAmazonAccountCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'rolearncred' -CredentialType 'AmazonARN'
 ```
 
 ```output

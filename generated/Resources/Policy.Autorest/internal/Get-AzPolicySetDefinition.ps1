@@ -30,7 +30,9 @@ Get-AzPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
 .Example
 Get-AzPolicySetDefinition | Where-Object {$_.metadata.category -eq "Virtual Machine"}
 .Example
-Get-AzPolicySetDefinition -BackwardCompatible | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition -Id '/providers/Microsoft.Authorization/policySetDefinitions/1bb84455-9e6e-434c-8db6-fa6d03a67e87' -Version "1.1.1"
+.Example
+Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -ListVersion
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -88,6 +90,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
@@ -158,6 +167,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Policy.private\Get-AzPolicySetDefinition_Get';
@@ -168,8 +180,6 @@ begin {
             List1 = 'Az.Policy.private\Get-AzPolicySetDefinition_List1';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -181,6 +191,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

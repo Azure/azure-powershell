@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 }
             }
 
-            // Converting cache.Identity Object into a readable SystemAssignedIdenty dictionary and UserAssignedIdentities list
+            // Converting cache.Identity Object into a readable SystemAssignedIdentity dictionary and UserAssignedIdentities list
             if (cache.Identity != null)
             {
                 IdentityType = "";

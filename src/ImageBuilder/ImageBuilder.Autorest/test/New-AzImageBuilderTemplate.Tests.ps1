@@ -26,14 +26,14 @@ Describe 'New-AzImageBuilderTemplate' {
         # the userAssignedIdentity should have access permissions to the image above
         $userAssignedIdentity = $env.identity.Id
         # Create a virtual machine image template
-        New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -Location $env.location -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
+        New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -Location $env.location -UserAssignedIdentity $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg
         $template.Name | Should -Be $env.newTemplateName1
     }
 
     # Source: PlatformImage Distributor: SharedImage
     It 'FromJsonFile' {
-        New-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg -JsonTemplatePath $PSScriptRoot/JsonTemplateFile.json
+        New-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg -JsonFilePath $PSScriptRoot/JsonTemplateFile.json
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg
         $template.Name | Should -Be $env.newTemplateName2
     }
@@ -57,7 +57,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName11) template image."
         
-        New-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName11
@@ -71,7 +71,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $destination = 'c:\\buildArtifacts\\index.html'
         $sourceUri = 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
         $customizer = New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName $customizerName -Sha256Checksum  $sha256Checksum -Destination $destination -SourceUri $sourceUri
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName101 -ResourceGroupName $env.ResourceGroup -Source $srcPlatformWind -Distribute $disManagedImgWind -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName101 -ResourceGroupName $env.ResourceGroup -Source $srcPlatformWind -Distribute $disManagedImgWind -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $templateWind = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName101 -ResourceGroupName $env.ResourceGroup
         $templateWind.ProvisioningState | Should -Be 'Succeeded'
         $templateWind.Name | Should -Be $env.Resources.Template.templateName101
@@ -88,7 +88,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum  $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName12) template image."
 
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disVhd -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disVhd -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName12 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         #endregion OS:Linux
@@ -104,7 +104,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName13) template image."
 
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName13
@@ -118,7 +118,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $destination = 'c:\\buildArtifacts\\index.html'
         $sourceUri = 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
         $customizer = New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName $customizerName -Sha256Checksum  $sha256Checksum -Destination $destination -SourceUri $sourceUri
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName103 -ResourceGroupName $env.ResourceGroup -Source $srcPlatformWind -Distribute $disSharedImgWind -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName103 -ResourceGroupName $env.ResourceGroup -Source $srcPlatformWind -Distribute $disSharedImgWind -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $templateWind = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName103 -ResourceGroupName $env.ResourceGroup
         $templateWind.ProvisioningState | Should -Be 'Succeeded'
         $templateWind.Name | Should -Be $env.Resources.Template.templateName103
@@ -136,7 +136,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName14) template image."
 
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName14
@@ -153,7 +153,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum  $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName15) template image."
 
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disVhd -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disVhd -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName15
@@ -170,7 +170,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName16) template image."
        
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName16 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName16 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName16 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName16
@@ -187,7 +187,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum  $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName17) template image."
         
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName17 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName17 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName17 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName17
@@ -204,7 +204,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum  $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName18) template image."
         
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName18 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disVhd -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName18 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disVhd -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName18 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName18
@@ -222,7 +222,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName19) template image."
         
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName19 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName19 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentity $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName19 -ResourceGroupName $env.ResourceGroup
         $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName19

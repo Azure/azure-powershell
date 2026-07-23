@@ -90,4 +90,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayConnectionDraining](./New-AzApplicationGatewayConnectionDraining.md)
 
 [Set-AzApplicationGatewayConnectionDraining](./Set-AzApplicationGatewayConnectionDraining.md)
-

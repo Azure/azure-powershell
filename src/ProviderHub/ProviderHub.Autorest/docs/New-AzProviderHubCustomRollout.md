@@ -8,27 +8,50 @@ schema: 2.0.0
 # New-AzProviderHubCustomRollout
 
 ## SYNOPSIS
-Creates or updates the rollout details.
+Create the rollout details.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
- [-CanaryRegion <String[]>] [-ProvisioningState <ProvisioningState>]
- [-SpecificationProviderRegistration <IProviderRegistration>]
+ [-ProvisioningState <String>] [-SpecificationCanaryRegion <String[]>]
+ [-SpecificationProviderRegistration <ICustomRolloutSpecificationProviderRegistration>]
  [-SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>] [-StatusCompletedRegion <String[]>]
  [-StatusFailedOrSkippedRegion <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityProviderRegistrationExpanded
+```
+New-AzProviderHubCustomRollout -ProviderRegistrationInputObject <IProviderHubIdentity> -RolloutName <String>
+ [-ProvisioningState <String>] [-SpecificationCanaryRegion <String[]>]
+ [-SpecificationProviderRegistration <ICustomRolloutSpecificationProviderRegistration>]
+ [-SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>] [-StatusCompletedRegion <String[]>]
+ [-StatusFailedOrSkippedRegion <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates the rollout details.
+Create the rollout details.
 
 ## EXAMPLES
 
-### Example 1: Create/Update a resource provider custom rollout.
+### Example 1: Create a resource provider custom rollout.
 ```powershell
-New-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1" -CanaryRegion "Eastus2EUAP"
+New-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1" -SpecificationCanaryRegion "Eastus2EUAP"
 ```
 
 ```output
@@ -37,24 +60,9 @@ Name                Type
 customRollout1      Microsoft.ProviderHub/providerRegistrations/customRollouts
 ```
 
-Create/Update a resource provider custom rollout.
+Create a resource provider custom rollout.
 
 ## PARAMETERS
-
-### -CanaryRegion
-.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -72,12 +80,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderNamespace
-The name of the resource provider hosted within ProviderHub.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -87,12 +95,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderNamespace
+The name of the resource provider hosted within ProviderHub.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: CreateViaIdentityProviderRegistrationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProvisioningState
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -117,13 +170,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpecificationProviderRegistration
+### -SpecificationCanaryRegion
 .
-To construct, see NOTES section for SPECIFICATIONPROVIDERREGISTRATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpecificationProviderRegistration
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICustomRolloutSpecificationProviderRegistration
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -135,11 +202,10 @@ Accept wildcard characters: False
 
 ### -SpecificationResourceTypeRegistration
 .
-To construct, see NOTES section for SPECIFICATIONRESOURCETYPEREGISTRATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -154,7 +220,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -169,7 +235,7 @@ Dictionary of \<ExtendedErrorInfo\>
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -184,7 +250,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -230,9 +296,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICustomRollout
 
 ## NOTES
 

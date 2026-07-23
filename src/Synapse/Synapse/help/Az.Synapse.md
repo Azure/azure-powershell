@@ -51,7 +51,7 @@ When creating an Azure Synapse Analytics workspace, you can choose to encrypt al
 Exports KQL script.
 
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
-Exports notbooks.
+Exports notebooks.
 
 ### [Export-AzSynapseSparkConfiguration](Export-AzSynapseSparkConfiguration.md)
 Exports a Synapse spark configuration to an output folder.
@@ -87,7 +87,7 @@ Gets information about integration runtime resources.
 Gets keys for a self-hosted integration runtime.
 
 ### [Get-AzSynapseIntegrationRuntimeMetric](Get-AzSynapseIntegrationRuntimeMetric.md)
-Gets metric data for an integration runtime. 
+Gets metric data for an integration runtime.
 
 ### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
 Gets an integration runtime node information.
@@ -141,7 +141,7 @@ Gets information about linked services in workspace.
 Gets Managed Identity Sql Control Settings.
 
 ### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
-Gets information about mananged private endpoints in a workspace
+Gets information about managed private endpoints in a workspace
 
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
@@ -310,7 +310,6 @@ Creates managed virtual network configuration.
 
 ### [New-AzSynapseRoleAssignment](New-AzSynapseRoleAssignment.md)
 Creates a Synapse Analytics role assignment.
- 
 
 ### [New-AzSynapseSparkConfiguration](New-AzSynapseSparkConfiguration.md)
 Creates or updates a spark configuration in a workspace.

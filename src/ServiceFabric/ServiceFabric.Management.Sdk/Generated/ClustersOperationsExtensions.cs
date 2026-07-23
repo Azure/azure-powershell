@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
     public static partial class ClustersOperationsExtensions
     {
         /// <summary>
-        /// Get a Service Fabric cluster resource created or in the process of being created in the specified resource group.
+        /// Get a Service Fabric cluster resource created or in the process of being
+        /// created in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Get a Service Fabric cluster resource created or in the process of being created in the specified resource group.
+        /// Get a Service Fabric cluster resource created or in the process of being
+        /// created in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -91,7 +93,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Update the configuration of a Service Fabric cluster resource with the specified name.
+        /// Update the configuration of a Service Fabric cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -108,7 +111,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Update the configuration of a Service Fabric cluster resource with the specified name.
+        /// Update the configuration of a Service Fabric cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -166,7 +170,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -180,7 +185,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -199,7 +205,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -210,7 +217,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -226,7 +234,10 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// If a target is not provided, it will get the minimum and maximum versions available from the current cluster version. If a target is given, it will provide the required path to get from the current cluster version to the target version.
+        /// If a target is not provided, it will get the minimum and maximum versions
+        /// available from the current cluster version. If a target is given, it will
+        /// provide the required path to get from the current cluster version to the
+        /// target version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -243,7 +254,10 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// If a target is not provided, it will get the minimum and maximum versions available from the current cluster version. If a target is given, it will provide the required path to get from the current cluster version to the target version.
+        /// If a target is not provided, it will get the minimum and maximum versions
+        /// available from the current cluster version. If a target is given, it will
+        /// provide the required path to get from the current cluster version to the
+        /// target version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -304,7 +318,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Update the configuration of a Service Fabric cluster resource with the specified name.
+        /// Update the configuration of a Service Fabric cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -321,7 +336,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Update the configuration of a Service Fabric cluster resource with the specified name.
+        /// Update the configuration of a Service Fabric cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -343,7 +359,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -357,7 +374,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -376,7 +394,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -390,7 +409,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

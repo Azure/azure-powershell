@@ -62,6 +62,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the import/export job.",
         SerializedName = @"jobName",
         PossibleTypes = new [] { typeof(string) })]
@@ -78,6 +84,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the location. For example, West US or westus.",
         SerializedName = @"locationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -88,6 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource group name uniquely identifies the resource group within the user subscription.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -96,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription ID for the Azure user.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

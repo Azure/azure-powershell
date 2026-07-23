@@ -28,11 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
 
+        private static bool _init = false;
+
+        private static readonly global::System.Object _initLock = new global::System.Object();
+
+        private static Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module _instance;
+
         /// <summary>the ISendAsync pipeline instance</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.HttpPipeline _pipeline;
 
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.HttpPipeline _pipelineWithProxy;
+
+        private static readonly global::System.Object _singletonLock = new global::System.Object();
 
         public bool _useProxy = false;
 
@@ -56,11 +64,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices
         /// <summary>The delegate to get the telemetry info.</summary>
         public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
 
-        /// <summary>Backing field for <see cref="Instance" /> property.</summary>
-        private static Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module _instance;
-
         /// <summary>the singleton of this module class</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module());
+        public static Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
         public string Name => @"Az.LabServices";
@@ -125,9 +130,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices
         /// <summary>Initialization steps performed after the module is loaded.</summary>
         public void Init()
         {
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
-            CustomInit();
+            if (_init == false)
+            {
+                lock (_initLock) {
+                    if (_init == false) {
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
+                        CustomInit();
+                        _init = true;
+                    }
+                }
+            }
         }
 
         /// <summary>Creates the module instance.</summary>

@@ -126,11 +126,27 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string IdentityType { get; set; }
 
         /// <summary>
+        /// Value for soft-delete retention days for the server.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "[Public Preview] Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-7. A value of 0 disables soft-delete retention.")]
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            ValidateSoftDeleteRetentionDays(SoftDeleteRetentionDays);
+            
+            base.ExecuteCmdlet();
+        }
         /// <summary>
         /// Get the server to update
         /// </summary>
@@ -169,6 +185,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
+            // If the user supplied -SoftDeleteRetentionDays use it; otherwise fall back to the value returned by GET.
+            // The GET value may be -1 when soft-delete was never configured on the server, which the backend safely
+            // ignores in a PUT request (no-op), so existing server state is preserved.
+            updateData[0].SoftDeleteRetentionDays = this.SoftDeleteRetentionDays ?? updateData[0].SoftDeleteRetentionDays;
 
             return updateData;
         }

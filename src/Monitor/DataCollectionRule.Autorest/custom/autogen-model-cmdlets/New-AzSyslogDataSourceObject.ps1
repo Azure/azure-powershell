@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSourc
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azsyslogdatasourceobject
 #>
 function New-AzSyslogDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.HealthBot.private.dll'
   FormatsToProcess = './Az.HealthBot.format.ps1xml'
-  FunctionsToExport = 'Get-AzHealthBot', 'New-AzHealthBot', 'Remove-AzHealthBot', 'Update-AzHealthBot', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzHealthBot', 'New-AzHealthBot', 'Remove-AzHealthBot', 'Update-AzHealthBot'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'HealthBot'

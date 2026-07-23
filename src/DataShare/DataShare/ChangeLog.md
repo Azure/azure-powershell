@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.2.0
+* Added ChangeSafety Support
+
+## Version 1.1.1
 * Removed "Microsoft.Azure.Management.DataShare" Version "1.0.1" PackageReference
 
 ## Version 1.1.0

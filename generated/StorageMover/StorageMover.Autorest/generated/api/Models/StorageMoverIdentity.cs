@@ -20,6 +20,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string AgentName { get => this._agentName; set => this._agentName = value; }
 
+        /// <summary>Backing field for <see cref="ConnectionName" /> property.</summary>
+        private string _connectionName;
+
+        /// <summary>The name of the Connection resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string ConnectionName { get => this._connectionName; set => this._connectionName = value; }
+
         /// <summary>Backing field for <see cref="EndpointName" /> property.</summary>
         private string _endpointName;
 
@@ -89,14 +96,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Agent resource.",
         SerializedName = @"agentName",
         PossibleTypes = new [] { typeof(string) })]
         string AgentName { get; set; }
+        /// <summary>The name of the Connection resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Connection resource.",
+        SerializedName = @"connectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectionName { get; set; }
         /// <summary>The name of the Endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Endpoint resource.",
         SerializedName = @"endpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Job Definition resource.",
         SerializedName = @"jobDefinitionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Job Run resource.",
         SerializedName = @"jobRunName",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Project resource.",
         SerializedName = @"projectName",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +173,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -145,6 +184,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Storage Mover resource.",
         SerializedName = @"storageMoverName",
         PossibleTypes = new [] { typeof(string) })]
@@ -153,6 +195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -164,6 +209,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
     {
         /// <summary>The name of the Agent resource.</summary>
         string AgentName { get; set; }
+        /// <summary>The name of the Connection resource.</summary>
+        string ConnectionName { get; set; }
         /// <summary>The name of the Endpoint resource.</summary>
         string EndpointName { get; set; }
         /// <summary>Resource identity path</summary>

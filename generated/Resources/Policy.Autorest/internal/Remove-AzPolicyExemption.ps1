@@ -28,11 +28,6 @@ Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.Resourc
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
 Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
-True
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -149,6 +144,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Policy.private\Remove-AzPolicyExemption_Delete';
@@ -156,6 +154,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

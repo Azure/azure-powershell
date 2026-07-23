@@ -16,14 +16,14 @@ Move a file or directory to another a file or directory in same Storage account.
 ```
 Move-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -DestFileSystem <String> -DestPath <String>
  [-Force] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 Move-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> -DestFileSystem <String> -DestPath <String>
  [-Force] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +80,7 @@ dir2/file1           False        1024            2021-03-23 09:57:33Z rwxrw-rw-
 ```
 
 This first command creates a Sas token with rdw permission, the second command creates a Storage context from the Sas token, the 3rd command moves an item with the Sas token.
-This example use same Sastoken with rdw permission on both source and destication, if use 2 SAS token for source and destication, source need permission rd, destication need permission w.
+This example use same Sastoken with rdw permission on both source and destination, if use 2 SAS token for source and destination, source need permission rd, destination need permission w.
 
 ## PARAMETERS
 
@@ -202,21 +202,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

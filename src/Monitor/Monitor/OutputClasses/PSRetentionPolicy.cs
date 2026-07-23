@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the DiagnosticSettings
+    /// Wraps around the DiagnosticSettings
     /// </summary>
     public class PSRetentionPolicy : Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy
     {

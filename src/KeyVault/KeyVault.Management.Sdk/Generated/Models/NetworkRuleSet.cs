@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="bypass">Tells what traffic can bypass network rules. This can be &#39;AzureServices&#39; or
         /// &#39;None&#39;.  If not specified the default is &#39;AzureServices&#39;.
-        /// Possible values include: 'AzureServices', 'None'</param>
+        /// Possible values include: &#39;AzureServices&#39;, &#39;None&#39;</param>
 
         /// <param name="defaultAction">The default action when no rule from ipRules and from virtualNetworkRules
         /// match. This is only used after the bypass property has been evaluated.
-        /// Possible values include: 'Allow', 'Deny'</param>
+        /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
 
         /// <param name="ipRules">The list of IP address rules.
         /// </param>

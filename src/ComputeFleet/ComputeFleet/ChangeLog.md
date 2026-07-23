@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+
+* Added support for 'Launch' mode in ComputeFleet.
+    - New parameter, 'Mode' to specify 'Managed'/'Launch'.
+    - New parameter, 'VMNamePrefix' to specify prefix for the virtual machines in Launch mode.
+    - New cmdlet 'Get-AzCompouteFleetVirtualMachine' to list the virtual machines in Launch mode.
+* Upgraded API version from 2024-11-01 to 2026-04-01-preview.
+
+## Version 0.1.1
+* Fixed module name in module metadata
+
 ## Version 0.1.0
 * Upgraded nuget package to signed package.
 

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Frontend</summary>
+    /// <summary>update a Frontend</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAlbFrontend_UpdateViaIdentityTrafficControllerExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PreviewMessage("Application Gateway for Containers is currently in Preview.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"Update a Frontend")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"update a Frontend")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}", ApiVersion = "2025-01-01")]
     public partial class UpdateAzAlbFrontend_UpdateViaIdentityTrafficControllerExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext

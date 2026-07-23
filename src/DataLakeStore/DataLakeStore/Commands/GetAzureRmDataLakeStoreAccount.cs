@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             }
             else
             {
-                // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
+                // List all accounts in given resource group if available otherwise all accounts in the subscription
                 WriteObject(DataLakeStoreClient.ListAccounts(ResourceGroupName, null, null, null)
                     .Select(element => new PSDataLakeStoreAccountBasic(element))
                     .ToList(), true);

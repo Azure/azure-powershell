@@ -1,6 +1,6 @@
 ### Example 1: Create Azure resource group data source object
 ```powershell
-New-AzPurviewAzureResourceGroupDataSourceObject -Kind 'AzureResourceGroup' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ResourceGroup 'rg' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
+New-AzPurviewAzureResourceGroupDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ResourceGroup 'rg' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
 ```
 
 ```output

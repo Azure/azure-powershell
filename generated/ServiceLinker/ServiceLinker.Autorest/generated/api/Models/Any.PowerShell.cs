@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     [System.ComponentModel.TypeConverter(typeof(AnyTypeConverter))]
     public partial class Any
     {
@@ -53,6 +53,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         /// instantly.</param>
 
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
+
+        /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Any"
@@ -125,8 +133,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
-    /// Any object
+    /// Anything
     [System.ComponentModel.TypeConverter(typeof(AnyTypeConverter))]
     public partial interface IAny
 

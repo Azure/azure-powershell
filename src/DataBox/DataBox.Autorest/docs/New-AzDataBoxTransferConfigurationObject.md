@@ -38,7 +38,7 @@ This field is required only if the TransferConfigurationType is given as Transfe
 To construct, see NOTES section for TRANSFERALLDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferAllDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +55,7 @@ This field is required only if the TransferConfigurationType is given as Transfe
 To construct, see NOTES section for TRANSFERFILTERDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferFilterDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
 
 ## NOTES
 

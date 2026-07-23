@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnHealthProbeParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnhealthprobeparametersobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for HealthProbeParameters.
 
 ```
 New-AzCdnHealthProbeParametersObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
- [-ProbeProtocol <ProbeProtocol>] [-ProbeRequestType <HealthProbeRequestType>]
+ [-ProbeProtocol <String>] [-ProbeRequestType <String>]
  [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Protocol to use for health probe.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The type of health probe request that is made.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HealthProbeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
 
 ## NOTES
 

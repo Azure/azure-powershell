@@ -56,12 +56,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
+        /// <summary>Backing field for <see cref="ReplicaName" /> property.</summary>
+        private string _replicaName;
+
+        /// <summary>The name of the replica.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
+        public string ReplicaName { get => this._replicaName; set => this._replicaName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
         /// <summary>The name of the resource group to which the container registry belongs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SnapshotName" /> property.</summary>
+        private string _snapshotName;
+
+        /// <summary>The name of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PropertyOrigin.Owned)]
+        public string SnapshotName { get => this._snapshotName; set => this._snapshotName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -83,6 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the configuration store.",
         SerializedName = @"configStoreName",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource group.",
         SerializedName = @"groupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -109,6 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Identifier of key and label combination. Key and label are joined by $ character. Label is optional.",
         SerializedName = @"keyValueName",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location in which uniqueness will be verified.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -125,22 +154,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Private endpoint connection name",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The name of the replica.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the replica.",
+        SerializedName = @"replicaName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ReplicaName { get; set; }
         /// <summary>The name of the resource group to which the container registry belongs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group to which the container registry belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the snapshot.",
+        SerializedName = @"snapshotName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SnapshotName { get; set; }
         /// <summary>The Microsoft Azure subscription ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Microsoft Azure subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -164,8 +224,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         string Location { get; set; }
         /// <summary>Private endpoint connection name</summary>
         string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The name of the replica.</summary>
+        string ReplicaName { get; set; }
         /// <summary>The name of the resource group to which the container registry belongs.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the snapshot.</summary>
+        string SnapshotName { get; set; }
         /// <summary>The Microsoft Azure subscription ID.</summary>
         string SubscriptionId { get; set; }
 

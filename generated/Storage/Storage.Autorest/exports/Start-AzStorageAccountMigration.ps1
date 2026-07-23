@@ -50,19 +50,24 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/start-azstorageaccountmigration
@@ -125,6 +130,12 @@ param(
     [System.String]
     # SrpAccountMigrationType in ARM contract which is 'accountMigrations'
     ${Type},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Forces the cmdlet to convert the account's redundancy configuration without prompting for confirmation.
+    ${Force},
 
     [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
@@ -212,6 +223,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -237,8 +256,6 @@ begin {
             CustomerViaIdentityExpanded = 'Az.Storage.custom\Start-AzStorageAccountMigration';
         }
         if (('CustomerExpanded', 'CustomerViaJsonString', 'CustomerViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

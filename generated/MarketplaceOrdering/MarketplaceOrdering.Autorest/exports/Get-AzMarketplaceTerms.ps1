@@ -27,12 +27,12 @@ Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms
 .Link
 https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 #>
 function Get-AzMarketplaceTerms {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms])]
 [CmdletBinding(DefaultParameterSetName='Get1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -61,9 +61,9 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.PSArgumentCompleterAttribute("virtualmachine")]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]
+    [System.String]
     # Publisher identifier string of image being deployed.
     ${OfferType},
 
@@ -122,6 +122,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -144,9 +153,7 @@ begin {
             Get1 = 'Az.MarketplaceOrdering.custom\Get-AzMarketplaceTerms';
             Get = 'Az.MarketplaceOrdering.custom\Get-AzMarketplaceTerms';
         }
-        if (('Get1', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get1', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -160,6 +167,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

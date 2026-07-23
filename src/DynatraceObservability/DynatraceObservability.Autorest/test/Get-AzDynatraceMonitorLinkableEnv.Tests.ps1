@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorLinkabl
 
 Describe 'Get-AzDynatraceMonitorLinkableEnv' {
     It 'ListExpanded' {
-        { Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 -Region 'East US' -UserPrincipal 'v-diya@microsoft.com' -TenantId '72f988bf-86f1-41af-91ab-2d7cd011db47'} | Should -Not -Throw
+        { Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 -Region $env.location -UserPrincipal 'agarwalshiv@microsoft.com' -TenantId '72f988bf-86f1-41af-91ab-2d7cd011db47'} | Should -Not -Throw
     }
 }

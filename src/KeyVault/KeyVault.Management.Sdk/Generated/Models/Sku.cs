@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="name">SKU name to specify whether the key vault is a standard vault or a premium
         /// vault.
-        /// Possible values include: 'standard', 'premium'</param>
+        /// Possible values include: &#39;standard&#39;, &#39;premium&#39;</param>
         public Sku(SkuName name)
 
         {

@@ -46,7 +46,7 @@
 
 ## Version 0.7.0
 * Added `ScriptLocalPath` to `New-AzConnectedMachineRunCommand` to let users add script files locally
-* Added `MachineName` parameter to the McahineExtension and MachineRunCommand models
+* Added `MachineName` parameter to the MachineExtension and MachineRunCommand models
 
 ## Version 0.6.0
 * This release, aimed at version 2023-10-03-preview of ConnectedMachine, introduces new commands alongside the existing ones

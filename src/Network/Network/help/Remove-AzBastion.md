@@ -15,7 +15,8 @@ Removes a bastion resource.
 ### ByResourceGroupName (Default)
 ```
 Remove-AzBastion -ResourceGroupName <String> -Name <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
@@ -26,8 +27,8 @@ Remove-AzBastion -InputObject <PSBastion> [-PassThru] [-Force] [-DefaultProfile 
 
 ### ByResourceId
 ```
-Remove-AzBastion -ResourceId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzBastion -ResourceId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewOracleDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurvieworacledatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for OracleDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewOracleDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Host <String>] [-Port <String>] [-Service <String>]
+New-AzPurviewOracleDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Host <String>] [-Port <String>] [-Service <String>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Create an in-memory object for OracleDataSource.
 
 ### Example 1: Create Azure Synapse workspace data source object
 ```powershell
-New-AzPurviewOracleDataSourceObject -Kind 'Oracle' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '13.1.0.46' -Port 1521 -Service 'xe'
+New-AzPurviewOracleDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '13.1.0.46' -Port 1521 -Service 'xe'
 ```
 
 ```output
@@ -89,20 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Port
 
 ```yaml
@@ -138,7 +124,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OracleDataSource
 
 ## NOTES
 

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="InstanceName">The name of the Azure Sql Managed Instance</param>
         /// <param name="model"></param>
-        /// <returns>The upserted Azure SQL Managed Insance AD Only Authentication</returns>
+        /// <returns>The upserted Azure SQL Managed Instance AD Only Authentication</returns>
         internal AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel UpsertAzureADOnlyAuthenticaion(string resourceGroup, string InstanceName, AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel model)
         {
             var resp = Communicator.CreateOrUpdate(resourceGroup, InstanceName, new ManagedInstanceAzureADOnlyAuthentication(azureAdOnlyAuthentication: model.AzureADOnlyAuthentication));

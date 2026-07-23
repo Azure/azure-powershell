@@ -8,18 +8,33 @@ schema: 2.0.0
 # New-AzConnectedNetworkDevice
 
 ## SYNOPSIS
-Creates or updates a device.
+create a device.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-Property <IDevicePropertiesFormat>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a device.
+create a device.
 
 ## EXAMPLES
 
@@ -110,12 +125,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -157,11 +202,10 @@ Accept wildcard characters: False
 
 ### -Property
 Device properties.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevicePropertiesFormat
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevicePropertiesFormat
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -207,7 +251,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -255,7 +299,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice
 
 ## NOTES
 

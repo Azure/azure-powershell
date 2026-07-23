@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a TrafficController
+update a TrafficController
 .Description
-Update a TrafficController
+update a TrafficController
 .Example
 Update-AzAlb -Name test-alb -ResourceGroupName test-rg -Tag @{TestTag="Test tag value"}
 
@@ -36,6 +36,7 @@ INPUTOBJECT <IAlbIdentity>: Identity Parameter
   [FrontendName <String>]: Frontends
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityPolicyName <String>]: SecurityPolicy
   [SubscriptionId <String>]: The ID of the target subscription.
   [TrafficControllerName <String>]: traffic controller name for path
 .Link
@@ -70,6 +71,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties]))]
+    [System.Collections.Hashtable]
+    # The resource-specific properties for this resource.
+    ${Property},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Body')]
@@ -134,6 +142,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -157,8 +174,6 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Alb.private\Update-AzAlb_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -172,6 +187,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

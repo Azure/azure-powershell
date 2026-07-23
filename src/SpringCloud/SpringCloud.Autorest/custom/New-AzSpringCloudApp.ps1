@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Create a new App or update an exiting App.
+create a new App or update an exiting App.
 .Description
-Create a new App or update an exiting App.
+create a new App or update an exiting App.
 .Example
 New-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,8 +36,9 @@ LOADEDCERTIFICATE <ILoadedCertificate[]>: Collection of loaded certificates
 https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudapp
 #>
 function New-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource])]
+    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('AppName')]
@@ -69,7 +70,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResourcePropertiesAddonConfigs]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesAddonConfigs]))]
     [System.Collections.Hashtable]
     # Collection of addons
     ${AddonConfig},
@@ -79,6 +80,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Indicate if end to end TLS is enabled.
     ${EnableEndToEndTl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
@@ -105,18 +112,10 @@ param(
     ${IdentityTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]
-    # Type of the managed identity
-    ${IdentityType},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]]
     # Collection of loaded certificates
-    # To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
     ${LoadedCertificate},
 
     [Parameter()]
@@ -160,7 +159,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -220,5 +220,5 @@ param(
             $PSBoundParameters.Add('Location', $ResourceGroup.Location)
         }
         Az.SpringCloud.internal\New-AzSpringCloudApp @PSBoundParameters
-    }
+} 
 }

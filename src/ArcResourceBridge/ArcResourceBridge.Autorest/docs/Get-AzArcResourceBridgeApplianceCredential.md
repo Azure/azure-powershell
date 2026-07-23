@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults
+### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListCredentialResults
 
 ## NOTES
 

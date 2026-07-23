@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Search.Models
     public static class UnavailableNameReason
     {
         /// <summary>
-        /// The search service name does not match naming requirements.
+        /// The search service name doesn&#39;t match naming requirements.
         /// </summary>
         public const string Invalid = "Invalid";
         /// <summary>

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileScrubbingRulesObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnprofilescrubbingrulesobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for ProfileScrubbingRules.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <ScrubbingRuleEntryMatchVariable>
- [-Selector <String>] [-State <ScrubbingRuleEntryState>] [<CommonParameters>]
+New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <String> [-Selector <String>] [-State <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ RequestIPAddress          EqualsAny             Enabled
 
 Create an in-memory object for ProfileScrubbingRules and the value of matchVariable is RequestIPAddress
 
-### Example 2: Create an in-memory object for ProfileScrubbingRules and disbale the Scrubbing rule
+### Example 2: Create an in-memory object for ProfileScrubbingRules and disable the Scrubbing rule
 ```powershell
 New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Disabled
 ```
@@ -46,7 +46,7 @@ MatchVariable Selector SelectorMatchOperator State
 RequestUri             EqualsAny             Disabled
 ```
 
-Create an in-memory object for ProfileScrubbingRules and disbale the Scrubbing rule
+Create an in-memory object for ProfileScrubbingRules and disable the Scrubbing rule
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Create an in-memory object for ProfileScrubbingRules and disbale the Scrubbing r
 The variable to be scrubbed from the logs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ScrubbingRuleEntryMatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +85,7 @@ Defines the state of a log scrubbing rule.
 Default value is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ScrubbingRuleEntryState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileScrubbingRules
 
 ## NOTES
 

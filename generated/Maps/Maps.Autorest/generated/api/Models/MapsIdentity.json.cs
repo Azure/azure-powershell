@@ -74,11 +74,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_accountName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("accountName"), out var __jsonAccountName) ? (string)__jsonAccountName : (string)AccountName;}
-            {_creatorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("creatorName"), out var __jsonCreatorName) ? (string)__jsonCreatorName : (string)CreatorName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_accountName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("accountName"), out var __jsonAccountName) ? (string)__jsonAccountName : (string)_accountName;}
+            {_creatorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("creatorName"), out var __jsonCreatorName) ? (string)__jsonCreatorName : (string)_creatorName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

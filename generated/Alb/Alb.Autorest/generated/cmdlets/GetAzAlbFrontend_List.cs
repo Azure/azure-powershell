@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"List Frontend resources by TrafficController")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends", ApiVersion = "2025-01-01")]
     public partial class GetAzAlbFrontend_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext

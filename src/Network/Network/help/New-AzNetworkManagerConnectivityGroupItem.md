@@ -14,7 +14,8 @@ Creates a connectivity group item.
 
 ```
 New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId <String> [-UseHubGateway]
- [-GroupConnectivity <String>] [-IsGlobal] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-GroupConnectivity <String>] [-IsGlobal] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

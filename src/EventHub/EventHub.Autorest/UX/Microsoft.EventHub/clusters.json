@@ -1,6 +1,6 @@
 {
   "resourceType": "clusters",
-  "apiVersion": "2023-01-01-preview",
+  "apiVersion": "2026-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
   },
@@ -20,10 +20,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Gets the resource description of the specified Event Hubs Cluster.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Gets the resource description of the specified Event Hubs Cluster.",
           "parameters": [
@@ -58,10 +82,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Deletes an existing Event Hubs Cluster. This operation is idempotent.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Deletes an existing Event Hubs Cluster. This operation is idempotent.",
           "parameters": [

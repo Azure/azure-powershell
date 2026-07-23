@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.CommonModule
         }
 
         /// <summary>
-        /// Get a descriptin of the profile based on the format of the profile name
+        /// Get a description of the profile based on the format of the profile name
         /// </summary>
         /// <param name="name">The name of the profile</param>
         /// <returns>A textual description of the given profile</returns>

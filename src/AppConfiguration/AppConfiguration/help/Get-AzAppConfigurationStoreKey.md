@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
+The name of the resource group that contains the Azure App Configuration store.
 
 ```yaml
 Type: System.String
@@ -130,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey
 
 ## NOTES
 

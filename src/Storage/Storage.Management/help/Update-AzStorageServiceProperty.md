@@ -15,7 +15,7 @@ Modifies the properties for the Azure Storage service.
 ```
 Update-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
  [-PassThru] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,21 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServiceType
 Specifies the storage service type.
 This cmdlet gets the logging properties for the service type that this parameter specifies.
@@ -170,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSServiceProperties
 
 ## NOTES
 

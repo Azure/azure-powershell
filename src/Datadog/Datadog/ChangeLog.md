@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Added support of Monitored subscription and made it compatible with latest OpenAPI spec. Please see details [here](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json).
+
+## Version 0.2.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
 ## Version 0.1.2
 * Upgraded nuget package to signed package.
 

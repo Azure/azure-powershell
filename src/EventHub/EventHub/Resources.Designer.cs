@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting ConsumerGrop:{0} from Eventhub:{1}.
+        ///   Looks up a localized string similar to Deleting ConsumerGroup:{0} from Eventhub:{1}.
         /// </summary>
         internal static string RemoveConsumerGroup {
             get {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from EventHub:{1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} from EventHub:{1} of Namespace: {2}.
         /// </summary>
         internal static string RemoveEventHubAuthorizationRule {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemoveNamespaceAuthorizationRule {
             get {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from EventHub: {1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Are you sure you want to remove AuthorizationRule:{0} from EventHub: {1} of Namespace: {2}.
         /// </summary>
         internal static string RemovingEventHubAuthorizationRule {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}.
+        ///   Looks up a localized string similar to Are you sure you want to delete  AuthorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemovingNamespaceAuthorizationRule {
             get {

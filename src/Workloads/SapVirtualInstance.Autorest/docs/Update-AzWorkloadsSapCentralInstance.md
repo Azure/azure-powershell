@@ -8,10 +8,8 @@ schema: 2.0.0
 # Update-AzWorkloadsSapCentralInstance
 
 ## SYNOPSIS
-Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+Update the SAP Central Services Instance resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ## SYNTAX
 
@@ -28,11 +26,30 @@ Update-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> 
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentitySapVirtualInstanceExpanded
+```
+Update-AzWorkloadsSapCentralInstance -Name <String>
+ -SapVirtualInstanceInputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+Update the SAP Central Services Instance resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ## EXAMPLES
 
@@ -84,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -98,12 +114,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySapVirtualInstanceExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -119,7 +165,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -129,12 +175,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SapVirtualInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Parameter Sets: UpdateViaIdentitySapVirtualInstanceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SapVirtualInstanceName
 The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -146,10 +207,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -164,7 +226,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySapVirtualInstanceExpanded
 Aliases:
 
 Required: False
@@ -214,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapCentralServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapCentralServerInstance
 
 ## NOTES
 

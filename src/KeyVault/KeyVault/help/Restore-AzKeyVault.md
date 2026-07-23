@@ -60,7 +60,7 @@ The example restores a backup stored in a folder named "mhsm-myHsm-2020101308504
 
 ### Example 2 Restore a Key Vault via User Assigned Managed Identity Authentication
 ```powershell
-# Make sure an identity is assigend to the Hsm
+# Make sure an identity is assigned to the Hsm
 Update-AzKeyVaultManagedHsm -UserAssignedIdentity "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}"
 Restore-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupFolder "mhsm-myHsm-2020101308504935" -UseUserManagedIdentity
 ```

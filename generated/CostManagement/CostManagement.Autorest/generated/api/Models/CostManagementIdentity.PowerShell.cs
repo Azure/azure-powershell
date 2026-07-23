@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostManagementIdentity"
         /// />.
         /// </summary>
@@ -81,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
             }
             if (content.Contains("ExternalCloudProviderType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType?) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (string) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, global::System.Convert.ToString);
             }
             if (content.Contains("ExternalCloudProviderId"))
             {
@@ -138,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
             }
             if (content.Contains("ExternalCloudProviderType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType?) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (string) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, global::System.Convert.ToString);
             }
             if (content.Contains("ExternalCloudProviderId"))
             {
@@ -204,6 +212,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(CostManagementIdentityTypeConverter))]
     public partial interface ICostManagementIdentity

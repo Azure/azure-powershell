@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public abstract class AzureSqlElasticJobCmdletBase<TInputObject> :  AzureSqlElasticJobsCmdletBase<TInputObject, IEnumerable<AzureSqlElasticJobModel>, AzureSqlElasticJobAdapter>
     {
         /// <summary>
-        /// Intializes the adapter
+        /// Initializes the adapter
         /// </summary>
         /// <returns>The Azure Elastic Job Job adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()

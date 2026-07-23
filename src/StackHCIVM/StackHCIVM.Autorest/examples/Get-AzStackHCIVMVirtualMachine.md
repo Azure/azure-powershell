@@ -8,7 +8,7 @@ Name            ResourceGroupName
 testVm          test-rg
 ```
 
-This commnad gets a virtual machine in a specified resource group. 
+This command gets a virtual machine in a specified resource group. 
 
 
 ### Example 2: List Virtual Machines in a Resource Group

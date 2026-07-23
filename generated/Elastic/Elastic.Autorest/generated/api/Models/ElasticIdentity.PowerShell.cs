@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticIdentity"
         /// />.
         /// </summary>
@@ -105,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
             if (content.Contains("IntegrationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName = (string) content.GetValueForProperty("IntegrationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName, global::System.Convert.ToString);
@@ -146,6 +158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
             if (content.Contains("IntegrationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName = (string) content.GetValueForProperty("IntegrationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName, global::System.Convert.ToString);
@@ -172,6 +188,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(ElasticIdentityTypeConverter))]
     public partial interface IElasticIdentity

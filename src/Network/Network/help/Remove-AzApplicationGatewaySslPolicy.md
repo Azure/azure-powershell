@@ -15,7 +15,8 @@ Removes an SSL policy from an Azure application gateway.
 
 ```
 Remove-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,4 +134,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 [New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
 [Get-AzApplicationGatewaySslPolicy](./Get-AzApplicationGatewaySslPolicy.md)
-

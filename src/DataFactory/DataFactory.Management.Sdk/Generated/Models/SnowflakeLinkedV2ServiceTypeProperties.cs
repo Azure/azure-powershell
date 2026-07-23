@@ -66,13 +66,26 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// auth with encrypted private key.
         /// </param>
 
-        /// <param name="host">The host name of the Snowflake account.
+        /// <param name="role">The default access control role to use in the Snowflake session. Type:
+        /// string (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="host">The host name of the Snowflake account. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="schema">Schema name for connection. Type: string (or Expression with resultType
+        /// string).
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SnowflakeLinkedV2ServiceTypeProperties(object accountIdentifier, object database, object warehouse, object user = default(object), SecretBase password = default(SecretBase), string authenticationType = default(string), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tenantId = default(object), object scope = default(object), SecretBase privateKey = default(SecretBase), SecretBase privateKeyPassphrase = default(SecretBase), object host = default(object), string encryptedCredential = default(string))
+
+        /// <param name="useUtcTimestamps">Indicates whether to use UTC timezone for timestamp data types. Type:
+        /// boolean.
+        /// </param>
+        public SnowflakeLinkedV2ServiceTypeProperties(object accountIdentifier, object database, object warehouse, object user = default(object), SecretBase password = default(SecretBase), string authenticationType = default(string), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tenantId = default(object), object scope = default(object), SecretBase privateKey = default(SecretBase), SecretBase privateKeyPassphrase = default(SecretBase), object role = default(object), object host = default(object), object schema = default(object), string encryptedCredential = default(string), object useUtcTimestamps = default(object))
 
         {
             this.AccountIdentifier = accountIdentifier;
@@ -87,8 +100,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Scope = scope;
             this.PrivateKey = privateKey;
             this.PrivateKeyPassphrase = privateKeyPassphrase;
+            this.Role = role;
             this.Host = host;
+            this.Schema = schema;
             this.EncryptedCredential = encryptedCredential;
+            this.UseUtcTimestamps = useUtcTimestamps;
             CustomInit();
         }
 
@@ -179,10 +195,25 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase PrivateKeyPassphrase {get; set; }
 
         /// <summary>
-        /// Gets or sets the host name of the Snowflake account.
+        /// Gets or sets the default access control role to use in the Snowflake
+        /// session. Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "role")]
+        public object Role {get; set; }
+
+        /// <summary>
+        /// Gets or sets the host name of the Snowflake account. Type: string (or
+        /// Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "host")]
         public object Host {get; set; }
+
+        /// <summary>
+        /// Gets or sets schema name for connection. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "schema")]
+        public object Schema {get; set; }
 
         /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
@@ -191,6 +222,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to use UTC timezone for timestamp data
+        /// types. Type: boolean.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "useUtcTimestamps")]
+        public object UseUtcTimestamps {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -211,6 +249,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Warehouse");
             }
+
+
+
 
 
 

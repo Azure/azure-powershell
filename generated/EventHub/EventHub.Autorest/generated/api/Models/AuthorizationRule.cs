@@ -35,17 +35,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRuleInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IProxyResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inherited)]
@@ -75,27 +93,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"

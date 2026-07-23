@@ -16,26 +16,27 @@ Test out the connection to the database server
 ```
 Test-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
  -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
 Test-AzMySqlFlexibleServerConnect -Name <String> -QueryText <String> -ResourceGroupName <String>
  -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentity
 ```
 Test-AzMySqlFlexibleServerConnect -AdministratorLoginPassword <SecureString> -InputObject <IMySqlIdentity>
- [-DatabaseName <String>] [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DatabaseName <String>] [-AdministratorUserName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
 Test-AzMySqlFlexibleServerConnect -QueryText <String> -AdministratorLoginPassword <SecureString>
- -InputObject <IMySqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
+ -InputObject <IMySqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>] [-Timeout <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -166,7 +167,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 The server to connect.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -219,6 +219,22 @@ Parameter Sets: Test, TestAndQuery
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+The timeout in seconds for query execution.
+Valid range is 1-31536000 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

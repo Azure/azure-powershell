@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Set parameter 'JsonFilePath' for cmdlet `New-AzImageBuilderTemplate` alias 'JsonTemplatePath'.
+* Removed cmdlet `Update-AzImageBuilderTemplate`. Please see the details [here](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/image-builder-troubleshoot#update-or-upgrade-of-image-templates-is-currently-not-supported).
+* Updated `New-AzImageBuilderTemplate` to support for new Managed Identity setting.
+  * Keep alias `UserAssignedIdentityId` for parameter `UserAssignedIdentity`. The type of `UserAssignedIdentity` is simplified to an array of strings that is used to specify the user's assigned identity.
+
 ## Version 0.4.2
 * Upgraded nuget package to signed package.
 
@@ -26,7 +33,7 @@
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.4.0
-*  Upgraded API verision from 2022-02-14 to 2022-07-01.
+*  Upgraded API version from 2022-02-14 to 2022-07-01.
    - Added a cmdlet named `Get-AzImageBuilderTrigger`.
    - Added a cmdlet named `New-AzImageBuilderTemplateDistributeVersionerLatestObject` to create an in-memory object for DistributeVersionerLatest.
    - Added a cmdlet named `New-AzImageBuilderTemplateDistributeVersionerSourceObject` to create an in-memory object for DistributeVersionerSource.
@@ -35,7 +42,7 @@
    - Added a cmdlet named `Remove-AzImageBuilderTrigger`.
 
 ## Version 0.3.0
-*  Upgraded API verision from 2020-02-14 to 2022-02-14.
+*  Upgraded API version from 2020-02-14 to 2022-02-14.
     - Supported parameter `replicationRegions` in JSON file for `New-AzImageBuilderTemplate`. [#18924]
     - Added parameter `VMProfileUserAssignedIdentity` in `New-AzImageBuilderTemplate`. [#17273]
     - Added a cmdlet named `New-AzImageBuilderTemplateValidatorObject` to create an in-memory object for ImageTemplateValidator.

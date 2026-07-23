@@ -15,7 +15,8 @@ Modifies the SKU of an application gateway.
 
 ```
 Set-AzApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> -Name <String> -Tier <String>
- [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,5 +139,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzApplicationGatewaySku](./Get-AzApplicationGatewaySku.md)
 
 [New-AzApplicationGatewaySku](./New-AzApplicationGatewaySku.md)
-
-

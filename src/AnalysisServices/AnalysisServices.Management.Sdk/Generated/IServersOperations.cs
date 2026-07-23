@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Management.Analysis
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AnalysisServicesServer>> UpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, AnalysisServicesServerUpdateParameters serverUpdateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Supends operation of the specified Analysis Services server instance.
+        /// Suspends operation of the specified Analysis Services server instance.
         /// </summary>
         /// <remarks>
-        /// Supends operation of the specified Analysis Services server instance.
+        /// Suspends operation of the specified Analysis Services server instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the Azure Resource group of which a given Analysis Services
@@ -504,10 +504,10 @@ namespace Microsoft.Azure.Management.Analysis
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AnalysisServicesServer>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, AnalysisServicesServerUpdateParameters serverUpdateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Supends operation of the specified Analysis Services server instance.
+        /// Suspends operation of the specified Analysis Services server instance.
         /// </summary>
         /// <remarks>
-        /// Supends operation of the specified Analysis Services server instance.
+        /// Suspends operation of the specified Analysis Services server instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the Azure Resource group of which a given Analysis Services

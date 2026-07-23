@@ -14,16 +14,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public partial interface IManagedClusterVersionOperations
     {
         /// <summary>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </summary>
         /// <remarks>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
-        /// </param>
-        /// <param name='clusterVersion'>
-        /// The cluster code version.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,16 +37,19 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>> GetWithHttpMessagesAsync(string location, string clusterVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>> ListByEnvironmentWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </summary>
         /// <remarks>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -66,13 +69,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>> GetByEnvironmentWithHttpMessagesAsync(string location, string clusterVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </summary>
         /// <remarks>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -89,13 +95,19 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>> ListWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </summary>
         /// <remarks>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
+        /// </param>
+        /// <param name='clusterVersion'>
+        /// The cluster code version.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -109,7 +121,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>>> ListByEnvironmentWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterCodeVersionResult>> GetWithHttpMessagesAsync(string location, string clusterVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

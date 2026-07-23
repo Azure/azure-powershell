@@ -82,13 +82,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         public string RevisionId { get => this._revisionId; set => this._revisionId = value; }
 
         /// <summary>Backing field for <see cref="StorageType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? _storageType;
+        private string _storageType;
 
         /// <summary>
         /// The type of the Application Insights component data source for the linked storage account.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? StorageType { get => this._storageType; set => this._storageType = value; }
+        public string StorageType { get => this._storageType; set => this._storageType = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -119,6 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The unique annotation ID. This is unique within a Application Insights component.",
         SerializedName = @"annotationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Application Insights component resource.",
         SerializedName = @"componentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Continuous Export configuration ID. This is unique within a Application Insights component.",
         SerializedName = @"exportId",
         PossibleTypes = new [] { typeof(string) })]
@@ -145,6 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -153,6 +165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The API Key ID. This is unique within a Application Insights component.",
         SerializedName = @"keyId",
         PossibleTypes = new [] { typeof(string) })]
@@ -163,6 +178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"In a purge status request, this is the Id of the operation the status of which is returned.",
         SerializedName = @"purgeId",
         PossibleTypes = new [] { typeof(string) })]
@@ -171,6 +189,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -179,6 +200,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Application Insights component resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +211,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The id of the workbook's revision.",
         SerializedName = @"revisionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -197,14 +224,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The type of the Application Insights component data source for the linked storage account.",
         SerializedName = @"storageType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? StorageType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("ServiceProfiler")]
+        string StorageType { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -213,6 +247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Application Insights WebTest resource.",
         SerializedName = @"webTestName",
         PossibleTypes = new [] { typeof(string) })]
@@ -249,7 +286,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         /// <summary>
         /// The type of the Application Insights component data source for the linked storage account.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? StorageType { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("ServiceProfiler")]
+        string StorageType { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the Application Insights WebTest resource.</summary>

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.HPCCache
     using Newtonsoft.Json;
 
     /// <summary>
-    /// SetHPCCache commandlet.
+    /// SetHPCCache cmdlet.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HpcCache", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSHPCCache))]

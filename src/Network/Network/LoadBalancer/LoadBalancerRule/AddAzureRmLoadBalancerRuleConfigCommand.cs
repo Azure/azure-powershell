@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.")]
+        public SwitchParameter EnableConnectionTracking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "A reference to frontend IP addresses.",
             ValueFromPipelineByPropertyName = true)]
@@ -184,6 +189,7 @@ namespace Microsoft.Azure.Commands.Network
             vLoadBalancingRules.EnableFloatingIP = this.EnableFloatingIP;
             vLoadBalancingRules.EnableTcpReset = this.EnableTcpReset;
             vLoadBalancingRules.DisableOutboundSNAT = this.DisableOutboundSNAT;
+            vLoadBalancingRules.EnableConnectionTracking = this.EnableConnectionTracking;
             vLoadBalancingRules.Name = this.Name;
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {

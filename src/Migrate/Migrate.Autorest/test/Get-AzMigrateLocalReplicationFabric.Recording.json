@@ -1,0 +1,222 @@
+{
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "68ffbc46-2ac5-43ca-b3b6-4dc19451abbe" ],
+        "CommandName": [ "Get-AzMigrateLocalReplicationFabric" ],
+        "FullCommandName": [ "Get-AzMigrateLocalReplicationFabric_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.6.0", "PSVersion/v7.5.4", "Az.Migrate/2.10.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "api-supported-versions": [ "2021-02-16-preview, 2024-09-01" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "e9973762-a012-4227-a6a5-e453efe97643" ],
+        "x-ms-correlation-request-id": [ "e9973762-a012-4227-a6a5-e453efe97643" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251114T004059Z:e9973762-a012-4227-a6a5-e453efe97643" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F8B5D20CE463418E839D14A059E90276 Ref B: MWH011020806036 Ref C: 2025-11-14T00:40:58Z" ],
+        "Date": [ "Fri, 14 Nov 2025 00:40:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5819" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":null,\"serviceResourceId\":\"fef499b4-b60f-4367-97e0-fe9f4dda087c\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"vmwareSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/samlee3-1031-vmw-secureboot-rg/providers/Microsoft.OffAzure/VMwareSites/src16906site\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/samlee3-1031-vmw-secureboot-rg/providers/Microsoft.Migrate/MigrateProjects/samlee3-1031-vmw-secureboot/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"instanceType\":\"VMwareMigrate\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/samlee3-1031-vmw-secureboot-rg/providers/Microsoft.DataReplication/replicationFabrics/src1bccfreplicationfabric\",\"name\":\"src1bccfreplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"samlee3@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-31T22:59:49.8810877+00:00\",\"lastModifiedBy\":\"samlee3@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-31T22:59:49.8810877+00:00\"}},{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":null,\"serviceResourceId\":\"8e358219-799a-490f-9162-d90d5d2a5fe7\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"azStackHciSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/samlee3-1031-vmw-secureboot-rg/providers/Microsoft.OffAzure/HyperVSites/tgt16653site\",\"applianceName\":[\"tgt1\"],\"cluster\":{\"clusterName\":\"n22r1004-cl.n22r1004.masd.stbtest.microsoft.com\",\"resourceName\":\"/Subscriptions/304d8fdf-1c02-4907-9c3a-ddbd677199cd/resourceGroups/EDGECI-REGISTRATION-n22r1004-JxnFXoRz/providers/Microsoft.AzureStackHCI/clusters/n22r1004-cl\",\"storageAccountName\":null,\"storageContainers\":null},\"fabricResourceId\":\"5264560194137195033\",\"fabricContainerId\":\"14802704691017\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/samlee3-1031-vmw-secureboot-rg/providers/Microsoft.Migrate/MigrateProjects/samlee3-1031-vmw-secureboot/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"AzStackHCI\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/samlee3-1031-vmw-secureboot-rg/providers/Microsoft.DataReplication/replicationFabrics/tgt16128replicationfabric\",\"name\":\"tgt16128replicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"samlee3@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-31T23:18:07.5044148+00:00\",\"lastModifiedBy\":\"samlee3@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-31T23:18:07.5044148+00:00\"}},{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":null,\"serviceResourceId\":\"f3fb379b-07bd-4f57-b8aa-533db80d40c2\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"hyperVSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/HyperV-1c100b4site\",\"fabricResourceId\":\"5717046764393674651\",\"fabricContainerId\":\"6063224717121\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"HyperVMigrate\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric\",\"name\":\"HyperV-1c100b4409breplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T20:37:17.3120156+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T20:37:17.3120156+00:00\"}},{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":null,\"serviceResourceId\":\"2c644e12-2424-4295-925f-bf504312c806\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"azStackHciSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/asz-1c100b4site\",\"applianceName\":[\"asz-1c100b4\"],\"cluster\":{\"clusterName\":\"s46r1706-cl.s46r1706.masd.stbtest.microsoft.com\",\"resourceName\":\"/Subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/EDGECI-REGISTRATION-rr1s46r1706-LtmqC7DF/providers/Microsoft.AzureStackHCI/clusters/s46r1706-cl\",\"storageAccountName\":null,\"storageContainers\":null},\"fabricResourceId\":\"4797780715815325202\",\"fabricContainerId\":\"6095006161414\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"AzStackHCI\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/asz-1c100b48becreplicationfabric\",\"name\":\"asz-1c100b48becreplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T21:13:18.3216637+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T21:13:18.3216637+00:00\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "7747ba8e-60b2-4510-82c9-7182e7aa0635" ],
+        "CommandName": [ "Get-AzMigrateLocalReplicationFabric" ],
+        "FullCommandName": [ "Get-AzMigrateLocalReplicationFabric_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.6.0", "PSVersion/v7.5.4", "Az.Migrate/2.10.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview, 2024-09-01" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "ed2ce95e-65ec-4284-bbcb-08251fda89fe" ],
+        "x-ms-correlation-request-id": [ "ed2ce95e-65ec-4284-bbcb-08251fda89fe" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251114T004100Z:ed2ce95e-65ec-4284-bbcb-08251fda89fe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CDD39BC279624839B163850A83FDB71E Ref B: MWH011020806036 Ref C: 2025-11-14T00:40:59Z" ],
+        "Date": [ "Fri, 14 Nov 2025 00:40:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1369" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":\"https://agent-asrrp1.ccy.siterecovery.azure.com\",\"serviceResourceId\":\"f3fb379b-07bd-4f57-b8aa-533db80d40c2\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"hyperVSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/HyperV-1c100b4site\",\"fabricResourceId\":\"5717046764393674651\",\"fabricContainerId\":\"6063224717121\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"HyperVMigrate\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric\",\"name\":\"HyperV-1c100b4409breplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T20:37:17.3120156+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T20:37:17.3120156+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "cddcccdb-20d9-426a-a5fc-4a2e2460dd58" ],
+        "CommandName": [ "Get-AzMigrateLocalReplicationFabric" ],
+        "FullCommandName": [ "Get-AzMigrateLocalReplicationFabric_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.6.0", "PSVersion/v7.5.4", "Az.Migrate/2.10.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "api-supported-versions": [ "2021-02-16-preview, 2024-09-01" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "d5b7cc50-faec-4ec8-a336-9bf6eb5755c9" ],
+        "x-ms-correlation-request-id": [ "d5b7cc50-faec-4ec8-a336-9bf6eb5755c9" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251114T004100Z:d5b7cc50-faec-4ec8-a336-9bf6eb5755c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5E350D79936849F4A13BA0FA49293D12 Ref B: MWH011020806036 Ref C: 2025-11-14T00:41:00Z" ],
+        "Date": [ "Fri, 14 Nov 2025 00:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2992" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":null,\"serviceResourceId\":\"f3fb379b-07bd-4f57-b8aa-533db80d40c2\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"hyperVSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/HyperV-1c100b4site\",\"fabricResourceId\":\"5717046764393674651\",\"fabricContainerId\":\"6063224717121\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"HyperVMigrate\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric\",\"name\":\"HyperV-1c100b4409breplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T20:37:17.3120156+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T20:37:17.3120156+00:00\"}},{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":null,\"serviceResourceId\":\"2c644e12-2424-4295-925f-bf504312c806\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"azStackHciSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/asz-1c100b4site\",\"applianceName\":[\"asz-1c100b4\"],\"cluster\":{\"clusterName\":\"s46r1706-cl.s46r1706.masd.stbtest.microsoft.com\",\"resourceName\":\"/Subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/EDGECI-REGISTRATION-rr1s46r1706-LtmqC7DF/providers/Microsoft.AzureStackHCI/clusters/s46r1706-cl\",\"storageAccountName\":null,\"storageContainers\":null},\"fabricResourceId\":\"4797780715815325202\",\"fabricContainerId\":\"6095006161414\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"AzStackHCI\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/asz-1c100b48becreplicationfabric\",\"name\":\"asz-1c100b48becreplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T21:13:18.3216637+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T21:13:18.3216637+00:00\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "5682836d-ebf9-4567-82a0-95f89e832840" ],
+        "CommandName": [ "Get-AzMigrateLocalReplicationFabric" ],
+        "FullCommandName": [ "Get-AzMigrateLocalReplicationFabric_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.6.0", "PSVersion/v7.5.4", "Az.Migrate/2.10.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview, 2024-09-01" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "713a7b05-5cca-4a08-bd06-5c505570ca36" ],
+        "x-ms-correlation-request-id": [ "713a7b05-5cca-4a08-bd06-5c505570ca36" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251114T004100Z:713a7b05-5cca-4a08-bd06-5c505570ca36" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 366BC1B3465A401CA0B0F12603BC0E82 Ref B: MWH011020806036 Ref C: 2025-11-14T00:41:00Z" ],
+        "Date": [ "Fri, 14 Nov 2025 00:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1369" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":\"https://agent-asrrp1.ccy.siterecovery.azure.com\",\"serviceResourceId\":\"f3fb379b-07bd-4f57-b8aa-533db80d40c2\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"hyperVSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/HyperV-1c100b4site\",\"fabricResourceId\":\"5717046764393674651\",\"fabricContainerId\":\"6063224717121\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"HyperVMigrate\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric\",\"name\":\"HyperV-1c100b4409breplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T20:37:17.3120156+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T20:37:17.3120156+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "f916f8bc-f0d6-4ec6-b326-8a0dda49f5b3" ],
+        "CommandName": [ "Get-AzMigrateLocalReplicationFabric" ],
+        "FullCommandName": [ "Get-AzMigrateLocalReplicationFabric_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.6.0", "PSVersion/v7.5.4", "Az.Migrate/2.10.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview, 2024-09-01" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "3844ac37-c732-41f5-adf8-5e010f918e3a" ],
+        "x-ms-correlation-request-id": [ "3844ac37-c732-41f5-adf8-5e010f918e3a" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251114T004100Z:3844ac37-c732-41f5-adf8-5e010f918e3a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 698906F76E70447987A1FAFF977545C8 Ref B: MWH011020806036 Ref C: 2025-11-14T00:41:00Z" ],
+        "Date": [ "Fri, 14 Nov 2025 00:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1369" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceEndpoint\":\"https://agent-asrrp1.ccy.siterecovery.azure.com\",\"serviceResourceId\":\"f3fb379b-07bd-4f57-b8aa-533db80d40c2\",\"health\":\"Normal\",\"healthErrors\":[],\"customProperties\":{\"hyperVSiteId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.OffAzure/HyperVSites/HyperV-1c100b4site\",\"fabricResourceId\":\"5717046764393674651\",\"fabricContainerId\":\"6063224717121\",\"migrationSolutionId\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.Migrate/MigrateProjects/aszmigtest1c100b4/Solutions/Servers-Migration-ServerMigration_DataReplication\",\"migrationHubUri\":null,\"instanceType\":\"HyperVMigrate\"}},\"id\":\"/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric\",\"name\":\"HyperV-1c100b4409breplicationfabric\",\"type\":\"Microsoft.DataReplication/replicationFabrics\",\"systemData\":{\"createdBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"createdByType\":\"Application\",\"createdAt\":\"2025-11-11T20:37:17.3120156+00:00\",\"lastModifiedBy\":\"ae1b6f5a-232e-4f08-a782-a9990372b512\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-11-11T20:37:17.3120156+00:00\"}}",
+      "isContentBase64": false
+    }
+  }
+}

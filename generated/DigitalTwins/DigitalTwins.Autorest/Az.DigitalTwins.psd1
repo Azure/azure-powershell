@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DigitalTwins.private.dll'
   FormatsToProcess = './Az.DigitalTwins.format.ps1xml'
-  FunctionsToExport = 'Get-AzDigitalTwinsEndpoint', 'Get-AzDigitalTwinsInstance', 'Get-AzDigitalTwinsPrivateEndpointConnection', 'Get-AzDigitalTwinsPrivateLinkResource', 'Get-AzDigitalTwinsTimeSeriesDatabaseConnection', 'New-AzDigitalTwinsEndpoint', 'New-AzDigitalTwinsInstance', 'New-AzDigitalTwinsPrivateEndpointConnection', 'New-AzDigitalTwinsTimeSeriesDatabaseConnection', 'Remove-AzDigitalTwinsEndpoint', 'Remove-AzDigitalTwinsInstance', 'Remove-AzDigitalTwinsPrivateEndpointConnection', 'Remove-AzDigitalTwinsTimeSeriesDatabaseConnection', 'Test-AzDigitalTwinsInstanceNameAvailability', 'Update-AzDigitalTwinsInstance', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzDigitalTwinsEndpoint', 'Get-AzDigitalTwinsInstance', 'Get-AzDigitalTwinsTimeSeriesDatabaseConnection', 'New-AzDigitalTwinsEndpoint', 'New-AzDigitalTwinsInstance', 'New-AzDigitalTwinsTimeSeriesDatabaseConnection', 'Remove-AzDigitalTwinsEndpoint', 'Remove-AzDigitalTwinsInstance', 'Remove-AzDigitalTwinsTimeSeriesDatabaseConnection', 'Test-AzDigitalTwinsInstanceNameAvailability', 'Update-AzDigitalTwinsEndpoint', 'Update-AzDigitalTwinsInstance', 'Update-AzDigitalTwinsTimeSeriesDatabaseConnection'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DigitalTwins'

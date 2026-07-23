@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = BackupVaultObject.ResourceGroupName;                
-                var NameParts = BackupVaultObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(BackupVaultObject.Id);
                 AccountName = NameParts[0];
                 BackupVaultName = NameParts[1];
             }
@@ -144,8 +144,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 try
                 {
                     List<PSNetAppFilesBackup> anfBackups = null;
-                    var backups = AzureNetAppFilesManagementClient.Backups.ListByVault(ResourceGroupName, accountName: AccountName, backupVaultName: BackupVaultName,filter: Filter).ToList();
-                    anfBackups = backups.ConvertToPS();
+                    var backups = AzureNetAppFilesManagementClient.Backups.ListByVault(ResourceGroupName, accountName: AccountName, backupVaultName: BackupVaultName,filter: Filter);
+                    // Get all backups by polling on next page link
+                    var backupsResponseList = ListNextLink<Management.NetApp.Models.Backup>.GetAllResourcesByPollingNextLink(backups, AzureNetAppFilesManagementClient.Backups.ListByVaultNext);
+
+                    anfBackups = backupsResponseList.ConvertToPS();
 
                     WriteObject(anfBackups, true);
                 }

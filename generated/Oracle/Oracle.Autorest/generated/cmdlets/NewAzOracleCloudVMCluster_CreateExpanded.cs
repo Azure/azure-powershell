@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a CloudVmCluster</summary>
+    /// <summary>create a CloudVmCluster</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzOracleCloudVMCluster_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMCluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"Create a CloudVmCluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a CloudVmCluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleCloudVMCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>CloudVmCluster resource definition</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMCluster _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudVMCluster();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -235,6 +226,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
         public string Domain { get => _resourceBody.Domain ?? null; set => _resourceBody.Domain = value; }
+
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Exadata Database Storage Vault ID")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Exadata Database Storage Vault ID",
+        SerializedName = @"exascaleDbStorageVaultId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExascaleDbStorageVaultId { get => _resourceBody.ExascaleDbStorageVaultId ?? null; set => _resourceBody.ExascaleDbStorageVaultId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -625,11 +627,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Oracle.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -945,24 +942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMCluster
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

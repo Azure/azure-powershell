@@ -8,15 +8,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// See [AKS custom node
+    /// Kubelet configurations of agent nodes. See [AKS custom node
     /// configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
     /// for more details.
     /// </summary>
-    /// <remarks>
-    /// See [AKS custom node
-    /// configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
-    /// for more details.
-    /// </remarks>
     public partial class KubeletConfig
     {
         /// <summary>
@@ -31,26 +26,33 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the KubeletConfig class.
         /// </summary>
 
-        /// <param name="cpuManagerPolicy">The default is &#39;none&#39;. See [Kubernetes CPU management
+        /// <param name="cpuManagerPolicy">The CPU Manager policy to use. The default is &#39;none&#39;. See [Kubernetes CPU
+        /// management
         /// policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
         /// for more information. Allowed values are &#39;none&#39; and &#39;static&#39;.
         /// </param>
 
-        /// <param name="cpuCfsQuota">The default is true.
+        /// <param name="cpuCfsQuota">If CPU CFS quota enforcement is enabled for containers that specify CPU
+        /// limits. The default is true.
         /// </param>
 
-        /// <param name="cpuCfsQuotaPeriod">The default is &#39;100ms.&#39; Valid values are a sequence of decimal numbers with
-        /// an optional fraction and a unit suffix. For example: &#39;300ms&#39;, &#39;2h45m&#39;.
-        /// Supported units are &#39;ns&#39;, &#39;us&#39;, &#39;ms&#39;, &#39;s&#39;, &#39;m&#39;, and &#39;h&#39;.
+        /// <param name="cpuCfsQuotaPeriod">The CPU CFS quota period value. The default is &#39;100ms.&#39; Valid values are a
+        /// sequence of decimal numbers with an optional fraction and a unit suffix.
+        /// For example: &#39;300ms&#39;, &#39;2h45m&#39;. Supported units are &#39;ns&#39;, &#39;us&#39;, &#39;ms&#39;, &#39;s&#39;,
+        /// &#39;m&#39;, and &#39;h&#39;.
         /// </param>
 
-        /// <param name="imageGcHighThreshold">To disable image garbage collection, set to 100. The default is 85%
+        /// <param name="imageGcHighThreshold">The percent of disk usage after which image garbage collection is always
+        /// run. To disable image garbage collection, set to 100. The default is 85%
         /// </param>
 
-        /// <param name="imageGcLowThreshold">This cannot be set higher than imageGcHighThreshold. The default is 80%
+        /// <param name="imageGcLowThreshold">The percent of disk usage before which image garbage collection is never
+        /// run. This cannot be set higher than imageGcHighThreshold. The default is
+        /// 80%
         /// </param>
 
-        /// <param name="topologyManagerPolicy">For more information see [Kubernetes Topology
+        /// <param name="topologyManagerPolicy">The Topology Manager policy to use. For more information see [Kubernetes
+        /// Topology
         /// Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
         /// The default is &#39;none&#39;. Allowed values are &#39;none&#39;, &#39;best-effort&#39;,
         /// &#39;restricted&#39;, and &#39;single-numa-node&#39;.
@@ -96,7 +98,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets the default is &#39;none&#39;. See [Kubernetes CPU management
+        /// Gets or sets the CPU Manager policy to use. The default is &#39;none&#39;. See
+        /// [Kubernetes CPU management
         /// policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
         /// for more information. Allowed values are &#39;none&#39; and &#39;static&#39;.
         /// </summary>
@@ -104,35 +107,40 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string CpuManagerPolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is true.
+        /// Gets or sets if CPU CFS quota enforcement is enabled for containers that
+        /// specify CPU limits. The default is true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "cpuCfsQuota")]
         public bool? CpuCfsQuota {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;100ms.&#39; Valid values are a sequence of decimal
-        /// numbers with an optional fraction and a unit suffix. For example: &#39;300ms&#39;,
-        /// &#39;2h45m&#39;. Supported units are &#39;ns&#39;, &#39;us&#39;, &#39;ms&#39;, &#39;s&#39;, &#39;m&#39;, and &#39;h&#39;.
+        /// Gets or sets the CPU CFS quota period value. The default is &#39;100ms.&#39; Valid
+        /// values are a sequence of decimal numbers with an optional fraction and a
+        /// unit suffix. For example: &#39;300ms&#39;, &#39;2h45m&#39;. Supported units are &#39;ns&#39;, &#39;us&#39;,
+        /// &#39;ms&#39;, &#39;s&#39;, &#39;m&#39;, and &#39;h&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "cpuCfsQuotaPeriod")]
         public string CpuCfsQuotaPeriod {get; set; }
 
         /// <summary>
-        /// Gets or sets to disable image garbage collection, set to 100. The default
+        /// Gets or sets the percent of disk usage after which image garbage collection
+        /// is always run. To disable image garbage collection, set to 100. The default
         /// is 85%
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "imageGcHighThreshold")]
         public int? ImageGcHighThreshold {get; set; }
 
         /// <summary>
-        /// Gets or sets this cannot be set higher than imageGcHighThreshold. The
-        /// default is 80%
+        /// Gets or sets the percent of disk usage before which image garbage
+        /// collection is never run. This cannot be set higher than
+        /// imageGcHighThreshold. The default is 80%
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "imageGcLowThreshold")]
         public int? ImageGcLowThreshold {get; set; }
 
         /// <summary>
-        /// Gets or sets for more information see [Kubernetes Topology
+        /// Gets or sets the Topology Manager policy to use. For more information see
+        /// [Kubernetes Topology
         /// Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
         /// The default is &#39;none&#39;. Allowed values are &#39;none&#39;, &#39;best-effort&#39;,
         /// &#39;restricted&#39;, and &#39;single-numa-node&#39;.

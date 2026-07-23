@@ -11,16 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using System;
 
     /// <summary>
-    /// List the app service resources currently being monitored by the NewRelic resource.
+    /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+    /// services are under monitoring
     /// </summary>
     /// <remarks>
     /// [OpenAPI] ListAppServices=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listAppServices"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicMonitoredAppService_ListViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServiceInfo))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"List the app service resources currently being monitored by the NewRelic resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app services are under monitoring")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listAppServices", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listAppServices", ApiVersion = "2025-05-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.NotSuggestDefaultParameterSet]
     public partial class GetAzNewRelicMonitoredAppService_ListViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,

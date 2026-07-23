@@ -21,12 +21,13 @@ Create an in-memory object for ImageTemplateCustomizer.
 Create an in-memory object for ImageTemplateCustomizer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject_ShellCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellCustomizer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,17 +43,13 @@ function New-AzImageBuilderTemplateCustomizerObject_ShellCustomizer {
         [Parameter(HelpMessage="Friendly Name to provide context on what this customization step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of customization tool you want to use on the Image. For example, `"Shell`" can be shell customizer.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Runs a shell script during the customization phase (Linux). Corresponds to Packer shell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.")]
         [Switch]
         $ShellCustomizer
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellCustomizer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellCustomizer]::New()
 
         if ($PSBoundParameters.ContainsKey('Inline')) {
             $Object.Inline = $Inline
@@ -65,9 +62,6 @@ function New-AzImageBuilderTemplateCustomizerObject_ShellCustomizer {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($ShellCustomizer.IsPresent) {
-            $Object.Type = "Shell"
         }
         return $Object
     }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class ManagedClusterVersionEnvironment
     {
         /// <summary>
-        /// Windows.
+        /// Indicates os is Windows.
         /// </summary>
         public const string Windows = "Windows";
     }

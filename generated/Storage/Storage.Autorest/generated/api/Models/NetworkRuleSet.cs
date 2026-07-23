@@ -37,6 +37,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> IPRule { get => this._iPRule; set => this._iPRule = value; }
 
+        /// <summary>Backing field for <see cref="Ipv6Rule" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> _ipv6Rule;
+
+        /// <summary>Sets the IPv6 ACL rules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> Ipv6Rule { get => this._ipv6Rule; set => this._ipv6Rule = value; }
+
         /// <summary>Backing field for <see cref="ResourceAccessRule" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> _resourceAccessRule;
 
@@ -99,6 +106,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> IPRule { get; set; }
+        /// <summary>Sets the IPv6 ACL rules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Sets the IPv6 ACL rules.",
+        SerializedName = @"ipv6Rules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> Ipv6Rule { get; set; }
         /// <summary>Sets the resource access rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -138,6 +156,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string DefaultAction { get; set; }
         /// <summary>Sets the IP ACL rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> IPRule { get; set; }
+        /// <summary>Sets the IPv6 ACL rules.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> Ipv6Rule { get; set; }
         /// <summary>Sets the resource access rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> ResourceAccessRule { get; set; }
         /// <summary>Sets the virtual network rules</summary>

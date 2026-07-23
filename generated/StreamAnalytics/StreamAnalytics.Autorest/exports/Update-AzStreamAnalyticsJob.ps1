@@ -27,13 +27,13 @@ Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh | 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [ClusterName <String>]: The name of the cluster.
   [FunctionName <String>]: The name of the function.
   [Id <String>]: Resource identity path
@@ -48,7 +48,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsjob
 #>
 function Update-AzStreamAnalyticsJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -116,22 +116,22 @@ param(
     ${EventsOutOfOrderMaxDelayInSecond},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Adjust", "Drop")]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy]
+    [System.String]
     # Indicates the policy to apply to events that arrive out of order in the input event stream.
     ${EventsOutOfOrderPolicy},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Stop", "Drop")]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy]
+    [System.String]
     # Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
     ${OutputErrorPolicy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -209,6 +209,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -231,9 +240,7 @@ begin {
             UpdateExpanded = 'Az.StreamAnalytics.custom\Update-AzStreamAnalyticsJob';
             UpdateViaIdentityExpanded = 'Az.StreamAnalytics.custom\Update-AzStreamAnalyticsJob';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -247,6 +254,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

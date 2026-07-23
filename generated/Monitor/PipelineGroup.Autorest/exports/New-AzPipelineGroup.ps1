@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-create a pipeline group instance.
+Create a pipeline group instance.
 .Description
-create a pipeline group instance.
+Create a pipeline group instance.
 .Example
 New-AzPipelineGroup -JsonFilePath CreatePipelineGroupBody.json -Name testgroup -ResourceGroupName kubetest -SubscriptionId 00000000-0000-0000-0000-000000000000
 .Example
-New-AzPipelineGroup -Name testgroup -ResourceGroupName kubetest -SubscriptionId 00000000-0000-0000-0000-000000000000 -Location centraluseuap -ExtendedLocationName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/myloc" -ExtendedLocationType CustomLocation -NetworkingConfiguration @() -Replica 1 -Exporter @{name="gigla1"; type="AzureMonitorWorkspaceLogs"; azureMonitorWorkspaceLog=@{api=@{dataCollectionEndpointUrl="https://myexporter.eastus-1.ingest.monitor.azure.com"; dataCollectionRule="dcr-00000000000000000000000000000000"; stream="Custom-MyTableRawData"; schema=@{recordMap=@(@{from="body"; to="Body"},@{from="severity_text"; to="SeverityText"},@{from="time_unix_nano"; to="TimeGenerated"})}}}} -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="myudpreceiveralittlelong26283032"; type="UDP"; udp=@{endpoint="0.0.0.0:5555"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) -ServicePipeline @{name="MyPipeline1"; type="logs"; receiver=@("otlp1", "myudpreceiveralittlelong26283032", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
+New-AzPipelineGroup -Name testgroup -ResourceGroupName kubetest -SubscriptionId 00000000-0000-0000-0000-000000000000 -Location centraluseuap -ExtendedLocationName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/myloc" -ExtendedLocationType CustomLocation -Replica 1 -Exporter @{name="gigla1"; type="AzureMonitorWorkspaceLogs"; azureMonitorWorkspaceLog=@{api=@{dataCollectionEndpointUrl="https://myexporter.eastus-1.ingest.monitor.azure.com"; dataCollectionRule="dcr-00000000000000000000000000000000"; stream="Custom-MyTableRawData"; schema=@{recordMap=@(@{from="body"; to="Body"},@{from="severity_text"; to="SeverityText"},@{from="time_unix_nano"; to="TimeGenerated"})}}}} -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) -ServicePipeline @{name="MyPipeline1"; type="logs"; receiver=@("otlp1", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroup
@@ -31,16 +31,18 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+EXECUTIONPLACEMENTCONSTRAINT <IPlacementConstraint[]>: A list of placement constraints to guide where pipelineGroup instances should run.
+  Capability <String>: The capability or attribute key used to match compute unit properties.
+  Operator <String>: The match operator, e.g., In, NotIn, Exists, DoesNotExist.
+  [Value <List<String>>]: The values to match against. Not required for Exists/DoesNotExist.
+
 EXPORTER <IExporter[]>: The exporters specified for a pipeline group instance.
   Name <String>: The name of exporter.
-  Type <String>: The type of exporter.
   [ApiDataCollectionEndpointUrl <String>]: Data collection endpoint ingestion url.
   [ApiDataCollectionRule <String>]: Data Collection Rule (DCR) immutable id.
   [ApiStream <String>]: Stream name in destination. Azure Monitor stream is related to the destination table.
-  [CacheMaxStorageUsage <Int32?>]: Max storage usage in megabytes.
-  [CacheRetentionPeriod <Int32?>]: Retention period in minutes.
-  [ConcurrencyBatchQueueSize <Int32?>]: Size of the queue for log batches.
-  [ConcurrencyWorkerCount <Int32?>]: Number of parallel workers processing the log queues.
+  [PersistenceMaxStorageUsage <Int32?>]: Max storage usage in gigabytes.
+  [PersistenceRetentionPeriod <Int32?>]: Retention period in minutes.
   [SchemaRecordMap <List<IRecordMap>>]: Record Map.
     From <String>: Record Map Key.
     To <String>: Record Map Value.
@@ -50,36 +52,41 @@ EXPORTER <IExporter[]>: The exporters specified for a pipeline group instance.
   [SchemaScopeMap <List<IScopeMap>>]: A scope map is a logical unit of the application code with which the emitted telemetry can be associated.
     From <String>: Scope Map Key.
     To <String>: Scope Map Value.
-  [TcpUrl <String>]: TCP url to export.
-
-NETWORKINGCONFIGURATION <INetworkingConfiguration[]>: Networking configurations for the pipeline group instance.
-  Route <List<INetworkingRoute>>: Networking routes configuration.
-    Receiver <String>: The name of the previously defined receiver.
-    [Path <String>]: Route path.
-    [Port <Int32?>]: The port that will be configured externally. If not specified, it will use the port from the receiver definition.
-    [Subdomain <String>]: Route subdomain.
-  [Host <String>]: The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
 
 PROCESSOR <IProcessor[]>: The processors specified for a pipeline group instance.
   Name <String>: The name of processor.
+  Type <String>: The type of processor.
   [BatchSize <Int32?>]: Size of the batch.
   [BatchTimeout <Int32?>]: Timeout in milliseconds.
+  [TransformLanguageTransformStatement <String>]: Transform statement to execute over the data passing through the processor.
 
 RECEIVER <IReceiver[]>: The receivers specified for a pipeline group instance.
   Name <String>: The name of receiver.
   Type <String>: The type of receiver.
   [OtlpEndpoint <String>]: OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.
+  [SyslogAllowSkipPriHeader <Boolean?>]: Configure the receiver to allow parsing of messages without the PRI header. Default false.
+  [SyslogAllowedFormat <List<String>>]: List of allowed message formats for syslog/CEF ingestion. Default 'all'.
   [SyslogEndpoint <String>]: Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.
-  [SyslogProtocol <String>]: Protocol to parse syslog messages. Default rfc3164
-  [UdpEncoding <String>]: The encoding of the stream being received.
-  [UdpEndpoint <String>]: TCP endpoint definition. Example: 0.0.0.0:<port>.
-  [UdpReadQueueLength <Int32?>]: Max read queue length.
+  [SyslogTransportProtocol <String>]: Transport protocol. Default tcp.
+  [TlsConfiguration <String>]: Reference to a named TLS configuration. If not specified, default TLS configuration is used.
 
 SERVICEPIPELINE <IPipeline[]>: Pipelines belonging to a given pipeline group.
   Exporter <List<String>>: Reference to exporters configured for the pipeline.
   Name <String>: Name of the pipeline.
   Receiver <List<String>>: Reference to receivers configured for the pipeline.
   [Processor <List<String>>]: Reference to processors configured for the pipeline.
+
+TLSCONFIGURATION <ITlsConfiguration[]>: TLS configurations for the pipeline group instance.
+  Name <String>: The name of the TLS configuration.
+  [CertificateLocation <String>]: Location of the certificate source.
+  [CertificateSubLocation <String>]: Sub-location within the certificate source.
+  [CertificateType <String>]: The type of certificate source.
+  [ClientCaLocation <String>]: Location of the certificate source.
+  [ClientCaSubLocation <String>]: Sub-location within the certificate source.
+  [ClientCaType <String>]: The type of certificate source.
+  [Mode <String>]: The TLS security mode for receivers using this configuration. Default is 'mutualTls'.
+  [PrivateKeyLocation <String>]: Location of the private key source.
+  [PrivateKeySubLocation <String>]: Sub-location within the private key source.
 .Link
 https://learn.microsoft.com/powershell/module/az.monitor/new-azpipelinegroup
 #>
@@ -117,6 +124,20 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
+    [System.Int32]
+    # Maximum number of instances allowed per compute unit (node/VM).
+    # If not specified, default scheduling applies.
+    ${DistributionMaxInstancesPerHost},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint[]]
+    # A list of placement constraints to guide where pipelineGroup instances should run.
+    ${ExecutionPlacementConstraint},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter[]]
@@ -135,13 +156,6 @@ param(
     [System.String]
     # The type of the extended location.
     ${ExtendedLocationType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration[]]
-    # Networking configurations for the pipeline group instance.
-    ${NetworkingConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
@@ -182,6 +196,13 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration[]]
+    # TLS configurations for the pipeline group instance.
+    ${TlsConfiguration},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category('Body')]
@@ -263,6 +284,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -287,8 +316,6 @@ begin {
             CreateViaJsonString = 'Az.PipelineGroup.private\New-AzPipelineGroup_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -302,6 +329,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

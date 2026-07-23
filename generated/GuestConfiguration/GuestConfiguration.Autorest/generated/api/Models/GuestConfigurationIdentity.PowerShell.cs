@@ -108,10 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("GuestConfigurationAssignmentName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName = (string) content.GetValueForProperty("GuestConfigurationAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
@@ -119,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GuestConfigurationAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName = (string) content.GetValueForProperty("GuestConfigurationAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName, global::System.Convert.ToString);
             }
             if (content.Contains("VMName"))
             {
@@ -161,10 +161,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("GuestConfigurationAssignmentName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName = (string) content.GetValueForProperty("GuestConfigurationAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
@@ -172,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GuestConfigurationAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName = (string) content.GetValueForProperty("GuestConfigurationAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentityInternal)this).GuestConfigurationAssignmentName, global::System.Convert.ToString);
             }
             if (content.Contains("VMName"))
             {

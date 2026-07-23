@@ -17,7 +17,7 @@ Gets the copy status of an Azure Storage blob.
 ```
 Get-AzStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForComplete]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForCompl
 ```
 Get-AzStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Get-AzStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <
 ```
 Get-AzStorageBlobCopyState -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-WaitForComplete]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -73,8 +73,8 @@ $destBlob = Start-AzStorageBlobCopy -SrcContainer "contosouploads" -SrcBlob "Con
 $destBlob | Get-AzStorageBlobCopyState
 ```
 
-The first command starts copy blob "ContosoPlanning2015" to "ContosoPlanning2015_copy", and output the destiantion blob object. 
-The second command pipeline the destiantion blob object to Get-AzStorageBlobCopyState, to get blob copy state. 
+The first command starts copy blob "ContosoPlanning2015" to "ContosoPlanning2015_copy", and output the destination blob object. 
+The second command pipeline the destination blob object to Get-AzStorageBlobCopyState, to get blob copy state. 
 
 ## PARAMETERS
 
@@ -202,21 +202,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

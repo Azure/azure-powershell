@@ -39,10 +39,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageName Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageInternal.Name { get => (this._name = this._name ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.UsageName()); set { {_name = value;} } }
 
         /// <summary>Internal Acessors for NameLocalizedValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).LocalizedValue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageInternal.NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).LocalizedValue = value ?? null; }
 
         /// <summary>Internal Acessors for NameValue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageInternal.NameValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).Value = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageInternal.NameValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageNameInternal)Name).Value = value ?? null; }
 
         /// <summary>Internal Acessors for Unit</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageInternal.Unit { get => this._unit; set { {_unit = value;} } }

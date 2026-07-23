@@ -15,15 +15,14 @@ Uploads a local workspace package file to an Azure Synapse workspace.
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSynapseWorkspacePackage -WorkspaceName <String> -Package <String> [-ConcurrentTaskCount <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByObjectParameterSet
 ```
 New-AzSynapseWorkspacePackage -WorkspaceObject <PSSynapseWorkspace> -Package <String>
- [-ConcurrentTaskCount <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConcurrentTaskCount <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +35,7 @@ The **New-AzSynapseWorkspacePackage** uploads a local workspace package file to 
 New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Package ".\ContosoPackage.whl"
 ```
 
-This command uploads the workspace package whose location is ".\ContosoPackage.whl" to an Azure Synapse workspace named ContosoWorkspace. The workspace pacakge can be either wheel or jar files.
+This command uploads the workspace package whose location is ".\ContosoPackage.whl" to an Azure Synapse workspace named ContosoWorkspace. The workspace package can be either wheel or jar files.
 
 ### Example 2: Upload all workspace packages under the current folder
 ```powershell
@@ -51,7 +50,7 @@ $package = New-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Packag
 Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $package
 ```
 
-This first command uploads the workspace package whose location is ".\ContosoPackage.whl" to an Azure Synapse workspace named ContosoWorkspace. The workspace pacakge can be either wheel or jar files. Then the second command addes the package to a given Apache Spark pool named ContotoSparkPool.
+This first command uploads the workspace package whose location is ".\ContosoPackage.whl" to an Azure Synapse workspace named ContosoWorkspace. The workspace package can be either wheel or jar files. Then the second command addes the package to a given Apache Spark pool named ContosoSparkPool.
 
 ## PARAMETERS
 

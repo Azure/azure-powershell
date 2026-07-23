@@ -1,0 +1,47 @@
+{
+  "resourceType": "pipelines",
+  "apiVersion": "2025-05-21",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDataTransferPipeline",
+      "description": "Gets pipeline resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferpipeline"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets pipeline resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.pipelineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

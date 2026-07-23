@@ -16,8 +16,9 @@ Add a new node type to the existing cluster.
 Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capacity <Int32>
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
  [-DurabilityLevel <DurabilityLevel>] [-IsPrimaryNodeType <Boolean>] [-VMImagePublisher <String>]
- [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] -NodeType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] [-Location <String>]
+ -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +111,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the VMSS and its associated storage, networking, and OS resources. If not specified, the location of the resource group will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

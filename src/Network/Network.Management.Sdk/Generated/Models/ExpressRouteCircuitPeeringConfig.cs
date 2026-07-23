@@ -42,7 +42,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="routingRegistryName">The RoutingRegistryName of the configuration.
         /// </param>
-        public ExpressRouteCircuitPeeringConfig(System.Collections.Generic.IList<string> advertisedPublicPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> advertisedCommunities = default(System.Collections.Generic.IList<string>), string advertisedPublicPrefixesState = default(string), int? legacyMode = default(int?), int? customerAsn = default(int?), string routingRegistryName = default(string))
+
+        /// <param name="advertisedPublicPrefixInfo">List of Prefix information required to perform validation.
+        /// </param>
+        public ExpressRouteCircuitPeeringConfig(System.Collections.Generic.IList<string> advertisedPublicPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> advertisedCommunities = default(System.Collections.Generic.IList<string>), string advertisedPublicPrefixesState = default(string), int? legacyMode = default(int?), int? customerAsn = default(int?), string routingRegistryName = default(string), System.Collections.Generic.IList<AdvertisedPublicPrefixProperties> advertisedPublicPrefixInfo = default(System.Collections.Generic.IList<AdvertisedPublicPrefixProperties>))
 
         {
             this.AdvertisedPublicPrefixes = advertisedPublicPrefixes;
@@ -51,6 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.LegacyMode = legacyMode;
             this.CustomerAsn = customerAsn;
             this.RoutingRegistryName = routingRegistryName;
+            this.AdvertisedPublicPrefixInfo = advertisedPublicPrefixInfo;
             CustomInit();
         }
 
@@ -96,5 +100,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "routingRegistryName")]
         public string RoutingRegistryName {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of Prefix information required to perform validation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "advertisedPublicPrefixInfo")]
+        public System.Collections.Generic.IList<AdvertisedPublicPrefixProperties> AdvertisedPublicPrefixInfo {get; set; }
     }
 }

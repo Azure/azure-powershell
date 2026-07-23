@@ -15,7 +15,8 @@ Define Inbound Security Rules Property
 ```
 New-AzVirtualApplianceInboundSecurityRulesProperty -Name <String> -Protocol <String>
  -SourceAddressPrefix <String> [-DestinationPortRange <Int32>] [-DestinationPortRangeList <String[]>]
- -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ Source Address Prefix: *
 Destination Port Range List: "80-120" & "121-124"
 Applies on: publicip1
 
-The rule with above property will configure a corresponding NSG rule and a Load Balancing rule on the SLB attached to the NVA, the LB rule will have the Frontned IP as publicip1
+The rule with above property will configure a corresponding NSG rule and a Load Balancing rule on the SLB attached to the NVA, the LB rule will have the Frontend IP as publicip1
 
 ## PARAMETERS
 

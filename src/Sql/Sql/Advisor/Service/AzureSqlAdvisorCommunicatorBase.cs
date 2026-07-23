@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Base class contructor for Advisor REST API Communicators.
+        /// Base class constructor for Advisor REST API Communicators.
         /// </summary>
         public AzureSqlAdvisorCommunicatorBase(IAzureContext context)
         {

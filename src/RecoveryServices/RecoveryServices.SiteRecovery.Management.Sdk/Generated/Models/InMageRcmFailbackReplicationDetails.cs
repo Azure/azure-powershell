@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="initialReplicationProgressHealth">The initial replication progress health.
-        /// Possible values include: 'None', 'InProgress', 'SlowProgress', 'NoProgress'</param>
+        /// Possible values include: &#39;None&#39;, &#39;InProgress&#39;, &#39;SlowProgress&#39;, &#39;NoProgress&#39;</param>
 
         /// <param name="resyncProgressPercentage">The resync progress percentage.
         /// </param>
@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="resyncProgressHealth">The resync progress health.
-        /// Possible values include: 'None', 'InProgress', 'SlowProgress', 'NoProgress'</param>
+        /// Possible values include: &#39;None&#39;, &#39;InProgress&#39;, &#39;SlowProgress&#39;, &#39;NoProgress&#39;</param>
 
         /// <param name="resyncRequired">A value indicating whether resync is required.
         /// </param>
 
         /// <param name="resyncState">The resync state.
-        /// Possible values include: 'None', 'PreparedForResynchronization',
-        /// 'StartedResynchronization'</param>
+        /// Possible values include: &#39;None&#39;, &#39;PreparedForResynchronization&#39;,
+        /// &#39;StartedResynchronization&#39;</param>
 
         /// <param name="protectedDisks">The list of protected disks.
         /// </param>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="lastPlannedFailoverStatus">The last planned failover status.
-        /// Possible values include: 'Succeeded', 'Failed', 'Cancelled', 'Unknown'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Cancelled&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="discoveredVMDetails">The discovered VM information.
         /// </param>

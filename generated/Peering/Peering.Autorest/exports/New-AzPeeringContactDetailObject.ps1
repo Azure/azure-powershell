@@ -23,12 +23,12 @@ Create an in-memory object for ContactDetail.
 New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail
 .Link
-https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringContactDetailObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringcontactdetailobject
 #>
 function New-AzPeeringContactDetailObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -44,9 +44,9 @@ param(
     ${Phone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Role])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Noc", "Policy", "Technical", "Service", "Escalation", "Other")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Role]
+    [System.String]
     # The role of the contact.
     ${Role}
 )
@@ -58,6 +58,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -86,6 +89,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

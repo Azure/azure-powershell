@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="targetVMSecurityType">The target VM security type.
-        /// Possible values include: 'None', 'TrustedLaunch', 'ConfidentialVM'</param>
+        /// Possible values include: &#39;None&#39;, &#39;TrustedLaunch&#39;, &#39;ConfidentialVM&#39;</param>
 
         /// <param name="isTargetVMSecureBootEnabled">A value indicating whether secure boot to be enabled.
         /// </param>

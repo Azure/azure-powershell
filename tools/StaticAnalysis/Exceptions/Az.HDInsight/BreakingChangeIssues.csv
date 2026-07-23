@@ -1,2 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.HDInsight","Microsoft.Azure.Commands.HDInsight.UpdateAzureHDInsightClusterCommand","Update-AzHDInsightCluster","0","2020","The cmdlet 'Update-AzHDInsightCluster' no longer supports the type 'System.String' for parameter 'IdentityId'.","Change the type for parameter 'IdentityId' back to 'System.String'."

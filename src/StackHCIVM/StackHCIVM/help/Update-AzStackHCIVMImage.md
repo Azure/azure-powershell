@@ -47,7 +47,7 @@ Name            ResourceGroupName
 testImage      test-rg
 ```
 
-This command updates an exisiting image in the specified resource group.
+This command updates an existing image in the specified resource group.
 
 ## PARAMETERS
 

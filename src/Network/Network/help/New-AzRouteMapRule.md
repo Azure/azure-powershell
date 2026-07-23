@@ -14,8 +14,8 @@ Create a route map rule.
 
 ```
 New-AzRouteMapRule [-MatchCriteria <PSRouteMapRuleCriterion[]>] -RouteMapRuleAction <PSRouteMapRuleAction[]>
- -NextStepIfMatched <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -NextStepIfMatched <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

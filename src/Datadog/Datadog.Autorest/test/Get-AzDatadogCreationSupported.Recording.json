@@ -1,0 +1,49 @@
+{
+  "Get-AzDatadogCreationSupported+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Microsoft.Datadog/subscriptionStatuses/default?api-version=2025-06-11\u0026datadogOrganizationId=ddorgjitrd8+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Microsoft.Datadog/subscriptionStatuses/default?api-version=2025-06-11\u0026datadogOrganizationId=ddorgjitrd8",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "fb8ee598-0dbe-4138-9754-de8edd3e75ef" ],
+        "CommandName": [ "Get-AzDatadogCreationSupported" ],
+        "FullCommandName": [ "Get-AzDatadogCreationSupported_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Datadog/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=88551f9d-e011-4f80-8154-fa258dcd4ccb/eastus2euap/8f06e15d-ffb1-4e2f-b843-099d8295d3c6" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "mise-correlation-id": [ "1aa34f0d-5121-4353-bcfb-008ccd8784ff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f69fa7cc-fcb0-4125-83a3-5904463fada5" ],
+        "x-ms-correlation-request-id": [ "8d26f1a3-8f2c-417e-9981-f84d37dbfe54" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251108T170505Z:8d26f1a3-8f2c-417e-9981-f84d37dbfe54" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EF50555A33F7472787DDC289E876B0C9 Ref B: MAA201060515021 Ref C: 2025-11-08T17:05:04Z" ],
+        "Date": [ "Sat, 08 Nov 2025 17:05:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "87" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\",\"creationSupported\":true}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -54,7 +54,7 @@ southcentralus pwshdp01 10/13/2023 11:22:54 AM user1@microsoft.com User         
 
 Get data product resource by data product name.
 
-### Example 2: List all data product resource for a resoure group.
+### Example 2: List all data product resource for a resource group.
 ```powershell
 $GetDataProductsForRG = Get-AzNetworkAnalyticsDataProduct -ResourceGroupName "ResourceGroupName"
 
@@ -70,7 +70,7 @@ dpinstance3  powershell-test    westus      Succeeded         MCC     2.0.0     
 dpinstance4  powershell-test    uksouth     Succeeded         MCC     2.0.0        Microsoft user3@microsoft.com
 ```
 
-List all data product resource for a resoure group.
+List all data product resource for a resource group.
 
 ### Example 3: List all data product resource for a subscription.
 ```powershell

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="keyName">key name to generate (Key1|Key2)
-        /// Possible values include: 'Key1', 'Key2'</param>
+        /// Possible values include: &#39;Key1&#39;, &#39;Key2&#39;</param>
         public RegenerateKeyParameters(KeyName keyName)
 
         {

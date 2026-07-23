@@ -8,18 +8,40 @@ schema: 2.0.0
 # New-AzSpringCloudConfigurationService
 
 ## SYNOPSIS
-Create the default Application Configuration Service or update the existing Application Configuration Service.
+create the default Application Configuration Service or create the existing Application Configuration Service.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentitySpringExpanded
+```
+New-AzSpringCloudConfigurationService -SpringInputObject <ISpringCloudIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create the default Application Configuration Service or update the existing Application Configuration Service.
+create the default Application Configuration Service or create the existing Application Configuration Service.
 
 ## EXAMPLES
 
@@ -29,10 +51,9 @@ New-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -S
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
 ----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 7:46:06        *********@microso…
+default 2022/7/13 3:26:33   tester@microsoft.com    User                    2022/7/13 7:46:06        tester@microsoft.com
 ```
 
 Create the default Application Configuration Service or update the existing Application Configuration Service.
@@ -72,14 +93,43 @@ Accept wildcard characters: False
 
 ### -GitRepository
 Repositories of Application Configuration Service git property.
-To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceGitRepository[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceGitRepository[]
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,7 +157,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -122,7 +172,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -132,13 +182,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -184,9 +249,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceResource
 
 ## NOTES
 

@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportResourceGroupBicep()
+        {
+            TestRunner.RunTestScript("Test-ExportResourceGroupBicep");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportResourceGroupAsyncRoute()
         {
             TestRunner.RunTestScript("Test-ExportResourceGroup-AsyncRoute");
@@ -100,6 +107,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestResourceGroupWithPositionalParams()
         {
             TestRunner.RunTestScript("Test-ResourceGroupWithPositionalParams");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceGroupWithCreatedTimeAndChangedTime()
+        {
+            TestRunner.RunTestScript("Test-GetResourceGroupWithCreatedTimeAndChangedTime");
         }
 
         [Fact(Skip = "TODO: Fix the broken test.")]

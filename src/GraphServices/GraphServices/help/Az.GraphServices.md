@@ -15,11 +15,11 @@ Microsoft Azure PowerShell: GraphServices cmdlets
 Returns account resource for a given name.
 
 ### [New-AzGraphServicesAccount](New-AzGraphServicesAccount.md)
-Create or update account resource.
+create account resource.
 
 ### [Remove-AzGraphServicesAccount](Remove-AzGraphServicesAccount.md)
 Deletes a account resource.
 
 ### [Update-AzGraphServicesAccount](Update-AzGraphServicesAccount.md)
-Update account details.
+update account details.
 

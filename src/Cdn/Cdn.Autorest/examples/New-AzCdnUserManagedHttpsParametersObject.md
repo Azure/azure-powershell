@@ -1,12 +1,12 @@
-### Example 1: Create an in-memory object for UserManagedHttpsParameters
+### Example 1: Create an in-memory object for UrlRedirectAction
 ```powershell
-New-AzCdnUserManagedHttpsParametersObject -CertificateSource certSource -CertificateSourceParameterResourceGroupName rgName -CertificateSourceParameterSecretName secretName -CertificateSourceParameterSubscriptionId subId -CertificateSourceParameterVaultName kvName -ProtocolType typeTest
+New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 ```
 
 ```output
-CertificateSource MinimumTlsVersion ProtocolType
------------------ ----------------- ------------
-certSource                          typeTest
+Name
+----
+rule01
 ```
 
-Create an in-memory object for UserManagedHttpsParameters
+Create an in-memory object for UrlRedirectAction

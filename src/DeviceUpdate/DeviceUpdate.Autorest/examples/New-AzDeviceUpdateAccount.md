@@ -1,6 +1,6 @@
 ### Example 1: Creates or updates Account.
 ```powershell
-New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -EnableSystemAssignedIdentity:$true -PublicNetworkAccess 'Enabled' -Sku 'Standard'
 ```
 
 ```output

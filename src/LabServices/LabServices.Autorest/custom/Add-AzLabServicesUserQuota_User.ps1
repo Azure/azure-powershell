@@ -19,16 +19,17 @@ API to add additional user quota.
 API to add additional user quota.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
 #>
 function Add-AzLabServicesUserQuota_User {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+        # The object of lab service user.
         ${User},
    
         [Parameter(Mandatory)]

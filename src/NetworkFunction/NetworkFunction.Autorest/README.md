@@ -35,13 +35,6 @@ input-file:
 module-version: 0.1.0
 title: NetworkFunction
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -49,17 +42,21 @@ directive:
     set:
       subject: TrafficCollector$1
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Update(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^Create(?!.*?(Expanded|JsonFilePath|JsonString))
     hide: true
+  # Remove the set-* cmdlet
+  - where:
+      verb: Set
+    remove: true
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^(AzureTrafficCollectors)(.+)(_List)$/, "$1$3$2")
   - where:
       subject: (.)*(Operation)$
-    hide: true
-  - where:
-      verb: Set
-    hide: true
+    remove: true
   - where:
       verb: New
       subject: ^CollectorPolicy(.*)

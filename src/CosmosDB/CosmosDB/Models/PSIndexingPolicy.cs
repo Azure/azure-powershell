@@ -77,6 +77,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     SpatialIndexes.Add(new PSSpatialSpec(spatialSpec));
                 }
             }
+
+            if (ModelHelper.IsNotNullOrEmpty(indexingPolicy.VectorIndexes))
+            {
+                VectorIndexes = new List<PSVectorIndex>();
+                foreach (VectorIndex vectorIndex in indexingPolicy.VectorIndexes)
+                {
+                    VectorIndexes.Add(new PSVectorIndex(vectorIndex));
+                }
+            }
         }
 
         //
@@ -104,6 +113,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets list of spatial specifics
         public IList<PSSpatialSpec> SpatialIndexes { get; set; }
+        //
+        // Summary:
+        //     Gets or sets list of vector indexes
+        public IList<PSVectorIndex> VectorIndexes { get; set; }
 
         public static IndexingPolicy ToSDKModel(PSIndexingPolicy pSIndexingPolicy)
         {
@@ -168,6 +181,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     spatialIndexes.Add(PSSpatialSpec.ToSDKModel(pSSpatialSpec));
                 }
                 indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
+            }
+
+            if (ModelHelper.IsNotNullOrEmpty(pSIndexingPolicy.VectorIndexes))
+            {
+                IList<VectorIndex> vectorIndexes = new List<VectorIndex>();
+                foreach (PSVectorIndex pSVectorIndex in pSIndexingPolicy.VectorIndexes)
+                {
+                    vectorIndexes.Add(PSVectorIndex.ToSDKModel(pSVectorIndex));
+                }
+                indexingPolicy.VectorIndexes = new List<VectorIndex>(vectorIndexes);
             }
 
             return indexingPolicy;

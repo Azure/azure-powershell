@@ -171,12 +171,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Page count
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Number of alerts to be fetched in a page.")]
+            ParameterSetName = AlertsListByFilterParameterSet,
+            HelpMessage = "Number of alerts to be fetched in a page.")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
-                   HelpMessage = "Number of alerts to be fetched in a page.")]
-        public int PageCount { get; set; }
+            ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
+            HelpMessage = "Number of alerts to be fetched in a page.")]
+        public int PageCount { get; set; } = 25;
 
         /// <summary>
         /// Alert property to use while sorting

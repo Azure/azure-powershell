@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// taken.
         /// </param>
 
+        /// <param name="trafficManagementProfile">A reference to an azure traffic manager profile resource from where the dns
+        /// resource value is taken.
+        /// </param>
+
         /// <param name="aRecords">The list of A records in the record set.
         /// </param>
 
@@ -78,7 +82,7 @@ namespace Microsoft.Azure.Management.Dns.Models
 
         /// <param name="naptrRecords">The list of NAPTR records in the record set.
         /// </param>
-        public RecordSetProperties(System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), long? ttl = default(long?), string fqdn = default(string), string provisioningState = default(string), SubResource targetResource = default(SubResource), System.Collections.Generic.IList<ARecord> aRecords = default(System.Collections.Generic.IList<ARecord>), System.Collections.Generic.IList<AaaaRecord> aaaaRecords = default(System.Collections.Generic.IList<AaaaRecord>), System.Collections.Generic.IList<MxRecord> mxRecords = default(System.Collections.Generic.IList<MxRecord>), System.Collections.Generic.IList<NsRecord> nsRecords = default(System.Collections.Generic.IList<NsRecord>), System.Collections.Generic.IList<PtrRecord> ptrRecords = default(System.Collections.Generic.IList<PtrRecord>), System.Collections.Generic.IList<SrvRecord> srvRecords = default(System.Collections.Generic.IList<SrvRecord>), System.Collections.Generic.IList<TxtRecord> txtRecords = default(System.Collections.Generic.IList<TxtRecord>), CnameRecord cnameRecord = default(CnameRecord), SoaRecord soaRecord = default(SoaRecord), System.Collections.Generic.IList<CaaRecord> caaRecords = default(System.Collections.Generic.IList<CaaRecord>), System.Collections.Generic.IList<DsRecord> dsRecords = default(System.Collections.Generic.IList<DsRecord>), System.Collections.Generic.IList<TlsaRecord> tlsaRecords = default(System.Collections.Generic.IList<TlsaRecord>), System.Collections.Generic.IList<NaptrRecord> naptrRecords = default(System.Collections.Generic.IList<NaptrRecord>))
+        public RecordSetProperties(System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), long? ttl = default(long?), string fqdn = default(string), string provisioningState = default(string), SubResource targetResource = default(SubResource), SubResource trafficManagementProfile = default(SubResource), System.Collections.Generic.IList<ARecord> aRecords = default(System.Collections.Generic.IList<ARecord>), System.Collections.Generic.IList<AaaaRecord> aaaaRecords = default(System.Collections.Generic.IList<AaaaRecord>), System.Collections.Generic.IList<MxRecord> mxRecords = default(System.Collections.Generic.IList<MxRecord>), System.Collections.Generic.IList<NsRecord> nsRecords = default(System.Collections.Generic.IList<NsRecord>), System.Collections.Generic.IList<PtrRecord> ptrRecords = default(System.Collections.Generic.IList<PtrRecord>), System.Collections.Generic.IList<SrvRecord> srvRecords = default(System.Collections.Generic.IList<SrvRecord>), System.Collections.Generic.IList<TxtRecord> txtRecords = default(System.Collections.Generic.IList<TxtRecord>), CnameRecord cnameRecord = default(CnameRecord), SoaRecord soaRecord = default(SoaRecord), System.Collections.Generic.IList<CaaRecord> caaRecords = default(System.Collections.Generic.IList<CaaRecord>), System.Collections.Generic.IList<DsRecord> dsRecords = default(System.Collections.Generic.IList<DsRecord>), System.Collections.Generic.IList<TlsaRecord> tlsaRecords = default(System.Collections.Generic.IList<TlsaRecord>), System.Collections.Generic.IList<NaptrRecord> naptrRecords = default(System.Collections.Generic.IList<NaptrRecord>))
 
         {
             this.Metadata = metadata;
@@ -86,6 +90,7 @@ namespace Microsoft.Azure.Management.Dns.Models
             this.Fqdn = fqdn;
             this.ProvisioningState = provisioningState;
             this.TargetResource = targetResource;
+            this.TrafficManagementProfile = trafficManagementProfile;
             this.ARecords = aRecords;
             this.AaaaRecords = aaaaRecords;
             this.MxRecords = mxRecords;
@@ -138,6 +143,13 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetResource")]
         public SubResource TargetResource {get; set; }
+
+        /// <summary>
+        /// Gets or sets a reference to an azure traffic manager profile resource from
+        /// where the dns resource value is taken.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "trafficManagementProfile")]
+        public SubResource TrafficManagementProfile {get; set; }
 
         /// <summary>
         /// Gets or sets the list of A records in the record set.

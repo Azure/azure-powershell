@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             catch (RestException)
             {
-                //worksace not found - use New-AzOperationalInsightsWorkspace command instead
+                //workspace not found - use New-AzOperationalInsightsWorkspace command instead
                 throw new PSArgumentException($"Workspace {parameters?.WorkspaceName} under resourceGroup {parameters?.ResourceGroupName} was not found, please use New-AzOperationalInsightsWorkspace.");
             }
 
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             var existingIp = GetIntelligencePackList(resourceGroupName, workspaceName).FirstOrDefault(ip => ip.Name.Equals(intelligencePackName));
             if (existingIp == null || existingIp == default(PSIntelligencePack))
             {
-                throw new PSArgumentException($"Intelligence Pack {intelligencePackName} under resourceGroup {resourceGroupName} worspace:{workspaceName} does not exist");
+                throw new PSArgumentException($"Intelligence Pack {intelligencePackName} under resourceGroup {resourceGroupName} workspace:{workspaceName} does not exist");
             }
 
             existingIp.Enabled = enabled;

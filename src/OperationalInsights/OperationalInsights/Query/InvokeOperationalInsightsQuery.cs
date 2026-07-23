@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
             }
             else if (ParameterSetName == ParamSetNameByWorkspaceObject)
             {
-                // This seems like a weird mapping, but rest assurured, CustomerId is what we want here
+                // This seems like a weird mapping, but rest assured, CustomerId is what we want here
                 OperationalInsightsDataClient.WorkspaceId = Workspace.CustomerId.ToString();
             }
 

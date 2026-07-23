@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string BlobPipelineParameterSet = "BlobPipeline";
 
         /// <summary>
-        /// Container pipeline paremeter set name
+        /// Container pipeline parameter set name
         /// </summary>
         private const string ContainerPipelineParmeterSet = "ContainerPipeline";
 
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 case BlobPipelineParameterSet:
                     if (CloudBlob is InvalidCloudBlob)
                     {
-                        throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                        throw new InvalidOperationException("This cmdlet is not supported on a blob version.");
                     }
                     CloudBlob localBlob = CloudBlob;
                     taskGenerator = (taskId) => StopCopyBlob(taskId, localChannel, localBlob, copyId, true);

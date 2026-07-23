@@ -17,7 +17,7 @@ Creates a Storage blob container
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-RootSquash <String>]
  [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountNameEncryptionScope
@@ -25,7 +25,7 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
  [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
  [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-Pub
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
  -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
  [-RootSquash <String>] [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +87,7 @@ $c.DenyEncryptionScopeOverride
 True
 ```
 
-This command creates a storage container with a defalt encryptionScope, and blocks override of encryption scope from the container default.
+This command creates a storage container with a default encryptionScope, and blocks override of encryption scope from the container default.
 Then show the related container properties.
 
 ### Example 4: Create an Azure storage container with RootSquash
@@ -95,7 +95,7 @@ Then show the related container properties.
 
 
 ```
-$container = New-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
+$container = New-AzRmStorageContainer -ResourceGroupName "myrsourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
 
 $container.EnableNfsV3AllSquash
 True
@@ -210,21 +210,6 @@ Parameter Sets: AccountNameEncryptionScope, AccountObjectEncryptionScope
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

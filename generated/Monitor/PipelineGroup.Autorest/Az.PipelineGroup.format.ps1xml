@@ -2,97 +2,39 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspace#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>AzureMonitorWorkspaceName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Etag</Label>
+            <Label>PipelineGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Etag</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
           <TableColumnHeader>
-            <Label>NextLink</Label>
+            <Label>SubscriptionId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
+                <PropertyName>AzureMonitorWorkspaceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PipelineGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -134,62 +76,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AccountId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicNetworkAccess</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AccountId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublicNetworkAccess</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceUpdateTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceUpdateTags#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesExtendedLocation</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesExtendedLocation#Multiple</TypeName>
@@ -205,6 +91,86 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -240,27 +206,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CertificateSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfiguration#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CertificateSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>MaxStorageUsage</Label>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>RetentionPeriod</Label>
+            <Label>SubLocation</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>MaxStorageUsage</PropertyName>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>RetentionPeriod</PropertyName>
+                <PropertyName>SubLocation</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -268,27 +234,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.DistributionPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfiguration#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.DistributionPolicy#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>BatchQueueSize</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>WorkerCount</Label>
+            <Label>MaxInstancesPerHost</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>BatchQueueSize</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>WorkerCount</PropertyName>
+                <PropertyName>MaxInstancesPerHost</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -352,123 +312,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IngestionSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IngestionSettings#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DataCollectionEndpointResourceId</Label>
+            <Label>MaxStorageUsage</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DataCollectionRuleResourceId</Label>
+            <Label>RetentionPeriod</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>DataCollectionEndpointResourceId</PropertyName>
+                <PropertyName>MaxStorageUsage</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DataCollectionRuleResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Metrics</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Metrics#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>InternalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrometheusQueryEndpoint</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>InternalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrometheusQueryEndpoint</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingConfiguration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingConfiguration#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ExternalNetworkingMode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Host</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ExternalNetworkingMode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Host</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingRoute</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingRoute#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Path</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Port</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Receiver</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Subdomain</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Path</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Port</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Receiver</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Subdomain</PropertyName>
+                <PropertyName>RetentionPeriod</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -622,6 +486,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PersistenceConfigurationsUpdate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PersistenceConfigurationsUpdate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PersistentVolumeName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PersistentVolumeName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Pipeline</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Pipeline#Multiple</TypeName>
@@ -714,46 +600,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupIdentity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupIdentity#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AzureMonitorWorkspaceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PipelineGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AzureMonitorWorkspaceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PipelineGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupListResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupListResult#Multiple</TypeName>
@@ -804,9 +650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupPropertiesUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupPropertiesUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -826,31 +672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateTags#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateEndpointConnection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateEndpointConnection#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -906,21 +730,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PlacementConstraint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateEndpointConnectionProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PlacementConstraint#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ProvisioningState</Label>
+            <Label>Capability</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operator</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
+                <PropertyName>Capability</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operator</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -928,33 +758,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateKeySource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateLinkServiceConnectionState#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PrivateKeySource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ActionsRequired</Label>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
+            <Label>SubLocation</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ActionsRequired</PropertyName>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
+                <PropertyName>SubLocation</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -993,12 +817,18 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TlsConfiguration</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TlsConfiguration</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1119,20 +949,26 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>AllowSkipPriHeader</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Endpoint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Protocol</Label>
+            <Label>TransportProtocol</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>AllowSkipPriHeader</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Endpoint</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Protocol</PropertyName>
+                <PropertyName>TransportProtocol</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1192,21 +1028,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TcpExporter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TlsConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TcpExporter#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TlsConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Url</Label>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Url</PropertyName>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1300,33 +1142,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiver</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TransformLanguageProcessor</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiver#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TransformLanguageProcessor#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Encoding</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Endpoint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ReadQueueLength</Label>
+            <Label>TransformStatement</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Encoding</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Endpoint</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ReadQueueLength</PropertyName>
+                <PropertyName>TransformStatement</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

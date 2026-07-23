@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.EdgeOrder.private.dll'
   FormatsToProcess = './Az.EdgeOrder.format.ps1xml'
-  FunctionsToExport = 'Get-AzEdgeOrder', 'Get-AzEdgeOrderAddress', 'Get-AzEdgeOrderConfiguration', 'Get-AzEdgeOrderItem', 'Get-AzEdgeOrderProductFamily', 'Get-AzEdgeOrderProductFamilyMetadata', 'Invoke-AzEdgeOrderItemCancellation', 'Invoke-AzEdgeOrderReturnOrderItem', 'New-AzEdgeOrderAddress', 'New-AzEdgeOrderContactDetailsObject', 'New-AzEdgeOrderFilterablePropertyObject', 'New-AzEdgeOrderHierarchyInformationObject', 'New-AzEdgeOrderItem', 'New-AzEdgeOrderOrderItemDetailsObject', 'New-AzEdgeOrderPreferencesObject', 'New-AzEdgeOrderShippingAddressObject', 'Remove-AzEdgeOrderAddress', 'Remove-AzEdgeOrderItem', 'Update-AzEdgeOrderAddress', 'Update-AzEdgeOrderItem', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzEdgeOrder', 'Get-AzEdgeOrderAddress', 'Get-AzEdgeOrderConfiguration', 'Get-AzEdgeOrderItem', 'Get-AzEdgeOrderProductFamily', 'Get-AzEdgeOrderProductFamilyMetadata', 'Invoke-AzEdgeOrderItemCancellation', 'Invoke-AzEdgeOrderReturnOrderItem', 'New-AzEdgeOrderAddress', 'New-AzEdgeOrderContactDetailsObject', 'New-AzEdgeOrderFilterablePropertyObject', 'New-AzEdgeOrderHierarchyInformationObject', 'New-AzEdgeOrderItem', 'New-AzEdgeOrderOrderItemDetailsObject', 'New-AzEdgeOrderPreferencesObject', 'New-AzEdgeOrderShippingAddressObject', 'Remove-AzEdgeOrderAddress', 'Remove-AzEdgeOrderItem', 'Update-AzEdgeOrderAddress', 'Update-AzEdgeOrderItem'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'EdgeOrder'

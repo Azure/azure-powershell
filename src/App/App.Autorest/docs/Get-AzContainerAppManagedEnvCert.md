@@ -69,7 +69,7 @@ Get the specified Certificate by name.
 ### Example 3: Get the specified Certificate.
 ```powershell
 $managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
-Get-AzContainerAppManagGet-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert
+Get-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert
 ```
 
 ```output

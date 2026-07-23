@@ -15,7 +15,8 @@ Gets usage statistics of an ExpressRoute circuit.
 
 ```
 Get-AzExpressRouteCircuitStat -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

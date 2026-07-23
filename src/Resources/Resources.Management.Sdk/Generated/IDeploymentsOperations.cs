@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Exports the template used for specified deployment.
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> ValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> ValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -1368,7 +1368,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtScopeWithHttpMessagesAsync(string scope, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A template deployment that is currently running cannot be deleted. Deleting
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtTenantScopeWithHttpMessagesAsync(string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -1589,7 +1589,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(string groupId, string deploymentName, ScopedDeployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -1712,7 +1712,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the
@@ -1846,7 +1846,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeploymentValidateResult>> BeginValidateWithHttpMessagesAsync(string resourceGroupName, string deploymentName, Deployment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns changes that will be made by the deployment if executed at the

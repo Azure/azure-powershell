@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ComputeIdentity"
         /// />.
         /// </summary>
@@ -118,10 +126,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             if (content.Contains("InstanceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("OperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -196,10 +200,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
             }
-            if (content.Contains("OperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -244,6 +244,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(ComputeIdentityTypeConverter))]
     public partial interface IComputeIdentity

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Resource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -101,11 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            }
+            __proxyResource?.ToJson(container, serializationMode);
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

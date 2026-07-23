@@ -19,6 +19,40 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+
+* Upgraded API version from 2024-06-01 to 2026-04-01
+    - Added support for Description field for Key Values and Snapshots
+
+## Version 2.1.0
+* Upgraded API version from 2022-05-01 to 2024-06-01
+* Added support for App Configuration store replicas
+    - Added `New-AzAppConfigurationReplica`
+    - Added `Get-AzAppConfigurationReplica`
+    - Added `Remove-AzAppConfigurationReplica`
+* Added `DataPlaneProxyAuthenticationMode`, `DataPlaneProxyPrivateLinkDelegation`, and `DefaultKeyValueRevisionRetentionPeriodInSecond` to `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
+* Removed `SoftDeleteRetentionInDay` from `Update-AzAppConfigurationStore` as it is a create-only property
+* Added data plane snapshot cmdlets for Azure App Configuration
+    - Added `New-AzAppConfigurationSnapshot`
+    - Added `Get-AzAppConfigurationSnapshot`
+    - Added `Update-AzAppConfigurationSnapshot`
+    - Added `Test-AzAppConfigurationSnapshot`
+* Added `Snapshot` to `Get-AzAppConfigurationKeyValue` to support retrieving key-values by snapshot name
+* Added `Get-AzAppConfigurationOperationDetail` to retrieve data plane operation details
+
+## Version 2.0.1
+* Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
+    - Fixed `NextLink` property to give absolute URI, allowing subsequent pages of results to be retrieved.
+
+## Version 2.0.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+## Version 1.4.1
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Get-AzAppConfigurationStore`
+  * `New-AzAppConfigurationStore`
+  * `Update-AzAppConfigurationStore`
+
 ## Version 1.4.0
 * Upgraded nuget package to signed package.
 

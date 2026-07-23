@@ -8,18 +8,40 @@ schema: 2.0.0
 # New-AzContainerRegistryScopeMap
 
 ## SYNOPSIS
-Creates a scope map for a container registry with the specified parameters.
+Create a scope map for a container registry with the specified parameters.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzContainerRegistryScopeMap -Name <String> -RegistryName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Action <String[]>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzContainerRegistryScopeMap -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerRegistryScopeMap -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityRegistryExpanded
+```
+New-AzContainerRegistryScopeMap -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ [-Action <String[]>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a scope map for a container registry with the specified parameters.
+Create a scope map for a container registry with the specified parameters.
 
 ## EXAMPLES
 
@@ -45,7 +67,7 @@ repositories/repository-name/content/read,repositories/repository-name/metadata/
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -91,10 +113,40 @@ The user friendly description of the scope map.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,12 +183,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: CreateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -152,7 +219,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -168,7 +235,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -214,9 +281,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IScopeMap
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IScopeMap
 
 ## NOTES
 

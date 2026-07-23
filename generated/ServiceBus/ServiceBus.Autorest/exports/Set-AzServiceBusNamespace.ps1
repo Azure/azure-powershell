@@ -46,17 +46,22 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: Replica locations for geo data replication. Pass an array of NamespaceReplicaLocation objects.
+  [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+  [RoleType <String>]: GeoDR Role Types
+
 INPUTOBJECT <IServiceBusIdentity>: Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be $default.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [QueueName <String>]: The queue name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleName <String>]: The rule name.
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 
@@ -169,6 +174,28 @@ param(
     ${Tag},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int64]
+    # The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+    # When the lag exceeds the configured amount, operations on the primary replica will be failed.
+    # The allowed values are 0 and 5 minutes to 1 day.
+    ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+    # Replica locations for geo data replication.
+    # Pass an array of NamespaceReplicaLocation objects.
+    ${GeoDataReplicationLocation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
+    ${IPAddressType},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
@@ -235,6 +262,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -258,8 +293,6 @@ begin {
             SetViaIdentityExpanded = 'Az.ServiceBus.custom\Set-AzServiceBusNamespace';
         }
         if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -273,6 +306,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

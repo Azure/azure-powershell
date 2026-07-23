@@ -8,20 +8,20 @@ schema: 2.0.0
 # New-AzPeering
 
 ## SYNOPSIS
-Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
+create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 
 ## SYNTAX
 
 ```
-New-AzPeering -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind>
+New-AzPeering -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String>
  -Location <String> [-DirectConnection <IDirectConnection[]>] [-DirectPeerAsnId <String>]
- [-DirectPeeringType <DirectPeeringType>] [-ExchangeConnection <IExchangeConnection[]>]
- [-ExchangePeerAsnId <String>] [-PeeringLocation <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DirectPeeringType <String>] [-ExchangeConnection <IExchangeConnection[]>] [-ExchangePeerAsnId <String>]
+ [-PeeringLocation <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
+create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 
 ## EXAMPLES
 
@@ -61,10 +61,9 @@ Accept wildcard characters: False
 
 ### -DirectConnection
 The set of connections that constitute a direct peering.
-To construct, see NOTES section for DIRECTCONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IDirectConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IDirectConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 The type of direct peering.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,10 +106,9 @@ Accept wildcard characters: False
 
 ### -ExchangeConnection
 The set of connections that constitute an exchange peering.
-To construct, see NOTES section for EXCHANGECONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IExchangeConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +138,7 @@ Accept wildcard characters: False
 The kind of the peering.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Kind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +292,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 
 ## NOTES
 

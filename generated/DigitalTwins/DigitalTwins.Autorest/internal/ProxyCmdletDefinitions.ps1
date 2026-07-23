@@ -25,12 +25,12 @@ Lists all of the available DigitalTwins service REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsoperation
 #>
 function Get-AzDigitalTwinsOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.DigitalTwins.private\Get-AzDigitalTwinsOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -126,36 +132,41 @@ end {
 
 <#
 .Synopsis
-Create or update DigitalTwinsInstance endpoint.
+Create DigitalTwinsInstance endpoint.
 .Description
-Create or update DigitalTwinsInstance endpoint.
+Create DigitalTwinsInstance endpoint.
 .Example
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -connectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
+New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
 .Example
 New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
 .Example
 New-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
+
 ENDPOINTDESCRIPTION <IDigitalTwinsEndpointResource>: DigitalTwinsInstance endpoint resource.
-  EndpointType <EndpointType>: The type of Digital Twins endpoint
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [AuthenticationType <AuthenticationType?>]: Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
+  EndpointType <String>: The type of Digital Twins endpoint
+  [AuthenticationType <String>]: Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
   [DeadLetterSecret <String>]: Dead letter storage secret for key-based authentication. Will be obfuscated during read.
   [DeadLetterUri <String>]: Dead letter storage URL for identity-based authentication.
 
@@ -173,11 +184,15 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
 #>
 function New-AzDigitalTwinsEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstance', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # Name of Endpoint Resource.
@@ -185,6 +200,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # The name of the resource group that contains the DigitalTwinsInstance.
@@ -192,6 +209,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # The name of the DigitalTwinsInstance.
@@ -199,6 +218,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -206,34 +227,39 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${DigitalTwinsInstanceInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource]
     # DigitalTwinsInstance endpoint resource.
-    # To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a hash table.
     ${EndpointDescription},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType])]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("EventHub", "EventGrid", "ServiceBus")]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType]
+    [System.String]
     # The type of Digital Twins endpoint
     ${EndpointType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType])]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("KeyBased", "IdentityBased")]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType]
+    [System.String]
     # Specifies the authentication type being used for connecting to the endpoint.
     # Defaults to 'KeyBased'.
     # If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string).
@@ -241,7 +267,7 @@ param(
     ${AuthenticationType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
     [System.String]
     # Dead letter storage secret for key-based authentication.
@@ -249,11 +275,23 @@ param(
     ${DeadLetterSecret},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
     [System.String]
     # Dead letter storage URL for identity-based authentication.
     ${DeadLetterUri},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -323,16 +361,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_Create';
             CreateExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateExpanded';
             CreateViaIdentity = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateViaIdentityExpanded';
+            CreateViaIdentityDigitalTwinsInstance = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateViaIdentityDigitalTwinsInstance';
+            CreateViaIdentityDigitalTwinsInstanceExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateViaIdentityDigitalTwinsInstanceExpanded';
+            CreateViaJsonFilePath = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DigitalTwins.private\New-AzDigitalTwinsEndpoint_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -341,6 +383,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -372,22 +417,33 @@ end {
 
 <#
 .Synopsis
-Create or update a time series database connection.
+Create a time series database connection.
 .Description
-Create or update a time series database connection.
+Create a time series database connection.
 .Example
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name azps-tsdc -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -AdxDatabaseName "azpsadec1database" -AdxEndpointUri "https://azpsdataexplorer.eastus.kusto.windows.net" -AdxResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.Kusto/clusters/azpsdataexplorer" -AdxTableName "azpsadec1database-table" -EventHubEndpointUri "sb://azps-eventhubs.servicebus.windows.net/" -EventHubEntityPath "azps-eventhubs" -EventHubNamespaceResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.EventHub/namespaces/azps-eventhubs"
+New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name azps-tsdc -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -AdxDatabaseName "azpsadec1database" -AdxEndpointUri "https://azpsdataexplorer.eastus.kusto.windows.net" -AdxResourceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.Kusto/clusters/azpsdataexplorer" -AdxTableName "azpsadec1database-table" -EventHubEndpointUri "sb://azps-eventhubs.servicebus.windows.net/" -EventHubEntityPath "azps-eventhubs" -EventHubNamespaceResourceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.EventHub/namespaces/azps-eventhubs"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
 
 INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [EndpointName <String>]: Name of Endpoint Resource.
@@ -399,23 +455,19 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the DigitalTwinsInstance.
   [SubscriptionId <String>]: The subscription identifier.
   [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
-
-TIMESERIESDATABASECONNECTIONDESCRIPTION <ITimeSeriesDatabaseConnection>: Describes a time series database connection resource.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinstimeseriesdatabaseconnection
 #>
 function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstance', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('TimeSeriesDatabaseConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
@@ -424,6 +476,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # The name of the resource group that contains the DigitalTwinsInstance.
@@ -431,6 +485,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # The name of the DigitalTwinsInstance.
@@ -438,6 +494,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -445,19 +503,528 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstanceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${DigitalTwinsInstanceInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection]
     # Describes a time series database connection resource.
-    # To construct, see NOTES section for TIMESERIESDATABASECONNECTIONDESCRIPTION properties and create a hash table.
+    ${TimeSeriesDatabaseConnectionDescription},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Create = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_Create';
+            CreateExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateExpanded';
+            CreateViaIdentity = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaIdentity';
+            CreateViaIdentityDigitalTwinsInstance = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaIdentityDigitalTwinsInstance';
+            CreateViaIdentityDigitalTwinsInstanceExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaIdentityDigitalTwinsInstanceExpanded';
+            CreateViaJsonFilePath = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaJsonString';
+        }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update DigitalTwinsInstance endpoint.
+.Description
+Update DigitalTwinsInstance endpoint.
+.Example
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
+.Example
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
+.Example
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
+
+ENDPOINTDESCRIPTION <IDigitalTwinsEndpointResource>: DigitalTwinsInstance endpoint resource.
+  EndpointType <String>: The type of Digital Twins endpoint
+  [AuthenticationType <String>]: Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
+  [DeadLetterSecret <String>]: Dead letter storage secret for key-based authentication. Will be obfuscated during read.
+  [DeadLetterUri <String>]: Dead letter storage URL for identity-based authentication.
+
+INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
+.Link
+https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsendpoint
+#>
+function Update-AzDigitalTwinsEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstance', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [System.String]
+    # Name of Endpoint Resource.
+    ${EndpointName},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the DigitalTwinsInstance.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [System.String]
+    # The name of the DigitalTwinsInstance.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription identifier.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${DigitalTwinsInstanceInputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource]
+    # DigitalTwinsInstance endpoint resource.
+    ${EndpointDescription},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("KeyBased", "IdentityBased")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Specifies the authentication type being used for connecting to the endpoint.
+    # Defaults to 'KeyBased'.
+    # If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string).
+    # If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
+    ${AuthenticationType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Dead letter storage secret for key-based authentication.
+    # Will be obfuscated during read.
+    ${DeadLetterSecret},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Dead letter storage URL for identity-based authentication.
+    ${DeadLetterUri},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("EventHub", "EventGrid", "ServiceBus")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # The type of Digital Twins endpoint
+    ${EndpointType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Update = 'Az.DigitalTwins.private\Update-AzDigitalTwinsEndpoint_Update';
+            UpdateExpanded = 'Az.DigitalTwins.private\Update-AzDigitalTwinsEndpoint_UpdateExpanded';
+            UpdateViaIdentity = 'Az.DigitalTwins.private\Update-AzDigitalTwinsEndpoint_UpdateViaIdentity';
+            UpdateViaIdentityDigitalTwinsInstance = 'Az.DigitalTwins.private\Update-AzDigitalTwinsEndpoint_UpdateViaIdentityDigitalTwinsInstance';
+            UpdateViaIdentityDigitalTwinsInstanceExpanded = 'Az.DigitalTwins.private\Update-AzDigitalTwinsEndpoint_UpdateViaIdentityDigitalTwinsInstanceExpanded';
+            UpdateViaIdentityExpanded = 'Az.DigitalTwins.private\Update-AzDigitalTwinsEndpoint_UpdateViaIdentityExpanded';
+        }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a time series database connection.
+.Description
+Update a time series database connection.
+.Example
+Update-AzDigitalTwinsTimeSeriesDatabaseConnection -Name azps-tsdc -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -AdxDatabaseName "azpsadec1database" -AdxEndpointUri "https://azpsdataexplorer.eastus.kusto.windows.net" -AdxResourceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.Kusto/clusters/azpsdataexplorer" -AdxTableName "azpsadec1database-table" -EventHubEndpointUri "sb://azps-eventhubs.servicebus.windows.net/" -EventHubEntityPath "azps-eventhubs" -EventHubNamespaceResourceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.EventHub/namespaces/azps-eventhubs"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
+
+INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
+.Link
+https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinstimeseriesdatabaseconnection
+#>
+function Update-AzDigitalTwinsTimeSeriesDatabaseConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstance', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded', Mandatory)]
+    [Alias('TimeSeriesDatabaseConnectionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [System.String]
+    # Name of time series database connection.
+    ${Name},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the DigitalTwinsInstance.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [System.String]
+    # The name of the DigitalTwinsInstance.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription identifier.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstanceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${DigitalTwinsInstanceInputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection]
+    # Describes a time series database connection resource.
     ${TimeSeriesDatabaseConnectionDescription},
 
     [Parameter()]
@@ -528,16 +1095,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Create = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_Create';
-            CreateExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateExpanded';
-            CreateViaIdentity = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'Az.DigitalTwins.private\New-AzDigitalTwinsTimeSeriesDatabaseConnection_CreateViaIdentityExpanded';
+            Update = 'Az.DigitalTwins.private\Update-AzDigitalTwinsTimeSeriesDatabaseConnection_Update';
+            UpdateExpanded = 'Az.DigitalTwins.private\Update-AzDigitalTwinsTimeSeriesDatabaseConnection_UpdateExpanded';
+            UpdateViaIdentity = 'Az.DigitalTwins.private\Update-AzDigitalTwinsTimeSeriesDatabaseConnection_UpdateViaIdentity';
+            UpdateViaIdentityDigitalTwinsInstance = 'Az.DigitalTwins.private\Update-AzDigitalTwinsTimeSeriesDatabaseConnection_UpdateViaIdentityDigitalTwinsInstance';
+            UpdateViaIdentityDigitalTwinsInstanceExpanded = 'Az.DigitalTwins.private\Update-AzDigitalTwinsTimeSeriesDatabaseConnection_UpdateViaIdentityDigitalTwinsInstanceExpanded';
+            UpdateViaIdentityExpanded = 'Az.DigitalTwins.private\Update-AzDigitalTwinsTimeSeriesDatabaseConnection_UpdateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -546,736 +1116,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update DigitalTwinsInstance endpoint.
-.Description
-Create or update DigitalTwinsInstance endpoint.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
-.Link
-https://learn.microsoft.com/powershell/module/az.digitaltwins/set-azdigitaltwinsendpoint
-#>
-function Set-AzDigitalTwinsEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # Name of Endpoint Resource.
-    ${EndpointName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the DigitalTwinsInstance.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the DigitalTwinsInstance.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType]
-    # The type of Digital Twins endpoint
-    ${EndpointType},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType]
-    # Specifies the authentication type being used for connecting to the endpoint.
-    # Defaults to 'KeyBased'.
-    # If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string).
-    # If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
-    ${AuthenticationType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [System.String]
-    # Dead letter storage secret for key-based authentication.
-    # Will be obfuscated during read.
-    ${DeadLetterSecret},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [System.String]
-    # Dead letter storage URL for identity-based authentication.
-    ${DeadLetterUri},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.DigitalTwins.private\Set-AzDigitalTwinsEndpoint_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
-.Description
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The private endpoint connections.
-  [GroupId <String[]>]: The list of group ids for the private endpoint connection.
-  [PrivateLinkServiceConnectionStateActionsRequired <String>]: Actions required for a private endpoint connection.
-  [PrivateLinkServiceConnectionStateDescription <String>]: The description for the current state of a private endpoint connection.
-  [PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus?>]: The status of a private endpoint connection.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.digitaltwins/set-azdigitaltwinsinstance
-#>
-function Set-AzDigitalTwinsInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the DigitalTwinsInstance.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the DigitalTwinsInstance.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [System.String]
-    # The resource location.
-    ${Location},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.DigitalTwinsIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.DigitalTwinsIdentityType]
-    # The type of Managed Identity used by the DigitalTwinsInstance.
-    # Only SystemAssigned is supported.
-    ${IdentityType},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection[]]
-    # The private endpoint connections.
-    # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
-    ${PrivateEndpointConnection},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PublicNetworkAccess])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PublicNetworkAccess]
-    # Public network access for the DigitalTwinsInstance.
-    ${PublicNetworkAccess},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsResourceTags]))]
-    [System.Collections.Hashtable]
-    # The resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.DigitalTwins.private\Set-AzDigitalTwinsInstance_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Update the status of a private endpoint connection with the given name.
-.Description
-Update the status of a private endpoint connection with the given name.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.digitaltwins/set-azdigitaltwinsprivateendpointconnection
-#>
-function Set-AzDigitalTwinsPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the DigitalTwinsInstance.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the DigitalTwinsInstance.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [System.String[]]
-    # The list of group ids for the private endpoint connection.
-    ${GroupId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [System.String]
-    # Actions required for a private endpoint connection.
-    ${PrivateLinkServiceConnectionStateActionsRequired},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [System.String]
-    # The description for the current state of a private endpoint connection.
-    ${PrivateLinkServiceConnectionStateDescription},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PrivateLinkServiceConnectionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PrivateLinkServiceConnectionStatus]
-    # The status of a private endpoint connection.
-    ${PrivateLinkServiceConnectionStateStatus},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.DigitalTwins.private\Set-AzDigitalTwinsPrivateEndpointConnection_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update a time series database connection.
-.Description
-Create or update a time series database connection.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.digitaltwins/set-azdigitaltwinstimeseriesdatabaseconnection
-#>
-function Set-AzDigitalTwinsTimeSeriesDatabaseConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('TimeSeriesDatabaseConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # Name of time series database connection.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the DigitalTwinsInstance.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [System.String]
-    # The name of the DigitalTwinsInstance.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription identifier.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.DigitalTwins.private\Set-AzDigitalTwinsTimeSeriesDatabaseConnection_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

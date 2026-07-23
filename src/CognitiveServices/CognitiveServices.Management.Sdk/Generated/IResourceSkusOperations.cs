@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public partial interface IResourceSkusOperations
     {
         /// <summary>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
+        /// Subscription.
         /// </summary>
         /// <remarks>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
+        /// Subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +36,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ResourceSku>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
+        /// Subscription.
         /// </summary>
         /// <remarks>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
+        /// Subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

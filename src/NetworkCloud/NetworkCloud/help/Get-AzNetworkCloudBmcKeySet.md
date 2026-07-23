@@ -15,14 +15,19 @@ Get baseboard management controller key set of the provided cluster.
 ### List (Default)
 ```
 Get-AzNetworkCloudBmcKeySet -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityCluster
+```
+Get-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -67,6 +72,21 @@ This command lists all baseboard management controller key sets of the provided 
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
@@ -100,7 +120,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -119,7 +138,7 @@ The name of the baseboard management controller key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: BmcKeySetName
 
 Required: True
@@ -145,6 +164,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -161,6 +196,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -170,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet
 
 ## NOTES
 

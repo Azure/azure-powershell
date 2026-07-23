@@ -156,6 +156,67 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceIds,NetworkVirtualAppliancesRestartHeaders>> RestartWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </summary>
+        /// <remarks>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='networkVirtualApplianceInstanceIds'>
+        /// Specifies a list of virtual machine instance IDs from the Network Virtual
+        /// Appliance VM instances.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceIds,NetworkVirtualAppliancesReimageHeaders>> ReimageWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='request'>
+        /// Parameters supplied to retrieve boot diagnostic logs for a NVA VM instance
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> GetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Lists all Network Virtual Appliances in a resource group.
         /// </summary>
         /// <remarks>
@@ -281,6 +342,67 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceIds,NetworkVirtualAppliancesRestartHeaders>> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </summary>
+        /// <remarks>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='networkVirtualApplianceInstanceIds'>
+        /// Specifies a list of virtual machine instance IDs from the Network Virtual
+        /// Appliance VM instances.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceIds,NetworkVirtualAppliancesReimageHeaders>> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='request'>
+        /// Parameters supplied to retrieve boot diagnostic logs for a NVA VM instance
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkVirtualApplianceInstanceId,NetworkVirtualAppliancesGetBootDiagnosticLogsHeaders>> BeginGetBootDiagnosticLogsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all Network Virtual Appliances in a resource group.

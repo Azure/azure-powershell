@@ -173,6 +173,15 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallPolicyRuleDescription");
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyWithMultipleUAMI()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyWithMultipleUAMI");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
@@ -227,6 +236,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestAzureFirewallPolicyRCGyDraft()
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyRCGDraft");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyWithParentBasePolicy()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyWithParentBasePolicy");
         }
     }
 }

@@ -14,8 +14,7 @@ Get a StandbyVirtualMachinePoolResource
 
 ### List (Default)
 ```
-Get-AzStandbyVMPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStandbyVMPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,15 +23,14 @@ Get-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzStandbyVMPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -142,7 +140,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -166,3 +164,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

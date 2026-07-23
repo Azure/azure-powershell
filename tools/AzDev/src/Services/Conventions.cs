@@ -39,7 +39,7 @@ namespace AzDev.Services
         public static bool IsExcludedModuleDirectory(string dir)
         {
             var slash = System.IO.Path.DirectorySeparatorChar;
-            return dir.EndsWith($"{slash}shared") || dir.EndsWith($"{slash}lib");
+            return dir.EndsWith($"{slash}shared") || dir.EndsWith($"{slash}{FileOrDirNames.Lib}");
         }
 
         internal static bool IsLegacyHelperProject(string path, out string reason)
@@ -107,11 +107,13 @@ namespace AzDev.Services
                 return true;
             }
 
-            if (!TryGetOnlyCsprojPath(fs, path, out var _, out var cannotFindCsproj))
+            if (!TryGetOnlyCsprojPath(fs, path, out var _, out var cannotFindCsproj)
+                && !IsAutorestBasedProject(path, out var notAutorestBased))
             {
-                reason = $"Path does not contain a single .csproj file: {cannotFindCsproj}";
+                reason = $"Path does not contain a single .csproj file: {cannotFindCsproj} and is not autorest based: {notAutorestBased}";
                 return true;
             }
+
             reason = null;
             return false;
         }
@@ -217,6 +219,28 @@ namespace AzDev.Services
             }
             reason = "Projects in module do not consist of AutoRestBased nor SdkBased.";
             return ModuleType.Other;
+        }
+
+        // Domain mapping: map use-extension "@autorest/powershell" version strings to normalized SubType values
+        // - null/empty => v4 (default)
+        // - 3.x => v3
+        // - 4.x => v4
+        // - otherwise => Invalid
+        internal static string MapAutoRestPowerShellVersion(string val)
+        {
+            if (string.IsNullOrEmpty(val))
+            {
+                return "v4";
+            }
+            if (val.StartsWith("3.", StringComparison.Ordinal))
+            {
+                return "v3";
+            }
+            if (val.StartsWith("4.", StringComparison.Ordinal))
+            {
+                return "v4";
+            }
+            return "Invalid";
         }
     }
 }

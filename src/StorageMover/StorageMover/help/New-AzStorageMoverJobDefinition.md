@@ -8,28 +8,62 @@ schema: 2.0.0
 # New-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -CopyMode <CopyMode> -SourceName <String>
- -TargetName <String> [-AgentName <String>] [-Description <String>] [-SourceSubpath <String>]
- [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String>] -CopyMode <String> -SourceName <String>
+ -TargetName <String> [-AgentName <String>] [-Connection <String[]>] [-DataIntegrityValidation <String>]
+ [-Description <String>] [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-JobType <String>]
+ [-PreservePermission] [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>]
+ [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>]
+ [-ScheduleIsActive] [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>] [-TargetSubpath <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonString
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -JobDefinition <IJobDefinition>
+ -StorageMoverName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityStorageMoverExpanded
+```
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> -CopyMode <String> -SourceName <String> -TargetName <String>
+ [-AgentName <String>] [-Connection <String[]>] [-DataIntegrityValidation <String>] [-Description <String>]
+ [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-JobType <String>] [-PreservePermission]
+ [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>]
+ [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>] [-ScheduleIsActive]
+ [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>] [-TargetSubpath <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProjectExpanded
+```
+New-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity> -CopyMode <String>
+ -SourceName <String> -TargetName <String> [-AgentName <String>] [-Connection <String[]>]
+ [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
+ [-ExecutionTimeMinute <Single>] [-JobType <String>] [-PreservePermission]
+ [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>]
+ [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>] [-ScheduleIsActive]
+ [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>] [-TargetSubpath <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## EXAMPLES
 
@@ -74,7 +108,22 @@ Name of the Agent to assign for new Job Runs of this Job Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Connection
+List of connections associated to this job
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -88,11 +137,26 @@ Accept wildcard characters: False
 Strategy to use for copy.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataIntegrityValidation
+The checksum validation mode for the job definition.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,10 +181,12 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the Job Definition.
+OnPremToCloud is for migrating data from on-premises to cloud.
+CloudToCloud is for migrating data between cloud to cloud.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -130,19 +196,82 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobDefinition
-The Job Definition resource.
-To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
+### -ExecutionTimeHour
+The hour element of the time.
+Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+Hour value 24 cannot be combined with any other minute value but 0.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
-Parameter Sets: Create
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionTimeMinute
+The minute element of the time.
+Allowed values are 0 and 30.
+If not specified, its value defaults to 0.
+
+```yaml
+Type: System.Single
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobType
+The type of the Job.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,12 +290,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PreservePermission
+Boolean to preserve permissions or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityStorageMoverExpanded
 Aliases:
 
 Required: True
@@ -182,7 +341,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -197,7 +356,7 @@ The name of the source Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -212,7 +371,7 @@ The subpath to use when reading from the source Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -222,12 +381,132 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScheduleCronExpression
+Optional CRON expression for advanced scheduling
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleDaysOfMonth
+Days of the month for monthly schedules
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleDaysOfWeek
+Days of the week for weekly schedules
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleEndDate
+End time of the schedule (in UTC)
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleFrequency
+Type of schedule — Monthly, Weekly, or Daily
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleIsActive
+Whether the schedule is currently active
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleStartDate
+Specific one-time execution date and time
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageMoverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -StorageMoverName
 The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -242,7 +521,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -257,7 +536,7 @@ The name of the target Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -272,7 +551,7 @@ The subpath to use when writing to the target Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -318,11 +597,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
 
 ## NOTES
 

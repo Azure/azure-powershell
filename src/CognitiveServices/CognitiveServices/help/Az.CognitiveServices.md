@@ -20,8 +20,14 @@ Gets an account.
 ### [Get-AzCognitiveServicesAccountCommitmentPlan](Get-AzCognitiveServicesAccountCommitmentPlan.md)
 Get CommitmentPlan of a Cognitive Services account
 
+### [Get-AzCognitiveServicesAccountDefenderForAISetting](Get-AzCognitiveServicesAccountDefenderForAISetting.md)
+Get Defender For AI Setting of a Cognitive Services account
+
 ### [Get-AzCognitiveServicesAccountDeployment](Get-AzCognitiveServicesAccountDeployment.md)
 Get Deployment of a Cognitive Services account
+
+### [Get-AzCognitiveServicesAccountDeploymentSku](Get-AzCognitiveServicesAccountDeploymentSku.md)
+Get Deployment Sku of a Cognitive Services account
 
 ### [Get-AzCognitiveServicesAccountKey](Get-AzCognitiveServicesAccountKey.md)
 Gets the API keys for an account.
@@ -31,6 +37,15 @@ Get Models available for a Cognitive Services account
 
 ### [Get-AzCognitiveServicesAccountNetworkRuleSet](Get-AzCognitiveServicesAccountNetworkRuleSet.md)
 Get the NetworkRule property of a Cognitive Services account
+
+### [Get-AzCognitiveServicesAccountRaiBlocklist](Get-AzCognitiveServicesAccountRaiBlocklist.md)
+Get Cognitive Services Account Rai Block List.
+
+### [Get-AzCognitiveServicesAccountRaiBlocklistItem](Get-AzCognitiveServicesAccountRaiBlocklistItem.md)
+Get Cognitive Services Account Rai Block List Item.
+
+### [Get-AzCognitiveServicesAccountRaiPolicy](Get-AzCognitiveServicesAccountRaiPolicy.md)
+Get Cognitive Services Account Rai Policy.
 
 ### [Get-AzCognitiveServicesAccountSku](Get-AzCognitiveServicesAccountSku.md)
 Gets the available SKUs for an account.
@@ -50,6 +65,18 @@ Get Cognitive Services Commitment Plan Association
 ### [Get-AzCognitiveServicesCommitmentTier](Get-AzCognitiveServicesCommitmentTier.md)
 Get CommitmentTier of Cognitive Services
 
+### [Get-AzCognitiveServicesModel](Get-AzCognitiveServicesModel.md)
+Get Models of Cognitive Services
+
+### [Get-AzCognitiveServicesModelCapacity](Get-AzCognitiveServicesModelCapacity.md)
+Get Cognitive Services Model Capacity
+
+### [Get-AzCognitiveServicesRaiContentFilter](Get-AzCognitiveServicesRaiContentFilter.md)
+Get Cognitive Services RAI Content Filter
+
+### [Get-AzCognitiveServicesUsage](Get-AzCognitiveServicesUsage.md)
+Get Usage of Cognitive Services
+
 ### [New-AzCognitiveServicesAccount](New-AzCognitiveServicesAccount.md)
 Creates a Cognitive Services account.
 
@@ -59,11 +86,23 @@ Generate a new instance of Cognitive Services Account ApiProperties
 ### [New-AzCognitiveServicesAccountCommitmentPlan](New-AzCognitiveServicesAccountCommitmentPlan.md)
 Create a CommitmentPlan for a Cognitive Services account
 
+### [New-AzCognitiveServicesAccountDefenderForAISetting](New-AzCognitiveServicesAccountDefenderForAISetting.md)
+Create Defender For AI Setting of a Cognitive Services account
+
 ### [New-AzCognitiveServicesAccountDeployment](New-AzCognitiveServicesAccountDeployment.md)
 Create a Deployment for a Cognitive Services account
 
 ### [New-AzCognitiveServicesAccountKey](New-AzCognitiveServicesAccountKey.md)
 Regenerates an account key.
+
+### [New-AzCognitiveServicesAccountRaiBlocklist](New-AzCognitiveServicesAccountRaiBlocklist.md)
+Create Cognitive Services Account Rai Block List.
+
+### [New-AzCognitiveServicesAccountRaiBlocklistItem](New-AzCognitiveServicesAccountRaiBlocklistItem.md)
+Create or update Cognitive Services Account Rai Block List Item.
+
+### [New-AzCognitiveServicesAccountRaiPolicy](New-AzCognitiveServicesAccountRaiPolicy.md)
+Create or update Cognitive Services Account Rai Policy.
 
 ### [New-AzCognitiveServicesCommitmentPlan](New-AzCognitiveServicesCommitmentPlan.md)
 Create a Cognitive Services Commitment Plan
@@ -85,6 +124,15 @@ Delete a Deployment from a Cognitive Services account
 
 ### [Remove-AzCognitiveServicesAccountNetworkRule](Remove-AzCognitiveServicesAccountNetworkRule.md)
 Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Cognitive Services account
+
+### [Remove-AzCognitiveServicesAccountRaiBlocklist](Remove-AzCognitiveServicesAccountRaiBlocklist.md)
+Remove Cognitive Services Account Rai Block List.
+
+### [Remove-AzCognitiveServicesAccountRaiBlocklistItem](Remove-AzCognitiveServicesAccountRaiBlocklistItem.md)
+Remove Cognitive Services Account Rai Block List.
+
+### [Remove-AzCognitiveServicesAccountRaiPolicy](Remove-AzCognitiveServicesAccountRaiPolicy.md)
+Remove Cognitive Services Account Rai Policy.
 
 ### [Remove-AzCognitiveServicesCommitmentPlan](Remove-AzCognitiveServicesCommitmentPlan.md)
 Remove a Cognitive Services Commitment Plan

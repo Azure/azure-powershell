@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// failure action is invalid. Rollback specifies that the upgrade will start
         /// rolling back automatically. Manual indicates that the upgrade will switch
         /// to UnmonitoredManual upgrade mode.
-        /// Possible values include: 'Rollback', 'Manual'</param>
+        /// Possible values include: &#39;Rollback&#39;, &#39;Manual&#39;</param>
 
         /// <param name="healthCheckWaitDuration">The amount of time to wait after completing an upgrade domain before
         /// applying health policies. It is interpreted as a string representing an ISO

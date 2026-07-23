@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 50 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "The type of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("DataProtection")]
+        [PSArgumentCompleter("DataProtection", "ShortTermClone")]
         public string VolumeType { get; set; }
 
         [Parameter(
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS", "Flexible")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -230,6 +230,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "CoolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: \n Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default.\n SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.")]
+        [PSArgumentCompleter("Auto", "SnapshotOnly")]
+        public string CoolAccessTieringPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
         [Alias("UnixPermissions")]
         public string UnixPermission { get; set; }
@@ -297,7 +303,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'")]
+            HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'. To create a volume using customer-managed keys use 'Microsoft.KeyVault' note then you must set -NetworkFeature to Standard.")]
         [PSArgumentCompleter("Microsoft.NetApp", "Microsoft.KeyVault")]
         public string EncryptionKeySource { get; set; }
 
@@ -327,6 +333,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "Specifies whether volume is a Large Volume or Regular Volume. Defaults to false")]
         public SwitchParameter IsLargeVolume { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as accepted")]
+        [PSArgumentCompleter("Accepted", "Declined")]
+        public string AcceptGrowCapacityPoolForShortTermCloneSplit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DesiredRansomwareProtectionState { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -361,7 +379,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var NameParts = PoolObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
@@ -373,13 +391,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //else
             //{
                 PSNetAppFilesVolumeDataProtection dataProtection = null;
-                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
                 {
                     dataProtection = new PSNetAppFilesVolumeDataProtection
                     {
                         Replication = ReplicationObject,
-                        Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                        Backup = Backup
+                        Snapshot = !string.IsNullOrWhiteSpace(SnapshotPolicyId) ? new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId } : null,
+                        Backup = Backup,
+                        RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                     };
                 }
 
@@ -422,7 +441,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     DeleteBaseSnapshot = DeleteBaseSnapshot,
                     SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                     SmbNonBrowsable = SmbNonBrowsable,
-                    CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
+                    CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
+                    CoolAccessTieringPolicy = CoolAccessTieringPolicy,
+                    AcceptGrowCapacityPoolForShortTermCloneSplit = AcceptGrowCapacityPoolForShortTermCloneSplit
                 };
                 if (IsLargeVolume.IsPresent)
                 {

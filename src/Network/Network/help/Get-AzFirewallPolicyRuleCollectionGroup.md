@@ -15,7 +15,8 @@ Gets a Azure Firewall Policy Rule Collection Group
 ### GetByNameParameterSet (Default)
 ```
 Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
- -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet

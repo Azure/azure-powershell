@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Search provider.
+        /// Lists all of the available REST API operations of the Microsoft.Search
+        /// provider.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

@@ -8,18 +8,40 @@ schema: 2.0.0
 # New-AzAutomanageConfigProfileAssignment
 
 ## SYNOPSIS
-Creates an association between a VM and Automanage configuration profile
+Create an association between a VM and Automanage configuration profile
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String>]
+New-AzAutomanageConfigProfileAssignment -VMName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzAutomanageConfigProfileAssignment -VMName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzAutomanageConfigProfileAssignment -VMName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityConfigurationProfileAssignmentExpanded
+```
+New-AzAutomanageConfigProfileAssignment -VMName <String>
+ -ConfigurationProfileAssignmentInputObject <IAutomanageIdentity> [-ConfigurationProfile <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an association between a VM and Automanage configuration profile
+Create an association between a VM and Automanage configuration profile
 
 ## EXAMPLES
 
@@ -43,13 +65,28 @@ The Automanage configurationProfile ARM Resource URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityConfigurationProfileAssignmentExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationProfileAssignmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: CreateViaIdentityConfigurationProfileAssignmentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -69,13 +106,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -90,7 +157,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -151,9 +218,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 
 ## NOTES
 

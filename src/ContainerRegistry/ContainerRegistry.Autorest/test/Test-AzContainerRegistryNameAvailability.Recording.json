@@ -1,9 +1,9 @@
 {
-  "Test-AzContainerRegistryNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2023-01-01-preview+1": {
+  "Test-AzContainerRegistryNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2023-01-01-preview",
-      "Content": "{\r\n  \"name\": \"rfkqmj\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2023-01-01-preview",
+      "Content": "{\r\n  \"name\": \"beauxq\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -18,20 +18,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11843" ],
-        "x-ms-request-id": [ "22065fbf-90c3-4d95-a87d-a3a41d70986e" ],
-        "x-ms-correlation-request-id": [ "22065fbf-90c3-4d95-a87d-a3a41d70986e" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230416T211529Z:22065fbf-90c3-4d95-a87d-a3a41d70986e" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/815bec89-4f6e-46cf-bba1-ece9e490203c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "2d3dd523-85da-4345-b60d-2e27d9042bbe" ],
+        "x-ms-correlation-request-id": [ "2d3dd523-85da-4345-b60d-2e27d9042bbe" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250909T082803Z:2d3dd523-85da-4345-b60d-2e27d9042bbe" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 16 Apr 2023 21:15:28 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0E971BD8D49840039DE235AC30755FA5 Ref B: TYO201100113027 Ref C: 2025-09-09T08:28:02Z" ],
+        "Date": [ "Tue, 09 Sep 2025 08:28:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "99" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"The registry rfkqmj is already in use.\"}",
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"The registry beauxq is already in use.\"}",
       "isContentBase64": false
     }
   }

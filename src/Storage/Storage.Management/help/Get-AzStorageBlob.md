@@ -18,7 +18,7 @@ Lists blobs in a container.
 Get-AzStorageBlob [[-Blob] <String>] [-Container] <String> [-IncludeDeleted] [-IncludeTag] [-MaxCount <Int32>]
  [-ContinuationToken <BlobContinuationToken>] [-TagCondition <String>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Get-AzStorageBlob [-Blob] <String> [-Container] <String> [-IncludeDeleted] [-Inc
  -SnapshotTime <DateTimeOffset> [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
  [-TagCondition <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### SingleBlobVersionID
@@ -36,7 +36,7 @@ Get-AzStorageBlob [-Blob] <String> [-Container] <String> [-IncludeDeleted] [-Inc
 Get-AzStorageBlob [-Blob] <String> [-Container] <String> [-IncludeDeleted] [-IncludeTag] -VersionId <String>
  [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Get-AzStorageBlob [-Blob] <String> [-Container] <String> [-IncludeDeleted] [-Inc
 Get-AzStorageBlob [-Prefix <String>] [-Container] <String> [-IncludeDeleted] [-IncludeVersion] [-IncludeTag]
  [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -142,7 +142,7 @@ Name                 BlobType  Length          ContentType                    La
 blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z
 ```
 
-This command gets a single blobs verion with VersionId.
+This command gets a single blobs version with VersionId.
 
 ### Example 7: Get a single blob snapshot
 ```powershell
@@ -213,7 +213,7 @@ ExpiresOn                   PolicyMode
 9/17/2024 2:49:32 AM +00:00   Unlocked
 ```
 
-This example command gets the immutability property of a single blob. You can get a detailed list of blob prTooperties from the **BlobProperties** property, including but not limited to: LastModified, ContentLength, ContentHash, BlobType, LeaseState, AccessTier, ETag, ImmutabilityPolicy, etc...
+This example command gets the immutability property of a single blob. You can get a detailed list of blob properties from the **BlobProperties** property, including but not limited to: LastModified, ContentLength, ContentHash, BlobType, LeaseState, AccessTier, ETag, ImmutabilityPolicy, etc...
 To list multiple blobs (execute the cmdlet without blob name), use **ListBlobProperties.Properties** instead of **BlobProperties** for better performance.
 
 ## PARAMETERS
@@ -415,21 +415,6 @@ However, if you specify "-Prefix My", the cmdlet returns "My", "MyBlob1", and "M
 Type: System.String
 Parameter Sets: BlobPrefix
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

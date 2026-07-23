@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 {
@@ -29,7 +30,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ReplicationId = replication.ReplicationId,
                 EndpointType = replication.EndpointType,
                 RemoteVolumeRegion = replication.RemoteVolumeRegion,
-                RemoteVolumeResourceId = replication.RemoteVolumeResourceId,                
+                RemoteVolumeResourceId = replication.RemoteVolumeResourceId,
+                ReplicationSchedule = replication.ReplicationSchedule,
+                MirrorState = replication.MirrorState,
+                ReplicationCreationTime = replication.ReplicationCreationTime,
+                ReplicationDeletionTime = replication.ReplicationDeletionTime
             };
             return psReplicaitonObject;
         }
@@ -44,10 +49,35 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psSvmPeerCommandResponse = new PSSvmPeerCommandResponse
             {
-                SvmPeeringCommand = svmPeerCommandResponse.SvmPeeringCommand
+                SvmPeeringCommand = svmPeerCommandResponse.Properties?.SvmPeeringCommand
             };
             return psSvmPeerCommandResponse;
         }
 
+        public static PSClusterPeerCommandResponse ConvertToPs(this Management.NetApp.Models.ClusterPeerCommandResponse clusterPeerCommandResponse)
+        {
+            return new PSClusterPeerCommandResponse
+            {
+                ClusterPeeringCommand = clusterPeerCommandResponse.Properties?.ClusterPeeringCommand,
+                Passphrase = clusterPeerCommandResponse.Properties?.Passphrase
+            };
+        }
+
+        public static PSNetAppFilesDestinationReplication ConvertToPs(this Management.NetApp.Models.DestinationReplication destinationReplication)
+        {
+            PSNetAppFilesDestinationReplication pSNetAppFilesDestinationReplication = new PSNetAppFilesDestinationReplication
+            {
+                Region = destinationReplication.Region,
+                ReplicationType = destinationReplication.ReplicationType,
+                ResourceId = destinationReplication.ResourceId,
+                Zone = destinationReplication.Zone
+            };
+            return pSNetAppFilesDestinationReplication;
+        }
+
+        public static List<PSNetAppFilesDestinationReplication> ConvertToPs(this IEnumerable<Management.NetApp.Models.DestinationReplication> destinationReplications)
+        {
+            return destinationReplications.Select(e => e.ConvertToPs()).ToList();
+        }
     }
 }

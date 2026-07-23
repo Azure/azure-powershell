@@ -23,32 +23,26 @@ Lists recent events for the specified webhook.
 Get-AzContainerRegistryWebhookEvent  -ResourceGroupName lnxtest -RegistryName lnxcr -WebhookName webhook001
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 WEBHOOK <IWebhook>: The Webhook Object.
-  Location <String>: The location of the resource. This cannot be changed after the resource is created.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource modification (UTC).
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <LastModifiedByType?>]: The type of identity that last modified the resource.
+  [Location <String>]: The location of the resource. This cannot be changed after the resource is created.
   [Tag <IResourceTags>]: The tags of the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [Action <WebhookAction[]>]: The list of actions that trigger the webhook to post notifications.
+  [Action <List<String>>]: The list of actions that trigger the webhook to post notifications.
   [Scope <String>]: The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
-  [Status <WebhookStatus?>]: The status of the webhook at the time the operation was called.
+  [Status <String>]: The status of the webhook at the time the operation was called.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent
 #>
 function Get-AzContainerRegistryWebhookEvent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -81,9 +75,8 @@ param(
 
     [Parameter(ParameterSetName='GetByWebhook', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook]
     # The Webhook Object.
-    # To construct, see NOTES section for WEBHOOK properties and create a hash table.
     ${Webhook},
 
     [Parameter()]
@@ -141,6 +134,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -163,9 +165,7 @@ begin {
             List = 'Az.ContainerRegistry.custom\Get-AzContainerRegistryWebhookEvent';
             GetByWebhook = 'Az.ContainerRegistry.custom\Get-AzContainerRegistryWebhookEvent';
         }
-        if (('List', 'GetByWebhook') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'GetByWebhook') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -179,6 +179,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

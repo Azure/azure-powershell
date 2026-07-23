@@ -184,6 +184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("SecurityPolicyConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurations) content.GetValueForProperty("SecurityPolicyConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.SecurityPolicyConfigurationsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ConfigurationEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ConfigurationEndpoint = (System.Collections.Generic.List<string>) content.GetValueForProperty("ConfigurationEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ConfigurationEndpoint, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -195,6 +199,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             if (content.Contains("Association"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).Association = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>) content.GetValueForProperty("Association",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).Association, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>(__y, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceIdTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SecurityPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicy = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>) content.GetValueForProperty("SecurityPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicy, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>(__y, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceIdTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SecurityPolicyConfigurationWafSecurityPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfigurationWafSecurityPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafSecurityPolicy) content.GetValueForProperty("SecurityPolicyConfigurationWafSecurityPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfigurationWafSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.WafSecurityPolicyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("WafSecurityPolicyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).WafSecurityPolicyId = (string) content.GetValueForProperty("WafSecurityPolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).WafSecurityPolicyId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -269,6 +285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("SecurityPolicyConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurations) content.GetValueForProperty("SecurityPolicyConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.SecurityPolicyConfigurationsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ConfigurationEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ConfigurationEndpoint = (System.Collections.Generic.List<string>) content.GetValueForProperty("ConfigurationEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).ConfigurationEndpoint, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -280,6 +300,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             if (content.Contains("Association"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).Association = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>) content.GetValueForProperty("Association",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).Association, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>(__y, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceIdTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SecurityPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicy = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>) content.GetValueForProperty("SecurityPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicy, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>(__y, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceIdTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SecurityPolicyConfigurationWafSecurityPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfigurationWafSecurityPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafSecurityPolicy) content.GetValueForProperty("SecurityPolicyConfigurationWafSecurityPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).SecurityPolicyConfigurationWafSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.WafSecurityPolicyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("WafSecurityPolicyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).WafSecurityPolicyId = (string) content.GetValueForProperty("WafSecurityPolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerInternal)this).WafSecurityPolicyId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

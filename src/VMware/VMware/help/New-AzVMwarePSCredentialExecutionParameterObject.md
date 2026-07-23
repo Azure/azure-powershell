@@ -24,7 +24,7 @@ Create an in-memory object for PSCredentialExecutionParameter.
 
 ### Example 1: Create a local PS Credential Execution object
 ```powershell
-$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
 New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password $mypwd -Username "usernameValue"
 ```
 

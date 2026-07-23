@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public CriterionType CriterionType => CriterionType.StaticThresholdCriterion;
 
         /// <summary>
-        /// Initiliazes a PS object for static metric criteria
+        /// Initializes a PS object for static metric criteria
         /// </summary>
         /// <param name="metricCriteria">The original static metric criteria object</param>
         public PSMetricCriteria(MetricCriteria metricCriteria)

@@ -10,8 +10,8 @@ autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
 autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
 autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
 autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
-autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
+autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
+autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2025-07
 autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
 ```
 
@@ -31,7 +31,8 @@ license-header: MICROSOFT_MIT_NO_VERSION
 ## Configuration
 
 ```yaml
-commit: 44051823078bc61d1210c324faf6d12e409497b7
+commit: 5e5d8196f6ba69545a9c4882ab4769d108b513c9
+deploymentStacksCommit: 5d175d6e1991ed64390a7b5673c3691722ba0259
 ```
 
 ### Tag: package-deploymentscripts-2023-08
@@ -47,13 +48,65 @@ suppressions:
     reason: OperationsAPI will come from Resources
 ```
 
-### Tag: package-resources-2024-07
+### Tag: package-resources-2024-11
 
-These settings apply only when `--tag=package-resources-2024-07` is specified on the command line.
+These settings apply only when `--tag=package-resources-2024-11` is specified on the command line.
 
-``` yaml $(tag) == 'package-resources-2024-07'
+``` yaml $(tag) == 'package-resources-2024-11'
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-07-01/resources.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-11-01/resources.json
+
+directive:
+  - from: resources.json
+    where: $.definitions
+    transform: >
+      $.ResourceGroupFilterWithExpand = {
+        "allOf": [
+          { "$ref": "#/definitions/ResourceGroupFilter" }
+        ],
+        "properties": {
+          "$expand": {
+            "type": "string",
+            "description": "Comma-separated list of additional properties to be included in the response. Valid values include createdTime, changedTime."
+          }
+        }
+      };
+
+  - from: resources.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups"].get
+    transform: >
+      $["x-ms-odata"] = "#/definitions/ResourceGroupFilterWithExpand";
+
+  - from: resources.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"].get.parameters
+    transform: >
+      $.push({
+        "name": "$expand",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Comma-separated list of additional properties to be included in the response. Valid values include createdTime, changedTime."
+      });
+
+  - from: resources.json
+    where: $.definitions.ResourceGroup.properties
+    transform: >
+      $.createdTime = {
+        "readOnly": true,
+        "type": "string",
+        "format": "date-time",
+        "description": "The created time of the resource group. This is only present if requested via the $expand query parameter."
+      };
+
+  - from: resources.json
+    where: $.definitions.ResourceGroup.properties
+    transform: >
+      $.changedTime = {
+        "readOnly": true,
+        "type": "string", 
+        "format": "date-time",
+        "description": "The changed time of the resource group. This is only present if requested via the $expand query parameter."
+      };
 ```
 
 ### Tag: package-privatelinks-2020-05
@@ -97,17 +150,31 @@ input-file:
 - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
 ```
 
-### Tag: package-deploymentstacks-2024-03
+### Tag: package-deploymentstacks-2025-07
 
-These settings apply only when `--tag=package-deploymentstacks-2024-03` is specified on the command line.
+These settings apply only when `--tag=package-deploymentstacks-2025-07` is specified on the command line.
 
-``` yaml $(tag) == 'package-deploymentstacks-2024-03'
+``` yaml $(tag) == 'package-deploymentstacks-2025-07'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-03-01/deploymentStacks.json
+- https://github.com/Azure/azure-rest-api-specs/tree/$(deploymentStacksCommit)/specification/resources/resource-manager/Microsoft.Resources/deploymentStacks/stable/2025-07-01/deploymentStacks.json
 
-# Temporary override to make subscription id GUID a string.
+# Isolate deployment stacks output into its own subfolder and sub-namespace.
+# This avoids file-name collisions in the shared Generated/ folder with other
+# tags (e.g. package-resources-2024-11 defines its own inline Resource shape
+# that is incompatible with common-types v6 used by the 2025-07-01 stacks API).
+output-folder: Generated/DeploymentStacks
+namespace: Microsoft.Azure.Management.Resources.DeploymentStacks
+
+# Multi-file input can require an explicit title override.
+override-info:
+  title: DeploymentStacksClient
+
+# Temporary override to make subscription id GUID a string. v6 common-types
+# declares SubscriptionIdParameter with `format: uuid`, which AutoRest would
+# generate as System.Guid. Strip the format so it stays as plain string,
+# matching how the rest of this SDK exposes subscription ids.
 directive:
-  - from: deploymentStacks.json
-    where: $
-    transform: $ = $.replace(/common-types\/resource-management\/v5\/types.json#\/parameters\/SubscriptionIdParameter/g, 'common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter');
+  - from: swagger-document
+    where: $.parameters.SubscriptionIdParameter
+    transform: delete $.format
 ```

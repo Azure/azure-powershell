@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -67,9 +68,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 WriteWarning("You can perform manual login using the provided access token, for example: 'docker login <loginServer> -u 00000000-0000-0000-0000-000000000000 -p <accessToken>'");
                 var cred = new
                 {
-                    status = this.ExecuteScript<object>(LoginScript),
                     loginServer = Name + ".azurecr.io",
-                    accessToken = this.RegistryDataPlaneClient.Authenticate()
+                    accessToken = this.Password.ConvertToSecureString()
                 };
                 WriteObject(cred);
             } else

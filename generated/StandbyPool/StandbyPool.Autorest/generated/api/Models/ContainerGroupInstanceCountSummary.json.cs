@@ -67,7 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
-            {_instanceCountsByState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray>("instanceCountsByState"), out var __jsonInstanceCountsByState) ? If( __jsonInstanceCountsByState as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount) (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount.FromJson(__u) )) ))() : null : _instanceCountsByState;}
+            {_zone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("zone"), out var __jsonZone) ? (long?)__jsonZone : _zone;}
+            {_instanceCountsByState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray>("instanceCountsByState"), out var __jsonInstanceCountsByState) ? If( __jsonInstanceCountsByState as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount) (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount.FromJson(__u) )) ))() : null : _instanceCountsByState;}
             AfterFromJson(json);
         }
 
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return container;
             }
+            AddIf( null != this._zone ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber((long)this._zone) : null, "zone" ,container.Add );
             if (null != this._instanceCountsByState)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.XNodeArray();

@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Autoscale.private.dll'
   FormatsToProcess = './Az.Autoscale.format.ps1xml'
-  FunctionsToExport = 'Get-AzAutoscalePredictiveMetric', 'Get-AzAutoscaleSetting', 'New-AzAutoscaleNotificationObject', 'New-AzAutoscaleProfileObject', 'New-AzAutoscaleScaleRuleMetricDimensionObject', 'New-AzAutoscaleScaleRuleObject', 'New-AzAutoscaleSetting', 'New-AzAutoscaleWebhookNotificationObject', 'Remove-AzAutoscaleSetting', 'Update-AzAutoscaleSetting', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzAutoscalePredictiveMetric', 'Get-AzAutoscaleSetting', 'New-AzAutoscaleNotificationObject', 'New-AzAutoscaleProfileObject', 'New-AzAutoscaleScaleRuleMetricDimensionObject', 'New-AzAutoscaleScaleRuleObject', 'New-AzAutoscaleSetting', 'New-AzAutoscaleWebhookNotificationObject', 'Remove-AzAutoscaleSetting', 'Update-AzAutoscaleSetting'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Autoscale'

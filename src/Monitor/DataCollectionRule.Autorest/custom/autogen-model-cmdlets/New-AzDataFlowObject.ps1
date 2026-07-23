@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdataflowobject
 #>
 function New-AzDataFlowObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

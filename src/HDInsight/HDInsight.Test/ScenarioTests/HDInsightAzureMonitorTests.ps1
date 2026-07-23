@@ -21,24 +21,14 @@ function Test-AzureMonitorRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US"
-		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location $location
-
-		# create cluster that will be used throughout test
-		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version 5.1 `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
+		# get cluster that will be used throughout test
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName  "group-ps-test" -ClusterName  "ps-test-cluster"
 		Assert-NotNull $cluster
 
-		$workspaceName = Generate-Name("workspace-ps-test")
+		# get a Log Analytics Workspace
+		$workspaceName = "ps-la"
 		$resourceGroupName = $cluster.ResourceGroup
-
-		#create a new Log Analytics Workspace
-		$sku = "pernode"
-		$workspace = New-AzOperationalInsightsWorkspace -Location $location -Name $workspaceName -ResourceGroupName $resourceGroupName -Sku $sku
+		$workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName 
 
 		#get workspace's primaryKey
 		$keys = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $resourceGroupName -Name $workspace.Name
@@ -78,12 +68,12 @@ function Test-AzureMonitorAgentRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US"
+		# $location = "East Asia"
 		# prepare parameter for creating parameter
 		# $params= Prepare-ClusterCreateParameter -location $location
 
 		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName "group-ps-test" -ClusterName "ps-test-cluster"
 		Assert-NotNull $cluster
 
 		$workspaceName = "ps-la"
@@ -102,7 +92,7 @@ function Test-AzureMonitorAgentRelatedCommands{
 
 		Assert-NotNull $workspaceId
 		Assert-NotNull $primaryKey
-		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -Primary  $primaryKey
+		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -PrimaryKey  $primaryKey
 		
 		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-True {$result.ClusterMonitoringEnabled}

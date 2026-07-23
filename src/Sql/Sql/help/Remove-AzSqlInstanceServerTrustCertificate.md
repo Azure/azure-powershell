@@ -38,7 +38,7 @@ Remove-AzSqlInstanceServerTrustCertificate [-ResourceId] <String> [-AsJob] [-Pas
 ```
 
 ## DESCRIPTION
-**Remove-AzSqlInstanceServerTrustCertificate** cmdlet removes a server trust certificate from Azure SQL Managed Instanc
+**Remove-AzSqlInstanceServerTrustCertificate** cmdlet removes a server trust certificate from Azure SQL Managed Instance
 
 ## EXAMPLES
 

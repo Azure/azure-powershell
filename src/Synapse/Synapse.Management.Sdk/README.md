@@ -27,7 +27,7 @@ batch:
  - tag: package-composite-v2
  - tag: package-sqlGen3-2020-04-01-preview
 reflect-api-versions: true
-commit: 74ca59fc8cb6563d5a9d66fb533b8622522143eb
+commit: cecb65f56ec5291e7fe88d62048bdb717e33e834
 ```
 
 ### Tag: package-composite-v2
@@ -112,4 +112,14 @@ directive:
       property-name: AvailableMemoryInMb
     set:
       property-name: AvailableMemoryInMB
+      
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}"].get
+    transform: delete $["x-ms-long-running-operation"]
+  - from: swagger-document
+    where: $.definitions.IntegrationRuntimeResource.properties.properties
+    transform: delete $["x-ms-client-flatten"]
+  - from: swagger-document
+    where: $.definitions.IntegrationRuntimeStatusResponse.properties.properties
+    transform: delete $["x-ms-client-flatten"]
 ```

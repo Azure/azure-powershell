@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubConsumerGroup
 
 ## SYNOPSIS
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceInpu
 ```
 
 ## DESCRIPTION
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -175,7 +175,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group within the azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -190,8 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

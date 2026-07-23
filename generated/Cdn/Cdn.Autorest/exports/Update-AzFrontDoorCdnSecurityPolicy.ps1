@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing security policy within a profile.
+Patch an existing security policy within a profile.
 .Description
-Updates an existing security policy within a profile.
+Patch an existing security policy within a profile.
 .Example
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 $endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
@@ -41,8 +41,10 @@ Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileNam
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,26 +52,56 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
+
+SECURITYPOLICYUPDATEPROPERTY <ISecurityPolicyUpdateParameters>: The JSON object containing security policy update parameters.
+  [Parameter <ISecurityPolicyPropertiesParameters>]: object which contains security policy parameters
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnsecuritypolicy
 #>
 function Update-AzFrontDoorCdnSecurityPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy])]
 [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
     [Alias('SecurityPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
@@ -77,36 +109,70 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath')]
+    [Parameter(ParameterSetName='PatchViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PatchViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PatchViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyPropertiesParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParameters]
     # object which contains security policy parameters
     ${Parameter},
+
+    [Parameter(ParameterSetName='PatchViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters]
+    # The JSON object containing security policy update parameters.
+    ${SecurityPolicyUpdateProperty},
+
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Patch operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Patch operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -176,6 +242,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -197,10 +271,12 @@ begin {
         $mapping = @{
             PatchExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnSecurityPolicy_PatchExpanded';
             PatchViaIdentityExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnSecurityPolicy_PatchViaIdentityExpanded';
+            PatchViaIdentityProfile = 'Az.Cdn.private\Update-AzFrontDoorCdnSecurityPolicy_PatchViaIdentityProfile';
+            PatchViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnSecurityPolicy_PatchViaIdentityProfileExpanded';
+            PatchViaJsonFilePath = 'Az.Cdn.private\Update-AzFrontDoorCdnSecurityPolicy_PatchViaJsonFilePath';
+            PatchViaJsonString = 'Az.Cdn.private\Update-AzFrontDoorCdnSecurityPolicy_PatchViaJsonString';
         }
-        if (('PatchExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('PatchExpanded', 'PatchViaJsonFilePath', 'PatchViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -214,6 +290,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

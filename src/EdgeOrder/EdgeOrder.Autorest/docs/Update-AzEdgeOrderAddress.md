@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEdgeOrderAddress
 
 ## SYNOPSIS
-Updates the properties of an existing address.
+update the properties of an existing address.
 
 ## SYNTAX
 
@@ -26,8 +26,22 @@ Update-AzEdgeOrderAddress -InputObject <IEdgeOrderIdentity> [-ContactDetail <ICo
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates the properties of an existing address.
+update the properties of an existing address.
 
 ## EXAMPLES
 
@@ -75,11 +89,10 @@ Accept wildcard characters: False
 
 ### -ContactDetail
 Contact details for the address
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -107,7 +120,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
@@ -121,13 +133,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the address Resource within the specified resource group.
 address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AddressName
 
 Required: True
@@ -158,7 +200,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -170,11 +212,10 @@ Accept wildcard characters: False
 
 ### -ShippingAddress
 Shipping details for the address
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -189,7 +230,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -205,7 +246,7 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,7 +296,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResource
 
 ## NOTES
 

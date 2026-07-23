@@ -16,24 +16,27 @@ Update a SignalR service.
 ```
 Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
- [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedOrigin <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String[]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
- [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedOrigin <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String[]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzSignalR -InputObject <PSSignalRResource> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
- [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedOrigin <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String[]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +68,93 @@ HostName                                 Location       ExternalIp      Sku     
 --------                                 --------       ----------      ---         --------- ----------------- -------
 mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
 ```
+
+### Example 3: Enable system-assigned managed identity
+```powershell
+Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -EnableSystemAssignedIdentity $true
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+This command enables system-assigned managed identity for the SignalR service. The identity can be used to access other Azure resources on behalf of the SignalR service.
+
+### Example 4: Disable system-assigned managed identity
+```powershell
+Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -EnableSystemAssignedIdentity $false
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+This command disables system-assigned managed identity for the SignalR service.
+
+### Example 5: Switch from system-assigned to user-assigned identity
+```powershell
+# First create a user-assigned managed identity
+$userIdentity = New-AzUserAssignedIdentity -ResourceGroupName myResourceGroup -Name myUserIdentity -Location eastus
+
+# Switch from system-assigned to user-assigned identity
+Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -EnableSystemAssignedIdentity $false -UserAssignedIdentity $userIdentity.Id
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+This command disables system-assigned identity and enables user-assigned identity for the SignalR service. Note that SignalR does not support both system-assigned and user-assigned identities simultaneously.
+
+### Example 6: Update user-assigned identities
+```powershell
+# Create multiple user-assigned managed identities
+$identity1 = New-AzUserAssignedIdentity -ResourceGroupName myResourceGroup -Name myUserIdentity1 -Location eastus
+$identity2 = New-AzUserAssignedIdentity -ResourceGroupName myResourceGroup -Name myUserIdentity2 -Location eastus
+
+# Update SignalR service with new user-assigned identities
+Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -UserAssignedIdentity $identity1.Id, $identity2.Id
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+This command updates the SignalR service to use new user-assigned managed identities. Any existing user-assigned identities will be replaced with the specified ones.
+
+### Example 7: Remove all user-assigned identities
+```powershell
+Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -UserAssignedIdentity @()
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+This command removes all user-assigned managed identities from the SignalR service by providing an empty array.
+
+### Example 8: Completely disable managed identity
+```powershell
+Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -EnableSystemAssignedIdentity $false -UserAssignedIdentity @()
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+This command completely disables managed identity for the SignalR service by disabling system-assigned identity and removing all user-assigned identities.
 
 ## PARAMETERS
 
@@ -105,6 +195,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Enable or disable system-assigned identity. $true enables system-assigned identity, $false disables it. If not provided, no change happens on system-assigned identity.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -226,6 +331,21 @@ Default to 1.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+Set user-assigned identities. To remove all user-assigned identities, provide an empty array @(). If not provided, user-assigned identities remain unchanged.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

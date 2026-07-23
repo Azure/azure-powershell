@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the OperationProperties class.
         /// </summary>
 
-        /// <param name="serviceSpecification">The service specifications.
+        /// <param name="serviceSpecification">An object that describes a specification.
         /// </param>
         public OperationProperties(ServiceSpecification serviceSpecification = default(ServiceSpecification))
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets the service specifications.
+        /// Gets or sets an object that describes a specification.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serviceSpecification")]
         public ServiceSpecification ServiceSpecification {get; set; }

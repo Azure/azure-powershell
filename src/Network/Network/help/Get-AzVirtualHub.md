@@ -14,7 +14,8 @@ Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzVirtualHub [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualHub [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName

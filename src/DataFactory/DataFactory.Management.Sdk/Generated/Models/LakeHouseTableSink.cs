@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// A copy activity for Microsoft Fabric LakeHouse Table sink.
+    /// A copy activity for Microsoft Fabric Lakehouse Table sink.
     /// </summary>
     [Newtonsoft.Json.JsonObject("LakeHouseTableSink")]
     public partial class LakeHouseTableSink : CopySink
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// boolean (or Expression with resultType boolean).
         /// </param>
 
-        /// <param name="tableActionOption">The type of table action for LakeHouse Table sink. Possible values include:
+        /// <param name="tableActionOption">The type of table action for Lakehouse Table sink. Possible values include:
         /// &#34;None&#34;, &#34;Append&#34;, &#34;Overwrite&#34;.
         /// </param>
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
-        /// Gets or sets the type of table action for LakeHouse Table sink. Possible
+        /// Gets or sets the type of table action for Lakehouse Table sink. Possible
         /// values include: &#34;None&#34;, &#34;Append&#34;, &#34;Overwrite&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tableActionOption")]

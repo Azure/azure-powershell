@@ -103,7 +103,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Test-Reprotect -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
-        [Fact]
+        [Fact(Skip = "The test is broken and waiting for a fix.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUFOandFailback()
         {

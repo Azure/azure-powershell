@@ -21,27 +21,32 @@ Create an in-memory object for SystemAssignedIdentityAuthInfo.
 Create an in-memory object for SystemAssignedIdentityAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SystemAssignedIdentityAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersystemassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SystemAssignedIdentityAuthInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(DontShow, HelpMessage="The authentication type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"systemAssignedIdentity"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
-        $AuthType
+        [Parameter(HelpMessage="Optional, this value specifies the Azure role to be assigned.")]
+        [string[]]
+        $Role,
+        [Parameter(HelpMessage="Username created in the database which is mapped to a user in AAD.")]
+        [string]
+        $UserName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SystemAssignedIdentityAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo]::New()
 
-        if ($PSBoundParameters.ContainsKey('AuthType')) {
-            $Object.AuthType = $AuthType
+        if ($PSBoundParameters.ContainsKey('Role')) {
+            $Object.Role = $Role
+        }
+        if ($PSBoundParameters.ContainsKey('UserName')) {
+            $Object.UserName = $UserName
         }
         return $Object
     }

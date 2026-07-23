@@ -115,6 +115,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).Metric = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesMetrics) content.GetValueForProperty("Metric",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).Metric, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetricsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PriorityReplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplication = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesPriorityReplication) content.GetValueForProperty("PriorityReplication",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplication, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesPriorityReplicationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TagsReplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagsReplication = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication) content.GetValueForProperty("TagsReplication",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagsReplication, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesTagsReplicationTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PolicyId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PolicyId, global::System.Convert.ToString);
@@ -138,6 +146,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("MetricEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).MetricEnabled = (bool?) content.GetValueForProperty("MetricEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).MetricEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PriorityReplicationEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplicationEnabled = (bool?) content.GetValueForProperty("PriorityReplicationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplicationEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TagReplicationEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagReplicationEnabled = (bool?) content.GetValueForProperty("TagReplicationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagReplicationEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -160,6 +176,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).Metric = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesMetrics) content.GetValueForProperty("Metric",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).Metric, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetricsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PriorityReplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplication = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesPriorityReplication) content.GetValueForProperty("PriorityReplication",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplication, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesPriorityReplicationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TagsReplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagsReplication = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication) content.GetValueForProperty("TagsReplication",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagsReplication, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesTagsReplicationTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PolicyId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PolicyId, global::System.Convert.ToString);
@@ -183,6 +207,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("MetricEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).MetricEnabled = (bool?) content.GetValueForProperty("MetricEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).MetricEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PriorityReplicationEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplicationEnabled = (bool?) content.GetValueForProperty("PriorityReplicationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).PriorityReplicationEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TagReplicationEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagReplicationEnabled = (bool?) content.GetValueForProperty("TagReplicationEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)this).TagReplicationEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

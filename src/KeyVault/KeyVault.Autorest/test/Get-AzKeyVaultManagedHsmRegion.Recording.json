@@ -1,17 +1,17 @@
 {
-  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm/regions?api-version=2023-02-01+1": {
+  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2024-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm/regions?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2024-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "6f05aad9-7a35-41b5-b620-ffdcdff80745" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "f7790fba-fd1d-4352-9d0c-12615f856734" ],
         "CommandName": [ "Get-AzKeyVaultManagedHsmRegion" ],
         "FullCommandName": [ "Get-AzKeyVaultManagedHsmRegion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.13", "Az.KeyVault/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.KeyVault/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,24 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "6f05aad9-7a35-41b5-b620-ffdcdff80745" ],
-        "x-ms-keyvault-service-version": [ "1.5.885.0" ],
-        "x-ms-request-id": [ "d30b99af-ee54-413c-b709-848b7e41da98" ],
+        "x-ms-client-request-id": [ "f7790fba-fd1d-4352-9d0c-12615f856734" ],
+        "x-ms-keyvault-service-version": [ "2.2.243.0" ],
+        "x-ms-request-id": [ "31066744-0ff8-4f4a-80ae-aef993423fb5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "50a6fca5-5850-4e6a-b4de-6125032d920f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T074143Z:50a6fca5-5850-4e6a-b4de-6125032d920f" ],
-        "Date": [ "Fri, 18 Aug 2023 07:41:42 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=a217809c-9dd2-41d4-b32a-7b16e0b588bf/australiaeast/71576620-0908-41cb-a36d-91709e5bfdf6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "0749e52e-cf26-4eae-b931-0cef36e2317d" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250811T232643Z:0749e52e-cf26-4eae-b931-0cef36e2317d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 88E1B6E55A8644A1B7DB70CE0B4E91D7 Ref B: SYD03EDGE2018 Ref C: 2025-08-11T23:26:42Z" ],
+        "Date": [ "Mon, 11 Aug 2025 23:26:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "224" ],
+        "Content-Length": [ "147" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"eastus\",\"provisioningState\":\"Succeeded\",\"isPrimary\":true},{\"name\":\"westus\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false},{\"name\":\"eastus2\",\"provisioningState\":\"PreProvisioning\",\"isPrimary\":false}]}",
+      "Content": "{\"value\":[{\"name\":\"westus\",\"provisioningState\":\"Succeeded\",\"isPrimary\":true},{\"name\":\"uksouth\",\"provisioningState\":\"Succeeded\",\"isPrimary\":false}]}",
       "isContentBase64": false
     }
   }

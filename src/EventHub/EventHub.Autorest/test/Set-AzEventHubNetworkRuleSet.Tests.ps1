@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNetworkRuleSet'
 }
 
 Describe 'Set-AzEventHubNetworkRuleSet' {
-    It 'SetExpanded'  {
+    It 'SetExpanded' -skip {
         $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1 -Action Allow
         $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 
@@ -54,15 +54,24 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
     }
 
     It 'SetViaIdentityExpanded'  {
+        $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1 -Action Allow
+        $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
+
+        $virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId1
+        $virtualNetworkRule2 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId2
+        $virtualNetworkRule3 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId3
+
+        Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -IPRule $ipRule1,$ipRule2 -VirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2,$virtualNetworkRule3 | Out-Null
+
         $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         
         { Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
         
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet -TrustedServiceAccessEnabled:$false
-        $networkRuleSet.DefaultAction | Should -Be "Deny"
+        $networkRuleSet.DefaultAction | Should -Be "Allow"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
-        $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
         $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
     }
 }

@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var replicationProviderSettings =
                 this.InputObject.ReplicationProviderSettings as ASRInMageAzureV2PolicyDetails;
 
-            // Set the Paremeters to be updated.
+            // Set the Parameters to be updated.
             this.applicationConsistentSnapshotFrequencyInMinutes =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var replicationProviderSettings =
                 this.InputObject.ReplicationProviderSettings as ASRInMagePolicyDetails;
 
-            // Set the Paremeters to be updated.
+            // Set the Parameters to be updated.
             this.applicationConsistentSnapshotFrequencyInMinutes =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var replicationProviderSettings =
                 this.InputObject.ReplicationProviderSettings as ASRAzureToAzurePolicyDetails;
 
-            // Set the Paremeters to be updated.
+            // Set the Parameters to be updated.
             this.applicationConsistentSnapshotFrequencyInMinutes =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var replicationProviderSettings =
                 this.InputObject.ReplicationProviderSettings as ASRInMageRcmPolicyDetails;
 
-            // Set the paremeters to be updated.
+            // Set the parameters to be updated.
             this.applicationConsistentSnapshotFrequencyInMinutes =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasedatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureSqlDatabaseDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSqlDatabaseDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
- [-ServerEndpoint <String>] [-SubscriptionId <String>] [<CommonParameters>]
+New-AzPurviewAzureSqlDatabaseDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>] [-ServerEndpoint <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for AzureSqlDatabaseDataSource.
 
 ### Example 1: Create Azure SQL database data source object
 ```powershell
-New-AzPurviewAzureSqlDatabaseDataSourceObject -Kind 'AzureSqlDatabase' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
+New-AzPurviewAzureSqlDatabaseDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
 ```
 
 ```output
@@ -73,21 +73,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource
 
 ## NOTES
 

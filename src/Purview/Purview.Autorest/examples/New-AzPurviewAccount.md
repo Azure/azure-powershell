@@ -1,6 +1,6 @@
 ### Example 1: Create a purview account
 ```powershell
-New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -IdentityType SystemAssigned -SkuCapacity 4 -SkuName Standard
+New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -EnableSystemAssignedIdentity:$true -SkuCapacity 4 -SkuName Standard
 ```
 
 ```output

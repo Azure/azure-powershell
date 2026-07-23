@@ -10,15 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+    /// <summary>
+    /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] SwitchBilling=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/switchBilling"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Switch, @"AzNewRelicMonitorBilling_SwitchViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Switches the billing for NewRelic monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/switchBilling", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/switchBilling", ApiVersion = "2025-05-01-preview")]
     public partial class SwitchAzNewRelicMonitorBilling_SwitchViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext
@@ -141,16 +143,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.HttpPipeline Pipeline { get; set; }
 
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Different billing cycles like MONTHLY/WEEKLY. this could be enum")]
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Different billing cycles like Monthly/Weekly.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Different billing cycles like MONTHLY/WEEKLY. this could be enum",
+        Description = @"Different billing cycles like Monthly/Weekly.",
         SerializedName = @"billingCycle",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
         public string PlanDataBillingCycle { get => _requestBody.PlanDataBillingCycle ?? null; set => _requestBody.PlanDataBillingCycle = value; }
 
         /// <summary>date when plan was applied</summary>
@@ -527,7 +528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                     return ;
                 }
                 // onAccepted - response for 202 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
@@ -593,7 +594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

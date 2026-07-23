@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Get firmware.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}", ApiVersion = "2025-08-02")]
     public partial class GetAzFirmwareAnalysisFirmware_GetViaIdentityWorkspace : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext

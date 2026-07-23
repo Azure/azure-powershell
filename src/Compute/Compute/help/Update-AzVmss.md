@@ -37,7 +37,11 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
- [-EnableResilientVMDelete <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>] [-MaxZoneCount <Int32>]
+ [-EnableMaxInstancePercentPerZone <Boolean>] [-MaxInstancePercentPerZoneValue <Int32>]
+ [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
+ [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +70,11 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
- [-EnableResilientVMDelete <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>] [-MaxZoneCount <Int32>]
+ [-EnableMaxInstancePercentPerZone <Boolean>] [-MaxInstancePercentPerZoneValue <Int32>]
+ [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
+ [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -156,8 +164,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutomaticZoneRebalanceBehavior
+Specifies the behavior for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AutomaticZoneRebalanceStrategy
+Specifies the strategy for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -BaseRegularPriorityCount
-Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode. 
+Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode.
 
 ```yaml
 Type: System.Int32
@@ -279,6 +317,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAllInstancesDown
+Specifies if Scheduled Events should be auto-approved when all instances are down. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableAutomaticRepair
 Enable or disable automatic repairs on the virtual machine scale set.
 
@@ -306,6 +359,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticZoneRebalance
+Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableMaxInstancePercentPerZone
+Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -598,6 +681,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxInstancePercentPerZoneValue
+Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZonalPlatformFaultDomainAlignMode
+Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. 'BestEffortAligned' offloads alignment to VMSS - disks that support enough Storage Fault Domains are aligned, while others remain unaligned, preventing deployment failures for mixed-SKU disk configurations. This property can be changed on an existing VMSS. Applicable to VMSS Flex only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Aligned, Unaligned, BestEffortAligned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -MaxPrice
 Specifies the maximum price you are willing to pay for a low priority VM/VMSS. This price is in US Dollars. This price will be compared with the current low priority price for the VM size. Also, the prices are compared at the time of create/update of low priority VM/VMSS and the operation will only succeed if the maxPrice is greater than the current low priority price. The maxPrice will also be used for evicting a low priority VM/VMSS if the current low priority price goes beyond the maxPrice after creation of VM/VMSS. Possible values are: any decimal value greater than zero. Example: 0.01538.  -1 indicates that the low priority VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you.
 
@@ -645,6 +759,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxZoneCount
+The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -808,7 +937,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ### -ProvisionVMAgent
 Indicates whether virtual machine agent should be provisioned on the Windows virtual machines in the VMSS.
 
@@ -896,6 +1024,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduledEventsApiVersion
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

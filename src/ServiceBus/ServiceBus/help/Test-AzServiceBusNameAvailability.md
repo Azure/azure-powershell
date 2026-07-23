@@ -15,13 +15,13 @@ Checks the Availability of the given Queue or Topic name
 ### QueueCheckNameAvailabilitySet (Default)
 ```
 Test-AzServiceBusNameAvailability [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-Queue]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TopicCheckNameAvailabilitySet
 ```
 Test-AzServiceBusNameAvailability [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-Topic]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespa
 True
 ```
 
-Returns True if the Provided $nameQueue name is Availabile or returns False if Provided $nameQueue name in not available
+Returns True if the Provided $nameQueue name is Available or returns False if Provided $nameQueue name in not available
 
 ### Example 2
 ```powershell
@@ -49,7 +49,7 @@ Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespa
 True
 ```
 
-Returns True if the Provided $nameTopic name is Availabile or returns False if Provided $nameTopic name in not available
+Returns True if the Provided $nameTopic name is Available or returns False if Provided $nameTopic name in not available
 
 ## PARAMETERS
 
@@ -95,21 +95,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

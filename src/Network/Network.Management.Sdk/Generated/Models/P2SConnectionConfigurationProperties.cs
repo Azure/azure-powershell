@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? EnableInternetSecurity {get; set; }
 
         /// <summary>
-        /// Gets list of Configuration Policy Groups that this
+        /// Gets or sets list of Configuration Policy Groups that this
         /// P2SConnectionConfiguration is attached to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "configurationPolicyGroupAssociations")]
-        public System.Collections.Generic.IList<SubResource> ConfigurationPolicyGroupAssociations {get; private set; }
+        public System.Collections.Generic.IList<SubResource> ConfigurationPolicyGroupAssociations {get; set; }
 
         /// <summary>
         /// Gets list of previous Configuration Policy Groups that this

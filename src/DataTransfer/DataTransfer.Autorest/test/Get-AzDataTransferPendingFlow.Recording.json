@@ -1,0 +1,50 @@
+{
+  "Get-AzDataTransferPendingFlow+[NoContext]+List+$POST+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/listPendingFlows?api-version=2025-05-21+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/listPendingFlows?api-version=2025-05-21",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "26c31301-68e8-4a44-955b-637a71bbd77a" ],
+        "CommandName": [ "Get-AzDataTransferPendingFlow" ],
+        "FullCommandName": [ "Get-AzDataTransferPendingFlow_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/9af890d0-30f4-4e24-abf2-d8f52c27fb2b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "865ba827-34b4-4f28-b60a-50c4827175aa" ],
+        "x-ms-request-id": [ "a629226c-796d-4e02-8e2c-fc44a432dd96" ],
+        "x-ms-correlation-request-id": [ "3b51c4de-14c1-407b-84ca-cbbb1488ef6a" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T080914Z:3b51c4de-14c1-407b-84ca-cbbb1488ef6a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2E718C2CDC2541C3A98BC3381FBC792A Ref B: PNQ231110909031 Ref C: 2025-06-19T08:09:12Z" ],
+        "Date": [ "Thu, 19 Jun 2025 08:09:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "449" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-pending-flow-1\",\"name\":\"test-pending-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"flowId\":\"8c9a1065-d891-4c74-9390-521e28a03121\",\"flowType\":\"Mission\",\"dataType\":\"Blob\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

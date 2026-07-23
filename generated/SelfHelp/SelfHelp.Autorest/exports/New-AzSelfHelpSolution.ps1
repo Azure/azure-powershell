@@ -16,7 +16,7 @@
 
 <#
 .Synopsis
-Creates a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+create a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
 <br/> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
 These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
 All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
@@ -28,7 +28,7 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 ‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3.
 ‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 .Description
-Creates a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+create a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
 <br/> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
 These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
 All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
@@ -51,50 +51,85 @@ $parameters = [ordered]@{
 
 New-AzSelfHelpSolution -ResourceName test-resource234 -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev -Parameter $parameters -TriggerCriterion $criteria 
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
+  [DiagnosticsResourceName <String>]: Unique resource name for insight resources
+  [Id <String>]: Resource identity path
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+  [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TroubleshooterName <String>]: Troubleshooter resource Name.
+
 TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
-  [Name <Name?>]: Trigger criterion name.
+  [Name <String>]: Trigger criterion name.
   [Value <String>]: Trigger criterion value.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpsolution
 #>
 function New-AzSelfHelpSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SolutionResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # Solution resource Name.
     ${ResourceName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResourcePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Client input parameters to run Solution
     ${Parameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITriggerCriterion[]]
     # Solution request trigger criteria
-    # To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
     ${TriggerCriterion},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -164,6 +199,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -184,6 +228,9 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.SelfHelp.private\New-AzSelfHelpSolution_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.SelfHelp.private\New-AzSelfHelpSolution_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.SelfHelp.private\New-AzSelfHelpSolution_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SelfHelp.private\New-AzSelfHelpSolution_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -192,6 +239,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

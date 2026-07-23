@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToCoolDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToCoolDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToCoolDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToCoolDaysAfterLastTierChangeGreaterThan"))
             {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToArchiveDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToArchiveDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToArchiveDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToArchiveDaysAfterLastTierChangeGreaterThan"))
             {
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToColdDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToColdDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToColdDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToColdDaysAfterLastTierChangeGreaterThan"))
             {
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToHotDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToHotDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToHotDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToHotDaysAfterLastTierChangeGreaterThan"))
             {
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("DeleteDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("DeleteDaysAfterLastTierChangeGreaterThan"))
             {
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToCoolDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToCoolDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToCoolDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToCoolDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToCoolDaysAfterLastTierChangeGreaterThan"))
             {
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToArchiveDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToArchiveDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToArchiveDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToArchiveDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToArchiveDaysAfterLastTierChangeGreaterThan"))
             {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToColdDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToColdDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToColdDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToColdDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToColdDaysAfterLastTierChangeGreaterThan"))
             {
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("TierToHotDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("TierToHotDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("TierToHotDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).TierToHotDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TierToHotDaysAfterLastTierChangeGreaterThan"))
             {
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("DeleteDaysAfterCreationGreaterThan"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan = (float) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan = (float?) content.GetValueForProperty("DeleteDaysAfterCreationGreaterThan",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyVersionInternal)this).DeleteDaysAfterCreationGreaterThan, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("DeleteDaysAfterLastTierChangeGreaterThan"))
             {

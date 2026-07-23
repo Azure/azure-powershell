@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="scaleType">Node type capacity scale type.
-        /// Possible values include: 'None', 'Manual', 'Automatic'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Manual&#39;, &#39;Automatic&#39;</param>
         public NodeTypeSkuCapacity(int? minimum = default(int?), int? maximum = default(int?), int? defaultProperty = default(int?), string scaleType = default(string))
 
         {

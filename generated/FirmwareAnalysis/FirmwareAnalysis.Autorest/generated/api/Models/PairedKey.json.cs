@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return;
             }
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("pairedKeyId"), out var __jsonPairedKeyId) ? (string)__jsonPairedKeyId : (string)_id;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             AfterFromJson(json);
         }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
+            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._id.ToString()) : null, "pairedKeyId" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AfterToJson(ref container);
             return container;

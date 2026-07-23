@@ -72,7 +72,7 @@ SystemDataLastModifiedByType           : Application
 Type                                   : Microsoft.ElasticSan/ElasticSans
 ```
 
-This example updates the protocol type and virtual network rules of a volume gorup
+This example updates the protocol type and virtual network rules of a volume group
 
 ### Example 2: Update a volume group virtual network rule with JSON input 
 ```powershell

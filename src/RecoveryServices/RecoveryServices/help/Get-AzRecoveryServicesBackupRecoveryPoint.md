@@ -96,7 +96,7 @@ The fourth command gets backup items based on backupManagementType and workloadT
 The last command gets an array of recovery points for the item in $backupItem which are ready to be moved to VaultArchive tier and 
 then stores them in the $rp variable. 
 
-### Example 4: Getting pruned recovery points in last year after modify policy opertaion
+### Example 4: Getting pruned recovery points in last year after modify policy operation
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
@@ -137,7 +137,7 @@ Now we move on to update the policy. The sixth command fetches the policy to be 
 The seventh, eight and ninth commands disable the yearly and monthly retention in the policy to prune the older recovery points.
 The tenth command finally updates the retention policy. 
 The eleventh command waits in the same powershell session until the recovery points are pruned and fetches the recovery points within the same time range, after the policy changes are applied.
-The twelth command takes a diff between recovery point list before and after pruning occurs.
+The twelfth command takes a diff between recovery point list before and after pruning occurs.
 The thirteenth command read the recovery points, from the diff, which were present before and are now pruned.
 The last command displays the list of pruned recovery points.
 

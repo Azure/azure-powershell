@@ -39,7 +39,7 @@ ETag Id                                                                         
 ```
 
 The first command is used to fetch the resource guard to be updated.
-The second and third command is used to fecth the critical operations user want to update.
+The second and third command is used to fetch the critical operations user want to update.
 
 The fourth command is used to exclude some critical operations from the resource guard
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-This parameter is no longer in use and will be depricated
+This parameter is no longer in use and will be deprecated
 
 ```yaml
 Type: System.String
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource
 
 ## NOTES
 

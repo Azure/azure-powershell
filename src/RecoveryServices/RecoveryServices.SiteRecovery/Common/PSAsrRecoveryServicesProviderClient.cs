@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryServicesProviders.ListByReplicationFabricsWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricId,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -63,6 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationRecoveryServicesProviders.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricId,
                     providerId,
                     this.GetRequestHeaders(true))
@@ -83,6 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryServicesProviders.BeginPurgeWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricId,
                     providerId,
                     this.GetRequestHeaders(true))
@@ -104,6 +110,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryServicesProviders.BeginRefreshProviderWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricId,
                     providerId,
                     this.GetRequestHeaders(true))
@@ -125,6 +133,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryServicesProviders.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricId,
                     providerId,
                     this.GetRequestHeaders(true))

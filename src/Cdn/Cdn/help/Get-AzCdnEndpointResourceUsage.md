@@ -23,7 +23,7 @@ Checks the quota and usage of geo filters and custom domains under the given end
 
 ## EXAMPLES
 
-### Example 1: List resource useages of an AzureCDN Endpoint under the AzureCDN profile
+### Example 1: List resource usages of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
 Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 ```
@@ -41,7 +41,7 @@ CurrentValue Limit ResourceType          Unit
 1            10    originsPerOriginGroup count
 ```
 
-List resource useages of an AzureCDN Endpoint under the AzureCDN profile
+List resource usages of an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -92,7 +92,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -107,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -159,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
 
 ## NOTES
 

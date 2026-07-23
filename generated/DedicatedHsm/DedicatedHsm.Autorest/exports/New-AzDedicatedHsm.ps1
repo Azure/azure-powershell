@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Create or Update a dedicated HSM in the specified subscription.
+create a dedicated HSM in the specified subscription.
 .Description
-Create or Update a dedicated HSM in the specified subscription.
+create a dedicated HSM in the specified subscription.
 .Example
 New-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz -Location eastus -Sku "SafeNet Luna Network HSM A790" -StampId stamp1 -SubnetId "/subscriptions/xxxx-xxxx-xxx-xxx/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet" -NetworkInterface @{PrivateIPAddress = '10.2.1.120' }
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
+Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsm
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ NETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource Ids for t
 https://learn.microsoft.com/powershell/module/az.dedicatedhsm/new-azdedicatedhsm
 #>
 function New-AzDedicatedHsm {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsm])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -61,66 +61,76 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
     [System.String]
     # The supported Azure location where the dedicated HSM should be created.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkInterface[]]
     # Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
-    # To construct, see NOTES section for MANAGEMENTNETWORKINTERFACE properties and create a hash table.
     ${ManagementNetworkInterface},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
     [System.String]
     # The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
     ${ManagementSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkInterface[]]
     # Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
-    # To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
     ${NetworkInterface},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.SkuName])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.PSArgumentCompleterAttribute("SafeNet Luna Network HSM A790", "payShield10K_LMK1_CPS60", "payShield10K_LMK1_CPS250", "payShield10K_LMK1_CPS2500", "payShield10K_LMK2_CPS60", "payShield10K_LMK2_CPS250", "payShield10K_LMK2_CPS2500")]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.SkuName]
+    [System.String]
     # SKU of the dedicated HSM
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
     [System.String]
     # This field will be used when RP does not support Availability zones.
     ${StampId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
     [System.String]
     # The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
     ${SubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
     [System.String[]]
     # The Dedicated Hsm zones.
     ${Zone},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -190,6 +200,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -210,10 +229,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DedicatedHsm.private\New-AzDedicatedHsm_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DedicatedHsm.private\New-AzDedicatedHsm_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DedicatedHsm.private\New-AzDedicatedHsm_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -227,6 +246,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

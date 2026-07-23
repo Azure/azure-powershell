@@ -13,8 +13,21 @@ The name must contain only alphanumeric characters, be globally unique, and betw
 
 ## SYNTAX
 
+### CheckExpanded (Default)
 ```
 Test-AzContainerRegistryNameAvailability -Name <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzContainerRegistryNameAvailability -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzContainerRegistryNameAvailability -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -55,12 +68,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -124,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryNameStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryNameStatus
 
 ## NOTES
 

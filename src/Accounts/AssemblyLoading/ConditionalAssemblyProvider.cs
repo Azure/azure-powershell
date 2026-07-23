@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,40 +39,50 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _assemblies = new List<IConditionalAssembly>()
             {
-                // todo: add a tool to update assembly versions after replacing the assemblies. (Can it support newly introduced assemblies?)
                 // todo: consider moving the list to a standalone config file
-                #region AssemblyList
-                CreateAssembly("netstandard2.0", "Azure.Core", "1.44.1.0"),
-                CreateAssembly("netstandard2.0", "Azure.Identity", "1.13.0.0"),
-                CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.1.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "6.0.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.65.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.65.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.65.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.2.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.35.0.0"),
-                CreateAssembly("netstandard2.0", "System.ClientModel", "1.1.0.0"),
-                CreateAssembly("netstandard2.0", "System.Memory.Data", "6.0.0.0"),
-                CreateAssembly("netstandard2.0", "System.Text.Json", "6.0.0.0"),
-                CreateAssembly("netstandard2.0", "System.Buffers", "4.0.3.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.2").WithWindowsPowerShell(),
+                // do not update this list manually, see src/lib/README.md for details
+                #region Generated
+                CreateAssembly("net45", "Newtonsoft.Json", "13.0.0.0").WithWindowsPowerShell(),
+                CreateAssembly("net46", "System.Xml.ReaderWriter", "4.1.0.0").WithWindowsPowerShell(),
+                CreateAssembly("net461", "System.Reflection.DispatchProxy", "4.0.4.0").WithWindowsPowerShell(),
+                CreateAssembly("net461", "System.Security.Cryptography.ProtectedData", "4.0.3.0").WithWindowsPowerShell(),
+                CreateAssembly("net462", "System.Numerics.Vectors", "4.1.6.0").WithWindowsPowerShell(),
+                CreateAssembly("net462", "System.Runtime.CompilerServices.Unsafe", "6.0.3.0").WithWindowsPowerShell(),
+                CreateAssembly("net47", "System.Security.Cryptography.Cng", "5.0.0.0").WithWindowsPowerShell(),
+                CreateAssembly("net47", "System.ValueTuple", "4.0.3.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "Azure.Core", "1.57.0.0"),
+                CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.6.0.0"),
+                CreateAssembly("netstandard2.0", "Azure.Identity", "1.21.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "10.0.0.3"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.Configuration.Abstractions", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.DependencyInjection.Abstractions", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.Diagnostics.Abstractions", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.FileProviders.Abstractions", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.Hosting.Abstractions", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.Logging.Abstractions", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.Options", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Extensions.Primitives", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.84.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.84.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.84.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.20.4.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "8.14.0.0"),
+                CreateAssembly("netstandard2.0", "System.Buffers", "4.0.2.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.ClientModel", "1.13.0.0"),
+                CreateAssembly("netstandard2.0", "System.Diagnostics.DiagnosticSource", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "System.Formats.Asn1", "8.0.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.IO.Pipelines", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "System.Memory.Data", "10.0.0.3"),
+                CreateAssembly("netstandard2.0", "System.Memory", "4.0.2.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Private.ServiceModel", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
-
-                CreateAssembly("netfx", "Newtonsoft.Json", "13.0.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Diagnostics.DiagnosticSource", "6.0.0.1").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Numerics.Vectors", "4.1.4.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Reflection.DispatchProxy", "4.0.4.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Runtime.CompilerServices.Unsafe", "6.0.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Security.Cryptography.Cng", "4.3.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Security.Cryptography.ProtectedData", "4.0.3.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Text.Encodings.Web", "6.0.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Xml.ReaderWriter", "4.1.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Text.Encodings.Web", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "System.Text.Json", "10.0.0.0"),
+                CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.1.0").WithWindowsPowerShell(),
                 #endregion
             };
         }

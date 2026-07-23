@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -32,9 +33,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGuardId;
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = SetAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = SetAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated)]
         [ValidateNotNullOrEmpty]
         public string Token;
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = SetAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
+        [ValidateNotNullOrEmpty]
+        public System.Security.SecureString SecureToken;
 
         public override void ExecuteCmdlet()
         {
@@ -52,7 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     param.Properties = new ResourceGuardProxyBase();
                     param.Properties.ResourceGuardResourceId = ResourceGuardId;
 
-                    ResourceGuardProxyBaseResource resourceGuardMapping = ServiceClientAdapter.CreateResourceGuardMapping(vaultName, resourceGroupName, resourceGuardMappingName, param, Token);
+                    string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+
+                    ResourceGuardProxyBaseResource resourceGuardMapping = ServiceClientAdapter.CreateResourceGuardMapping(vaultName, resourceGroupName, resourceGuardMappingName, param, plainToken);
                     WriteObject(resourceGuardMapping);
                 }
                 catch (Exception exception)

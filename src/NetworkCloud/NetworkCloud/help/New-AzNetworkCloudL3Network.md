@@ -8,21 +8,36 @@ schema: 2.0.0
 # New-AzNetworkCloudL3Network
 
 ## SYNOPSIS
-Create a new layer 3 (L3) network or update the properties of the existing network.
+Create a new layer 3 (L3) network or create the properties of the existing network.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -ExtendedLocationName <String> -ExtendedLocationType <String> -L3IsolationDomainId <String> -Location <String>
- -Vlan <Int64> [-HybridAksIpamEnabled <HybridAksIpamEnabled>] [-HybridAksPluginType <HybridAksPluginType>]
- [-IPAllocationType <IPAllocationType>] [-InterfaceName <String>] [-Ipv4ConnectedPrefix <String>]
- [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -L3IsolationDomainId <String> -Location <String> -Vlan <Int64> [-HybridAksIpamEnabled <String>]
+ [-HybridAksPluginType <String>] [-IPAllocationType <String>] [-InterfaceName <String>]
+ [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new layer 3 (L3) network or update the properties of the existing network.
+Create a new layer 3 (L3) network or create the properties of the existing network.
 
 ## EXAMPLES
 
@@ -77,7 +92,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -92,7 +107,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -108,8 +123,8 @@ The field was previously optional, now it will have no defined behavior and will
 The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HybridAksIpamEnabled
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -125,7 +140,40 @@ The field was previously optional, now it will have no defined behavior and will
 The network plugin type for Hybrid AKS.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HybridAksPluginType
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +190,7 @@ This name can be overridden by the name supplied in the network attachment confi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -156,8 +204,8 @@ Accept wildcard characters: False
 The type of the IP address allocation, defaulted to "DualStack".
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.IPAllocationType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -169,11 +217,11 @@ Accept wildcard characters: False
 
 ### -Ipv4ConnectedPrefix
 The IPV4 prefix (CIDR) assigned to this L3 network.
-Required when the IP allocation typeis IPV4 or DualStack.
+Required when the IP allocation type is IPV4 or DualStack.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -185,14 +233,44 @@ Accept wildcard characters: False
 
 ### -Ipv6ConnectedPrefix
 The IPV6 prefix (CIDR) assigned to this L3 network.
-Required when the IP allocation typeis IPV6 or DualStack.
+Required when the IP allocation type is IPV6 or DualStack.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,7 +282,7 @@ The resource ID of the Network Fabric l3IsolationDomain.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -219,7 +297,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -296,7 +374,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -311,7 +389,7 @@ The VLAN from the l3IsolationDomain that is used for this network.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -359,7 +437,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL3Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3Network
 
 ## NOTES
 

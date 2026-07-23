@@ -48,7 +48,7 @@ Obtains details of a cached recommendation.
 
 ### Example 1: List Recommendation by subscriptionId and resource group name
 ```powershell
- Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
+Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
 ```
 
 ```output
@@ -239,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 
 ## NOTES
 

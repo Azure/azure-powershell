@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StandbyPool-help.xml
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppool
 schema: 2.0.0
@@ -70,6 +70,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zone                              : {1}
 ```
 
 Above command is getting a standby container group pool.

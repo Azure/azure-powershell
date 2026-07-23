@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Backup Vault information
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BackupVault : Microsoft.Rest.Azure.IResource
+    public partial class BackupVault : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the BackupVault class.
@@ -25,10 +25,32 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the BackupVault class.
         /// </summary>
 
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// </param>
+
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
         /// <param name="provisioningState">Azure lifecycle management
         /// </param>
-        public BackupVault(string provisioningState = default(string))
+        public BackupVault(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string))
 
+        : base(location, id, name, type, systemData, tags)
         {
             this.ProvisioningState = provisioningState;
             CustomInit();
@@ -45,5 +67,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+
+        }
     }
 }

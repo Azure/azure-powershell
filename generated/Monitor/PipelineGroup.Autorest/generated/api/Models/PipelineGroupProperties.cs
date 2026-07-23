@@ -13,12 +13,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal
     {
 
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public int? DistributionMaxInstancesPerHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacementInternal)ExecutionPlacement).DistributionMaxInstancesPerHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacementInternal)ExecutionPlacement).DistributionMaxInstancesPerHost = value ?? default(int); }
+
+        /// <summary>Backing field for <see cref="ExecutionPlacement" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement _executionPlacement;
+
+        /// <summary>Constraints for guiding the execution environment of the pipeline group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement ExecutionPlacement { get => (this._executionPlacement = this._executionPlacement ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExecutionPlacement()); set => this._executionPlacement = value; }
+
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint> ExecutionPlacementConstraint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacementInternal)ExecutionPlacement).Constraint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacementInternal)ExecutionPlacement).Constraint = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="Exporter" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> _exporter;
 
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get => this._exporter; set => this._exporter = value; }
+
+        /// <summary>Internal Acessors for ExecutionPlacement</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal.ExecutionPlacement { get => (this._executionPlacement = this._executionPlacement ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExecutionPlacement()); set { {_executionPlacement = value;} } }
+
+        /// <summary>Internal Acessors for ExecutionPlacementDistribution</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IDistributionPolicy Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal.ExecutionPlacementDistribution { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacementInternal)ExecutionPlacement).Distribution; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacementInternal)ExecutionPlacement).Distribution = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -27,14 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IService Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal.Service { get => (this._service = this._service ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Service()); set { {_service = value;} } }
 
         /// <summary>Internal Acessors for ServicePersistence</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal.ServicePersistence { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceInternal)Service).Persistence; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceInternal)Service).Persistence = value; }
-
-        /// <summary>Backing field for <see cref="NetworkingConfiguration" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> _networkingConfiguration;
-
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> NetworkingConfiguration { get => this._networkingConfiguration; set => this._networkingConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal.ServicePersistence { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceInternal)Service).Persistence; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceInternal)Service).Persistence = value ?? null /* model class */; }
 
         /// <summary>The name of the mounted persistent volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
@@ -81,6 +99,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceInternal)Service).Pipeline; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IServiceInternal)Service).Pipeline = value ; }
 
+        /// <summary>Backing field for <see cref="TlsConfiguration" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> _tlsConfiguration;
+
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> TlsConfiguration { get => this._tlsConfiguration; set => this._tlsConfiguration = value; }
+
         /// <summary>Creates an new <see cref="PipelineGroupProperties" /> instance.</summary>
         public PipelineGroupProperties()
         {
@@ -91,6 +116,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
     public partial interface IPipelineGroupProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.",
+        SerializedName = @"maxInstancesPerHost",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DistributionMaxInstancesPerHost { get; set; }
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of placement constraints to guide where pipelineGroup instances should run.",
+        SerializedName = @"constraints",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint> ExecutionPlacementConstraint { get; set; }
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
@@ -102,17 +153,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"exporters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get; set; }
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Networking configurations for the pipeline group instance.",
-        SerializedName = @"networkingConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> NetworkingConfiguration { get; set; }
         /// <summary>The name of the mounted persistent volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -182,16 +222,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"pipelines",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get; set; }
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"TLS configurations for the pipeline group instance.",
+        SerializedName = @"tlsConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> TlsConfiguration { get; set; }
 
     }
     /// Properties that need to be specified to create a new pipeline group instance.
     internal partial interface IPipelineGroupPropertiesInternal
 
     {
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        int? DistributionMaxInstancesPerHost { get; set; }
+        /// <summary>Constraints for guiding the execution environment of the pipeline group.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement ExecutionPlacement { get; set; }
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint> ExecutionPlacementConstraint { get; set; }
+        /// <summary>Distribution policy for spreading instances across compute units (nodes/VMs).</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IDistributionPolicy ExecutionPlacementDistribution { get; set; }
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get; set; }
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration> NetworkingConfiguration { get; set; }
         /// <summary>The name of the mounted persistent volume.</summary>
         string PersistencePersistentVolumeName { get; set; }
         /// <summary>The processors specified for a pipeline group instance.</summary>
@@ -211,6 +272,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations ServicePersistence { get; set; }
         /// <summary>Pipelines belonging to a given pipeline group.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline> ServicePipeline { get; set; }
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration> TlsConfiguration { get; set; }
 
     }
 }

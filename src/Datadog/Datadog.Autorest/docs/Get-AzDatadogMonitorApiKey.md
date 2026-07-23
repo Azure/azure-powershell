@@ -137,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogApiKey
 
 ## NOTES
 

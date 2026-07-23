@@ -40,11 +40,11 @@ $upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
 Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade -SubscriptionId testSubId01
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,21 +52,25 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 
 PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>: Parameters required for profile upgrade.
-  WafMappingList <IProfileChangeSkuWafMapping[]>: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
+  WafMappingList <List<IProfileChangeSkuWafMapping>>: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
     SecurityPolicyName <String>: The security policy name.
     [ChangeToWafPolicyId <String>]: Resource ID.
 
@@ -77,26 +81,37 @@ WAFMAPPINGLIST <IProfileChangeSkuWafMapping[]>: Web Application Firewall (WAF) a
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofilesku
 #>
 function Update-AzFrontDoorCdnProfileSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile])]
 [CmdletBinding(DefaultParameterSetName='UpgradeViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
@@ -104,24 +119,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters]
     # Parameters required for profile upgrade.
-    # To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
     ${ProfileUpgradeParameter},
 
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileChangeSkuWafMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping[]]
     # Web Application Firewall (WAF) and security policy mapping for the profile upgrade
-    # To construct, see NOTES section for WAFMAPPINGLIST properties and create a hash table.
     ${WafMappingList},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Upgrade operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Upgrade operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -191,15 +216,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Upgrade = 'Az.Cdn.private\Update-AzFrontDoorCdnProfileSku_Upgrade';
+            UpgradeExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnProfileSku_UpgradeExpanded';
             UpgradeViaIdentity = 'Az.Cdn.private\Update-AzFrontDoorCdnProfileSku_UpgradeViaIdentity';
             UpgradeViaIdentityExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnProfileSku_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.Cdn.private\Update-AzFrontDoorCdnProfileSku_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.Cdn.private\Update-AzFrontDoorCdnProfileSku_UpgradeViaJsonString';
         }
-        if (('Upgrade') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -208,6 +237,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// The IP restriction rule of the Azure Cognitive Search service.
+    /// The IP restriction rule of the Azure AI Search service.
     /// </summary>
     public partial class IpRule
     {

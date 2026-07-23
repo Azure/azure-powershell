@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.WriteObject(nicConfig);
         }
 
-        // validates IP configs and populate values not provided in input from DB NIC entiry.
+        // validates IP configs and populate values not provided in input from DB NIC entry.
         // returns false in case of validation error.
         private bool ValidateAndPopulateIPConfigs(ASRVMNicDetails vmNic)
         {

@@ -3,6 +3,7 @@
     <PsModuleName>ActivityLogAlert</PsModuleName>
     <PsRootModuleName>Monitor</PsRootModuleName>
     <PsModuleFolder>ActivityLogAlert.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

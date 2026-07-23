@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallHubPublicIpAddress
 
 ## SYNOPSIS
-Public Ip assoicated to the firewall on virtual hub
+Public Ip associated to the firewall on virtual hub
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzFirewallHubPublicIpAddress [-Count <Int32>] [-Address <PSAzureFirewallPubl
 ```
 
 ## DESCRIPTION
-Public Ip assoicated to the firewall on virtual hub
+Public Ip associated to the firewall on virtual hub
 
 ## EXAMPLES
 

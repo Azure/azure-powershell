@@ -74,17 +74,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string azureVMName = (string)ProviderData[ItemParams.ItemName];
-            string azureVMCloudServiceName = (string)ProviderData[ItemParams.AzureVMCloudServiceName];
+            string azureVMCloudServiceName = ProviderData.ContainsKey(ItemParams.AzureVMCloudServiceName) ? (string)ProviderData[ItemParams.AzureVMCloudServiceName] : null;
             string azureVMResourceGroupName = (string)ProviderData[ItemParams.AzureVMResourceGroupName];
             string parameterSetName = (string)ProviderData[ItemParams.ParameterSetName];
-            string[] inclusionDisksList = (string[])ProviderData[ItemParams.InclusionDisksList];
-            string[] exclusionDisksList = (string[])ProviderData[ItemParams.ExclusionDisksList];
-            SwitchParameter resetDiskExclusionSetting = (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings];
-            bool excludeAllDataDisks = (bool)ProviderData[ItemParams.ExcludeAllDataDisks];
+            string[] inclusionDisksList = ProviderData.ContainsKey(ItemParams.InclusionDisksList) ? (string[])ProviderData[ItemParams.InclusionDisksList] : null;
+            string[] exclusionDisksList = ProviderData.ContainsKey(ItemParams.ExclusionDisksList) ? (string[])ProviderData[ItemParams.ExclusionDisksList] : null;
+            SwitchParameter resetDiskExclusionSetting = ProviderData.ContainsKey(ItemParams.ResetExclusionSettings) ? (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings] : new SwitchParameter(false);
+            bool excludeAllDataDisks = ProviderData.ContainsKey(ItemParams.ExcludeAllDataDisks) ? (bool)ProviderData[ItemParams.ExcludeAllDataDisks] : false;
+            string containerSubscriptionId = ProviderData.ContainsKey(ItemParams.ContainerSubscriptionId) ? (string)ProviderData[ItemParams.ContainerSubscriptionId] : null;
             PolicyBase policy = (PolicyBase)ProviderData[ItemParams.Policy];
-            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
-            AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
-
+            ItemBase itemBase = ProviderData.ContainsKey(ItemParams.Item) ? (ItemBase)ProviderData[ItemParams.Item] : null;
+            AzureVmItem item = ProviderData.ContainsKey(ItemParams.Item) ? (AzureVmItem)ProviderData[ItemParams.Item] : null;
+            
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
@@ -141,27 +142,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     azureVMResourceGroupName,
                     policy);
 
-                WorkloadProtectableItemResource protectableObjectResource =
-                    GetAzureVMProtectableObject(
-                        azureVMName,
-                        azureVMRGName,
-                        isComputeAzureVM,
-                        vaultName: vaultName,
-                        resourceGroupName: resourceGroupName);
-
-                Dictionary<UriEnums, string> keyValueDict =
-                    HelperUtils.ParseUri(protectableObjectResource.Id);
-                containerUri = HelperUtils.GetContainerUri(
-                    keyValueDict, protectableObjectResource.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(
-                    keyValueDict, protectableObjectResource.Id);
-
-                IaaSVMProtectableItem iaasVmProtectableItem =
-                    (IaaSVMProtectableItem)protectableObjectResource.Properties;                
-
-                if (iaasVmProtectableItem != null)
+                if (!string.IsNullOrEmpty(containerSubscriptionId))
                 {
-                    sourceResourceId = iaasVmProtectableItem.VirtualMachineId;                    
+                    // CSB: the VM is in a different subscription than the vault, so discovery (which only
+                    // sees the vault's subscription) is skipped and the URIs/sourceResourceId are built
+                    // directly; the backend derives the VM's subscription from sourceResourceId.
+                    // -ContainerSubscriptionId is compute-only, so the VM is always an ARM compute VM here.
+
+                    // Discovery can't run cross-subscription. Validate the VM here (in its own subscription)
+                    // so a wrong -Name/-ResourceGroupName/-ContainerSubscriptionId or a region mismatch fails
+                    // with a clear, VM-specific error instead of an ambiguous backend one.
+                    GenericResource csbVmResource;
+                    try
+                    {
+                        csbVmResource = ServiceClientAdapter.GetVmResource(azureVMName, azureVMRGName, containerSubscriptionId);
+                    }
+                    catch (Exception ex)
+                    {
+                        RestAzureNS.CloudException cloudEx = ex as RestAzureNS.CloudException
+                            ?? ex.InnerException as RestAzureNS.CloudException;
+                        if (cloudEx != null && cloudEx.Response != null &&
+                            cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                        {
+                            throw new ArgumentException(string.Format(
+                                Resources.CSBVMNotFound, azureVMName, azureVMRGName, containerSubscriptionId));
+                        }
+                        throw;
+                    }
+
+                    string csbVaultLocation = ServiceClientAdapter.GetVault(resourceGroupName, vaultName).Location;
+                    if (!string.Equals(
+                            (csbVmResource.Location ?? "").Replace(" ", ""),
+                            (csbVaultLocation ?? "").Replace(" ", ""),
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException(string.Format(
+                            Resources.CSBVMNotInVaultLocation, azureVMName, csbVmResource.Location, csbVaultLocation));
+                    }
+
+                    string containerType = "iaasvmcontainerv2";
+
+                    containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
+                        containerType, azureVMRGName, azureVMName);
+                    protectedItemUri = string.Format("vm;{0};{1};{2}",
+                        containerType, azureVMRGName, azureVMName);
+                    sourceResourceId = string.Format(
+                        "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/virtualMachines/{3}",
+                        containerSubscriptionId, azureVMRGName, computeAzureVMVersion, azureVMName);
+                }
+                else
+                {
+                    WorkloadProtectableItemResource protectableObjectResource =
+                        GetAzureVMProtectableObject(
+                            azureVMName,
+                            azureVMRGName,
+                            isComputeAzureVM,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
+
+                    Dictionary<UriEnums, string> keyValueDict =
+                        HelperUtils.ParseUri(protectableObjectResource.Id);
+                    containerUri = HelperUtils.GetContainerUri(
+                        keyValueDict, protectableObjectResource.Id);
+                    protectedItemUri = HelperUtils.GetProtectableItemUri(
+                        keyValueDict, protectableObjectResource.Id);
+
+                    IaaSVMProtectableItem iaasVmProtectableItem =
+                        (IaaSVMProtectableItem)protectableObjectResource.Properties;
+
+                    if (iaasVmProtectableItem != null)
+                    {
+                        sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
+                    }
                 }
             }
             else if(isDiskExclusionParamPresent && parameterSetName.Contains("Modify"))
@@ -287,7 +339,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
                         
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
-                       
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAProtected = true;
+
             // do validations
             ValidateAzureVMDisableProtectionRequest(itemBase);
 
@@ -310,7 +365,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                true);
         }
 
         /// <summary>
@@ -321,7 +379,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
+            bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ? (bool)ProviderData[ItemParams.DeleteBackupData] : false;
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
@@ -512,8 +570,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string cVMOsDiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId) ?
+                ProviderData[RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId].ToString() : null;
 
-            if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+            if (targetSubscriptionId == null || targetSubscriptionId == "")
+            {
+                // For OLR of a CSB item, resolve the target storage account in the VM's subscription by
+                // deriving it from the recovery point's SourceResourceId (no extra customer input); otherwise
+                // fall back to the vault's (context) subscription.
+                if (string.Compare(restoreType, "OriginalLocation") == 0 && !string.IsNullOrEmpty(rp.SourceResourceId))
+                {
+                    Dictionary<UriEnums, string> sourceResourceUriDict = HelperUtils.ParseUri(rp.SourceResourceId);
+                    targetSubscriptionId = HelperUtils.GetSubscriptionIdFromId(sourceResourceUriDict, rp.SourceResourceId);
+                }
+                else
+                {
+                    targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+                }
+            }
 
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName, targetSubscriptionId);
 
@@ -639,6 +713,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     restoreRequest.TargetDiskNetworkAccessSettings.TargetDiskAccessId = targetDiskAccessId;
                 }                
+            }
+
+            if (!string.IsNullOrWhiteSpace(cVMOsDiskEncryptionSetId))
+            {
+                restoreRequest.SecuredVMDetails = new SecuredVMDetails(cVMOsDiskEncryptionSetId);
             }
 
             if (restoreType == "OriginalLocation") // replace existing
@@ -1385,7 +1464,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicyV2 defaultSchedule = new CmdletModel.SimpleSchedulePolicyV2();
                 
-                //Default is daily scedule at 10:30 AM local time
+                //Default is daily schedule at 10:30 AM local time
                 defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
                 DateTime scheduleTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
@@ -1423,7 +1502,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
                 
-                //Default is daily scedule at 10:30 AM local time
+                //Default is daily schedule at 10:30 AM local time
                 defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
 
                 if (scheduleRunFrequency == CmdletModel.ScheduleRunType.Daily || scheduleRunFrequency == CmdletModel.ScheduleRunType.Weekly)
@@ -2001,7 +2080,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Regex rgx = new Regex(pattern);
             content = rgx.Replace(content, replacement);
 
-            // ecode back to Base 64 format
+            // decode back to Base 64 format
             contentBytes = Encoding.UTF8.GetBytes(content);
             content = Convert.ToBase64String(contentBytes);
 

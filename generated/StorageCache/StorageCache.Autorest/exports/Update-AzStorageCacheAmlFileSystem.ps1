@@ -25,7 +25,7 @@ Update-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_t
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,21 +33,23 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecacheamlfilesystem
 #>
 function Update-AzStorageCacheAmlFileSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('AmlFilesystemName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
@@ -57,6 +59,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -64,6 +68,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -74,40 +80,88 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The URL referencing a key encryption key in key vault.
     ${KeyEncryptionKeyUrl},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType]
+    [System.String]
     # Day of the week on which the maintenance window will occur.
     ${MaintenanceWindowDayOfWeek},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The time of day (in UTC) to start the maintenance window.
     ${MaintenanceWindowTimeOfDayUtc},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Squash mode of the AML file system.
+    # 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+    # 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+    # 'None': No squashing of User and Group IDs is performed for any users on any systems.
+    ${RootSquashSettingMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+    ${RootSquashSettingNoSquashNidList},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # Group ID to squash to.
+    ${RootSquashSettingSquashGid},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # User ID to squash to.
+    ${RootSquashSettingSquashUid},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Resource Id.
     ${SourceVaultId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystemUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -177,6 +231,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -198,10 +260,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -215,6 +277,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Create or update NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-Create or update NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,41 +47,41 @@ INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 IPRULE <INwRuleSetIPRules[]>: List of IpRules
-  [Action <NetworkRuleIPAction?>]: The IP Filter Action
+  [Action <String>]: The IP Filter Action
   [IPMask <String>]: IP Mask
 
 PARAMETER <INetworkRuleSet>: Description of topic resource.
-  [DefaultAction <DefaultAction?>]: Default Action for Network Rule Set
-  [IPRule <INwRuleSetIPRules[]>]: List of IpRules
-    [Action <NetworkRuleIPAction?>]: The IP Filter Action
+  [DefaultAction <String>]: Default Action for Network Rule Set
+  [IPRule <List<INwRuleSetIPRules>>]: List of IpRules
+    [Action <String>]: The IP Filter Action
     [IPMask <String>]: IP Mask
-  [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespacenetworkruleset
 #>
 function New-AzRelayNamespaceNetworkRuleSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The namespace name
     ${NamespaceName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -94,14 +94,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction]
+    [System.String]
     # Default Action for Network Rule Set
     ${DefaultAction},
 
@@ -109,26 +108,36 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INwRuleSetIPRules[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules[]]
     # List of IpRules
-    # To construct, see NOTES section for IPRULE properties and create a hash table.
     ${IPRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess]
+    [System.String]
     # This determines if traffic is allowed over public network.
     # By default it is enabled
     ${PublicNetworkAccess},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet]
     # Description of topic resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -186,15 +195,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateExpanded';
             CreateViaIdentity = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -203,6 +215,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

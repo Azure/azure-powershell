@@ -16,118 +16,166 @@
 
 <#
 .Synopsis
-Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
+Gets the sizing recommendations.
 .Description
-Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
+Gets the sizing recommendations.
 .Example
 Invoke-AzWorkloadsSapSizingRecommendation -Location eastus -AppLocation eastus -DatabaseType HANA -DbMemory 256 -DeploymentType SingleServer -Environment NonProd -SapProduct S4HANA -Sap 10000 -DbScaleMethod ScaleUp
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSizingRecommendationRequest
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSizingRecommendationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <ISapSizingRecommendationRequest>: The SAP Sizing Recommendation request.
+  AppLocation <String>: The geo-location where the resource is to be created.
+  DatabaseType <String>: The database type.
+  DbMemory <Int64>: The database memory configuration.
+  DeploymentType <String>: The deployment type. Eg: SingleServer/ThreeTier
+  Environment <String>: Defines the environment type - Production/Non Production.
+  Sap <Int64>: The SAP Application Performance Standard measurement.
+  SapProduct <String>: Defines the SAP Product type.
+  [DbScaleMethod <String>]: The DB scale method.
+  [HighAvailabilityType <String>]: The high availability type.
 
 INPUTOBJECT <ISapVirtualInstanceIdentity>: Identity Parameter
   [ApplicationInstanceName <String>]: The name of SAP Application Server instance resource.
   [CentralInstanceName <String>]: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
   [DatabaseInstanceName <String>]: Database resource name string modeled as parameter for auto generation to work correctly.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SapVirtualInstanceName <String>]: The name of the Virtual Instances for SAP solutions resource
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapsizingrecommendation
 #>
 function Invoke-AzWorkloadsSapSizingRecommendation {
 [Alias('Invoke-AzVISSizingRecommendation')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType])]
-[CmdletBinding(DefaultParameterSetName='SapExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSizingRecommendationResult])]
+[CmdletBinding(DefaultParameterSetName='InvokeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='SapExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Invoke', Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [System.String]
-    # The name of Azure region.
+    # The name of the Azure region.
     ${Location},
 
-    [Parameter(ParameterSetName='SapExpanded')]
+    [Parameter(ParameterSetName='Invoke')]
+    [Parameter(ParameterSetName='InvokeExpanded')]
+    [Parameter(ParameterSetName='InvokeViaJsonFilePath')]
+    [Parameter(ParameterSetName='InvokeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='SapViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InvokeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Invoke', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InvokeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSizingRecommendationRequest]
+    # The SAP Sizing Recommendation request.
+    ${Body},
+
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [System.String]
     # The geo-location where the resource is to be created.
     ${AppLocation},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType])]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("HANA", "DB2")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType]
+    [System.String]
     # The database type.
     ${DatabaseType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [System.Int64]
     # The database memory configuration.
     ${DbMemory},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType])]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("SingleServer", "ThreeTier")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType]
+    [System.String]
     # The deployment type.
     # Eg: SingleServer/ThreeTier
     ${DeploymentType},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType])]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("NonProd", "Prod")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType]
+    [System.String]
     # Defines the environment type - Production/Non Production.
     ${Environment},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [System.Int64]
     # The SAP Application Performance Standard measurement.
     ${Sap},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType])]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("ECC", "S4HANA", "Other")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType]
+    [System.String]
     # Defines the SAP Product type.
     ${SapProduct},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseScaleMethod])]
+    [Parameter(ParameterSetName='InvokeExpanded')]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("ScaleUp")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseScaleMethod]
+    [System.String]
     # The DB scale method.
     ${DbScaleMethod},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType])]
+    [Parameter(ParameterSetName='InvokeExpanded')]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("AvailabilitySet", "AvailabilityZone")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType]
+    [System.String]
     # The high availability type.
     ${HighAvailabilityType},
+
+    [Parameter(ParameterSetName='InvokeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Invoke operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InvokeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
+    [System.String]
+    # Json string supplied to the Invoke operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -185,6 +233,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -204,12 +261,14 @@ begin {
         }
 
         $mapping = @{
-            SapExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_SapExpanded';
-            SapViaIdentityExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_SapViaIdentityExpanded';
+            Invoke = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_Invoke';
+            InvokeExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_InvokeExpanded';
+            InvokeViaIdentity = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_InvokeViaIdentity';
+            InvokeViaIdentityExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_InvokeViaIdentityExpanded';
+            InvokeViaJsonFilePath = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_InvokeViaJsonFilePath';
+            InvokeViaJsonString = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSizingRecommendation_InvokeViaJsonString';
         }
-        if (('SapExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Invoke', 'InvokeExpanded', 'InvokeViaJsonFilePath', 'InvokeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -223,6 +282,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

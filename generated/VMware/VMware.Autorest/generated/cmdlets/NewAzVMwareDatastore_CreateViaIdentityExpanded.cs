@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Datastore</summary>
+    /// <summary>create a Datastore</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVMwareDatastore_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a Datastore")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"create a Datastore")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}", ApiVersion = "2025-09-01")]
     public partial class NewAzVMwareDatastore_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -42,15 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -199,6 +190,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Volume size to be used to create a Virtual Volumes (vVols) datastore")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Volume size to be used to create a Virtual Volumes (vVols) datastore",
+        SerializedName = @"sizeGb",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PureStorageVolumeSizeGb { get => _datastoreBody.PureStorageVolumeSizeGb ?? default(int); set => _datastoreBody.PureStorageVolumeSizeGb = value; }
+
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the Pure Storage Pool")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the Pure Storage Pool",
+        SerializedName = @"storagePoolId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PureStorageVolumeStoragePoolId { get => _datastoreBody.PureStorageVolumeStoragePoolId ?? null; set => _datastoreBody.PureStorageVolumeStoragePoolId = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -265,11 +278,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -613,24 +621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

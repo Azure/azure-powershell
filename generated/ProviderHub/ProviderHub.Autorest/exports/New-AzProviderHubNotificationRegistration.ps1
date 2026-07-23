@@ -16,29 +16,43 @@
 
 <#
 .Synopsis
-Creates or updates a notification registration.
+Create a notification registration.
 .Description
-Creates or updates a notification registration.
+Create a notification registration.
 .Example
 New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
 .Example
 New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationRegistration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
-  [Location <String[]>]: 
+  [Location <List<String>>]: 
   [NotificationDestination <String>]: 
+
+PROVIDERREGISTRATIONINPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [NestedResourceTypeFirst <String>]: The first child resource type.
+  [NestedResourceTypeSecond <String>]: The second child resource type.
+  [NestedResourceTypeThird <String>]: The third child resource type.
+  [NotificationRegistrationName <String>]: The notification registration.
+  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
+  [ResourceType <String>]: The resource type.
+  [RolloutName <String>]: The rollout name.
+  [Sku <String>]: The SKU.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
 #>
 function New-AzProviderHubNotificationRegistration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationRegistration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -48,54 +62,80 @@ param(
     # The notification registration.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The name of the resource provider hosted within ProviderHub.
     ${ProviderNamespace},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${IncludedEvent},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "RegisteredSubscriptions")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope]
+    [System.String]
     # .
     ${MessageScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationEndpoint[]]
     # .
-    # To construct, see NOTES section for NOTIFICATIONENDPOINT properties and create a hash table.
     ${NotificationEndpoint},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "EventHub", "WebHook")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode]
+    [System.String]
     # .
     ${NotificationMode},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProviderRegistrationExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -153,6 +193,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,10 +222,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubNotificationRegistration_CreateExpanded';
+            CreateViaIdentityProviderRegistrationExpanded = 'Az.ProviderHub.private\New-AzProviderHubNotificationRegistration_CreateViaIdentityProviderRegistrationExpanded';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubNotificationRegistration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubNotificationRegistration_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -190,6 +240,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -27,29 +27,42 @@ Get-AzLabServicesPlanImage -LabPlanName "Plan Name"  -ResourceGroupName "Group N
 Get-AzLabServicesPlanImage -LabPlanName "Plan Name" -ResourceGroupName "Group Name" -DisplayName 'Ubuntu Server 20.04 LTS'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 .Inputs
 System.String
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABPLAN <LabPlan>: The object of lab service lab plan to get images for.
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
   [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
   [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
   [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
@@ -57,19 +70,26 @@ LABPLAN <LabPlan>:
   [SupportInfoInstruction <String>]: Support instructions.
   [SupportInfoPhone <String>]: Support contact phone number.
   [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+LABPLANINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
 #>
 function Get-AzLabServicesPlanImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -82,6 +102,7 @@ param(
     ${LabPlanName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLabPlan', Mandatory)]
     [Parameter(ParameterSetName='LabPlan')]
     [Alias('ImageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -98,16 +119,33 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Parameter(ParameterSetName='ListByDisplayName')]
+    [Parameter(ParameterSetName='ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLabPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabPlanInputObject},
+
     [Parameter(ParameterSetName='ListByDisplayName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The image display name.
     ${DisplayName},
 
     [Parameter(ParameterSetName='List')]
@@ -118,13 +156,14 @@ param(
 
     [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # The object of lab service lab plan to get images for.
     ${LabPlan},
 
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service lab plan.
     ${ResourceId},
 
     [Parameter()]
@@ -183,6 +222,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -203,14 +251,14 @@ begin {
 
         $mapping = @{
             Get = 'Az.LabServices.private\Get-AzLabServicesPlanImage_Get';
+            GetViaIdentity = 'Az.LabServices.private\Get-AzLabServicesPlanImage_GetViaIdentity';
+            GetViaIdentityLabPlan = 'Az.LabServices.private\Get-AzLabServicesPlanImage_GetViaIdentityLabPlan';
             List = 'Az.LabServices.private\Get-AzLabServicesPlanImage_List';
             LabPlan = 'Az.LabServices.custom\Get-AzLabServicesPlanImage_LabPlan';
             ListByDisplayName = 'Az.LabServices.custom\Get-AzLabServicesPlanImage_ListByDisplayName';
             ResourceId = 'Az.LabServices.custom\Get-AzLabServicesPlanImage_ResourceId';
         }
-        if (('Get', 'List', 'LabPlan', 'ListByDisplayName', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'LabPlan', 'ListByDisplayName', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -224,6 +272,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

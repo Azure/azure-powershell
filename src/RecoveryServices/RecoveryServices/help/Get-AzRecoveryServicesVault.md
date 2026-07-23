@@ -92,7 +92,7 @@ UseSystemAssignedIdentity UserAssignedIdentity
 Enabled
 ```
 
-The first cmdlet gets the vault in resource group with given name. The second, third and fourth commands are used to fetch the encryption propties (KeyUri, KekIdentity and infrastructure encryption) of the vault for CMK.
+The first cmdlet gets the vault in resource group with given name. The second, third and fourth commands are used to fetch the encryption properties (KeyUri, KekIdentity and infrastructure encryption) of the vault for CMK.
 
 ## PARAMETERS
 

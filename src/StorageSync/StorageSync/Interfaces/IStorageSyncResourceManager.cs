@@ -15,6 +15,7 @@
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
@@ -63,13 +64,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         bool TryGetAfsAgentVersion(out string afsAgentVersion);
 
         /// <summary>
+        /// Gets the Server Type from the the StorageSync registry path. Default to <see cref="LocalServerType.HybridServer"/>
+        /// </summary>
+        /// <returns>LocalServerType</returns>
+        LocalServerType GetServerTypeFromRegistry();
+
+        /// <summary>
         /// Updates the server registration data.
         /// </summary>
         /// <param name="pServerRegistrationData">The p server registration data.</param>
         /// <returns>ServerRegistrationData.</returns>
         ServerRegistrationData UpdateServerRegistrationData(ServerRegistrationData pServerRegistrationData);
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         void Wait();
 

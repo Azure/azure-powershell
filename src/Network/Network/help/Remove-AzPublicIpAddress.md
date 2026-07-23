@@ -15,7 +15,8 @@ Removes a public IP address.
 
 ```
 Remove-AzPublicIpAddress -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,5 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPublicIpAddress](./New-AzPublicIpAddress.md)
 
 [Set-AzPublicIpAddress](./Set-AzPublicIpAddress.md)
-
-

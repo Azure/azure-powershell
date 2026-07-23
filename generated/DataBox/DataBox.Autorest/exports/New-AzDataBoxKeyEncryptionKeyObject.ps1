@@ -23,7 +23,7 @@ Create an in-memory object for KeyEncryptionKey.
 New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ IDENTITYPROPERTY <IIdentityProperties>: Managed identity properties used for key
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 #>
 function New-AzDataBoxKeyEncryptionKeyObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -48,7 +48,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IIdentityProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IIdentityProperties]
     # Managed identity properties used for key encryption.
     # To construct, see NOTES section for IDENTITYPROPERTY properties and create a hash table.
     ${IdentityProperty},

@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public partial interface IAccountsOperations
     {
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide
+        /// resource type. It holds the keys for developer to access intelligent APIs.
+        /// It&#39;s also the resource type for billing.
         /// </summary>
         /// <remarks>
-        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide
+        /// resource type. It holds the keys for developer to access intelligent APIs.
+        /// It&#39;s also the resource type for billing.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -72,10 +76,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Account>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, Account account, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <remarks>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -121,10 +125,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Account>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <remarks>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -190,10 +196,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApiKeys>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Regenerates the specified account key for the specified Cognitive Services account.
+        /// Regenerates the specified account key for the specified Cognitive Services
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Regenerates the specified account key for the specified Cognitive Services account.
+        /// Regenerates the specified account key for the specified Cognitive Services
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -257,7 +265,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -300,10 +310,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AccountModel>>> ListModelsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide
+        /// resource type. It holds the keys for developer to access intelligent APIs.
+        /// It&#39;s also the resource type for billing.
         /// </summary>
         /// <remarks>
-        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide
+        /// resource type. It holds the keys for developer to access intelligent APIs.
+        /// It&#39;s also the resource type for billing.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -358,10 +372,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Account>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, Account account, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <remarks>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -381,10 +395,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <remarks>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

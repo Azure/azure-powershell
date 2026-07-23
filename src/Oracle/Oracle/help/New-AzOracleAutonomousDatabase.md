@@ -19,14 +19,13 @@ New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-Subs
  [-AutonomousMaintenanceScheduleType <String>] [-BackupRetentionPeriodInDay <Int32>] [-CharacterSet <String>]
  [-ComputeCount <Single>] [-ComputeModel <String>] [-CpuCoreCount <Int32>]
  [-CustomerContact <ICustomerContact[]>] [-DataBaseType <String>] [-DataStorageSizeInGb <Int32>]
- [-DataStorageSizeInTb <Int32>] [-DatabaseEdition <String>] [-DayOfWeekName <String>] [-DbVersion <String>]
- [-DbWorkload <String>] [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled]
- [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted]
- [-LicenseModel <String>] [-NcharacterSet <String>] [-PrivateEndpointIP <String>]
- [-PrivateEndpointLabel <String>] [-ScheduledStartTime <String>] [-ScheduledStopTime <String>]
- [-SubnetId <String>] [-Tag <Hashtable>] [-VnetId <String>] [-WhitelistedIP <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DataStorageSizeInTb <Int32>] [-DatabaseEdition <String>] [-DbVersion <String>] [-DbWorkload <String>]
+ [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
+ [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted] [-LicenseModel <String>]
+ [-NcharacterSet <String>] [-PrivateEndpointIP <String>] [-PrivateEndpointLabel <String>]
+ [-ScheduledOperationsList <IScheduledOperationsType[]>] [-SubnetId <String>] [-Tag <Hashtable>]
+ [-VnetId <String>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -59,7 +58,7 @@ $vnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/pr
 $subnetName = "delegated"
 $subnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)/subnets/$($subnetName)"
 
-[SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "PowerShellTestPass123" -AsPlainText -Force
+[SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "******" -AsPlainText -Force
 
 $adbsName = "OFakePowerShellTestAdbs"
 New-AzOracleAutonomousDatabase -Name $adbsName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $adbsName -DbWorkload "OLTP" -ComputeCount 2.0 -ComputeModel "ECPU" -DbVersion "19c" -DataStorageSizeInGb 32 -AdminPassword $adbsAdminPassword -LicenseModel "BringYourOwnLicense" -SubnetId $subnetId -VnetId $vnetId -DataBaseType "Regular" -CharacterSet "AL32UTF8" -NcharacterSet "AL16UTF16"
@@ -326,21 +325,6 @@ The quantity of data in the database, in terabytes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DayOfWeekName
-Name of the day of the week.
-
-```yaml
-Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -639,28 +623,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledStartTime
-auto start time.
-value must be of ISO-8601 format HH:mm
+### -ScheduledOperationsList
+The list of scheduled operations.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduledStopTime
-auto stop time.
-value must be of ISO-8601 format HH:mm
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType[]
 Parameter Sets: CreateExpanded
 Aliases:
 

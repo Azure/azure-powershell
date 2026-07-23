@@ -18,6 +18,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Ams20 = @"AMS20";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Ams25 = @"AMS25";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Auh20 = @"AUH20";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Bjb = @"BJB";
@@ -25,6 +27,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Bjs20 = @"BJS20";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Bl20 = @"BL20";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Bl24 = @"BL24";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Bl7 = @"BL7";
 
@@ -50,17 +54,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Cpq20 = @"CPQ20";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Cpq21 = @"CPQ21";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Cwl20 = @"CWL20";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Cys04 = @"CYS04";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Dsm05 = @"DSM05";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Dsm11 = @"DSM11";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Dub07 = @"DUB07";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Dxb23 = @"DXB23";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Fra22 = @"FRA22";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Hkg20 = @"HKG20";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Idc5 = @"IDC5";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Invalid = @"Invalid";
 
@@ -78,6 +90,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Mwh01 = @"MWH01";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Ntg20 = @"NTG20";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Ork70 = @"ORK70";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Osa02 = @"OSA02";
@@ -85,6 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Osa20 = @"OSA20";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Osa22 = @"OSA22";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Osa23 = @"OSA23";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Par22 = @"PAR22";
 
@@ -119,6 +135,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Tyo01 = @"TYO01";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Tyo22 = @"TYO22";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Tyo23 = @"TYO23";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataCenterCode Yqb20 = @"YQB20";
 

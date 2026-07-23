@@ -135,16 +135,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescription Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CaptureDescription { get => (this._captureDescription = this._captureDescription ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.CaptureDescription()); set { {_captureDescription = value;} } }
 
         /// <summary>Internal Acessors for CaptureDescriptionDestination</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CaptureDescriptionDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CaptureDescriptionDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CreatedAt { get => this._createdAt; set { {_createdAt = value;} } }
 
         /// <summary>Internal Acessors for DestinationIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DestinationProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identifier</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.Identifier { get => this._identifier; set { {_identifier = value;} } }
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// Compact or DeleteOrCompact.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public long? RetentionDescriptionMinCompactionLagInMin { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)RetentionDescription).MinCompactionLagInMin; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)RetentionDescription).MinCompactionLagInMin = value ?? default(long); }
+        public long? RetentionDescriptionMinCompactionLagTimeInMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)RetentionDescription).MinCompactionLagTimeInMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)RetentionDescription).MinCompactionLagTimeInMinute = value ?? default(long); }
 
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
@@ -510,9 +510,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Create = true,
         Update = true,
         Description = @"The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.",
-        SerializedName = @"minCompactionLagInMins",
+        SerializedName = @"minCompactionLagTimeInMinutes",
         PossibleTypes = new [] { typeof(long) })]
-        long? RetentionDescriptionMinCompactionLagInMin { get; set; }
+        long? RetentionDescriptionMinCompactionLagTimeInMinute { get; set; }
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
         /// special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is
         /// Compact or DeleteOrCompact.
         /// </summary>
-        long? RetentionDescriptionMinCompactionLagInMin { get; set; }
+        long? RetentionDescriptionMinCompactionLagTimeInMinute { get; set; }
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
         /// special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace

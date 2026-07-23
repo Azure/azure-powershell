@@ -1,0 +1,8 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Oracle","1","Oracle.Database","dbSystems","Get-AzOracleDbSystem","Cmdlet Get-AzOracleDbSystem is not contained in Az.Oracle."
+"Az.Oracle","1","Oracle.Database","dbSystems","Remove-AzOracleDbSystem","Cmdlet Remove-AzOracleDbSystem is not contained in Az.Oracle."
+"Az.Oracle","1","Oracle.Database","locations-dbSystemDbVersions","Get-AzOracleDbVersion","Cmdlet Get-AzOracleDbVersion is not contained in Az.Oracle."
+"Az.Oracle","1","Oracle.Database","networkAnchors","Get-AzOracleNetworkAnchor","Cmdlet Get-AzOracleNetworkAnchor is not contained in Az.Oracle."
+"Az.Oracle","1","Oracle.Database","networkAnchors","Remove-AzOracleNetworkAnchor","Cmdlet Remove-AzOracleNetworkAnchor is not contained in Az.Oracle."
+"Az.Oracle","1","Oracle.Database","resourceAnchors","Get-AzOracleResourceAnchor","Cmdlet Get-AzOracleResourceAnchor is not contained in Az.Oracle."
+"Az.Oracle","1","Oracle.Database","resourceAnchors","Remove-AzOracleResourceAnchor","Cmdlet Remove-AzOracleResourceAnchor is not contained in Az.Oracle."

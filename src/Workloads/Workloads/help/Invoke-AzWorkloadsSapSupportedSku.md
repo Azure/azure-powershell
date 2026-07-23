@@ -12,20 +12,45 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 
 ## SYNTAX
 
-### SapExpanded (Default)
+### InvokeExpanded (Default)
 ```
 Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] -AppLocation <String>
- -DatabaseType <SapDatabaseType> -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType>
- -SapProduct <SapProductType> [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DatabaseType <String> -DeploymentType <String> -Environment <String> -SapProduct <String>
+ [-HighAvailabilityType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### SapViaIdentityExpanded
+### InvokeViaJsonString
+```
+Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaJsonFilePath
+```
+Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Invoke
+```
+Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>]
+ -Body <ISapSupportedSkusRequest> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityExpanded
 ```
 Invoke-AzWorkloadsSapSupportedSku -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
- -DatabaseType <SapDatabaseType> -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType>
- -SapProduct <SapProductType> [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DatabaseType <String> -DeploymentType <String> -Environment <String> -SapProduct <String>
+ [-HighAvailabilityType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentity
+```
+Invoke-AzWorkloadsSapSupportedSku -InputObject <ISapVirtualInstanceIdentity> -Body <ISapSupportedSkusRequest>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +83,7 @@ The geo-location where the resource is to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -68,13 +93,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Body
+The SAP request to get list of supported SKUs.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedSkusRequest
+Parameter Sets: Invoke, InvokeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseType
 The database type.
 Eg: HANA, DB2, etc
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -105,8 +145,8 @@ The deployment type.
 Eg: SingleServer/ThreeTier
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,8 +160,8 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -135,8 +175,8 @@ Accept wildcard characters: False
 The high availability type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,11 +188,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
-Parameter Sets: SapViaIdentityExpanded
+Parameter Sets: InvokeViaIdentityExpanded, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -162,12 +201,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The name of Azure region.
+### -JsonFilePath
+Path of Json file supplied to the Invoke operation
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded
+Parameter Sets: InvokeViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Invoke operation
+
+```yaml
+Type: System.String
+Parameter Sets: InvokeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The name of the Azure region.
+
+```yaml
+Type: System.String
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, Invoke
 Aliases:
 
 Required: True
@@ -181,8 +250,8 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -194,10 +263,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, Invoke
 Aliases:
 
 Required: False
@@ -243,11 +313,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedSkusRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapSupportedSku
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedResourceSkusResult
 
 ## NOTES
 

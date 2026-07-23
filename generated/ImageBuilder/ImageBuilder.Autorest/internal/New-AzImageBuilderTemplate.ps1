@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Create or update a virtual machine image template
+create a virtual machine image template
 .Description
-Create or update a virtual machine image template
+create a virtual machine image template
 .Example
-$source = New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher "Canonical" -Offer "UbuntuServer" -Sku "18.04-LTS" -Version "latest"
+$source = New-AzImageBuilderTemplateSourceObject -Publisher "Canonical" -Offer "UbuntuServer" -Sku "18.04-LTS" -Version "latest"
 $customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name "CheckSumCompareShellScript" -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" -Sha256Checksum "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
 $distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{"test"="dis-share"} -GalleryImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image" -ReplicationRegion "eastus" -RunOutputName "runoutput-01"
 $userAssignedIdentity = "/subscriptions/{subId}/resourcegroups/azps_test_group_imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-imagebuilder"
 
-New-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor
+New-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Location eastus -UserAssignedIdentity $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor
 .Example
 $requestbodyjson = '{
   "location": "eastus",
@@ -68,7 +68,7 @@ $requestbodyjson = '{
 }'
 $requestbodyjson | Out-File -FilePath "C:\request_body.json"
 
-New-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder -JsonTemplatePath "C:\request_body.json"
+New-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder -JsonFilePath "C:\request_body.json"
 .Example
 New-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_imagebuilder -JsonString '{
   "location": "eastus",
@@ -111,7 +111,7 @@ New-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_i
 }'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -137,7 +137,7 @@ VALIDATOR <IImageTemplateInVMValidator[]>: List of validations to be performed.
 https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 #>
 function New-AzImageBuilderTemplate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -177,32 +177,27 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCustomizer[]]
     # Specifies the properties used to describe the customization steps of the image, like Image source etc
-    # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
     ${Customize},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributor[]]
     # The distribution targets where the image output needs to go to.
-    # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
     ${Distribute},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
-    # The type of identity used for the image template.
-    # The type 'None' will remove any identities from the image template.
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateSource]
     # Specifies the properties used to describe the source image.
-    # To construct, see NOTES section for SOURCE properties and create a hash table.
     ${Source},
 
     [Parameter()]
@@ -217,24 +212,23 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState]
+    [System.String]
     # Enabling this field will improve VM boot time by optimizing the final customized image output.
     ${VMBootState},
 
@@ -281,9 +275,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateInVMValidator[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateInVMValidator[]]
     # List of validations to be performed.
-    # To construct, see NOTES section for VALIDATOR properties and create a hash table.
     ${Validator},
 
     [Parameter()]
@@ -367,13 +360,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ImageBuilder.private\New-AzImageBuilderTemplate_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -382,6 +376,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

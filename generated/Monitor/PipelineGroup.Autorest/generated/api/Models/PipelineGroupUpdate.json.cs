@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Extensions;
 
-    /// <summary>The type used for update operations of the PipelineGroup.</summary>
+    /// <summary>A pipeline group definition.</summary>
     public partial class PipelineGroupUpdate
     {
 
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 return;
             }
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateProperties.FromJson(__jsonProperties) : _property;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdateTags.FromJson(__jsonTags) : _tag;}
+            __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate(json);
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupPropertiesUpdate.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 return container;
             }
+            __azureResourceManagerCommonTypesTrackedResourceUpdate?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

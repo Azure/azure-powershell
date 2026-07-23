@@ -1,24 +1,24 @@
 ---
 external help file: Az.CostManagement-help.xml
 Module Name: Az.CostManagement
-online version: https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+online version: https://learn.microsoft.com/powershell/module/Az.CostManagement/new-azcostmanagementquerycomparisonexpressionobject
 schema: 2.0.0
 ---
 
 # New-AzCostManagementQueryComparisonExpressionObject
 
 ## SYNOPSIS
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 
 ## SYNTAX
 
 ```
-New-AzCostManagementQueryComparisonExpressionObject -Name <String> -Operator <OperatorType> -Value <String[]>
+New-AzCostManagementQueryComparisonExpressionObject -Name <String> -Value <String[]>
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 
 ## EXAMPLES
 
@@ -52,21 +52,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
-The operator to use for comparison.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Value
 Array of values to use for comparison.
 
@@ -89,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression
 
 ## NOTES
 

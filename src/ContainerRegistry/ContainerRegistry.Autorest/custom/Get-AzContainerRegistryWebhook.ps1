@@ -28,7 +28,7 @@ Get-AzContainerRegistryWebhook  -ResourceGroupName "MyResourceGroup" -RegistryNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,7 +59,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhook
 #>
 function Get-AzContainerRegistryWebhook {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -103,7 +103,7 @@ param(
 
     [Parameter(ParameterSetName='GetByRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry]
     # The Registry Object.
     ${Registry},
 

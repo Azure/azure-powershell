@@ -13,7 +13,7 @@ Stops/Disables replication for an Azure Site Recovery replication protected item
 ## SYNTAX
 
 ```
-Remove-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem>
+Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectionCluster <ASRReplicationProtectedItem>
  [-WaitForCompletion] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```

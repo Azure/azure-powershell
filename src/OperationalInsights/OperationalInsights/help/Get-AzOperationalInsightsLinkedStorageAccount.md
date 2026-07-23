@@ -35,7 +35,7 @@ DataSourceType    : CustomLogs
 StorageAccountIds : {/subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.Storage/storageAccounts/{account}}
 ```
 
-list linked storage accoounts for workspace {workspace-name}
+list linked storage accounts for workspace {workspace-name}
 
 ## PARAMETERS
 

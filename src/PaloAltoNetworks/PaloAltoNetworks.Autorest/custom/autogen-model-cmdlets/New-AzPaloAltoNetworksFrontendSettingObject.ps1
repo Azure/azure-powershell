@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksfrontendsettingobject
 #>
 function New-AzPaloAltoNetworksFrontendSettingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

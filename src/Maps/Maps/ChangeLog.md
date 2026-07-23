@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Added deprecated announcement for the retirement of creator.
+    * New-AzMapsCreator will be retired on 05/19/2025
+    * Get-AzMapsCreator will be retired after 09/30/2025
+    * Update-AzMapsCreator will be retired after 09/30/2025
+
 ## Version 0.8.2
 * Upgraded nuget package to signed package.
 

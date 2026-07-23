@@ -32,6 +32,7 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// 2. Sets up ServerRegistrationData
         /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
         /// 4. Persists registered server resource from cloud to local FileSyncSvc service
+        /// <param name="storageSyncServiceTenantId">Storage Sync Service TenantId</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
         /// <param name="storageSyncServiceName">Storage Sync Service Name</param>
@@ -43,9 +44,11 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine Name</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
+        /// <param name="assignIdentity"/>
         /// <returns>Registered Server Resource</returns>
         /// </summary>
         RegisteredServer Register(
+            string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
             string storageSyncServiceName,
@@ -56,7 +59,8 @@ namespace Commands.StorageSync.Interop.Interfaces
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback);
+            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback,
+            bool assignIdentity);
 
         /// <summary>
         /// This function processes the unregistration of the server and performs following steps:

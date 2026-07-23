@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHub
 
 ## SYNOPSIS
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> -Paramet
 ```
 
 ## DESCRIPTION
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -68,7 +68,7 @@ Location                     : eastus
 MessageRetentionInDay        : 7
 Name                         : myEventHub
 PartitionCount               : 5
-PartitionId                  : {0, 1, 2, 3�}
+PartitionId                  : {0, 1, 2, 3…}
 ResourceGroupName            : myResourceGroup
 RetentionTimeInHour          : 168
 SizeLimitInBytes             :
@@ -86,7 +86,7 @@ Type                         : Microsoft.EventHub/namespaces/eventhubs
 UpdatedAt                    : 4/25/2023 3:55:46 AM
 ```
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleaupPolicy `Delete`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleanupPolicy `Delete`.
 
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
@@ -159,7 +159,7 @@ Type                         : Microsoft.EventHub/namespaces/eventhubs
 UpdatedAt                    : 4/25/2023 4:05:58 AM
 ```
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleaupPolicy `Compact`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleanupPolicy `Compact`.
 
 ## PARAMETERS
 
@@ -395,7 +395,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group within the azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -487,8 +488,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

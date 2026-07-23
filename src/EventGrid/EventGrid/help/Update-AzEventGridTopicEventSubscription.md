@@ -307,7 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### -FilterIsSubjectCaseSensitive
-Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filtershould be compared in a case sensitive manner.
+Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter should be compared in a case sensitive manner.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
