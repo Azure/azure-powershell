@@ -1998,6 +1998,17 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.RoutingIntent, CNM.PSRoutingIntent>();
                 cfg.CreateMap<MNM.RoutingPolicy, CNM.PSRoutingPolicy>();
 
+                //// Virtual Hub Connection Policy
+                // CNM to MNM - handled manually in ConnectionPolicyBaseCmdlet.CreateOrUpdateConnectionPolicy
+                cfg.CreateMap<CNM.PSConnectionPolicy, MNM.ConnectionPolicy>();
+
+                // MNM to CNM - explicitly flatten nested Properties
+                cfg.CreateMap<MNM.ConnectionPolicy, CNM.PSConnectionPolicy>()
+                    .ForMember(dest => dest.ProvisioningState, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningState : null))
+                    .ForMember(dest => dest.EnableInternetSecurity, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.EnableInternetSecurity : null))
+                    .ForMember(dest => dest.RoutingConfiguration, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.RoutingConfiguration : null))
+                    .ForMember(dest => dest.AssociatedConnections, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.AssociatedConnections : null));
+
                 //// Virtual Hub Route Map
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSRouteMap, MNM.RouteMap>();

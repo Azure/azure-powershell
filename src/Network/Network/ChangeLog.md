@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for ConnectionPolicy management under VirtualHub
+    - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
+    - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
+    - `Set-AzConnectionPolicy`: Update an existing ConnectionPolicy under a VirtualHub
+    - `Remove-AzConnectionPolicy`: Delete a ConnectionPolicy from a VirtualHub
 * Added Managed HSM support to Application Gateway SSL certificate cmdlets (`New-AzApplicationGatewaySslCertificate`, `Set-AzApplicationGatewaySslCertificate`, `Add-AzApplicationGatewaySslCertificate`) with `-HsmKeyId` and `-HsmPublicCertData` parameters.
 * Updated Virtual Network and Virtual Network Appliance cmdlets to use new properties.
     - `New-AzVirtualNetwork`: Added `-SummarizedGatewayPrefix` parameter to specify summarized gateway prefixes advertised for the virtual network, and exposed `SummarizedGatewayPrefixes` on the returned object.
