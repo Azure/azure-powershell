@@ -84,19 +84,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of availability zones to exclude from placement.")]
-        public string[] PlacementExcludeZone { get; set; }
+        public string[] ExcludeZone { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of availability zones to include for placement.")]
-        public string[] PlacementIncludeZone { get; set; }
+        public string[] IncludeZone { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The zone placement policy. Accepted value: Any.")]
-        public string PlacementZonePlacementPolicy { get; set; }
+        public string ZonePlacementPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -137,22 +137,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         interconnectBlock.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.IsParameterBound(c => c.PlacementExcludeZone) ||
-                        this.IsParameterBound(c => c.PlacementIncludeZone) ||
-                        this.IsParameterBound(c => c.PlacementZonePlacementPolicy))
+                    if (this.IsParameterBound(c => c.ExcludeZone) ||
+                        this.IsParameterBound(c => c.IncludeZone) ||
+                        this.IsParameterBound(c => c.ZonePlacementPolicy))
                     {
                         interconnectBlock.Placement = new Placement();
-                        if (this.IsParameterBound(c => c.PlacementExcludeZone))
+                        if (this.IsParameterBound(c => c.ExcludeZone))
                         {
-                            interconnectBlock.Placement.ExcludeZones = this.PlacementExcludeZone;
+                            interconnectBlock.Placement.ExcludeZones = this.ExcludeZone;
                         }
-                        if (this.IsParameterBound(c => c.PlacementIncludeZone))
+                        if (this.IsParameterBound(c => c.IncludeZone))
                         {
-                            interconnectBlock.Placement.IncludeZones = this.PlacementIncludeZone;
+                            interconnectBlock.Placement.IncludeZones = this.IncludeZone;
                         }
-                        if (this.IsParameterBound(c => c.PlacementZonePlacementPolicy))
+                        if (this.IsParameterBound(c => c.ZonePlacementPolicy))
                         {
-                            interconnectBlock.Placement.ZonePlacementPolicy = this.PlacementZonePlacementPolicy;
+                            interconnectBlock.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
                         }
                     }
 

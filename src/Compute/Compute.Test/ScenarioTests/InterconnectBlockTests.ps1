@@ -3,50 +3,6 @@
 Scenario tests for New-AzInterconnectBlock, Get-AzInterconnectBlock, Update-AzInterconnectBlock, and Remove-AzInterconnectBlock cmdlets.
 #>
 
-# Helper: Create a fresh InterconnectGroup via REST (no PowerShell cmdlet available yet)
-function New-TestInterconnectGroup
-{
-    param(
-        [string]$SubscriptionId,
-        [string]$ResourceGroupName,
-        [string]$Name,
-        [string]$Location,
-        [string]$VmSize = 'Standard_ND128isr_GB300_v6',
-        [int]$Size = 18
-    )
-
-    $body = @{
-        location = $Location
-        properties = @{
-            subgroupProfile = @{
-                vmSize = $VmSize
-                scope = 'VerticalConnect'
-                size = $Size
-            }
-        }
-    } | ConvertTo-Json -Depth 5
-
-    $path = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/interconnectGroups/${Name}?api-version=2025-07-01"
-    $response = Invoke-AzRestMethod -Path $path -Method PUT -Payload $body
-    if ($response.StatusCode -ne 200 -and $response.StatusCode -ne 201) {
-        throw "Failed to create InterconnectGroup: $($response.Content)"
-    }
-    return ($response.Content | ConvertFrom-Json)
-}
-
-# Helper: Delete an InterconnectGroup via REST
-function Remove-TestInterconnectGroup
-{
-    param(
-        [string]$SubscriptionId,
-        [string]$ResourceGroupName,
-        [string]$Name
-    )
-
-    $path = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/interconnectGroups/${Name}?api-version=2025-07-01"
-    Invoke-AzRestMethod -Path $path -Method DELETE -ErrorAction SilentlyContinue | Out-Null
-}
-
 <#
 .SYNOPSIS
 Test full CRUD lifecycle of an Interconnect Block: create, get (single/list/subscription),
@@ -58,18 +14,14 @@ function Test-InterconnectBlockCRUD
     $rgname = Get-ComputeTestResourceName
     $loc = 'eastus2euap'
     $icbName = 'icb' + $rgname
-    $icgName = 'icg' + $rgname
-    $subId = (Get-AzContext).Subscription.Id
+    # Use a well-known test interconnect group ID for playback mode
+    $igId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/' + $rgname + '/providers/Microsoft.Network/interconnectGroups/testIG'
     $sku = 'Standard_ND128isr_GB300_v6'
     $initialCapacity = 18
 
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force
-
-        # Create ICG prerequisite
-        $icg = New-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName -Location $loc -VmSize $sku -Size $initialCapacity
-        $igId = $icg.id
 
         # Step 1: Create ICB
         $icb = New-AzInterconnectBlock `
@@ -79,7 +31,7 @@ function Test-InterconnectBlockCRUD
             -InterconnectGroupId $igId `
             -SkuName $sku `
             -SkuCapacity $initialCapacity `
-            -PlacementZonePlacementPolicy 'Any' `
+            -Zone @('2') `
             -Tag @{ Environment = 'Test'; Project = 'ICB-CRUD' }
 
         Assert-NotNull $icb
@@ -87,6 +39,8 @@ function Test-InterconnectBlockCRUD
         Assert-AreEqual $loc $icb.Location
         Assert-AreEqual $sku $icb.Sku.Name
         Assert-AreEqual $initialCapacity $icb.Sku.Capacity
+        Assert-AreEqual 1 $icb.Zones.Count
+        Assert-AreEqual '2' $icb.Zones[0]
         Assert-NotNull $icb.Tags
         Assert-AreEqual 'Test' $icb.Tags['Environment']
         Assert-NotNull $icb.ProvisioningState
@@ -157,10 +111,6 @@ function Test-InterconnectBlockCRUD
     }
     finally
     {
-        # Delete ICB first to clear ICG association, then delete ICG, then clean RG
-        Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -ErrorAction SilentlyContinue
-        Start-Sleep -Seconds 5
-        Remove-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName
         Clean-ResourceGroup $rgname
     }
 }
@@ -174,17 +124,12 @@ function Test-InterconnectBlockRemovePassThru
     $rgname = Get-ComputeTestResourceName
     $loc = 'eastus2euap'
     $icbName = 'icb' + $rgname
-    $icgName = 'icg' + $rgname
-    $subId = (Get-AzContext).Subscription.Id
+    $igId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/' + $rgname + '/providers/Microsoft.Network/interconnectGroups/testIG'
     $sku = 'Standard_ND128isr_GB300_v6'
 
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force
-
-        # Create ICG prerequisite
-        $icg = New-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName -Location $loc -VmSize $sku
-        $igId = $icg.id
 
         New-AzInterconnectBlock `
             -ResourceGroupName $rgname `
@@ -193,7 +138,7 @@ function Test-InterconnectBlockRemovePassThru
             -InterconnectGroupId $igId `
             -SkuName $sku `
             -SkuCapacity 18 `
-            -PlacementZonePlacementPolicy 'Any'
+            -Zone @('2')
 
         # Remove with PassThru
         $result = Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -PassThru
@@ -202,9 +147,6 @@ function Test-InterconnectBlockRemovePassThru
     }
     finally
     {
-        Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -ErrorAction SilentlyContinue
-        Start-Sleep -Seconds 5
-        Remove-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName
         Clean-ResourceGroup $rgname
     }
 }
@@ -218,17 +160,12 @@ function Test-InterconnectBlockPlacement
     $rgname = Get-ComputeTestResourceName
     $loc = 'eastus2euap'
     $icbName = 'icb' + $rgname
-    $icgName = 'icg' + $rgname
-    $subId = (Get-AzContext).Subscription.Id
+    $igId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/' + $rgname + '/providers/Microsoft.Network/interconnectGroups/testIG'
     $sku = 'Standard_ND128isr_GB300_v6'
 
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force
-
-        # Create ICG prerequisite
-        $icg = New-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName -Location $loc -VmSize $sku
-        $igId = $icg.id
 
         # Create ICB with placement parameters
         $icb = New-AzInterconnectBlock `
@@ -238,12 +175,16 @@ function Test-InterconnectBlockPlacement
             -InterconnectGroupId $igId `
             -SkuName $sku `
             -SkuCapacity 18 `
-            -PlacementZonePlacementPolicy 'Any'
+            -ZonePlacementPolicy 'Any' `
+            -IncludeZone @('1', '2') `
+            -ExcludeZone @('3')
 
         Assert-NotNull $icb
         Assert-AreEqual $icbName $icb.Name
         Assert-NotNull $icb.Placement
         Assert-AreEqual 'Any' $icb.Placement.ZonePlacementPolicy
+        Assert-AreEqual 2 $icb.Placement.IncludeZones.Count
+        Assert-AreEqual 1 $icb.Placement.ExcludeZones.Count
 
         # Verify persisted via Get
         $getResult = Get-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName
@@ -252,9 +193,6 @@ function Test-InterconnectBlockPlacement
     }
     finally
     {
-        Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -ErrorAction SilentlyContinue
-        Start-Sleep -Seconds 5
-        Remove-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName
         Clean-ResourceGroup $rgname
     }
 }
@@ -268,17 +206,12 @@ function Test-InterconnectBlockAsJob
     $rgname = Get-ComputeTestResourceName
     $loc = 'eastus2euap'
     $icbName = 'icb' + $rgname
-    $icgName = 'icg' + $rgname
-    $subId = (Get-AzContext).Subscription.Id
+    $igId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/' + $rgname + '/providers/Microsoft.Network/interconnectGroups/testIG'
     $sku = 'Standard_ND128isr_GB300_v6'
 
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force
-
-        # Create ICG prerequisite
-        $icg = New-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName -Location $loc -VmSize $sku
-        $igId = $icg.id
 
         # Create with -AsJob
         $job = New-AzInterconnectBlock `
@@ -288,7 +221,7 @@ function Test-InterconnectBlockAsJob
             -InterconnectGroupId $igId `
             -SkuName $sku `
             -SkuCapacity 18 `
-            -PlacementZonePlacementPolicy 'Any' `
+            -Zone @('2') `
             -AsJob
         $job | Wait-Job
         $icb = $job | Receive-Job
@@ -301,9 +234,6 @@ function Test-InterconnectBlockAsJob
     }
     finally
     {
-        Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -ErrorAction SilentlyContinue
-        Start-Sleep -Seconds 5
-        Remove-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName
         Clean-ResourceGroup $rgname
     }
 }

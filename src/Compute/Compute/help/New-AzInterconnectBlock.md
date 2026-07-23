@@ -15,8 +15,7 @@ Creates an Interconnect Block resource.
 ```
 New-AzInterconnectBlock -ResourceGroupName <String> -Name <String> -Location <String>
  -InterconnectGroupId <String> -SkuName <String> -SkuCapacity <Int64> [-Zone <String[]>] [-SkuTier <String>]
- [-PlacementExcludeZone <String[]>] [-PlacementIncludeZone <String[]>]
- [-PlacementZonePlacementPolicy <String>] [-Tag <Hashtable>] [-AsJob]
+ [-ExcludeZone <String[]>] [-IncludeZone <String[]>] [-ZonePlacementPolicy <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +38,7 @@ This command creates an Interconnect Block with a capacity of 18 VM instances in
 $igId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/interconnectGroups/myIG"
 New-AzInterconnectBlock -ResourceGroupName "myRG" -Name "myICB" -Location "eastus" -InterconnectGroupId $igId `
     -SkuName "Standard_ND128isr_GB300_v6" -SkuCapacity 36 -Zone @("1") `
-    -PlacementZonePlacementPolicy "Any" -PlacementIncludeZone @("1","2") `
+    -ZonePlacementPolicy "Any" -IncludeZone @("1","2") `
     -Tag @{ Environment = "Production"; Workload = "AI-Training" }
 ```
 
@@ -74,6 +73,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludeZone
+List of availability zones to exclude from placement consideration.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IncludeZone
+List of availability zones to include for placement consideration.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -116,51 +145,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PlacementExcludeZone
-List of availability zones to exclude from placement consideration.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PlacementIncludeZone
-List of availability zones to include for placement consideration.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PlacementZonePlacementPolicy
-Controls the zone placement policy. Accepted value: Any.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -257,6 +241,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ZonePlacementPolicy
+Controls the zone placement policy. Accepted value: Any.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -289,7 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, [...]
 
 ## INPUTS
 
