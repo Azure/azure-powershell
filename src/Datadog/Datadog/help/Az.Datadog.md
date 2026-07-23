@@ -26,6 +26,9 @@ Get the properties of a specific monitor resource.
 ### [Get-AzDatadogMonitorApiKey](Get-AzDatadogMonitorApiKey.md)
 List the api keys for a given monitor resource.
 
+### [Get-AzDatadogMonitorDefaultApplicationKey](Get-AzDatadogMonitorDefaultApplicationKey.md)
+Get the default application key.
+
 ### [Get-AzDatadogMonitorDefaultKey](Get-AzDatadogMonitorDefaultKey.md)
 Get the default api key.
 
@@ -46,6 +49,18 @@ Gets the datadog single sign-on resource for the given Monitor.
 
 ### [Get-AzDatadogTagRule](Get-AzDatadogTagRule.md)
 Get a tag rule set for a given monitor resource.
+
+### [Initialize-AzDatadogSaaSOperationGroupResource](Initialize-AzDatadogSaaSOperationGroupResource.md)
+Resolve the token to get the SaaS resource ID and activate the SaaS resource
+
+### [Invoke-AzDatadogLatestDatadogMonitorResourceLinkedSaaS](Invoke-AzDatadogLatestDatadogMonitorResourceLinkedSaaS.md)
+Returns the latest SaaS linked to the Datadog organization of the underlying monitor.
+
+### [Invoke-AzDatadogLinkDatadogMonitorResourceSaaS](Invoke-AzDatadogLinkDatadogMonitorResourceSaaS.md)
+Links a new SaaS to the Datadog organization of the underlying monitor.
+
+### [Invoke-AzDatadogManageMonitorSreAgentConnector](Invoke-AzDatadogManageMonitorSreAgentConnector.md)
+Manages Datadog MCP connectors to add/remove for the SRE Agent.
 
 ### [Invoke-AzDatadogResubscribeOrganization](Invoke-AzDatadogResubscribeOrganization.md)
 Reinstate integration with your Datadog organization by choosing one of the available subscription plans.
