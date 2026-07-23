@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.RedundancySettings = vault.Properties.RedundancySettings;
             this.Properties.SecureScore = vault.Properties.SecureScore;
             this.Properties.BcdrSecurityLevel = vault.Properties.BcdrSecurityLevel;
-            this.Properties.CostManagementSettings = vault.Properties.CostManagementSettings;
 
             if (vault.Properties.PrivateEndpointConnections != null)
             {

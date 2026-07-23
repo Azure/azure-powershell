@@ -20,7 +20,7 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-
  [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
  [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
- [-CostManagementGranularity <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
+ [-CostManagementGranularity <CostManagementGranularity>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
  [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -I
  [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
  [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
- [-CostManagementGranularity <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
+ [-CostManagementGranularity <CostManagementGranularity>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] 
  [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

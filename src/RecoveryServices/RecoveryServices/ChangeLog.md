@@ -23,7 +23,7 @@
     - `Add-AzRecoveryServicesAsrReplicationProtectedItemDisk` now honors `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` supplied on the disk replication configuration
     - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) forwards the same three fields on the switch-protection call
     - `Update-AzRecoveryServicesAsrClusterProtectionDirection` (cluster reprotect) forwards the same three fields on the cluster switch-protection call
-* Added Cost Management Settings support for Recovery Services Vaults.
+* Added support for configuring Cost Management Settings (granularity level) on Recovery Services vaults via `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault`.
 
 ## Version 7.13.0
 * Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
