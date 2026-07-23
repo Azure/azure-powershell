@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="recoveryPublicNetworkAccess">The public network access setting for the recovery managed disk.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public A2AVmManagedDiskInputDetails(string diskId, string primaryStagingAzureStorageAccountId, string recoveryResourceGroupId, string recoveryReplicaDiskAccountType = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryDiskEncryptionSetId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryNetworkAccessPolicy = default(string), string recoveryDiskAccessId = default(string), string recoveryPublicNetworkAccess = default(string))
+
+        /// <param name="confidentialDiskEncryptionInfo">The confidential disk encryption info for the managed disk. Applicable to
+        /// CMK confidential VMs.
+        /// </param>
+        public A2AVmManagedDiskInputDetails(string diskId, string primaryStagingAzureStorageAccountId, string recoveryResourceGroupId, string recoveryReplicaDiskAccountType = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryDiskEncryptionSetId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryNetworkAccessPolicy = default(string), string recoveryDiskAccessId = default(string), string recoveryPublicNetworkAccess = default(string), ConfidentialDiskEncryptionInfo confidentialDiskEncryptionInfo = default(ConfidentialDiskEncryptionInfo))
 
         {
             this.DiskId = diskId;
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryNetworkAccessPolicy = recoveryNetworkAccessPolicy;
             this.RecoveryDiskAccessId = recoveryDiskAccessId;
             this.RecoveryPublicNetworkAccess = recoveryPublicNetworkAccess;
+            this.ConfidentialDiskEncryptionInfo = confidentialDiskEncryptionInfo;
             CustomInit();
         }
 
@@ -123,13 +128,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public DiskEncryptionInfo DiskEncryptionInfo {get; set; }
 
         /// <summary>
-        /// Gets or sets the confidential disk encryption information. Present only for
-        /// CMK confidential VM disks.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionInfo")]
-        public ConfidentialDiskEncryptionInfo ConfidentialDiskEncryptionInfo {get; set; }
-
-        /// <summary>
         /// Gets or sets the network access policy for the recovery managed disk. Possible values include: &#39;AllowAll&#39;, &#39;AllowPrivate&#39;, &#39;DenyAll&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryNetworkAccessPolicy")]
@@ -147,6 +145,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPublicNetworkAccess")]
         public string RecoveryPublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential disk encryption info for the managed disk.
+        /// Applicable to CMK confidential VMs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionInfo")]
+        public ConfidentialDiskEncryptionInfo ConfidentialDiskEncryptionInfo {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -167,6 +172,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RecoveryResourceGroupId");
             }
+
 
 
 

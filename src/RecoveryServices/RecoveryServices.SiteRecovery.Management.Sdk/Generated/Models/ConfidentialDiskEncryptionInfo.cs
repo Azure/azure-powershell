@@ -8,8 +8,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     using System.Linq;
 
     /// <summary>
-    /// Confidential disk encryption info for a CMK confidential VM disk (replica and target
-    /// confidential disk encryption sets). Present only for CMK confidential VM disks.
+    /// Confidential disk encryption info for a CMK confidential VM managed disk.
     /// </summary>
     public partial class ConfidentialDiskEncryptionInfo
     {
@@ -25,12 +24,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the ConfidentialDiskEncryptionInfo class.
         /// </summary>
 
-        /// <param name="recoveryReplicaConfidentialDiskEncryptionSetId">The replica confidential disk encryption set Id used to create the seed
-        /// disk.
+        /// <param name="recoveryReplicaConfidentialDiskEncryptionSetId">The confidential disk encryption set ARM Id used for the replica disk.
+        /// Applicable to CMK confidential VMs.
         /// </param>
 
-        /// <param name="recoveryTargetConfidentialDiskEncryptionSetId">The target confidential disk encryption set Id applied to the failed-over
-        /// disk.
+        /// <param name="recoveryTargetConfidentialDiskEncryptionSetId">The confidential disk encryption set ARM Id used for the target disk after
+        /// failover. Applicable to CMK confidential VMs.
         /// </param>
         public ConfidentialDiskEncryptionInfo(string recoveryReplicaConfidentialDiskEncryptionSetId = default(string), string recoveryTargetConfidentialDiskEncryptionSetId = default(string))
 
@@ -47,15 +46,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
 
         /// <summary>
-        /// Gets or sets the replica confidential disk encryption set Id used to create
-        /// the seed disk.
+        /// Gets or sets the confidential disk encryption set ARM Id used for the
+        /// replica disk. Applicable to CMK confidential VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryReplicaConfidentialDiskEncryptionSetId")]
         public string RecoveryReplicaConfidentialDiskEncryptionSetId {get; set; }
 
         /// <summary>
-        /// Gets or sets the target confidential disk encryption set Id applied to the
-        /// failed-over disk.
+        /// Gets or sets the confidential disk encryption set ARM Id used for the
+        /// target disk after failover. Applicable to CMK confidential VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryTargetConfidentialDiskEncryptionSetId")]
         public string RecoveryTargetConfidentialDiskEncryptionSetId {get; set; }

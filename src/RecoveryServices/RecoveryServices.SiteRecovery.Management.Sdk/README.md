@@ -23,10 +23,16 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 00677addbec2520127aada73ce8ec5f9788a405e
+# Pre-public bind for api-version 2026-06-01 (CVM A2A).
+# 2026-06-01 is not yet published to Azure/azure-rest-api-specs, so this points at the
+# locally compiled swagger from azure-rest-api-specs-pr. Restore the remote input-file
+# (commit + stable/2026-06-01/service.json) once the clubbed version is published.
+# commit: 00677addbec2520127aada73ce8ec5f9788a405e
+# input-file:
+#   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-06-01/service.json
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-02-01/service.json
-  
+  - D:/Work/azure-rest-api-specs-pr/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-06-01/service.json
+
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.RecoveryServices.SiteRecovery
