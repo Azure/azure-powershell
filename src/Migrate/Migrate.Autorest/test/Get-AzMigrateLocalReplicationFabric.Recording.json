@@ -1,8 +1,8 @@
 {
-  "Get-AzMigrateLocalReplicationFabric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01+1": {
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/providers/Microsoft.DataReplication/replicationFabrics?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/providers/Microsoft.DataReplication/replicationFabrics?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMigrateLocalReplicationFabric+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01+1": {
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -86,10 +86,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMigrateLocalReplicationFabric+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01+1": {
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -131,10 +131,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMigrateLocalReplicationFabric+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01+1": {
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -175,10 +175,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMigrateLocalReplicationFabric+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01+2": {
+  "Get-AzMigrateLocalReplicationFabric+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2026-05-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationFabrics/HyperV-1c100b4409breplicationfabric?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

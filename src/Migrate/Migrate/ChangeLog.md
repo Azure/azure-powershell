@@ -21,6 +21,8 @@
 
 ## Version 3.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01
+* Added 'MigrateAsArcVM' parameter to 'New-AzMigrateLocalServerReplication' to support migrating VMs as Arc VMs
 
 ## Version 2.12.1
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
