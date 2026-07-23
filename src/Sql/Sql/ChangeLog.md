@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Handled SDK exceptions by throwing error response in `AZPSCloudException`.
 
 ## Version 7.0.0
 * Added ChangeSafety Support
