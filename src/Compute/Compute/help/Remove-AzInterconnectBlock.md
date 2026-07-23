@@ -129,8 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
-
+Returns a PSOperationStatusResponse containing details about the delete operation. By default, this cmdlet does not generate any output.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)

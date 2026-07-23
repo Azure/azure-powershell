@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Compute/interconnectBlocks", "ResourceGroupName")]
         public string Name { get; set; }
 
         [Parameter(
@@ -86,21 +87,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var result = InterconnectBlocksClient.DeleteWithHttpMessagesAsync(resourceGroupName, name).GetAwaiter().GetResult();
 
-                    if (this.PassThru.IsPresent)
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
-                        PSOperationStatusResponse output = new PSOperationStatusResponse
-                        {
-                            StartTime = this.StartTime,
-                            EndTime = DateTime.Now
-                        };
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
 
-                        if (result != null && result.Request != null && result.Request.RequestUri != null)
-                        {
-                            output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
-                        }
-
-                        WriteObject(output);
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
                     }
+
+                    WriteObject(output);
                 }
             });
         }

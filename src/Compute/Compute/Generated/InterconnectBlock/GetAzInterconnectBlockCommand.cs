@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Compute/interconnectBlocks", "ResourceGroupName")]
         [SupportsWildcards]
         public string Name { get; set; }
 
@@ -75,8 +76,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     // Exact RG, Name absent or wildcard → list by RG then wildcard-filter
                     var list = InterconnectBlocksClient.ListByResourceGroup(resourceGroupName);
+                    var resultList = list.ToList();
+                    var nextPageLink = list.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = InterconnectBlocksClient.ListByResourceGroupNext(nextPageLink);
+                        resultList.AddRange(pageResult);
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+
                     var psObjects = new List<PSInterconnectBlockList>();
-                    foreach (var item in list)
+                    foreach (var item in resultList)
                     {
                         psObjects.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<InterconnectBlock, PSInterconnectBlockList>(item));
                     }
@@ -86,8 +96,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     // No RG (or wildcard RG) → list by subscription then wildcard-filter
                     var list = InterconnectBlocksClient.ListBySubscription();
+                    var resultList = list.ToList();
+                    var nextPageLink = list.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = InterconnectBlocksClient.ListBySubscriptionNext(nextPageLink);
+                        resultList.AddRange(pageResult);
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+
                     var psObjects = new List<PSInterconnectBlockList>();
-                    foreach (var item in list)
+                    foreach (var item in resultList)
                     {
                         psObjects.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<InterconnectBlock, PSInterconnectBlockList>(item));
                     }
