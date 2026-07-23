@@ -21,6 +21,9 @@
 -->
 ## Upcoming Release
 
+* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
+    - Related design review issue Azure/azure-powershell-cmdlet-review-pr#1560.
+
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
 * Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.
