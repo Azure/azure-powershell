@@ -60,7 +60,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 OriginClusterInformation = props.OriginClusterInformation,
                 CifsChangeNotifications = props.CifsChangeNotifications,
                 GlobalFileLocking = props.GlobalFileLocking,
-                WriteBack = props.WriteBack
+                WriteBack = props.WriteBack,
+                FileAccessLogs = props.FileAccessLogs,
+                
             };
         }
 
@@ -137,6 +139,62 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
                     Kerberos5ReadWrite = rule.Kerberos5ReadWrite
                 }).ToArray()
+            };
+        }
+
+        public static PSNetAppFilesCacheMountTarget ConvertToPs(this CacheMountTargetProperties mountTarget)
+        {
+            if (mountTarget == null)
+            {
+                return null;
+            }
+
+            return new PSNetAppFilesCacheMountTarget
+            {
+                MountTargetId = mountTarget.MountTargetId,
+                IPAddress = mountTarget.IPAddress,
+                SmbServerFqdn = mountTarget.SmbServerFqdn
+            };
+        }
+
+        public static IList<PSNetAppFilesCacheMountTarget> ConvertToPs(this IEnumerable<CacheMountTargetProperties> mountTargets)
+        {
+            if (mountTargets == null)
+            {
+                return null;
+            }
+
+            return mountTargets.Select(mt => mt.ConvertToPs()).ToList();
+        }
+
+        public static PSNetAppFilesCacheSmbSettings ConvertToPs(this SmbSettings smbSettings)
+        {
+            if (smbSettings == null)
+            {
+                return null;
+            }
+
+            return new PSNetAppFilesCacheSmbSettings
+            {
+                SmbEncryption = smbSettings.SmbEncryption,
+                SmbAccessBasedEnumeration = smbSettings.SmbAccessBasedEnumeration,
+                SmbNonBrowsable = smbSettings.SmbNonBrowsable
+            };
+        }
+
+        public static PSNetAppFilesCacheOriginClusterInformation ConvertToPs(this OriginClusterInformation originClusterInformation)
+        {
+            if (originClusterInformation == null)
+            {
+                return null;
+            }
+
+            return new PSNetAppFilesCacheOriginClusterInformation
+            {
+                PeerClusterName = originClusterInformation.PeerClusterName,
+                PeerAddresses = originClusterInformation.PeerAddresses?.ToList(),
+                PeerVserverName = originClusterInformation.PeerVserverName,
+                PeerVolumeName = originClusterInformation.PeerVolumeName
             };
         }
     }
