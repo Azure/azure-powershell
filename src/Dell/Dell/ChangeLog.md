@@ -18,10 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* First preview release for module Az.Dell
-    - Added `New-AzDellFileSystem` cmdlet to create Dell PowerScale filesystem resources
-    - Added `Get-AzDellFileSystem` cmdlet to get or list Dell PowerScale filesystem resources
-    - Added `Remove-AzDellFileSystem` cmdlet to delete Dell PowerScale filesystem resources
 
 ## Version 0.1.0
 * First preview release for module Az.Dell

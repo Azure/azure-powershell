@@ -76,6 +76,7 @@ directive:
       verb: Set
     remove: true
 
+  # Hide Update-* cmdlets from the public surface (PATCH not needed for initial release)
   - where:
       verb: Update
     hide: true
