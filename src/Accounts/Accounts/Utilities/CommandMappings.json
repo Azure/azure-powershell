@@ -9179,9 +9179,6 @@
       "Update-AzStaticWebAppUser": {},
       "Swap-AzWebAppSlot": {}
     },
-    "Az.WeightsAndBiases": {
-      "Get-AzWeightsAndBiasesInstance": {}
-    },
     "Az.WindowsIotServices": {
       "Get-AzWindowsIotServicesDevice": {},
       "New-AzWindowsIotServicesDevice": {},
