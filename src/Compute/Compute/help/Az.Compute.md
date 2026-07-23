@@ -755,6 +755,9 @@ The operation to update the VMSS VM run command.
 ### [Set-AzVMUefi](Set-AzVMUefi.md)
 Modifies UEFI properties of a gen 2 virtual machine
 
+### [Set-AzVMZoneMovement](Set-AzVMZoneMovement.md)
+Sets the ZoneMovement configuration on a PSVirtualMachine object.
+
 ### [Start-AzAvailabilitySetMigration](Start-AzAvailabilitySetMigration.md)
 Starts the migration operation on an Availability Set to a Flexible Virtual Machine Scale Set.
 
@@ -853,4 +856,3 @@ Responds to a Virtual Machine Scale Set (VMSS) lifecycle hook event by approving
 
 ### [Update-AzVmssVM](Update-AzVmssVM.md)
 Updates the state of a Vmss VM.
-

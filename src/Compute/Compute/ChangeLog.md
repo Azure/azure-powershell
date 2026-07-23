@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `Set-AzVMZoneMovement` to set ZoneMovement configuration on a VM (Virtual Machine) model and persist it with `Update-AzVM`.
+    - Added `ResiliencyProfile` support in VM create and update flows so ZoneMovement is sent to the Compute API.
+    - Fixed issue [#1562]
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
