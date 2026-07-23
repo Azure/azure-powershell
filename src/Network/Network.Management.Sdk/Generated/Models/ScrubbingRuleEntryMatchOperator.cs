@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ScrubbingRuleEntryMatchOperator
     {
+        /// <summary>
+        /// Equals
+        /// </summary>
         public const string Equals = "Equals";
+        /// <summary>
+        /// EqualsAny
+        /// </summary>
         public const string EqualsAny = "EqualsAny";
     }
 }

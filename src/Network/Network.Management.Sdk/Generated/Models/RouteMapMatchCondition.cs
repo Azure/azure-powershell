@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RouteMapMatchCondition
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Contains
+        /// </summary>
         public const string Contains = "Contains";
+        /// <summary>
+        /// Equals
+        /// </summary>
         public const string Equals = "Equals";
+        /// <summary>
+        /// NotContains
+        /// </summary>
         public const string NotContains = "NotContains";
+        /// <summary>
+        /// NotEquals
+        /// </summary>
         public const string NotEquals = "NotEquals";
     }
 }

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class Origin
     {
+        /// <summary>
+        /// Local
+        /// </summary>
         public const string Local = "Local";
+        /// <summary>
+        /// Inbound
+        /// </summary>
         public const string Inbound = "Inbound";
+        /// <summary>
+        /// Outbound
+        /// </summary>
         public const string Outbound = "Outbound";
     }
 }

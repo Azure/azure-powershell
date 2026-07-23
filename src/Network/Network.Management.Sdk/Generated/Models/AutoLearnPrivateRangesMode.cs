@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AutoLearnPrivateRangesMode
     {
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }
