@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `New-AzInterconnectBlock`, `Get-AzInterconnectBlock`, `Update-AzInterconnectBlock`, and `Remove-AzInterconnectBlock` cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance AI/ML workloads.
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.

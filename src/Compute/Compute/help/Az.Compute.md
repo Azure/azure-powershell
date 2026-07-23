@@ -158,6 +158,9 @@ Get List of possible Host Sizes.
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
 
+### [Get-AzInterconnectBlock](Get-AzInterconnectBlock.md)
+Gets the properties of an Interconnect Block or lists Interconnect Blocks in a resource group or subscription.
+
 ### [Get-AzProximityPlacementGroup](Get-AzProximityPlacementGroup.md)
 Get or list Proximity Placement Group resource(s).
 
@@ -362,6 +365,9 @@ Creates an image.
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
 
+### [New-AzInterconnectBlock](New-AzInterconnectBlock.md)
+Creates an Interconnect Block resource.
+
 ### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
 Create Proximity Placement Group resource.
 
@@ -490,6 +496,9 @@ Removes an image.
 
 ### [Remove-AzImageDataDisk](Remove-AzImageDataDisk.md)
 Removes a data disk from an image object.
+
+### [Remove-AzInterconnectBlock](Remove-AzInterconnectBlock.md)
+Deletes an Interconnect Block.
 
 ### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
 Delete Proximity Placement Group resource.
@@ -829,6 +838,9 @@ Updates the Dedicated Host.
 
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
+
+### [Update-AzInterconnectBlock](Update-AzInterconnectBlock.md)
+Updates an Interconnect Block. Only tags and sku.capacity may be modified.
 
 ### [Update-AzRestorePointCollection](Update-AzRestorePointCollection.md)
 Update Restore Point Collection.
