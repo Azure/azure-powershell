@@ -1,0 +1,45 @@
+{
+  "New-AzDellFileSystem+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/b9aad304-baa9-4d2a-9404-dbdd3ab55ac5/resourceGroups/bhargavi-rg/providers/Dell.Storage/filesystems/dell-ps-test-01?api-version=2025-03-21+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/b9aad304-baa9-4d2a-9404-dbdd3ab55ac5/resourceGroups/bhargavi-rg/providers/Dell.Storage/filesystems/dell-ps-test-01?api-version=2025-03-21",
+      "Content": "{\r\n  \"tags\": {\r\n    \"bypassPartner\": \"true\"\r\n  },\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"marketplace\": {\r\n      \"marketplaceSubscriptionId\": \"00000000-0000-0000-0000-000000000000\",\r\n      \"planId\": \"plus1\",\r\n      \"offerId\": \"dell-managed-powerscale-for-azure\",\r\n      \"publisherId\": \"dellemc\",\r\n      \"planName\": \"Plus Plan\",\r\n      \"termUnit\": \"P1Y\"\r\n    },\r\n    \"user\": {\r\n      \"email\": \"dummy@example.com\"\r\n    },\r\n    \"encryption\": {\r\n      \"encryptionType\": \"Microsoft-managed keys (MMK)\"\r\n    },\r\n    \"delegatedSubnetId\": \"/subscriptions/b9aad304-baa9-4d2a-9404-dbdd3ab55ac5/resourceGroups/santhosh-test/providers/Microsoft.Network/virtualNetworks/eastus2euap-vnet-test/subnets/default\",\r\n    \"delegatedSubnetCidr\": \"10.0.0.0/24\",\r\n    \"dellReferenceNumber\": \"3123123\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "809" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=c1ffe0b6-0f46-4f6b-8827-b503eda00c65/southeastasia/963b9cda-1620-49b6-9ffc-dd521d8d81e1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "53e3017f-e66b-4760-bc4a-ccef24c10f59" ],
+        "x-ms-correlation-request-id": [ "0f718b3f-1a58-49f3-a696-2324ffefcefb" ],
+        "x-ms-client-request-id": [ "a5da2708-1a52-41d2-a092-251af692a5fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "49b2793e-e1d5-489b-a1f7-2a0a601d754a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "200" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "3000" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260723T071152Z:0f718b3f-1a58-49f3-a696-2324ffefcefb" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 930ADFFE76424F8E9F850B2D8017CFD1 Ref B: SG2AA1040516052 Ref C: 2026-07-23T07:11:27Z" ],
+        "Date": [ "Thu, 23 Jul 2026 07:11:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1060" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceCreationValidateFailed\",\"message\":\"Failed to fetch subnet details for resource: dell-ps-test-01, resourceId: /subscriptions/b9aad304-baa9-4d2a-9404-dbdd3ab55ac5/resourceGroups/bhargavi-rg/providers/Dell.Storage/filesystems/dell-ps-test-01. Error: StatusCode: 404, ReasonPhrase: \u0027Not Found\u0027, Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:\\n{\\n  Cache-Control: no-cache\\n  Pragma: no-cache\\n  x-ms-failure-cause: gateway\\n  x-ms-request-id: 7dff7df7-3dc1-4988-b521-214000a5e554\\n  x-ms-correlation-request-id: 0f718b3f-1a58-49f3-a696-2324ffefcefb\\n  x-ms-routing-request-id: WESTUS:20260723T071147Z:7dff7df7-3dc1-4988-b521-214000a5e554\\n  Strict-Transport-Security: max-age=31536000; includeSubDomains\\n  X-Content-Type-Options: nosniff\\n  X-Cache: CONFIG_NOCACHE\\n  X-MSEdge-Ref: Ref A: 50384A29ABEA4F8CB8FDE2EDB227E7A9 Ref B: SJC211051201025 Ref C: 2026-07-23T07:11:46Z\\n  Date: Thu, 23 Jul 2026 07:11:47 GMT\\n  Content-Length: 240\\n  Content-Type: application/json; charset=utf-8\\n  Expires: -1\\n} \"}}",
+      "isContentBase64": false
+    }
+  }
+}
