@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class WebApplicationFirewallRuleType
     {
+        /// <summary>
+        /// MatchRule
+        /// </summary>
         public const string MatchRule = "MatchRule";
+        /// <summary>
+        /// RateLimitRule
+        /// </summary>
         public const string RateLimitRule = "RateLimitRule";
+        /// <summary>
+        /// Invalid
+        /// </summary>
         public const string Invalid = "Invalid";
     }
 }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
         /// region.
         /// </remarks>
         /// <param name='location'>
-        /// The location of the subnet.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

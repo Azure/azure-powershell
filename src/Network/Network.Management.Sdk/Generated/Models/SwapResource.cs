@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// SwapResource to represent slot type on the specified cloud service.
     /// </summary>
-    public partial class SwapResource
+    public partial class SwapResource : ProxyResourceWithReadOnlyID
     {
         /// <summary>
         /// Initializes a new instance of the SwapResource class.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the SwapResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Resource ID.
         /// </param>
 
         /// <param name="name">Resource name.
@@ -37,10 +37,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
         public SwapResource(string id = default(string), string name = default(string), string type = default(string), SwapResourceProperties properties = default(SwapResourceProperties))
 
+        : base(id, name, type)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.Properties = properties;
             CustomInit();
         }
@@ -50,24 +48,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets resource Id.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets swap resource properties

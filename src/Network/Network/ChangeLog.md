@@ -24,6 +24,20 @@
 
 ## Version 8.0.1
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+* Added properties `ServiceTag`, `ReadinessState`, `Description`, and `OutboundSupported` to `Get-AzNetworkSecurityPerimeterAssociableResourceType` response.
+* Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
+* Added new cmdlets for DDoS Custom Policy management
+    - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
+    - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time
+    - `New-AzDdosCustomPolicyDetectionRule`: Create a DDoS custom policy detection rule
+    - `Add-AzDdosCustomPolicyDetectionRule`: Add a detection rule to an in-memory DDoS custom policy before persisting it with `Set-AzDdosCustomPolicy`
+    - `Get-AzDdosCustomPolicy`: Retrieve a DDoS custom policy by resource group and name
+    - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
+    - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
+    - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
+* Added cmdlets for cloud service public IP address operations:
+    - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
+    - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
 
 ## Version 8.0.0
 * Added ChangeSafety Support

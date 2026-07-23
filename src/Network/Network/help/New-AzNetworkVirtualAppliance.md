@@ -23,7 +23,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -37,7 +37,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualH
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,6 +115,21 @@ Creates a new Network Virtual Appliance resource deployed in VNet with PrivateNi
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AdditionalNic
 The AdditionalNic Properties of the Virtual Appliance.
 
@@ -157,6 +172,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
