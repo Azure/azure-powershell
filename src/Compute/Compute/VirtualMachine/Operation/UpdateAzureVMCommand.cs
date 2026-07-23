@@ -272,7 +272,8 @@ namespace Microsoft.Azure.Commands.Compute
                         UserData = this.IsParameterBound(c => c.UserData)
                             ? this.UserData
                             : this.VM.UserData,
-                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy
+                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy,
+                        ResiliencyProfile = this.VM.ResiliencyProfile
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
@@ -516,4 +517,3 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
-

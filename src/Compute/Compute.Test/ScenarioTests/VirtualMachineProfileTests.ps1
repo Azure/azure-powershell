@@ -446,3 +446,29 @@ function Test-VirtualMachineProfileWithoutAUC
     Assert-False {$p.OSProfile.WindowsConfiguration.ProvisionVMAgent};
 
 }
+
+<#
+.SYNOPSIS
+Test setting VM ZoneMovement on a virtual machine profile object.
+#>
+function Test-VirtualMachineZoneMovementProfile
+{
+    # Step 1: Create a VM config profile.
+    $vmname = 'pstestvm' + ((Get-Random) % 10000);
+    $vm = New-AzVMConfig -VMName $vmname -VMSize 'Standard_A2';
+
+    # Step 2: Enable zone movement and verify nested objects are created.
+    $vm = Set-AzVMZoneMovement -VM $vm -IsEnabled $true;
+    Assert-NotNull $vm.ResiliencyProfile;
+    Assert-NotNull $vm.ResiliencyProfile.ZoneMovement;
+    Assert-AreEqual $vm.ResiliencyProfile.ZoneMovement.IsEnabled $true;
+
+    # Step 3: Disable zone movement and verify value changes.
+    $vm = Set-AzVMZoneMovement -VM $vm -IsEnabled $false;
+    Assert-AreEqual $vm.ResiliencyProfile.ZoneMovement.IsEnabled $false;
+
+    # Step 4: Validate null VM input is rejected.
+    Assert-ThrowsContains `
+        { Set-AzVMZoneMovement -VM $null -IsEnabled $true } `
+        "Cannot bind argument to parameter 'VM' because it is null";
+}
