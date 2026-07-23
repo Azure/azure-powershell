@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the Function App stacks parser to handle a runtime definition that does not include a `FUNCTIONS_WORKER_RUNTIME` app setting. [#29630]
+* Added support in `New-AzFunctionApp` to create Go function apps hosted in Flex Consumption plans.
 
 ## Version 5.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)

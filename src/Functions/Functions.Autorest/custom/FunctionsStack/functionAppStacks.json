@@ -47,7 +47,18 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|10.0",
@@ -80,26 +91,31 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -110,7 +126,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -153,7 +170,18 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|9.0",
@@ -184,26 +212,34 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -214,7 +250,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -258,7 +295,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|8.0",
@@ -290,26 +338,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -320,7 +376,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -362,7 +419,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue May 14 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue May 14 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|7.0",
@@ -393,7 +461,17 @@
                     }
                   ],
                   "endOfLifeDate": "Tue May 14 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -435,7 +513,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|6.0",
@@ -466,7 +555,17 @@
                     }
                   ],
                   "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -505,6 +604,17 @@
                       "version": "~4",
                       "isDeprecated": false,
                       "isDefault": true
+                    }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
                     }
                   ]
                 }
@@ -549,7 +659,18 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "isHidden": false,
@@ -581,7 +702,17 @@
                     }
                   ],
                   "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -622,7 +753,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET|6.0",
@@ -652,7 +794,17 @@
                     }
                   ],
                   "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -691,6 +843,17 @@
                       "isDeprecated": true,
                       "isDefault": true
                     }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
                   ]
                 },
                 "linuxRuntimeSettings": {
@@ -720,7 +883,17 @@
                       "isDefault": true
                     }
                   ],
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -756,6 +929,17 @@
                       "isDeprecated": true,
                       "isDefault": true
                     }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
                   ]
                 }
               }
@@ -784,7 +968,7 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "~24",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isDefault": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
@@ -813,11 +997,22 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Mon Apr 30 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Mon Apr 30 2029 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Node|24",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isDefault": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
@@ -845,26 +1040,31 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Mon Apr 30 2029 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -875,7 +1075,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Mon Apr 30 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -918,7 +1119,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Node|22",
@@ -948,26 +1160,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -978,7 +1198,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1020,7 +1241,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Node|20",
@@ -1049,26 +1281,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1079,7 +1319,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1121,7 +1362,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Apr 30 2025 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Apr 30 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Node|18",
@@ -1151,7 +1403,17 @@
                     }
                   ],
                   "endOfLifeDate": "Wed Apr 30 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -1180,8 +1442,8 @@
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Python|3.14",
                   "remoteDebuggingSupported": false,
-                  "isPreview": true,
-                  "isDefault": false,
+                  "isPreview": false,
+                  "isDefault": true,
                   "isHidden": false,
                   "appInsightsSettings": {
                     "isSupported": true
@@ -1207,26 +1469,31 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Thu Oct 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1237,7 +1504,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Thu Oct 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -1275,26 +1543,31 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Oct 31 2029 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1305,7 +1578,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Wed Oct 31 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -1343,26 +1617,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Oct 31 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1373,7 +1655,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Tue Oct 31 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -1411,26 +1694,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Sun Oct 31 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1441,7 +1732,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Sun Oct 31 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -1479,26 +1771,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Sat Oct 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1509,7 +1809,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Sat Oct 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -1553,7 +1854,17 @@
                     }
                   ],
                   "endOfLifeDate": "Fri Oct 31 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             },
@@ -1595,7 +1906,17 @@
                     }
                   ],
                   "endOfLifeDate": "Mon Oct 07 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             },
@@ -1643,7 +1964,99 @@
                     }
                   ],
                   "endOfLifeDate": "Tue Jun 27 2023 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "name": "go",
+    "type": "Microsoft.Web/functionAppStacks?stackOsType=All",
+    "properties": {
+      "displayText": "Go",
+      "value": "go",
+      "preferredOs": "linux",
+      "majorVersions": [
+        {
+          "displayText": "1.0",
+          "value": "1.0",
+          "minorVersions": [
+            {
+              "displayText": "Go 1.0",
+              "value": "1.0",
+              "stackSettings": {
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Go|1.0",
+                  "isDefault": true,
+                  "isPreview": true,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true
+                  },
+                  "appSettingsDictionary": {},
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Go|1.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": "512",
+                          "isDefault": false
+                        },
+                        {
+                          "size": "2048",
+                          "isDefault": true
+                        },
+                        {
+                          "size": "4096",
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 1,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "go",
+                          "version": "1.0"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1671,7 +2084,7 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "25",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isHidden": false,
                   "isAutoUpdate": true,
                   "isDefault": false,
@@ -1701,11 +2114,22 @@
                       "isDefault": true
                     }
                   ],
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ],
                   "endOfLifeDate": "Wed Sep 01 2032 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|25",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isHidden": false,
                   "isAutoUpdate": true,
                   "isDefault": false,
@@ -1734,26 +2158,31 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Sep 01 2032 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1764,7 +2193,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Wed Sep 01 2032 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1810,6 +2240,17 @@
                       "isDefault": true
                     }
                   ],
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ],
                   "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
@@ -1843,26 +2284,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1873,7 +2322,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -1919,7 +2369,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|17",
@@ -1952,26 +2413,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -1982,7 +2451,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             }
@@ -2031,7 +2501,18 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|11",
@@ -2070,23 +2551,32 @@
                   "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
                     {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
+                    {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -2153,7 +2643,18 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Dec 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Dec 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|8",
@@ -2193,23 +2694,32 @@
                   "endOfLifeDate": "Tue Dec 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
                     {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
+                    {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -2242,6 +2752,122 @@
           "displayText": "PowerShell 7",
           "value": "7",
           "minorVersions": [
+            {
+              "displayText": "PowerShell 7.6",
+              "value": "7.6",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "7.6",
+                  "isDefault": false,
+                  "isPreview": true,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "powerShellVersion": "7.6",
+                    "netFrameworkVersion": "v10.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Tue Nov 14 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "PowerShell|7.6",
+                  "isDefault": false,
+                  "isPreview": true,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "PowerShell|7.6"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": "512",
+                          "isDefault": false
+                        },
+                        {
+                          "size": "2048",
+                          "isDefault": true
+                        },
+                        {
+                          "size": "4096",
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 1,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "powershell",
+                          "version": "7.6"
+                        }
+                      }
+                    }
+                  ],
+                  "endOfLifeDate": "Tue Nov 14 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                }
+              }
+            },
             {
               "displayText": "PowerShell 7.4",
               "value": "7.4",
@@ -2276,7 +2902,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "PowerShell|7.4",
@@ -2307,26 +2944,34 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
                   "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
                     {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
@@ -2337,7 +2982,8 @@
                         }
                       }
                     }
-                  ]
+                  ],
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 }
               }
             },
@@ -2375,7 +3021,18 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Nov 08 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Nov 08 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "PowerShell|7.2",
@@ -2407,7 +3064,17 @@
                     }
                   ],
                   "endOfLifeDate": "Fri Nov 08 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
-                  "Sku": null
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
+                  ]
                 }
               }
             }
@@ -2470,6 +3137,17 @@
                       "isDeprecated": true,
                       "isDefault": false
                     }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    }
                   ]
                 },
                 "linuxRuntimeSettings": {
@@ -2513,23 +3191,32 @@
                   ],
                   "Sku": [
                     {
+                      "skuCode": "Y1"
+                    },
+                    {
+                      "skuCode": "Dedicated"
+                    },
+                    {
+                      "skuCode": "ElasticPremium"
+                    },
+                    {
                       "skuCode": "FC1",
                       "instanceMemoryMB": [
                         {
-                          "size": 512,
+                          "size": "512",
                           "isDefault": false
                         },
                         {
-                          "size": 2048,
+                          "size": "2048",
                           "isDefault": true
                         },
                         {
-                          "size": 4096,
+                          "size": "4096",
                           "isDefault": false
                         }
                       ],
                       "maximumInstanceCount": {
-                        "lowestMaximumInstanceCount": 40,
+                        "lowestMaximumInstanceCount": 1,
                         "highestMaximumInstanceCount": 1000,
                         "defaultValue": 100
                       },
