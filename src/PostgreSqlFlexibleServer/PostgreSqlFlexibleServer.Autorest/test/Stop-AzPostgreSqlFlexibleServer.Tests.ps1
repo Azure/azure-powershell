@@ -15,11 +15,61 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzPostgreSqlFlexibleServ
 }
 
 Describe 'Stop-AzPostgreSqlFlexibleServer' {
-    It 'Stop' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $serverTargets = @()
+        for ($i = 1; $i -le 6; $i++) {
+            $resourceGroupName = $env["ResourceGroupName$i"]
+            $serverName = $env["ServerName$i"]
+            if ($resourceGroupName -and $serverName) {
+                $serverTargets += [ordered]@{
+                    Index = $i
+                    ResourceGroupName = $resourceGroupName
+                    ServerName = $serverName
+                }
+            }
+        }
+
+        $hasAllServers = $serverTargets.Count -eq 6
+
+        function Wait-ServerStopped {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName,
+
+                [int]$TimeoutSeconds = 1800,
+                [int]$PollSeconds = 15
+            )
+
+            $timeoutAt = (Get-Date).AddSeconds($TimeoutSeconds)
+            while ((Get-Date) -lt $timeoutAt) {
+                $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                if ($server.State -eq 'Stopped') {
+                    return $server
+                }
+
+                Start-TestSleep -Seconds $PollSeconds
+            }
+
+            throw "Timed out waiting for server '$ServerName' in resource group '$ResourceGroupName' to reach Stopped state."
+        }
     }
 
-    It 'StopViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StopAllServersAndVerifyStateThenSecondStopFails' -Skip:(-not $hasAllServers) {
+        foreach ($target in $serverTargets) {
+            Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName | Out-Null
+
+            $stoppedServer = Wait-ServerStopped -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName
+            $stoppedServer.State | Should -Be 'Stopped'
+
+            {
+                Stop-AzPostgreSqlFlexibleServer `
+                    -ResourceGroupName $target.ResourceGroupName `
+                    -Name $target.ServerName `
+                    -ErrorAction Stop
+            } | Should -Throw
+        }
     }
 }

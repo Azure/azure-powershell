@@ -17,6 +17,31 @@ if ($TestMode -eq 'live') {
     $envFile = 'localEnv.json'
 }
 
+function ConvertTo-Hashtable {
+    param(
+        [Parameter(Mandatory = $false)]
+        [object]$InputObject
+    )
+
+    $result = @{}
+    if ($null -eq $InputObject) {
+        return $result
+    }
+
+    if ($InputObject -is [System.Collections.IDictionary]) {
+        foreach ($entry in $InputObject.GetEnumerator()) {
+            $result[[string]$entry.Key] = $entry.Value
+        }
+        return $result
+    }
+
+    foreach ($property in $InputObject.PSObject.Properties) {
+        $result[$property.Name] = $property.Value
+    }
+
+    return $result
+}
+
 if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
     $envFilePath = Join-Path $PSScriptRoot $envFile
 } else {
@@ -24,6 +49,49 @@ if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
 }
 $env = @{}
 if (Test-Path -Path $envFilePath) {
-    $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
-    $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
+    $envJson = Get-Content -Path $envFilePath -Raw | ConvertFrom-Json
+    $env = ConvertTo-Hashtable -InputObject $envJson
+}
+
+$isPlaybackMode = ($TestMode -eq 'playback') -or ($env:AzPSAutorestTestPlaybackMode -eq 'true')
+if ($isPlaybackMode) {
+    $playbackIdentifier = 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    $env['SubscriptionId'] = $playbackIdentifier
+    $env['Tenant'] = $playbackIdentifier
+}
+
+if ([string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
+    $resolvedSubscriptionId = $env:AZPS_TEST_SUBSCRIPTION_ID
+    if ([string]::IsNullOrWhiteSpace($resolvedSubscriptionId)) {
+        $context = Get-AzContext -ErrorAction SilentlyContinue
+        if ($null -ne $context) {
+            $resolvedSubscriptionId = $context.Subscription.Id
+        }
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($resolvedSubscriptionId)) {
+        $env['SubscriptionId'] = $resolvedSubscriptionId
+    }
+}
+
+if ([string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
+    $resolvedTenantId = $env:AZPS_TEST_TENANT_ID
+    if ([string]::IsNullOrWhiteSpace($resolvedTenantId)) {
+        $context = Get-AzContext -ErrorAction SilentlyContinue
+        if ($null -ne $context) {
+            $resolvedTenantId = $context.Tenant.Id
+        }
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($resolvedTenantId)) {
+        $env['Tenant'] = $resolvedTenantId
+    }
+}
+
+if (-not [string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
+    $PSDefaultParameterValues["*:SubscriptionId"] = [string]$env.SubscriptionId
+}
+
+if (-not [string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
+    $PSDefaultParameterValues["*:Tenant"] = [string]$env.Tenant
 }
