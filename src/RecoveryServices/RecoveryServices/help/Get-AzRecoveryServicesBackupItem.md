@@ -80,6 +80,15 @@ $softDeletedItems = Get-AzRecoveryServicesBackupItem -Container $Container -Work
 
 Lists Azure File Share backup items that have been disabled with `Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints` and are currently in the soft-deleted state. These items can be rehydrated with `Undo-AzRecoveryServicesBackupItemDeletion` while still within the soft-delete retention window.
 
+### Example 4: Get an Azure File Share Item from the secondary region (Cross Region Restore)
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName" -UseSecondaryRegion
+```
+
+The returned item can be used with `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion` and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion` to perform a Cross Region Restore.
+
 ## PARAMETERS
 
 ### -BackupManagementType

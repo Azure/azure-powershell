@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelListCrr(protectedItems);
-            if (!string.IsNullOrEmpty(itemName))
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
             {
                 for (int i = 0; i < itemModels.Count; i++)
                 {
@@ -1041,6 +1041,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         if (recoveryPoint.GetType() == typeof(CmdletModel.AzureWorkloadRecoveryPoint))
                         {
                             return ((CmdletModel.AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier != RecoveryPointTier.VaultArchive;
+                        }
+
+                        if (recoveryPoint.GetType() == typeof(CmdletModel.AzureFileShareRecoveryPoint))
+                        {
+                            //no archive tier currently for AFS, so return true for all RPs
+                            return true;
                         }
 
                         return false;

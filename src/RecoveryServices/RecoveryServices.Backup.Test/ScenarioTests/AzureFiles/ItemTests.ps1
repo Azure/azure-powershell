@@ -744,3 +744,138 @@ function Test-AzureFSVaultSoftDelete
 		# so this test is intentionally left in the AlwaysON state.
 	}
 }
+
+function Test-AzureFSGetItemSecondaryRegion
+{
+	# Live-recorded CRR scenario test. Requires a GeoRedundant vault with Cross Region Restore enabled
+	# and at least one protected Azure File share. Mirrors Test-AzureVMCRRWithDES setup style.
+	$resourceGroupName = "afsbvtlonghaulrgccy"
+	$vaultName = "afsbvtcrrlonghaulvaultccy"
+	$fileShareFriendlyName = "afscrrfs"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	Assert-NotNull $vault
+
+	# VARIATION-1: list all AFS items from the secondary region
+	$secItems = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-UseSecondaryRegion
+	Assert-NotNull $secItems
+	Assert-True { @($secItems).Count -gt 0 }
+
+	# VARIATION-2: named item from the secondary region populates ExtendedInfo (mirrors VM/SQL processor)
+	$secItem = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-FriendlyName $fileShareFriendlyName `
+		-UseSecondaryRegion
+	Assert-NotNull $secItem
+	Assert-NotNull $secItem.ExtendedInfo
+	Assert-True { $secItem.ExtendedInfo.RecoveryPointCount -ge 0 }
+
+	# VARIATION-3: soft-delete state surfaces on secondary-region items
+	Assert-NotNull $secItem.DeleteState
+}
+
+function Test-AzureFSGetRPsSecondaryRegion
+{
+	# Live-recorded CRR scenario test. Verifies recovery points are returned from the secondary region
+	# (regression guard for the AzureFileShareRecoveryPoint filter fix in AzureWorkloadProviderHelper).
+	$resourceGroupName = "afsbvtlonghaulrgccy"
+	$vaultName = "afsbvtcrrlonghaulvaultccy"
+	$fileShareFriendlyName = "afscrrfs"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	Assert-NotNull $vault
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-FriendlyName $fileShareFriendlyName `
+		-UseSecondaryRegion
+	Assert-NotNull $item
+
+	# Anchor the query window on the item's LastBackupTime (a value that comes from the recorded item
+	# response). This keeps the request URL deterministic for playback, yet on a live re-record it tracks
+	# the current data automatically, so the window always brackets the available secondary recovery points.
+	Assert-NotNull $item.LastBackupTime
+	$anchor = $item.LastBackupTime.ToUniversalTime()
+	$startDate = $anchor.AddDays(-30)
+	$endDate = $anchor.AddDays(1)
+	$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-StartDate $startDate -EndDate $endDate `
+		-UseSecondaryRegion
+	Assert-NotNull $rp
+	Assert-True { @($rp).Count -gt 0 }
+}
+
+function Test-AzureFSRestoreToSecondaryRegion
+{
+	# Live-recorded CRR scenario test. Requires target storage account with a pre-created target file share.
+	# AFS CRR supports Alternate Location Restore only.
+	$resourceGroupName = "afsbvtlonghaulrgccy"
+	$vaultName = "afsbvtcrrlonghaulvaultccy"
+	$fileShareFriendlyName = "afscrrfs"
+	$targetStorageAccountName = "afsbvttargetsacrrccy"
+	$targetFileShareName = "afscrrtargetfs"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	Assert-NotNull $vault
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-FriendlyName $fileShareFriendlyName `
+		-UseSecondaryRegion
+	Assert-NotNull $item
+
+	# Anchor the query window on the item's LastBackupTime (a value that comes from the recorded item
+	# response). This keeps the request URL deterministic for playback, yet on a live re-record it tracks
+	# the current data automatically, so the window always brackets the available secondary recovery points.
+	Assert-NotNull $item.LastBackupTime
+	$anchor = $item.LastBackupTime.ToUniversalTime()
+	$startDate = $anchor.AddDays(-30)
+	$endDate = $anchor.AddDays(1)
+	$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-StartDate $startDate -EndDate $endDate `
+		-UseSecondaryRegion
+	Assert-NotNull $rp
+	Assert-True { @($rp).Count -gt 0 }
+
+	# VARIATION-1: CRR requires ALR — omitting the target storage account must throw
+	Assert-ThrowsContains `
+		{ Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -ResolveConflict Overwrite -RestoreToSecondaryRegion -ErrorAction Stop } `
+		"Alternate Location Restore"
+
+	# VARIATION-2: CRR does not support item-level restore — passing -SourceFilePath must throw
+	Assert-ThrowsContains `
+		{ Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] `
+			-TargetStorageAccountName $targetStorageAccountName `
+			-TargetFileShareName $targetFileShareName `
+			-SourceFilePath "somefile.txt" -SourceFileType File `
+			-ResolveConflict Overwrite -RestoreToSecondaryRegion -ErrorAction Stop } `
+		"Item-level restore is not supported"
+
+	# VARIATION-3: full CRR restore to secondary region completes.
+	$crrJob = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID -VaultLocation $vault.Location `
+		-RecoveryPoint $rp[0] `
+		-TargetStorageAccountName $targetStorageAccountName `
+		-TargetFileShareName $targetFileShareName `
+		-ResolveConflict Overwrite `
+		-RestoreToSecondaryRegion
+	Assert-True { @($crrJob).Count -gt 0 }
+}

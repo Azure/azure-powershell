@@ -1886,6 +1886,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
+        ///   Looks up a localized string similar to Cross Region Restore for Azure File Share supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreAlrOnly
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreAlrOnly", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Item-level restore is not supported for Cross Region Restore of Azure File Share. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreItemLevelNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreItemLevelNotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Multi-user authorization (the -Token/-SecureToken parameter) is not supported for Cross Region Restore of Azure File Share. Please retry without the -Token/-SecureToken parameter.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreMUANotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreMUANotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreRequestBuildFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreRequestBuildFailed", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
         /// </summary>
         public static string RecoveryPointZonePinnedException

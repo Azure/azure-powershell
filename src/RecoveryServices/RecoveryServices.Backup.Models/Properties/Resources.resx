@@ -622,6 +622,18 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidTargetStorageAccount" xml:space="preserve">
     <value>Please provide a valid target storage account</value>
   </data>
+  <data name="AzureFileShareCrossRegionRestoreAlrOnly" xml:space="preserve">
+    <value>Cross Region Restore for Azure File Share supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName</value>
+  </data>
+  <data name="AzureFileShareCrossRegionRestoreItemLevelNotSupported" xml:space="preserve">
+    <value>Item-level restore is not supported for Cross Region Restore of Azure File Share. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore</value>
+  </data>
+  <data name="AzureFileShareCrossRegionRestoreMUANotSupported" xml:space="preserve">
+    <value>Multi-user authorization (the -Token/-SecureToken parameter) is not supported for Cross Region Restore of Azure File Share. Please retry without the -Token/-SecureToken parameter</value>
+  </data>
+  <data name="AzureFileShareCrossRegionRestoreRequestBuildFailed" xml:space="preserve">
+    <value>Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support</value>
+  </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
     <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
   </data>
