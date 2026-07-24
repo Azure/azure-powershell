@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+* Fixed 'Set-AzApiManagement' updates for API Management StandardV2 services.
+    - Added StandardV2 SKU mapping so 'Get-AzApiManagement' and 'Set-AzApiManagement' round-trips succeed.
+    - Fixed issue [#29797]
+
 ## Version 4.2.0
 * Added ChangeSafety Support
 
