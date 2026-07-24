@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Common
             prependStep(UniqueId.Instance.SendAsync);
             appendStep(new UserAgent(invocationInfo).SendAsync);
             appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+            this.AddAcquirePolicyTokenHandler(invocationInfo, appendStep);
         }
 
         internal void AddRequestUserAgentHandler(
@@ -120,6 +121,53 @@ namespace Microsoft.Azure.Commands.Common
                     endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
                     var context = GetDefaultContext(_provider, invocationInfo);
                     return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
+                });
+        }
+
+        /// <summary>
+        /// Conditionally appends a change safety step to the HTTP pipeline that acquires an Azure Policy
+        /// token and stamps it onto outgoing write requests. When the feature is off (neither
+        /// -AcquirePolicyToken nor -ChangeReference supplied) no pipeline step is added, so there is no
+        /// added cost for the common case.
+        /// </summary>
+        private void AddAcquirePolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
+        {
+            AddAcquirePolicyTokenHandler(invocationInfo?.BoundParameters, appendStep);
+        }
+
+        /// <summary>
+        /// Testable core of <see cref="AddAcquirePolicyTokenHandler(InvocationInfo, PipelineChangeDelegate)"/>.
+        /// Evaluates the change safety bound parameters up front and only appends a pipeline step when the
+        /// feature is requested. The write-verb gate lives inside <c>StampPolicyTokenAsync</c>, so GET
+        /// sub-requests are skipped even though the step is added for the cmdlet.
+        /// </summary>
+        internal static void AddAcquirePolicyTokenHandler(IDictionary<string, object> boundParameters, PipelineChangeDelegate appendStep)
+        {
+            if (boundParameters == null) { return; }
+
+            bool acquire = boundParameters.TryGetValue(Microsoft.WindowsAzure.Commands.Common.ChangeSafetyParameters.AcquirePolicyTokenParamName, out var acquireVal)
+                && acquireVal is SwitchParameter sp && sp.ToBool();
+            string changeReference = boundParameters.TryGetValue(Microsoft.WindowsAzure.Commands.Common.ChangeSafetyParameters.ChangeReferenceParamName, out var crVal)
+                ? crVal as string : null;
+            // Treat a whitespace-only change reference as not provided, so it doesn't trigger acquisition.
+            if (string.IsNullOrWhiteSpace(changeReference)) { changeReference = null; }
+            bool shouldAcquire = acquire || changeReference != null;
+            if (!shouldAcquire) { return; } // feature off -> no added pipeline step (zero cost)
+
+            // Generated write cmdlets gate the HTTP call behind ShouldProcess, so under -WhatIf the write
+            // request (and therefore this pipeline step) is never sent. No WhatIf handling is needed here.
+            var acquirer = new Microsoft.WindowsAzure.Commands.Common.PolicyTokenAcquirer();
+            appendStep(
+                async (request, cancelToken, cancelAction, signal, next) =>
+                {
+                    await acquirer.StampPolicyTokenAsync(
+                        request,
+                        shouldAcquire: shouldAcquire,
+                        changeReference: changeReference,
+                        debugMessages: null,
+                        tokenHttpClient: null,
+                        cancellationToken: cancelToken).ConfigureAwait(false);
+                    return await next(request, cancelToken, cancelAction, signal).ConfigureAwait(false);
                 });
         }
 
