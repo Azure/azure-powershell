@@ -1,0 +1,95 @@
+{
+  "resourceType": "communities/communityEndpoints",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mission"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMissionCommunityEndpoint",
+      "description": "Get a CommunityEndpointResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/get-azmissioncommunityendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunityName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a CommunityEndpointResource",
+          "parameters": [
+            {
+              "name": "-CommunityName",
+              "value": "[Path.communityName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.communityEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMissionCommunityEndpoint",
+      "description": "Delete a CommunityEndpointResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/remove-azmissioncommunityendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunityName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a CommunityEndpointResource",
+          "parameters": [
+            {
+              "name": "-CommunityName",
+              "value": "[Path.communityName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.communityEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

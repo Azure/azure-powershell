@@ -1,0 +1,95 @@
+{
+  "resourceType": "virtualEnclaves/workloads",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mission"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMissionWorkload",
+      "description": "Get a WorkloadResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads/{workloadName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/get-azmissionworkload"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VirtualEnclaveName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a WorkloadResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.workloadName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VirtualEnclaveName",
+              "value": "[Path.virtualEnclaveName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMissionWorkload",
+      "description": "Delete a WorkloadResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads/{workloadName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/remove-azmissionworkload"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VirtualEnclaveName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a WorkloadResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.workloadName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VirtualEnclaveName",
+              "value": "[Path.virtualEnclaveName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

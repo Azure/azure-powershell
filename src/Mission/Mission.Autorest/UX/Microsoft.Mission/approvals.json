@@ -1,0 +1,75 @@
+{
+  "resourceType": "approvals",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mission"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMissionApproval",
+      "description": "Get a ApprovalResource",
+      "path": "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/get-azmissionapproval"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ApprovalResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.approvalName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMissionApproval",
+      "description": "Delete a ApprovalResource",
+      "path": "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/remove-azmissionapproval"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ApprovalResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.approvalName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
