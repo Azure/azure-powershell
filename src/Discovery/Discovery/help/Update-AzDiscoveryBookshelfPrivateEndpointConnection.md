@@ -47,7 +47,7 @@ Approves or update the specified private endpoint connection.
 
 ### Example 1: Update a private endpoint connection status
 ```powershell
-Update-AzDiscoveryBookshelfPrivateEndpointConnection -ResourceGroupName "my-rg" -BookshelfName "my-bookshelf" -Name "my-pe-connection" -Tag @{Environment="Production"}
+Update-AzDiscoveryBookshelfPrivateEndpointConnection -ResourceGroupName "my-rg" -BookshelfName "my-bookshelf" -PrivateEndpointConnectionName "my-pe-connection" -PrivateLinkServiceConnectionStateStatus "Approved" -PrivateLinkServiceConnectionStateDescription "Approved"
 ```
 
 ```output
