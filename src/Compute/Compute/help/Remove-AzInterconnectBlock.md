@@ -14,13 +14,13 @@ Deletes an Interconnect Block.
 
 ### DefaultParameterSet (Default)
 ```
-Remove-AzInterconnectBlock -ResourceGroupName <String> -Name <String> [-AsJob] [-PassThru] [-Force]
+Remove-AzInterconnectBlock -ResourceGroupName <String> -Name <String> [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzInterconnectBlock -InputObject <PSInterconnectBlock> [-AsJob] [-PassThru] [-Force]
+Remove-AzInterconnectBlock -InputObject <PSInterconnectBlock> [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,13 +43,6 @@ Remove-AzInterconnectBlock -InputObject $icb -Force
 ```
 
 This command deletes the Interconnect Block using a PSInterconnectBlock input object.
-
-### Example 3: Delete with PassThru output
-```powershell
-Remove-AzInterconnectBlock -ResourceGroupName "myRG" -Name "myICB" -Force -PassThru
-```
-
-This command deletes the Interconnect Block and returns an operation status response.
 
 ## PARAMETERS
 
@@ -125,20 +118,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns a PSOperationStatusResponse containing details about the delete operation. By default, this cmdlet does not generate any output.
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

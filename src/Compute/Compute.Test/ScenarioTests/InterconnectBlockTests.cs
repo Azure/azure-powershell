@@ -33,13 +33,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInterconnectBlockRemovePassThru()
-        {
-            TestRunner.RunTestScript("Test-InterconnectBlockRemovePassThru");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestInterconnectBlockPlacement()
         {
             TestRunner.RunTestScript("Test-InterconnectBlockPlacement");

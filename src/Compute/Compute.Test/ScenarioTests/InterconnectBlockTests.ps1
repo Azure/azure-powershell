@@ -169,49 +169,6 @@ function Test-InterconnectBlockCRUD
 
 <#
 .SYNOPSIS
-Test Remove-AzInterconnectBlock with -PassThru returns an operation status response.
-#>
-function Test-InterconnectBlockRemovePassThru
-{
-    $rgname = Get-ComputeTestResourceName
-    $loc = 'eastus2euap'
-    $icbName = 'icb' + $rgname
-    $icgName = 'icg' + $rgname
-    $subId = (Get-AzContext).Subscription.Id
-    $sku = 'Standard_ND128isr_GB300_v6'
-
-    try
-    {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force
-
-        # Create ICG prerequisite
-        $icg = New-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName -Location $loc -VmSize $sku
-        $igId = $icg.id
-
-        New-AzInterconnectBlock `
-            -ResourceGroupName $rgname `
-            -Name $icbName `
-            -Location $loc `
-            -InterconnectGroupId $igId `
-            -SkuName $sku `
-            -SkuCapacity 18 `
-            -ZonePlacementPolicy 'Any'
-
-        # Remove and verify PSOperationStatusResponse is returned
-        $result = Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force
-        Assert-NotNull $result
-    }
-    finally
-    {
-        Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -ErrorAction SilentlyContinue
-        Start-Sleep -Seconds 5
-        Remove-TestInterconnectGroup -SubscriptionId $subId -ResourceGroupName $rgname -Name $icgName
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
 Test New-AzInterconnectBlock with placement constraints (ZonePlacementPolicy).
 #>
 function Test-InterconnectBlockPlacement
