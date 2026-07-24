@@ -110,18 +110,21 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
             }
 
-            var createdRuntimeEnvironment = this.AutomationClient.CreateRuntimeEnvironment(
-                this.ResourceGroupName,
-                this.AutomationAccountName,
-                this.Name,
-                this.Location,
-                this.Language,
-                this.Version,
-                defaultPackagesDict,
-                this.Description,
-                tagsDict);
+            if (ShouldProcess(this.Name, "Create Runtime Environment"))
+            {
+                var createdRuntimeEnvironment = this.AutomationClient.CreateRuntimeEnvironment(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.Name,
+                    this.Location,
+                    this.Language,
+                    this.Version,
+                    defaultPackagesDict,
+                    this.Description,
+                    tagsDict);
 
-            this.WriteObject(createdRuntimeEnvironment);
+                this.WriteObject(createdRuntimeEnvironment);
+            }
         }
     }
 }

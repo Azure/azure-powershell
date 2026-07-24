@@ -62,15 +62,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var updatedPackage = this.AutomationClient.UpdateRuntimeEnvironmentPackage(
-                this.ResourceGroupName,
-                this.AutomationAccountName,
-                this.RuntimeEnvironmentName,
-                this.Name,
-                this.ContentUri,
-                this.ContentVersion);
+            if (ShouldProcess(this.Name, "Update Runtime Environment Package"))
+            {
+                var updatedPackage = this.AutomationClient.UpdateRuntimeEnvironmentPackage(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.RuntimeEnvironmentName,
+                    this.Name,
+                    this.ContentUri,
+                    this.ContentVersion);
 
-            this.WriteObject(updatedPackage);
+                this.WriteObject(updatedPackage);
+            }
         }
     }
 }

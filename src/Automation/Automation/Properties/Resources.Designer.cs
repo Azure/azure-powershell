@@ -493,6 +493,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to contentUri is required to update package '{0}'. The existing package has no content link, so a value must be provided..
+        /// </summary>
+        internal static string RuntimeEnvironmentPackageContentUriRequired {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentPackageContentUriRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to For monthly occurrence, both day of week and occurrence need to be specified..
         /// </summary>
         internal static string MonthlyScheduleNeedsDayOfWeekAndOccurrence {

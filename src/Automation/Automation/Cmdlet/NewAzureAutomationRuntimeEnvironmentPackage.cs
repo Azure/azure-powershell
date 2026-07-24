@@ -71,15 +71,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     nameof(Name));
             }
 
-            var createdPackage = this.AutomationClient.CreateRuntimeEnvironmentPackage(
-                this.ResourceGroupName,
-                this.AutomationAccountName,
-                this.RuntimeEnvironmentName,
-                this.Name,
-                this.ContentUri,
-                this.ContentVersion);
+            if (ShouldProcess(this.Name, "Create Runtime Environment Package"))
+            {
+                var createdPackage = this.AutomationClient.CreateRuntimeEnvironmentPackage(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.RuntimeEnvironmentName,
+                    this.Name,
+                    this.ContentUri,
+                    this.ContentVersion);
 
-            this.WriteObject(createdPackage);
+                this.WriteObject(createdPackage);
+            }
         }
     }
 }

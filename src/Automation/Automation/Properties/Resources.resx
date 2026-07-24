@@ -169,6 +169,10 @@
     <value>A package with name '{0}' already exists. Use Set-AzAutomationRuntimeEnvironmentPackage to update an existing package.</value>
     <comment>Automation</comment>
   </data>
+  <data name="RuntimeEnvironmentPackageContentUriRequired" xml:space="preserve">
+    <value>contentUri is required to update package '{0}'. The existing package has no content link, so a value must be provided.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="ParameterEmpty" xml:space="preserve">
     <value>{0} is empty.</value>
     <comment>Automation</comment>

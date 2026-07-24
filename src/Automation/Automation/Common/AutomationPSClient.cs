@@ -2186,8 +2186,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     throw new ArgumentException(
                         string.Format(CultureInfo.CurrentCulture, 
-                            "ContentUri is required to update package '{0}'. The existing package has no content link, so -ContentUri must be specified.", 
-                            packageName));
+                            Resources.RuntimeEnvironmentPackageContentUriRequired, 
+                            packageName),
+                        nameof(contentUri));
                 }
 
                 // Use CreateOrUpdate (PUT) instead of Update (PATCH) to replace the package content
