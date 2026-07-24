@@ -170,7 +170,7 @@
     <comment>Automation</comment>
   </data>
   <data name="RuntimeEnvironmentPackageContentUriRequired" xml:space="preserve">
-    <value>contentUri is required to update package '{0}'. The existing package has no content link, so a value must be provided.</value>
+    <value>The -ContentUri parameter is required to update package '{0}'. The existing package has no content link, so a value must be provided.</value>
     <comment>Automation</comment>
   </data>
   <data name="ParameterEmpty" xml:space="preserve">

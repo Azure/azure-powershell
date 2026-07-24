@@ -14,7 +14,7 @@ Updates a Runtime Environment in Azure Automation.
 
 ### ByName (Default)
 ```
-Set-AzAutomationRuntimeEnvironment [-Name] <String> [-DefaultPackages <Hashtable>] [-Description <String>]
+Set-AzAutomationRuntimeEnvironment [-Name] <String> [-DefaultPackages <Hashtable>] [-Description <String>] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -134,6 +134,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+A hashtable of tags to associate with the runtime environment.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to contentUri is required to update package '{0}'. The existing package has no content link, so a value must be provided..
+        ///   Looks up a localized string similar to The -ContentUri parameter is required to update package '{0}'. The existing package has no content link, so a value must be provided..
         /// </summary>
         internal static string RuntimeEnvironmentPackageContentUriRequired {
             get {

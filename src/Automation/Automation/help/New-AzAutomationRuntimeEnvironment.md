@@ -14,7 +14,7 @@ Creates a new Runtime Environment in Azure Automation.
 
 ```
 New-AzAutomationRuntimeEnvironment [-Name] <String> [-Language] <String> [-Version] <String>
- [-Location <String>] [-DefaultPackages <Hashtable>] [-Description <String>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-Location <String>] [-DefaultPackages <Hashtable>] [-Description <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -179,6 +179,21 @@ Aliases:
 
 Required: True
 Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+A hashtable of tags to associate with the runtime environment.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
