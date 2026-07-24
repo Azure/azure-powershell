@@ -1,0 +1,182 @@
+{
+  "Get-AzDiscoveryNodePool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "104" ],
+        "x-ms-client-request-id": [ "21b0e523-2c37-4a91-93cc-4d1dce235eec" ],
+        "CommandName": [ "Get-AzDiscoveryNodePool" ],
+        "FullCommandName": [ "Get-AzDiscoveryNodePool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000c264-0000-1100-0000-6a61647c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7dafa206-9578-4260-8a20-59007eec290e" ],
+        "x-ms-correlation-request-id": [ "8ab2fb66-e0f2-4321-9dea-1d65d2f29568" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16497" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164748Z:8ab2fb66-e0f2-4321-9dea-1d65d2f29568" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 60BA5FE39F4746CAAACB001DE1F75C49 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:47Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "939" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01\",\"name\":\"psnpget01\",\"type\":\"microsoft.discovery/supercomputers/nodepools\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:22:18.1603373Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T00:46:08.9062693Z\"},\"properties\":{\"subnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-np-subnet\",\"vmSize\":\"Standard_D4s_v6\",\"maxNodeCount\":1,\"minNodeCount\":0,\"scaleSetPriority\":\"Regular\",\"osDiskSizeGb\":128,\"imageCacheLowerThreshold\":40,\"imageCacheUpperThreshold\":60,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryNodePool+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "105" ],
+        "x-ms-client-request-id": [ "1fd05a1e-bca8-48b5-884f-a3796edcf8f6" ],
+        "CommandName": [ "Get-AzDiscoveryNodePool" ],
+        "FullCommandName": [ "Get-AzDiscoveryNodePool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b1cd475f-f6a2-45d3-9951-ce05f882320e" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "df57e1ff-3be7-4ab4-b0b9-23e9633d0133" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "df57e1ff-3be7-4ab4-b0b9-23e9633d0133" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164748Z:df57e1ff-3be7-4ab4-b0b9-23e9633d0133" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4743411FD9F844A48DD9320102DFE074 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:48Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "951" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01\",\"name\":\"psnpget01\",\"type\":\"microsoft.discovery/supercomputers/nodepools\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:22:18.1603373Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T00:46:08.9062693Z\"},\"properties\":{\"subnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-np-subnet\",\"vmSize\":\"Standard_D4s_v6\",\"maxNodeCount\":1,\"minNodeCount\":0,\"scaleSetPriority\":\"Regular\",\"osDiskSizeGb\":128,\"imageCacheLowerThreshold\":40,\"imageCacheUpperThreshold\":60,\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryNodePool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "106" ],
+        "x-ms-client-request-id": [ "de68a501-7162-4ba7-ab1f-099b9d20a986" ],
+        "CommandName": [ "Get-AzDiscoveryNodePool" ],
+        "FullCommandName": [ "Get-AzDiscoveryNodePool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000c264-0000-1100-0000-6a61647c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a13da0d7-d0ca-4b04-9d71-dcf7685d4ea9" ],
+        "x-ms-correlation-request-id": [ "e96f99a0-e061-48d5-9895-39c80c103073" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164749Z:e96f99a0-e061-48d5-9895-39c80c103073" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 287C5CF73080439C97D0D96DF1A1B2C4 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:49Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "939" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01\",\"name\":\"psnpget01\",\"type\":\"microsoft.discovery/supercomputers/nodepools\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:22:18.1603373Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T00:46:08.9062693Z\"},\"properties\":{\"subnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-np-subnet\",\"vmSize\":\"Standard_D4s_v6\",\"maxNodeCount\":1,\"minNodeCount\":0,\"scaleSetPriority\":\"Regular\",\"osDiskSizeGb\":128,\"imageCacheLowerThreshold\":40,\"imageCacheUpperThreshold\":60,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryNodePool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "107" ],
+        "x-ms-client-request-id": [ "b057a3f9-c816-4edc-be5c-da26a3a44104" ],
+        "CommandName": [ "Get-AzDiscoveryNodePool" ],
+        "FullCommandName": [ "Get-AzDiscoveryNodePool_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000c264-0000-1100-0000-6a61647c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6ffc4088-e175-4732-9573-6b2f786519f6" ],
+        "x-ms-correlation-request-id": [ "c03ef8df-31e1-48a5-906a-d71e9531f6b2" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164750Z:c03ef8df-31e1-48a5-906a-d71e9531f6b2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7FAA02A5FF5E4E189EDABE5F9ABFD8EA Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:47:50Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:47:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "939" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01/nodePools/psnpget01\",\"name\":\"psnpget01\",\"type\":\"microsoft.discovery/supercomputers/nodepools\",\"location\":\"uksouth\",\"tags\":{\"psTest\":\"true\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-22T14:22:18.1603373Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T00:46:08.9062693Z\"},\"properties\":{\"subnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-np-subnet\",\"vmSize\":\"Standard_D4s_v6\",\"maxNodeCount\":1,\"minNodeCount\":0,\"scaleSetPriority\":\"Regular\",\"osDiskSizeGb\":128,\"imageCacheLowerThreshold\":40,\"imageCacheUpperThreshold\":60,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

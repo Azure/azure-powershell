@@ -701,6 +701,10 @@
     "module": "DiskPool"
   },
   {
+    "alias": "Discovery",
+    "module": "Discovery"
+  },
+  {
     "alias": "Datadog",
     "regex": "Datadog"
   },
