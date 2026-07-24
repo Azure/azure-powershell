@@ -19,20 +19,20 @@ New-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -Location <
  [-DnsListeningEndpointAllowedCidr <String>] [-IsOracleDnsForwardingEndpointEnabled]
  [-IsOracleDnsListeningEndpointEnabled] [-IsOracleToAzureDnsZoneSyncEnabled] [-OciBackupCidrBlock <String>]
  [-OciVcnDnsLabel <String>] [-ResourceAnchorId <String>] [-SubnetId <String>] [-Tag <Hashtable>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzOracleNetworkAnchor -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,74 +43,34 @@ Create a NetworkAnchor
 
 ### Example 1: Create a Network Anchor
 ```powershell
+$resourceAnchorId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/resourceAnchors/PowerShellTestResourceAnchor"
+$subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PowerShellTestVnet/subnets/delegated"
+
 New-AzOracleNetworkAnchor `
   -ResourceGroupName PowerShellTestRg `
-  -Name OFake_owerShellTestNetworkAnchor `
-  -Location eastus2 `
+  -Name PowerShellTestNetworkAnchor `
+  -Location eastus `
+  -ResourceAnchorId $resourceAnchorId `
+  -SubnetId $subnetId `
+  -Zone 2
 ```
 
-```output
-Name                                          : OFake_owerShellTestNetworkAnchor
-Id                                            : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/networkAnchors/OFake_owerShellTestNetworkAnchor
-Type                                          : oracle.database/networkanchors
-Location                                      : eastus2
-ResourceGroupName                             : PowerShellTestRg
-OciUrl                                        : https://cloud.oracle.com/network-anchors/ocid1.networkanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example?region=us-ashbur
-                                                n-1&tenant=orpsandbox3
-Ocid                                          : ocid1.networkanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example
-LinkedResourceId                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
-ProvisioningState                             : Succeeded
-Property                                      : {
-                                                  ...
-                                                }
-SystemDataCreatedAt                           : 05/07/2024 13:40:35
-SystemDataCreatedBy                           : example@oracle.com
-SystemDataCreatedByType                       : User
-SystemDataLastModifiedAt                      : 05/07/2024 13:40:35
-SystemDataLastModifiedBy                      : example@oracle.com
-SystemDataLastModifiedByType                  : User
-Tag                                           : {
-                                                }
-TimeCreated                                   : 05/07/2024 13:40:35
-```
-
-Creates a Network Anchor in the specified resource group and location, linking it to a virtual network.
+Creates a Network Anchor that associates an Oracle Resource Anchor with a delegated subnet.
 For more information, execute `Get-Help New-AzOracleNetworkAnchor`.
 
 ### Example 2: Create a Network Anchor with tags
 ```powershell
+$resourceAnchorId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/resourceAnchors/PowerShellTestResourceAnchor"
+$subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PowerShellTestVnet/subnets/delegated"
+
 New-AzOracleNetworkAnchor `
   -ResourceGroupName PowerShellTestRg `
-  -Name OFake_owerShellTestNetworkAnchor `
-  -Location eastus2 `
-  -Tag @{ env="test"; owner="example@oracle.com" }
-```
-
-```output
-Name                                          : OFake_owerShellTestNetworkAnchor
-Id                                            : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/networkAnchors/OFake_owerShellTestNetworkAnchor
-Type                                          : oracle.database/networkanchors
-Location                                      : eastus2
-ResourceGroupName                             : PowerShellTestRg
-OciUrl                                        : https://cloud.oracle.com/network-anchors/ocid1.networkanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example?region=us-ashbur
-                                                n-1&tenant=orpsandbox3
-Ocid                                          : ocid1.networkanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example
-LinkedResourceId                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
-ProvisioningState                             : Succeeded
-Property                                      : {
-                                                  ...
-                                                }
-SystemDataCreatedAt                           : 05/07/2024 13:42:10
-SystemDataCreatedBy                           : example@oracle.com
-SystemDataCreatedByType                       : User
-SystemDataLastModifiedAt                      : 05/07/2024 13:42:10
-SystemDataLastModifiedBy                      : example@oracle.com
-SystemDataLastModifiedByType                  : User
-Tag                                           : {
-                                                  env=test
-                                                  owner=example@oracle.com
-                                                }
-TimeCreated                                   : 05/07/2024 13:42:10
+  -Name PowerShellTestNetworkAnchor `
+  -Location eastus `
+  -ResourceAnchorId $resourceAnchorId `
+  -SubnetId $subnetId `
+  -Zone 2 `
+  -Tag @{ environment = "test"; owner = "example@contoso.com" }
 ```
 
 Creates a Network Anchor and assigns tags.
@@ -465,4 +425,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
