@@ -15,7 +15,7 @@ Creates an Azure VirtualHub resource.
 ### ByVirtualWanObject (Default)
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
- -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
+ [-AddressPrefixV6 <String>] -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
  [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
@@ -26,7 +26,7 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
 ### ByVirtualWanResourceId
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
- -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
+ [-AddressPrefixV6 <String>] -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
  [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
  [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
@@ -154,6 +154,32 @@ ProvisioningState         : Succeeded
 
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as VPNGateway and minimum capacity 3.
 
+### Example 5
+
+```powershell
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -AddressPrefixV6 "2001:db8::/56" -Location "West US"
+```
+
+```output
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+AddressPrefix             : 10.0.1.0/24
+AddressPrefixV6           : 2001:db8::/56
+RouteTable                :
+VirtualNetworkConnections : {}
+Location                  : West US
+Sku                       : Standard
+HubRoutingPreference      : ExpressRoute
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+```
+
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the IPv4 address space "10.0.1.0/24" and IPv6 address space "2001:db8::/56".
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -180,6 +206,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddressPrefixV6
+The IPv6 address space string for this virtual hub.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
