@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -86,7 +86,7 @@ function Test-NewAzResourceWithApiVersion
     $rName = Get-ResourceName
     $rNamePre = Get-ResourceName
     $resourceType = "Microsoft.Sql/servers"
-    $location = "eastus"
+    $location = "westus2"
     $apiVersion = "2023-08-01"
 
     try
@@ -131,7 +131,7 @@ function Test-NewAzResourceComplexByResourceName
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -179,7 +179,7 @@ function Test-NewAzResourceComplexByResourceId
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
     $resourceIdParent = "/subscriptions/$($subscriptionId)/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent"
     $resourceIdChild = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent/databases/$rNameChild"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -224,7 +224,7 @@ function Test-GetAzResourceByResourceName
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -273,7 +273,7 @@ function Test-GetAzResourceByResourceId
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
     $resourceIdParent = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent"
     $resourceIdChild = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent/databases/$rNameChild"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -390,7 +390,7 @@ function Test-GetAzResourceViaPiping
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -441,7 +441,7 @@ function Test-GetAzResourceWithExpandProperties
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -631,7 +631,7 @@ function Test-MoveAzResourceByResourceId
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
@@ -766,14 +766,14 @@ function Test-SetAzResourceByResourceName
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
         # Arrange
         New-AzResourceGroup -Name $rgName -Location $location
 
-        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
         New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
 
         # Wait for the resources to be ready
@@ -821,14 +821,14 @@ function Test-SetAzResourceByResourceId
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
     $resourceIdParent = "/subscriptions/$($subscriptionId)/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent"
     $resourceIdChild = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/$resourceTypeParent/$rNameParent/databases/$rNameChild"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
         # Arrange
         New-AzResourceGroup -Name $rgName -Location $location
 
-        $parentResource = New-AzResource -ResourceId $resourceIdParent -Location $location -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        $parentResource = New-AzResource -ResourceId $resourceIdParent -Location $location -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
         $childResource = New-AzResource -ResourceId $resourceIdChild -Location $location -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
 
         # Wait for the resources to be ready
@@ -928,14 +928,14 @@ function Test-SetAzResourceViaPiping
     $rNameChild = Get-ResourceName
     $resourceTypeParent = "Microsoft.Sql/servers"
     $resourceTypeChild = "Microsoft.Sql/servers/databases"
-    $location = "eastus"
+    $location = "westus2"
 
     try
     {
         # Arrange
         New-AzResourceGroup -Name $rgName -Location $location
 
-        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.1" } -Tag @{ parenttesttag = "parenttestval" } -Force
+        New-AzResource -ResourceGroupName $rgName -Name $rNameParent -Location $location -ResourceType $resourceTypeParent -Properties @{ administratorLogin = "adminuser"; administratorLoginPassword = "Password"; minimalTlsVersion = "1.2" } -Tag @{ parenttesttag = "parenttestval" } -Force
         New-AzResource -ResourceGroupName $rgName -Name "$rNameParent/$rNameChild" -Location $location -ResourceType $resourceTypeChild -Sku @{ Name = "GP_Gen5"; Capacity = "6" } -Properties @{ collation = "Latin1_General_CI_AS"; maxSizeBytes = "1073741824" } -Tag @{ childtesttag = "childtestval" } -Force
 
         # Wait for the resources to be ready

@@ -204,7 +204,7 @@ The acceptable values for this parameter are:
 - Complete
 
 ```yaml
-Type: Microsoft.Azure.Management.Resources.Models.DeploymentMode
+Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Incremental, Complete

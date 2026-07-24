@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Migrated the `Microsoft.Azure.Management.ResourceManager` dependency from the retired NuGet package to the locally generated `Resources.Management.Sdk` (Track 1 SDK migration). No cmdlet behavior or surface changes.
 
 ## Version 10.0.1
 * Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `8.0.2` to `10.0.3`.

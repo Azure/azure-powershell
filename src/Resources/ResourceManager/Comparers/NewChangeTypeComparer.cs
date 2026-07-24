@@ -17,7 +17,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewComparers
 {
-    using Management.Resources.Models;
+    using Management.ResourceManager.Models;
     using System.Collections.Generic;
 
     public class ChangeTypeComparer : IComparer<ChangeType>

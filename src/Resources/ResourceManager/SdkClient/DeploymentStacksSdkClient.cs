@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             WriteVerbose("Starting DeploymentOperations polling");
             try
             {
-                ResourceManagerSdkClient.ProvisionDeploymentStatus(parameters, new Microsoft.Azure.Management.Resources.Models.Deployment());
+                ResourceManagerSdkClient.ProvisionDeploymentStatus(parameters, new Microsoft.Azure.Management.ResourceManager.Models.Deployment());
             }
             catch (Exception)
             {
