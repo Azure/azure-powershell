@@ -9,5 +9,5 @@ Location    Name         Type
 eastus2euap Datadog microsoft.Datadog/monitors
 ```
 
-This command links a new SaaS to the Datadog organization of the underlying monitor. The SaaS resource id is required by the service.
+This command links a new SaaS to the Datadog organization of the underlying monitor. The SaaS resource id specifies the SaaS resource to link.
 
