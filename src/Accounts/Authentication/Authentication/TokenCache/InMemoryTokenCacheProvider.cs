@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public override void ClearCache()
         {
             InMemoryTokenCacheOptions = new InMemoryTokenCacheOptions();
+            ClearAppTokenCache();
         }
 
         protected override void RegisterCache(IPublicClientApplication client)

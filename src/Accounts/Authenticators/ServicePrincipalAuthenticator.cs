@@ -30,7 +30,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         private const string AuthenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
 
-        // MSAL doesn't cache the secret of Service Principal, but it caches access tokens
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var spParameters = parameters as ServicePrincipalParameters;
@@ -43,14 +42,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = spParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
-            // var tokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions();
+            var tokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetAppTokenCachePersistenceOptions();
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
             var options = new ClientCertificateCredentialOptions()
             {
-                // commented due to https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/3218
-                // todo: investigate splitting user token cache and app token cache
-                // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
+                TokenCachePersistenceOptions = tokenCachePersistenceOptions,
                 AuthorityHost = new Uri(authority),
                 SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 //Service principal with secret
                 var csOptions = new ClientSecretCredentialOptions()
                 {
-                    // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
+                    TokenCachePersistenceOptions = tokenCachePersistenceOptions,
                     AuthorityHost = new Uri(authority)
                 };
                 csOptions.DisableInstanceDiscovery = spParameters.DisableInstanceDiscovery ?? csOptions.DisableInstanceDiscovery;

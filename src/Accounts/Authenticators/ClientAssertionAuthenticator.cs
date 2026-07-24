@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var options = new ClientAssertionCredentialOptions()
             {
                 AuthorityHost = new Uri(authority),
-                TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
+                TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetAppTokenCachePersistenceOptions()
             };
 
             options.DisableInstanceDiscovery = spParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;

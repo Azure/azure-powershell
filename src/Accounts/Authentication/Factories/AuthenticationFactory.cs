@@ -538,7 +538,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             // make best effort to remove credentials
                         }
 
-                        RemoveFromTokenCache(account);
+                        RemoveFromTokenCache(account, clearAppTokenCache: true);
+                        break;
+                    case "ClientAssertion":
+                        RemoveFromTokenCache(account, clearAppTokenCache: true);
                         break;
                     case AzureAccount.AccountType.User:
                         RemoveFromTokenCache(account);
@@ -583,12 +586,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        private void RemoveFromTokenCache(IAzureAccount account)
+        private void RemoveFromTokenCache(IAzureAccount account, bool clearAppTokenCache = false)
         {
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
             {
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
+            }
+
+            if (clearAppTokenCache)
+            {
+                tokenCacheProvider.ClearAppTokenCache();
             }
 
             var publicClient = tokenCacheProvider.CreatePublicClient();
