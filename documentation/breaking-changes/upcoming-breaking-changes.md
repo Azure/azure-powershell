@@ -9,123 +9,11 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
-### `Add-AzCdnEdgeActionAttachment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Deploy-AzCdnEdgeActionVersionCode`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeActionVersionCode`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `New-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `New-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `New-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-SubjectAlternativeName`
     
-
-### `Remove-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Remove-AzCdnEdgeActionAttachment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Remove-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Remove-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Update-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Update-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Update-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
 
 ## Az.CloudService
 
@@ -717,7 +605,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to parameter set `NewAzDiagnosticSetting_CreateExpanded`
+- Parameter breaking-change will happen to all parameter sets
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -764,7 +652,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to parameter set `NewAzSubscriptionDiagnosticSetting_CreateExpanded`
+- Parameter breaking-change will happen to all parameter sets
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.

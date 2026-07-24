@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.7.1
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
 
 ## Version 11.7.0
