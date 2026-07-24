@@ -22,6 +22,9 @@
 ## Upcoming Release
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
 
+* Added `-ForceDeallocate` to `Stop-AzVM` to force deallocate a VM (Virtual Machine) during stop operations.
+    - Related design review issue Azure/azure-powershell-cmdlet-review-pr#1560.
+
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
 * Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.

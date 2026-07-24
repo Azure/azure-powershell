@@ -4272,6 +4272,53 @@ function Test-VirtualMachineStop
 
 <#
 .SYNOPSIS
+Test Stop-AzVM ForceDeallocate parameter metadata and parameter set behavior.
+#>
+function Test-VirtualMachineStopForceDeallocate
+{
+    # Step 1: Verify the new parameter is exposed on the cmdlet.
+    $stopVmCommand = Get-Command Stop-AzVM -ErrorAction Stop;
+    $forceDeallocateParameter = $stopVmCommand.Parameters["ForceDeallocate"];
+
+    Assert-NotNull $forceDeallocateParameter;
+    Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
+
+    # Step 2: Validate the ForceDeallocate parameter sets and their exclusions.
+    $resourceGroupForceSet = $stopVmCommand.ParameterSets | Where-Object Name -eq "ResourceGroupForceDeallocateParameterSet";
+    $idForceSet = $stopVmCommand.ParameterSets | Where-Object Name -eq "IdForceDeallocateParameterSet";
+    $resourceGroupHibernateSet = $stopVmCommand.ParameterSets | Where-Object Name -eq "ResourceGroupHibernateParameterSet";
+    $idHibernateSet = $stopVmCommand.ParameterSets | Where-Object Name -eq "IdHibernateParameterSet";
+
+    Assert-NotNull $resourceGroupForceSet;
+    Assert-NotNull $idForceSet;
+    Assert-NotNull $resourceGroupHibernateSet;
+    Assert-NotNull $idHibernateSet;
+    Assert-True { $resourceGroupForceSet.Parameters.Name -contains "ForceDeallocate" };
+    Assert-True { $idForceSet.Parameters.Name -contains "ForceDeallocate" };
+    Assert-True { $resourceGroupHibernateSet.Parameters.Name -contains "ForceDeallocate" };
+    Assert-True { $idHibernateSet.Parameters.Name -contains "ForceDeallocate" };
+    Assert-False { $resourceGroupForceSet.Parameters.Name -contains "StayProvisioned" };
+    Assert-False { $resourceGroupForceSet.Parameters.Name -contains "SkipShutdown" };
+    Assert-False { $idForceSet.Parameters.Name -contains "StayProvisioned" };
+    Assert-False { $idForceSet.Parameters.Name -contains "SkipShutdown" };
+
+    # Step 3: Verify supported combinations bind successfully without issuing live requests.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -Id "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf;
+    Stop-AzVM -Id "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm" -ForceDeallocate -Hibernate -Force -WhatIf;
+
+    # Step 4: Verify existing stop combinations still bind successfully.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -StayProvisioned -SkipShutdown -Force -WhatIf;
+
+    # Step 5: Verify mutually exclusive combinations are rejected during parameter binding.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -ErrorAction Stop; } "Parameter set cannot be resolved";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -ErrorAction Stop; } "Parameter set cannot be resolved";
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Managed Disk
 #>
 function Test-VirtualMachineRemoteDesktop
