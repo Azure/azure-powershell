@@ -49,6 +49,11 @@ function New-AzDataProtectionBackupVault
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
 
+        [Parameter(Mandatory=$false, HelpMessage='Cost Management Granularity of the vault. Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.')]
+        [System.String]
+        [ValidateSet('VaultLevel', 'ProtectedItemLevel', 'ProtectedItemWithParentTag')]
+        ${CostManagementGranularity},
+
         [Parameter(Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
         [System.String]
         [ValidateSet('Disabled','Enabled')]
@@ -155,6 +160,9 @@ function New-AzDataProtectionBackupVault
         $hasCmkUserAssignedIdentityId = $PSBoundParameters.Remove("CmkUserAssignedIdentityId")
         $hasCmkEncryptionKeyUri = $PSBoundParameters.Remove("CmkEncryptionKeyUri")
         $hasCmkInfrastructureEncryption = $PSBoundParameters.Remove("CmkInfrastructureEncryption")
+
+        $hasCostManagementGranularity = $PSBoundParameters.Remove("CostManagementGranularity")
+        if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
 
         if (-not $hasCmkEncryptionState -and -not $hasCmkIdentityType -and -not $hasCmkUserAssignedIdentityId -and -not $hasCmkEncryptionKeyUri) {
             Az.DataProtection.Internal\New-AzDataProtectionBackupVault @PSBoundParameters

@@ -36,6 +36,11 @@ function Update-AzDataProtectionBackupVault
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
 
+        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cost Management Granularity of the vault. Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.')]
+        [System.String]
+        [ValidateSet('VaultLevel', 'ProtectedItemLevel', 'ProtectedItemWithParentTag')]
+        ${CostManagementGranularity},
+
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
         [System.String]
         [ValidateSet('Disabled','Enabled')]
@@ -166,6 +171,7 @@ function Update-AzDataProtectionBackupVault
         $hasCmkIdentityType = $PSBoundParameters.Remove("CmkIdentityType")
         $hasCmkUserAssignedIdentityId = $PSBoundParameters.Remove("CmkUserAssignedIdentityId")
         $hasCmkEncryptionKeyUri = $PSBoundParameters.Remove("CmkEncryptionKeyUri")
+        $hasCostManagementGranularity = $PSBoundParameters.Remove("CostManagementGranularity")
 
         if (-not $hasCmkEncryptionState -and -not $hasCmkIdentityType -and -not $hasCmkUserAssignedIdentityId -and -not $hasCmkEncryptionKeyUri) {
             Az.DataProtection.Internal\Update-AzDataProtectionBackupVault @PSBoundParameters
@@ -208,6 +214,7 @@ function Update-AzDataProtectionBackupVault
         if ($hasEnableSystemAssignedIdentity) { $PSBoundParameters.Add("EnableSystemAssignedIdentity", $EnableSystemAssignedIdentity) }
         if ($hasAzureMonitorAlertsForAllJobFailure) { $PSBoundParameters.Add("AzureMonitorAlertsForAllJobFailure", $AzureMonitorAlertsForAllJobFailure) }
         if ($hasImmutabilityState) { $PSBoundParameters.Add("ImmutabilityState", $ImmutabilityState) }
+        if ($hasCostManagementGranularity) { $PSBoundParameters.Add("CostManagementSettingGranularityLevel", $CostManagementGranularity) }
         if ($hasCrossRegionRestoreState) { $PSBoundParameters.Add("CrossRegionRestoreState", $CrossRegionRestoreState) }
         if ($hasCrossSubscriptionRestoreState) { $PSBoundParameters.Add("CrossSubscriptionRestoreState", $CrossSubscriptionRestoreState) }
         if ($hasSoftDeleteRetentionDurationInDay) { $PSBoundParameters.Add("SoftDeleteRetentionDurationInDay", $SoftDeleteRetentionDurationInDay) }
