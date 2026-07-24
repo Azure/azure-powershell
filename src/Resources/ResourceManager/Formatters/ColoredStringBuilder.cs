@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private readonly Stack<Color> colorStack = new Stack<Color>();
 
+        private readonly List<string> indentStack = new List<string>();
+
         public override string ToString()
         {
             return stringBuilder.ToString();
@@ -31,6 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(string value)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.stringBuilder.Append(value);
 
             return this;
@@ -38,15 +41,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(string value, Color color)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.PushColor(color);
-            this.Append(value);
+            this.stringBuilder.Append(value);
             this.PopColor();
+
+            return this;
+        }
+
+        public ColoredStringBuilder AppendIndent()
+        {
+            if (this.indentStack.Count > 0)
+            {
+                this.stringBuilder.Append(string.Join("", this.indentStack));
+            }
 
             return this;
         }
 
         public ColoredStringBuilder Append(object value)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.stringBuilder.Append(value);
 
             return this;
@@ -54,8 +69,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(object value, Color color)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.PushColor(color);
-            this.Append(value);
+            this.stringBuilder.Append(value);
             this.PopColor();
 
             return this;
@@ -70,6 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder AppendLine(string value)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.stringBuilder.AppendLine(value);
 
             return this;
@@ -77,8 +94,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder AppendLine(string value, Color color)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.PushColor(color);
-            this.AppendLine(value);
+            this.stringBuilder.AppendLine(value);
             this.PopColor();
 
             return this;
@@ -87,6 +105,95 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         public AnsiColorScope NewColorScope(Color color)
         {
             return new AnsiColorScope(this, color);
+        }
+
+        public void Insert(int index, string value)
+        {
+            if (index >= 0 && index <= this.stringBuilder.Length)
+            {
+                this.stringBuilder.Insert(index, value);
+            }
+        }
+
+        public void InsertLine(int index, string value, Color color)
+        {
+            if (color != Color.Reset)
+            {
+                this.Insert(index, Color.Reset.ToString());
+            }
+            this.Insert(index, value + Environment.NewLine);
+            if (color != Color.Reset)
+            {
+                this.Insert(index, color.ToString());
+            }
+        }
+
+        public int GetCurrentIndex()
+        {
+            return this.stringBuilder.Length;
+        }
+
+        public void PushIndent(string indent)
+        {
+            this.indentStack.Add(indent);
+        }
+
+        public void PopIndent()
+        {
+            if (this.indentStack.Count > 0)
+            {
+                this.indentStack.RemoveAt(this.indentStack.Count - 1);
+            }
+        }
+
+        public void EnsureNumNewLines(int numNewLines)
+        {
+            if (this.stringBuilder.Length == 0)
+            {
+                for (int i = 0; i < numNewLines; i++)
+                {
+                    this.stringBuilder.AppendLine();
+                }
+                return;
+            }
+
+            string currentText = this.stringBuilder.ToString();
+            int existingNewlines = 0;
+
+            for (int i = currentText.Length - 1; i >= 0;)
+            {
+                if (currentText[i] == '\n')
+                {
+                    existingNewlines++;
+                    i--;
+                    if (i >= 0 && currentText[i] == '\r')
+                    {
+                        i--;
+                    }
+                }
+                else if (currentText[i] == '\r')
+                {
+                    existingNewlines++;
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            int remainingNewlines = numNewLines - existingNewlines;
+            for (int i = 0; i < remainingNewlines; i++)
+            {
+                this.stringBuilder.AppendLine();
+            }
+        }
+
+        public void Clear()
+        {
+            this.stringBuilder.Clear();
+            this.colorStack.Clear();
+            this.indentStack.Clear();
         }
 
         private void PushColor(Color color)
@@ -101,7 +208,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.stringBuilder.Append(this.colorStack.Count > 0 ? this.colorStack.Peek() : Color.Reset);
         }
 
-        public class AnsiColorScope: IDisposable
+        private bool IsAtStartOfLine()
+        {
+            int lastVisibleCharIndex = this.GetLastVisibleCharIndex();
+            return lastVisibleCharIndex < 0 || this.stringBuilder[lastVisibleCharIndex] == '\n';
+        }
+
+        private void AppendIndentIfAtStartOfLine()
+        {
+            if (this.IsAtStartOfLine() && this.indentStack.Count > 0)
+            {
+                this.stringBuilder.Append(string.Join("", this.indentStack));
+            }
+        }
+
+        private int GetLastVisibleCharIndex()
+        {
+            int index = this.stringBuilder.Length - 1;
+            while (index >= 0 && this.stringBuilder[index] == 'm')
+            {
+                int escapeIndex = index;
+                while (escapeIndex >= 0 && this.stringBuilder[escapeIndex] != (char)27)
+                {
+                    escapeIndex--;
+                }
+
+                if (escapeIndex < 0 || escapeIndex + 1 >= this.stringBuilder.Length || this.stringBuilder[escapeIndex + 1] != '[')
+                {
+                    break;
+                }
+
+                index = escapeIndex - 1;
+            }
+
+            return index;
+        }
+
+        public class AnsiColorScope : IDisposable
         {
             private readonly ColoredStringBuilder builder;
 
