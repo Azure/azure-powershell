@@ -214,6 +214,14 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual IPython3PackageOperations Python3Package { get; private set; }
         /// <summary>
+        /// Gets the IRuntimeEnvironmentOperations
+        /// </summary>
+        public virtual IRuntimeEnvironmentOperations RuntimeEnvironment { get; private set; }
+        /// <summary>
+        /// Gets the IPackageOperations
+        /// </summary>
+        public virtual IPackageOperations Package { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the AutomationClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -487,6 +495,8 @@ namespace Microsoft.Azure.Management.Automation
             this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
             this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
             this.Python3Package = new Python3PackageOperations(this);
+            this.RuntimeEnvironment = new RuntimeEnvironmentOperations(this);
+            this.Package = new PackageOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

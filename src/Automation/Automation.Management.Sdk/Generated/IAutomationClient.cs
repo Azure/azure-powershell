@@ -259,5 +259,15 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         IPython3PackageOperations Python3Package { get; }
 
+        /// <summary>
+        /// Gets the IRuntimeEnvironmentOperations
+        /// </summary>
+        IRuntimeEnvironmentOperations RuntimeEnvironment { get; }
+
+        /// <summary>
+        /// Gets the IPackageOperations
+        /// </summary>
+        IPackageOperations Package { get; }
+
     }
 }

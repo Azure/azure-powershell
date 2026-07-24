@@ -1964,6 +1964,309 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region RuntimeEnvironment
+
+        public IEnumerable<Model.RuntimeEnvironment> ListRuntimeEnvironments(string resourceGroupName, string automationAccountName,
+            ref string nextLink)
+        {
+            Rest.Azure.IPage<AutomationManagement.Models.RuntimeEnvironment> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.RuntimeEnvironment.ListByAutomationAccount(resourceGroupName, automationAccountName);
+            }
+            else
+            {
+                response = this.automationManagementClient.RuntimeEnvironment.ListByAutomationAccountNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+            return response.Select(c => new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, c));
+        }
+
+        public void DeleteRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name)
+        {
+            // First verify the runtime environment exists
+            try
+            {
+                this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironment),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentNotFound, name));
+                }
+                throw;
+            }
+
+            // Resource exists, proceed with deletion
+            this.automationManagementClient.RuntimeEnvironment.Delete(resourceGroupName, automationAccountName, name);
+        }
+
+        public Model.RuntimeEnvironment GetRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                var runtimeEnvironment =
+                    this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, runtimeEnvironment);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironment),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        public Model.RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name,
+            string location, string language, string version, IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags)
+        {
+            // Check if runtime environment already exists
+            try
+            {
+                this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                // If we get here, the runtime environment exists - throw error
+                throw new ResourceCommonException(typeof(Model.RuntimeEnvironment),
+                    string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentAlreadyExists, name));
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                // NotFound is expected - proceed with creation
+                if (cloudException.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    throw;
+                }
+            }
+
+            var parameters = new AutomationManagement.Models.RuntimeEnvironmentCreateOrUpdateParameters(
+                location: location,
+                runtime: new AutomationManagement.Models.RuntimeEnvironmentRuntime(language: language, version: version),
+                tags: tags,
+                defaultPackages: defaultPackages,
+                description: description
+            );
+
+            var createdRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironment.CreateOrUpdate(
+                resourceGroupName,
+                automationAccountName,
+                name,
+                parameters);
+
+            return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, createdRuntimeEnvironment);
+        }
+
+        public Model.RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name,
+            IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags)
+        {
+            try
+            {
+                var parameters = new AutomationManagement.Models.RuntimeEnvironmentUpdateParameters(
+                    tags: tags,
+                    defaultPackages: defaultPackages,
+                    description: description
+                );
+
+                var updatedRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironment.Update(
+                    resourceGroupName,
+                    automationAccountName,
+                    name,
+                    parameters);
+
+                return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, updatedRuntimeEnvironment);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironment),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region RuntimeEnvironmentPackage
+
+        public Model.RuntimeEnvironmentPackage CreateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion)
+        {
+            // Check if package with same name already exists
+            try
+            {
+                this.automationManagementClient.Package.Get(resourceGroupName, automationAccountName, runtimeEnvironmentName, packageName);
+
+                throw new ResourceCommonException(typeof(Model.RuntimeEnvironmentPackage),
+                    string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageAlreadyExists, packageName));
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                // 404 NotFound means package does not exist - proceed with creation
+                // Rethrow other errors (401/403/429/5xx) as they indicate real failures
+                if (cloudException.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    throw;
+                }
+            }
+
+            var parameters = new AutomationManagement.Models.PackageCreateOrUpdateParameters(
+                contentLink: new AutomationManagement.Models.ContentLink
+                {
+                    Uri = contentUri,
+                    Version = contentVersion
+                }
+            );
+
+            var createdPackage = this.automationManagementClient.Package.CreateOrUpdate(
+                resourceGroupName,
+                automationAccountName,
+                runtimeEnvironmentName,
+                packageName,
+                parameters);
+
+            return new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, createdPackage);
+        }
+
+        public Model.RuntimeEnvironmentPackage GetRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName)
+        {
+            try
+            {
+                var package = this.automationManagementClient.Package.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName,
+                    packageName);
+
+                return new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, package);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironmentPackage),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageNotFound, packageName));
+                }
+
+                throw;
+            }
+        }
+
+        public Model.RuntimeEnvironmentPackage UpdateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion)
+        {
+            try
+            {
+                // Fetch the existing package to preserve values when parameters are omitted
+                var existingPackage = this.automationManagementClient.Package.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName,
+                    packageName);
+
+                // Fill in missing ContentUri/ContentVersion from existing package to avoid overwriting with nulls
+                var effectiveContentUri = string.IsNullOrEmpty(contentUri) 
+                    ? existingPackage.ContentLink?.Uri 
+                    : contentUri;
+                var effectiveContentVersion = string.IsNullOrEmpty(contentVersion) 
+                    ? existingPackage.ContentLink?.Version 
+                    : contentVersion;
+
+                // Validate that we have at least a content URI - required for package update
+                if (string.IsNullOrEmpty(effectiveContentUri))
+                {
+                    throw new ArgumentException(
+                        string.Format(CultureInfo.CurrentCulture, 
+                            Resources.RuntimeEnvironmentPackageContentUriRequired, 
+                            packageName),
+                        nameof(contentUri));
+                }
+
+                // Use CreateOrUpdate (PUT) instead of Update (PATCH) to replace the package content
+                var parameters = new AutomationManagement.Models.PackageCreateOrUpdateParameters(
+                    contentLink: new AutomationManagement.Models.ContentLink
+                    {
+                        Uri = effectiveContentUri,
+                        Version = effectiveContentVersion
+                    }
+                );
+
+                var updatedPackage = this.automationManagementClient.Package.CreateOrUpdate(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName,
+                    packageName,
+                    parameters);
+
+                return new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, updatedPackage);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironmentPackage),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageNotFound, packageName));
+                }
+
+                throw;
+            }
+        }
+
+        public IEnumerable<Model.RuntimeEnvironmentPackage> ListRuntimeEnvironmentPackages(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, ref string nextLink)
+        {
+            IPage<AutomationManagement.Models.Package> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.Package.ListByRuntimeEnvironment(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName);
+            }
+            else
+            {
+                response = this.automationManagementClient.Package.ListByRuntimeEnvironmentNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+
+            return response.Select(p => new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, p));
+        }
+
+        public void DeleteRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName)
+        {
+            try
+            {
+                // Verify the package exists first
+                this.automationManagementClient.Package.Get(resourceGroupName, automationAccountName, runtimeEnvironmentName, packageName);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironmentPackage),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageNotFound, packageName));
+                }
+
+                throw;
+            }
+
+            this.automationManagementClient.Package.Delete(resourceGroupName, automationAccountName, runtimeEnvironmentName, packageName);
+        }
+
+        #endregion
+
 
 
         #region Private Methods
