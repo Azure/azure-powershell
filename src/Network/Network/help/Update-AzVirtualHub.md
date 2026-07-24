@@ -14,7 +14,7 @@ Updates a virtual hub.
 
 ### ByVirtualHubName (Default)
 ```
-Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <String>]
+Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <String>] [-AddressPrefixV6 <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
@@ -24,7 +24,7 @@ Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <
 
 ### ByVirtualHubResourceId
 ```
-Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
+Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>] [-AddressPrefixV6 <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
@@ -34,7 +34,7 @@ Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
 
 ### ByVirtualHubObject
 ```
-Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
+Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>] [-AddressPrefixV6 <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
@@ -128,6 +128,33 @@ ProvisioningState         : Succeeded
 
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as ExpressRoute initially and will then be updated to VpnGateway.
 
+### Example 4
+
+```powershell
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
+Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -AddressPrefixV6 "2001:db8::/56"
+```
+
+```output
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+AddressPrefix             : 10.0.1.0/24
+AddressPrefixV6           : 2001:db8::/56
+RouteTable                :
+VirtualNetworkConnections : {}
+Location                  : West US
+Sku                       : Standard
+HubRoutingPreference      : ExpressRoute
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+```
+
+The above will create a Virtual Hub and then update it to add an IPv6 address space "2001:db8::/56".
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -147,6 +174,21 @@ Accept wildcard characters: False
 
 ### -AddressPrefix
 The address space string for this virtual hub.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddressPrefixV6
+The IPv6 address space string for this virtual hub.
 
 ```yaml
 Type: System.String

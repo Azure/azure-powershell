@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added IPv6 support to Virtual Hub and Hub Virtual Network Connection cmdlets
+    - `New-AzVirtualHub`: Added `-AddressPrefixV6` parameter to specify the IPv6 address prefix for the VirtualHub.
+    - `Update-AzVirtualHub`: Added `-AddressPrefixV6` parameter to update the IPv6 address prefix for the VirtualHub.
+    - `New-AzVirtualHubVnetConnection`: Added `-EnableOnlyIpv6Peering` parameter to enable only IPv6 peering for the connection.
 * Upgraded Network SDK to API version `2025-09-01`.
     - Added `DisableDefaultServerHeaderInResponse` to `PSApplicationGatewayGlobalConfiguration` to mirror the new SDK property and unblock AutoMapper strict-mode validation.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.

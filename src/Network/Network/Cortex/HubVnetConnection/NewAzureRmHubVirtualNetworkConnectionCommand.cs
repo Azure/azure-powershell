@@ -136,6 +136,13 @@ namespace Microsoft.Azure.Commands.Network
         public bool? EnableInternetSecurityFlag { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable only IPv6 peering for this connection.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string EnableOnlyIpv6Peering { get; set; }
+
+        [Parameter(
            Mandatory = false,
            HelpMessage = "The routing configuration for this HubVirtualnNetwork connection")]
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
@@ -189,6 +196,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.RoutingConfiguration != null)
             {
                 hubVnetConnection.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.EnableOnlyIpv6Peering))
+            {
+                hubVnetConnection.EnableOnlyIpv6Peering = this.EnableOnlyIpv6Peering;
             }
 
             List<string> resourceIds = new List<string>();
