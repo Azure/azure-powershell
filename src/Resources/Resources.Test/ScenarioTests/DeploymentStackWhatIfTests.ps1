@@ -388,7 +388,7 @@ function Test-RemoveSubscriptionDeploymentStackWhatIfResult
 	}
 }
 
-#### WithPropertyChanges Tests ####
+#### IncludePropertyChange Tests ####
 
 <#
 .SYNOPSIS
@@ -474,9 +474,9 @@ function Test-NewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges
 
 <#
 .SYNOPSIS
-Tests Get-AzResourceGroupDeploymentStackWhatIfResult with -WithPropertyChanges switch (calls WhatIf POST).
+Tests Get-AzResourceGroupDeploymentStackWhatIfResult with -IncludePropertyChange switch (calls WhatIf POST).
 #>
-function Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges
+function Test-GetResourceGroupDeploymentStackWhatIfWithIncludePropertyChange
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
@@ -490,12 +490,12 @@ function Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges
 		# Create a WhatIf result first
 		New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
 
-		# Test - Get without -WithPropertyChanges (uses GET, no delta)
+      # Test - Get without -IncludePropertyChange (uses GET, no delta)
 		$resultGet = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname
 		Assert-DeploymentStackWhatIfResultObject $resultGet $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
-		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
-		$resultPost = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname -WithPropertyChanges
+       # Test - Get with -IncludePropertyChange (uses POST, returns delta)
+		$resultPost = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname -IncludePropertyChange
 		Assert-DeploymentStackWhatIfResultObject $resultPost $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
@@ -510,9 +510,9 @@ function Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges
 
 <#
 .SYNOPSIS
-Tests Get-AzSubscriptionDeploymentStackWhatIfResult with -WithPropertyChanges switch (calls WhatIf POST).
+Tests Get-AzSubscriptionDeploymentStackWhatIfResult with -IncludePropertyChange switch (calls WhatIf POST).
 #>
-function Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges
+function Test-GetSubscriptionDeploymentStackWhatIfWithIncludePropertyChange
 {
 	# Setup
 	$rname = Get-ResourceName
@@ -523,12 +523,12 @@ function Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges
 		# Create a WhatIf result first
 		$created = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
 
-		# Test - Get without -WithPropertyChanges (uses GET, no delta)
+      # Test - Get without -IncludePropertyChange (uses GET, no delta)
 		$resultGet = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname
 		Assert-DeploymentStackWhatIfResultObject $resultGet $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
-		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
-		$resultPost = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -WithPropertyChanges
+       # Test - Get with -IncludePropertyChange (uses POST, returns delta)
+		$resultPost = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -IncludePropertyChange
 		Assert-DeploymentStackWhatIfResultObject $resultPost $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
@@ -543,9 +543,9 @@ function Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges
 
 <#
 .SYNOPSIS
-Tests Get-AzManagementGroupDeploymentStackWhatIfResult with -WithPropertyChanges switch (calls WhatIf POST).
+Tests Get-AzManagementGroupDeploymentStackWhatIfResult with -IncludePropertyChange switch (calls WhatIf POST).
 #>
-function Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges
+function Test-GetManagementGroupDeploymentStackWhatIfWithIncludePropertyChange
 {
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
@@ -557,12 +557,12 @@ function Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges
 		# Create a WhatIf result first
 		$created = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
 
-		# Test - Get without -WithPropertyChanges (uses GET, no delta)
+      # Test - Get without -IncludePropertyChange (uses GET, no delta)
 		$resultGet = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname
        Assert-DeploymentStackWhatIfResultObject $resultGet $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
-		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
-		$resultPost = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname -WithPropertyChanges
+       # Test - Get with -IncludePropertyChange (uses POST, returns delta)
+		$resultPost = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname -IncludePropertyChange
       Assert-DeploymentStackWhatIfResultObject $resultPost $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'

@@ -578,7 +578,7 @@
     }
   ],
   "Names": {
-    "Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges": [
+    "Test-GetManagementGroupDeploymentStackWhatIfWithIncludePropertyChange": [
       "ps966"
     ]
   },

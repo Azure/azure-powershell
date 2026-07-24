@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
-    - Added help content and static-analysis exceptions for parameters that intentionally match existing deployment stack cmdlet naming.
+    - Added help content and aligned new parameter names with Azure PowerShell naming conventions.
     - Exported all deployment stack WhatIfResult cmdlets from the module manifest.
 
 ## Version 10.0.1

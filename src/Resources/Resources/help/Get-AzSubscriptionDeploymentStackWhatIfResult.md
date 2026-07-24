@@ -20,13 +20,13 @@ Get-AzSubscriptionDeploymentStackWhatIfResult [-Pre] [-DefaultProfile <IAzureCon
 
 ### GetByName
 ```
-Get-AzSubscriptionDeploymentStackWhatIfResult -Name <String> [-WithPropertyChanges] [-Pre]
+Get-AzSubscriptionDeploymentStackWhatIfResult -Name <String> [-IncludePropertyChange] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceId
 ```
-Get-AzSubscriptionDeploymentStackWhatIfResult -ResourceId <String> [-WithPropertyChanges] [-Pre]
+Get-AzSubscriptionDeploymentStackWhatIfResult -ResourceId <String> [-IncludePropertyChange] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Gets the deployment stack WhatIf result named `MyWhatIfResult` in the current su
 
 ### Example 3: Get a deployment stack WhatIf result with property changes
 ```powershell
-Get-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -WithPropertyChanges
+Get-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -IncludePropertyChange
 ```
 
 Gets the deployment stack WhatIf result named `MyWhatIfResult` with resource property changes populated.
@@ -127,7 +127,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WithPropertyChanges
+### -IncludePropertyChange
 If set, returns the WhatIf result with resource property changes (delta) populated.
 
 ```yaml

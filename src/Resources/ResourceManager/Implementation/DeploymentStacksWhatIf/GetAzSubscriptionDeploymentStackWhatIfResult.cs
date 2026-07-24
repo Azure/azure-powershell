@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             HelpMessage = "If set, returns the WhatIf result with resource property changes (delta) populated.")]
         [Parameter(Mandatory = false, ParameterSetName = GetByResourceIdParameterSetName,
             HelpMessage = "If set, returns the WhatIf result with resource property changes (delta) populated.")]
-        public SwitchParameter WithPropertyChanges { get; set; }
+        public SwitchParameter IncludePropertyChange { get; set; }
 
         protected override void OnProcessRecord()
         {
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                             throw new PSArgumentException($"Provided ResourceId '{ResourceId}' is not in correct form. Should be in form " +
                                 "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
                         }
-                        WriteObject(WithPropertyChanges.IsPresent
+                        WriteObject(IncludePropertyChange.IsPresent
                             ? DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(name)
                             : DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResult(name));
                         break;
                     case GetByNameParameterSetName:
-                        WriteObject(WithPropertyChanges.IsPresent
+                        WriteObject(IncludePropertyChange.IsPresent
                             ? DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(Name)
                             : DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResult(Name));
                         break;

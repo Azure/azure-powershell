@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceGroupDeploymentStackWhatIfWithPropertyChanges()
+        public void TestGetResourceGroupDeploymentStackWhatIfWithIncludePropertyChange()
         {
-            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges");
+            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfWithIncludePropertyChange");
         }
 
         [Fact()]
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetSubscriptionDeploymentStackWhatIfWithPropertyChanges()
+        public void TestGetSubscriptionDeploymentStackWhatIfWithIncludePropertyChange()
         {
-            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges");
+            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfWithIncludePropertyChange");
         }
 
         [Fact()]
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetManagementGroupDeploymentStackWhatIfWithPropertyChanges()
+        public void TestGetManagementGroupDeploymentStackWhatIfWithIncludePropertyChange()
         {
-            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges");
+            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfWithIncludePropertyChange");
         }
 
         [Fact()]

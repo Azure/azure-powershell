@@ -18,7 +18,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt]
  [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateFile <String> -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -42,7 +42,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateFile <String> -TemplateParameterUri <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -54,7 +54,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateFile <String> -TemplateParameterObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -66,7 +66,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateUri <String> -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -78,7 +78,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateUri <String> -TemplateParameterUri <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -90,7 +90,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateUri <String> -TemplateParameterObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -102,7 +102,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateUri <String> [-SkipTemplateParameterPrompt]
  [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -114,7 +114,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateSpecId <String> -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -126,7 +126,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateSpecId <String> -TemplateParameterUri <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -138,7 +138,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateSpecId <String> -TemplateParameterObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -150,7 +150,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
  [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -162,7 +162,7 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name <String> -StackResourceId <S
  -RetentionInterval <String> -Location <String> [-Description <String>] [-DeploymentScope <String>]
  [-ActionOnUnmanage <PSActionOnUnmanage>] [-DenySettingsMode <PSDenySettingsMode>]
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
- [-DenySettingsApplyToChildScopes] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
+ [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
  [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -290,7 +290,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DenySettingsApplyToChildScopes
+### -DenySettingsApplyToChildScope
 Apply to child scopes.
 
 ```yaml

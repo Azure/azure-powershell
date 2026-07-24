@@ -596,7 +596,7 @@
     }
   ],
   "Names": {
-    "Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges": [
+    "Test-GetSubscriptionDeploymentStackWhatIfWithIncludePropertyChange": [
       "ps3528"
     ]
   },

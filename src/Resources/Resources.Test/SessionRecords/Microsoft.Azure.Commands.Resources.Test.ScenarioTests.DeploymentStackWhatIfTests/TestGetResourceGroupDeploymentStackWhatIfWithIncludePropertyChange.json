@@ -953,7 +953,7 @@
     }
   ],
   "Names": {
-    "Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges": [
+    "Test-GetResourceGroupDeploymentStackWhatIfWithIncludePropertyChange": [
       "ps4706",
       "ps74"
     ]

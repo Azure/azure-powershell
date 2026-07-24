@@ -21,12 +21,12 @@ Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName <String> [-Pre
 ### GetByName
 ```
 Get-AzResourceGroupDeploymentStackWhatIfResult -Name <String> -ResourceGroupName <String>
- [-WithPropertyChanges] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePropertyChange] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceId
 ```
-Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceId <String> [-WithPropertyChanges] [-Pre]
+Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceId <String> [-IncludePropertyChange] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Gets the deployment stack WhatIf result named `MyWhatIfResult` in resource group
 
 ### Example 3: Get a deployment stack WhatIf result with property changes
 ```powershell
-Get-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -WithPropertyChanges
+Get-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -IncludePropertyChange
 ```
 
 Gets the deployment stack WhatIf result named `MyWhatIfResult` with resource property changes populated.
@@ -142,7 +142,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WithPropertyChanges
+### -IncludePropertyChange
 If set, returns the WhatIf result with resource property changes populated.
 
 ```yaml
