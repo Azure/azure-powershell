@@ -53,8 +53,8 @@ function setupEnv() {
 
     # Create two monitor for use in test.
     Write-Host -ForegroundColor Green "Create two $($env.monitorName01) and $($env.monitorName02) for test."
-    New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $($env.monitorName01) -SubscriptionId $env.SubscriptionId -EnableSystemAssignedIdentity -Location "centraluseuap" -MonitoringStatus "Enabled" -SkuName "pro_testing_20200911_Monthly@TIDgmz7xq9ge3py" -UserInfoEmailAddress 'vermapiyush@microsoft.com' -UserInfoName 'piyushverma' -UserInfoPhoneNumber '11111111111' -OrganizationName $($env.orgName01)
-    New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $($env.monitorName02) -SubscriptionId $env.SubscriptionId -EnableSystemAssignedIdentity -Location "centraluseuap" -MonitoringStatus "Enabled" -SkuName "pro_testing_20200911_Monthly@TIDgmz7xq9ge3py" -UserInfoEmailAddress 'vermapiyush@microsoft.com' -UserInfoName 'piyushverma' -UserInfoPhoneNumber '11111111111' -OrganizationName $($env.orgName02)
+    New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $($env.monitorName01) -SubscriptionId $env.SubscriptionId -EnableSystemAssignedIdentity -Location "centraluseuap" -MonitoringStatus "Enabled" -SkuName "pro_testing_20200911_Monthly@TIDgmz7xq9ge3py" -UserInfoEmailAddress 'user@example.com' -UserInfoName 'azureuser' -UserInfoPhoneNumber '11111111111' -OrganizationName $($env.orgName01)
+    New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $($env.monitorName02) -SubscriptionId $env.SubscriptionId -EnableSystemAssignedIdentity -Location "centraluseuap" -MonitoringStatus "Enabled" -SkuName "pro_testing_20200911_Monthly@TIDgmz7xq9ge3py" -UserInfoEmailAddress 'user@example.com' -UserInfoName 'azureuser' -UserInfoPhoneNumber '11111111111' -OrganizationName $($env.orgName02)
 
     # Enable SSO
     Write-Host -ForegroundColor Green "Enable SSO for $($env.monitorName01) monitor."
