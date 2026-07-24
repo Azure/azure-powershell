@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(EnableWAD), "17.0.0", "12.0.0", ChangeDescription = "This parameter is deprecated because it is only used by the legacy Azure Enhanced Monitoring (AEM) extension for SAP, which is being deprecated. It will be removed in a future release.")]
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
@@ -82,6 +84,7 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(SkipStorage), "17.0.0", "12.0.0", ChangeDescription = "This parameter is deprecated because it is only used by the legacy Azure Enhanced Monitoring (AEM) extension for SAP, which is being deprecated. It will be removed in a future release.")]
         [Parameter(
                 Mandatory = false,
                 Position = 4,
@@ -101,6 +104,7 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Sets the access of the VM identity to the individual resources, e.g. data disks instead of the complete resource group.")]
         public SwitchParameter SetAccessToIndividualResources { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(InstallNewExtension), "17.0.0", "12.0.0", ChangeDescription = "This parameter is deprecated. The cmdlet installs the new VM Extension for SAP by default, so this switch is no longer required. It will be removed in a future release.")]
         [Parameter(
                 Mandatory = false,
                 Position = 6,
