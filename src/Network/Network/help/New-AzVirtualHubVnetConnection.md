@@ -15,7 +15,7 @@ The New-AzVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection 
 ### ByVirtualHubNameByRemoteVirtualNetworkObject (Default)
 ```
 New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
+ -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>] [-EnableOnlyIpv6Peering <String>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <
 ### ByVirtualHubNameByRemoteVirtualNetworkResourceId
 ```
 New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- -RemoteVirtualNetworkId <String> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
+ -RemoteVirtualNetworkId <String> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>] [-EnableOnlyIpv6Peering <String>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
@@ -33,7 +33,7 @@ New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <
 ### ByVirtualHubObjectByRemoteVirtualNetworkObject
 ```
 New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String>
- -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
+ -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>] [-EnableOnlyIpv6Peering <String>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
@@ -42,7 +42,7 @@ New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String>
 ### ByVirtualHubObjectByRemoteVirtualNetworkResourceId
 ```
 New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String> -RemoteVirtualNetworkId <String>
- [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
+ [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>] [-EnableOnlyIpv6Peering <String>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
@@ -51,7 +51,7 @@ New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String> -Remo
 ### ByVirtualHubResourceIdByRemoteVirtualNetworkObject
 ```
 New-AzVirtualHubVnetConnection -ParentResourceId <String> -Name <String>
- -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
+ -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>] [-EnableOnlyIpv6Peering <String>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
@@ -60,7 +60,7 @@ New-AzVirtualHubVnetConnection -ParentResourceId <String> -Name <String>
 ### ByVirtualHubResourceIdByRemoteVirtualNetworkResourceId
 ```
 New-AzVirtualHubVnetConnection -ParentResourceId <String> -Name <String> -RemoteVirtualNetworkId <String>
- [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
+ [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>] [-EnableOnlyIpv6Peering <String>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
@@ -163,6 +163,28 @@ New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtu
 
 The above will create a new routing configuration and create static routes in the routing config with the next hop as a specified IP address. This routing configuration can then be passed into  the New-AzVirtualHubVnetConnection command as the parameter -RoutingConfiguration.
 
+### Example 4
+
+```powershell
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+$remoteVirtualNetwork = New-AzVirtualNetwork -Name "MyVirtualNetwork" -ResourceGroupName "testRG" -Location "West US" -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+$virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -AddressPrefixV6 "2001:db8::/56" -Location "West US"
+New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -ParentResourceName "westushub" -Name "testvnetconnection" -RemoteVirtualNetwork $remoteVirtualNetwork -EnableOnlyIpv6Peering "Enabled"
+```
+
+```output
+Name                   : testvnetconnection
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection
+RemoteVirtualNetwork   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
+EnableInternetSecurity : False
+EnableOnlyIpv6Peering  : Enabled
+ProvisioningState      : Succeeded
+```
+
+The above will create a Virtual Hub VNet Connection with IPv6-only peering enabled. This peers the Virtual Network to the Virtual Hub using only IPv6 peering.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -245,6 +267,21 @@ Enable internet security for this connection
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableOnlyIpv6Peering
+Enable only IPv6 peering for this connection. Valid values are Enabled or Disabled.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

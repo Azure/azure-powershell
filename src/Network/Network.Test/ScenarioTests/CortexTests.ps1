@@ -2126,3 +2126,82 @@ function Test-ConnectionPolicyCRUD
         Clean-ResourceGroup $rgName
     }
 }
+
+function Test-VirtualHubIPv6CRUD
+{
+    # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+        Assert-AreEqual $virtualWanName $virtualWan.Name
+
+        # Create the Virtual Hub without IPv6 address prefix
+        $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+
+		# Update the Virtual Hub to add an IPv6 address prefix
+        $updatedVirtualHub = Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -AddressPrefixV6 "2001:db8::/56"
+
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+        Assert-AreEqual $virtualHubName $virtualHub.Name
+        Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+        Assert-AreEqual "2001:db8::/56" $virtualHub.AddressPrefixV6
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-VirtualHubEnableOnlyIpv6PeeringCRUD
+{
+    # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $remoteVirtualNetworkName = Get-ResourceName
+    $hubVnetConnectionName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+        Assert-AreEqual $virtualWanName $virtualWan.Name
+
+        # Create the Virtual Hub with IPv6 address prefix
+        $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -AddressPrefixV6 "2001:db8::/56" -VirtualWan $virtualWan
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+        Assert-AreEqual $virtualHubName $virtualHub.Name
+
+        # Create a remote VNet
+        $remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"
+
+        # Create a Hub Virtual Network Connection with EnableOnlyIpv6Peering
+        New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -EnableOnlyIpv6Peering "Enabled"
+        $hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentHubName $virtualHubName -Name $hubVnetConnectionName
+        Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
+        Assert-AreEqual "Enabled" $hubVnetConnection.EnableOnlyIpv6Peering
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
