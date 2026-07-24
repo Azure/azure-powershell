@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string BandwidthInGbps { get; set; }
 
+        public string PrivateIPAddressVersion { get; set; }
+
         public IList<PSVirtualNetworkApplianceIpConfiguration> IPConfigurations { get; set; }
 
         public PSSubnet Subnet { get; set; }

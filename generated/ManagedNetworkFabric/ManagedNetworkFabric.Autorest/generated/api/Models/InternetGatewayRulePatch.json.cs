@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __tagsUpdate = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TagsUpdate(json);
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternetGatewayRulePatchTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __tagsUpdate?.ToJson(container, serializationMode);
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

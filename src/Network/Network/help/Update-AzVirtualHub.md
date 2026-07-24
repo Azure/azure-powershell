@@ -19,7 +19,7 @@ Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
@@ -29,7 +29,7 @@ Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
@@ -39,7 +39,7 @@ Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +130,21 @@ The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddressPrefix
 The address space string for this virtual hub.
 
@@ -150,6 +165,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

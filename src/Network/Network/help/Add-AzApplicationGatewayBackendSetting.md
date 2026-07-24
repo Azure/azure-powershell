@@ -17,7 +17,7 @@ Add-AzApplicationGatewayBackendSetting -ApplicationGateway <PSApplicationGateway
  -Protocol <String> [-Timeout <Int32>] [-ProbeId <String>] [-Probe <PSApplicationGatewayProbe>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
  [-HostName <String>] [-EnableL4ClientIpPreservation <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ The first command gets the application gateway named ApplicationGateway01 that b
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationGateway
 Specifies the name of application gateway for which this cmdlet adds settings.
 
@@ -48,6 +63,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -534,6 +534,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 SystemData = volume.SystemData?.ToPsSystemData(),
                 MaximumNumberOfFiles = volume.MaximumNumberOfFiles,
                 EnableSubvolumes = volume.EnableSubvolumes,
+                BreakthroughMode = volume.BreakthroughMode,
                 Encrypted = volume.Encrypted,
                 Zones = volume.Zones,
                 KeyVaultPrivateEndpointResourceId = volume.KeyVaultPrivateEndpointResourceId,
@@ -557,7 +558,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 
         public static PSNetAppFilesVolume ToPsNetAppFilesVolume(this Management.NetApp.Models.Volume_2022_11_01 volume)
         {
-            return new PSNetAppFilesVolume
+            var psVolume = new PSNetAppFilesVolume
             {
                 ResourceGroupName = new ResourceIdentifier(volume.Id).ResourceGroupName,
                 Location = volume.Location,
@@ -623,6 +624,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 OriginatingResourceId = volume.OriginatingResourceId,
                 CoolAccessRetrievalPolicy = volume.CoolAccessRetrievalPolicy
             };
+            // BreakthroughMode is not supported by the 2022-11-01 SDK model.
+            return psVolume;
         }
 
         public static IList<PSKeyValuePairs> ToPPSKeyValuePairs(this IList<PlacementKeyValuePairs> placementKeysValuePair)

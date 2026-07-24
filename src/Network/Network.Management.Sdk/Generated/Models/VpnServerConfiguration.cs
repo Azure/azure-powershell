@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VpnServerConfiguration Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnServerConfiguration : Resource
+    public partial class VpnServerConfiguration : TrackedResourceWithSettableName
     {
         /// <summary>
         /// Initializes a new instance of the VpnServerConfiguration class.

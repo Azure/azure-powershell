@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ClusterName" /> property.</summary>
+        private string _clusterName;
+
+        /// <summary>Name of the MongoDB Atlas Cluster resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Owned)]
+        public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -25,6 +32,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         /// <summary>Name of the Organization resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Owned)]
         public string OrganizationName { get => this._organizationName; set => this._organizationName = value; }
+
+        /// <summary>Backing field for <see cref="ProjectName" /> property.</summary>
+        private string _projectName;
+
+        /// <summary>Name of the MongoDB Atlas Project resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Origin(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.PropertyOrigin.Owned)]
+        public string ProjectName { get => this._projectName; set => this._projectName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -49,6 +63,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
     public partial interface IMongoDbIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IJsonSerializable
     {
+        /// <summary>Name of the MongoDB Atlas Cluster resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the MongoDB Atlas Cluster resource.",
+        SerializedName = @"clusterName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ClusterName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
         Required = false,
@@ -71,6 +96,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
         SerializedName = @"organizationName",
         PossibleTypes = new [] { typeof(string) })]
         string OrganizationName { get; set; }
+        /// <summary>Name of the MongoDB Atlas Project resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the MongoDB Atlas Project resource.",
+        SerializedName = @"projectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProjectName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Info(
         Required = false,
@@ -98,10 +134,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
     internal partial interface IMongoDbIdentityInternal
 
     {
+        /// <summary>Name of the MongoDB Atlas Cluster resource.</summary>
+        string ClusterName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Name of the Organization resource</summary>
         string OrganizationName { get; set; }
+        /// <summary>Name of the MongoDB Atlas Project resource.</summary>
+        string ProjectName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>

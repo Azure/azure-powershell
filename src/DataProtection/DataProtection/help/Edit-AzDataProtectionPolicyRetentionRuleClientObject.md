@@ -8,7 +8,7 @@ schema: 2.0.0
 # Edit-AzDataProtectionPolicyRetentionRuleClientObject
 
 ## SYNOPSIS
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Na
 ```
 
 ## DESCRIPTION
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
 
 ## EXAMPLES
 
@@ -59,6 +59,23 @@ DatasourceType            ObjectType
 ```
 
 This command removes weekly retention rule if it exists in given backup policy.
+
+### Example 3: Add an OperationalStore retention rule to an AzureBlob policy
+```powershell
+$pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+$opLifecycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Default_OperationalStore -LifeCycles $opLifecycle -IsDefault $true
+```
+
+```output
+DatasourceType                                  ObjectType
+--------------                                  ----------
+{Microsoft.Storage/storageAccounts/blobServices} BackupPolicy
+```
+
+For AzureBlob, OperationalStore retention rules **must** be named `Default_OperationalStore`. The rule is added additively — the existing `Default` (VaultStore) retention rule on the policy template is preserved. Passing `-Name Default` with an OperationalStore lifecycle is rejected by validation.
+
+Note: `-OverwriteLifeCycle` is deprecated and will be removed in an upcoming release. Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 
 ## PARAMETERS
 
@@ -93,7 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Retention Rule Name
+Retention Rule Name.
+Note: `"Default"` retention rules cannot be removed, regardless of lifecycle.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName
@@ -109,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -OverwriteLifeCycle
-Specifies whether to modify an existing LifeCycle.
+[Deprecated] Optional; this parameter will be removed in an upcoming release. Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -163,5 +181,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 
 ## NOTES
+
+* **`"Default"` retention rules cannot be removed**, regardless of lifecycle. `-RemoveRule -Name Default` throws `Removing Default Retention Rule is not allowed. Please try again with different rule name.`
+* **`-OverwriteLifeCycle` is deprecated and will be removed in an upcoming release.** Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
+
 
 ## RELATED LINKS

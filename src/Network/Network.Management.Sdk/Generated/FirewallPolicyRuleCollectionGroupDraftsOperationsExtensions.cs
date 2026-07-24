@@ -13,106 +13,20 @@ namespace Microsoft.Azure.Management.Network
     public static partial class FirewallPolicyRuleCollectionGroupDraftsOperationsExtensions
     {
         /// <summary>
-        /// Delete Rule Collection Group Draft.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        public static void Delete(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
-        {
-                ((IFirewallPolicyRuleCollectionGroupDraftsOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete Rule Collection Group Draft.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Create or Update Rule Collection Group Draft.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        public static FirewallPolicyRuleCollectionGroupDraft CreateOrUpdate(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroupDraft parameters)
-        {
-                return ((IFirewallPolicyRuleCollectionGroupDraftsOperations)operations).CreateOrUpdateAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create or Update Rule Collection Group Draft.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicyRuleCollectionGroupDraft> CreateOrUpdateAsync(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroupDraft parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Get Rule Collection Group Draft.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static FirewallPolicyRuleCollectionGroupDraft Get(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
         {
@@ -126,13 +40,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -143,6 +58,97 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Create or Update Rule Collection Group Draft.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static FirewallPolicyRuleCollectionGroupDraft CreateOrUpdate(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroupDraft parameters)
+        {
+                return ((IFirewallPolicyRuleCollectionGroupDraftsOperations)operations).CreateOrUpdateAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or Update Rule Collection Group Draft.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FirewallPolicyRuleCollectionGroupDraft> CreateOrUpdateAsync(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroupDraft parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete Rule Collection Group Draft.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static void Delete(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
+        {
+                ((IFirewallPolicyRuleCollectionGroupDraftsOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete Rule Collection Group Draft.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IFirewallPolicyRuleCollectionGroupDraftsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

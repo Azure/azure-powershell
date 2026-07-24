@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class FailoverDirection
     {
+        /// <summary>
+        /// PrimaryToRecovery
+        /// </summary>
         public const string PrimaryToRecovery = "PrimaryToRecovery";
+        /// <summary>
+        /// RecoveryToPrimary
+        /// </summary>
         public const string RecoveryToPrimary = "RecoveryToPrimary";
     }
 }

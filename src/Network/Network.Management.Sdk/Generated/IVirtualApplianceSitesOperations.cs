@@ -14,19 +14,18 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IVirtualApplianceSitesOperations
     {
         /// <summary>
-        /// Deletes the specified site from a Virtual Appliance.
+        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
+        /// resource.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified site from a Virtual Appliance.
+        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
+        /// resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +36,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VirtualApplianceSite>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified Virtual Appliance Site.
@@ -46,13 +48,14 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified Virtual Appliance Site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,13 +78,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified Network Virtual Appliance Site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Network Virtual Appliance Site
@@ -102,18 +106,20 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VirtualApplianceSite>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string siteName, VirtualApplianceSite parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
-        /// resource.
+        /// Deletes the specified site from a Virtual Appliance.
         /// </summary>
         /// <remarks>
-        /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance
-        /// resource.
+        /// Deletes the specified site from a Virtual Appliance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='siteName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -124,36 +130,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VirtualApplianceSite>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified site from a Virtual Appliance.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified site from a Virtual Appliance.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='siteName'>
-        /// The name of the site.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates the specified Network Virtual Appliance Site.
@@ -162,13 +139,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified Network Virtual Appliance Site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='siteName'>
-        /// The name of the site.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Network Virtual Appliance Site
@@ -187,6 +165,33 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VirtualApplianceSite>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string siteName, VirtualApplianceSite parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified site from a Virtual Appliance.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified site from a Virtual Appliance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='siteName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance

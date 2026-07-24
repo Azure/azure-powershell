@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Retrieves the details of a Virtual Hub Bgp Connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network
         /// the existing VirtualHubBgpConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a VirtualHubBgpConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network
         /// the existing VirtualHubBgpConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a VirtualHubBgpConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.

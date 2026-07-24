@@ -30,8 +30,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> InternetGatewayId { get => this._internetGatewayId; }
 
+        /// <summary>Backing field for <see cref="LastOperation" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties _lastOperation;
+
+        /// <summary>Details of the last operation performed on the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); }
+
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; }
+
         /// <summary>Internal Acessors for InternetGatewayId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayRulePropertiesInternal.InternetGatewayId { get => this._internetGatewayId; set { {_internetGatewayId = value;} } }
+
+        /// <summary>Internal Acessors for LastOperation</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayRulePropertiesInternal.LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); set { {_lastOperation = value;} } }
+
+        /// <summary>Internal Acessors for LastOperationDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayRulePropertiesInternal.LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayRulePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -84,6 +101,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"internetGatewayIds",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> InternetGatewayId { get;  }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details status of the last operation performed on the resource.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationDetail { get;  }
         /// <summary>Provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -115,6 +143,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     {
         /// <summary>List of Internet Gateway resource Id.</summary>
         System.Collections.Generic.List<string> InternetGatewayId { get; set; }
+        /// <summary>Details of the last operation performed on the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        string LastOperationDetail { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Updating", "Deleting", "Failed", "Canceled")]
         string ProvisioningState { get; set; }

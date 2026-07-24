@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusRule
 
 ## SYNOPSIS
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ## SYNTAX
 
@@ -75,7 +75,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject
 ```
 
 ## DESCRIPTION
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ## EXAMPLES
 
@@ -388,7 +388,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -450,8 +451,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

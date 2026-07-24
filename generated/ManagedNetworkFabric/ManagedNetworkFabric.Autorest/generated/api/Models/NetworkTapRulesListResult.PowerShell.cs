@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of NetworkTapRules.</summary>
+    /// <summary>Paged collection of NetworkTapRule items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkTapRulesListResultTypeConverter))]
     public partial class NetworkTapRulesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of NetworkTapRules.
+    /// Paged collection of NetworkTapRule items
     [System.ComponentModel.TypeConverter(typeof(NetworkTapRulesListResultTypeConverter))]
     public partial interface INetworkTapRulesListResult
 

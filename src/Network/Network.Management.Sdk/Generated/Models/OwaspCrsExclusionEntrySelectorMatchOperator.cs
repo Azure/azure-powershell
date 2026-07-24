@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class OwaspCrsExclusionEntrySelectorMatchOperator
     {
+        /// <summary>
+        /// Equals
+        /// </summary>
         public const string Equals = "Equals";
+        /// <summary>
+        /// Contains
+        /// </summary>
         public const string Contains = "Contains";
+        /// <summary>
+        /// StartsWith
+        /// </summary>
         public const string StartsWith = "StartsWith";
+        /// <summary>
+        /// EndsWith
+        /// </summary>
         public const string EndsWith = "EndsWith";
+        /// <summary>
+        /// EqualsAny
+        /// </summary>
         public const string EqualsAny = "EqualsAny";
     }
 }

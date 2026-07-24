@@ -65,7 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            {_exportRoutePolicyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("exportRoutePolicyId"), out var __jsonExportRoutePolicyId) ? (string)__jsonExportRoutePolicyId : (string)_exportRoutePolicyId;}
             {_exportRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("exportRoutePolicy"), out var __jsonExportRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3ExportRoutePolicy.FromJson(__jsonExportRoutePolicy) : _exportRoutePolicy;}
             AfterFromJson(json);
         }
@@ -101,7 +100,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._exportRoutePolicyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._exportRoutePolicyId.ToString()) : null, "exportRoutePolicyId" ,container.Add );
             AddIf( null != this._exportRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._exportRoutePolicy.ToJson(null,serializationMode) : null, "exportRoutePolicy" ,container.Add );
             AfterToJson(ref container);
             return container;

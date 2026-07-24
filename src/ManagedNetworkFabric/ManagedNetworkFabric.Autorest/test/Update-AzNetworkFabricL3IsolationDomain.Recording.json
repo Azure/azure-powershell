@@ -1,0 +1,252 @@
+{
+  "Update-AzNetworkFabricL3IsolationDomain+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "12"
+        ],
+        "x-ms-client-request-id": [
+          "be412ca7-d391-43a5-9ac8-f8efa6b19e5b"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.3"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "mock"
+        ],
+        "x-ms-correlation-request-id": [
+          "mock"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "629"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso\", \"name\": \"l3-iso\", \"type\": \"Microsoft.ManagedNetworkFabric/l3IsolationDomains\", \"location\": \"uksouth\", \"properties\": {\"networkFabricId\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf\", \"redistributeConnectedSubnets\": \"True\", \"redistributeStaticRoutes\": \"False\", \"administrativeState\": \"Disabled\", \"configurationState\": \"Succeeded\", \"provisioningState\": \"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkFabricL3IsolationDomain+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "12"
+        ],
+        "x-ms-client-request-id": [
+          "be412ca7-d391-43a5-9ac8-f8efa6b19e5b"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.3"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "mock"
+        ],
+        "x-ms-correlation-request-id": [
+          "mock"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "629"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso\", \"name\": \"l3-iso\", \"type\": \"Microsoft.ManagedNetworkFabric/l3IsolationDomains\", \"location\": \"uksouth\", \"properties\": {\"networkFabricId\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf\", \"redistributeConnectedSubnets\": \"True\", \"redistributeStaticRoutes\": \"False\", \"administrativeState\": \"Disabled\", \"configurationState\": \"Succeeded\", \"provisioningState\": \"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkFabricL3IsolationDomain+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "12"
+        ],
+        "x-ms-client-request-id": [
+          "be412ca7-d391-43a5-9ac8-f8efa6b19e5b"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.3"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "mock"
+        ],
+        "x-ms-correlation-request-id": [
+          "mock"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "629"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso\", \"name\": \"l3-iso\", \"type\": \"Microsoft.ManagedNetworkFabric/l3IsolationDomains\", \"location\": \"uksouth\", \"properties\": {\"networkFabricId\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf\", \"redistributeConnectedSubnets\": \"True\", \"redistributeStaticRoutes\": \"False\", \"administrativeState\": \"Disabled\", \"configurationState\": \"Succeeded\", \"provisioningState\": \"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkFabricL3IsolationDomain+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "12"
+        ],
+        "x-ms-client-request-id": [
+          "be412ca7-d391-43a5-9ac8-f8efa6b19e5b"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricL3IsolationDomain_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.3"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso\", \"name\": \"l3-iso\", \"properties\": {\"configurationState\": \"Succeeded\", \"provisioningState\": \"Succeeded\", \"administrativeState\": \"Disabled\"}}",
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "296"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "mock"
+        ]
+      },
+      "isContentBase64": false
+    }
+  }
+}

@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"Defines at which point in the request processing pipeline the edge action will be invoked.",
         SerializedName = @"invocationPoint",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ClientRequest", "OriginRequest")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest")]
         string InvocationPoint { get; set; }
 
     }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>
         /// Defines at which point in the request processing pipeline the edge action will be invoked.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ClientRequest", "OriginRequest")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest")]
         string InvocationPoint { get; set; }
 
     }

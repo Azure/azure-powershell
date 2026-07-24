@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConnectionStatus
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// Disconnected
+        /// </summary>
         public const string Disconnected = "Disconnected";
+        /// <summary>
+        /// Degraded
+        /// </summary>
         public const string Degraded = "Degraded";
     }
 }

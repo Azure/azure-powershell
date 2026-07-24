@@ -941,10 +941,6 @@
     "module": "ArizeAI"
   },
   {
-    "module": "WeightsAndBiases",
-    "alias": "WeightsAndBiases"
-  },
-  {
     "module": "Pinecone",
     "alias": "Pinecone"
   },
