@@ -423,7 +423,7 @@ Accept wildcard characters: False
 ```
 
 ### -SaaSDataSaaSresourceId
-SaaS resource id
+SaaS resource ID.
 
 ```yaml
 Type: System.String
