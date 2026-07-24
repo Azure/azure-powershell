@@ -79,35 +79,35 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetAzureRmAlertHistory");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetAzureRmMetricAlertRuleV2()
         {
             TestRunner.RunTestScript("Test-GetAzureRmMetricAlertRuleV2");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAzureRmMetricAlertRuleV2()
         {
             TestRunner.RunTestScript("Test-RemoveAzureRmAlertRuleV2");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAzureRmMetricAlertRuleV2()
         {
             TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAzureRmMetricAlertRuleV2WithoutActionGroup()
         {
             TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-NoActionGroup");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAzureRmMetricAlertRuleV2WithActionGroupId()
         {
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-autoMitigate");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestDisableAzureRmMetricAlertRuleV2WithActionGroups()
         {
             TestRunner.RunTestScript("Test-DisableAzureRmMetricAlertRuleV2WithActionGroups");
         }
 
-        [Fact(Skip = "Test case fails due to the ActionGroup migration to autorest")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAzureRmDynamicMetricAlertRuleV2()
         {
