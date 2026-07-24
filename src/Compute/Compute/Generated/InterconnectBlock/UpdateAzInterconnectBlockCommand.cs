@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -141,6 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+<<<<<<< HEAD
 =======
 // ----------------------------------------------------------------------------------
 //
@@ -286,3 +286,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 }
 >>>>>>> aa1328de3ea (Apply suggestions from code review)
+=======
+>>>>>>> a19109b74c3 (local build fix)
