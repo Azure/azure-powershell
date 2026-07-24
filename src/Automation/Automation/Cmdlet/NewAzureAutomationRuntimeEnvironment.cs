@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runtime environment name.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The runtime environment name.")]
+            HelpMessage = "The runtime environment name. Must begin with a letter, contain only letters, numbers, underscores and dashes, and be less than 64 characters.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -75,15 +76,37 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource tags for the runtime environment as a hashtable (e.g., @{'Environment'='Production'; 'Team'='DevOps'}).")]
+        public Hashtable Tag { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
+            // Validate name format
+            if (!Regex.IsMatch(this.Name, "^[a-zA-Z][a-zA-Z0-9_-]{0,62}$"))
+            {
+                throw new PSArgumentException(
+                    "The name can contain only letters, numbers, underscores and dashes. The name must begin with a letter. The name must be less than 64 characters.",
+                    nameof(Name));
+            }
+
             IDictionary<string, string> defaultPackagesDict = null;
             if (this.DefaultPackages != null)
             {
                 defaultPackagesDict = this.DefaultPackages.Cast<DictionaryEntry>()
+                    .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
+            }
+
+            IDictionary<string, string> tagsDict = null;
+            if (this.Tag != null)
+            {
+                tagsDict = this.Tag.Cast<DictionaryEntry>()
                     .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
             }
 
@@ -95,7 +118,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.Language,
                 this.Version,
                 defaultPackagesDict,
-                this.Description);
+                this.Description,
+                tagsDict);
 
             this.WriteObject(createdRuntimeEnvironment);
         }

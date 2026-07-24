@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string version = "7.4";
 
             this.mockAutomationClient.Setup(f => f.CreateRuntimeEnvironment(
-                resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, null, null))
+                resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, null, null, null))
                 .Returns(new RuntimeEnvironment
                 {
                     Name = runtimeEnvironmentName,
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             // Assert
             this.mockAutomationClient.Verify(f => f.CreateRuntimeEnvironment(
-                resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, null, null), Times.Once());
+                resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, null, null, null), Times.Once());
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             this.mockAutomationClient.Setup(f => f.CreateRuntimeEnvironment(
                 resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, 
-                It.IsAny<IDictionary<string, string>>(), null))
+                It.IsAny<IDictionary<string, string>>(), null, null))
                 .Returns(new RuntimeEnvironment
                 {
                     Name = runtimeEnvironmentName,
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Assert
             this.mockAutomationClient.Verify(f => f.CreateRuntimeEnvironment(
                 resourceGroupName, accountName, runtimeEnvironmentName, location, language, version, 
-                It.IsAny<IDictionary<string, string>>(), null), Times.Once());
+                It.IsAny<IDictionary<string, string>>(), null, null), Times.Once());
         }
     }
 }

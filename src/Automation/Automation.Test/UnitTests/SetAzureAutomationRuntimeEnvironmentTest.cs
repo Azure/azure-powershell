@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string description = "Updated description";
 
             this.mockAutomationClient.Setup(f => f.UpdateRuntimeEnvironment(
-                resourceGroupName, accountName, runtimeEnvironmentName, null, description))
+                resourceGroupName, accountName, runtimeEnvironmentName, null, description, null))
                 .Returns(new RuntimeEnvironment
                 {
                     Name = runtimeEnvironmentName,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             // Assert
             this.mockAutomationClient.Verify(f => f.UpdateRuntimeEnvironment(
-                resourceGroupName, accountName, runtimeEnvironmentName, null, description), Times.Once());
+                resourceGroupName, accountName, runtimeEnvironmentName, null, description, null), Times.Once());
         }
 
         [TestMethod]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             this.mockAutomationClient.Setup(f => f.UpdateRuntimeEnvironment(
                 resourceGroupName, accountName, runtimeEnvironmentName, 
-                It.IsAny<IDictionary<string, string>>(), null))
+                It.IsAny<IDictionary<string, string>>(), null, null))
                 .Returns(new RuntimeEnvironment
                 {
                     Name = runtimeEnvironmentName
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Assert
             this.mockAutomationClient.Verify(f => f.UpdateRuntimeEnvironment(
                 resourceGroupName, accountName, runtimeEnvironmentName, 
-                It.IsAny<IDictionary<string, string>>(), null), Times.Once());
+                It.IsAny<IDictionary<string, string>>(), null, null), Times.Once());
         }
     }
 }

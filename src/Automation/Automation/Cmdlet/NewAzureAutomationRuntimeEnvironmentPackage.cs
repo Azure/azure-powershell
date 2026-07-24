@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Automation.Model;
 using System.Management.Automation;
 using System.Security.Permissions;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the package name.
         /// </summary>
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The package name.")]
+            HelpMessage = "The package name. Must begin with a letter, contain only letters, numbers, underscores and dashes, and be less than 64 characters.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -62,6 +63,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
+            // Validate name format
+            if (!Regex.IsMatch(this.Name, "^[a-zA-Z][a-zA-Z0-9_-]{0,62}$"))
+            {
+                throw new PSArgumentException(
+                    "The name can contain only letters, numbers, underscores and dashes. The name must begin with a letter. The name must be less than 64 characters.",
+                    nameof(Name));
+            }
+
             var createdPackage = this.AutomationClient.CreateRuntimeEnvironmentPackage(
                 this.ResourceGroupName,
                 this.AutomationAccountName,

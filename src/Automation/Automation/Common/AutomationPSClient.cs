@@ -2026,7 +2026,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Model.RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name,
-            string location, string language, string version, IDictionary<string, string> defaultPackages, string description)
+            string location, string language, string version, IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags)
         {
             // Check if runtime environment already exists
             try
@@ -2048,6 +2048,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var parameters = new AutomationManagement.Models.RuntimeEnvironmentCreateOrUpdateParameters(
                 location: location,
                 runtime: new AutomationManagement.Models.RuntimeEnvironmentRuntime(language: language, version: version),
+                tags: tags,
                 defaultPackages: defaultPackages,
                 description: description
             );
@@ -2062,11 +2063,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Model.RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name,
-            IDictionary<string, string> defaultPackages, string description)
+            IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags)
         {
             try
             {
                 var parameters = new AutomationManagement.Models.RuntimeEnvironmentUpdateParameters(
+                    tags: tags,
                     defaultPackages: defaultPackages,
                     description: description
                 );

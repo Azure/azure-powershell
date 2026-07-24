@@ -52,6 +52,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource tags for the runtime environment as a hashtable (e.g., @{'Environment'='Production'; 'Team'='DevOps'}).")]
+        public Hashtable Tag { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -64,12 +71,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
             }
 
+            IDictionary<string, string> tagsDict = null;
+            if (this.Tag != null)
+            {
+                tagsDict = this.Tag.Cast<DictionaryEntry>()
+                    .ToDictionary(d => d.Key.ToString(), d => d.Value?.ToString());
+            }
+
             var updatedRuntimeEnvironment = this.AutomationClient.UpdateRuntimeEnvironment(
                 this.ResourceGroupName,
                 this.AutomationAccountName,
                 this.Name,
                 defaultPackagesDict,
-                this.Description);
+                this.Description,
+                tagsDict);
 
             this.WriteObject(updatedRuntimeEnvironment);
         }

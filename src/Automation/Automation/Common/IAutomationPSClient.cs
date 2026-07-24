@@ -482,11 +482,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region RuntimeEnvironment
 
-        RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, string location, string language, string version, IDictionary<string, string> defaultPackages, string description);
+        RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, string location, string language, string version, IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags);
 
         RuntimeEnvironment GetRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name);
 
-        RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, IDictionary<string, string> defaultPackages, string description);
+        RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags);
 
         IEnumerable<RuntimeEnvironment> ListRuntimeEnvironments(string resourceGroupName, string automationAccountName, ref string nextLink);
 
