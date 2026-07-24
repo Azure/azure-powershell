@@ -86,6 +86,34 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
 
         /// <summary>
+        /// Builds <see cref="CreateExternalKeyOptions"/> for an External Key Manager
+        /// (EKM) backed key. The service rejects client-specified key type, size,
+        /// curve and key operations for external keys, so only the lifecycle dates,
+        /// enabled flag, tags and release policy are applied.
+        /// </summary>
+        internal static CreateExternalKeyOptions BuildExternalKeyOptions(string keyName, string externalKeyId,
+            PSKeyVaultKeyAttributes attrs)
+        {
+            var options = new CreateExternalKeyOptions(keyName, new ExternalKey(externalKeyId));
+            if (attrs != null)
+            {
+                options.NotBefore = attrs.NotBefore;
+                options.ExpiresOn = attrs.Expires;
+                options.Enabled = attrs.Enabled;
+                options.ReleasePolicy = attrs.ReleasePolicy?.ToKeyReleasePolicy();
+
+                if (attrs.Tags != null)
+                {
+                    foreach (DictionaryEntry entry in attrs.Tags)
+                    {
+                        options.Tags.Add(entry.Key.ToString(), entry.Value.ToString());
+                    }
+                }
+            }
+            return options;
+        }
+
+        /// <summary>
         /// Copies fields common to every <c>Create*KeyOptions</c>: lifecycle
         /// dates, enabled / exportable flags, release policy, key operations,
         /// tags. Defensive against null <see cref="PSKeyVaultKeyAttributes.KeyOps"/>

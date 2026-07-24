@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string HsmInteractiveCreateParameterSet = "HsmInteractiveCreate";
         private const string HsmInputObjectCreateParameterSet = "HsmInputObjectCreate";
         private const string HsmResourceIdCreateParameterSet = "HsmResourceIdCreate";
+
+        // External Key Manager (EKM) backed external keys. Kept in dedicated parameter
+        // sets so key-shape parameters (KeyType/Size/CurveName/Exportable) cannot be
+        // combined with -ExternalKeyId; the service sets those for external keys.
+        private const string HsmInteractiveCreateExternalKeyParameterSet = "HsmInteractiveCreateExternalKey";
+        private const string HsmInputObjectCreateExternalKeyParameterSet = "HsmInputObjectCreateExternalKey";
+        private const string HsmResourceIdCreateExternalKeyParameterSet = "HsmResourceIdCreateExternalKey";
         
         private const string HsmInteractiveImportParameterSet = "HsmInteractiveImport";
         private const string HsmInputObjectImportParameterSet = "HsmInputObjectImport";
@@ -113,9 +120,27 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = HsmInteractiveImportParameterSet,
             HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInteractiveCreateExternalKeyParameterSet,
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
+
+        /// <summary>
+        /// External Key Manager (EKM) key id used to create an external key on a Managed HSM. (Preview)
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInteractiveCreateExternalKeyParameterSet,
+            HelpMessage = "Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInputObjectCreateExternalKeyParameterSet,
+            HelpMessage = "Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmResourceIdCreateExternalKeyParameterSet,
+            HelpMessage = "Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)")]
+        [ValidateNotNullOrEmpty]
+        public string ExternalKeyId { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectCreateParameterSet,
@@ -137,6 +162,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "HSM object.")]
         [Parameter(Mandatory = true,
             ParameterSetName = HsmInputObjectImportParameterSet,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "HSM object.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInputObjectCreateExternalKeyParameterSet,
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "HSM object.")]
@@ -162,6 +192,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = HsmResourceIdImportParameterSet,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmResourceIdCreateExternalKeyParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource ID of the HSM.")]
         [ValidateNotNullOrEmpty]
         public string HsmResourceId { get; set; }
 
@@ -448,7 +482,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else if (HsmResourceId != null)
             {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                var resourceIdentifier = new ResourceIdentifier(HsmResourceId);
                 HsmName = resourceIdentifier.ResourceName;
             }
 
@@ -472,6 +506,24 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void ValidateParameters()
         {
+            if (!string.IsNullOrEmpty(ExternalKeyId))
+            {
+                if (ExternalKeyId.Length > 64)
+                {
+                    throw new AzPSArgumentException("ExternalKeyId must be at most 64 characters.", nameof(ExternalKeyId));
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(ExternalKeyId, "^[0-9A-Za-z-]+$"))
+                {
+                    throw new AzPSArgumentException("ExternalKeyId may contain only letters, digits, and hyphens.", nameof(ExternalKeyId));
+                }
+                // The service sets key operations for external keys; reject -KeyOps explicitly
+                // (key type/size/curve/exportable are already excluded via parameter sets).
+                if (this.IsParameterBound(c => c.KeyOps))
+                {
+                    throw new AzPSArgumentException("-KeyOps cannot be combined with -ExternalKeyId; the service sets the operations for external keys.", nameof(KeyOps));
+                }
+            }
+
             if (KeyOps != null && KeyOps.Contains(Constants.KeyOpsImport))
             {
                 // "import" is exclusive, it cannot be combined with any other value(s).
@@ -529,6 +581,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private PSKeyVaultKey CreateHsmKey()
         {
+            if (!string.IsNullOrEmpty(ExternalKeyId))
+            {
+                // External keys are backed by an External Key Manager (EKM). The service
+                // rejects client-specified key type/size/curve/operations for them.
+                return this.Track2DataClient.CreateManagedHsmExternalKey(
+                        HsmName,
+                        Name,
+                        ExternalKeyId,
+                        CreateKeyAttributes());
+            }
             if (string.IsNullOrEmpty(KeyFilePath))
             {
                 return this.Track2DataClient.CreateManagedHsmKey(
