@@ -17,8 +17,6 @@ Create a new origin within the specified origin group.
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
  [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginCapacityResourceEnabled <String>] [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
  [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
@@ -44,13 +42,10 @@ New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -Profile
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
  [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginCapacityResourceEnabled <String>]
- [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
- [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
- [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
+ [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,10 +60,7 @@ New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -Profile
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity> [-AzureOriginId <String>]
  [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
- [-HttpsPort <Int32>] [-OriginCapacityResourceEnabled <String>]
- [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -285,66 +277,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceEnabled
-Whether to enable origin capacity for a specific origin
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceOriginIngressRateThreshold
-The ingress rate limit threshold for an origin per minute in bytes
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceOriginRequestRateThreshold
-The request rate limit threshold for an origin per minute
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceRegion
-The nearest origin capacity pop region for an origin
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

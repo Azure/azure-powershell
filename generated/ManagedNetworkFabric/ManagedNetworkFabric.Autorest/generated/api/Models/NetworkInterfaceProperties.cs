@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
+        /// <summary>Backing field for <see cref="AdditionalDescription" /> property.</summary>
+        private string _additionalDescription;
+
+        /// <summary>Additional description of the interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string AdditionalDescription { get => this._additionalDescription; set => this._additionalDescription = value; }
+
         /// <summary>Backing field for <see cref="AdministrativeState" /> property.</summary>
         private string _administrativeState;
 
@@ -30,12 +37,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
 
+        /// <summary>Backing field for <see cref="ConfigurationState" /> property.</summary>
+        private string _configurationState;
+
+        /// <summary>Configuration state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string ConfigurationState { get => this._configurationState; }
+
         /// <summary>Backing field for <see cref="ConnectedTo" /> property.</summary>
         private string _connectedTo;
 
         /// <summary>The ARM resource id of the interface or compute server its connected to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string ConnectedTo { get => this._connectedTo; }
+
+        /// <summary>Backing field for <see cref="Description" /> property.</summary>
+        private string _description;
+
+        /// <summary>Description of the interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Description { get => this._description; }
 
         /// <summary>Backing field for <see cref="InterfaceType" /> property.</summary>
         private string _interfaceType;
@@ -58,11 +79,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string Ipv6Address { get => this._ipv6Address; }
 
+        /// <summary>Backing field for <see cref="LastOperation" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties _lastOperation;
+
+        /// <summary>Details of the last operation performed on the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); }
+
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; }
+
         /// <summary>Internal Acessors for AdministrativeState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.AdministrativeState { get => this._administrativeState; set { {_administrativeState = value;} } }
 
+        /// <summary>Internal Acessors for ConfigurationState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.ConfigurationState { get => this._configurationState; set { {_configurationState = value;} } }
+
         /// <summary>Internal Acessors for ConnectedTo</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.ConnectedTo { get => this._connectedTo; set { {_connectedTo = value;} } }
+
+        /// <summary>Internal Acessors for Description</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.Description { get => this._description; set { {_description = value;} } }
 
         /// <summary>Internal Acessors for InterfaceType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.InterfaceType { get => this._interfaceType; set { {_interfaceType = value;} } }
@@ -73,11 +111,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Internal Acessors for Ipv6Address</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.Ipv6Address { get => this._ipv6Address; set { {_ipv6Address = value;} } }
 
+        /// <summary>Internal Acessors for LastOperation</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); set { {_lastOperation = value;} } }
+
+        /// <summary>Internal Acessors for LastOperationDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail = value ?? null; }
+
+        /// <summary>Internal Acessors for NetworkFabricId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.NetworkFabricId { get => this._networkFabricId; set { {_networkFabricId = value;} } }
+
         /// <summary>Internal Acessors for PhysicalIdentifier</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.PhysicalIdentifier { get => this._physicalIdentifier; set { {_physicalIdentifier = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Backing field for <see cref="NetworkFabricId" /> property.</summary>
+        private string _networkFabricId;
+
+        /// <summary>Associated Network Fabric Resource ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string NetworkFabricId { get => this._networkFabricId; }
 
         /// <summary>Backing field for <see cref="PhysicalIdentifier" /> property.</summary>
         private string _physicalIdentifier;
@@ -116,6 +170,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource
     {
+        /// <summary>Additional description of the interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Additional description of the interface.",
+        SerializedName = @"additionalDescription",
+        PossibleTypes = new [] { typeof(string) })]
+        string AdditionalDescription { get; set; }
         /// <summary>Administrative state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -126,8 +191,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Administrative state of the resource.",
         SerializedName = @"administrativeState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA", "UnderMaintenance", "EnabledDegraded")]
         string AdministrativeState { get;  }
+        /// <summary>Configuration state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Configuration state of the resource.",
+        SerializedName = @"configurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
+        string ConfigurationState { get;  }
         /// <summary>The ARM resource id of the interface or compute server its connected to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -139,6 +216,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"connectedTo",
         PossibleTypes = new [] { typeof(string) })]
         string ConnectedTo { get;  }
+        /// <summary>Description of the interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Description of the interface.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get;  }
         /// <summary>The Interface Type. Example: Management/Data</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -173,6 +261,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"ipv6Address",
         PossibleTypes = new [] { typeof(string) })]
         string Ipv6Address { get;  }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details status of the last operation performed on the resource.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationDetail { get;  }
+        /// <summary>Associated Network Fabric Resource ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Associated Network Fabric Resource ID",
+        SerializedName = @"networkFabricId",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkFabricId { get;  }
         /// <summary>Physical Identifier of the network interface.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -202,11 +312,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     internal partial interface INetworkInterfacePropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal
     {
+        /// <summary>Additional description of the interface.</summary>
+        string AdditionalDescription { get; set; }
         /// <summary>Administrative state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA", "UnderMaintenance", "EnabledDegraded")]
         string AdministrativeState { get; set; }
+        /// <summary>Configuration state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
+        string ConfigurationState { get; set; }
         /// <summary>The ARM resource id of the interface or compute server its connected to.</summary>
         string ConnectedTo { get; set; }
+        /// <summary>Description of the interface.</summary>
+        string Description { get; set; }
         /// <summary>The Interface Type. Example: Management/Data</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Management", "Data")]
         string InterfaceType { get; set; }
@@ -214,6 +331,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string Ipv4Address { get; set; }
         /// <summary>IPv6Address of the interface.</summary>
         string Ipv6Address { get; set; }
+        /// <summary>Details of the last operation performed on the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        string LastOperationDetail { get; set; }
+        /// <summary>Associated Network Fabric Resource ID</summary>
+        string NetworkFabricId { get; set; }
         /// <summary>Physical Identifier of the network interface.</summary>
         string PhysicalIdentifier { get; set; }
         /// <summary>Provisioning state of the resource.</summary>

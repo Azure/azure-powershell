@@ -159,7 +159,7 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.Cdn.custom\Remove-AzCdnEdgeActionExecutionFilter';
+            Delete = 'Az.Cdn.private\Remove-AzCdnEdgeActionExecutionFilter_Delete';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

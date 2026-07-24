@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for MongoDB Atlas Project management: `Get-AzMongoDBProject`, `New-AzMongoDBProject`, `Remove-AzMongoDBProject`
+* Added cmdlets for MongoDB Atlas Cluster management: `Get-AzMongoDBCluster`, `New-AzMongoDBCluster`, `Remove-AzMongoDBCluster`
+* Added cmdlet `Get-AzMongoDBProjectClusterTierRegion` to list available cluster tiers and regions for a project
+* Added cmdlet `Limit-AzMongoDBProject` to retrieve project resource limits
 
 ## Version 0.1.1
 * Upgraded to the stable api version

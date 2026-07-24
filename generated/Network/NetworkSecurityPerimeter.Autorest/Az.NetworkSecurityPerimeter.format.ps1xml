@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CloudErrorBody#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonCloudErrorBody#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -215,50 +215,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.NetworkSecurityPerimeterLinkReferencesDeleteAcceptedResponseHeaders</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.NetworkSecurityPerimeterLinkReferencesDeleteAcceptedResponseHeaders#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.NetworkSecurityPerimeterLinksDeleteAcceptedResponseHeaders</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.NetworkSecurityPerimeterLinksDeleteAcceptedResponseHeaders#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1157,7 +1113,16 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OutboundSupported</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReadinessState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceType</Label>
@@ -1167,7 +1132,16 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OutboundSupported</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReadinessState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceType</PropertyName>
@@ -1228,9 +1202,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ProxyResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1286,9 +1260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Resource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1308,9 +1282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterSystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SystemData#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterSystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1360,9 +1334,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterTrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.TrackedResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterTrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1424,9 +1398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterTrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.TrackedResourceTags#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterTrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

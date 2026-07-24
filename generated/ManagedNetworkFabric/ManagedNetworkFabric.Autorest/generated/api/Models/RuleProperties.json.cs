@@ -79,6 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)_action;}
             {_addressList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("addressList"), out var __jsonAddressList) ? If( __jsonAddressList as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _addressList;}
+            {_condition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("condition"), out var __jsonCondition) ? (string)__jsonCondition : (string)_condition;}
+            {_destinationAddressList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("destinationAddressList"), out var __jsonDestinationAddressList) ? If( __jsonDestinationAddressList as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _destinationAddressList;}
+            {_sourceAddressList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("sourceAddressList"), out var __jsonSourceAddressList) ? If( __jsonSourceAddressList as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _sourceAddressList;}
+            {_headerAddressList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("headerAddressList"), out var __jsonHeaderAddressList) ? If( __jsonHeaderAddressList as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.HeaderAddressProperties.FromJson(__f) )) ))() : null : _headerAddressList;}
             AfterFromJson(json);
         }
 
@@ -110,6 +114,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                     AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                 }
                 container.Add("addressList",__w);
+            }
+            AddIf( null != (((object)this._condition)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._condition.ToString()) : null, "condition" ,container.Add );
+            if (null != this._destinationAddressList)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._destinationAddressList )
+                {
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                }
+                container.Add("destinationAddressList",__r);
+            }
+            if (null != this._sourceAddressList)
+            {
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __n in this._sourceAddressList )
+                {
+                    AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                }
+                container.Add("sourceAddressList",__m);
+            }
+            if (null != this._headerAddressList)
+            {
+                var __h = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __i in this._headerAddressList )
+                {
+                    AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                }
+                container.Add("headerAddressList",__h);
             }
             AfterToJson(ref container);
             return container;

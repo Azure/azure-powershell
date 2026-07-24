@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// </param>
+
         /// <param name="extendedLocation">The extended location of the load balancer.
         /// </param>
 
         /// <param name="sku">The load balancer SKU.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the load balancer resource.
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="scope">Indicates the scope of the load balancer: external (Public) or internal
         /// (Private).
         /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
-        public LoadBalancer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), LoadBalancerSku sku = default(LoadBalancerSku), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string scope = default(string))
+        public LoadBalancer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), LoadBalancerSku sku = default(LoadBalancerSku), string provisioningState = default(string), System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string scope = default(string))
 
         : base(id, name, type, location, tags)
         {
+            this.Etag = etag;
             this.ExtendedLocation = extendedLocation;
             this.Sku = sku;
-            this.Etag = etag;
             this.ProvisioningState = provisioningState;
             this.FrontendIPConfigurations = frontendIPConfigurations;
             this.BackendAddressPools = backendAddressPools;
@@ -120,6 +120,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
+        /// Gets a unique read-only string that changes whenever the resource is
+        /// updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
+
+        /// <summary>
         /// Gets or sets the extended location of the load balancer.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
@@ -130,13 +137,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public LoadBalancerSku Sku {get; set; }
-
-        /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the load balancer resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

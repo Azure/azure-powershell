@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// P2SVpnGateway Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class P2SVpnGateway : Resource
+    public partial class P2SVpnGateway : TrackedResourceWithSettableIdOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the P2SVpnGateway class.

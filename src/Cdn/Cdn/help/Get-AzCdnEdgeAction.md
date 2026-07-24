@@ -20,13 +20,13 @@ Get-AzCdnEdgeAction [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
 
 ### Get
 ```
-Get-AzCdnEdgeAction [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
+Get-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzCdnEdgeAction [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzCdnEdgeAction -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

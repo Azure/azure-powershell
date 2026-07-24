@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class A2ARecoveryAvailabilityType
     {
+        /// <summary>
+        /// Single
+        /// </summary>
         public const string Single = "Single";
+        /// <summary>
+        /// AvailabilitySet
+        /// </summary>
         public const string AvailabilitySet = "AvailabilitySet";
+        /// <summary>
+        /// AvailabilityZone
+        /// </summary>
         public const string AvailabilityZone = "AvailabilityZone";
     }
 }

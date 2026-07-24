@@ -84,10 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourcePropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("OriginCapacityResource"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourceProperties) content.GetValueForProperty("OriginCapacityResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourcePropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("OriginGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName = (string) content.GetValueForProperty("OriginGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName, global::System.Convert.ToString);
@@ -147,22 +143,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("SharedPrivateLinkResourceRequestMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage = (string) content.GetValueForProperty("SharedPrivateLinkResourceRequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage, global::System.Convert.ToString);
-            }
-            if (content.Contains("OriginCapacityResourceEnabled"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceEnabled = (string) content.GetValueForProperty("OriginCapacityResourceEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceEnabled, global::System.Convert.ToString);
-            }
-            if (content.Contains("OriginCapacityResourceRegion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceRegion = (string) content.GetValueForProperty("OriginCapacityResourceRegion",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceRegion, global::System.Convert.ToString);
-            }
-            if (content.Contains("OriginCapacityResourceOriginRequestRateThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginRequestRateThreshold = (long?) content.GetValueForProperty("OriginCapacityResourceOriginRequestRateThreshold",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginRequestRateThreshold, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("OriginCapacityResourceOriginIngressRateThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginIngressRateThreshold = (long?) content.GetValueForProperty("OriginCapacityResourceOriginIngressRateThreshold",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginIngressRateThreshold, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("PrivateLinkId"))
             {
@@ -193,10 +173,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourcePropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("OriginCapacityResource"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourceProperties) content.GetValueForProperty("OriginCapacityResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourcePropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("OriginGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName = (string) content.GetValueForProperty("OriginGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName, global::System.Convert.ToString);
@@ -256,22 +232,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("SharedPrivateLinkResourceRequestMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage = (string) content.GetValueForProperty("SharedPrivateLinkResourceRequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage, global::System.Convert.ToString);
-            }
-            if (content.Contains("OriginCapacityResourceEnabled"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceEnabled = (string) content.GetValueForProperty("OriginCapacityResourceEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceEnabled, global::System.Convert.ToString);
-            }
-            if (content.Contains("OriginCapacityResourceRegion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceRegion = (string) content.GetValueForProperty("OriginCapacityResourceRegion",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceRegion, global::System.Convert.ToString);
-            }
-            if (content.Contains("OriginCapacityResourceOriginRequestRateThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginRequestRateThreshold = (long?) content.GetValueForProperty("OriginCapacityResourceOriginRequestRateThreshold",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginRequestRateThreshold, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("OriginCapacityResourceOriginIngressRateThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginIngressRateThreshold = (long?) content.GetValueForProperty("OriginCapacityResourceOriginIngressRateThreshold",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginCapacityResourceOriginIngressRateThreshold, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("PrivateLinkId"))
             {

@@ -77,6 +77,13 @@ param(
     ${ExecutionFilterIdentifierHeaderValue},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The provisioning state
+    ${ProvisioningState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
@@ -196,9 +203,9 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.Cdn.custom\New-AzCdnEdgeActionExecutionFilter';
-            CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzCdnEdgeActionExecutionFilter';
-            CreateViaJsonString = 'Az.Cdn.custom\New-AzCdnEdgeActionExecutionFilter';
+            CreateExpanded = 'Az.Cdn.private\New-AzCdnEdgeActionExecutionFilter_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnEdgeActionExecutionFilter_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Cdn.private\New-AzCdnEdgeActionExecutionFilter_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

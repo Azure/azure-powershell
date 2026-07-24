@@ -295,6 +295,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IVirtualMachineScaleSetLifeCycleHookEventsOperations VirtualMachineScaleSetLifeCycleHookEventsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetLifeCycleHookEvents;
+            }
+        }
+
         public IVirtualMachinesOperations VirtualMachinesClient
         {
             get

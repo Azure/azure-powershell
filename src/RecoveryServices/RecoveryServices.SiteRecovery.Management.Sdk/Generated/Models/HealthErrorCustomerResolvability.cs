@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class HealthErrorCustomerResolvability
     {
+        /// <summary>
+        /// Allowed
+        /// </summary>
         public const string Allowed = "Allowed";
+        /// <summary>
+        /// NotAllowed
+        /// </summary>
         public const string NotAllowed = "NotAllowed";
     }
 }

@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
                 }
             }
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1250,7 +1250,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1483,7 +1483,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1891,7 +1891,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2144,7 +2144,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2375,7 +2375,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2625,7 +2625,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2926,7 +2926,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3191,7 +3191,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3404,7 +3404,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3642,7 +3642,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3900,7 +3900,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4131,7 +4131,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4345,7 +4345,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4574,7 +4574,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4809,7 +4809,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5021,7 +5021,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5234,7 +5234,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5444,7 +5444,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5650,7 +5650,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5865,7 +5865,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -6077,7 +6077,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -6296,7 +6296,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -6526,7 +6526,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vmName");
             }
 
-            string apiVersion = "2025-11-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

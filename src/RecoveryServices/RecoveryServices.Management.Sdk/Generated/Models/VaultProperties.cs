@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// <param name="monitoringSettings">Monitoring Settings of the vault
         /// </param>
 
+        /// <param name="costManagementSettings">Cost Management Settings of the vault
+        /// </param>
+
         /// <param name="restoreSettings">Restore Settings of the vault
         /// </param>
 
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
         /// </param>
-        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
+        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), CostManagementSettings costManagementSettings = default(CostManagementSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -92,6 +95,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
             this.BackupStorageVersion = backupStorageVersion;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.MonitoringSettings = monitoringSettings;
+            this.CostManagementSettings = costManagementSettings;
             this.RestoreSettings = restoreSettings;
             this.RedundancySettings = redundancySettings;
             this.SecuritySettings = securitySettings;
@@ -174,6 +178,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "monitoringSettings")]
         public MonitoringSettings MonitoringSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets cost Management Settings of the vault
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "costManagementSettings")]
+        public CostManagementSettings CostManagementSettings {get; set; }
 
         /// <summary>
         /// Gets or sets restore Settings of the vault

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -223,9 +223,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static AdminRulesDeleteHeaders Delete(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
+        public static void Delete(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
         {
-                return ((IAdminRulesOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
+                ((IAdminRulesOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -257,12 +257,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AdminRulesDeleteHeaders> DeleteAsync(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes an admin rule.
@@ -271,7 +268,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -290,9 +287,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static AdminRulesDeleteHeaders BeginDelete(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
+        public static void BeginDelete(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
         {
-                return ((IAdminRulesOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
+                ((IAdminRulesOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -302,7 +299,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -324,12 +321,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AdminRulesDeleteHeaders> BeginDeleteAsync(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IAdminRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network manager security configuration admin rules.

@@ -21,6 +21,9 @@
 * Added External Key Manager (EKM) support for Managed HSM (Preview).
     - New cmdlets `New-AzKeyVaultManagedHsmEkmConnection`, `Update-AzKeyVaultManagedHsmEkmConnection`, `Get-AzKeyVaultManagedHsmEkmConnection`, `Test-AzKeyVaultManagedHsmEkmConnection`, `Remove-AzKeyVaultManagedHsmEkmConnection` and `Get-AzKeyVaultManagedHsmEkmConnectionCertificate` to manage the EKM connection on a Managed HSM.
     - Added `-ExternalKeyId` parameter to `Add-AzKeyVaultKey` to create an EKM-backed external key on a Managed HSM.
+* Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.
+
+## Version 6.5.1
 * Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
 
 ## Version 6.5.0
