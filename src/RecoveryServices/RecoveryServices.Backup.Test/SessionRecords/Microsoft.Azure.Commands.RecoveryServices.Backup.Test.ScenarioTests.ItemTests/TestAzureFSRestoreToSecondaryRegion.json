@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy?api-version=2026-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTRkMTZhMmEtNTZmNi00Yzc1LWIwOTEtMDg0ZGY5NjQwMjk3L3Jlc291cmNlR3JvdXBzL2Fmc2J2dGxvbmdoYXVscmdjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hZnNidnRjcnJsb25naGF1bHZhdWx0Y2N5P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
