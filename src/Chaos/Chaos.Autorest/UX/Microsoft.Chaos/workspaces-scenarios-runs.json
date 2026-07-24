@@ -1,0 +1,105 @@
+{
+  "resourceType": "workspaces/scenarios/runs",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosScenarioRun",
+      "description": "Get a scenario run.\\n\\nThis endpoint is also the polling target for ScenarioConfigurations.execute\\nand ScenarioRuns.cancel (final-state-via: location).\nWhile the run is in\\nprogress the service returns 202 with a Location header pointing back to\\nthis URL; clients must keep polling until they receive 200, which carries\\nthe final ScenarioRun body.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/runs/{runId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenariorun"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-RunId <String>",
+              "-ScenarioName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a scenario run.\\n\\nThis endpoint is also the polling target for ScenarioConfigurations.execute\\nand ScenarioRuns.cancel (final-state-via: location). While the run is in\\nprogress the service returns 202 with a Location header pointing back to\\nthis URL; clients must keep polling until they receive 200, which carries\\nthe final ScenarioRun body.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RunId",
+              "value": "[Path.runId]"
+            },
+            {
+              "name": "-ScenarioName",
+              "value": "[Path.scenarioName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzChaosScenarioRun",
+      "description": "Cancel the currently running scenario execution.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/runs/{runId}/cancel",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/stop-azchaosscenariorun"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-RunId <String>",
+              "-ScenarioName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Cancel the currently running scenario execution.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RunId",
+              "value": "[Path.runId]"
+            },
+            {
+              "name": "-ScenarioName",
+              "value": "[Path.scenarioName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

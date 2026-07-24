@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Chaos
-Module Guid: ca01a43f-b9c7-4e71-a41d-a185e2355c98
+Module Guid: b03ea101-848d-4e29-b18d-079da4ed70ff
 Download Help Link: https://learn.microsoft.com/powershell/module/az.chaos
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,69 +11,85 @@ Locale: en-US
 Microsoft Azure PowerShell: Chaos cmdlets
 
 ## Az.Chaos Cmdlets
-### [Get-AzChaosCapability](Get-AzChaosCapability.md)
-Get a Capability resource that extends a Target resource.
+### [Get-AzChaosDiscoveredResource](Get-AzChaosDiscoveredResource.md)
+Get a discovered resource.
 
-### [Get-AzChaosCapabilityType](Get-AzChaosCapabilityType.md)
-Get a Capability Type resource for given Target Type and location.
+### [Get-AzChaosScenario](Get-AzChaosScenario.md)
+Get a scenario.
 
-### [Get-AzChaosExecutionExperimentDetail](Get-AzChaosExecutionExperimentDetail.md)
-Execution details of an experiment resource.
+### [Get-AzChaosScenarioConfiguration](Get-AzChaosScenarioConfiguration.md)
+Get a scenario definition.
 
-### [Get-AzChaosExperiment](Get-AzChaosExperiment.md)
-Get a Experiment resource.
+### [Get-AzChaosScenarioRun](Get-AzChaosScenarioRun.md)
+Get a scenario run.\n\nThis endpoint is also the polling target for ScenarioConfigurations.execute\nand ScenarioRuns.cancel (final-state-via: location).
+While the run is in\nprogress the service returns 202 with a Location header pointing back to\nthis URL; clients must keep polling until they receive 200, which carries\nthe final ScenarioRun body.
 
-### [Get-AzChaosExperimentExecution](Get-AzChaosExperimentExecution.md)
-Get an execution of an Experiment resource.
+### [Get-AzChaosWorkspace](Get-AzChaosWorkspace.md)
+Get a Workspace resource.
 
-### [Get-AzChaosTarget](Get-AzChaosTarget.md)
-Get a Target resource that extends a tracked regional resource.
+### [Initialize-AzChaosWorkspace](Initialize-AzChaosWorkspace.md)
+Stand up a ready-to-use Chaos Studio workspace end to end.
 
-### [Get-AzChaosTargetType](Get-AzChaosTargetType.md)
-Get a Target Type resources for given location.
+### [Invoke-AzChaosScenarioConfigurationExecution](Invoke-AzChaosScenarioConfigurationExecution.md)
+Execute the scenario execution with the given scenario configuration.
 
-### [New-AzChaosActionObject](New-AzChaosActionObject.md)
-Create an in-memory object for Action.
+### [Invoke-AzChaosWorkspaceScenarioEvaluation](Invoke-AzChaosWorkspaceScenarioEvaluation.md)
+Evaluate a workspace end to end.
 
-### [New-AzChaosBranchObject](New-AzChaosBranchObject.md)
-Create an in-memory object for Branch.
+### [New-AzChaosConfigurationExclusionsObject](New-AzChaosConfigurationExclusionsObject.md)
+Create an in-memory object for ConfigurationExclusions.
 
-### [New-AzChaosCapability](New-AzChaosCapability.md)
-Create a Capability resource that extends a Target resource.
+### [New-AzChaosConfigurationFiltersObject](New-AzChaosConfigurationFiltersObject.md)
+Create an in-memory object for ConfigurationFilters.
 
-### [New-AzChaosExperiment](New-AzChaosExperiment.md)
-Create a Experiment resource.
+### [New-AzChaosExternalResourceObject](New-AzChaosExternalResourceObject.md)
+Create an in-memory object for ExternalResource.
 
-### [New-AzChaosSelectorObject](New-AzChaosSelectorObject.md)
-Create an in-memory object for Selector.
+### [New-AzChaosKeyValuePairObject](New-AzChaosKeyValuePairObject.md)
+Create an in-memory object for KeyValuePair.
 
-### [New-AzChaosStepObject](New-AzChaosStepObject.md)
-Create an in-memory object for Step.
+### [New-AzChaosRunAfterObject](New-AzChaosRunAfterObject.md)
+Create an in-memory object for RunAfter.
 
-### [New-AzChaosTarget](New-AzChaosTarget.md)
-Create a Target resource that extends a tracked regional resource.
+### [New-AzChaosScenario](New-AzChaosScenario.md)
+Create a scenario.
 
-### [Remove-AzChaosCapability](Remove-AzChaosCapability.md)
-Delete a Capability that extends a Target resource.
+### [New-AzChaosScenarioActionObject](New-AzChaosScenarioActionObject.md)
+Create an in-memory object for ScenarioAction.
 
-### [Remove-AzChaosExperiment](Remove-AzChaosExperiment.md)
-Delete a Experiment resource.
+### [New-AzChaosScenarioConfiguration](New-AzChaosScenarioConfiguration.md)
+Create a scenario definition.
 
-### [Remove-AzChaosTarget](Remove-AzChaosTarget.md)
-Delete a Target resource that extends a tracked regional resource.
+### [New-AzChaosScenarioParameterObject](New-AzChaosScenarioParameterObject.md)
+Create an in-memory object for ScenarioParameter.
 
-### [Start-AzChaosExperiment](Start-AzChaosExperiment.md)
-Start a Experiment resource.
+### [New-AzChaosWorkspace](New-AzChaosWorkspace.md)
+Create a Workspace resource.
 
-### [Stop-AzChaosExperiment](Stop-AzChaosExperiment.md)
-Cancel a running Experiment resource.
+### [Remove-AzChaosScenario](Remove-AzChaosScenario.md)
+Delete a scenario.
 
-### [Update-AzChaosCapability](Update-AzChaosCapability.md)
-Update a Capability resource that extends a Target resource.
+### [Remove-AzChaosScenarioConfiguration](Remove-AzChaosScenarioConfiguration.md)
+Delete a scenario definition.
 
-### [Update-AzChaosExperiment](Update-AzChaosExperiment.md)
-Update a Experiment resource.
+### [Remove-AzChaosWorkspace](Remove-AzChaosWorkspace.md)
+Delete a Workspace resource.
 
-### [Update-AzChaosTarget](Update-AzChaosTarget.md)
-Update a Target resource that extends a tracked regional resource.
+### [Repair-AzChaosScenarioConfigurationResourcePermission](Repair-AzChaosScenarioConfigurationResourcePermission.md)
+Fixes resource permissions for the given scenario configuration.
+
+### [Start-AzChaosScenarioRun](Start-AzChaosScenarioRun.md)
+Start a scenario run for a scenario configuration.
+
+### [Stop-AzChaosScenarioRun](Stop-AzChaosScenarioRun.md)
+Cancel the currently running scenario execution.
+
+### [Test-AzChaosScenarioConfiguration](Test-AzChaosScenarioConfiguration.md)
+Validate the given scenario configuration.
+
+### [Update-AzChaosWorkspace](Update-AzChaosWorkspace.md)
+Update a Workspace resource.
+
+### [Update-AzChaosWorkspaceRecommendation](Update-AzChaosWorkspaceRecommendation.md)
+Refreshes recommendation status for all scenarios in a given workspace.
 
