@@ -43,7 +43,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"vermapiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"vermapiyush@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:52:45.1399469Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":null}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:52:45.1399469Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":null}}",
       "isContentBase64": false
     }
   },
@@ -133,7 +133,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"vermapiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T09:52:50.242768Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/a10883c6-867b-11f1-90cd-621b9767c155\"}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T09:52:50.242768Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/a10883c6-867b-11f1-90cd-621b9767c155\"}}",
       "isContentBase64": false
     }
   },
@@ -179,7 +179,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"vermapiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T09:52:50.242768Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/a10883c6-867b-11f1-90cd-621b9767c155\"}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T09:52:50.242768Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/a10883c6-867b-11f1-90cd-621b9767c155\"}}",
       "isContentBase64": false
     }
   },
@@ -227,7 +227,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"vermapiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"vermapiyush@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:53:18.3132919Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/a10883c6-867b-11f1-90cd-621b9767c155\"}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:53:18.3132919Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/a10883c6-867b-11f1-90cd-621b9767c155\"}}",
       "isContentBase64": false
     }
   },
@@ -317,7 +317,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"vermapiyush@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T09:53:24.7703701Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\"}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitor8asrty/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:52:45.1399469Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-23T09:53:24.7703701Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\"}}",
       "isContentBase64": false
     }
   }
