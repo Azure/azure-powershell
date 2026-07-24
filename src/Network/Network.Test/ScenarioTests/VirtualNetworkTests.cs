@@ -241,5 +241,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkPrivateEndpointVNetPolicies");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestVirtualNetworkSummarizedGatewayPrefixes()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkSummarizedGatewayPrefixes");
+        }
     }
 }

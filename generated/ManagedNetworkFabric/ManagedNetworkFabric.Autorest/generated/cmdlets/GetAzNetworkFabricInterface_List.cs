@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterface))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"List all the Network Interface resources in a given resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces", ApiVersion = "2023-06-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces", ApiVersion = "2025-07-15")]
     public partial class GetAzNetworkFabricInterface_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IContext

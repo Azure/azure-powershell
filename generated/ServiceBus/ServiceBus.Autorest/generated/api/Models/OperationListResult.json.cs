@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list ServiceBus operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>The list of available operations.</summary>
     public partial class OperationListResult
     {
 
@@ -104,22 +101,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeRead))
+            if (null != this._value)
             {
-                if (null != this._value)
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.XNodeArray();
+                foreach( var __x in this._value )
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._value )
-                    {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                    }
-                    container.Add("value",__w);
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
+                container.Add("value",__w);
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
-            }
+            AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

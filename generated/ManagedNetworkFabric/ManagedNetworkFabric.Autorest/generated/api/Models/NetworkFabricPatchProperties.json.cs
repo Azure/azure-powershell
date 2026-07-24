@@ -77,8 +77,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
-            __networkFabricPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricPatchableProperties(json);
+            {_terminalServerConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("terminalServerConfiguration"), out var __jsonTerminalServerConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TerminalServerPatchConfiguration.FromJson(__jsonTerminalServerConfiguration) : _terminalServerConfiguration;}
+            {_storageAccountConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("storageAccountConfiguration"), out var __jsonStorageAccountConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StorageAccountPatchConfiguration.FromJson(__jsonStorageAccountConfiguration) : _storageAccountConfiguration;}
+            {_uniqueRdConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("uniqueRdConfiguration"), out var __jsonUniqueRdConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UniqueRouteDistinguisherPatchProperties.FromJson(__jsonUniqueRdConfiguration) : _uniqueRdConfiguration;}
+            {_qosConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("qosConfiguration"), out var __jsonQosConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.QosPatchProperties.FromJson(__jsonQosConfiguration) : _qosConfiguration;}
+            {_authorizedTransceiver = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("authorizedTransceiver"), out var __jsonAuthorizedTransceiver) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AuthorizedTransceiverPatchProperties.FromJson(__jsonAuthorizedTransceiver) : _authorizedTransceiver;}
+            {_annotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("annotation"), out var __jsonAnnotation) ? (string)__jsonAnnotation : (string)_annotation;}
+            {_rackCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("rackCount"), out var __jsonRackCount) ? (int?)__jsonRackCount : _rackCount;}
+            {_serverCountPerRack = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("serverCountPerRack"), out var __jsonServerCountPerRack) ? (int?)__jsonServerCountPerRack : _serverCountPerRack;}
+            {_ipv4Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ipv4Prefix"), out var __jsonIpv4Prefix) ? (string)__jsonIpv4Prefix : (string)_ipv4Prefix;}
+            {_ipv6Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ipv6Prefix"), out var __jsonIpv6Prefix) ? (string)__jsonIpv6Prefix : (string)_ipv6Prefix;}
+            {_fabricAsn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("fabricASN"), out var __jsonFabricAsn) ? (long?)__jsonFabricAsn : _fabricAsn;}
+            {_hardwareAlertThreshold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("hardwareAlertThreshold"), out var __jsonHardwareAlertThreshold) ? (int?)__jsonHardwareAlertThreshold : _hardwareAlertThreshold;}
+            {_controlPlaneAcls = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("controlPlaneAcls"), out var __jsonControlPlaneAcls) ? If( __jsonControlPlaneAcls as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _controlPlaneAcls;}
+            {_trustedIPPrefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("trustedIpPrefixes"), out var __jsonTrustedIPPrefixes) ? If( __jsonTrustedIPPrefixes as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _trustedIPPrefix;}
+            {_featureFlag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("featureFlags"), out var __jsonFeatureFlags) ? If( __jsonFeatureFlags as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.FeatureFlagProperties.FromJson(__k) )) ))() : null : _featureFlag;}
+            {_managementNetworkConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("managementNetworkConfiguration"), out var __jsonManagementNetworkConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagementNetworkPatchConfiguration.FromJson(__jsonManagementNetworkConfiguration) : _managementNetworkConfiguration;}
             AfterFromJson(json);
         }
 
@@ -101,8 +115,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __annotationResource?.ToJson(container, serializationMode);
-            __networkFabricPatchableProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._terminalServerConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._terminalServerConfiguration.ToJson(null,serializationMode) : null, "terminalServerConfiguration" ,container.Add );
+            AddIf( null != this._storageAccountConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._storageAccountConfiguration.ToJson(null,serializationMode) : null, "storageAccountConfiguration" ,container.Add );
+            AddIf( null != this._uniqueRdConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._uniqueRdConfiguration.ToJson(null,serializationMode) : null, "uniqueRdConfiguration" ,container.Add );
+            AddIf( null != this._qosConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._qosConfiguration.ToJson(null,serializationMode) : null, "qosConfiguration" ,container.Add );
+            AddIf( null != this._authorizedTransceiver ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._authorizedTransceiver.ToJson(null,serializationMode) : null, "authorizedTransceiver" ,container.Add );
+            AddIf( null != (((object)this._annotation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._annotation.ToString()) : null, "annotation" ,container.Add );
+            AddIf( null != this._rackCount ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._rackCount) : null, "rackCount" ,container.Add );
+            AddIf( null != this._serverCountPerRack ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._serverCountPerRack) : null, "serverCountPerRack" ,container.Add );
+            AddIf( null != (((object)this._ipv4Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._ipv4Prefix.ToString()) : null, "ipv4Prefix" ,container.Add );
+            AddIf( null != (((object)this._ipv6Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._ipv6Prefix.ToString()) : null, "ipv6Prefix" ,container.Add );
+            AddIf( null != this._fabricAsn ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((long)this._fabricAsn) : null, "fabricASN" ,container.Add );
+            AddIf( null != this._hardwareAlertThreshold ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._hardwareAlertThreshold) : null, "hardwareAlertThreshold" ,container.Add );
+            if (null != this._controlPlaneAcls)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __x in this._controlPlaneAcls )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("controlPlaneAcls",__w);
+            }
+            if (null != this._trustedIPPrefix)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._trustedIPPrefix )
+                {
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                }
+                container.Add("trustedIpPrefixes",__r);
+            }
+            if (null != this._featureFlag)
+            {
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __n in this._featureFlag )
+                {
+                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                }
+                container.Add("featureFlags",__m);
+            }
+            AddIf( null != this._managementNetworkConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._managementNetworkConfiguration.ToJson(null,serializationMode) : null, "managementNetworkConfiguration" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

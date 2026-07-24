@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate", ApiVersion = "2026-04-01-preview")]
     public partial class MoveAzCdnProfile_MigrateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         Description = @"Name of the pricing tier.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Classic_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
         public string SkuName { get => _migrationParametersBody.SkuName ?? null; set => _migrationParametersBody.SkuName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>

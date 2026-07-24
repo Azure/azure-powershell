@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of Access Control Lists.</summary>
+    /// <summary>Paged collection of AccessControlList items</summary>
     [System.ComponentModel.TypeConverter(typeof(AccessControlListsListResultTypeConverter))]
     public partial class AccessControlListsListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of Access Control Lists.
+    /// Paged collection of AccessControlList items
     [System.ComponentModel.TypeConverter(typeof(AccessControlListsListResultTypeConverter))]
     public partial interface IAccessControlListsListResult
 

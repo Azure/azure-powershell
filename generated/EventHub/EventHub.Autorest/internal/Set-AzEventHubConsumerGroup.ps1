@@ -56,15 +56,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
-    # Name of the resource group within the azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

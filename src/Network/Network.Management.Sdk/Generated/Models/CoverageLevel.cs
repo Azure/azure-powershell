@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class CoverageLevel
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// Low
+        /// </summary>
         public const string Low = "Low";
+        /// <summary>
+        /// BelowAverage
+        /// </summary>
         public const string BelowAverage = "BelowAverage";
+        /// <summary>
+        /// Average
+        /// </summary>
         public const string Average = "Average";
+        /// <summary>
+        /// AboveAverage
+        /// </summary>
         public const string AboveAverage = "AboveAverage";
+        /// <summary>
+        /// Full
+        /// </summary>
         public const string Full = "Full";
     }
 }

@@ -46,9 +46,9 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 IPRULE <INwRuleSetIPRules[]>: List of IpRules
   [Action <String>]: The IP Filter Action
@@ -59,7 +59,7 @@ PARAMETER <INetworkRuleSet>: Description of topic resource.
   [IPRule <List<INwRuleSetIPRules>>]: List of IpRules
     [Action <String>]: The IP Filter Action
     [IPMask <String>]: IP Mask
-  [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
+  [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
   [TrustedServiceAccessEnabled <Boolean?>]: Value that indicates whether Trusted Service Access is Enabled or not.
   [VirtualNetworkRule <List<INwRuleSetVirtualNetworkRules>>]: List VirtualNetwork Rules
     [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing Vnet Service Endpoint
@@ -84,15 +84,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
-    # Name of the resource group within the azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]

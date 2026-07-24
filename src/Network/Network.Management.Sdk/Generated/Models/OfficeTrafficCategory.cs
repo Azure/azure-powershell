@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class OfficeTrafficCategory
     {
+        /// <summary>
+        /// Optimize
+        /// </summary>
         public const string Optimize = "Optimize";
+        /// <summary>
+        /// OptimizeAndAllow
+        /// </summary>
         public const string OptimizeAndAllow = "OptimizeAndAllow";
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
     }
 }

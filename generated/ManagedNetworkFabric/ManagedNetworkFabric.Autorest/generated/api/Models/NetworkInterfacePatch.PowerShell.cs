@@ -113,9 +113,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkInterfacePatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityPatch) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityPatchTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdditionalDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).AdditionalDescription = (string) content.GetValueForProperty("AdditionalDescription",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).AdditionalDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityPatchUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityPatchUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -138,9 +154,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkInterfacePatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityPatch) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityPatchTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdditionalDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).AdditionalDescription = (string) content.GetValueForProperty("AdditionalDescription",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).AdditionalDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityPatchUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityPatchUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

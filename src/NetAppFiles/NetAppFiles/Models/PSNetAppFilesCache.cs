@@ -88,5 +88,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string GlobalFileLocking { get; set; }
 
         public string WriteBack { get; set; }
+
+        public string FileAccessLogs { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Switch configuration description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)Property).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)Property).Annotation = value ?? null; }
+        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).Annotation = value ?? null; }
 
         /// <summary>Configuration state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
@@ -33,11 +33,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Input method to configure Network Tap Rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string ConfigurationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).ConfigurationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).ConfigurationType = value ?? null; }
+        public string ConfigurationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ConfigurationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ConfigurationType = value ; }
 
         /// <summary>List of dynamic match configurations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).DynamicMatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).DynamicMatchConfiguration = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).DynamicMatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).DynamicMatchConfiguration = value ?? null /* arrayOf */; }
+
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string GlobalNetworkTapRuleActionEnableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).GlobalNetworkTapRuleActionEnableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).GlobalNetworkTapRuleActionEnableCount = value ?? null; }
+
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string GlobalNetworkTapRuleActionTruncate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).GlobalNetworkTapRuleActionTruncate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).GlobalNetworkTapRuleActionTruncate = value ?? null; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -45,55 +53,155 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Id; }
 
+        /// <summary>Backing field for <see cref="Identity" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity _identity;
+
+        /// <summary>The managed service identities assigned to this resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentity()); set => this._identity = value; }
+
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
+
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentitySelectorIdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).IdentitySelectorIdentityType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).IdentitySelectorIdentityType = value ?? null; }
+
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentitySelectorUserAssignedIdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).IdentitySelectorUserAssignedIdentityResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).IdentitySelectorUserAssignedIdentityResourceId = value ?? null; }
+
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
+
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastOperationDetail; }
+
         /// <summary>The last sync timestamp.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public global::System.DateTime? LastSyncedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastSyncedTime; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>List of match configurations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration> MatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).MatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).MatchConfiguration = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration> MatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).MatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).MatchConfiguration = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AdministrativeState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.AdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).AdministrativeState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.AdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).AdministrativeState = value ?? null; }
 
         /// <summary>Internal Acessors for ConfigurationState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.ConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ConfigurationState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.ConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ConfigurationState = value ?? null; }
+
+        /// <summary>Internal Acessors for GlobalNetworkTapRuleAction</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.GlobalNetworkTapRuleAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).GlobalNetworkTapRuleAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).GlobalNetworkTapRuleAction = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Identity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
+
+        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentitySelector</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelector Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.IdentitySelector { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).IdentitySelector; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).IdentitySelector = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for IdentityTenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+
+        /// <summary>Internal Acessors for LastOperation</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.LastOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastOperation = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for LastOperationDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastOperationDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastOperationDetail = value ?? null; }
 
         /// <summary>Internal Acessors for LastSyncedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.LastSyncedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastSyncedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastSyncedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.LastSyncedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastSyncedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).LastSyncedTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for NetworkFabricId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.NetworkFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkFabricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkFabricId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for NetworkTapId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.NetworkTapId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.NetworkTapId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapId = value ?? null; }
+
+        /// <summary>Internal Acessors for NetworkTapIds</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.NetworkTapIds { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapIds; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapIds = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRuleProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).Name; }
 
+        /// <summary>Associated Network Fabric Resource IDs</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> NetworkFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkFabricId; }
+
         /// <summary>The ARM resource Id of the NetworkTap.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public string NetworkTapId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapId; }
+
+        /// <summary>The ARM resource Id of the NetworkTap Rules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> NetworkTapIds { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).NetworkTapIds; }
 
         /// <summary>Polling interval in seconds.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
@@ -102,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleProperties _property;
 
-        /// <summary>Resource properties.</summary>
+        /// <summary>The NetworkTapRule Properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRuleProperties()); set => this._property = value; }
 
@@ -118,31 +226,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
@@ -150,7 +258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Network Tap Rules file URL.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string TapRulesUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).TapRulesUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)Property).TapRulesUrl = value ?? null; }
+        public string TapRulesUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).TapRulesUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)Property).TapRulesUrl = value ?? null; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -191,7 +299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Administrative state of the resource.",
         SerializedName = @"administrativeState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA", "UnderMaintenance", "EnabledDegraded")]
         string AdministrativeState { get;  }
         /// <summary>Switch configuration description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -214,11 +322,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Configuration state of the resource.",
         SerializedName = @"configurationState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
         string ConfigurationState { get;  }
         /// <summary>Input method to configure Network Tap Rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -239,6 +347,120 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"dynamicMatchConfigurations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get; set; }
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable network tap rule counter.",
+        SerializedName = @"enableCount",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string GlobalNetworkTapRuleActionEnableCount { get; set; }
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Truncate. 0 indicates do not truncate.",
+        SerializedName = @"truncate",
+        PossibleTypes = new [] { typeof(string) })]
+        string GlobalNetworkTapRuleActionTruncate { get; set; }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityPrincipalId { get;  }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of managed identity that is being selected.",
+        SerializedName = @"identityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string IdentitySelectorIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentitySelectorUserAssignedIdentityResourceId { get; set; }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityTenantId { get;  }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details status of the last operation performed on the resource.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationDetail { get;  }
         /// <summary>The last sync timestamp.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -261,6 +483,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"matchConfigurations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration> MatchConfiguration { get; set; }
+        /// <summary>Associated Network Fabric Resource IDs</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Associated Network Fabric Resource IDs",
+        SerializedName = @"networkFabricIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> NetworkFabricId { get;  }
         /// <summary>The ARM resource Id of the NetworkTap.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -272,6 +505,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"networkTapId",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkTapId { get;  }
+        /// <summary>The ARM resource Id of the NetworkTap Rules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The ARM resource Id of the NetworkTap Rules.",
+        SerializedName = @"networkTapIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> NetworkTapIds { get;  }
         /// <summary>Polling interval in seconds.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -282,7 +526,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Polling interval in seconds.",
         SerializedName = @"pollingIntervalInSeconds",
         PossibleTypes = new [] { typeof(int) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("30", "60", "90", "120")]
         int? PollingIntervalInSecond { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -314,28 +557,75 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITrackedResourceInternal
     {
         /// <summary>Administrative state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA", "UnderMaintenance", "EnabledDegraded")]
         string AdministrativeState { get; set; }
         /// <summary>Switch configuration description.</summary>
         string Annotation { get; set; }
         /// <summary>Configuration state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Succeeded", "Failed", "Rejected", "Accepted", "Provisioned", "ErrorProvisioning", "Deprovisioning", "Deprovisioned", "ErrorDeprovisioning", "DeferredControl", "Provisioning", "PendingCommit", "PendingAdministrativeUpdate")]
         string ConfigurationState { get; set; }
         /// <summary>Input method to configure Network Tap Rule.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
         string ConfigurationType { get; set; }
         /// <summary>List of dynamic match configurations.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get; set; }
+        /// <summary>Global network tap rule actions</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionProperties GlobalNetworkTapRuleAction { get; set; }
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string GlobalNetworkTapRuleActionEnableCount { get; set; }
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        string GlobalNetworkTapRuleActionTruncate { get; set; }
+        /// <summary>The managed service identities assigned to this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity Identity { get; set; }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        string IdentityPrincipalId { get; set; }
+        /// <summary>
+        /// The selection of the managed identity to use with this storage account. The identity type must be either system assigned
+        /// or user assigned.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelector IdentitySelector { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string IdentitySelectorIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        string IdentitySelectorUserAssignedIdentityResourceId { get; set; }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        string IdentityTenantId { get; set; }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>Details of the last operation performed on the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        string LastOperationDetail { get; set; }
         /// <summary>The last sync timestamp.</summary>
         global::System.DateTime? LastSyncedTime { get; set; }
         /// <summary>List of match configurations.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration> MatchConfiguration { get; set; }
+        /// <summary>Associated Network Fabric Resource IDs</summary>
+        System.Collections.Generic.List<string> NetworkFabricId { get; set; }
         /// <summary>The ARM resource Id of the NetworkTap.</summary>
         string NetworkTapId { get; set; }
+        /// <summary>The ARM resource Id of the NetworkTap Rules.</summary>
+        System.Collections.Generic.List<string> NetworkTapIds { get; set; }
         /// <summary>Polling interval in seconds.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("30", "60", "90", "120")]
         int? PollingIntervalInSecond { get; set; }
-        /// <summary>Resource properties.</summary>
+        /// <summary>The NetworkTapRule Properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleProperties Property { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Updating", "Deleting", "Failed", "Canceled")]

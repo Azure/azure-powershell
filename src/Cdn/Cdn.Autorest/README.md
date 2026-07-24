@@ -32,7 +32,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2025-09-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -42,7 +43,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: c738a642bb7e41ed458ff2b1bb7271a865dcadef
+commit: 9e9079a5d235e0c804e7fbb188258a84b4221571
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -58,14 +59,6 @@ directive:
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
-  - from: swagger-document
-    where: $.definitions
-    transform: >-
-      if ($.EdgeAction) {
-        $.DeliveryRuleEdgeAction = $.EdgeAction;
-        delete $.EdgeAction;
-      }
-      return $;
   - no-inline:
     # AFDX
     - SecurityPolicyPropertiesParameters
@@ -247,6 +240,7 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnProfileUpgradeParametersObject
     - model-name: ProfileChangeSkuWafMapping
       cmdlet-name: New-AzFrontDoorCdnProfileChangeSkuWafMappingObject
+
     - model-name: OriginGroupHealthProbeSetting
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 
@@ -276,26 +270,6 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Patch$|^PatchViaIdentity$|^Check$|^Check1$|^CheckViaIdentity$|^Validate$|^ValidateViaIdentity$
       subject: ^(?!RuleSet).+$
-    remove: true
-
-  # Remove new cmdlets not planned for this release
-  - where:
-      subject: DeploymentVersion
-    remove: true
-  - where:
-      subject: KnowledgeSource
-    remove: true
-  - where:
-      subject: ManagedRuleSet
-    remove: true
-  - where:
-      subject: Policy
-    remove: true
-  - where:
-      subject: ProfileAgent
-    remove: true
-  - where:
-      subject: WebAgent
     remove: true
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -371,6 +345,12 @@ directive:
     hide: true
   - where:
       subject: KeyGroupUpdate
+    hide: true
+
+  # Hide retired classic CDN WAF policy API
+  - where:
+      subject: Policy
+      verb: Get|New|Update|Remove
     hide: true
     
   # Hide New-AzFrontDoorCdnRoute to customize
@@ -499,19 +479,9 @@ directive:
           }
       }
 
-  # Delete operations should not use original-uri because the terminal GET
-  # after a successful delete returns 404. Use azure-async-operation so the
-  # generated LRO path does not re-fetch the deleted resource.
+  # Delete 404
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}"].delete
-    transform: >-
-      $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
-    transform: >-
-      $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
   - from: swagger-document
@@ -523,24 +493,16 @@ directive:
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/agents/{agentName}"].delete
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/keyGroups/{keyGroupName}"].delete
-    transform: >-
-      $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}"].delete
-    transform: >-
-      $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}/knowledgeSources/{knowledgeSourceName}"].delete
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
 
   # --------------------------------------------------------------------------
-  # LRO contract workaround: rewrite final-state-via location → original-uri
+  # LRO contract workaround: rewrite final-state-via location -> original-uri
   # --------------------------------------------------------------------------
   # Many CDN swagger operations declare final-state-via: location but the
   # live service returns 200/201 synchronously with the terminal resource body
@@ -775,6 +737,7 @@ directive:
         $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
       }
       return $;
+
   - where:
       subjectPrefix: Cdn
       subject: Profile
@@ -809,25 +772,4 @@ directive:
         deprecated-by-azversion: 14.4.0
         change-effective-date: 2025/11/01
 
-  # Breaking change: all EdgeAction cmdlets are being removed.
-  # The EdgeAction preview API (2024-07-22-preview) is being retired and will
-  # no longer be exposed by this module.
-  # Affected cmdlets (matched via subjectPrefix: Cdn + subject starting with EdgeAction):
-  #   Add-AzCdnEdgeActionAttachment, Deploy-AzCdnEdgeActionVersionCode,
-  #   Get-AzCdnEdgeAction, Get-AzCdnEdgeActionExecutionFilter,
-  #   Get-AzCdnEdgeActionVersion, Get-AzCdnEdgeActionVersionCode,
-  #   New-AzCdnEdgeAction, New-AzCdnEdgeActionExecutionFilter,
-  #   New-AzCdnEdgeActionVersion, Remove-AzCdnEdgeAction,
-  #   Remove-AzCdnEdgeActionAttachment, Remove-AzCdnEdgeActionExecutionFilter,
-  #   Remove-AzCdnEdgeActionVersion, Update-AzCdnEdgeAction,
-  #   Update-AzCdnEdgeActionExecutionFilter, Update-AzCdnEdgeActionVersion
-  - where:
-      subjectPrefix: Cdn
-      subject: ^EdgeAction.*$
-    set:
-      breaking-change:
-        change-description: All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.
-        deprecated-by-version: 5.4.0
-        deprecated-by-azversion: 14.5.0
-        change-effective-date: 2026/05/15
 ```

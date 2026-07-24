@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewaySslProtocol
     {
+        /// <summary>
+        /// TLSv1_0
+        /// </summary>
         public const string TLSv10 = "TLSv1_0";
+        /// <summary>
+        /// TLSv1_1
+        /// </summary>
         public const string TLSv11 = "TLSv1_1";
+        /// <summary>
+        /// TLSv1_2
+        /// </summary>
         public const string TLSv12 = "TLSv1_2";
+        /// <summary>
+        /// TLSv1_3
+        /// </summary>
         public const string TLSv13 = "TLSv1_3";
     }
 }

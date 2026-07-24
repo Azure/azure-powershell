@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnGatewayTunnelingProtocol
     {
+        /// <summary>
+        /// IkeV2
+        /// </summary>
         public const string IkeV2 = "IkeV2";
+        /// <summary>
+        /// OpenVPN
+        /// </summary>
         public const string OpenVPN = "OpenVPN";
     }
 }

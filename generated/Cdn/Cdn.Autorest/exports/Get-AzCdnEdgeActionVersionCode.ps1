@@ -34,15 +34,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -54,19 +50,14 @@ EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
+  [Version <String>]: The name of the Edge Action version
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -78,8 +69,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
+  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeactionversioncode
 #>
@@ -87,40 +77,29 @@ function Get-AzCdnEdgeActionVersionCode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
-    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the Edge Action
     ${EdgeActionName},
 
-    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
-    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
-    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityEdgeActionExpanded', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the Edge Action version
-    ${Version},
-
-    [Parameter(ParameterSetName='GetExpanded')]
-    [Parameter(ParameterSetName='GetViaJsonString')]
-    [Parameter(ParameterSetName='GetViaJsonFilePath')]
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaJsonFilePath')]
+    [Parameter(ParameterSetName='GetViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -128,25 +107,38 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentityEdgeActionExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityEdgeActionExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${EdgeActionInputObject},
+    [System.String]
+    # The name of the Edge Action version
+    ${Version},
 
-    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityEdgeActionExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${EdgeActionInputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Get operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny]
+    # Anything
+    ${Body},
 
     [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -154,13 +146,11 @@ param(
     # Path of Json file supplied to the Get operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny]
-    # Anything
-    ${Body},
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -257,16 +247,16 @@ begin {
         }
 
         $mapping = @{
-            GetExpanded = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            GetViaJsonString = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            GetViaJsonFilePath = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            Get = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            GetViaIdentityEdgeActionExpanded = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            GetViaIdentityEdgeAction = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            GetViaIdentityExpanded = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
-            GetViaIdentity = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersionCode';
+            Get = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_Get';
+            GetExpanded = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetExpanded';
+            GetViaIdentity = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetViaIdentity';
+            GetViaIdentityEdgeAction = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetViaIdentityEdgeAction';
+            GetViaIdentityEdgeActionExpanded = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetViaIdentityEdgeActionExpanded';
+            GetViaIdentityExpanded = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetViaIdentityExpanded';
+            GetViaJsonFilePath = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.Cdn.private\Get-AzCdnEdgeActionVersionCode_GetViaJsonString';
         }
-        if (('GetExpanded', 'GetViaJsonString', 'GetViaJsonFilePath', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Get', 'GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

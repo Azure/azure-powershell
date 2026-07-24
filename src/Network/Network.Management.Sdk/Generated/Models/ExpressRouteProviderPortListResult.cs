@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteProviderPortListResult class.
         /// </summary>
 
-        /// <param name="value">A list of ExpressRouteProviderPort resources.
+        /// <param name="value">The ExpressRouteProviderPort items on this page
         /// </param>
 
-        /// <param name="nextLink">The URL to get the next set of results.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public ExpressRouteProviderPortListResult(System.Collections.Generic.IList<ExpressRouteProviderPort> value = default(System.Collections.Generic.IList<ExpressRouteProviderPort>), string nextLink = default(string))
+        public ExpressRouteProviderPortListResult(System.Collections.Generic.IList<ExpressRouteProviderPort> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -44,15 +44,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets a list of ExpressRouteProviderPort resources.
+        /// Gets or sets the ExpressRouteProviderPort items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<ExpressRouteProviderPort> Value {get; set; }
 
         /// <summary>
-        /// Gets the URL to get the next set of results.
+        /// Gets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

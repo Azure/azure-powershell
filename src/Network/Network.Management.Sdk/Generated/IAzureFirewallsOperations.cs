@@ -14,16 +14,33 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IAzureFirewallsOperations
     {
         /// <summary>
-        /// Deletes the specified Azure Firewall.
+        /// Gets all the Azure Firewalls in a subscription.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified Azure Firewall.
+        /// Gets all the Azure Firewalls in a subscription.
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListAllWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all Azure Firewalls in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,7 +51,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified Azure Firewall.
@@ -43,7 +63,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified Azure Firewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -69,10 +89,13 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified Azure Firewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='createAfcControlPlane'>
+        /// When set to true, creates an AFC control plane for the Azure Firewall.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Azure Firewall operation.
@@ -89,7 +112,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, bool? createAfcControlPlane = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates tags of an Azure Firewall resource.
@@ -98,7 +121,7 @@ namespace Microsoft.Azure.Management.Network
         /// Updates tags of an Azure Firewall resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -121,61 +144,41 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all Azure Firewalls in a resource group.
+        /// Deletes the specified Azure Firewall.
         /// </summary>
         /// <remarks>
-        /// Lists all Azure Firewalls in a resource group.
+        /// Deletes the specified Azure Firewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets all the Azure Firewalls in a subscription.
-        /// </summary>
-        /// <remarks>
-        /// Gets all the Azure Firewalls in a subscription.
-        /// </remarks>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListAllWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves a list of all IP prefixes that azure firewall has learned to not
-        /// SNAT.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves a list of all IP prefixes that azure firewall has learned to not
-        /// SNAT.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves a list of all IP prefixes that azure firewall has learned to not
+        /// SNAT.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of all IP prefixes that azure firewall has learned to not
+        /// SNAT.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -198,7 +201,7 @@ namespace Microsoft.Azure.Management.Network
         /// Runs a packet capture on AzureFirewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -215,7 +218,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsPacketCaptureHeaders>> PacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Runs a packet capture operation on AzureFirewall.
@@ -224,10 +227,10 @@ namespace Microsoft.Azure.Management.Network
         /// Runs a packet capture operation on AzureFirewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to run packet capture on azure firewall.
@@ -244,30 +247,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse,AzureFirewallsPacketCaptureOperationHeaders>> PacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified Azure Firewall.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified Azure Firewall.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse>> PacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates the specified Azure Firewall.
@@ -276,10 +256,13 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified Azure Firewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='createAfcControlPlane'>
+        /// When set to true, creates an AFC control plane for the Azure Firewall.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Azure Firewall operation.
@@ -296,7 +279,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, bool? createAfcControlPlane = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates tags of an Azure Firewall resource.
@@ -305,7 +288,7 @@ namespace Microsoft.Azure.Management.Network
         /// Updates tags of an Azure Firewall resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -328,6 +311,29 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Deletes the specified Azure Firewall.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified Azure Firewall.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieves a list of all IP prefixes that azure firewall has learned to not
         /// SNAT.
         /// </summary>
@@ -336,10 +342,10 @@ namespace Microsoft.Azure.Management.Network
         /// SNAT.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -362,7 +368,7 @@ namespace Microsoft.Azure.Management.Network
         /// Runs a packet capture on AzureFirewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -379,7 +385,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsPacketCaptureHeaders>> BeginPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Runs a packet capture operation on AzureFirewall.
@@ -388,10 +394,10 @@ namespace Microsoft.Azure.Management.Network
         /// Runs a packet capture operation on AzureFirewall.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to run packet capture on azure firewall.
@@ -408,30 +414,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse,AzureFirewallsPacketCaptureOperationHeaders>> BeginPacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all Azure Firewalls in a resource group.
-        /// </summary>
-        /// <remarks>
-        /// Lists all Azure Firewalls in a resource group.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse>> BeginPacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all the Azure Firewalls in a subscription.
@@ -455,6 +438,29 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListAllNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AzureFirewall>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

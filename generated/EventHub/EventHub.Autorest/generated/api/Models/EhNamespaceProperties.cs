@@ -84,6 +84,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public int? GeoDataReplicationMaxReplicationLagDurationInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IGeoDataReplicationPropertiesInternal)GeoDataReplication).MaxReplicationLagDurationInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IGeoDataReplicationPropertiesInternal)GeoDataReplication).MaxReplicationLagDurationInSecond = value ?? default(int); }
 
+        /// <summary>Backing field for <see cref="IPAddressType" /> property.</summary>
+        private string _iPAddressType;
+
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
+        public string IPAddressType { get => this._iPAddressType; set => this._iPAddressType = value; }
+
         /// <summary>Backing field for <see cref="IsAutoInflateEnabled" /> property.</summary>
         private bool? _isAutoInflateEnabled;
 
@@ -337,6 +347,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         SerializedName = @"maxReplicationLagDurationInSeconds",
         PossibleTypes = new [] { typeof(int) })]
         int? GeoDataReplicationMaxReplicationLagDurationInSecond { get; set; }
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).",
+        SerializedName = @"ipAddressType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+        string IPAddressType { get; set; }
         /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -514,6 +539,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// and 5 minutes to 1 day.
         /// </summary>
         int? GeoDataReplicationMaxReplicationLagDurationInSecond { get; set; }
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+        string IPAddressType { get; set; }
         /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
         bool? IsAutoInflateEnabled { get; set; }
         /// <summary>Value that indicates whether Kafka is enabled for eventhub namespace.</summary>

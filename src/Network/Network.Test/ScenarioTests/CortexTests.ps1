@@ -2075,4 +2075,54 @@ function Test-VirtualHubAndVpnGatewayWithCustomAsn
 	}
 }
 
+function Test-ConnectionPolicyCRUD
+{
+    # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $policyName = "testConnectionPolicy1"
 
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+        Assert-AreEqual $virtualWanName $virtualWan.Name
+
+        # Create the Virtual Hub
+        $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+        Assert-AreEqual $virtualHubName $virtualHub.Name
+
+        # Create a ConnectionPolicy
+        New-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -EnableInternetSecurity
+        $connectionPolicy = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName -Name $policyName
+        Assert-AreEqual $policyName $connectionPolicy.Name
+        Assert-AreEqual $True $connectionPolicy.EnableInternetSecurity
+
+        # List ConnectionPolicies
+        $policies = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName
+        Assert-AreEqual 1 $policies.Count
+
+        # Update the ConnectionPolicy - disable internet security and assert the change
+        $connectionPolicy = Set-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -EnableInternetSecurity $false
+        $connectionPolicy = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName -Name $policyName
+        Assert-AreEqual $policyName $connectionPolicy.Name
+        Assert-AreEqual $False $connectionPolicy.EnableInternetSecurity
+
+        # Delete the ConnectionPolicy
+        $delete = Remove-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -Force -PassThru
+        Assert-AreEqual $True $delete
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}

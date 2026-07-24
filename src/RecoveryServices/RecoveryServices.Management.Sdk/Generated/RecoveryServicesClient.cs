@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
             this.ReplicationUsages = new ReplicationUsagesOperations(this);
             this.Usages = new UsagesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-08-01";
+            this.ApiVersion = "2026-01-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

@@ -186,9 +186,9 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Cdn.custom\Update-AzCdnEdgeActionVersion';
-            UpdateViaJsonFilePath = 'Az.Cdn.custom\Update-AzCdnEdgeActionVersion';
-            UpdateViaJsonString = 'Az.Cdn.custom\Update-AzCdnEdgeActionVersion';
+            UpdateExpanded = 'Az.Cdn.private\Update-AzCdnEdgeActionVersion_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzCdnEdgeActionVersion_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Cdn.private\Update-AzCdnEdgeActionVersion_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

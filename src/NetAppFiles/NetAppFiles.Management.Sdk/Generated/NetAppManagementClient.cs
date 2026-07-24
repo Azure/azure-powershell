@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-01-01";
+            this.ApiVersion = "2026-05-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

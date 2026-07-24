@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="zones">A list of availability zones denoting the IP allocated for the resource
-        /// needs to come from.
+        /// <param name="zones">A list of availability zones denoting where the resource needs to come
+        /// from.
         /// </param>
 
         /// <param name="commissionedState">The commissioned state of the Custom IP Prefix.
@@ -144,8 +144,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets or sets a list of availability zones denoting the IP allocated for the
-        /// resource needs to come from.
+        /// Gets or sets a list of availability zones denoting where the resource needs
+        /// to come from.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
         public System.Collections.Generic.IList<string> Zones {get; set; }

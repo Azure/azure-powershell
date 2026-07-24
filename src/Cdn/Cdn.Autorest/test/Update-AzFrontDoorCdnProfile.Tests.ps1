@@ -25,7 +25,7 @@ Describe 'Update-AzFrontDoorCdnProfile' {
     }
 
     It 'UpdateExpanded' {
-        $rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled
+        $rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
         Update-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11 } -OriginResponseTimeoutSecond 30 -IdentityType SystemAssigned -LogScrubbingRule @($rule) -LogScrubbingState Enabled
         $u = Get-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
         $u.Tag['Tag1'] | Should -Be '11'

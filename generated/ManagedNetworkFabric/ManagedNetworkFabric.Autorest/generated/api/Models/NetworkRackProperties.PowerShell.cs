@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("NetworkRackType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).NetworkRackType = (string) content.GetValueForProperty("NetworkRackType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).NetworkRackType, global::System.Convert.ToString);
@@ -125,9 +129,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ConfigurationState = (string) content.GetValueForProperty("ConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ConfigurationState, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -146,6 +158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("NetworkRackType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).NetworkRackType = (string) content.GetValueForProperty("NetworkRackType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).NetworkRackType, global::System.Convert.ToString);
@@ -162,9 +178,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ConfigurationState = (string) content.GetValueForProperty("ConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).ConfigurationState, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkRackPropertiesInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"IP Address type that needs to be matched.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP", "Bidirectional")]
         string Type { get; set; }
 
     }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Prefix", "LongestPrefix")]
         string PrefixType { get; set; }
         /// <summary>IP Address type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP", "Bidirectional")]
         string Type { get; set; }
 
     }

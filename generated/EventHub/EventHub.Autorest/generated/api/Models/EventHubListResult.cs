@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The result of the List EventHubs operation.</summary>
+    /// <summary>Paged collection of Eventhub items</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.DoNotFormat]
     public partial class EventHubListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubListResult,
@@ -17,16 +17,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of EventHubs.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> _value;
 
-        /// <summary>Result of the List EventHubs operation.</summary>
+        /// <summary>The Eventhub items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> Value { get => this._value; set => this._value = value; }
 
@@ -36,45 +34,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         }
     }
-    /// The result of the List EventHubs operation.
+    /// Paged collection of Eventhub items
     public partial interface IEventHubListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of EventHubs.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results. Not empty if Value contains incomplete list of EventHubs.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Result of the List EventHubs operation.</summary>
+        /// <summary>The Eventhub items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Result of the List EventHubs operation.",
+        Description = @"The Eventhub items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> Value { get; set; }
 
     }
-    /// The result of the List EventHubs operation.
+    /// Paged collection of Eventhub items
     internal partial interface IEventHubListResultInternal
 
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of EventHubs.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Result of the List EventHubs operation.</summary>
+        /// <summary>The Eventhub items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub> Value { get; set; }
 
     }

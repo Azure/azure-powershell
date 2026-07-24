@@ -141,6 +141,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).PublicDnsZone = (System.Collections.Generic.List<string>) content.GetValueForProperty("PublicDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).PublicDnsZone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("ServiceTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ServiceTag = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ReadinessState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ReadinessState = (string) content.GetValueForProperty("ReadinessState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ReadinessState, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).OutboundSupported = (bool?) content.GetValueForProperty("OutboundSupported",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).OutboundSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).Description, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -185,6 +201,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             if (content.Contains("PublicDnsZone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).PublicDnsZone = (System.Collections.Generic.List<string>) content.GetValueForProperty("PublicDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).PublicDnsZone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ServiceTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ServiceTag = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ReadinessState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ReadinessState = (string) content.GetValueForProperty("ReadinessState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).ReadinessState, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).OutboundSupported = (bool?) content.GetValueForProperty("OutboundSupported",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).OutboundSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal)this).Description, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

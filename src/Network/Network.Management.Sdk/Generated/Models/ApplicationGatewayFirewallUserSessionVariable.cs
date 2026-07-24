@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayFirewallUserSessionVariable
     {
+        /// <summary>
+        /// ClientAddr
+        /// </summary>
         public const string ClientAddr = "ClientAddr";
+        /// <summary>
+        /// GeoLocation
+        /// </summary>
         public const string GeoLocation = "GeoLocation";
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// ClientAddrXFFHeader
+        /// </summary>
         public const string ClientAddrXFFHeader = "ClientAddrXFFHeader";
+        /// <summary>
+        /// GeoLocationXFFHeader
+        /// </summary>
         public const string GeoLocationXFFHeader = "GeoLocationXFFHeader";
     }
 }

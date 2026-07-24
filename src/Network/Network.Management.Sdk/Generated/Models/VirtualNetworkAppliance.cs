@@ -56,9 +56,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="ipConfigurations">A list of IPConfigurations of the virtual network appliance.
         /// </param>
 
+        /// <param name="privateIPAddressVersion">Whether the specific virtual network appliance is IPv4 or Dual Stack.
+        /// Default is IPv4.
+        /// Possible values include: &#39;IPv4&#39;, &#39;DualStack&#39;</param>
+
         /// <param name="resourceGuid">The resource GUID property of the virtual network appliance resource.
         /// </param>
-        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), string bandwidthInGbps = default(string), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string resourceGuid = default(string))
+        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -67,6 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Subnet = subnet;
             this.BandwidthInGbps = bandwidthInGbps;
             this.IPConfigurations = ipConfigurations;
+            this.PrivateIPAddressVersion = privateIPAddressVersion;
             this.ResourceGuid = resourceGuid;
             CustomInit();
         }
@@ -100,13 +105,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.bandwidthInGbps")]
-        public string BandwidthInGbps {get; set; }
+        public double? BandwidthInGbps {get; set; }
 
         /// <summary>
         /// Gets a list of IPConfigurations of the virtual network appliance.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipConfigurations")]
         public System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> IPConfigurations {get; private set; }
+
+        /// <summary>
+        /// Gets or sets whether the specific virtual network appliance is IPv4 or Dual
+        /// Stack. Default is IPv4. Possible values include: &#39;IPv4&#39;, &#39;DualStack&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
+        public string PrivateIPAddressVersion {get; set; }
 
         /// <summary>
         /// Gets the resource GUID property of the virtual network appliance resource.

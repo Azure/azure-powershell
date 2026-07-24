@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/providers/Microsoft.Cdn/operations", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/providers/Microsoft.Cdn/operations", ApiVersion = "2026-04-01-preview")]
     public partial class GetAzCdnOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext

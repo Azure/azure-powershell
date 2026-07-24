@@ -12,7 +12,7 @@ Implements Access Control List GET method.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzNetworkFabricAcl [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzNetworkFabricAcl -InputObject <IManagedNetworkFabricIdentity> [-DefaultPro
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzNetworkFabricAcl -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -137,7 +137,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

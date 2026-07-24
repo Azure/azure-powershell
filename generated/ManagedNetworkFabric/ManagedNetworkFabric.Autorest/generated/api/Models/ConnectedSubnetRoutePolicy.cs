@@ -20,15 +20,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy ExportRoutePolicy { get => (this._exportRoutePolicy = this._exportRoutePolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3ExportRoutePolicy()); set => this._exportRoutePolicy = value; }
 
-        /// <summary>Backing field for <see cref="ExportRoutePolicyId" /> property.</summary>
-        private string _exportRoutePolicyId;
-
-        /// <summary>
-        /// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        public string ExportRoutePolicyId { get => this._exportRoutePolicyId; set => this._exportRoutePolicyId = value; }
-
         /// <summary>Creates an new <see cref="ConnectedSubnetRoutePolicy" /> instance.</summary>
         public ConnectedSubnetRoutePolicy()
         {
@@ -50,19 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"exportRoutePolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy) })]
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy ExportRoutePolicy { get; set; }
-        /// <summary>
-        /// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"ARM Resource ID of the Route Policy. This is used for the backward compatibility.",
-        SerializedName = @"exportRoutePolicyId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ExportRoutePolicyId { get; set; }
 
     }
     /// Connected Subnet Route Policy properties.
@@ -71,10 +49,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     {
         /// <summary>Array of ARM Resource ID of the RoutePolicies.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy ExportRoutePolicy { get; set; }
-        /// <summary>
-        /// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
-        /// </summary>
-        string ExportRoutePolicyId { get; set; }
 
     }
 }
