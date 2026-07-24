@@ -1,6 +1,6 @@
 ### Example 1: Update a private endpoint connection
 ```powershell
-Update-AzDiscoveryWorkspacePrivateEndpointConnection -ResourceGroupName "my-rg" -WorkspaceName "my-workspace" -Name "my-pe-connection" -Tag @{Environment="Production"}
+Update-AzDiscoveryWorkspacePrivateEndpointConnection -ResourceGroupName "my-rg" -WorkspaceName "my-workspace" -PrivateEndpointConnectionName "my-pe-connection" -PrivateLinkServiceConnectionStateStatus "Approved" -PrivateLinkServiceConnectionStateDescription "Approved"
 ```
 
 ```output
