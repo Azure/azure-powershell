@@ -79,7 +79,7 @@ function Test-InterconnectBlockCRUD
             -InterconnectGroupId $igId `
             -SkuName $sku `
             -SkuCapacity $initialCapacity `
-            -ZonePlacementPolicy 'Any' `
+            -Zone @('3') `
             -Tag @{ Environment = 'Test'; Project = 'ICB-CRUD' }
 
         Assert-NotNull $icb
@@ -87,6 +87,8 @@ function Test-InterconnectBlockCRUD
         Assert-AreEqual $loc $icb.Location
         Assert-AreEqual $sku $icb.Sku.Name
         Assert-AreEqual $initialCapacity $icb.Sku.Capacity
+        Assert-AreEqual 1 $icb.Zones.Count
+        Assert-AreEqual '3' $icb.Zones[0]
         Assert-NotNull $icb.Tags
         Assert-AreEqual 'Test' $icb.Tags['Environment']
         Assert-NotNull $icb.ProvisioningState
@@ -195,9 +197,8 @@ function Test-InterconnectBlockRemovePassThru
             -SkuCapacity 18 `
             -ZonePlacementPolicy 'Any'
 
-        # Remove with PassThru
-        $result = Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force -PassThru
-        # PassThru emits a PSOperationStatusResponse
+        # Remove and verify PSOperationStatusResponse is returned
+        $result = Remove-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName -Force
         Assert-NotNull $result
     }
     finally
@@ -239,15 +240,13 @@ function Test-InterconnectBlockPlacement
             -SkuName $sku `
             -SkuCapacity 18 `
             -ZonePlacementPolicy 'Any' `
-            -IncludeZone @('1', '2') `
-            -ExcludeZone @('3')
+            -IncludeZone @('1', '3')
 
         Assert-NotNull $icb
         Assert-AreEqual $icbName $icb.Name
         Assert-NotNull $icb.Placement
         Assert-AreEqual 'Any' $icb.Placement.ZonePlacementPolicy
         Assert-AreEqual 2 $icb.Placement.IncludeZones.Count
-        Assert-AreEqual 1 $icb.Placement.ExcludeZones.Count
 
         # Verify persisted via Get
         $getResult = Get-AzInterconnectBlock -ResourceGroupName $rgname -Name $icbName

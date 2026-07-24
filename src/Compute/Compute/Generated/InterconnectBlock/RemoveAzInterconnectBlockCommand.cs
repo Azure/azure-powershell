@@ -54,9 +54,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Skip confirmation prompt.")]
         public SwitchParameter Force { get; set; }
 
