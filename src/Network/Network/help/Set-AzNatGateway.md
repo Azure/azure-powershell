@@ -17,7 +17,7 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <PSResourceId[]>]
  [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
  [-SourceVirtualNetwork <PSResourceId>] [-Nat64 <String>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <P
 Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-PublicIpAddressV6 <PSResourceId[]>]
  [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>] [-SourceVirtualNetwork <PSResourceId>]
  [-Nat64 <String>] [-AsJob] [-IdleTimeoutInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-Publ
 Set-AzNatGateway -InputObject <PSNatGateway> [-PublicIpAddress <PSResourceId[]>]
  [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
  [-SourceVirtualNetwork <PSResourceId>] [-Nat64 <String>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -168,21 +168,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
