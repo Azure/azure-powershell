@@ -40,20 +40,18 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
-  # --- Sanitize the property descriptions that contain backticks. A backtick is
-  #     the PowerShell escape character, so a backtick in a generated double-quoted
-  #     HelpMessage string breaks the model-cmdlet proxy parse. Restate the two
-  #     zone-filter descriptions without backticks. ---
-  - where:
-      model-name: ConfigurationFilters
-      property-name: PhysicalZone
-    set:
-      property-description: "Array of physical availability zone identifiers in '{region}-az{N}' format (for example, 'westus2-az1'). Only resources in the corresponding logical zone for each subscription are included. At execution time, each physical zone is resolved to per-subscription logical zones via the Azure locations API. The resolved mapping is surfaced on the scenario run response. Null or omitted means physical zone targeting is not used. Only one physical zone is supported in preview. Mutually exclusive with the zones filter; set one or the other, not both."
-  - where:
-      model-name: ConfigurationFilters
-      property-name: Zone
-    set:
-      property-description: "Array of availability zone identifiers (for example, 1, 2, 3, or zone-redundant). Only resources whose zones intersect this list are included. Null or omitted means all zones (including non-zonal). An empty array means include nothing. Mutually exclusive with the physicalZones filter; set one or the other, not both."
+  # --- Sanitize the ConfigurationFilters.physicalZones description at the swagger
+  #     source. The generator escapes a double quote as a backtick-quote pair but
+  #     emits the source description's own backticks verbatim. The source text
+  #     contains a backtick immediately before a quote, so the generated
+  #     double-quoted HelpMessage string terminates early and the model-cmdlet
+  #     proxy fails to parse. Restate the description without that sequence. The
+  #     sibling zones description contains quotes but no backtick before a quote,
+  #     so it generates valid PowerShell and needs no transform. ---
+  - from: swagger-document
+    where: $..physicalZones
+    transform: >-
+      $.description = "Array of physical availability zone identifiers in '{region}-az{N}' format (for example, 'westus2-az1'). Only resources in the corresponding logical zone for each subscription are included. At execution time, each physical zone is resolved to per-subscription logical zones via the Azure locations API. The resolved mapping is surfaced on the scenario run response. Null or omitted means physical zone targeting is not used. Only one physical zone is supported in preview. Mutually exclusive with the zones filter; set one or the other, not both."
 
   # --- Prune the retired V1 experiment-era nouns (PR2). The V2 openapi.json still
   #     carries the V1 surface, so directives remove every non-V2 noun. ---
