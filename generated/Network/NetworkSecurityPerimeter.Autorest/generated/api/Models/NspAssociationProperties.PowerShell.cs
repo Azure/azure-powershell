@@ -112,11 +112,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             // actually deserialize
             if (content.Contains("PrivateLinkResource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource) content.GetValueForProperty("PrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResourceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource) content.GetValueForProperty("PrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResourceTypeConverter.ConvertFrom);
             }
             if (content.Contains("Profile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource) content.GetValueForProperty("Profile",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResourceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource) content.GetValueForProperty("Profile",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResourceTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -157,11 +157,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             // actually deserialize
             if (content.Contains("PrivateLinkResource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource) content.GetValueForProperty("PrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResourceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource) content.GetValueForProperty("PrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).PrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResourceTypeConverter.ConvertFrom);
             }
             if (content.Contains("Profile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource) content.GetValueForProperty("Profile",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResourceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile = (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource) content.GetValueForProperty("Profile",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)this).Profile, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResourceTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {

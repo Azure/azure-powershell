@@ -56,16 +56,16 @@ STATEMENT <IRoutePolicyStatementProperties[]>: Route Policy statements.
   SequenceNumber <Int64>: Sequence to insert to/delete from existing route.
   [Annotation <String>]: Switch configuration description.
   [ActionLocalPreference <Int64?>]: Local Preference of the route policy.
+  [AddIPCommunityId <List<String>>]: List of IP Community resource IDs.
+  [AddIPExtendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
   [ConditionIPCommunityId <List<String>>]: List of IP Community resource IDs.
   [ConditionIPExtendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
   [ConditionIPPrefixId <String>]: Arm Resource Id of IpPrefix.
   [ConditionType <String>]: Type of the condition used.
-  [IPCommunityPropertyAddIpcommunityId <List<String>>]: List of IP Community resource IDs.
-  [IPCommunityPropertyDeleteIpcommunityId <List<String>>]: List of IP Community resource IDs.
-  [IPCommunityPropertySetIpcommunityId <List<String>>]: List of IP Community resource IDs.
-  [IPExtendedCommunityPropertyAddIpextendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
-  [IPExtendedCommunityPropertyDeleteIpextendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
-  [IPExtendedCommunityPropertySetIpextendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
+  [DeleteIPCommunityId <List<String>>]: List of IP Community resource IDs.
+  [DeleteIPExtendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
+  [SetIPCommunityId <List<String>>]: List of IP Community resource IDs.
+  [SetIPExtendedCommunityId <List<String>>]: List of IP Extended Community resource IDs.
 .Link
 https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricroutepolicy
 #>
@@ -107,6 +107,13 @@ param(
     # Arm Resource ID of Network Fabric.
     ${NetworkFabricId},
 
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementProperties[]]
+    # Route Policy statements.
+    ${Statement},
+
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("IPv4", "IPv6")]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -128,13 +135,6 @@ param(
     # Default action that needs to be applied when no condition is matched.
     # Example: Permit | Deny.
     ${DefaultAction},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementProperties[]]
-    # Route Policy statements.
-    ${Statement},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -223,6 +223,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -247,8 +255,6 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricRoutePolicy_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -262,6 +268,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

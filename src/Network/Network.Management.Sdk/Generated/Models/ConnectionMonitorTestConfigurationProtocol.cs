@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ConnectionMonitorTestConfigurationProtocol
     {
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Http
+        /// </summary>
         public const string Http = "Http";
+        /// <summary>
+        /// Icmp
+        /// </summary>
         public const string Icmp = "Icmp";
     }
 }

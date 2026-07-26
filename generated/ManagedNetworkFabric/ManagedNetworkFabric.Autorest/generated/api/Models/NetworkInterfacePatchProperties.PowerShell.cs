@@ -111,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("AdditionalDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchPropertiesInternal)this).AdditionalDescription = (string) content.GetValueForProperty("AdditionalDescription",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchPropertiesInternal)this).AdditionalDescription, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
@@ -132,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("AdditionalDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchPropertiesInternal)this).AdditionalDescription = (string) content.GetValueForProperty("AdditionalDescription",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkInterfacePatchPropertiesInternal)this).AdditionalDescription, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);

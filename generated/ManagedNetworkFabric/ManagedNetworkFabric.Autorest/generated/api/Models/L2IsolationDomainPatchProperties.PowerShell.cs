@@ -117,6 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).Mtu = (int?) content.GetValueForProperty("Mtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).Mtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("ExtendedVlan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).ExtendedVlan = (string) content.GetValueForProperty("ExtendedVlan",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).ExtendedVlan, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkToNetworkInterconnectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).NetworkToNetworkInterconnectId = (string) content.GetValueForProperty("NetworkToNetworkInterconnectId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).NetworkToNetworkInterconnectId, global::System.Convert.ToString);
+            }
             if (content.Contains("Annotation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
@@ -141,6 +149,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("Mtu"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).Mtu = (int?) content.GetValueForProperty("Mtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).Mtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExtendedVlan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).ExtendedVlan = (string) content.GetValueForProperty("ExtendedVlan",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).ExtendedVlan, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkToNetworkInterconnectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).NetworkToNetworkInterconnectId = (string) content.GetValueForProperty("NetworkToNetworkInterconnectId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL2IsolationDomainPatchPropertiesInternal)this).NetworkToNetworkInterconnectId, global::System.Convert.ToString);
             }
             if (content.Contains("Annotation"))
             {

@@ -26,6 +26,7 @@ using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -86,6 +87,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The id of the source virtual network using this nat gateway resource.")]
         public PSResourceId SourceVirtualNetwork { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether Nat64 is enabled for the nat gateway resource. Allowed values are None, Enabled, and Disabled.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(MNM.Nat64State.None, MNM.Nat64State.Enabled, MNM.Nat64State.Disabled, IgnoreCase = true)]
+        [PSArgumentCompleter(MNM.Nat64State.None, MNM.Nat64State.Enabled, MNM.Nat64State.Disabled)]
+        public string Nat64 { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -180,6 +189,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.SourceVirtualNetwork != null)
             {
                 this.InputObject.SourceVirtualNetwork = this.SourceVirtualNetwork;
+            }
+
+            if (this.IsParameterBound(c => c.Nat64))
+            {
+                this.InputObject.Nat64 = this.Nat64;
             }
 
             // Map to the sdk object

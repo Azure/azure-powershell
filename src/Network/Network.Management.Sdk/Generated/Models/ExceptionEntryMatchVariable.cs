@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExceptionEntryMatchVariable
     {
+        /// <summary>
+        /// RequestURI
+        /// </summary>
         public const string RequestURI = "RequestURI";
+        /// <summary>
+        /// RemoteAddr
+        /// </summary>
         public const string RemoteAddr = "RemoteAddr";
+        /// <summary>
+        /// RequestHeader
+        /// </summary>
         public const string RequestHeader = "RequestHeader";
     }
 }

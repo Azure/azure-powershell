@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets associated load balancer network interfaces.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.

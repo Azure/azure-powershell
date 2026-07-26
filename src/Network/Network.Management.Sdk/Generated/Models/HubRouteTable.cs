@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// RouteTable resource in a virtual hub.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HubRouteTable : SubResource
+    public partial class HubRouteTable : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the HubRouteTable class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the RouteTable resource.
@@ -53,13 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="propagatingConnections">List of all connections that advertise to this route table.
         /// </param>
-        public HubRouteTable(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<HubRoute> routes = default(System.Collections.Generic.IList<HubRoute>), System.Collections.Generic.IList<string> labels = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> associatedConnections = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> propagatingConnections = default(System.Collections.Generic.IList<string>))
+        public HubRouteTable(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<HubRoute> routes = default(System.Collections.Generic.IList<HubRoute>), System.Collections.Generic.IList<string> labels = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> associatedConnections = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> propagatingConnections = default(System.Collections.Generic.IList<string>))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.Routes = routes;
             this.Labels = labels;
@@ -75,24 +72,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the RouteTable resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
