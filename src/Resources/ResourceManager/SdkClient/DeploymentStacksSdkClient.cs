@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,6 +30,7 @@ using Microsoft.Azure.Management.Resources.DeploymentStacks;
 using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
@@ -846,7 +847,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string validationLevel
         )
         {
-            var actionOnUnmanage = new ActionOnUnmanage
+            var actionOnUnmanage = new Microsoft.Azure.Management.Resources.DeploymentStacks.Models.ActionOnUnmanage
             {
                 Resources = resourcesCleanupAction,
                 ResourceGroups = resourceGroupsCleanupAction,
@@ -1086,7 +1087,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private PSDeploymentStackValidationInfo ValidateDeploymentStack(DeploymentStack deploymentStack, string deploymentStackName, DeploymentStackScope scope, string scopeName = "")
         {
-            var validationResult = RunDeploymentStackValidation(deploymentStack, deploymentStackName, scope, scopeName);   
+            var validationResult = RunDeploymentStackValidation(deploymentStack, deploymentStackName, scope, scopeName);
 
             if (validationResult.Error != null)
             {
@@ -1099,13 +1100,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 WriteError(sb.ToString());
-                
+
                 throw new InvalidOperationException($"Validation for deployment stack '{deploymentStackName}' failed.");
             }
             else
             {
                 WriteVerbose(ProjectResources.TemplateValid);
-                
+
                 return validationResult;
             }
         }

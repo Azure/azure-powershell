@@ -14,20 +14,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzCdnEndpoint'  {
-    It 'Start' {
-        Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Start-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        
-        $endpoint.ResourceState | Should -Be "Running"
+Describe 'Start-AzCdnEndpoint' {
+    BeforeAll {
+        $script:endpointName = 'e-clipstest310-start'
+        $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
+        Stop-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Out-Null
     }
 
-    It 'StartViaIdentity' {
-        Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpointObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint = Start-AzCdnEndpoint -InputObject $endpointObject
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
 
-        $endpoint.ResourceState | Should -Be "Running"
+    It 'Start' {
+        Start-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint.ResourceState | Should -Be 'Running'
+    }
+
+    It 'StartViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'StartViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -38,22 +38,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseError Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponseError()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponseErrorInternal)Error).Target = value ?? null; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]

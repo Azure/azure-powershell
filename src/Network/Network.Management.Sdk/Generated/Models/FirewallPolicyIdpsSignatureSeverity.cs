@@ -14,10 +14,19 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FirewallPolicyIdpsSignatureSeverity
     {
+        /// <summary>
+        /// 1
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "1")]
         One,
+        /// <summary>
+        /// 2
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "2")]
         Two,
+        /// <summary>
+        /// 3
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "3")]
         Three
     }

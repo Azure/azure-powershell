@@ -13,15 +13,45 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallPacketCaptureResponseCode
     {
+        /// <summary>
+        /// NotImplemented
+        /// </summary>
         public const string NotImplemented = "NotImplemented";
+        /// <summary>
+        /// AzureFirewallPacketCaptureStartSucceeded
+        /// </summary>
         public const string AzureFirewallPacketCaptureStartSucceeded = "AzureFirewallPacketCaptureStartSucceeded";
+        /// <summary>
+        /// AzureFirewallPacketCaptureStartFailed
+        /// </summary>
         public const string AzureFirewallPacketCaptureStartFailed = "AzureFirewallPacketCaptureStartFailed";
+        /// <summary>
+        /// AzureFirewallPacketCaptureStartFailedToUpload
+        /// </summary>
         public const string AzureFirewallPacketCaptureStartFailedToUpload = "AzureFirewallPacketCaptureStartFailedToUpload";
+        /// <summary>
+        /// AzureFirewallPacketCaptureStartFailure
+        /// </summary>
         public const string AzureFirewallPacketCaptureStartFailure = "AzureFirewallPacketCaptureStartFailure";
+        /// <summary>
+        /// AzureFirewallPacketCaptureInProgress
+        /// </summary>
         public const string AzureFirewallPacketCaptureInProgress = "AzureFirewallPacketCaptureInProgress";
+        /// <summary>
+        /// AzureFirewallPacketCaptureNotInProgress
+        /// </summary>
         public const string AzureFirewallPacketCaptureNotInProgress = "AzureFirewallPacketCaptureNotInProgress";
+        /// <summary>
+        /// AzureFirewallPacketCaptureStopSucceeded
+        /// </summary>
         public const string AzureFirewallPacketCaptureStopSucceeded = "AzureFirewallPacketCaptureStopSucceeded";
+        /// <summary>
+        /// AzureFirewallPacketCaptureFailed
+        /// </summary>
         public const string AzureFirewallPacketCaptureFailed = "AzureFirewallPacketCaptureFailed";
+        /// <summary>
+        /// AzureFirewallPacketCaptureCompleted
+        /// </summary>
         public const string AzureFirewallPacketCaptureCompleted = "AzureFirewallPacketCaptureCompleted";
     }
 }

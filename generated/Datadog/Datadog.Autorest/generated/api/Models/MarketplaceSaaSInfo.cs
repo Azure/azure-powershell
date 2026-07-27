@@ -43,6 +43,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string MarketplaceSubscriptionId { get => this._marketplaceSubscriptionId; set => this._marketplaceSubscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="OfferId" /> property.</summary>
+        private string _offerId;
+
+        /// <summary>Offer Id of the Marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        public string OfferId { get => this._offerId; set => this._offerId = value; }
+
         /// <summary>Backing field for <see cref="Subscribed" /> property.</summary>
         private bool? _subscribed;
 
@@ -106,6 +113,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"marketplaceSubscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Id of the Marketplace offer",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferId { get; set; }
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -133,6 +151,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string MarketplaceStatus { get; set; }
         /// <summary>Marketplace Subscription Id. This is a GUID-formatted string.</summary>
         string MarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer</summary>
+        string OfferId { get; set; }
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         bool? Subscribed { get; set; }
 

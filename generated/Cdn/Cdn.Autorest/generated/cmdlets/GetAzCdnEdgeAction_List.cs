@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/edgeActions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCdnEdgeAction_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"List EdgeAction resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]

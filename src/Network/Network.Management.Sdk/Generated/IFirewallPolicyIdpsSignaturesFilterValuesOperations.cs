@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Retrieves the current filter values for the signatures overrides
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.

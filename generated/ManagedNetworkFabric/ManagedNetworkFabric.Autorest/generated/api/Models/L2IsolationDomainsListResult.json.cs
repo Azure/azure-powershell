@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of L2 Isolation Domains.</summary>
+    /// <summary>Paged collection of L2IsolationDomain items</summary>
     public partial class L2IsolationDomainsListResult
     {
 

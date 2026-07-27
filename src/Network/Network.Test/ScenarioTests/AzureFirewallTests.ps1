@@ -2221,10 +2221,10 @@ function Test-InvokeAzureFirewallPacketCapture {
         # Create the firewall packet capture parameters
         $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
-        # Invoke a firewall packet capture
-        $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
-        Assert-NotNull $response
-        Assert-AreEqual "Microsoft.Azure.Management.Network.Models.AzureFirewallsPacketCaptureHeaders" $response.GetType().fullname
+        # Invoke a firewall packet capture.
+        # The cmdlet is deprecated and no longer returns a response object (the PUT PacketCapture
+        # call is fire-and-forget), so simply assert that the invocation completes without error.
+        Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
     }
     finally {
         # Cleanup

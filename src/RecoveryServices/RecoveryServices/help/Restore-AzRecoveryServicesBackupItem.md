@@ -359,6 +359,17 @@ WorkloadName    Operation       Status          StartTime              EndTime
 
 In this example, we use DiskAccessOption parameter to trigger a restore to new VM with private access enabled for all disks. DiskAccessOption parameter can be used to specify the disk access option for target disks. The acceptable values for this parameter are: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks. TargetDiskAccessId parameter is used to specify the disk access id for the target disks. This parameter is required when DiskAccessOption is set to EnablePrivateAccessForAllDisks.
 
+### Example 14: Restore disks of a Cross Subscription Backup protected VM to its original location
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $BackupItem
+$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+In this example, the backed up VM resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). Original Location Recovery (OLR) is triggered by omitting the target location parameters (**-TargetResourceGroupName**, **-TargetVMName**, **-TargetVNetName**, **-TargetVNetResourceGroup**, **-TargetSubnetName**, **-TargetSubscriptionId**). The VM's subscription is derived automatically from the recovery point, and the target storage account is resolved in that subscription.
+
 ## PARAMETERS
 
 ### -CVMOsDiskEncryptionSetId

@@ -74,6 +74,25 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CONTROLPLANEACLCONFIGURATION <IControlPlaneAclProperties[]>: Access Control List (ACL) configurations.
+  [IPAddressType <String>]: IP Address Type. IPv4 or IPv6
+  [MatchConfiguration <List<IControlPlaneAclMatchConfigurationProperties>>]: Access Control List (ACL) match configurations.
+    [ActionRemarkComment <String>]: Remark comment
+    [ActionType <String>]: Type of actions that can be performed.
+    [DestinationPort <List<String>>]: List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236
+    [DestinationPortMatchType <String>]: Port match type. Example: eq | neq | gt | lt | range
+    [IPConditionDestinationIpprefix <String>]: List of the destination IP addresses that need to be matched.
+    [IPConditionSourceIpprefix <String>]: List of the source IP addresses that need to be matched.
+    [IcmpConfigurationIcmpType <List<String>>]: Internet Control Message Protocol (ICMP) types
+    [MatchConditionFlag <List<String>>]: Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established
+    [MatchConditionProtocolType <String>]: Protocols that need to be matched.
+    [MatchConfigurationName <String>]: The name of the match configuration.
+    [SequenceNumber <Int64?>]: Sequence Number of the match configuration.
+    [SourcePort <List<String>>]: List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236
+    [SourcePortMatchType <String>]: Port match type. Example: eq | neq | gt | lt | range
+    [TtlMatchConditionTtlMatchType <String>]: TTL [Time To Live] match type. Example: eq | neq | gt | lt | range
+    [TtlMatchConditionTtlValue <String>]: TTL [Time To Live] values that need to be matched.
+
 DYNAMICMATCHCONFIGURATION <ICommonDynamicMatchConfiguration[]>: List of dynamic match configurations.
   [IPGroup <List<IIPGroupProperties>>]: List of IP Groups.
     [IPAddressType <String>]: IP Address type.
@@ -88,7 +107,12 @@ DYNAMICMATCHCONFIGURATION <ICommonDynamicMatchConfiguration[]>: List of dynamic 
 
 MATCHCONFIGURATION <IAccessControlListMatchConfiguration[]>: List of match configurations.
   [Action <List<IAccessControlListAction>>]: List of actions that need to be performed for the matched conditions.
+    [BitRate <Int64?>]: Bitrate.
+    [BitRateUnit <String>]: Bitrate unit.
+    [BurstSize <Int64?>]: Burst size.
+    [BurstSizeUnit <String>]: Burst size unit.
     [CounterName <String>]: Name of the counter block to get match count information.
+    [RemarkComment <String>]: Remark comment
     [Type <String>]: Type of actions that can be performed.
   [IPAddressType <String>]: Type of IP Address. IPv4 or IPv6
   [MatchCondition <List<IAccessControlListMatchCondition>>]: List of the match conditions.
@@ -96,11 +120,13 @@ MATCHCONFIGURATION <IAccessControlListMatchConfiguration[]>: List of match confi
     [EtherType <List<String>>]: List of ether type values that need to be matched.
     [Fragment <List<String>>]: List of IP fragment packets that need to be matched.
     [IPLength <List<String>>]: List of IP Lengths that need to be matched.
-    [PortConditionFlag <List<String>>]: List of protocol flags that need to be matched.
+    [IcmpConfigurationIcmpType <List<String>>]: Internet Control Message Protocol (ICMP) types
+    [PortConditionFlag <List<String>>]: List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
     [PortConditionLayer4Protocol <String>]: Layer4 protocol type that needs to be matched.
     [PortConditionPort <List<String>>]: List of the Ports that need to be matched.
     [PortConditionPortGroupName <List<String>>]: List of the port Group Names that need to be matched.
     [PortConditionPortType <String>]: Port type that needs to be matched.
+    [ProtocolNeighbor <List<String>>]: Protocol neighbors that need to be matched.
     [TtlValue <List<String>>]: List of TTL [Time To Live] values that need to be matched.
   [MatchConfigurationName <String>]: The name of the match configuration.
   [SequenceNumber <Int64?>]: Sequence Number of the match configuration.
@@ -134,10 +160,24 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Input method to configure Access Control List.
+    ${ConfigurationType},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("ControlPlaneTrafficPolicy", "Tenant", "Management", "ControlPlaneAcl")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Access Control List (ACL) Type
+    ${AclType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -152,11 +192,11 @@ param(
     ${Annotation},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [System.String]
-    # Input method to configure Access Control List.
-    ${ConfigurationType},
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclProperties[]]
+    # Access Control List (ACL) configurations.
+    ${ControlPlaneAclConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Permit", "Deny")]
@@ -167,11 +207,25 @@ param(
     ${DefaultAction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("CE", "ToR", "NPB", "ManagementSwitch")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Device Role
+    ${DeviceRole},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]]
     # List of dynamic match configurations.
     ${DynamicMatchConfiguration},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Configuration to enable or disable ACL action count.
+    ${GlobalAccessControlListActionEnableCount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
@@ -267,6 +321,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -291,8 +353,6 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricAcl_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -306,6 +366,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

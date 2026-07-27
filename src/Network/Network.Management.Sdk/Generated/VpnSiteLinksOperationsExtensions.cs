@@ -13,61 +13,16 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VpnSiteLinksOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the details of a VPN site link.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteLinkName'>
-        /// The name of the VpnSiteLink being retrieved.
-        /// </param>
-        public static VpnSiteLink Get(this IVpnSiteLinksOperations operations, string resourceGroupName, string vpnSiteName, string vpnSiteLinkName)
-        {
-                return ((IVpnSiteLinksOperations)operations).GetAsync(resourceGroupName, vpnSiteName, vpnSiteLinkName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a VPN site link.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteLinkName'>
-        /// The name of the VpnSiteLink being retrieved.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VpnSiteLink> GetAsync(this IVpnSiteLinksOperations operations, string resourceGroupName, string vpnSiteName, string vpnSiteLinkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteLinkName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all the vpnSiteLinks in a resource group for a vpn site.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<VpnSiteLink> ListByVpnSite(this IVpnSiteLinksOperations operations, string resourceGroupName, string vpnSiteName)
         {
@@ -81,10 +36,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -92,6 +47,53 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSiteLink>> ListByVpnSiteAsync(this IVpnSiteLinksOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByVpnSiteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a VPN site link.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        /// <param name='vpnSiteLinkName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static VpnSiteLink Get(this IVpnSiteLinksOperations operations, string resourceGroupName, string vpnSiteName, string vpnSiteLinkName)
+        {
+                return ((IVpnSiteLinksOperations)operations).GetAsync(resourceGroupName, vpnSiteName, vpnSiteLinkName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a VPN site link.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        /// <param name='vpnSiteLinkName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VpnSiteLink> GetAsync(this IVpnSiteLinksOperations operations, string resourceGroupName, string vpnSiteName, string vpnSiteLinkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteLinkName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

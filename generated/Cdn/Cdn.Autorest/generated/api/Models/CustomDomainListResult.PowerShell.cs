@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list custom domains. It contains a list of custom domain objects and a URL link to get the next
-    /// set of results.
-    /// </summary>
+    /// <summary>The response of a CustomDomain list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(CustomDomainListResultTypeConverter))]
     public partial class CustomDomainListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list custom domains. It contains a list of custom domain objects and a URL link to get the next
-    /// set of results.
+    /// The response of a CustomDomain list operation.
     [System.ComponentModel.TypeConverter(typeof(CustomDomainListResultTypeConverter))]
     public partial interface ICustomDomainListResult
 
