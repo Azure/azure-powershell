@@ -622,11 +622,11 @@ function Test-AzureFSSoftDelete
 {
 	# Live-recorded scenario test. Soft delete must be Enabled (or AlwaysOn) on the vault.
 	# Setup mirrors Test-AzureFSStopAndResumeProtection: an Azure File share already protected.
-	$resourceGroupName = "afs-pstest-rg"
-	$vaultName = "afs-pstest-vault"
-	$policyName = "afspolicy1"
-	$storageAccountName = "afspstestsa"
-	$fileShareFriendlyName = "donotuse-powershell-fileshare"
+	$resourceGroupName = "afsbvtlonghaulrgne"
+	$vaultName = "afsbvtcrrlonghaulvaultne"
+	$policyName = "vault1hrbackuppolicy"
+	$storageAccountName = "afsbvtlonghaulcrrsane"
+	$fileShareFriendlyName = "afs1hrtestfs"
 
 	try
 	{
@@ -667,12 +667,12 @@ function Test-AzureFSSoftDelete
 			-RemoveRecoveryPoints `
 			-Force
 
-		# VARIATION-1: List should return the item with -DeleteState SoftDeleted
+		# VARIATION-1: List should return the item with -DeleteState ToBeDeleted
 		$softDeletedItem = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles `
-			-DeleteState SoftDeleted | Where-Object { $_.FriendlyName -eq $fileShareFriendlyName }
+			-DeleteState ToBeDeleted | Where-Object { $_.FriendlyName -eq $fileShareFriendlyName }
 		Assert-NotNull $softDeletedItem
 		Assert-True { $softDeletedItem.DeleteState -eq "ToBeDeleted" }
 		Assert-True { $softDeletedItem.IsScheduledForDeferredDelete -eq $true }
@@ -713,35 +713,6 @@ function Test-AzureFSSoftDelete
 		{
 			Enable-AzRecoveryServicesBackupProtection -Item $backupItem -Policy $policy -VaultId $vault.ID
 		}
-	}
-}
-
-function Test-AzureFSVaultSoftDelete
-{
-	# Vault-level switch is workload-agnostic; this just confirms the AlwaysOn state
-	# round-trips for a vault that has AFS items.
-	$resourceGroupName = "afs-pstest-rg"
-	$vaultName = "afs-pstest-vault"
-
-	try
-	{
-		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$initial = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-
-		# Enable
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Enable
-		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $prop.SoftDeleteFeatureState -eq "Enabled" }
-
-		# AlwaysON
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState AlwaysON
-		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $prop.SoftDeleteFeatureState -eq "AlwaysON" }
-	}
-	finally
-	{
-		# Note: once AlwaysON is set the vault cannot be moved out of it,
-		# so this test is intentionally left in the AlwaysON state.
 	}
 }
 

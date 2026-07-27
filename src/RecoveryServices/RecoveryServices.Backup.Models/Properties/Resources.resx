@@ -634,6 +634,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureFileShareCrossRegionRestoreRequestBuildFailed" xml:space="preserve">
     <value>Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support</value>
   </data>
+  <data name="AzureFileShareUndeleteItemNotInSoftDeletedState" xml:space="preserve">
+    <value>The Azure File Share item '{0}' is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is 'ToBeDeleted'</value>
+  </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
     <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
   </data>

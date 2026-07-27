@@ -69,10 +69,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
             {
-                int softDeleteRetentionDays = protectedItem?.SoftDeleteRetentionPeriodInDays ?? 14;
-                if (protectedItem.DeferredDeleteTimeInUtc.HasValue)
+                // Compute DateOfPurge from the service-returned remaining deferred-delete window
+                // (DeferredDeleteTimeRemaining).
+                // avoids relying on SoftDeleteRetentionPeriodInDays, which the service returns under the
+                // differently-named "softDeleteRetentionPeriod" field and the SDK therefore never binds.
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out TimeSpan remaining))
                 {
-                    DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(softDeleteRetentionDays);
+                    DateOfPurge = DateTime.UtcNow.Add(remaining);
                 }
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
@@ -107,13 +110,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
             {
-                // SoftDeleteRetentionPeriodInDays is not exposed on the secondary-region (CRR) model, 
-                // Note: the primary ctor also effectively uses 14 here, because the service returns the JSON
-                // field "softDeleteRetentionPeriod" while the SDK binds "softDeleteRetentionPeriodInDays", effectively using 14
-                int softDeleteRetentionDays = 14;
-                if (protectedItem.DeferredDeleteTimeInUtc.HasValue)
+                // Compute DateOfPurge from the service-returned remaining deferred-delete window
+                // (DeferredDeleteTimeRemaining), avoiding the SoftDeleteRetentionPeriodInDays property
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out TimeSpan remaining))
                 {
-                    DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(softDeleteRetentionDays);
+                    DateOfPurge = DateTime.UtcNow.Add(remaining);
                 }
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }

@@ -1926,6 +1926,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
+        ///   Looks up a localized string similar to The Azure File Share item &apos;{0}&apos; is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is &apos;ToBeDeleted&apos;.
+        /// </summary>
+        public static string AzureFileShareUndeleteItemNotInSoftDeletedState
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareUndeleteItemNotInSoftDeletedState", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
         /// </summary>
         public static string RecoveryPointZonePinnedException

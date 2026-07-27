@@ -173,6 +173,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
 
+            // Undo (rehydrate) is only valid for an item currently in the soft-deleted state.
+            // Guard client-side so a friendly error is thrown instead of a cryptic service rejection.
+            if (item.DeleteState != ItemDeleteState.ToBeDeleted)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileShareUndeleteItemNotInSoftDeletedState, item.FriendlyName));
+            }
+
             Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
