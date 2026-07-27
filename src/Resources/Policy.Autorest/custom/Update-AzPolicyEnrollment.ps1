@@ -16,43 +16,17 @@
 
 <#
 .Synopsis
-This operation update a policy enrollment with the given scope and name.
+This operation update a policy enrollment with the newly provided properties.
 .Description
-This operation update a policy enrollment with the given scope and name.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+The **Update-AzPolicyEnrollment** cmdlet updates a policy enrollment with the newly provided properties. 
+Any properties not provided will be preserved from the existing enrollment.
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPolicyIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The management group ID.
-  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
-  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to get.
-  [PolicyDefinitionName <String>]: The name of the policy definition to get.
-  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyEnrollmentName <String>]: The name of the policy enrollment.
-  [PolicyExemptionName <String>]: The name of the policy exemption to get.
-  [PolicyMode <String>]: The policy mode of the data policy manifest to get.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to get.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the resource.
-  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VariableName <String>]: The name of the variable to operate on.
-  [VariableValueName <String>]: The name of the variable value to operate on.
 
 RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
   [Name <String>]: The name of the resource selector.
@@ -65,7 +39,7 @@ https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyenroll
 #>
 function Update-AzPolicyEnrollment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment])]
-[CmdletBinding(DefaultParameterSetName='UpdateByNameAndScope', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateByNameAndScope', PositionalBinding=$false, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateByNameAndScope', Mandatory, ValueFromPipelineByPropertyName)]
     [Alias('PolicyEnrollmentName')]
@@ -77,13 +51,14 @@ param(
     [Parameter(ParameterSetName='UpdateByNameAndScope', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The fully qualified Azure Resource manager identifier of the resource.
+    # The scope of the policy enrollment.
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='UpdateByInputObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment]
-    # Identity Parameter
+    # The Policy Enrollment object to update.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateById', Mandatory, ValueFromPipelineByPropertyName)]
@@ -94,6 +69,18 @@ param(
     # The ID of the policy enrollment to update.
     # Use the format '{scope}/providers/Microsoft.Authorization/policyEnrollments/{policyEnrollmentName}'.
     ${Id},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The description of the policy enrollment.
+    ${Description},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The display name of the policy enrollment.
+    ${DisplayName},
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotValidate")]
@@ -108,6 +95,22 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # When the associated policy assignment is for a policy set (initiative), this can be used to specify the policy definition reference IDs for policy definitions in the policy set that should be enrolled to.
+    # These IDs correspond to a subset of `policyDefinitions[*].policyDefinitionReferenceId` in the policy set definition. When specified and not empty, only the referenced policy definitions will be enrolled to.
+    # Otherwise, the entire policy set is enrolled to.
+    ${PolicyDefinitionReferenceId},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy enrollment metadata.
+    # Metadata is an open ended object and is typically a collection of key value pairs.
+    ${Metadata},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -205,8 +208,12 @@ process {
 
     $calledParameters = @{}
     # populate called parameters from input object if present (these will be overridden by command-line values below)
+    # only copy the body properties that are valid parameters for New-AzPolicyEnrollment;
+    # iterating all PSObject.Properties would include read-only model fields (Id, Type, SystemData, etc.)
+    # that are not accepted by New-AzPolicyEnrollment and would cause a parameter binding error
     if ($InputObject) {
-        foreach ($property in $InputObject.PSObject.Properties.Name) {
+        $enrollmentBodyProperties = @('AssignmentScopeValidation', 'Description', 'DisplayName', 'Metadata', 'PolicyAssignmentId', 'PolicyDefinitionReferenceId', 'ResourceSelector')
+        foreach ($property in $enrollmentBodyProperties) {
             $value = $InputObject.($property)
             if ($value -or ($value -is [array]) -or ($value -is [switch])) {
                 $calledParameters.($property) = $value
@@ -251,12 +258,8 @@ process {
         $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
     }
 
-    if (!$calledParameters.Metadata -and $existing.Metadata) {
+    if (!$calledParameters.Metadata -and $existing.Metadata -and @($existing.Metadata.PSObject.Properties).Count -gt 0) {
         $calledParameters.Metadata = $existing.Metadata
-    }
-
-    if (!$calledParameters.ETag -and $existing.ETag) {
-        $calledParameters.ETag = $existing.ETag
     }
 
     if ($writeln) {

@@ -322,6 +322,7 @@ function setupEnv() {
     $env['policyAssignmentMissingLocation']  = 'Location needs to be specified if a managed identity is to be assigned to the policy assignment.'
     $env['policyAssignmentMissingIdentityId']  = 'A user assigned identity id needs to be specified if the identity type is ''UserAssigned''.'
     $env['policyExemptionNotFound'] = '[PolicyExemptionNotFound] : '
+    $env['policyEnrollmentNotFound'] = '[PolicyEnrollmentNotFound] : '
     $env['invalidRequestContent'] = '[InvalidRequestContent] : The request content was invalid and could not be deserialized: '
     $env['policyDefinitionParameter'] = 'One of PolicyDefinition or PolicySetDefinition must be provided.'
     $env['missingSubscription'] = '[MissingSubscription] : The request did not have a subscription or a valid tenant level resource provider.'

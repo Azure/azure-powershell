@@ -17,6 +17,9 @@ Gets policy assignments.
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 Gets policy set definitions.
 
+### [Get-AzPolicyEnrollment](Get-AzPolicyEnrollment.md)
+Gets policy enrollments.
+
 ### [Get-AzPolicyExemption](Get-AzPolicyExemption.md)
 Gets policy exemptions.
 
@@ -28,6 +31,9 @@ Creates or updates a policy assignment.
 
 ### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
 Creates or updates a policy definition.
+
+### [New-AzPolicyEnrollment](New-AzPolicyEnrollment.md)
+Creates a policy enrollment.
 
 ### [New-AzPolicyExemption](New-AzPolicyExemption.md)
 Creates or updates a policy exemption.
@@ -41,6 +47,9 @@ The scope of a policy assignment is the part of its ID preceding '/providers/Mic
 
 ### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
 This operation deletes the policy definition in the given subscription with the given name.
+
+### [Remove-AzPolicyEnrollment](Remove-AzPolicyEnrollment.md)
+Deletes a policy enrollment.
 
 ### [Remove-AzPolicyExemption](Remove-AzPolicyExemption.md)
 This operation deletes a policy exemption, given its name and the scope it was created in.
@@ -56,6 +65,9 @@ For example, when you assign a policy at resource group scope, that policy appli
 
 ### [Update-AzPolicyDefinition](Update-AzPolicyDefinition.md)
 This operation updates an existing policy definition in the given subscription or management group with the given name.
+
+### [Update-AzPolicyEnrollment](Update-AzPolicyEnrollment.md)
+This operation update a policy enrollment with the newly provided properties.
 
 ### [Update-AzPolicyExemption](Update-AzPolicyExemption.md)
 This operation updates a policy exemption with the given scope and name.

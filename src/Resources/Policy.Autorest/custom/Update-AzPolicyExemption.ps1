@@ -268,7 +268,7 @@ process {
         $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
     }
 
-    if (!$calledParameters.Metadata) {
+    if (!$calledParameters.Metadata -and $existing.Metadata -and @($existing.Metadata.PSObject.Properties).Count -gt 0) {
         $calledParameters.Metadata = $existing.Metadata
     }
 

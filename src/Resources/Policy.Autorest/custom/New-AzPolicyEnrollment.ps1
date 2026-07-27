@@ -16,17 +16,12 @@
 
 <#
 .Synopsis
-This operation create a policy enrollment with the given scope and name.
-Policy enrollments apply to all resources contained within their scope.
-For example, when you create a policy enrollment at resource group scope for a policy assignment at the same or above level, the enrollment applies to all applicable resources in the resource group.
+Creates a policy enrollment.
 .Description
-This operation create a policy enrollment with the given scope and name.
+This **New-AzPolicyEnrollment** cmdlet creates a policy enrollment with the given scope and name.
 Policy enrollments apply to all resources contained within their scope.
 For example, when you create a policy enrollment at resource group scope for a policy assignment at the same or above level, the enrollment applies to all applicable resources in the resource group.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment
@@ -46,7 +41,7 @@ https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyenrollmen
 #>
 function New-AzPolicyEnrollment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('PolicyEnrollmentName')]
@@ -58,7 +53,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The fully qualified Azure Resource manager identifier of the resource.
+    # The scope of the policy enrollment.
     # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
@@ -84,12 +79,6 @@ param(
     [Parameter(ParameterSetName='Create')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
-    # The ETag for the policy enrollment.
-    ${ETag},
-
-    [Parameter(ParameterSetName='Create')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
     # The policy enrollment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
     ${Metadata},
@@ -104,8 +93,9 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String[]]
-    # The policy definition reference IDs for policy definitions in an assigned policy set definition.These IDs correspond to a subset of `policyDefinitions[*].policyDefinitionReferenceId` in the policy set definition.When specified and not empty, only the referenced policy definitions will be enrolled to.
-    # Otherwise, the entire policy set is enrolled to
+    # When the associated policy assignment is for a policy set (initiative), this can be used to specify the policy definition reference IDs for policy definitions in the policy set that should be enrolled to.
+    # These IDs correspond to a subset of `policyDefinitions[*].policyDefinitionReferenceId` in the policy set definition. When specified and not empty, only the referenced policy definitions will be enrolled to.
+    # Otherwise, the entire policy set is enrolled to.
     ${PolicyDefinitionReferenceId},
 
     [Parameter(ParameterSetName='Create')]
@@ -186,6 +176,11 @@ process {
     }
     elseif ($calledParameters.Metadata) {
         $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+    }
+
+    # this checks if the Metadata is empty and converts it to an empty hashtable so that the internal cmdlet can handle it correctly
+    if ($calledParameters.ContainsKey('Metadata') -and [string]::IsNullOrEmpty($calledParameters.Metadata)) {
+        $calledParameters.Metadata = @{}
     }
 
     # call the internal cmdlet with the parsed parameters

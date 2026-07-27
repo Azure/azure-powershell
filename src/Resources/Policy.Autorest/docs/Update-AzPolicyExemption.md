@@ -215,8 +215,8 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The ID of the policy assignment to delete.
-Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+The ID of the policy exemption to update.
+Use the format '{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ```yaml
 Type: System.String

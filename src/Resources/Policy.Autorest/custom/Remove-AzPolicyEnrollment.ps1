@@ -16,51 +16,20 @@
 
 <#
 .Synopsis
-This operation deletes a policy enrollment, given its name and the scope it was created in.
-The scope of a policy enrollment is the part of its ID preceding '/providers/Microsoft.Authorization/policyEnrollments/{policyEnrollmentName}'.
+Deletes a policy enrollment.
 .Description
-This operation deletes a policy enrollment, given its name and the scope it was created in.
+The **Remove-AzPolicyEnrollment** cmdlet deletes a policy enrollment, given its name and the scope it was created in.
 The scope of a policy enrollment is the part of its ID preceding '/providers/Microsoft.Authorization/policyEnrollments/{policyEnrollmentName}'.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPolicyIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The management group ID.
-  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
-  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to get.
-  [PolicyDefinitionName <String>]: The name of the policy definition to get.
-  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyEnrollmentName <String>]: The name of the policy enrollment.
-  [PolicyExemptionName <String>]: The name of the policy exemption to get.
-  [PolicyMode <String>]: The policy mode of the data policy manifest to get.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to get.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the resource.
-  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VariableName <String>]: The name of the variable to operate on.
-  [VariableValueName <String>]: The name of the variable value to operate on.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicyenrollment
 #>
 function Remove-AzPolicyEnrollment {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='DeleteByNameAndScope', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='DeleteByNameAndScope', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='High')]
 param(
     [Parameter(ParameterSetName='DeleteByNameAndScope', Mandatory, ValueFromPipelineByPropertyName)]
     [Alias('PolicyEnrollmentName')]
@@ -72,7 +41,8 @@ param(
     [Parameter(ParameterSetName='DeleteByNameAndScope', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The fully qualified Azure Resource manager identifier of the resource.
+    # The scope of the policy enrollment.
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='DeleteById', Mandatory, ValueFromPipelineByPropertyName)]
@@ -86,8 +56,8 @@ param(
 
     [Parameter(ParameterSetName='DeleteByInputObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment]
+    # The policy enrollment object to delete.
     ${InputObject},
 
     [Parameter()]
@@ -168,6 +138,9 @@ process {
     if ($Id) {
         $thisId = $Id
     }
+    elseif ($InputObject) {
+        $thisId = $InputObject.Id
+    }
     elseif (!$Scope) {
         $thisId = $_.Id
     }
@@ -196,6 +169,7 @@ process {
         $PSBoundParameters.Scope = $resolved.Scope
 
         $null = $PSBoundParameters.Remove('Id')
+        $null = $PSBoundParameters.Remove('InputObject')
 
         # call the internal cmdlet with the parsed parameters
         $result = Az.Policy.internal\Remove-AzPolicyEnrollment @PSBoundParameters

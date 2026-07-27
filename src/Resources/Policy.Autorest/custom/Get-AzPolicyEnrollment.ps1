@@ -16,43 +16,13 @@
 
 <#
 .Synopsis
-This operation retrieves a single policy enrollment, given its name and the scope it was created at.
+Gets policy enrollments.
 .Description
-This operation retrieves a single policy enrollment, given its name and the scope it was created at.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+The **Get-AzPolicyEnrollment** cmdlet gets a collection of policy enrollments or a specific policy enrollment identified by name or ID.
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyEnrollment
 .Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPolicyIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The management group ID.
-  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
-  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to get.
-  [PolicyDefinitionName <String>]: The name of the policy definition to get.
-  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyEnrollmentName <String>]: The name of the policy enrollment.
-  [PolicyExemptionName <String>]: The name of the policy exemption to get.
-  [PolicyMode <String>]: The policy mode of the data policy manifest to get.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to get.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the resource.
-  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VariableName <String>]: The name of the variable to operate on.
-  [VariableValueName <String>]: The name of the variable value to operate on.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyenrollment
 #>
@@ -71,7 +41,8 @@ param(
     [Parameter(ParameterSetName='ListByScope', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The fully qualified Azure Resource manager identifier of the resource.
+    # The scope of the policy enrollment.
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='GetById', Mandatory, ValueFromPipelineByPropertyName)]
@@ -95,7 +66,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
-    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ListByManagementGroupId', Mandatory, ValueFromPipelineByPropertyName)]
@@ -104,10 +74,15 @@ param(
     # The management group ID.
     ${ManagementGroupId},
 
-    [Parameter(ParameterSetName='ListByResourceGroupName')]
-    [Parameter(ParameterSetName='ListByManagementGroupId')]
-    [Parameter(ParameterSetName='ListBySubscriptionId')]
-    [Parameter(ParameterSetName='ListByScope')]
+    [Parameter(ParameterSetName='ListByResourceGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListBySubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListByScope', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes the list of returned policy enrollments to include all policy enrollments related to the given scope, including those from ancestor scopes and those from descendent scopes. If not provided, only policy enrollments at and above the given scope are included.
+    ${IncludeDescendent},
+
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
     # The filter to apply on the operation.
@@ -204,6 +179,10 @@ process {
         $calledParameters.Scope = $Scope
     }
     else {
+        if (!$IncludeDescendent) {
+            $calledParameters.Filter = 'atScope()'
+        }
+
         # process the scope into other parameters for the list by scope parameter set 
         if ($Scope) {
             $resolved = ResolvePolicyEnrollment $null $Scope $null
@@ -240,6 +219,7 @@ process {
     }
 
     $null = $calledParameters.Remove('Id')
+    $null = $calledParameters.Remove('IncludeDescendent')
 
     # call the internal cmdlet with the parsed parameters
     $object = Az.Policy.internal\Get-AzPolicyEnrollment @calledParameters
