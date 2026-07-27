@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzVMwareVcf5LicenseObject
 }
 
 Describe 'New-AzVMwareVcf5LicenseObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'creates a Vcf5License object and sets expected properties' {
+        $license = New-AzVMwareVcf5LicenseObject -Core 16 -EndDate (Get-Date '2027-01-01Z').ToUniversalTime() -BroadcomSiteId 'site123' -BroadcomContractNumber 'contract123'
+        $license | Should -BeOfType 'Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Vcf5License'
+        $license.Kind | Should -Be 'vcf5'
+        $license.Core | Should -Be 16
+        $license.BroadcomSiteId | Should -Be 'site123'
+        $license.BroadcomContractNumber | Should -Be 'contract123'
     }
 }
