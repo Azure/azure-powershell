@@ -12,15 +12,11 @@ The operation to install patches on a hybrid machine identity in Azure.
 
 ## SYNTAX
 
-### InstallExpanded (Default)
+### InstallViaIdentity (Default)
 ```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -MaximumDuration <String>
- -RebootSetting <String> [-SubscriptionId <String>] [-LinuxParameterClassificationsToInclude <String[]>]
- [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
- [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
- [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
+ -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Install
@@ -30,22 +26,28 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### InstallViaIdentity
+### InstallExpanded
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
- -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -MaximumDuration <TimeSpan>
+ -RebootSetting <String> [-SubscriptionId <String>] [-LinuxParameterClassificationsToInclude <String[]>]
+ [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
+ [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
+ [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
+ [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InstallViaIdentityExpanded
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <String>
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <TimeSpan>
  -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
+ [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InstallViaJsonFilePath
@@ -229,7 +231,7 @@ Specifies the maximum amount of time that the operation will run.
 It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
 
 ```yaml
-Type: System.String
+Type: System.TimeSpan
 Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
@@ -287,6 +289,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -302,6 +305,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -380,6 +384,40 @@ This is used to install patches that were published on or before this given max 
 
 ```yaml
 Type: System.DateTime
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowParameterPatchNameMasksToExclude
+This is used to exclude patches that match the given patch name masks.
+Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list.
+Null, empty and only whitespaces strings as inputs values are not supported.
+
+```yaml
+Type: System.String[]
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowParameterPatchNameMasksToInclude
+This is used to include patches that match the given patch name masks.
+Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list.
+Null, empty and only whitespaces strings as inputs values are not supported.
+
+```yaml
+Type: System.String[]
 Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 

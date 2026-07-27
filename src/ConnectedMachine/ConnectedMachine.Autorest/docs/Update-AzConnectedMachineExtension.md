@@ -312,7 +312,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-The name of the machine where the extension should be created or updated.
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
@@ -419,6 +419,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

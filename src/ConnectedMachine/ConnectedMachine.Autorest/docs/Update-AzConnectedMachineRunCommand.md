@@ -19,7 +19,7 @@ Update-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <St
  [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
  [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
  [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
- [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <SecureString>] [-RunAsUser <String>]
  [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
  [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
  [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -47,7 +47,7 @@ Update-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity> [-A
  [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-RunAsPassword <SecureString>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
  [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -67,7 +67,7 @@ Update-AzConnectedMachineRunCommand -MachineInputObject <IConnectedMachineIdenti
  [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-RunAsPassword <SecureString>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
  [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -389,7 +389,7 @@ Accept wildcard characters: False
 Specifies the user account password on the machine when executing the run command.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMachineExpanded
 Aliases:
 
@@ -525,6 +525,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

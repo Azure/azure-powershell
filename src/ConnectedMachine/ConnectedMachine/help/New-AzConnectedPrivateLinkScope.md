@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-create (or create  a Azure Arc PrivateLinkScope.
+Create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## SYNTAX
@@ -16,8 +16,9 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### CreateExpanded (Default)
 ```
 New-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String>]
- -Location <String> [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-PublicNetworkAccess <String>] [-ServiceExtension <IServiceExtension[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -44,8 +45,8 @@ New-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> 
 ### CreateViaIdentityExpanded
 ```
 New-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity> -Location <String>
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-ServiceExtension <IServiceExtension[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -56,7 +57,7 @@ New-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity>
 ```
 
 ## DESCRIPTION
-create (or create  a Azure Arc PrivateLinkScope.
+Create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## EXAMPLES
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -213,8 +214,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServiceExtension
+Enable private link validation for an Azure Arc Extension.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -229,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
