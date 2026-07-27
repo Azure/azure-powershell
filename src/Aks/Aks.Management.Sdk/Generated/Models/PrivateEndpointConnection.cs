@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// A private endpoint connection
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : Microsoft.Rest.Azure.IResource
+    public partial class PrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
 
-        /// <param name="id">The ID of the private endpoint connection.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the private endpoint connection.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="privateEndpoint">The resource of private endpoint.
@@ -44,12 +50,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="privateLinkServiceConnectionState">A collection of information about the state of the connection between
         /// service consumer and provider.
         /// </param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.PrivateEndpoint = privateEndpoint;
             this.ProvisioningState = provisioningState;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
@@ -61,24 +65,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the ID of the private endpoint connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the private endpoint connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the resource of private endpoint.

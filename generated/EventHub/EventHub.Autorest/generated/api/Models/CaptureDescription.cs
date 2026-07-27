@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A value that indicates whether capture description is enabled. ",
+        Description = @"A value that indicates whether capture description is enabled.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Enabled { get; set; }

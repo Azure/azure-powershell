@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+
+* Upgraded API version from 2024-06-01 to 2026-04-01
+    - Added support for Description field for Key Values and Snapshots
+
 ## Version 2.1.0
 * Upgraded API version from 2022-05-01 to 2024-06-01
 * Added support for App Configuration store replicas

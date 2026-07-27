@@ -59,12 +59,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public int? BfdConfigurationMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).Multiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).Multiplier = value ?? default(int); }
 
+        /// <summary>Backing field for <see cref="BmpConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpProperties _bmpConfiguration;
+
+        /// <summary>InternalNetwork BMP Configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpProperties BmpConfiguration { get => (this._bmpConfiguration = this._bmpConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternalNetworkBmpProperties()); set => this._bmpConfiguration = value; }
+
+        /// <summary>BMP Collector Address.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> BmpConfigurationNeighborIPExclusion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).NeighborIPExclusion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).NeighborIPExclusion = value ?? null /* arrayOf */; }
+
+        /// <summary>BMP Monitoring configuration state.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string BmpConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).BmpConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).BmpConfigurationState = value ?? null; }
+
         /// <summary>Backing field for <see cref="DefaultRouteOriginate" /> property.</summary>
         private string _defaultRouteOriginate;
 
         /// <summary>Originate a defaultRoute. Ex: "True" | "False".</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string DefaultRouteOriginate { get => this._defaultRouteOriginate; set => this._defaultRouteOriginate = value; }
+
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ExportPolicyConfigurationExportPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).ExportPolicyConfigurationExportPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).ExportPolicyConfigurationExportPolicy = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="FabricAsn" /> property.</summary>
         private long? _fabricAsn;
@@ -105,17 +124,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BfdConfiguration { get => (this._bfdConfiguration = this._bfdConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfiguration()); set { {_bfdConfiguration = value;} } }
 
         /// <summary>Internal Acessors for BfdConfigurationAdministrativeState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState = value ?? null; }
+
+        /// <summary>Internal Acessors for BmpConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BmpConfiguration { get => (this._bmpConfiguration = this._bmpConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternalNetworkBmpProperties()); set { {_bmpConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for BmpConfigurationExportPolicyConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.BmpConfigurationExportPolicyConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).ExportPolicyConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpPropertiesInternal)BmpConfiguration).ExportPolicyConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FabricAsn</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfigurationInternal.FabricAsn { get => this._fabricAsn; set { {_fabricAsn = value;} } }
 
         /// <summary>Backing field for <see cref="PeerAsn" /> property.</summary>
-        private long? _peerAsn;
+        private long _peerAsn;
 
         /// <summary>Peer ASN. Example: 65047.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        public long? PeerAsn { get => this._peerAsn; set => this._peerAsn = value; }
+        public long PeerAsn { get => this._peerAsn; set => this._peerAsn = value; }
+
+        /// <summary>Backing field for <see cref="V4OverV6BgpSession" /> property.</summary>
+        private string _v4OverV6BgpSession;
+
+        /// <summary>V4 over V6 bgp session.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string V4OverV6BgpSession { get => this._v4OverV6BgpSession; set => this._v4OverV6BgpSession = value; }
+
+        /// <summary>Backing field for <see cref="V6OverV4BgpSession" /> property.</summary>
+        private string _v6OverV4BgpSession;
+
+        /// <summary>v6 over v4 bgp session.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string V6OverV4BgpSession { get => this._v6OverV4BgpSession; set => this._v6OverV4BgpSession = value; }
 
         /// <summary>Creates an new <see cref="BgpConfiguration" /> instance.</summary>
         public BgpConfiguration()
@@ -200,6 +239,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"multiplier",
         PossibleTypes = new [] { typeof(int) })]
         int? BfdConfigurationMultiplier { get; set; }
+        /// <summary>BMP Collector Address.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"BMP Collector Address.",
+        SerializedName = @"neighborIpExclusions",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> BmpConfigurationNeighborIPExclusion { get; set; }
+        /// <summary>BMP Monitoring configuration state.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"BMP Monitoring configuration state.",
+        SerializedName = @"bmpConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string BmpConfigurationState { get; set; }
         /// <summary>Originate a defaultRoute. Ex: "True" | "False".</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -212,6 +274,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
         string DefaultRouteOriginate { get; set; }
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Export Policy for the BGP Monitoring Protocol (BMP) Configuration.",
+        SerializedName = @"exportPolicies",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Pre-Policy", "Post-Policy", "All", "LocalRib")]
+        System.Collections.Generic.List<string> ExportPolicyConfigurationExportPolicy { get; set; }
         /// <summary>ASN of Network Fabric. Example: 65048.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -269,7 +343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress> Ipv6NeighborAddress { get; set; }
         /// <summary>Peer ASN. Example: 65047.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -277,7 +351,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Peer ASN. Example: 65047.",
         SerializedName = @"peerASN",
         PossibleTypes = new [] { typeof(long) })]
-        long? PeerAsn { get; set; }
+        long PeerAsn { get; set; }
+        /// <summary>V4 over V6 bgp session.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"V4 over V6 bgp session.",
+        SerializedName = @"v4OverV6BgpSession",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string V4OverV6BgpSession { get; set; }
+        /// <summary>v6 over v4 bgp session.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"v6 over v4 bgp session.",
+        SerializedName = @"v6OverV4BgpSession",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string V6OverV4BgpSession { get; set; }
 
     }
     /// BGP configuration properties
@@ -301,9 +399,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         int? BfdConfigurationIntervalInMilliSecond { get; set; }
         /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
         int? BfdConfigurationMultiplier { get; set; }
+        /// <summary>InternalNetwork BMP Configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkBmpProperties BmpConfiguration { get; set; }
+        /// <summary>BMP Export Policy configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyProperties BmpConfigurationExportPolicyConfiguration { get; set; }
+        /// <summary>BMP Collector Address.</summary>
+        System.Collections.Generic.List<string> BmpConfigurationNeighborIPExclusion { get; set; }
+        /// <summary>BMP Monitoring configuration state.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string BmpConfigurationState { get; set; }
         /// <summary>Originate a defaultRoute. Ex: "True" | "False".</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
         string DefaultRouteOriginate { get; set; }
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Pre-Policy", "Post-Policy", "All", "LocalRib")]
+        System.Collections.Generic.List<string> ExportPolicyConfigurationExportPolicy { get; set; }
         /// <summary>ASN of Network Fabric. Example: 65048.</summary>
         long? FabricAsn { get; set; }
         /// <summary>List of BGP IPv4 Listen Range prefixes.</summary>
@@ -315,7 +425,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>List with stringified IPv6 Neighbor Address.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress> Ipv6NeighborAddress { get; set; }
         /// <summary>Peer ASN. Example: 65047.</summary>
-        long? PeerAsn { get; set; }
+        long PeerAsn { get; set; }
+        /// <summary>V4 over V6 bgp session.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string V4OverV6BgpSession { get; set; }
+        /// <summary>v6 over v4 bgp session.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string V6OverV4BgpSession { get; set; }
 
     }
 }

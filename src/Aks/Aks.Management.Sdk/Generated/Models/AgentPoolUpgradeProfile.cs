@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// The list of available upgrades for an agent pool.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AgentPoolUpgradeProfile
+    public partial class AgentPoolUpgradeProfile : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the AgentPoolUpgradeProfile class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the AgentPoolUpgradeProfile class.
         /// </summary>
 
-        /// <param name="id">The ID of the agent pool upgrade profile.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the agent pool upgrade profile.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the agent pool upgrade profile.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="osType">The operating system type. The default is Linux.
@@ -45,12 +51,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="latestNodeImageVersion">The latest AKS supported node image version.
         /// </param>
-        public AgentPoolUpgradeProfile(string osType, string kubernetesVersion, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<AgentPoolUpgradeProfilePropertiesUpgradesItem> upgrades = default(System.Collections.Generic.IList<AgentPoolUpgradeProfilePropertiesUpgradesItem>), string latestNodeImageVersion = default(string))
+        public AgentPoolUpgradeProfile(string osType, string kubernetesVersion, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IList<AgentPoolUpgradeProfilePropertiesUpgradesItem> upgrades = default(System.Collections.Generic.IList<AgentPoolUpgradeProfilePropertiesUpgradesItem>), string latestNodeImageVersion = default(string))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.OSType = osType;
             this.KubernetesVersion = kubernetesVersion;
             this.Upgrades = upgrades;
@@ -63,24 +67,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the ID of the agent pool upgrade profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the agent pool upgrade profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the type of the agent pool upgrade profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the operating system type. The default is Linux. Possible values include: &#39;Linux&#39;, &#39;Windows&#39;
@@ -121,9 +107,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "KubernetesVersion");
             }
-
-
-
 
 
 

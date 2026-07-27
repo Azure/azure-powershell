@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class FailoverDeploymentModel
     {
+        /// <summary>
+        /// NotApplicable
+        /// </summary>
         public const string NotApplicable = "NotApplicable";
+        /// <summary>
+        /// Classic
+        /// </summary>
         public const string Classic = "Classic";
+        /// <summary>
+        /// ResourceManager
+        /// </summary>
         public const string ResourceManager = "ResourceManager";
     }
 }

@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbNamespacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbSkuTypeConverter.ConvertFrom);
@@ -117,13 +121,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbNamespacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -137,13 +161,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("Tag"))
+            if (content.Contains("Encryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.EncryptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {
@@ -161,45 +193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).TenantId, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
+            if (content.Contains("GeoDataReplication"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("Encryption"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.EncryptionTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("UserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplication = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties) content.GetValueForProperty("GeoDataReplication",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("MinimumTlsVersion"))
             {
@@ -253,9 +249,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PremiumMessagingPartition = (int?) content.GetValueForProperty("PremiumMessagingPartition",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PremiumMessagingPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("KeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).KeySource, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("KeyVaultProperty"))
             {
@@ -264,6 +280,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("RequireInfrastructureEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("GeoDataReplicationMaxReplicationLagDurationInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond = (int?) content.GetValueForProperty("GeoDataReplicationMaxReplicationLagDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GeoDataReplicationLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationLocation = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>) content.GetValueForProperty("GeoDataReplicationLocation",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationLocation, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocationTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -282,6 +310,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbNamespacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbSkuTypeConverter.ConvertFrom);
@@ -290,13 +322,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbNamespacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -310,13 +362,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("Tag"))
+            if (content.Contains("Encryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.EncryptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {
@@ -334,45 +394,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).TenantId, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
+            if (content.Contains("GeoDataReplication"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("Encryption"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.EncryptionTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("UserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplication = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties) content.GetValueForProperty("GeoDataReplication",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("MinimumTlsVersion"))
             {
@@ -426,9 +450,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PremiumMessagingPartition = (int?) content.GetValueForProperty("PremiumMessagingPartition",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PremiumMessagingPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("KeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).KeySource, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("KeyVaultProperty"))
             {
@@ -437,6 +481,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("RequireInfrastructureEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("GeoDataReplicationMaxReplicationLagDurationInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond = (int?) content.GetValueForProperty("GeoDataReplicationMaxReplicationLagDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GeoDataReplicationLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationLocation = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>) content.GetValueForProperty("GeoDataReplicationLocation",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal)this).GeoDataReplicationLocation, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocationTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="agentReinstallState">The agent auto reinstall state.
-        /// </param>
+        /// Possible values include: &#39;UserTriggered&#39;, &#39;AutoTriggered&#39;</param>
 
         /// <param name="lastAgentReinstallType">The last agent reinstall type.
         /// </param>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="reasonsBlockingReinstallDetails">whether reinstall is possible or not.
         /// </param>
-        public InMageRcmMobilityAgentDetails(string version = default(string), string latestVersion = default(string), string latestAgentReleaseDate = default(string), string driverVersion = default(string), string latestUpgradableVersionWithoutReboot = default(string), System.DateTime? agentVersionExpiryDate = default(System.DateTime?), System.DateTime? driverVersionExpiryDate = default(System.DateTime?), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), System.Collections.Generic.IList<string> reasonsBlockingUpgrade = default(System.Collections.Generic.IList<string>), string isUpgradeable = default(string), System.Collections.Generic.IList<string> agentReinstallState = default(System.Collections.Generic.IList<string>), string lastAgentReinstallType = default(string), string agentReinstallJobId = default(string), string agentReinstallAttemptToVersion = default(string), string osFamilyName = default(string), string distroName = default(string), string distroNameForWhichAgentIsInstalled = default(string), bool? isAgentUpgradeable = default(bool?), bool? isAgentReinstallRequired = default(bool?), bool? isLastReinstallSuccessful = default(bool?), System.Collections.Generic.IList<string> reasonsBlockingReinstall = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails> reasonsBlockingReinstallDetails = default(System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails>))
+        public InMageRcmMobilityAgentDetails(string version = default(string), string latestVersion = default(string), string latestAgentReleaseDate = default(string), string driverVersion = default(string), string latestUpgradableVersionWithoutReboot = default(string), System.DateTime? agentVersionExpiryDate = default(System.DateTime?), System.DateTime? driverVersionExpiryDate = default(System.DateTime?), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), System.Collections.Generic.IList<string> reasonsBlockingUpgrade = default(System.Collections.Generic.IList<string>), string isUpgradeable = default(string), string agentReinstallState = default(string), string lastAgentReinstallType = default(string), string agentReinstallJobId = default(string), string agentReinstallAttemptToVersion = default(string), string osFamilyName = default(string), string distroName = default(string), string distroNameForWhichAgentIsInstalled = default(string), bool? isAgentUpgradeable = default(bool?), bool? isAgentReinstallRequired = default(bool?), bool? isLastReinstallSuccessful = default(bool?), System.Collections.Generic.IList<string> reasonsBlockingReinstall = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails> reasonsBlockingReinstallDetails = default(System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails>))
 
         {
             this.Version = version;
@@ -184,10 +184,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string IsUpgradeable {get; private set; }
 
         /// <summary>
-        /// Gets the agent auto reinstall state.
+        /// Gets the agent auto reinstall state. Possible values include: &#39;UserTriggered&#39;, &#39;AutoTriggered&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "agentReinstallState")]
-        public System.Collections.Generic.IList<string> AgentReinstallState {get; private set; }
+        public string AgentReinstallState {get; private set; }
 
         /// <summary>
         /// Gets the last agent reinstall type.

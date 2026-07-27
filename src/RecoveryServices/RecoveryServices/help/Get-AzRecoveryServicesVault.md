@@ -94,6 +94,19 @@ Enabled
 
 The first cmdlet gets the vault in resource group with given name. The second, third and fourth commands are used to fetch the encryption properties (KeyUri, KekIdentity and infrastructure encryption) of the vault for CMK.
 
+### Example 5: Get CostManagementSettings of the vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$vault.Properties.CostManagementSettings.GranularityLevel
+```
+
+```output
+ProtectedItemLevel
+```
+
+The first cmdlet gets the vault in resource group with given name. The second command fetches the cost management granularity level setting of the vault.
+
 ## PARAMETERS
 
 ### -DefaultProfile

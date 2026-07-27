@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class IssueType
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// AgentStopped
+        /// </summary>
         public const string AgentStopped = "AgentStopped";
+        /// <summary>
+        /// GuestFirewall
+        /// </summary>
         public const string GuestFirewall = "GuestFirewall";
+        /// <summary>
+        /// DnsResolution
+        /// </summary>
         public const string DnsResolution = "DnsResolution";
+        /// <summary>
+        /// SocketBind
+        /// </summary>
         public const string SocketBind = "SocketBind";
+        /// <summary>
+        /// NetworkSecurityRule
+        /// </summary>
         public const string NetworkSecurityRule = "NetworkSecurityRule";
+        /// <summary>
+        /// UserDefinedRoute
+        /// </summary>
         public const string UserDefinedRoute = "UserDefinedRoute";
+        /// <summary>
+        /// PortThrottled
+        /// </summary>
         public const string PortThrottled = "PortThrottled";
+        /// <summary>
+        /// Platform
+        /// </summary>
         public const string Platform = "Platform";
     }
 }

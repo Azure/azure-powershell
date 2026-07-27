@@ -44,7 +44,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public bool? EncryptionRequireInfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption = value ?? default(bool); }
 
-        /// <summary>Resource Id</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Id; }
 
@@ -80,51 +82,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         public string MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).MetricId; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Type = value ?? null; }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Encryption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for MetricId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).MetricId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).MetricId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbNamespaceUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ServiceBusEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.ServiceBusEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ServiceBusEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ServiceBusEndpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.ServiceBusEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ServiceBusEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).ServiceBusEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSku Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbSku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for UpdatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).UpdatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParametersInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).UpdatedAt = value ?? default(global::System.DateTime); }
 
-        /// <summary>Resource name</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Name; }
 
@@ -174,11 +197,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdatePropertiesInternal)Property).Status; }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedByType; }
+
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceNamespacePatchTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceNamespacePatchInternal)__resourceNamespacePatch).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceNamespacePatchInternal)__resourceNamespacePatch).Tag = value ?? null /* model class */; }
 
-        /// <summary>Resource type</summary>
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__resourceNamespacePatch).Type; }
 

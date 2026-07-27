@@ -2,7 +2,7 @@
 function Remove-CommonParameterFromMarkdown {
     <#
         .SYNOPSIS
-            Remove a PlatyPS generated parameter block.
+            Remove a Microsoft.PowerShell.PlatyPS generated parameter block.
         .DESCRIPTION
             Removes parameter block for the provided parameter name from the markdown file provided.
     #>

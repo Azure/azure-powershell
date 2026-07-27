@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SlotType
     {
+        /// <summary>
+        /// Production
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Production")]
         Production,
+        /// <summary>
+        /// Staging
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Staging")]
         Staging
     }

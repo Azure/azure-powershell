@@ -11,7 +11,7 @@ steps:
 - task: NodeTool@0
   displayName: Install autorest
   inputs:
-    versionSpec: '20.19.6'
+    versionSpec: '24.16.0'
     command: custom
     verbose: false
     customCommand: install autorest@latest
@@ -27,7 +27,9 @@ steps:
     packageType: sdk
     version: 8.x
 
-- pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
+- pwsh: |
+    Install-Module "Microsoft.PowerShell.PlatyPS" -MinimumVersion 1.0.2 -Force -Confirm:$false -Scope CurrentUser
+    Install-Module "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser
   displayName: 'Install PowerShell Dependencies'
 
 - task: PowerShell@2

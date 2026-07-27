@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Pool of backend IP addresses.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BackendAddressPool : SubResource
+    public partial class BackendAddressPool : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the BackendAddressPool class.
@@ -28,15 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of backend address
-        /// pools used by the load balancer. This name can be used to access the
-        /// resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the backend address pool resource.
@@ -79,13 +77,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="virtualNetwork">A reference to a virtual network.
         /// </param>
-        public BackendAddressPool(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string syncMode = default(string), string location = default(string), System.Collections.Generic.IList<GatewayLoadBalancerTunnelInterface> tunnelInterfaces = default(System.Collections.Generic.IList<GatewayLoadBalancerTunnelInterface>), System.Collections.Generic.IList<LoadBalancerBackendAddress> loadBalancerBackendAddresses = default(System.Collections.Generic.IList<LoadBalancerBackendAddress>), System.Collections.Generic.IList<NetworkInterfaceIPConfiguration> backendIPConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceIPConfiguration>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), SubResource outboundRule = default(SubResource), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), int? drainPeriodInSeconds = default(int?), SubResource virtualNetwork = default(SubResource))
+        public BackendAddressPool(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string syncMode = default(string), string location = default(string), System.Collections.Generic.IList<GatewayLoadBalancerTunnelInterface> tunnelInterfaces = default(System.Collections.Generic.IList<GatewayLoadBalancerTunnelInterface>), System.Collections.Generic.IList<LoadBalancerBackendAddress> loadBalancerBackendAddresses = default(System.Collections.Generic.IList<LoadBalancerBackendAddress>), System.Collections.Generic.IList<NetworkInterfaceIPConfiguration> backendIPConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceIPConfiguration>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), SubResource outboundRule = default(SubResource), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), int? drainPeriodInSeconds = default(int?), SubResource virtualNetwork = default(SubResource))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.SyncMode = syncMode;
             this.Location = location;
@@ -108,25 +104,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of
-        /// backend address pools used by the load balancer. This name can be used to
-        /// access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the backend address pool resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

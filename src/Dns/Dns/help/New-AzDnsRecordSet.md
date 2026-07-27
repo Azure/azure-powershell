@@ -29,6 +29,14 @@ New-AzDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String>
  [-Confirm] [<CommonParameters>]
 ```
 
+### TmFields
+```
+New-AzDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
+ -RecordType <RecordType> -TrafficManagerProfileId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>]
+ [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### Object
 ```
 New-AzDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
@@ -41,6 +49,14 @@ New-AzDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <Rec
 ```
 New-AzDnsRecordSet -Name <String> -Zone <DnsZone> [-Ttl <UInt32>] -RecordType <RecordType>
  -TargetResourceId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TmObject
+```
+New-AzDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
+ -TrafficManagerProfileId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -207,6 +223,15 @@ This command creates a **RecordSet**.
 The *Overwrite* parameter ensures that this record set overwrites any pre-existing record set with the same name and type (existing records in that record set are lost).
 The *Confirm* parameter with a value of $False suppresses the confirmation prompt.
 
+### Example 13: Create a record set with a Traffic Manager profile (TMLink)
+```powershell
+$RecordSet = New-AzDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Ttl 3600 -TrafficManagerProfileId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Network/trafficManagerProfiles/myprofile"
+```
+
+This command creates a **RecordSet** named www in the zone myzone.com linked to an Azure Traffic Manager profile (TMLink).
+The *TrafficManagerProfileId* parameter accepts the full ARM resource Id of a Traffic Manager profile.
+This is an empty record set, which acts as a placeholder to which you can later add records.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -321,7 +346,7 @@ Alternatively, you can specify the zone and resource group by passing in a DNS Z
 
 ```yaml
 Type: System.String
-Parameter Sets: Fields, AliasFields
+Parameter Sets: Fields, AliasFields, TmFields
 Aliases:
 
 Required: True
@@ -337,6 +362,23 @@ Alias Target Resource Id.
 ```yaml
 Type: System.String
 Parameter Sets: AliasFields, AliasObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficManagerProfileId
+Specifies the full resource Id of an Azure Traffic Manager profile to create a TMLink record set.
+This links the DNS record set to a Traffic Manager profile, enabling traffic management capabilities.
+This parameter is mutually exclusive with *TargetResourceId*.
+  
+```yaml
+Type: System.String
+Parameter Sets: TmFields, TmObject
 Aliases:
 
 Required: True
@@ -373,13 +415,25 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.UInt32
+Parameter Sets: TmFields, TmObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Zone
 Specifies the DnsZone in which to create the **RecordSet**.
 Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Dns.DnsZone
-Parameter Sets: Object, AliasObject
+Parameter Sets: Object, AliasObject, TmObject
 Aliases:
 
 Required: True
@@ -396,7 +450,7 @@ Alternatively, you can specify the zone and resource group by passing in a DNS Z
 
 ```yaml
 Type: System.String
-Parameter Sets: Fields, AliasFields
+Parameter Sets: Fields, AliasFields, TmFields
 Aliases:
 
 Required: True

@@ -212,15 +212,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var protectedItemsQueryParameter =
                 new ProtectedItemsQueryParameter { RecoveryPlanName = recoveryPlanName };
-            var odataQuery =
-                new ODataQuery<ProtectedItemsQueryParameter>(
-                    protectedItemsQueryParameter.ToQueryString());
+            var filter = protectedItemsQueryParameter.ToQueryString();
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.ListWithHttpMessagesAsync(
                     asrVaultCreds.ResourceGroupName,
                     asrVaultCreds.ResourceName,
-                    odataQuery,
                     null,
+                    filter,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
@@ -640,5 +638,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
+    }
+
+    /// <summary>
+    /// Query parameter to enumerate protected items, used to build the OData $filter string for the
+    /// replication protected items list operation. Replaces the generated SDK type that was removed
+    /// when the 2026-02-01 API dropped the x-ms-odata annotation on the list operation (the $filter
+    /// is now passed as a plain string). The property names are used by ToQueryString() to build the
+    /// filter, so they must match the original schema property names.
+    /// </summary>
+    public class ProtectedItemsQueryParameter
+    {
+        /// <summary>Gets or sets the source fabric name filter.</summary>
+        public string SourceFabricName { get; set; }
+
+        /// <summary>Gets or sets the recovery plan filter.</summary>
+        public string RecoveryPlanName { get; set; }
+
+        /// <summary>Gets or sets the source fabric location filter.</summary>
+        public string SourceFabricLocation { get; set; }
+
+        /// <summary>Gets or sets the fabric object Id filter.</summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>Gets or sets the vCenter name filter.</summary>
+        public string VCenterName { get; set; }
+
+        /// <summary>Gets or sets the replication provider type.</summary>
+        public string InstanceType { get; set; }
+
+        /// <summary>Gets or sets whether Multi VM group is auto created or specified by user.</summary>
+        public string MultiVMGroupCreateOption { get; set; }
+
+        /// <summary>Gets or sets the process server Id filter.</summary>
+        public string ProcessServerId { get; set; }
     }
 }

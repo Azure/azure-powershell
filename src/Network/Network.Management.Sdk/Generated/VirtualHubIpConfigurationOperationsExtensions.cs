@@ -13,19 +13,59 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualHubIPConfigurationOperationsExtensions
     {
         /// <summary>
+        /// Retrieves the details of all VirtualHubIpConfigurations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<HubIpConfiguration> List(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName)
+        {
+                return ((IVirtualHubIPConfigurationOperations)operations).ListAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all VirtualHubIpConfigurations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<HubIpConfiguration>> ListAsync(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the details of a Virtual Hub Ip configuration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static HubIpConfiguration Get(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
         {
@@ -39,13 +79,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -65,13 +106,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static HubIpConfiguration CreateOrUpdate(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName, HubIpConfiguration parameters)
         {
@@ -86,13 +128,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -111,13 +154,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void Delete(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
         {
@@ -131,13 +175,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -147,45 +192,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, ipConfigName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Retrieves the details of all VirtualHubIpConfigurations.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<HubIpConfiguration> List(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName)
-        {
-                return ((IVirtualHubIPConfigurationOperations)operations).ListAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of all VirtualHubIpConfigurations.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<HubIpConfiguration>> ListAsync(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates a VirtualHubIpConfiguration resource if it doesn&#39;t exist else
         /// updates the existing VirtualHubIpConfiguration.
         /// </summary>
@@ -193,13 +199,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static HubIpConfiguration BeginCreateOrUpdate(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName, HubIpConfiguration parameters)
         {
@@ -214,13 +221,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -239,13 +247,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void BeginDelete(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
         {
@@ -259,13 +268,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='ipConfigName'>
-        /// The name of the ipconfig.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

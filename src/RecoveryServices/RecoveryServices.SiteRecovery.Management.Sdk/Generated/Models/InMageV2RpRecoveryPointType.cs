@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class InMageV2RpRecoveryPointType
     {
+        /// <summary>
+        /// Latest
+        /// </summary>
         public const string Latest = "Latest";
+        /// <summary>
+        /// LatestApplicationConsistent
+        /// </summary>
         public const string LatestApplicationConsistent = "LatestApplicationConsistent";
+        /// <summary>
+        /// LatestCrashConsistent
+        /// </summary>
         public const string LatestCrashConsistent = "LatestCrashConsistent";
+        /// <summary>
+        /// LatestProcessed
+        /// </summary>
         public const string LatestProcessed = "LatestProcessed";
     }
 }

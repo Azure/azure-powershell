@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class GatewayLoadBalancerTunnelInterfaceType
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Internal
+        /// </summary>
         public const string Internal = "Internal";
+        /// <summary>
+        /// External
+        /// </summary>
         public const string External = "External";
     }
 }

@@ -1808,9 +1808,212 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     .Headers.GetValues("Azure-AsyncOperation")
                                     .FirstOrDefault()
                                 : string.Empty));
+
+                // LRO operations whose regenerated SDK signatures carry response-header
+                // type parameters. All members are read from the raw HTTP response, so the
+                // typed headers are not needed; these maps reuse the shared configuration.
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Fabric, ReplicationFabricsCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Fabric, ReplicationFabricsReassociateGatewayHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Job, ReplicationJobsCancelHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Job, ReplicationJobsRestartHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Job, ReplicationJobsResumeHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<NetworkMapping, ReplicationNetworkMappingsCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<NetworkMapping, ReplicationNetworkMappingsUpdateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Policy, ReplicationPoliciesCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<Policy, ReplicationPoliciesUpdateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ProtectionContainer, ReplicationProtectionContainersCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ProtectionContainer, ReplicationProtectionContainersDiscoverProtectableItemHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ProtectionContainerMapping, ReplicationProtectionContainerMappingsCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ProtectionContainerMapping, ReplicationProtectionContainerMappingsUpdateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansFailoverCancelHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansFailoverCommitHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansPlannedFailoverHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansReprotectHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansTestFailoverCleanupHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansTestFailoverHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansUnplannedFailoverHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryPlan, ReplicationRecoveryPlansUpdateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<RecoveryServicesProvider, ReplicationRecoveryServicesProvidersRefreshProviderHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsAddDisksHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsApplyRecoveryPointHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsFailoverCancelHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsFailoverCommitHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsPlannedFailoverHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsRemoveDisksHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsRepairReplicationHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsReprotectHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsTestFailoverCleanupHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsTestFailoverHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsUnplannedFailoverHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsUpdateApplianceHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<ReplicationProtectedItem, ReplicationProtectedItemsUpdateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<StorageClassificationMapping, ReplicationStorageClassificationMappingsCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<VCenter, ReplicationvCentersCreateHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationResponse<VCenter, ReplicationvCentersUpdateHeaders>, PSSiteRecoveryLongRunningOperation>());
+
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationFabricsDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationFabricsPurgeHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationNetworkMappingsDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationPoliciesDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationProtectedItemsDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationProtectedItemsPurgeHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationProtectionContainerMappingsDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationProtectionContainerMappingsPurgeHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationProtectionContainersDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationRecoveryPlansDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationRecoveryServicesProvidersDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationRecoveryServicesProvidersPurgeHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationStorageClassificationMappingsDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
+                ConfigureLongRunningOperation(cfg.CreateMap<AzureOperationHeaderResponse<ReplicationvCentersDeleteHeaders>, PSSiteRecoveryLongRunningOperation>());
             });
 
             _mapper = config.CreateMapper();
+        }
+
+        /// <summary>
+        /// Applies the shared long-running-operation member mapping to a body+headers
+        /// response (<see cref="AzureOperationResponse{TBody, THeader}"/>). Every member is
+        /// read from the raw HTTP response, so the typed response headers are not consumed.
+        /// </summary>
+        private static void ConfigureLongRunningOperation<TBody, THeader>(
+            IMappingExpression<AzureOperationResponse<TBody, THeader>, PSSiteRecoveryLongRunningOperation> mapping)
+        {
+            mapping.ForMember(
+                    c => c.Location,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Location")
+                            ? r.Response.Headers
+                                .GetValues("Location")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.Status,
+                    o => o.MapFrom(
+                        r => JsonConvert.DeserializeObject<PSSiteRecoveryLongRunningOperation>(
+                                r.Response.Content.ReadAsStringAsync()
+                                    .Result)
+                            .Status))
+                .ForMember(
+                    c => c.CorrelationRequestId,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("x-ms-correlation-request-id")
+                            ? r.Response
+                                .Headers.GetValues("x-ms-correlation-request-id")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.ClientRequestId,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("x-ms-request-id")
+                            ? r.Response.Headers
+                                .GetValues("x-ms-request-id")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.ContentType,
+                    o => o.MapFrom(
+                        r => JsonConvert.DeserializeObject<PSSiteRecoveryLongRunningOperation>(
+                                r.Response.Content.ReadAsStringAsync()
+                                    .Result)
+                            .ContentType))
+                .ForMember(
+                    c => c.RetryAfter,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Retry-After")
+                            ? r.Response.Headers
+                                .GetValues("Retry-After")
+                                .FirstOrDefault()
+                            : null))
+                .ForMember(
+                    c => c.Date,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Date")
+                            ? r.Response.Headers
+                                .GetValues("Date")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.AsyncOperation,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Azure-AsyncOperation")
+                            ? r.Response
+                                .Headers.GetValues("Azure-AsyncOperation")
+                                .FirstOrDefault()
+                            : string.Empty));
+        }
+
+        /// <summary>
+        /// Applies the shared long-running-operation member mapping to a headers-only
+        /// response (<see cref="AzureOperationHeaderResponse{THeader}"/>) returned by
+        /// body-less operations such as Delete and Purge.
+        /// </summary>
+        private static void ConfigureLongRunningOperation<THeader>(
+            IMappingExpression<AzureOperationHeaderResponse<THeader>, PSSiteRecoveryLongRunningOperation> mapping)
+        {
+            mapping.ForMember(
+                    c => c.Location,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Location")
+                            ? r.Response.Headers
+                                .GetValues("Location")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.Status,
+                    o => o.MapFrom(
+                        r => JsonConvert.DeserializeObject<PSSiteRecoveryLongRunningOperation>(
+                                r.Response.Content.ReadAsStringAsync()
+                                    .Result)
+                            .Status))
+                .ForMember(
+                    c => c.CorrelationRequestId,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("x-ms-correlation-request-id")
+                            ? r.Response
+                                .Headers.GetValues("x-ms-correlation-request-id")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.ClientRequestId,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("x-ms-request-id")
+                            ? r.Response.Headers
+                                .GetValues("x-ms-request-id")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.ContentType,
+                    o => o.MapFrom(
+                        r => JsonConvert.DeserializeObject<PSSiteRecoveryLongRunningOperation>(
+                                r.Response.Content.ReadAsStringAsync()
+                                    .Result)
+                            .ContentType))
+                .ForMember(
+                    c => c.RetryAfter,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Retry-After")
+                            ? r.Response.Headers
+                                .GetValues("Retry-After")
+                                .FirstOrDefault()
+                            : null))
+                .ForMember(
+                    c => c.Date,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Date")
+                            ? r.Response.Headers
+                                .GetValues("Date")
+                                .FirstOrDefault()
+                            : string.Empty))
+                .ForMember(
+                    c => c.AsyncOperation,
+                    o => o.MapFrom(
+                        r => r.Response.Headers.Contains("Azure-AsyncOperation")
+                            ? r.Response
+                                .Headers.GetValues("Azure-AsyncOperation")
+                                .FirstOrDefault()
+                            : string.Empty));
         }
     }
 }
