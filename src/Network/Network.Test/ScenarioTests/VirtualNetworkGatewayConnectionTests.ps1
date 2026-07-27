@@ -113,7 +113,7 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel    
 
       # Create VirtualNetworkGateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
@@ -1018,7 +1018,7 @@ function Test-VirtualNetworkGatewayConnectionWithCertificateAuth
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $publicIpName
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $publicIpName
 
         # Create VirtualNetworkGateway with managed identity
         $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
@@ -1122,10 +1122,17 @@ function Test-VirtualNetworkGatewayConnectionWithRoutingConfiguration
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # Create VNet with both RouteServerSubnet and GatewaySubnet
-        $rsSubnet = New-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -AddressPrefix 10.0.1.0/24
-        $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $rsSubnet,$gwSubnet
+        # Create VNet first, then add private subnets to comply with policy
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16
+        
+        # Add RouteServerSubnet as a private subnet
+        $vnet = Add-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false -VirtualNetwork $vnet
+        
+        # Add GatewaySubnet as a private subnet
+        $vnet = Add-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false -VirtualNetwork $vnet
+        
+        # Commit the VNet changes
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -VirtualNetwork $vnet
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
@@ -1170,8 +1177,8 @@ function Test-VirtualNetworkGatewayConnectionWithRoutingConfiguration
         # Create routing configuration with inbound and outbound route maps
         $routingConfig = New-AzRoutingConfiguration -InboundRouteMap $routeMap.Id -OutboundRouteMap $routeMap.Id
 
-        # Create the publicip for VPN Gateway
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $rglocation -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        # Create the publicip for VPN Gateway (must be Static for Standard SKU)
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $rglocation -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
 
         # Create VirtualNetworkGateway using GatewaySubnet from same VNet
         $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet

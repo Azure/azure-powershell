@@ -229,10 +229,16 @@ function Test-RouteServerPeerWithRoutingConfiguration
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create virtual network with RouteServerSubnet
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16
+        
+        # Add RouteServerSubnet as a private subnet
+        $vnet = Add-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false -VirtualNetwork $vnet
+        
+        # Commit the VNet changes
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -VirtualNetwork $vnet
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
         # Create the public ip address for route server
         $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
