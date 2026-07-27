@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayFirewallRateLimitDuration
     {
+        /// <summary>
+        /// OneMin
+        /// </summary>
         public const string OneMin = "OneMin";
+        /// <summary>
+        /// FiveMins
+        /// </summary>
         public const string FiveMins = "FiveMins";
     }
 }

@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
             {
-                createParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                createParameters.Identity = new StorageModels.Identity() { Type = StorageModels.IdentityType.SystemAssigned };
                 if (this.IdentityType != null)
                 {
                     createParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);

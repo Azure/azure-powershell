@@ -192,7 +192,9 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Threading.Tasks.Extensions",
             "System.Buffers",
             "System.Text.Encodings.Web",
-            "System.Text.Json" //TODO: Compare Version along with Azure.Core
+            "System.Text.Json", //TODO: Compare Version along with Azure.Core
+            "System.ComponentModel.Annotations",
+            "System.Formats.Asn1"
         }, StringComparer.OrdinalIgnoreCase);
 
         private HashSet<string> CommonAssemblySet = new HashSet<string>(new string[]

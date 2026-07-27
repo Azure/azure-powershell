@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExtendedLocationTypes
     {
+        /// <summary>
+        /// EdgeZone
+        /// </summary>
         public const string EdgeZone = "EdgeZone";
     }
 }

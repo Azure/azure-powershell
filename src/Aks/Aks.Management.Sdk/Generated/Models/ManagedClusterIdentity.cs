@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// keys must be ARM resource IDs in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </param>
-        public ManagedClusterIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, DelegatedResource> delegatedResources = default(System.Collections.Generic.IDictionary<string, DelegatedResource>), System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>))
+        public ManagedClusterIdentity(string principalId = default(string), string tenantId = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, DelegatedResource> delegatedResources = default(System.Collections.Generic.IDictionary<string, DelegatedResource>), System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>))
 
         {
             this.PrincipalId = principalId;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// AKS](https://docs.microsoft.com/azure/aks/use-managed-identity). Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;None&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public ResourceIdentityType? Type {get; set; }
+        public string Type {get; set; }
 
         /// <summary>
         /// Gets or sets the delegated identity resources assigned to this managed

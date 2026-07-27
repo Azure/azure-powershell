@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StorageAction",
-  "ModuleVersion": "1.0.1",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -10,7 +10,7 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 0,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "List",
+      "DefaultParameterSetName": "List1",
       "OutputTypes": [
         {
           "Type": {
@@ -18,7 +18,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities",
               "Enabled": "System.Boolean",
               "ElseOperation": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
               "IfOperation": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
@@ -352,7 +352,7 @@
           ]
         },
         {
-          "Name": "List1",
+          "Name": "List",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -517,7 +517,7 @@
           ]
         },
         {
-          "Name": "List",
+          "Name": "List1",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -2874,7 +2874,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities",
               "Enabled": "System.Boolean",
               "ElseOperation": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
               "IfOperation": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
@@ -5655,7 +5655,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask, Az.StorageAction.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities",
               "Enabled": "System.Boolean",
               "ElseOperation": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
               "IfOperation": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]",
@@ -6886,10 +6886,10 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities": {
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities, Az.StorageAction.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities, Az.StorageAction.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation]": {
       "Namespace": "System.Collections.Generic",

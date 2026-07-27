@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Gets a single key-value snapshot.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/snapshots/{name}", ApiVersion = "2024-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/snapshots/{name}", ApiVersion = "2026-04-01")]
     public partial class GetAzAppConfigurationSnapshot_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         SerializedName = @"$Select",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("name", "status", "filters", "composition_type", "created", "expires", "retention_period", "size", "items_count", "tags", "etag")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("name", "status", "filters", "composition_type", "created", "expires", "retention_period", "size", "items_count", "tags", "description", "etag")]
         public System.Collections.Generic.List<string> Select { get => this._select; set => this._select = value; }
 
         /// <summary>Backing field for <see cref="SyncToken" /> property.</summary>

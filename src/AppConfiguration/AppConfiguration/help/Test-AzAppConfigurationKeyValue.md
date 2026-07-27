@@ -248,6 +248,8 @@ Accept wildcard characters: False
 
 ### -Tag
 A filter used to query by tags.
+Syntax reference:
+https://aka.ms/azconfig/docs/keyvaluefiltering
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]

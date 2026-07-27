@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a file system resource</summary>
+    /// <summary>update a file system resource</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzQumuloFileSystem_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Description(@"Update a file system resource")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Description(@"update a file system resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}", ApiVersion = "2022-10-12-preview")]
     public partial class UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,13 +38,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>The type used for update operations of the FileSystemResource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResourceUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.FileSystemResourceUpdate();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.FileSystemResource();
+
+        /// <summary>Initial administrator password of the resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Initial administrator password of the resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Initial administrator password of the resource",
+        SerializedName = @"adminPassword",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString AdminPassword { get => _resourceBody.AdminPassword ?? null; set => _resourceBody.AdminPassword = value; }
+
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>Availability zone</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Availability zone")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Availability zone",
+        SerializedName = @"availabilityZone",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AvailabilityZone { get => _resourceBody.AvailabilityZone ?? null; set => _resourceBody.AvailabilityZone = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Qumulo Client => Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Module.Instance.ClientAPI;
@@ -55,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"File system Id of the resource",
         SerializedName = @"clusterLoginUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string ClusterLoginUrl { get => _propertiesBody.ClusterLoginUrl ?? null; set => _propertiesBody.ClusterLoginUrl = value; }
+        public string ClusterLoginUrl { get => _resourceBody.ClusterLoginUrl ?? null; set => _resourceBody.ClusterLoginUrl = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -76,7 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"Delegated subnet id for Vnet injection",
         SerializedName = @"delegatedSubnetId",
         PossibleTypes = new [] { typeof(string) })]
-        public string DelegatedSubnetId { get => _propertiesBody.DelegatedSubnetId ?? null; set => _propertiesBody.DelegatedSubnetId = value; }
+        public string DelegatedSubnetId { get => _resourceBody.DelegatedSubnetId ?? null; set => _resourceBody.DelegatedSubnetId = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -90,20 +135,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType IdentityType { get => _propertiesBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType)""); set => _propertiesBody.IdentityType = value; }
-
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IQumuloIdentity _inputObject;
 
@@ -115,6 +146,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>Term Unit</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Term Unit")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Term Unit",
+        SerializedName = @"termUnit",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MarketplaceDetailTermUnit { get => _resourceBody.MarketplaceDetailTermUnit ?? null; set => _resourceBody.MarketplaceDetailTermUnit = value; }
+
         /// <summary>Offer Id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Offer Id")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
@@ -124,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"Offer Id",
         SerializedName = @"offerId",
         PossibleTypes = new [] { typeof(string) })]
-        public string MarketplaceOfferId { get => _propertiesBody.MarketplaceDetailOfferId ?? null; set => _propertiesBody.MarketplaceDetailOfferId = value; }
+        public string MarketplaceOfferId { get => _resourceBody.MarketplaceDetailOfferId ?? null; set => _resourceBody.MarketplaceDetailOfferId = value; }
 
         /// <summary>Plan Id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Plan Id")]
@@ -135,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"Plan Id",
         SerializedName = @"planId",
         PossibleTypes = new [] { typeof(string) })]
-        public string MarketplacePlanId { get => _propertiesBody.MarketplaceDetailPlanId ?? null; set => _propertiesBody.MarketplaceDetailPlanId = value; }
+        public string MarketplacePlanId { get => _resourceBody.MarketplaceDetailPlanId ?? null; set => _resourceBody.MarketplaceDetailPlanId = value; }
 
         /// <summary>Publisher Id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Publisher Id")]
@@ -146,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"Publisher Id",
         SerializedName = @"publisherId",
         PossibleTypes = new [] { typeof(string) })]
-        public string MarketplacePublisherId { get => _propertiesBody.MarketplaceDetailPublisherId ?? null; set => _propertiesBody.MarketplaceDetailPublisherId = value; }
+        public string MarketplacePublisherId { get => _resourceBody.MarketplaceDetailPublisherId ?? null; set => _resourceBody.MarketplaceDetailPublisherId = value; }
 
         /// <summary>Marketplace Subscription Id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Marketplace Subscription Id")]
@@ -157,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"Marketplace Subscription Id",
         SerializedName = @"marketplaceSubscriptionId",
         PossibleTypes = new [] { typeof(string) })]
-        public string MarketplaceSubscriptionId { get => _propertiesBody.MarketplaceDetailMarketplaceSubscriptionId ?? null; set => _propertiesBody.MarketplaceDetailMarketplaceSubscriptionId = value; }
+        public string MarketplaceSubscriptionId { get => _resourceBody.MarketplaceDetailMarketplaceSubscriptionId ?? null; set => _resourceBody.MarketplaceDetailMarketplaceSubscriptionId = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -168,9 +210,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>Pre-Provisioned Performance of the Resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Pre-Provisioned Performance of the Resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Pre-Provisioned Performance of the Resource",
+        SerializedName = @"performanceTier",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PerformanceTier { get => _resourceBody.PerformanceTier ?? null; set => _resourceBody.PerformanceTier = value; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Private IPs of the resource</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -182,7 +243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         Description = @"Private IPs of the resource",
         SerializedName = @"privateIPs",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] PrivateIP { get => _propertiesBody.PrivateIP ?? null /* arrayOf */; set => _propertiesBody.PrivateIP = value; }
+        public string[] PrivateIP { get => _resourceBody.PrivateIP?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.PrivateIP = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -200,6 +261,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Storage Sku</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Storage Sku")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Storage Sku",
+        SerializedName = @"storageSku",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageSku { get => _resourceBody.StorageSku ?? null; set => _resourceBody.StorageSku = value; }
+
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
@@ -209,24 +281,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResourceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Qumulo.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api40.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api40.IUserAssignedIdentities UserAssignedIdentity { get => _propertiesBody.IdentityUserAssignedIdentity ?? null /* object */; set => _propertiesBody.IdentityUserAssignedIdentity = value; }
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>User Email</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User Email")]
@@ -236,32 +300,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         ReadOnly = false,
         Description = @"User Email",
         SerializedName = @"email",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UserEmail { get => _propertiesBody.UserDetailEmail ?? null; set => _propertiesBody.UserDetailEmail = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString UserEmail { get => _resourceBody.UserDetailEmail ?? null; set => _resourceBody.UserDetailEmail = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -279,6 +343,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                 Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.AttachDebugger.Break();
             }
             ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+        }
+
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets.UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded Clone()
+        {
+            var clone = new UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            clone._resourceBody = this._resourceBody;
+            return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
@@ -334,8 +419,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.Information:
                     {
-                        var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.Debug:
@@ -348,13 +433,110 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.DelayBeforePolling:
+                    {
+                        var data = messageData();
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
+                        break;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _resourceBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _resourceBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _resourceBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _resourceBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _resourceBody.IdentityType = "None";
             }
         }
 
@@ -366,11 +548,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'FileSystemsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'FileSystemsCreateOrUpdate' operation"))
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token) )
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token);
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token);
+                        }
                     }
                 }
             }
@@ -405,7 +599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -420,7 +614,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.FileSystemsUpdateViaIdentity(InputObject.Id, _propertiesBody, onOk, onDefault, this, Pipeline);
+                        _resourceBody = await this.Client.FileSystemsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_resourceBody();
+                        await this.Client.FileSystemsCreateOrUpdateViaIdentity(InputObject.Id, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -437,13 +634,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.FileSystemName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.FileSystemsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FileSystemName ?? null, _propertiesBody, onOk, onDefault, this, Pipeline);
+                        _resourceBody = await this.Client.FileSystemsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FileSystemName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_resourceBody();
+                        await this.Client.FileSystemsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FileSystemName ?? null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_propertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -463,11 +663,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzQumuloFileSystem_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_resourceBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StorageSku")))
+            {
+                this.StorageSku = (string)(this.MyInvocation?.BoundParameters["StorageSku"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DelegatedSubnetId")))
+            {
+                this.DelegatedSubnetId = (string)(this.MyInvocation?.BoundParameters["DelegatedSubnetId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PerformanceTier")))
+            {
+                this.PerformanceTier = (string)(this.MyInvocation?.BoundParameters["PerformanceTier"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ClusterLoginUrl")))
+            {
+                this.ClusterLoginUrl = (string)(this.MyInvocation?.BoundParameters["ClusterLoginUrl"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PrivateIP")))
+            {
+                this.PrivateIP = (string[])(this.MyInvocation?.BoundParameters["PrivateIP"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AdminPassword")))
+            {
+                this.AdminPassword = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["AdminPassword"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AvailabilityZone")))
+            {
+                this.AvailabilityZone = (string)(this.MyInvocation?.BoundParameters["AvailabilityZone"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MarketplacePlanId")))
+            {
+                this.MarketplacePlanId = (string)(this.MyInvocation?.BoundParameters["MarketplacePlanId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MarketplaceOfferId")))
+            {
+                this.MarketplaceOfferId = (string)(this.MyInvocation?.BoundParameters["MarketplaceOfferId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MarketplacePublisherId")))
+            {
+                this.MarketplacePublisherId = (string)(this.MyInvocation?.BoundParameters["MarketplacePublisherId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MarketplaceDetailTermUnit")))
+            {
+                this.MarketplaceDetailTermUnit = (string)(this.MyInvocation?.BoundParameters["MarketplaceDetailTermUnit"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserEmail")))
+            {
+                this.UserEmail = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["UserEmail"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MarketplaceSubscriptionId")))
+            {
+                this.MarketplaceSubscriptionId = (string)(this.MyInvocation?.BoundParameters["MarketplaceSubscriptionId"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -489,12 +749,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -511,15 +771,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_propertiesBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_propertiesBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -529,12 +789,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource">Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -546,8 +806,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

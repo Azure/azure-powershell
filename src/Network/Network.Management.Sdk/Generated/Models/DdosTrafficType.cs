@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DdosTrafficType
     {
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Udp
+        /// </summary>
         public const string Udp = "Udp";
+        /// <summary>
+        /// TcpSyn
+        /// </summary>
         public const string TcpSyn = "TcpSyn";
     }
 }

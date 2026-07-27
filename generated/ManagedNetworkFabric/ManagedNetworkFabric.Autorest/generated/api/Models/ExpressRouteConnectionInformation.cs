@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     {
 
         /// <summary>Backing field for <see cref="ExpressRouteAuthorizationKey" /> property.</summary>
-        private string _expressRouteAuthorizationKey;
+        private System.Security.SecureString _expressRouteAuthorizationKey;
 
         /// <summary>
         /// Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key
         /// is a mandatory attribute.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        public string ExpressRouteAuthorizationKey { get => this._expressRouteAuthorizationKey; set => this._expressRouteAuthorizationKey = value; }
+        public System.Security.SecureString ExpressRouteAuthorizationKey { get => this._expressRouteAuthorizationKey; set => this._expressRouteAuthorizationKey = value; }
 
         /// <summary>Backing field for <see cref="ExpressRouteCircuitId" /> property.</summary>
         private string _expressRouteCircuitId;
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Update = true,
         Description = @"Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute.",
         SerializedName = @"expressRouteAuthorizationKey",
-        PossibleTypes = new [] { typeof(string) })]
-        string ExpressRouteAuthorizationKey { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ExpressRouteAuthorizationKey { get; set; }
         /// <summary>
         /// The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute
         /// Circuit is a mandatory attribute.
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key
         /// is a mandatory attribute.
         /// </summary>
-        string ExpressRouteAuthorizationKey { get; set; }
+        System.Security.SecureString ExpressRouteAuthorizationKey { get; set; }
         /// <summary>
         /// The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute
         /// Circuit is a mandatory attribute.

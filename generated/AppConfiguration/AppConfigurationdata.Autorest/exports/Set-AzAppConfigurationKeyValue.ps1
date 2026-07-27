@@ -84,6 +84,12 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.String]
+    # The description of the key-value.
+    ${Description},
+
+    [Parameter(ParameterSetName='PutExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
+    [System.String]
     # A value representing the current state of the resource.
     ${Etag},
 

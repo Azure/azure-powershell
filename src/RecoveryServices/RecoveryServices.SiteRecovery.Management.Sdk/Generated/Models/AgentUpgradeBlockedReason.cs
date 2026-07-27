@@ -13,20 +13,65 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AgentUpgradeBlockedReason
     {
+        /// <summary>
+        /// AlreadyOnLatestVersion
+        /// </summary>
         public const string AlreadyOnLatestVersion = "AlreadyOnLatestVersion";
+        /// <summary>
+        /// RebootRequired
+        /// </summary>
         public const string RebootRequired = "RebootRequired";
+        /// <summary>
+        /// AgentNoHeartbeat
+        /// </summary>
         public const string AgentNoHeartbeat = "AgentNoHeartbeat";
+        /// <summary>
+        /// RcmProxyNoHeartbeat
+        /// </summary>
         public const string RcmProxyNoHeartbeat = "RcmProxyNoHeartbeat";
+        /// <summary>
+        /// ProcessServerNoHeartbeat
+        /// </summary>
         public const string ProcessServerNoHeartbeat = "ProcessServerNoHeartbeat";
+        /// <summary>
+        /// IncompatibleApplianceVersion
+        /// </summary>
         public const string IncompatibleApplianceVersion = "IncompatibleApplianceVersion";
+        /// <summary>
+        /// NotProtected
+        /// </summary>
         public const string NotProtected = "NotProtected";
+        /// <summary>
+        /// UnsupportedProtectionScenario
+        /// </summary>
         public const string UnsupportedProtectionScenario = "UnsupportedProtectionScenario";
+        /// <summary>
+        /// DistroIsNotReported
+        /// </summary>
         public const string DistroIsNotReported = "DistroIsNotReported";
+        /// <summary>
+        /// DistroNotSupportedForUpgrade
+        /// </summary>
         public const string DistroNotSupportedForUpgrade = "DistroNotSupportedForUpgrade";
+        /// <summary>
+        /// MissingUpgradePath
+        /// </summary>
         public const string MissingUpgradePath = "MissingUpgradePath";
+        /// <summary>
+        /// InvalidAgentVersion
+        /// </summary>
         public const string InvalidAgentVersion = "InvalidAgentVersion";
+        /// <summary>
+        /// InvalidDriverVersion
+        /// </summary>
         public const string InvalidDriverVersion = "InvalidDriverVersion";
+        /// <summary>
+        /// ReInstallRequired
+        /// </summary>
         public const string ReInstallRequired = "ReInstallRequired";
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
     }
 }

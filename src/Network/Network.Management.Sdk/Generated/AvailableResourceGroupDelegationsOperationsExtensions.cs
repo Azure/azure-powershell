@@ -19,15 +19,15 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<AvailableDelegation> List(this IAvailableResourceGroupDelegationsOperations operations, string location, string resourceGroupName)
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<AvailableDelegation> List(this IAvailableResourceGroupDelegationsOperations operations, string resourceGroupName, string location)
         {
-                return ((IAvailableResourceGroupDelegationsOperations)operations).ListAsync(location, resourceGroupName).GetAwaiter().GetResult();
+                return ((IAvailableResourceGroupDelegationsOperations)operations).ListAsync(resourceGroupName, location).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -37,18 +37,18 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AvailableDelegation>> ListAsync(this IAvailableResourceGroupDelegationsOperations operations, string location, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AvailableDelegation>> ListAsync(this IAvailableResourceGroupDelegationsOperations operations, string resourceGroupName, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(location, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, location, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

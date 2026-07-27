@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// </summary>
     public class JobConversions
     {
+        // PropertyBag key (job extendedInfo) carrying the VM's subscription id for CSB jobs.
+        private const string VmSubscriptionIdPropertyBagKey = "VM Subscription ID";
+
         #region ServiceClient to PS convertors
 
         /// <summary>
@@ -802,6 +805,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     {
                         detailedResponse.Properties.Add(key, vmJob.ExtendedInfo.PropertyBag[key]);
                     }
+
+                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey(VmSubscriptionIdPropertyBagKey))
+                    {
+                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag[VmSubscriptionIdPropertyBagKey];
+                    }
                 }
 
                 if (vmJob.ExtendedInfo.TasksList != null)
@@ -874,6 +882,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     foreach (var key in vmJob.ExtendedInfo.PropertyBag.Keys)
                     {
                         detailedResponse.Properties.Add(key, vmJob.ExtendedInfo.PropertyBag[key]);
+                    }
+
+                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey(VmSubscriptionIdPropertyBagKey))
+                    {
+                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag[VmSubscriptionIdPropertyBagKey];
                     }
                 }
 

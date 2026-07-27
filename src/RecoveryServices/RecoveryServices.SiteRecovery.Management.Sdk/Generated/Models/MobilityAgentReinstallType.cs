@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class MobilityAgentReinstallType
     {
+        /// <summary>
+        /// UserTriggered
+        /// </summary>
         public const string UserTriggered = "UserTriggered";
+        /// <summary>
+        /// AutoTriggered
+        /// </summary>
         public const string AutoTriggered = "AutoTriggered";
     }
 }

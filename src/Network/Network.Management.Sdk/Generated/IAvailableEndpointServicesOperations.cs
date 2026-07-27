@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// List what values of endpoint services are available for use.
         /// </remarks>
         /// <param name='location'>
-        /// The location to check available endpoint services.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

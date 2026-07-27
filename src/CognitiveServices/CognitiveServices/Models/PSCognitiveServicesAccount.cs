@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
         public string PublicNetworkAccess { get; private set; }
 
-        public Identity Identity { get; private set; }
+        public Microsoft.Azure.Management.CognitiveServices.Models.Identity Identity { get; private set; }
 
         public Encryption Encryption { get; private set; }
 

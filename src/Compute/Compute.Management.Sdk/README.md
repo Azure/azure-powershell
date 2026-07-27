@@ -4,7 +4,6 @@ This directory contains the service clients of Az.Compute module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
-.\Rest-api-specs\preprocess-rest-api-spec.ps1
 autorest --reset
 autorest --use:@autorest/powershell@4.x
 ```
@@ -25,12 +24,12 @@ title: ComputeManagementClient
 payload-flattening-threshold: 1
 
 # Azure REST API Specs commit
-commit: 0607ac7cf513761c4ffbc3a65dd8a01e1ef9a6da
+commit: dddc9b49f352a218d85ca501656ad2270c0c2b2a
 
 input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/common-types/resource-management/v3/types.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/common-types/v1/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-11-01/ComputeRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2026-03-01/ComputeRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-01-02/DiskRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-03-03/GalleryRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2021-07-01/skus.json

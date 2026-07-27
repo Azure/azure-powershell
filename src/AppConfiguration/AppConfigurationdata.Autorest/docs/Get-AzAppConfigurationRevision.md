@@ -136,6 +136,8 @@ Accept wildcard characters: False
 
 ### -Key
 A filter used to match keys.
+Syntax reference:
+https://aka.ms/azconfig/docs/restapirevisions
 
 ```yaml
 Type: System.String
@@ -151,6 +153,8 @@ Accept wildcard characters: False
 
 ### -Label
 A filter used to match labels.
+Syntax reference:
+https://aka.ms/azconfig/docs/restapirevisions
 
 ```yaml
 Type: System.String
@@ -196,6 +200,8 @@ Accept wildcard characters: False
 
 ### -Tag
 A filter used to query by tags.
+Syntax reference:
+https://aka.ms/azconfig/docs/restapirevisions
 
 ```yaml
 Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]

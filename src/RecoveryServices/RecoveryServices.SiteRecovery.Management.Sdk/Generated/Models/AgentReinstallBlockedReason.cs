@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AgentReinstallBlockedReason
     {
+        /// <summary>
+        /// DistroNotSupported
+        /// </summary>
         public const string DistroNotSupported = "DistroNotSupported";
+        /// <summary>
+        /// AgentNoHeartbeat
+        /// </summary>
         public const string AgentNoHeartbeat = "AgentNoHeartbeat";
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
     }
 }

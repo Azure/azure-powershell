@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>Resource tags</summary>
+    /// <summary>Resource tags.</summary>
     public partial class TagsUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateTags,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateTagsInternal
@@ -19,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         }
     }
-    /// Resource tags
+    /// Resource tags.
     public partial interface ITagsUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// Resource tags
+    /// Resource tags.
     internal partial interface ITagsUpdateTagsInternal
 
     {
