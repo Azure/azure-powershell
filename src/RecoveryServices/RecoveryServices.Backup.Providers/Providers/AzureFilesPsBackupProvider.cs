@@ -394,12 +394,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // CRR path: serialize restoreRequest to CRR model and trigger cross-region restore
             if (useSecondaryRegion)
             {
-                // Multi-user authorization is not plumbed through the cross-region restore API
-                if (!string.IsNullOrEmpty(auxiliaryAccessToken))
-                {
-                    throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreMUANotSupported);
-                }
-
                 var restoreRequestSerialized = JsonConvert.SerializeObject(restoreRequest);
                 CrrModel.AzureFileShareRestoreRequest restoreRequestCrr =
                     JsonConvert.DeserializeObject<CrrModel.AzureFileShareRestoreRequest>(restoreRequestSerialized);

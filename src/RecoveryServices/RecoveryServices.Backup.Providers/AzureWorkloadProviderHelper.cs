@@ -322,7 +322,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     if (protectedItem.Properties.BackupManagementType == "AzureStorage" && protectedItem.Properties.WorkloadType == "AzureFileShare")
                     {
-                        // code should never reach here, as CRR is not supported for azure files yet
                         string protectedItemFriendlyName = (protectedItem.Properties as CrrModel.AzureFileshareProtectedItem).FriendlyName;
                         filteredByUniqueName = filteredByUniqueName || (itemName != null && protectedItemFriendlyName.ToLower() == itemName.ToLower());
                         filteredByFriendlyName = friendlyName != null && protectedItemFriendlyName.ToLower() == friendlyName.ToLower();
