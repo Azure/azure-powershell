@@ -907,6 +907,18 @@ Invoke Packet Capture on Azure Firewall
 ### [Invoke-AzFirewallPacketCaptureOperation](Invoke-AzFirewallPacketCaptureOperation.md)
 Invokes a Start/Status/Stop packet capture operation request on Azure Firewall
 
+### [Invoke-AzNetworkVirtualApplianceAbortMigration](Invoke-AzNetworkVirtualApplianceAbortMigration.md)
+Aborts an in-progress Network Virtual Appliance migration and rolls back to the original configuration.
+
+### [Invoke-AzNetworkVirtualApplianceCommitMigration](Invoke-AzNetworkVirtualApplianceCommitMigration.md)
+Commits a Network Virtual Appliance migration, finalizing the move to the target configuration.
+
+### [Invoke-AzNetworkVirtualApplianceExecuteMigration](Invoke-AzNetworkVirtualApplianceExecuteMigration.md)
+Executes a previously prepared Network Virtual Appliance migration.
+
+### [Invoke-AzNetworkVirtualAppliancePrepareMigration](Invoke-AzNetworkVirtualAppliancePrepareMigration.md)
+Prepares a Network Virtual Appliance for migration to a new OS version or to the new internal load balancer (ILB) architecture.
+
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
 
