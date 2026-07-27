@@ -52,4 +52,14 @@ directive:
   - where:
       variant: ^CreateViaIdentityExpanded$
     remove: true
+  # The flattened array parameter properties.addressSpaces surfaces as the plural,
+  # AutoRest-prefixed name -PropertiesAddressSpaces, which fails the Az signature
+  # analyzer's singular-noun rule (8410). The singular string property
+  # properties.addressSpace already occupies -AddressSpace, so rename the array to
+  # the singular, non-colliding -AddressSpaceList (matches the module's existing
+  # -GovernedServiceList array convention). Applies to New-/Set-AzMissionCommunity.
+  - where:
+      parameter-name: PropertiesAddressSpaces
+    set:
+      parameter-name: AddressSpaceList
 ```

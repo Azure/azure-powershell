@@ -15,16 +15,15 @@ Update a CommunityResource
 ### UpdateExpanded (Default)
 ```
 Set-AzMissionCommunity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-AddressSpace <String>] [-CommunityRoleAssignment <IRoleAssignmentItem[]>] [-DnsServer <String[]>]
- [-EnableSystemAssignedIdentity <Boolean>] [-FirewallSku <String>]
+ [-AddressSpace <String>] [-AddressSpaceList <String[]>] [-CommunityRoleAssignment <IRoleAssignmentItem[]>]
+ [-DnsServer <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-FirewallSku <String>]
  [-FlowLogDestinationCustomWorkspaceResourceId <String>] [-FlowLogDestinationDiagnosticSettingsName <String>]
  [-FlowLogDestinationType <String>] [-GovernedServiceList <IGovernedServiceItem[]>]
  [-GranularApprovalSetting <IApprovalSettings>] [-MaintenanceModeConfigurationJustification <String>]
  [-MaintenanceModeConfigurationMode <String>] [-MaintenanceModeConfigurationPrincipal <IPrincipal[]>]
  [-MonitoringSettingDiagnosticDestination <IMonitoringDestination[]>] [-PolicyOverride <String>]
- [-PropertiesAddressSpaces <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -67,6 +66,21 @@ Address Space.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddressSpaceList
+Address spaces list
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -385,21 +399,6 @@ Specifies whether to apply enclave-specific policies or disable policy enforceme
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesAddressSpaces
-Address spaces list
-
-```yaml
-Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 

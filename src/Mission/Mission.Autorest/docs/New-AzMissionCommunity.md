@@ -15,15 +15,16 @@ Create a CommunityResource
 ### CreateExpanded (Default)
 ```
 New-AzMissionCommunity -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AddressSpace <String>] [-CommunityRoleAssignment <IRoleAssignmentItem[]>]
- [-DnsServer <String[]>] [-EnableSystemAssignedIdentity] [-FirewallSku <String>]
- [-FlowLogDestinationCustomWorkspaceResourceId <String>] [-FlowLogDestinationDiagnosticSettingsName <String>]
- [-FlowLogDestinationType <String>] [-GovernedServiceList <IGovernedServiceItem[]>]
- [-GranularApprovalSetting <IApprovalSettings>] [-MaintenanceModeConfigurationJustification <String>]
- [-MaintenanceModeConfigurationMode <String>] [-MaintenanceModeConfigurationPrincipal <IPrincipal[]>]
+ [-SubscriptionId <String>] [-AddressSpace <String>] [-AddressSpaceList <String[]>]
+ [-CommunityRoleAssignment <IRoleAssignmentItem[]>] [-DnsServer <String[]>] [-EnableSystemAssignedIdentity]
+ [-FirewallSku <String>] [-FlowLogDestinationCustomWorkspaceResourceId <String>]
+ [-FlowLogDestinationDiagnosticSettingsName <String>] [-FlowLogDestinationType <String>]
+ [-GovernedServiceList <IGovernedServiceItem[]>] [-GranularApprovalSetting <IApprovalSettings>]
+ [-MaintenanceModeConfigurationJustification <String>] [-MaintenanceModeConfigurationMode <String>]
+ [-MaintenanceModeConfigurationPrincipal <IPrincipal[]>]
  [-MonitoringSettingDiagnosticDestination <IMonitoringDestination[]>] [-PolicyOverride <String>]
- [-PropertiesAddressSpaces <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -66,6 +67,21 @@ Address Space.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddressSpaceList
+Address spaces list
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -384,21 +400,6 @@ Specifies whether to apply enclave-specific policies or disable policy enforceme
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesAddressSpaces
-Address spaces list
-
-```yaml
-Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
