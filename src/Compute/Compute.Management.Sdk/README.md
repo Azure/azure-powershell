@@ -33,6 +33,8 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-01-02/DiskRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-03-03/GalleryRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2021-07-01/skus.json
+  # Feature swagger from a local checkout of the private azure-rest-api-specs-pr repo
+  - C:/Users/audreytoney/source/repos/azure-rest-api-specs-pr/specification/internal-contracts/resource-manager/Microsoft.Compute/implementedbyowningteam/2026-03-03/sharedVMExtension.json
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Compute

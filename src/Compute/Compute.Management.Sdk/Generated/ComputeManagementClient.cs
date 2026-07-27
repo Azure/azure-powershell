@@ -260,6 +260,14 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public virtual IResourceSkusOperations ResourceSkus { get; private set; }
         /// <summary>
+        /// Gets the ISharedVMExtensionOperations
+        /// </summary>
+        public virtual ISharedVMExtensionOperations SharedVMExtension { get; private set; }
+        /// <summary>
+        /// Gets the ISharedVMExtensionVersionOperations
+        /// </summary>
+        public virtual ISharedVMExtensionVersionOperations SharedVMExtensionVersion { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -548,6 +556,8 @@ namespace Microsoft.Azure.Management.Compute
             this.GallerySharingProfile = new GallerySharingProfileOperations(this);
             this.SoftDeletedResource = new SoftDeletedResourceOperations(this);
             this.ResourceSkus = new ResourceSkusOperations(this);
+            this.SharedVMExtension = new SharedVMExtensionOperations(this);
+            this.SharedVMExtensionVersion = new SharedVMExtensionVersionOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
