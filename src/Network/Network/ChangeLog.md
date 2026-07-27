@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added support for Network Virtual Appliance (NVA) migration workflow (API version 2025-09-01).
+    - Added `Invoke-AzNetworkVirtualAppliancePrepareMigration`, `Invoke-AzNetworkVirtualApplianceExecuteMigration`, `Invoke-AzNetworkVirtualApplianceCommitMigration`, and `Invoke-AzNetworkVirtualApplianceAbortMigration` cmdlets to migrate an NVA to a new OS version or to the new internal load balancer (ILB) architecture.
+    - Added the `MigrationStatus` property to the Network Virtual Appliance output.
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub

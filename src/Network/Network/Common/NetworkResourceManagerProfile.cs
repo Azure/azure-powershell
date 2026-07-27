@@ -2447,6 +2447,7 @@ namespace Microsoft.Azure.Commands.Network
                 // Network Virtual Appliance & Sites
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkVirtualAppliance, MNM.NetworkVirtualAppliance>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceMigrationStatus, MNM.NetworkVirtualApplianceMigrationStatus>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceSku, MNM.NetworkVirtualApplianceSku>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceSkuInstances, MNM.NetworkVirtualApplianceSkuInstances>();
                 cfg.CreateMap<CNM.PSOffice365PolicyProperties, MNM.Office365PolicyProperties>();
@@ -2488,6 +2489,7 @@ namespace Microsoft.Azure.Commands.Network
                     // Where CNM - models from Powershell
                     //       MNM - models from Sdk
                     cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
+                cfg.CreateMap<MNM.NetworkVirtualApplianceMigrationStatus, CNM.PSNetworkVirtualApplianceMigrationStatus>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSku, CNM.PSNetworkVirtualApplianceSku>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSkuInstances, CNM.PSNetworkVirtualApplianceSkuInstances>();
                 cfg.CreateMap<MNM.Office365PolicyProperties, CNM.PSOffice365PolicyProperties>();

@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public IList<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaInterfaceConfigurations { get; set; }
 
+        public PSNetworkVirtualApplianceMigrationStatus MigrationStatus { get; set; }
+
         [JsonIgnore]
         public string VirtualHubText
         {
