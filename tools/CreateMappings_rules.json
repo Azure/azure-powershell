@@ -701,6 +701,10 @@
     "module": "DiskPool"
   },
   {
+    "alias": "Discovery",
+    "module": "Discovery"
+  },
+  {
     "alias": "Datadog",
     "regex": "Datadog"
   },
@@ -995,6 +999,10 @@
   {
     "alias": "EdgeAction",
     "module": "EdgeAction"
+  },
+  {
+    "module": "ChangeSafety",
+    "alias": "ChangeSafety"
   },
   {
     "alias": "ArtifactSigning",
