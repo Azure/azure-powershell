@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "733" ],
-        "x-ms-client-request-id": [ "b848a110-2d48-4753-b2cc-41cd08053ec4" ],
+        "x-ms-client-request-id": [ "c484ecab-cb8c-4d93-a7b6-3d3e72e951ed" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicySetDefinition_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/c1956d05-5951-413a-94d9-10c6ad82ce33" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/045e64f9-3972-47df-9073-8a9da18d30c1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "83646024-1521-4d77-818c-7f1c3c99f068" ],
-        "x-ms-correlation-request-id": [ "83646024-1521-4d77-818c-7f1c3c99f068" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260727T222409Z:83646024-1521-4d77-818c-7f1c3c99f068" ],
+        "x-ms-request-id": [ "9789b065-0b75-4f9c-9759-b23e18ba4d14" ],
+        "x-ms-correlation-request-id": [ "9789b065-0b75-4f9c-9759-b23e18ba4d14" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233108Z:9789b065-0b75-4f9c-9759-b23e18ba4d14" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1C9AECF924EB4FD7BDD0D6AF8A8F3CDC Ref B: CO6AA3150220031 Ref C: 2026-07-27T22:24:08Z" ],
-        "Date": [ "Mon, 27 Jul 2026 22:24:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D6C2FA0CC5A240159922BB4E30B0E091 Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:08Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "9309375" ],
@@ -52,7 +52,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "734" ],
-        "x-ms-client-request-id": [ "b848a110-2d48-4753-b2cc-41cd08053ec4" ],
+        "x-ms-client-request-id": [ "c484ecab-cb8c-4d93-a7b6-3d3e72e951ed" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicySetDefinition_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,16 +67,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/63d63e98-20c6-47b0-bd07-f1b30e4a1f04" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/b4d8d473-03e0-4125-a77d-33911b13bd66" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "caf37912-1cea-4f98-8901-de8e55def218" ],
-        "x-ms-correlation-request-id": [ "caf37912-1cea-4f98-8901-de8e55def218" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260727T222412Z:caf37912-1cea-4f98-8901-de8e55def218" ],
+        "x-ms-request-id": [ "8e4041f5-2731-4e28-8b6a-f990883c43f8" ],
+        "x-ms-correlation-request-id": [ "8e4041f5-2731-4e28-8b6a-f990883c43f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233110Z:8e4041f5-2731-4e28-8b6a-f990883c43f8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 508B0BAC385C41DDB95B6CA1BFE28C60 Ref B: CO6AA3150220031 Ref C: 2026-07-27T22:24:12Z" ],
-        "Date": [ "Mon, 27 Jul 2026 22:24:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 01EF71055B2B49D6BDA232906B0E20AE Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:10Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "3353119" ],
@@ -95,7 +95,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "735" ],
-        "x-ms-client-request-id": [ "303de5dc-e5c4-44fc-88b8-1bc31080aa65" ],
+        "x-ms-client-request-id": [ "29fb684d-2184-440d-bf48-f9daa7b0c9f1" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicySetDefinition_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -111,16 +111,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/9bad30b8-43f9-4dae-b72c-ee2a04526247" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/5321f306-c53e-42c9-abff-c4c42b7af8a2" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
-        "x-ms-request-id": [ "01df1b4d-8cdf-443a-b98a-e61eec633e0c" ],
-        "x-ms-correlation-request-id": [ "01df1b4d-8cdf-443a-b98a-e61eec633e0c" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260727T222414Z:01df1b4d-8cdf-443a-b98a-e61eec633e0c" ],
+        "x-ms-request-id": [ "3e6bc008-bcfa-468c-ae5c-29b17a161508" ],
+        "x-ms-correlation-request-id": [ "3e6bc008-bcfa-468c-ae5c-29b17a161508" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233112Z:3e6bc008-bcfa-468c-ae5c-29b17a161508" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 19D73E1A791147D59A8FE3285DDD9F31 Ref B: CO6AA3150220031 Ref C: 2026-07-27T22:24:13Z" ],
-        "Date": [ "Mon, 27 Jul 2026 22:24:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 86EE805C861643BF94A528E1019727C5 Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:12Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:11 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -137,7 +137,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "736" ],
-        "x-ms-client-request-id": [ "c5ea4485-1d37-4aea-9b69-926aa2cf0c73" ],
+        "x-ms-client-request-id": [ "45fe60b3-7d5a-4e4d-b509-70ca7bf6332c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicySetDefinition_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -153,16 +153,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/09b29352-ad7f-40d4-9dc9-22e5011c2264" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/ac9aad6e-4821-48f5-9d9f-ed359a056cd0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
-        "x-ms-request-id": [ "c3923d88-ed7c-4d0d-8470-408c5fb7d96d" ],
-        "x-ms-correlation-request-id": [ "c3923d88-ed7c-4d0d-8470-408c5fb7d96d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260727T222416Z:c3923d88-ed7c-4d0d-8470-408c5fb7d96d" ],
+        "x-ms-request-id": [ "3d72e60b-f764-4f36-ad12-1a5e5b70c1e2" ],
+        "x-ms-correlation-request-id": [ "3d72e60b-f764-4f36-ad12-1a5e5b70c1e2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233115Z:3d72e60b-f764-4f36-ad12-1a5e5b70c1e2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 01C751A434B142E7978F21E327FBF21F Ref B: CO6AA3150220031 Ref C: 2026-07-27T22:24:16Z" ],
-        "Date": [ "Mon, 27 Jul 2026 22:24:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 59D118C41097442DBED8B7BFC241FC3B Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:15Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:14 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -179,7 +179,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "737" ],
-        "x-ms-client-request-id": [ "7089a33a-b9a4-47e9-b411-29ce384a6fad" ],
+        "x-ms-client-request-id": [ "ab770b93-9f64-4cd5-928c-97185db47cdf" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicySetDefinition_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -195,16 +195,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/19669f32-33de-49d0-bc9d-8876ed8f5e94" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/51753ea0-d8e3-4a12-b2a4-52d1b35628e6" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
-        "x-ms-request-id": [ "13ab12a0-89d3-44be-aa6d-0025a36673b0" ],
-        "x-ms-correlation-request-id": [ "13ab12a0-89d3-44be-aa6d-0025a36673b0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260727T222417Z:13ab12a0-89d3-44be-aa6d-0025a36673b0" ],
+        "x-ms-request-id": [ "183946bd-92bd-435c-b644-7be09d98ab80" ],
+        "x-ms-correlation-request-id": [ "183946bd-92bd-435c-b644-7be09d98ab80" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233116Z:183946bd-92bd-435c-b644-7be09d98ab80" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A5167D99001E41E2997B6B2F7AEC7FA3 Ref B: CO6AA3150220031 Ref C: 2026-07-27T22:24:17Z" ],
-        "Date": [ "Mon, 27 Jul 2026 22:24:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1FCA9D30ACB74D9A85DFFDDE9DB10AB6 Ref B: MWH011020808023 Ref C: 2026-07-27T23:31:16Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:31:15 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
