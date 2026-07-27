@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedExtensionMetad
 }
 
 Describe 'Get-AzConnectedExtensionMetadataV2' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $all = @(Get-AzConnectedExtensionMetadataV2 -ExtensionType 'NetworkWatcherAgentWindows' -Publisher 'Microsoft.Azure.NetworkWatcher' -Location $env.Location)
+        $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $all = @(Get-AzConnectedExtensionMetadataV2 -ExtensionType 'NetworkWatcherAgentWindows' -Publisher 'Microsoft.Azure.NetworkWatcher' -Location $env.Location -Version '1.4.2798.3')
+        $all | Should -Not -BeNullOrEmpty
     }
 }

@@ -12,10 +12,15 @@ The operation to install patches on a hybrid machine identity in Azure.
 
 ## SYNTAX
 
-### InstallViaIdentity (Default)
+### InstallExpanded (Default)
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
- -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -MaximumDuration <String> -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
+ [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
+ [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
+ [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
+ [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,18 +38,6 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-Sub
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InstallExpanded
-```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -MaximumDuration <TimeSpan> -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
- [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
- [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
- [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
- [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### Install
 ```
 Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
@@ -54,13 +47,20 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-Sub
 
 ### InstallViaIdentityExpanded
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <TimeSpan>
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <String>
  -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
  [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
  [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InstallViaIdentity
+```
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
+ -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -124,7 +124,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: InstallViaIdentity, InstallViaIdentityExpanded
+Parameter Sets: InstallViaIdentityExpanded, InstallViaIdentity
 Aliases:
 
 Required: True
@@ -139,7 +139,7 @@ Input for InstallPatches as directly received by the API
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters
-Parameter Sets: InstallViaIdentity, Install
+Parameter Sets: Install, InstallViaIdentity
 Aliases:
 
 Required: True
@@ -231,7 +231,7 @@ Specifies the maximum amount of time that the operation will run.
 It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
 
 ```yaml
-Type: System.TimeSpan
+Type: System.String
 Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
@@ -247,7 +247,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallViaJsonString, InstallViaJsonFilePath, InstallExpanded, Install
+Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
 Aliases:
 
 Required: True
@@ -293,7 +293,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallViaJsonString, InstallViaJsonFilePath, InstallExpanded, Install
+Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
 Aliases:
 
 Required: True
@@ -309,7 +309,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallViaJsonString, InstallViaJsonFilePath, InstallExpanded, Install
+Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
 Aliases:
 
 Required: False

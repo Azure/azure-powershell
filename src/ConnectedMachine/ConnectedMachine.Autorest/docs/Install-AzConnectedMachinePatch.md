@@ -12,10 +12,15 @@ The operation to install patches on a hybrid machine identity in Azure.
 
 ## SYNTAX
 
-### InstallViaIdentity (Default)
+### InstallExpanded (Default)
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
- -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -MaximumDuration <String>
+ -RebootSetting <String> [-SubscriptionId <String>] [-LinuxParameterClassificationsToInclude <String[]>]
+ [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
+ [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
+ [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
+ [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,21 +31,16 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### InstallExpanded
+### InstallViaIdentity
 ```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -MaximumDuration <TimeSpan>
- -RebootSetting <String> [-SubscriptionId <String>] [-LinuxParameterClassificationsToInclude <String[]>]
- [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
- [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
- [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
- [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
+ -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InstallViaIdentityExpanded
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <TimeSpan>
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <String>
  -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
@@ -231,7 +231,7 @@ Specifies the maximum amount of time that the operation will run.
 It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
 
 ```yaml
-Type: System.TimeSpan
+Type: System.String
 Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 

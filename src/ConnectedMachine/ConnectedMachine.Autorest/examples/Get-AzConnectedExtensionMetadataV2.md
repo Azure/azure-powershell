@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of extension metadata
 ```powershell
-{{ Add code here }}
+Get-AzConnectedExtensionMetadataV2 -ExtensionType 'NetworkWatcherAgentWindows' -Location 'eastus' -Publisher 'Microsoft.Azure.NetworkWatcher'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
 ```
 
-{{ Add description here }}
+Gets all versions of extension metadata for the specified extension type and publisher.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific extension metadata version
 ```powershell
-{{ Add code here }}
+Get-AzConnectedExtensionMetadataV2 -ExtensionType 'NetworkWatcherAgentWindows' -Location 'eastus' -Publisher 'Microsoft.Azure.NetworkWatcher' -Version '1.4.2798.3'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
 ```
+
+Gets extension metadata for a specific version.
 
 {{ Add description here }}
 

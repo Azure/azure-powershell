@@ -22,25 +22,19 @@ Gets all Extension types based on location and publisher
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all extension types for a publisher in a location
 ```powershell
-{{ Add code here }}
+Get-AzConnectedExtensionType -Location 'eastus' -Publisher 'Microsoft.Azure.NetworkWatcher'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+NetworkWatcherAgentWindows
+NetworkWatcherAgentLinux
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Gets all extension types available from the specified publisher in the given Azure region.
 
 {{ Add description here }}
 

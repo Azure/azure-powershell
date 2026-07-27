@@ -406,6 +406,14 @@ directive:
   # SetupExtensions is a non-standard operation that conflicts with MachineExtension parameter types
   - remove-operation: SetupExtensions
 
+  # Fix MaximumDuration: swagger 'duration' format maps to System.TimeSpan which can't parse ISO 8601 (PT4H)
+  # Use string type instead so the ISO 8601 value passes through directly to the API
+  - from: swagger-document
+    where: $.definitions.MachineInstallPatchesParameters.properties.maximumDuration
+    transform: >-
+      delete $.format;
+      return $;
+
   # Create model cmdlet for complex object
   - model-cmdlet:
     - model-name: LicenseDetails

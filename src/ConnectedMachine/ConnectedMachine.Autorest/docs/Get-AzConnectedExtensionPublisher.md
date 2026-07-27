@@ -21,25 +21,20 @@ Gets all Extension publishers based on the location
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all extension publishers for a location
 ```powershell
-{{ Add code here }}
+Get-AzConnectedExtensionPublisher -Location 'eastus'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+Microsoft.Azure.NetworkWatcher
+Microsoft.HybridCompute
+Microsoft.Azure.Monitor
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Gets all extension publishers available in the specified Azure region.
 
 {{ Add description here }}
 
