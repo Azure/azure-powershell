@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create Network Fabric resource.</summary>
+    /// <summary>create Network Fabric resource.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkFabric_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabric))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"Create Network Fabric resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"create Network Fabric resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}", ApiVersion = "2023-06-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}", ApiVersion = "2025-07-15")]
     public partial class NewAzNetworkFabric_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IContext
@@ -43,15 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
-
         /// <summary>Switch configuration description.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Switch configuration description.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
@@ -68,6 +59,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
+        /// <summary>Key that must be configured on the fabric.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Key that must be configured on the fabric.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Key that must be configured on the fabric.",
+        SerializedName = @"key",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AuthorizedTransceiverKey { get => _body.AuthorizedTransceiverKey ?? null; set => _body.AuthorizedTransceiverKey = value; }
+
+        /// <summary>Vendor of the transceiver.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Vendor of the transceiver.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Vendor of the transceiver.",
+        SerializedName = @"vendor",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AuthorizedTransceiverVendor { get => _body.AuthorizedTransceiverVendor ?? null; set => _body.AuthorizedTransceiverVendor = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Runtime)]
@@ -79,6 +92,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ManagedNetworkFabric Client => Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Module.Instance.ClientAPI;
 
+        /// <summary>Control Plane Access Control List ARM resource IDs.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Control Plane Access Control List ARM resource IDs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Control Plane Access Control List ARM resource IDs.",
+        SerializedName = @"controlPlaneAcls",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ControlPlaneAcl { get => _body.ControlPlaneAcls?.ToArray() ?? null /* fixedArrayOf */; set => _body.ControlPlaneAcls = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -88,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _body.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -102,6 +131,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         SerializedName = @"fabricASN",
         PossibleTypes = new [] { typeof(long) })]
         public long FabricAsn { get => _body.FabricAsn; set => _body.FabricAsn = value; }
+
+        /// <summary>The version of Network Fabric.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of Network Fabric.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of Network Fabric.",
+        SerializedName = @"fabricVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string FabricVersion { get => _body.FabricVersion ?? null; set => _body.FabricVersion = value; }
+
+        /// <summary>NetworkFabric feature flag configuration information</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "NetworkFabric feature flag configuration information")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NetworkFabric feature flag configuration information",
+        SerializedName = @"featureFlags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties[] FeatureFlag { get => _body.FeatureFlag?.ToArray() ?? null /* fixedArrayOf */; set => _body.FeatureFlag = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties>(value) : null); }
+
+        /// <summary>Hardware alert threshold percentage. Possible values are from 20 to 100.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Hardware alert threshold percentage. Possible values are from 20 to 100.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Hardware alert threshold percentage. Possible values are from 20 to 100.",
+        SerializedName = @"hardwareAlertThreshold",
+        PossibleTypes = new [] { typeof(int) })]
+        public int HardwareAlertThreshold { get => _body.HardwareAlertThreshold ?? default(int); set => _body.HardwareAlertThreshold = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -239,6 +302,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>QoS configuration state. Default is Disabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "QoS configuration state. Default is Disabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"QoS configuration state. Default is Disabled.",
+        SerializedName = @"qosConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string QoConfigurationQosConfigurationState { get => _body.QoConfigurationQosConfigurationState ?? null; set => _body.QoConfigurationQosConfigurationState = value; }
+
         /// <summary>Number of compute racks associated to Network Fabric.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of compute racks associated to Network Fabric.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
@@ -274,6 +349,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         SerializedName = @"serverCountPerRack",
         PossibleTypes = new [] { typeof(int) })]
         public int ServerCountPerRack { get => _body.ServerCountPerRack; set => _body.ServerCountPerRack = value; }
+
+        /// <summary>Network Fabric storage account resource identifier.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Network Fabric storage account resource identifier.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Network Fabric storage account resource identifier.",
+        SerializedName = @"storageAccountId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageAccountConfigurationStorageAccountId { get => _body.StorageAccountConfigurationStorageAccountId ?? null; set => _body.StorageAccountConfigurationStorageAccountId = value; }
+
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of managed identity that is being selected.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of managed identity that is being selected.",
+        SerializedName = @"identityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        public string StorageAccountIdentityType { get => _body.StorageAccountIdentityType ?? null; set => _body.StorageAccountIdentityType = value; }
+
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageAccountIdentityUserAssignedIdentityResourceId { get => _body.StorageAccountIdentityUserAssignedIdentityResourceId ?? null; set => _body.StorageAccountIdentityUserAssignedIdentityResourceId = value; }
+
+        /// <summary>Number of Storage arrays associated with the Network Fabric.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of Storage arrays associated with the Network Fabric.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Number of Storage arrays associated with the Network Fabric.",
+        SerializedName = @"storageArrayCount",
+        PossibleTypes = new [] { typeof(int) })]
+        public int StorageArrayCount { get => _body.StorageArrayCount ?? default(int); set => _body.StorageArrayCount = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -316,6 +438,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         SerializedName = @"terminalServerConfiguration",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration TerminalServerConfiguration { get => _body.TerminalServerConfiguration ?? null /* object */; set => _body.TerminalServerConfiguration = value; }
+
+        /// <summary>Trusted IP Prefixes ARM resource IDs.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Trusted IP Prefixes ARM resource IDs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Trusted IP Prefixes ARM resource IDs.",
+        SerializedName = @"trustedIpPrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] TrustedIPPrefix { get => _body.TrustedIPPrefix?.ToArray() ?? null /* fixedArrayOf */; set => _body.TrustedIPPrefix = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>NNI derived unique Route Distinguisher state. Default is Disabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "NNI derived unique Route Distinguisher state. Default is Disabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NNI derived unique Route Distinguisher state. Default is Disabled.",
+        SerializedName = @"nniDerivedUniqueRdConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string UniqueRdConfigurationNniDerivedUniqueRdConfigurationState { get => _body.UniqueRdConfigurationNniDerivedUniqueRdConfigurationState ?? null; set => _body.UniqueRdConfigurationNniDerivedUniqueRdConfigurationState = value; }
+
+        /// <summary>Unique Route Distinguisher configuration state. Default is Enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unique Route Distinguisher configuration state. Default is Enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Unique Route Distinguisher configuration state. Default is Enabled.",
+        SerializedName = @"uniqueRdConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string UniqueRdConfigurationUniqueRdConfigurationState { get => _body.UniqueRdConfigurationUniqueRdConfigurationState ?? null; set => _body.UniqueRdConfigurationUniqueRdConfigurationState = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -386,11 +552,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -532,6 +693,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
 
         }
 
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _body.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _body.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_body.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _body.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _body.IdentityType = "UserAssigned";
+                }
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -604,6 +790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    this.PreProcessManagedIdentityParameters();
                     await this.Client.NetworkFabricsCreate(SubscriptionId, ResourceGroupName, Name, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -706,24 +893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabric
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

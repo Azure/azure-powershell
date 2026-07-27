@@ -197,6 +197,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).ForwardDeadLetteredMessagesTo = (string) content.GetValueForProperty("ForwardDeadLetteredMessagesTo",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).ForwardDeadLetteredMessagesTo, global::System.Convert.ToString);
             }
+            if (content.Contains("UserMetadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).UserMetadata = (string) content.GetValueForProperty("UserMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).UserMetadata, global::System.Convert.ToString);
+            }
             if (content.Contains("CountDetailActiveMessageCount"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).CountDetailActiveMessageCount = (long?) content.GetValueForProperty("CountDetailActiveMessageCount",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).CountDetailActiveMessageCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -321,6 +325,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("ForwardDeadLetteredMessagesTo"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).ForwardDeadLetteredMessagesTo = (string) content.GetValueForProperty("ForwardDeadLetteredMessagesTo",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).ForwardDeadLetteredMessagesTo, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserMetadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).UserMetadata = (string) content.GetValueForProperty("UserMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueuePropertiesInternal)this).UserMetadata, global::System.Convert.ToString);
             }
             if (content.Contains("CountDetailActiveMessageCount"))
             {

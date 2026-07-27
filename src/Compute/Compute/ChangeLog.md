@@ -20,6 +20,25 @@
 
 -->
 ## Upcoming Release
+* Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
+* Marked the `-EnableWAD`, `-SkipStorage`, and `-InstallNewExtension` parameters of `Set-AzVMAEMExtension` as deprecated using breaking-change attributes. They will be removed in a future major release.
+
+* Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution. [#29880]
+
+## Version 11.7.0
+* ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
+* Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.
+    - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets.
+    - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzVmss`. These parameters are only supported when updating via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`); using them with the PATCH parameter sets will throw an error.
+* Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
+    - Added `New-AzVmssLifecycleHookConfig` cmdlet to create an in-memory lifecycle hook configuration object
+    - Added `Set-AzVmssLifecycleHooksProfile` cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
+    - Added `Remove-AzVmssLifecycleHook` cmdlet to remove one hook by `-Type` or all hooks with `-All` from a live VMSS
+    - Added `Get-AzVmssLifecycleHookEvent` cmdlet to list or retrieve lifecycle hook events for a VMSS
+    - Added `Update-AzVmssLifecycleHookEvent` cmdlet to respond to a lifecycle hook event (approve, reject, or delay) with optional per-VM instance filtering via `-InstanceId`
+    - Added `-LifecycleHooksProfile` parameter to `New-AzVmssConfig` to support inline lifecycle hooks profile construction
+
+## Version 11.6.0
 * Added ChangeSafety Support
 * Added `-ZonalPlatformFaultDomainAlignMode` to `New-AzVmssConfig`, `New-AzVmss` (SimpleParameterSet), and `Update-AzVmss` cmdlets.
 * Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` cmdlet.

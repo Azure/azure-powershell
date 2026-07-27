@@ -19,8 +19,15 @@
 -->
 
 ## Upcoming Release
+* Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
+    - Added help content and aligned new parameter names with Azure PowerShell naming conventions.
+    - Exported all deployment stack WhatIfResult cmdlets from the module manifest.
+
+## Version 10.0.1
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `8.0.2` to `10.0.3`.
+
+## Version 10.0.0
 * Added ChangeSafety Support
-    - Fixed dynamic parameter inheritance in deployment and deployment stack cmdlets
 * Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
 * Fixed `Set-AzRoleAssignment` unable to delete conditions
 * Updated Policy.Autorest to 2026-01-01

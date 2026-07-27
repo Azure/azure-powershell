@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class ExtendedLocationType
     {
+        /// <summary>
+        /// EdgeZone
+        /// </summary>
         public const string EdgeZone = "EdgeZone";
     }
 }

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '9.1.0'
+ModuleVersion = '10.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Authorization.Autorest/bin/Az.Authorization.private.dll', 
@@ -72,10 +72,10 @@ RequiredAssemblies = 'Authorization.Autorest/bin/Az.Authorization.private.dll',
                'System.Runtime.CompilerServices.Unsafe.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Authorization.Autorest/Az.Authorization.format.ps1xml', 
@@ -153,7 +153,8 @@ CmdletsToExport = 'Export-AzResourceGroup', 'Export-AzTemplateSpec',
                'Get-AzManagedApplicationDefinition', 'Get-AzManagementGroup', 
                'Get-AzManagementGroupDeployment', 
                'Get-AzManagementGroupDeploymentOperation', 
-               'Get-AzManagementGroupDeploymentStack', 
+               'Get-AzManagementGroupDeploymentStack',
+               'Get-AzManagementGroupDeploymentStackWhatIfResult',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
                'Get-AzManagementGroupEntity', 
                'Get-AzManagementGroupHierarchySetting', 
@@ -165,24 +166,28 @@ CmdletsToExport = 'Export-AzResourceGroup', 'Export-AzTemplateSpec',
                'Get-AzResourceGroupDeployment', 
                'Get-AzResourceGroupDeploymentOperation', 
                'Get-AzResourceGroupDeploymentStack', 
+               'Get-AzResourceGroupDeploymentStackWhatIfResult',
                'Get-AzResourceGroupDeploymentWhatIfResult', 'Get-AzResourceLock', 
                'Get-AzResourceManagementPrivateLink', 'Get-AzResourceProvider', 
                'Get-AzRoleAssignment', 'Get-AzRoleDefinition', 
-               'Get-AzSubscriptionDeploymentStack', 'Get-AzTag', 
-               'Get-AzTemplateSpec', 'Get-AzTenantBackfillStatus', 
+               'Get-AzSubscriptionDeploymentStack', 'Get-AzSubscriptionDeploymentStackWhatIfResult',
+               'Get-AzTag', 'Get-AzTemplateSpec', 'Get-AzTenantBackfillStatus',
                'Get-AzTenantDeployment', 'Get-AzTenantDeploymentOperation', 
                'Get-AzTenantDeploymentWhatIfResult', 'Invoke-AzResourceAction', 
                'Move-AzResource', 'New-AzDenyAssignment', 'New-AzDeployment', 
                'New-AzManagedApplication', 'New-AzManagedApplicationDefinition', 
                'New-AzManagementGroup', 'New-AzManagementGroupDeployment', 
                'New-AzManagementGroupDeploymentStack', 
+               'New-AzManagementGroupDeploymentStackWhatIfResult',
                'New-AzManagementGroupHierarchySetting', 
                'New-AzManagementGroupSubscription', 'New-AzPrivateLinkAssociation', 
                'New-AzResource', 'New-AzResourceGroup', 
                'New-AzResourceGroupDeployment', 
-               'New-AzResourceGroupDeploymentStack', 'New-AzResourceLock', 
+               'New-AzResourceGroupDeploymentStack',
+               'New-AzResourceGroupDeploymentStackWhatIfResult', 'New-AzResourceLock',
                'New-AzResourceManagementPrivateLink', 'New-AzRoleAssignment', 
-               'New-AzRoleDefinition', 'New-AzSubscriptionDeploymentStack', 
+               'New-AzRoleDefinition', 'New-AzSubscriptionDeploymentStack',
+               'New-AzSubscriptionDeploymentStackWhatIfResult',
                'New-AzTag', 'New-AzTemplateSpec', 'New-AzTenantDeployment', 
                'Publish-AzBicepModule', 'Register-AzProviderFeature', 
                'Register-AzProviderPreviewFeature', 'Register-AzResourceProvider', 
@@ -191,13 +196,16 @@ CmdletsToExport = 'Export-AzResourceGroup', 'Export-AzTemplateSpec',
                'Remove-AzManagedApplicationDefinition', 'Remove-AzManagementGroup', 
                'Remove-AzManagementGroupDeployment', 
                'Remove-AzManagementGroupDeploymentStack', 
+               'Remove-AzManagementGroupDeploymentStackWhatIfResult',
                'Remove-AzManagementGroupHierarchySetting', 
                'Remove-AzManagementGroupSubscription', 
                'Remove-AzPrivateLinkAssociation', 'Remove-AzResource', 
                'Remove-AzResourceGroup', 'Remove-AzResourceGroupDeployment', 
-               'Remove-AzResourceGroupDeploymentStack', 'Remove-AzResourceLock', 
+               'Remove-AzResourceGroupDeploymentStack',
+               'Remove-AzResourceGroupDeploymentStackWhatIfResult', 'Remove-AzResourceLock',
                'Remove-AzResourceManagementPrivateLink', 'Remove-AzRoleAssignment', 
-               'Remove-AzRoleDefinition', 'Remove-AzSubscriptionDeploymentStack', 
+               'Remove-AzRoleDefinition', 'Remove-AzSubscriptionDeploymentStack',
+               'Remove-AzSubscriptionDeploymentStackWhatIfResult',
                'Remove-AzTag', 'Remove-AzTemplateSpec', 'Remove-AzTenantDeployment', 
                'Save-AzDeploymentScriptLog', 'Save-AzDeploymentTemplate', 
                'Save-AzManagementGroupDeploymentStackTemplate', 
@@ -207,10 +215,13 @@ CmdletsToExport = 'Export-AzResourceGroup', 'Export-AzTemplateSpec',
                'Save-AzSubscriptionDeploymentStackTemplate', 
                'Save-AzTenantDeploymentTemplate', 'Set-AzManagedApplication', 
                'Set-AzManagedApplicationDefinition', 
-               'Set-AzManagementGroupDeploymentStack', 'Set-AzResource', 
-               'Set-AzResourceGroup', 'Set-AzResourceGroupDeploymentStack', 
+               'Set-AzManagementGroupDeploymentStack',
+               'Set-AzManagementGroupDeploymentStackWhatIfResult', 'Set-AzResource',
+               'Set-AzResourceGroup', 'Set-AzResourceGroupDeploymentStack',
+               'Set-AzResourceGroupDeploymentStackWhatIfResult',
                'Set-AzResourceLock', 'Set-AzRoleAssignment', 'Set-AzRoleDefinition', 
-               'Set-AzSubscriptionDeploymentStack', 'Set-AzTemplateSpec', 
+               'Set-AzSubscriptionDeploymentStack',
+               'Set-AzSubscriptionDeploymentStackWhatIfResult', 'Set-AzTemplateSpec',
                'Start-AzTenantBackfill', 'Stop-AzDeployment', 
                'Stop-AzManagementGroupDeployment', 
                'Stop-AzResourceGroupDeployment', 'Stop-AzTenantDeployment', 
@@ -257,9 +268,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup', 
-               'Deployment', 'ActiveDirectory', 'Authorization', 'Management', 
-               'ManagementGroups', 'Tags'
+        Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization','Management','ManagementGroups','Tags'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -271,13 +280,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Made ''Remove-AzDenyAssignment'' honor ''-Confirm:False'' and idempotent when no matching deny assignment exists. The redundant ''-Force'' switch was removed (the cmdlet relies on the standard ''SupportsShouldProcess''/''ConfirmImpact'' pattern).
-* Improved error messages for role assignment and role definition operations to include the underlying service error code and message instead of just the HTTP status code. [#19605] [#19374]
-* Added ''-PrincipalId'' and ''-PrincipalType'' to ''New-AzDenyAssignment'' to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
-* Added ''New-AzDenyAssignment'' for creating user-assigned deny assignments using the ''2024-07-01-preview'' API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
-* Added ''Remove-AzDenyAssignment'' for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
-* Regenerated Authorization Management SDK from ''2024-07-01-preview'' swagger specification to include deny assignment create and delete operations.
-* Fixed ''New-AzDeployment'' not reporting nested ARM (Azure Resource Manager) error details (e.g. ''KeyVaultParameterReferenceSecretRetrieveFailed'') when a ''MultipleErrorsOccurred'' validation failure is returned. Previously, the inner errors were silently dropped and only the generic top-level error was shown. [#28308]'
+        ReleaseNotes = '* Updated ''Microsoft.Extensions.DependencyInjection.Abstractions'' dependency from ''8.0.2'' to ''10.0.3''.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -290,7 +293,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

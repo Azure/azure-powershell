@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Network Prefix specifying IPv4/IPv6 packets to be permitted or denied. Example: 1.1.1.0/24 | 3FFE:FFFF:0:CD30::/126 ",
+        Description = @"Network Prefix specifying IPv4/IPv6 packets to be permitted or denied. Example: 1.1.1.0/24 | 3FFE:FFFF:0:CD30::/126",
         SerializedName = @"networkPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkPrefix { get; set; }

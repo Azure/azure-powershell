@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VerbosityLevel
     {
+        /// <summary>
+        /// Normal
+        /// </summary>
         public const string Normal = "Normal";
+        /// <summary>
+        /// Minimum
+        /// </summary>
         public const string Minimum = "Minimum";
+        /// <summary>
+        /// Full
+        /// </summary>
         public const string Full = "Full";
     }
 }

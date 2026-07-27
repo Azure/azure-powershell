@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Management.Network
         /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='request'>
         /// Parameters supplied to download vpn-sites configuration.
@@ -70,11 +69,10 @@ namespace Microsoft.Azure.Management.Network
         /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='request'>
         /// Parameters supplied to download vpn-sites configuration.
@@ -120,13 +118,23 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (virtualWANName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -134,9 +142,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("request", request);
 

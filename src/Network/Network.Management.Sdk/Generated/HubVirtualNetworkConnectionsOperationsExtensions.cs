@@ -13,6 +13,90 @@ namespace Microsoft.Azure.Management.Network
     public static partial class HubVirtualNetworkConnectionsOperationsExtensions
     {
         /// <summary>
+        /// Retrieves the details of all HubVirtualNetworkConnections.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<HubVirtualNetworkConnection> List(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName)
+        {
+                return ((IHubVirtualNetworkConnectionsOperations)operations).ListAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all HubVirtualNetworkConnections.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<HubVirtualNetworkConnection>> ListAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a HubVirtualNetworkConnection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the Virtual Hub.
+        /// </param>
+        /// <param name='connectionName'>
+        /// 
+        /// </param>
+        public static HubVirtualNetworkConnection Get(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
+        {
+                return ((IHubVirtualNetworkConnectionsOperations)operations).GetAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a HubVirtualNetworkConnection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the Virtual Hub.
+        /// </param>
+        /// <param name='connectionName'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<HubVirtualNetworkConnection> GetAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a hub virtual network connection if it doesn&#39;t exist else updates
         /// the existing one.
         /// </summary>
@@ -20,13 +104,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the HubVirtualNetworkConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         public static HubVirtualNetworkConnection CreateOrUpdate(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, HubVirtualNetworkConnection hubVirtualNetworkConnectionParameters)
         {
@@ -41,13 +125,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the HubVirtualNetworkConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -66,13 +150,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         public static void Delete(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
         {
@@ -86,13 +170,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -102,90 +186,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Retrieves the details of a HubVirtualNetworkConnection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        public static HubVirtualNetworkConnection Get(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
-        {
-                return ((IHubVirtualNetworkConnectionsOperations)operations).GetAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a HubVirtualNetworkConnection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<HubVirtualNetworkConnection> GetAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the details of all HubVirtualNetworkConnections.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<HubVirtualNetworkConnection> List(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName)
-        {
-                return ((IHubVirtualNetworkConnectionsOperations)operations).ListAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of all HubVirtualNetworkConnections.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<HubVirtualNetworkConnection>> ListAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates a hub virtual network connection if it doesn&#39;t exist else updates
         /// the existing one.
         /// </summary>
@@ -193,13 +193,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the HubVirtualNetworkConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         public static HubVirtualNetworkConnection BeginCreateOrUpdate(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, HubVirtualNetworkConnection hubVirtualNetworkConnectionParameters)
         {
@@ -214,13 +214,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the HubVirtualNetworkConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         public static void BeginDelete(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
         {
@@ -259,13 +259,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
+        /// The name of the Virtual Hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the HubVirtualNetworkConnection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

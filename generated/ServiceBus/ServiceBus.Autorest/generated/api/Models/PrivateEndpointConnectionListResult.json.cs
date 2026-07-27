@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>Result of the list of all private endpoint connections operation.</summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     public partial class PrivateEndpointConnectionListResult
     {
 

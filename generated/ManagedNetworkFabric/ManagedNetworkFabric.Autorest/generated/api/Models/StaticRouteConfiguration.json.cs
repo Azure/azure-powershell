@@ -80,6 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {_bfdConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("bfdConfiguration"), out var __jsonBfdConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfiguration.FromJson(__jsonBfdConfiguration) : _bfdConfiguration;}
             {_ipv4Route = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("ipv4Routes"), out var __jsonIpv4Routes) ? If( __jsonIpv4Routes as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRouteProperties.FromJson(__u) )) ))() : null : _ipv4Route;}
             {_ipv6Route = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("ipv6Routes"), out var __jsonIpv6Routes) ? If( __jsonIpv6Routes as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRouteProperties.FromJson(__p) )) ))() : null : _ipv6Route;}
+            {_extension = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("extension"), out var __jsonExtension) ? (string)__jsonExtension : (string)_extension;}
             AfterFromJson(json);
         }
 
@@ -121,6 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 }
                 container.Add("ipv6Routes",__r);
             }
+            AddIf( null != (((object)this._extension)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._extension.ToString()) : null, "extension" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

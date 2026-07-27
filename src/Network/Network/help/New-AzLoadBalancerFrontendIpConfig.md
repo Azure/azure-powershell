@@ -16,45 +16,45 @@ Creates a front-end IP configuration for a load balancer.
 ### SetByResourceSubnet (Default)
 ```
 New-AzLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>]
- [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet>
+ [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet> [-DdosCustomPolicyId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdSubnet
 ```
 New-AzLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>]
- [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String>
+ [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String> [-DdosCustomPolicyId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
 New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAddressId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DdosCustomPolicyId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAddress <PSPublicIpAddress>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DdosCustomPolicyId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddressPrefix
 ```
 New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAddressPrefixId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DdosCustomPolicyId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddressPrefix
 ```
 New-AzLoadBalancerFrontendIpConfig -Name <String> [-Zone <String[]>] -PublicIpAddressPrefix <PSPublicIpPrefix>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DdosCustomPolicyId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +81,51 @@ The first command creates a public ip prefix named MyPublicIP of length 28 in th
 The second command creates a front-end IP configuration named FrontendIpConfig01 using the public IP prefix in $publicipprefix.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DdosCustomPolicyId
+The DDoS custom policy resource ID to associate with the frontend IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

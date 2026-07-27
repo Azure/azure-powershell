@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,6 +56,20 @@ namespace Microsoft.Azure.Commands.Compute
             )]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -76,12 +90,43 @@ namespace Microsoft.Azure.Commands.Compute
                         Sku = new Sku(this.IsParameterBound(c => c.Sku) ? this.Sku : this.AvailabilitySet.Sku, null, null),
                         ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId) 
                                                 ? new SubResource(this.ProximityPlacementGroupId)
-                                                : this.AvailabilitySet.ProximityPlacementGroup
+                                                : this.AvailabilitySet.ProximityPlacementGroup,
+                        ScheduledEventsPolicy = this.AvailabilitySet.ScheduledEventsPolicy
                     };
 
                     if (avSetParams.ProximityPlacementGroup != null && string.IsNullOrEmpty(avSetParams.ProximityPlacementGroup.Id))
                     {
                         avSetParams.ProximityPlacementGroup.Id = null;
+                    }
+
+                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+                    {
+                        if (avSetParams.ScheduledEventsPolicy == null)
+                        {
+                            avSetParams.ScheduledEventsPolicy = new ScheduledEventsPolicy();
+                        }
+
+                        if (this.IsParameterBound(c => c.ScheduledEventsApiVersion))
+                        {
+                            if (avSetParams.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets == null)
+                            {
+                                avSetParams.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets = new ScheduledEventsAdditionalPublishingTargets();
+                            }
+                            if (avSetParams.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph == null)
+                            {
+                                avSetParams.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph = new EventGridAndResourceGraph();
+                            }
+                            avSetParams.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
+                        }
+
+                        if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                        {
+                            if (avSetParams.ScheduledEventsPolicy.AllInstancesDown == null)
+                            {
+                                avSetParams.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
+                            }
+                            avSetParams.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
+                        }
                     }
 
                     var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(

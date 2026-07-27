@@ -15,9 +15,9 @@ Put a key-value.
 ### PutExpanded (Default)
 ```
 Set-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-ClientRequestId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>] [-ContentType <String>] [-Etag <String>]
- [-LastModified <DateTime>] [-Locked] [-Tag <Hashtable>] [-Value <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>] [-ContentType <String>]
+ [-Description <String>] [-Etag <String>] [-LastModified <DateTime>] [-Locked] [-Tag <Hashtable>]
+ [-Value <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PutViaJsonFilePath
@@ -101,6 +101,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The description of the key-value.
+
+```yaml
+Type: System.String
+Parameter Sets: PutExpanded
+Aliases:
 
 Required: False
 Position: Named

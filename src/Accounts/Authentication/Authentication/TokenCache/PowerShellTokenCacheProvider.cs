@@ -15,6 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 
 using Azure.Identity;
 
@@ -213,6 +215,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
         public abstract TokenCachePersistenceOptions GetTokenCachePersistenceOptions();
+
+        /// <summary>
+        /// Creates a confidential client app with a client secret.
+        /// Used for Service Principal SSH certificate authentication.
+        /// </summary>
+        public virtual IConfidentialClientApplication CreateConfidentialClient(string authority, string tenantId, string clientId, string clientSecret)
+        {
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId)
+                .WithClientSecret(clientSecret)
+                .WithExperimentalFeatures();
+            if (!string.IsNullOrEmpty(authority))
+            {
+                builder.WithAuthority(authority, tenantId ?? organizationTenant);
+            }
+            return builder.Build();
+        }
+
+        /// <summary>
+        /// Creates a confidential client app with a certificate.
+        /// Used for Service Principal SSH certificate authentication.
+        /// </summary>
+        public virtual IConfidentialClientApplication CreateConfidentialClient(string authority, string tenantId, string clientId, X509Certificate2 certificate)
+        {
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId)
+                .WithCertificate(certificate)
+                .WithExperimentalFeatures();
+            if (!string.IsNullOrEmpty(authority))
+            {
+                builder.WithAuthority(authority, tenantId ?? organizationTenant);
+            }
+            return builder.Build();
+        }
 
     }
 }

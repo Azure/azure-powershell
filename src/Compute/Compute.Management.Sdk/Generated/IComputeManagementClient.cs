@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Management.Compute
         IImagesOperations Images { get; }
 
         /// <summary>
+        /// Gets the IInterconnectBlocksOperations
+        /// </summary>
+        IInterconnectBlocksOperations InterconnectBlocks { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineImagesEdgeZoneOperations
         /// </summary>
         IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZone { get; }

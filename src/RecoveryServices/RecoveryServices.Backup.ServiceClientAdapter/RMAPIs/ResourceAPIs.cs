@@ -92,5 +92,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             return storageAccount;
         }
+
+        /// <summary>
+        /// Gets the VM as a generic resource in the given subscription. Used to validate a
+        /// cross-subscription (CSB) VM's existence and region before enabling backup, since discovery
+        /// does not run cross-subscription.
+        /// </summary>
+        /// <param name="vmName">Name of the virtual machine</param>
+        /// <param name="vmResourceGroupName">Resource group of the virtual machine</param>
+        /// <param name="subscriptionId">Subscription the virtual machine resides in</param>
+        /// <returns>Generic resource returned from the service</returns>
+        public GenericResource GetVmResource(string vmName, string vmResourceGroupName, string subscriptionId)
+        {
+            string vmResourceId = string.Format(
+                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}",
+                subscriptionId, vmResourceGroupName, vmName);
+
+            return RMAdapter.Client.Resources.GetByIdWithHttpMessagesAsync(
+                vmResourceId,
+                "2023-03-01",
+                null,
+                cancellationToken: RMAdapter.CmdletCancellationToken).GetAwaiter().GetResult().Body;
+        }
     }
 }

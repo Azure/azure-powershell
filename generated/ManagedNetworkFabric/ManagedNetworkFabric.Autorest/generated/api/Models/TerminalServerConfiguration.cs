@@ -10,23 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Network and credentials configuration currently applied to terminal server.</summary>
     public partial class TerminalServerConfiguration :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixProperties __layer3IPPrefixProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.Layer3IPPrefixProperties();
-
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchableProperties __terminalServerPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TerminalServerPatchableProperties();
 
         /// <summary>Internal Acessors for NetworkDeviceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal.NetworkDeviceId { get => this._networkDeviceId; set { {_networkDeviceId = value;} } }
+
+        /// <summary>Internal Acessors for SecretRotationStatus</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal.SecretRotationStatus { get => this._secretRotationStatus; set { {_secretRotationStatus = value;} } }
 
         /// <summary>Backing field for <see cref="NetworkDeviceId" /> property.</summary>
         private string _networkDeviceId;
@@ -35,59 +26,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string NetworkDeviceId { get => this._networkDeviceId; }
 
+        /// <summary>Backing field for <see cref="Password" /> property.</summary>
+        private System.Security.SecureString _password;
+
         /// <summary>Password for the terminal server connection.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)__terminalServerPatchableProperties).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)__terminalServerPatchableProperties).Password = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Security.SecureString Password { get => this._password; set => this._password = value; }
+
+        /// <summary>Backing field for <see cref="PrimaryIpv4Prefix" /> property.</summary>
+        private string _primaryIpv4Prefix;
 
         /// <summary>IPv4 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string PrimaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).PrimaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).PrimaryIpv4Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string PrimaryIpv4Prefix { get => this._primaryIpv4Prefix; set => this._primaryIpv4Prefix = value; }
+
+        /// <summary>Backing field for <see cref="PrimaryIpv6Prefix" /> property.</summary>
+        private string _primaryIpv6Prefix;
 
         /// <summary>IPv6 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string PrimaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).PrimaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).PrimaryIpv6Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string PrimaryIpv6Prefix { get => this._primaryIpv6Prefix; set => this._primaryIpv6Prefix = value; }
+
+        /// <summary>Backing field for <see cref="SecondaryIpv4Prefix" /> property.</summary>
+        private string _secondaryIpv4Prefix;
 
         /// <summary>Secondary IPv4 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SecondaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).SecondaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).SecondaryIpv4Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string SecondaryIpv4Prefix { get => this._secondaryIpv4Prefix; set => this._secondaryIpv4Prefix = value; }
+
+        /// <summary>Backing field for <see cref="SecondaryIpv6Prefix" /> property.</summary>
+        private string _secondaryIpv6Prefix;
 
         /// <summary>Secondary IPv6 Address Prefix.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).SecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).SecondaryIpv6Prefix = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string SecondaryIpv6Prefix { get => this._secondaryIpv6Prefix; set => this._secondaryIpv6Prefix = value; }
+
+        /// <summary>Backing field for <see cref="SecretRotationStatus" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus> _secretRotationStatus;
+
+        /// <summary>Secret rotation status for the terminal server's secrets.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus> SecretRotationStatus { get => this._secretRotationStatus; }
+
+        /// <summary>Backing field for <see cref="SerialNumber" /> property.</summary>
+        private string _serialNumber;
 
         /// <summary>Serial Number of Terminal server.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string SerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)__terminalServerPatchableProperties).SerialNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)__terminalServerPatchableProperties).SerialNumber = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string SerialNumber { get => this._serialNumber; set => this._serialNumber = value; }
+
+        /// <summary>Backing field for <see cref="Username" /> property.</summary>
+        private string _username;
 
         /// <summary>Username for the terminal server connection.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Username { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)__terminalServerPatchableProperties).Username; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)__terminalServerPatchableProperties).Username = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Username { get => this._username; set => this._username = value; }
 
         /// <summary>Creates an new <see cref="TerminalServerConfiguration" /> instance.</summary>
         public TerminalServerConfiguration()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__terminalServerPatchableProperties), __terminalServerPatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__terminalServerPatchableProperties), __terminalServerPatchableProperties);
-            await eventListener.AssertNotNull(nameof(__layer3IPPrefixProperties), __layer3IPPrefixProperties);
-            await eventListener.AssertObjectIsValid(nameof(__layer3IPPrefixProperties), __layer3IPPrefixProperties);
-        }
     }
     /// Network and credentials configuration currently applied to terminal server.
     public partial interface ITerminalServerConfiguration :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchableProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
         /// <summary>ARM Resource ID used for the NetworkDevice.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -100,15 +103,118 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"networkDeviceId",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkDeviceId { get;  }
+        /// <summary>Password for the terminal server connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Password for the terminal server connection.",
+        SerializedName = @"password",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString Password { get; set; }
+        /// <summary>IPv4 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IPv4 Address Prefix.",
+        SerializedName = @"primaryIpv4Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrimaryIpv4Prefix { get; set; }
+        /// <summary>IPv6 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IPv6 Address Prefix.",
+        SerializedName = @"primaryIpv6Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrimaryIpv6Prefix { get; set; }
+        /// <summary>Secondary IPv4 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Secondary IPv4 Address Prefix.",
+        SerializedName = @"secondaryIpv4Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecondaryIpv4Prefix { get; set; }
+        /// <summary>Secondary IPv6 Address Prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Secondary IPv6 Address Prefix.",
+        SerializedName = @"secondaryIpv6Prefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecondaryIpv6Prefix { get; set; }
+        /// <summary>Secret rotation status for the terminal server's secrets.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Secret rotation status for the terminal server's secrets.",
+        SerializedName = @"secretRotationStatus",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus> SecretRotationStatus { get;  }
+        /// <summary>Serial Number of Terminal server.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Serial Number of Terminal server.",
+        SerializedName = @"serialNumber",
+        PossibleTypes = new [] { typeof(string) })]
+        string SerialNumber { get; set; }
+        /// <summary>Username for the terminal server connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Username for the terminal server connection.",
+        SerializedName = @"username",
+        PossibleTypes = new [] { typeof(string) })]
+        string Username { get; set; }
 
     }
     /// Network and credentials configuration currently applied to terminal server.
-    internal partial interface ITerminalServerConfigurationInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal
+    internal partial interface ITerminalServerConfigurationInternal
+
     {
         /// <summary>ARM Resource ID used for the NetworkDevice.</summary>
         string NetworkDeviceId { get; set; }
+        /// <summary>Password for the terminal server connection.</summary>
+        System.Security.SecureString Password { get; set; }
+        /// <summary>IPv4 Address Prefix.</summary>
+        string PrimaryIpv4Prefix { get; set; }
+        /// <summary>IPv6 Address Prefix.</summary>
+        string PrimaryIpv6Prefix { get; set; }
+        /// <summary>Secondary IPv4 Address Prefix.</summary>
+        string SecondaryIpv4Prefix { get; set; }
+        /// <summary>Secondary IPv6 Address Prefix.</summary>
+        string SecondaryIpv6Prefix { get; set; }
+        /// <summary>Secret rotation status for the terminal server's secrets.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus> SecretRotationStatus { get; set; }
+        /// <summary>Serial Number of Terminal server.</summary>
+        string SerialNumber { get; set; }
+        /// <summary>Username for the terminal server connection.</summary>
+        string Username { get; set; }
 
     }
 }

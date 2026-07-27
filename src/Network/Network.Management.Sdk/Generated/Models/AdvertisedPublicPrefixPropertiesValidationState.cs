@@ -13,15 +13,45 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AdvertisedPublicPrefixPropertiesValidationState
     {
+        /// <summary>
+        /// NotConfigured
+        /// </summary>
         public const string NotConfigured = "NotConfigured";
+        /// <summary>
+        /// Configuring
+        /// </summary>
         public const string Configuring = "Configuring";
+        /// <summary>
+        /// Configured
+        /// </summary>
         public const string Configured = "Configured";
+        /// <summary>
+        /// ValidationNeeded
+        /// </summary>
         public const string ValidationNeeded = "ValidationNeeded";
+        /// <summary>
+        /// ValidationFailed
+        /// </summary>
         public const string ValidationFailed = "ValidationFailed";
+        /// <summary>
+        /// ManualValidationNeeded
+        /// </summary>
         public const string ManualValidationNeeded = "ManualValidationNeeded";
+        /// <summary>
+        /// AsnValidationFailed
+        /// </summary>
         public const string AsnValidationFailed = "AsnValidationFailed";
+        /// <summary>
+        /// CertificateMissingInRoutingRegistry
+        /// </summary>
         public const string CertificateMissingInRoutingRegistry = "CertificateMissingInRoutingRegistry";
+        /// <summary>
+        /// InvalidSignatureEncoding
+        /// </summary>
         public const string InvalidSignatureEncoding = "InvalidSignatureEncoding";
+        /// <summary>
+        /// SignatureVerificationFailed
+        /// </summary>
         public const string SignatureVerificationFailed = "SignatureVerificationFailed";
     }
 }

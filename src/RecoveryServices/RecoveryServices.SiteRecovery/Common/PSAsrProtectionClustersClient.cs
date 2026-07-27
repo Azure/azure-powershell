@@ -117,12 +117,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <returns>List of Replication Protection Clusters.</returns>
         public List<ReplicationProtectionCluster> GetAzureSiteRecoveryReplicationProtectionCluster()
         {
-            var protectedClustersQueryParameter =
-                new ProtectedClustersQueryParameter { };
-            var odataQuery =
-                new ODataQuery<ProtectedClustersQueryParameter>(
-                    protectedClustersQueryParameter.ToQueryString());
-
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectionClusters
                 .ListWithHttpMessagesAsync(

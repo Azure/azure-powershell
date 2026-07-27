@@ -204,9 +204,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static SecurityUserRuleCollectionsDeleteHeaders Delete(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?))
+        public static void Delete(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?))
         {
-                return ((ISecurityUserRuleCollectionsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force).GetAwaiter().GetResult();
+                ((ISecurityUserRuleCollectionsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -235,12 +235,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SecurityUserRuleCollectionsDeleteHeaders> DeleteAsync(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a Security User Rule collection.
@@ -265,9 +262,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static SecurityUserRuleCollectionsDeleteHeaders BeginDelete(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?))
+        public static void BeginDelete(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?))
         {
-                return ((ISecurityUserRuleCollectionsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force).GetAwaiter().GetResult();
+                ((ISecurityUserRuleCollectionsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -296,12 +293,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SecurityUserRuleCollectionsDeleteHeaders> BeginDeleteAsync(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISecurityUserRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all the security user rule collections in a security configuration,

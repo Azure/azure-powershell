@@ -21,7 +21,8 @@ New-AzApplicationGatewayBackendHttpSetting -Name <String> -Port <Int32> -Protoco
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
  [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>] [-DedicatedBackendConnection <Boolean>]
  [-ValidateCertChainAndExpiry <Boolean>] [-ValidateSNI <Boolean>] [-SniName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,21 @@ New-AzApplicationGatewayBackendHttpSetting -CookieBasedAffinity Enabled -Name 'S
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AffinityCookieName
 Cookie name to use for the affinity cookie
 
@@ -71,6 +87,21 @@ Specifies authentication certificates for the application gateway.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

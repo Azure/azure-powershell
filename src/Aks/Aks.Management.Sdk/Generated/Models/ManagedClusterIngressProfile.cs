@@ -28,10 +28,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// onboarding guide for this feature at
         /// https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
         /// </param>
-        public ManagedClusterIngressProfile(ManagedClusterIngressProfileWebAppRouting webAppRouting = default(ManagedClusterIngressProfileWebAppRouting))
+
+        /// <param name="gatewayApi">Settings for the managed Gateway API installation
+        /// </param>
+        public ManagedClusterIngressProfile(ManagedClusterIngressProfileWebAppRouting webAppRouting = default(ManagedClusterIngressProfileWebAppRouting), ManagedClusterIngressProfileGatewayConfiguration gatewayApi = default(ManagedClusterIngressProfileGatewayConfiguration))
 
         {
             this.WebAppRouting = webAppRouting;
+            this.GatewayApi = gatewayApi;
             CustomInit();
         }
 
@@ -48,6 +52,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "webAppRouting")]
         public ManagedClusterIngressProfileWebAppRouting WebAppRouting {get; set; }
+
+        /// <summary>
+        /// Gets or sets settings for the managed Gateway API installation
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayAPI")]
+        public ManagedClusterIngressProfileGatewayConfiguration GatewayApi {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -60,6 +70,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 this.WebAppRouting.Validate();
             }
+
         }
     }
 }

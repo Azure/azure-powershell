@@ -83,7 +83,11 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="hyperVGeneration">The hypervisor generation of the Virtual Machine [V1, V2]
         /// Possible values include: &#39;V1&#39;, &#39;V2&#39;</param>
-        public VirtualMachineScaleSetVMInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), string assignedHost = default(string), string placementGroupId = default(string), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string))
+
+        /// <param name="interconnectInstanceView">The Interconnect runtime view of the Scale Set VM instance. Minimum
+        /// api-version: 2026-03-01.
+        /// </param>
+        public VirtualMachineScaleSetVMInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), string assignedHost = default(string), string placementGroupId = default(string), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), InterconnectInstanceView interconnectInstanceView = default(InterconnectInstanceView))
 
         {
             this.PlatformUpdateDomain = platformUpdateDomain;
@@ -102,6 +106,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.OsName = osName;
             this.OsVersion = osVersion;
             this.HyperVGeneration = hyperVGeneration;
+            this.InterconnectInstanceView = interconnectInstanceView;
             CustomInit();
         }
 
@@ -218,5 +223,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hyperVGeneration")]
         public string HyperVGeneration {get; set; }
+
+        /// <summary>
+        /// Gets the Interconnect runtime view of the Scale Set VM instance. Minimum
+        /// api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectInstanceView")]
+        public InterconnectInstanceView InterconnectInstanceView {get; private set; }
     }
 }
