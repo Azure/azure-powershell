@@ -142,7 +142,7 @@ PrivateData = @{
         ReleaseNotes = 'Initial preview release of the Az.Mission module for the Microsoft.Mission (Azure Virtual Enclaves) resource provider.'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
