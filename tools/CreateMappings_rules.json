@@ -1037,6 +1037,10 @@
     "alias": "Napster"
   },
   {
+    "alias": "Dell",
+    "module": "Dell"
+  },
+  {
     "alias": "Mission",
     "module": "Mission"
   }
