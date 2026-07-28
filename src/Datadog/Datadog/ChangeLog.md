@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the module to support the Microsoft.Datadog 2025-12-26-preview API version, adding new cmdlets:
+    - `Get-AzDatadogMonitorDefaultApplicationKey` to get the default Datadog application key for a monitor.
+    - `Invoke-AzDatadogLatestDatadogMonitorResourceLinkedSaaS` to return the latest SaaS (Software as a Service) resource linked to the Datadog organization of a monitor.
+    - `Invoke-AzDatadogLinkDatadogMonitorResourceSaaS` to link a new SaaS (Software as a Service) resource to the Datadog organization of a monitor.
+    - `Invoke-AzDatadogManageMonitorSreAgentConnector` to manage connectors for the SRE (Site Reliability Engineering) Agent.
+    - `Initialize-AzDatadogSaaSOperationGroupResource` to resolve a token and activate a Datadog SaaS (Software as a Service) resource.
 
 ## Version 0.3.0
 * Added support of Monitored subscription and made it compatible with latest OpenAPI spec. Please see details [here](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json).

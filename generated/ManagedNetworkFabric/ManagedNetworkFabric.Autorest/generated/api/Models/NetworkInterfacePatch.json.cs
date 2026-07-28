@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkInterfacePatchProperties.FromJson(__jsonProperties) : _property;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityPatch.FromJson(__jsonIdentity) : _identity;}
             AfterFromJson(json);
         }
 
@@ -101,6 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return container;
             }
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

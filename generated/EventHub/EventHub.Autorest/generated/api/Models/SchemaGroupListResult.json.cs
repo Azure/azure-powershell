@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The result of the List SchemaGroup operation.</summary>
+    /// <summary>The response of a SchemaGroup list operation.</summary>
     public partial class SchemaGroupListResult
     {
 

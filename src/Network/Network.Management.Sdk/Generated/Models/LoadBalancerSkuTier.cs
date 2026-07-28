@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class LoadBalancerSkuTier
     {
+        /// <summary>
+        /// Regional
+        /// </summary>
         public const string Regional = "Regional";
+        /// <summary>
+        /// Global
+        /// </summary>
         public const string Global = "Global";
     }
 }

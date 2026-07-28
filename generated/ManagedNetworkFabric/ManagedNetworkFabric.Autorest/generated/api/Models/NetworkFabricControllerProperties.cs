@@ -10,31 +10,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>NetworkFabricControllerProperties defines the resource properties.</summary>
     public partial class NetworkFabricControllerProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchableProperties __networkFabricControllerPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricControllerPatchableProperties();
+        /// <summary>Backing field for <see cref="Annotation" /> property.</summary>
+        private string _annotation;
 
         /// <summary>Switch configuration description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Annotation { get => this._annotation; set => this._annotation = value; }
+
+        /// <summary>Backing field for <see cref="InfrastructureExpressRouteConnection" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> _infrastructureExpressRouteConnection;
 
         /// <summary>
         /// As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This
         /// Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> InfrastructureExpressRouteConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchablePropertiesInternal)__networkFabricControllerPatchableProperties).InfrastructureExpressRouteConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchablePropertiesInternal)__networkFabricControllerPatchableProperties).InfrastructureExpressRouteConnection = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> InfrastructureExpressRouteConnection { get => this._infrastructureExpressRouteConnection; set => this._infrastructureExpressRouteConnection = value; }
 
         /// <summary>Backing field for <see cref="InfrastructureService" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices _infrastructureService;
@@ -48,11 +42,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// is considered. The IPV4 address subnet is an optional attribute.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> InfrastructureServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> InfrastructureServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace; }
 
         /// <summary>The IPv6 is not supported right now.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> InfrastructureServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> InfrastructureServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace; }
 
         /// <summary>Backing field for <see cref="Ipv4AddressSpace" /> property.</summary>
         private string _ipv4AddressSpace;
@@ -78,6 +72,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string IsWorkloadManagementNetworkEnabled { get => this._isWorkloadManagementNetworkEnabled; set => this._isWorkloadManagementNetworkEnabled = value; }
 
+        /// <summary>Backing field for <see cref="LastOperation" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties _lastOperation;
+
+        /// <summary>Details of the last operation performed on the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); }
+
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; }
+
         /// <summary>Backing field for <see cref="ManagedResourceGroupConfiguration" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedResourceGroupConfiguration _managedResourceGroupConfiguration;
 
@@ -96,6 +101,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Internal Acessors for InfrastructureService</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.InfrastructureService { get => (this._infrastructureService = this._infrastructureService ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServices()); set { {_infrastructureService = value;} } }
 
+        /// <summary>Internal Acessors for InfrastructureServiceIpv4AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.InfrastructureServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for InfrastructureServiceIpv6AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.InfrastructureServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for LastOperation</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.LastOperation { get => (this._lastOperation = this._lastOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties()); set { {_lastOperation = value;} } }
+
+        /// <summary>Internal Acessors for LastOperationDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.LastOperationDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationPropertiesInternal)LastOperation).Detail = value ?? null; }
+
         /// <summary>Internal Acessors for ManagedResourceGroupConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedResourceGroupConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.ManagedResourceGroupConfiguration { get => (this._managedResourceGroupConfiguration = this._managedResourceGroupConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedResourceGroupConfiguration()); set { {_managedResourceGroupConfiguration = value;} } }
 
@@ -108,11 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Internal Acessors for TenantInternetGatewayId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.TenantInternetGatewayId { get => this._tenantInternetGatewayId; set { {_tenantInternetGatewayId = value;} } }
 
-        /// <summary>Internal Acessors for WorkloadManagementNetwork</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadManagementNetwork { get => this._workloadManagementNetwork; set { {_workloadManagementNetwork = value;} } }
-
         /// <summary>Internal Acessors for WorkloadService</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadService { get => (this._workloadService = this._workloadService ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServices()); set { {_workloadService = value;} } }
+
+        /// <summary>Internal Acessors for WorkloadServiceIpv4AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for WorkloadServiceIpv6AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="NetworkFabricId" /> property.</summary>
         private System.Collections.Generic.List<string> _networkFabricId;
@@ -147,22 +167,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> TenantInternetGatewayId { get => this._tenantInternetGatewayId; }
 
+        /// <summary>Backing field for <see cref="WorkloadExpressRouteConnection" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> _workloadExpressRouteConnection;
+
         /// <summary>
         /// As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express
         /// route is dedicated for Workload services. (This is a Mandatory attribute).
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> WorkloadExpressRouteConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchablePropertiesInternal)__networkFabricControllerPatchableProperties).WorkloadExpressRouteConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchablePropertiesInternal)__networkFabricControllerPatchableProperties).WorkloadExpressRouteConnection = value ?? null /* arrayOf */; }
-
-        /// <summary>Backing field for <see cref="WorkloadManagementNetwork" /> property.</summary>
-        private bool? _workloadManagementNetwork;
-
-        /// <summary>
-        /// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant
-        /// workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.
-        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        public bool? WorkloadManagementNetwork { get => this._workloadManagementNetwork; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> WorkloadExpressRouteConnection { get => this._workloadExpressRouteConnection; set => this._workloadExpressRouteConnection = value; }
 
         /// <summary>Backing field for <see cref="WorkloadService" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices _workloadService;
@@ -176,38 +189,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// is considered. The IPV4 address subnet is an optional attribute.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> WorkloadServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> WorkloadServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace; }
 
         /// <summary>The IPv6 is not supported right now.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> WorkloadServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> WorkloadServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace; }
 
         /// <summary>Creates an new <see cref="NetworkFabricControllerProperties" /> instance.</summary>
         public NetworkFabricControllerProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertObjectIsValid(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertNotNull(nameof(__networkFabricControllerPatchableProperties), __networkFabricControllerPatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__networkFabricControllerPatchableProperties), __networkFabricControllerPatchableProperties);
-        }
     }
     /// NetworkFabricControllerProperties defines the resource properties.
     public partial interface INetworkFabricControllerProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchableProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>Switch configuration description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        string Annotation { get; set; }
+        /// <summary>
+        /// As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This
+        /// Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)",
+        SerializedName = @"infrastructureExpressRouteConnections",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> InfrastructureExpressRouteConnection { get; set; }
         /// <summary>
         /// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19
         /// is considered. The IPV4 address subnet is an optional attribute.
@@ -270,13 +292,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
         string IsWorkloadManagementNetworkEnabled { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details status of the last operation performed on the resource.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastOperationDetail { get;  }
         /// <summary>Managed resource group location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Managed resource group location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -344,19 +377,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> TenantInternetGatewayId { get;  }
         /// <summary>
-        /// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant
-        /// workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.
+        /// As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express
+        /// route is dedicated for Workload services. (This is a Mandatory attribute).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.",
-        SerializedName = @"workloadManagementNetwork",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? WorkloadManagementNetwork { get;  }
+        Create = true,
+        Update = true,
+        Description = @"As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).",
+        SerializedName = @"workloadExpressRouteConnections",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> WorkloadExpressRouteConnection { get; set; }
         /// <summary>
         /// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19
         /// is considered. The IPV4 address subnet is an optional attribute.
@@ -385,10 +418,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
     }
     /// NetworkFabricControllerProperties defines the resource properties.
-    internal partial interface INetworkFabricControllerPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPatchablePropertiesInternal
+    internal partial interface INetworkFabricControllerPropertiesInternal
+
     {
+        /// <summary>Switch configuration description.</summary>
+        string Annotation { get; set; }
+        /// <summary>
+        /// As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This
+        /// Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> InfrastructureExpressRouteConnection { get; set; }
         /// <summary>InfrastructureServices IP ranges.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices InfrastructureService { get; set; }
         /// <summary>
@@ -408,6 +447,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
         string IsWorkloadManagementNetworkEnabled { get; set; }
+        /// <summary>Details of the last operation performed on the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties LastOperation { get; set; }
+        /// <summary>Details status of the last operation performed on the resource.</summary>
+        string LastOperationDetail { get; set; }
         /// <summary>Managed Resource Group configuration properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedResourceGroupConfiguration ManagedResourceGroupConfiguration { get; set; }
         /// <summary>Managed resource group location.</summary>
@@ -430,10 +473,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>List of tenant InternetGateway resource IDs</summary>
         System.Collections.Generic.List<string> TenantInternetGatewayId { get; set; }
         /// <summary>
-        /// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant
-        /// workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.
+        /// As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express
+        /// route is dedicated for Workload services. (This is a Mandatory attribute).
         /// </summary>
-        bool? WorkloadManagementNetwork { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation> WorkloadExpressRouteConnection { get; set; }
         /// <summary>WorkloadServices IP ranges.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices WorkloadService { get; set; }
         /// <summary>

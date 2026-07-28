@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create InternalNetwork PUT method.</summary>
+    /// <summary>create InternalNetwork PUT method.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkFabricInternalNetwork_CreateViaIdentityL3IsolationDomainExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetwork))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"Create InternalNetwork PUT method.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"create InternalNetwork PUT method.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}", ApiVersion = "2023-06-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}", ApiVersion = "2025-07-15")]
     public partial class NewAzNetworkFabricInternalNetwork_CreateViaIdentityL3IsolationDomainExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IContext
@@ -43,15 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
-
         /// <summary>Switch configuration description.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Switch configuration description.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
@@ -68,16 +59,183 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
-        /// <summary>BGP configuration properties.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "BGP configuration properties.")]
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Interval in milliseconds. Example: 300.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"BGP configuration properties.",
-        SerializedName = @"bgpConfiguration",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkPropertiesBgpConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkPropertiesBgpConfiguration BgpConfiguration { get => _body.BgpConfiguration ?? null /* object */; set => _body.BgpConfiguration = value; }
+        Description = @"Interval in milliseconds. Example: 300.",
+        SerializedName = @"intervalInMilliSeconds",
+        PossibleTypes = new [] { typeof(int) })]
+        public int BfdConfigurationInterval { get => _body.BfdConfigurationIntervalInMilliSecond ?? default(int); set => _body.BfdConfigurationIntervalInMilliSecond = value; }
+
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Multiplier for the Bfd Configuration. Example: 5.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Multiplier for the Bfd Configuration. Example: 5.",
+        SerializedName = @"multiplier",
+        PossibleTypes = new [] { typeof(int) })]
+        public int BfdConfigurationMultiplier { get => _body.BfdConfigurationMultiplier ?? default(int); set => _body.BfdConfigurationMultiplier = value; }
+
+        /// <summary>
+        /// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible
+        /// values are 1-10, default is 2.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.",
+        SerializedName = @"allowAS",
+        PossibleTypes = new [] { typeof(int) })]
+        public int BgpConfigurationAllowAs { get => _body.BgpConfigurationAllowAs ?? default(int); set => _body.BgpConfigurationAllowAs = value; }
+
+        /// <summary>Enable Or Disable state.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable Or Disable state.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enable Or Disable state.",
+        SerializedName = @"allowASOverride",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enable", "Disable")]
+        public string BgpConfigurationAllowAsOverride { get => _body.BgpConfigurationAllowAsOverride ?? null; set => _body.BgpConfigurationAllowAsOverride = value; }
+
+        /// <summary>Switch configuration description.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Switch configuration description.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        public string BgpConfigurationAnnotation { get => _body.BgpConfigurationAnnotation ?? null; set => _body.BgpConfigurationAnnotation = value; }
+
+        /// <summary>Originate a defaultRoute. Ex: "True" | "False".</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Originate a defaultRoute. Ex: \"True\" | \"False\".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Originate a defaultRoute. Ex: ""True"" | ""False"".",
+        SerializedName = @"defaultRouteOriginate",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        public string BgpConfigurationDefaultRouteOriginate { get => _body.BgpConfigurationDefaultRouteOriginate ?? null; set => _body.BgpConfigurationDefaultRouteOriginate = value; }
+
+        /// <summary>List of BGP IPv4 Listen Range prefixes.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of BGP IPv4 Listen Range prefixes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of BGP IPv4 Listen Range prefixes.",
+        SerializedName = @"ipv4ListenRangePrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] BgpConfigurationIpv4ListenRangePrefix { get => _body.BgpConfigurationIpv4ListenRangePrefix?.ToArray() ?? null /* fixedArrayOf */; set => _body.BgpConfigurationIpv4ListenRangePrefix = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>List with stringified IPv4 Neighbor Addresses.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List with stringified IPv4 Neighbor Addresses.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List with stringified IPv4 Neighbor Addresses.",
+        SerializedName = @"ipv4NeighborAddress",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress[] BgpConfigurationIpv4NeighborAddress { get => _body.BgpConfigurationIpv4NeighborAddress?.ToArray() ?? null /* fixedArrayOf */; set => _body.BgpConfigurationIpv4NeighborAddress = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress>(value) : null); }
+
+        /// <summary>List of BGP IPv6 Listen Ranges prefixes.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of BGP IPv6 Listen Ranges prefixes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of BGP IPv6 Listen Ranges prefixes.",
+        SerializedName = @"ipv6ListenRangePrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] BgpConfigurationIpv6ListenRangePrefix { get => _body.BgpConfigurationIpv6ListenRangePrefix?.ToArray() ?? null /* fixedArrayOf */; set => _body.BgpConfigurationIpv6ListenRangePrefix = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>List with stringified IPv6 Neighbor Address.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List with stringified IPv6 Neighbor Address.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List with stringified IPv6 Neighbor Address.",
+        SerializedName = @"ipv6NeighborAddress",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress[] BgpConfigurationIpv6NeighborAddress { get => _body.BgpConfigurationIpv6NeighborAddress?.ToArray() ?? null /* fixedArrayOf */; set => _body.BgpConfigurationIpv6NeighborAddress = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddress>(value) : null); }
+
+        /// <summary>Peer ASN. Example: 65047.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Peer ASN. Example: 65047.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Peer ASN. Example: 65047.",
+        SerializedName = @"peerASN",
+        PossibleTypes = new [] { typeof(long) })]
+        public long BgpConfigurationPeerAsn { get => _body.BgpConfigurationPeerAsn ?? default(long); set => _body.BgpConfigurationPeerAsn = value; }
+
+        /// <summary>V4 over V6 bgp session.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "V4 over V6 bgp session.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"V4 over V6 bgp session.",
+        SerializedName = @"v4OverV6BgpSession",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string BgpConfigurationV4OverV6BgpSession { get => _body.BgpConfigurationV4OverV6BgpSession ?? null; set => _body.BgpConfigurationV4OverV6BgpSession = value; }
+
+        /// <summary>v6 over v4 bgp session.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "v6 over v4 bgp session.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"v6 over v4 bgp session.",
+        SerializedName = @"v6OverV4BgpSession",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string BgpConfigurationV6OverV4BgpSession { get => _body.BgpConfigurationV6OverV4BgpSession ?? null; set => _body.BgpConfigurationV6OverV4BgpSession = value; }
+
+        /// <summary>BMP Collector Address.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "BMP Collector Address.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"BMP Collector Address.",
+        SerializedName = @"neighborIpExclusions",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] BmpConfigurationNeighborIPExclusion { get => _body.BmpConfigurationNeighborIPExclusion?.ToArray() ?? null /* fixedArrayOf */; set => _body.BmpConfigurationNeighborIPExclusion = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>BMP Monitoring configuration state.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "BMP Monitoring configuration state.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"BMP Monitoring configuration state.",
+        SerializedName = @"bmpConfigurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string BmpConfigurationState { get => _body.BmpConfigurationState ?? null; set => _body.BmpConfigurationState = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -135,6 +293,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string EgressAclId { get => _body.EgressAclId ?? null; set => _body.EgressAclId = value; }
 
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Export Policy for the BGP Monitoring Protocol (BMP) Configuration.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Export Policy for the BGP Monitoring Protocol (BMP) Configuration.",
+        SerializedName = @"exportPolicies",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Pre-Policy", "Post-Policy", "All", "LocalRib")]
+        public string[] ExportPolicyConfigurationExportPolicy { get => _body.ExportPolicyConfigurationExportPolicy?.ToArray() ?? null /* fixedArrayOf */; set => _body.ExportPolicyConfigurationExportPolicy = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
         /// <summary>Export Route Policy either IPv4 or IPv6.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Export Route Policy either IPv4 or IPv6.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
@@ -145,19 +316,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         SerializedName = @"exportRoutePolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy ExportRoutePolicy { get => _body.ExportRoutePolicy ?? null /* object */; set => _body.ExportRoutePolicy = value; }
-
-        /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.",
-        SerializedName = @"exportRoutePolicyId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ExportRoutePolicyId { get => _body.ExportRoutePolicyId ?? null; set => _body.ExportRoutePolicyId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -196,19 +354,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         SerializedName = @"importRoutePolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy ImportRoutePolicy { get => _body.ImportRoutePolicy ?? null /* object */; set => _body.ImportRoutePolicy = value; }
-
-        /// <summary>
-        /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.",
-        SerializedName = @"importRoutePolicyId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ImportRoutePolicyId { get => _body.ImportRoutePolicyId ?? null; set => _body.ImportRoutePolicyId = value; }
 
         /// <summary>Ingress Acl. ARM resource ID of Access Control Lists.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ingress Acl. ARM resource ID of Access Control Lists.")]
@@ -278,6 +423,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
 
+        /// <summary>Prefix limits</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Prefix limits")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Prefix limits",
+        SerializedName = @"prefixLimits",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties[] NativeIpv4PrefixLimit { get => _body.NativeIpv4PrefixLimitPrefixLimits?.ToArray() ?? null /* fixedArrayOf */; set => _body.NativeIpv4PrefixLimitPrefixLimits = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties>(value) : null); }
+
+        /// <summary>Prefix limits</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Prefix limits")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Prefix limits",
+        SerializedName = @"prefixLimits",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties[] NativeIpv6PrefixLimit { get => _body.NativeIpv6PrefixLimitPrefixLimits?.ToArray() ?? null /* fixedArrayOf */; set => _body.NativeIpv6PrefixLimitPrefixLimits = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties>(value) : null); }
+
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
@@ -307,52 +476,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>BFD configuration properties</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "BFD configuration properties")]
+        /// <summary>Static Route Configuration properties.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Static Route Configuration properties.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"BFD configuration properties",
-        SerializedName = @"bfdConfiguration",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration StaticRouteConfigurationBfdConfiguration { get => _body.StaticRouteConfigurationBfdConfiguration ?? null /* object */; set => _body.StaticRouteConfigurationBfdConfiguration = value; }
-
-        /// <summary>Extension. Example: NoExtension | NPB.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Extension. Example: NoExtension | NPB.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Extension. Example: NoExtension | NPB.",
-        SerializedName = @"extension",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("NoExtension", "NPB")]
-        public string StaticRouteConfigurationExtension { get => _body.StaticRouteConfigurationExtension ?? null; set => _body.StaticRouteConfigurationExtension = value; }
-
-        /// <summary>List of IPv4 Routes.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of IPv4 Routes.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"List of IPv4 Routes.",
-        SerializedName = @"ipv4Routes",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[] StaticRouteConfigurationIpv4Route { get => _body.StaticRouteConfigurationIpv4Route?.ToArray() ?? null /* fixedArrayOf */; set => _body.StaticRouteConfigurationIpv4Route = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>(value) : null); }
-
-        /// <summary>List of IPv6 Routes.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of IPv6 Routes.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"List of IPv6 Routes.",
-        SerializedName = @"ipv6Routes",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[] StaticRouteConfigurationIpv6Route { get => _body.StaticRouteConfigurationIpv6Route?.ToArray() ?? null /* fixedArrayOf */; set => _body.StaticRouteConfigurationIpv6Route = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>(value) : null); }
+        Description = @"Static Route Configuration properties.",
+        SerializedName = @"staticRouteConfiguration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfiguration StaticRouteConfiguration { get => _body.StaticRouteConfiguration ?? null /* object */; set => _body.StaticRouteConfiguration = value; }
 
         /// <summary>Vlan identifier. Example: 1001.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Vlan identifier. Example: 1001.")]
@@ -434,11 +567,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -776,24 +904,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetwork
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

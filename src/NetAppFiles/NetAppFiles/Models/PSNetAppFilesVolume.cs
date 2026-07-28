@@ -442,6 +442,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string EnableSubvolumes { get; set; }
 
         /// <summary>
+        /// Gets or sets BreakthroughMode.
+        /// </summary>
+        /// <value>
+        /// Specifies whether the volume operates in Breakthrough Mode.
+        /// Possible values include: 'Enabled', 'Disabled'
+        /// </value>
+        public string BreakthroughMode { get; set; }
+
+        /// <summary>
         /// Gets or sets Encrypted
         /// </summary>
         /// <value>

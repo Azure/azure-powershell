@@ -256,7 +256,6 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.5.1'; },
             @{ModuleName = 'Az.VMware'; RequiredVersion = '0.9.1'; }, 
             @{ModuleName = 'Az.VoiceServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Websites'; RequiredVersion = '4.0.0'; }, 
-            @{ModuleName = 'Az.WeightsAndBiases'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.WindowsIotServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Workloads'; RequiredVersion = '2.0.0'; })
 

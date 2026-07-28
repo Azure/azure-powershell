@@ -53,35 +53,49 @@ function NormalizeMentioneeValue {
     return $Mentionee
 }
 
-function NormalizeExistingSquadMentionees {
+function IsSquadValue {
+    [CmdletBinding()]
+    param([string] $Value)
+
+    if ([string]::IsNullOrWhiteSpace($Value)) {
+        return $false
+    }
+
+    return $Value.Trim() -match '^(Azure/)?act-[a-z0-9-]+-squad$'
+}
+
+function ToSquadLabel {
+    [CmdletBinding()]
+    param([string] $Squad)
+
+    if ($Squad -match '^Azure/(act-[a-z0-9-]+-squad)$') {
+        return $Matches[1]
+    }
+
+    return $Squad
+}
+
+function NormalizeSquadTeamForms {
     [CmdletBinding()]
     param([string[]] $Lines)
 
-    $result = [System.Collections.Generic.List[string]]::new()
-    $inMentionees = $false
-    $mentioneesIndent = -1
-    foreach ($line in $Lines) {
-        if ($line -match '^\s*mentionees:\s*$') {
-            $inMentionees = $true
-            $mentioneesIndent = GetIndentLength -Line $line
-            $result.Add($line)
-            continue
-        }
-        if ($inMentionees) {
-            if ($line -match '^(\s*)-\s+(act-[a-z0-9-]+-squad)\s*$') {
-                $result.Add("$($Matches[1])- Azure/$($Matches[2])")
-                continue
-            }
+    # Squad reviewers and mentionees must reference the GitHub team as Azure/<slug>;
+    # squad labels (addLabel) stay as the bare <slug>.
+    $result = [string[]]::new($Lines.Length)
+    for ($i = 0; $i -lt $Lines.Length; $i++) {
+        $line = $Lines[$i]
 
-            if ($line.Trim().Length -ne 0 -and -not ($line -match '^\s*-\s+')) {
-                $inMentionees = $false
-            } elseif ($line -match '^\s*-\s+' -and (GetIndentLength -Line $line) -lt $mentioneesIndent) {
-                $inMentionees = $false
-            }
+        if ($line -match '^(\s*)reviewer:\s*(act-[a-z0-9-]+-squad)\s*$') {
+            $line = "$($Matches[1])reviewer: Azure/$($Matches[2])"
         }
-        $result.Add($line)
+        elseif ($line -match '^(\s*)-\s+(act-[a-z0-9-]+-squad)\s*$') {
+            $line = "$($Matches[1])- Azure/$($Matches[2])"
+        }
+
+        $result[$i] = $line
     }
-    return $result.ToArray()
+
+    return $result
 }
 
 function GetSquadMapping {
@@ -140,150 +154,210 @@ function AddSquadLabelsToYaml {
     [CmdletBinding()]
     param([string[]] $Lines, [hashtable] $LabelToSquad)
 
+    # For each rule, the squads applied are derived from the rule's component
+    # (module) labels via the wiki mapping. Existing squad label/reviewer/mentionee
+    # lines are OVERWRITTEN in place with the current mapping (replace, not append)
+    # so a rule never accumulates a stale squad when ownership changes.
+    $work = [System.Collections.Generic.List[string]]::new()
+    $work.AddRange($Lines)
+
     $insertions = [System.Collections.Generic.List[object]]::new()
 
-    for ($i = 0; $i -lt $Lines.Count; $i++) {
-        $line = $Lines[$i]
-        if ($line -match '^\s*(then|actions):\s*$') {
-            $baseIndentLength = GetIndentLength -Line $line
-            $labelsFromConditions = GetLabelsFromConditions -Lines $Lines -ThenLineIndex $i -BaseIndentLength $baseIndentLength
-            $j = $i + 1
-            while ($j -lt $Lines.Count -and $Lines[$j].Trim().Length -eq 0) { $j++ }
-            if ($j -ge $Lines.Count) { continue }
+    for ($i = 0; $i -lt $work.Count; $i++) {
+        $line = $work[$i]
+        if ($line -notmatch '^(\s*)(then|actions):\s*$') {
+            continue
+        }
+        $baseIndentLength = $Matches[1].Length
 
-            $listLine = $Lines[$j]
-            $listIndentLength = GetIndentLength -Line $listLine
-            if ($listIndentLength -lt $baseIndentLength -or -not ($listLine -match '^\s*-\s+')) { continue }
+        $j = $i + 1
+        while ($j -lt $work.Count -and $work[$j].Trim().Length -eq 0) {
+            $j++
+        }
+        if ($j -ge $work.Count) {
+            continue
+        }
 
-            $k = $j
-            while ($k -lt $Lines.Count) {
-                $lineAtK = $Lines[$k]
-                if ($lineAtK.Trim().Length -ne 0 -and (GetIndentLength -Line $lineAtK) -lt $baseIndentLength) { break }
-                if ($lineAtK -match '^\s*description:' -and (GetIndentLength -Line $lineAtK) -eq $baseIndentLength) { break }
-                $k++
+        $listLine = $work[$j]
+        $listIndentLength = GetIndentLength -Line $listLine
+        if ($listIndentLength -lt $baseIndentLength -or -not ($listLine -match '^\s*-\s+')) {
+            continue
+        }
+
+        $k = $j
+        while ($k -lt $work.Count) {
+            $lineAtK = $work[$k]
+            if ($lineAtK.Trim().Length -ne 0 -and (GetIndentLength -Line $lineAtK) -lt $baseIndentLength) {
+                break
+            }
+            if ($lineAtK -match '^\s*description:' -and (GetIndentLength -Line $lineAtK) -eq $baseIndentLength) {
+                break
+            }
+            $k++
+        }
+
+        $componentLabels = [System.Collections.Generic.List[string]]::new()
+        $addLabelSquadLines = [System.Collections.Generic.List[int]]::new()
+        $lastAddLabelLine = -1
+        $reviewerSquadLines = [System.Collections.Generic.List[int]]::new()
+        $lastReviewerLine = -1
+        $mentioneeSquadLines = [System.Collections.Generic.List[int]]::new()
+        $lastMentionLine = -1
+        $mentionItemIndent = -1
+        $hasMentionees = $false
+
+        for ($b = $j; $b -lt $k; $b++) {
+            $lineAtB = $work[$b]
+            $indentAtB = GetIndentLength -Line $lineAtB
+
+            if ($lineAtB -match '^\s*-\s+addLabel:\s*$' -and $indentAtB -eq $listIndentLength) {
+                for ($c = $b + 1; $c -lt $k; $c++) {
+                    $lineAtC = $work[$c]
+                    if ($lineAtC -match '^\s*-\s+' -and (GetIndentLength -Line $lineAtC) -eq $listIndentLength) {
+                        break
+                    }
+                    $labelValue = TryParseLabelValue -Line $lineAtC
+                    if ($null -ne $labelValue) {
+                        $lastAddLabelLine = $c
+                        if (IsSquadValue -Value $labelValue) {
+                            $addLabelSquadLines.Add($c)
+                        } elseif (-not [string]::IsNullOrWhiteSpace($labelValue) -and -not $componentLabels.Contains($labelValue)) {
+                            $componentLabels.Add($labelValue)
+                        }
+                        break
+                    }
+                }
+                continue
             }
 
-            $labelsPresent = @{}
-            $lastAddLabelEnd = -1
-            for ($b = $j; $b -lt $k; $b++) {
-                $lineAtB = $Lines[$b]
-                if ($lineAtB -match '^\s*-\s+addLabel:\s*$' -and (GetIndentLength -Line $lineAtB) -eq $listIndentLength) {
-                    $labelValue = $null
-                    for ($c = $b + 1; $c -lt $k; $c++) {
-                        $lineAtC = $Lines[$c]
-                        if ($lineAtC -match '^\s*-\s+' -and (GetIndentLength -Line $lineAtC) -eq $listIndentLength) { break }
-                        $labelValue = TryParseLabelValue -Line $lineAtC
-                        if ($null -ne $labelValue) { $lastAddLabelEnd = $c; break }
+            if ($lineAtB -match '^\s*-\s+requestReview:\s*$' -and $indentAtB -eq $listIndentLength) {
+                for ($c = $b + 1; $c -lt $k; $c++) {
+                    $lineAtC = $work[$c]
+                    if ($lineAtC -match '^\s*-\s+' -and (GetIndentLength -Line $lineAtC) -eq $listIndentLength) {
+                        break
                     }
-                    if (![string]::IsNullOrWhiteSpace($labelValue)) { $labelsPresent[$labelValue] = $true }
+                    if ($lineAtC -match '^\s*reviewer:\s*(.+?)\s*$') {
+                        $reviewerValue = $Matches[1].Trim()
+                        if (($reviewerValue.StartsWith("'") -and $reviewerValue.EndsWith("'")) -or ($reviewerValue.StartsWith('"') -and $reviewerValue.EndsWith('"'))) {
+                            $reviewerValue = $reviewerValue.Substring(1, $reviewerValue.Length - 2).Trim()
+                        }
+                        $lastReviewerLine = $c
+                        if (IsSquadValue -Value $reviewerValue) {
+                            $reviewerSquadLines.Add($c)
+                        }
+                        break
+                    }
                 }
+                continue
             }
 
-            foreach ($condLabel in $labelsFromConditions) {
-                if (-not [string]::IsNullOrWhiteSpace($condLabel)) { $labelsPresent[$condLabel] = $true }
+            if ($lineAtB -match '^\s*-\s+mentionUsers:\s*$' -and $indentAtB -eq $listIndentLength) {
+                $hasMentionees = $true
+                for ($c = $b + 1; $c -lt $k; $c++) {
+                    $lineAtC = $work[$c]
+                    $indentAtC = GetIndentLength -Line $lineAtC
+                    if ($lineAtC.Trim().Length -ne 0 -and $indentAtC -le $listIndentLength -and $lineAtC -match '^\s*-\s+') {
+                        break
+                    }
+                    if ($lineAtC -match '^\s*-\s+(\S+)\s*$') {
+                        if ($mentionItemIndent -lt 0) { $mentionItemIndent = $indentAtC }
+                        $lastMentionLine = $c
+                        if (IsSquadValue -Value $Matches[1]) {
+                            $mentioneeSquadLines.Add($c)
+                        }
+                    }
+                }
+                continue
             }
+        }
 
-            $labelsToAdd = [System.Collections.Generic.List[string]]::new()
-            $sortedLabels = $labelsPresent.Keys | Sort-Object -CaseSensitive
-            foreach ($label in $sortedLabels) {
-                if ($LabelToSquad.ContainsKey($label)) {
-                    $squadLabel = $LabelToSquad[$label]
-                    if (-not $labelsPresent.ContainsKey($squadLabel) -and -not $labelsToAdd.Contains($squadLabel)) {
-                        $labelsToAdd.Add($squadLabel)
-                    }
-                }
+        $labelsFromConditions = GetLabelsFromConditions -Lines $Lines -ThenLineIndex $i -BaseIndentLength $baseIndentLength
+        foreach ($condLabel in $labelsFromConditions) {
+            if (-not [string]::IsNullOrWhiteSpace($condLabel) -and -not (IsSquadValue -Value $condLabel) -and -not $componentLabels.Contains($condLabel)) {
+                $componentLabels.Add($condLabel)
             }
+        }
 
-            if ($labelsToAdd.Count -gt 0) {
-                if ($lastAddLabelEnd -lt 0) { $lastAddLabelEnd = $k - 1 }
-                if ($lastAddLabelEnd -ge 0) {
-                    $insertLines = [System.Collections.Generic.List[string]]::new()
-                    foreach ($squadLabel in $labelsToAdd) {
-                        $insertLines.Add((" " * $listIndentLength) + "- addLabel:")
-                        $insertLines.Add((" " * $listIndentLength) + "    label: $squadLabel")
-                    }
-                    $insertions.Add([PSCustomObject]@{ Index = $lastAddLabelEnd + 1; Lines = $insertLines })
-                }
-
-                $isPR = $false
-                for ($p = $i - 1; $p -ge 0; $p--) {
-                    if ($Lines[$p] -match '^\s*description:') { break }
-                    if ($Lines[$p] -match 'payloadType:\s*Pull_Request') { $isPR = $true; break }
-                }
-                if ($isPR) {
-                    $lastReviewEnd = -1
-                    $reviewIndent = $listIndentLength + 4
-                    $existingReviewers = @{}
-                    for ($b = $j; $b -lt $k; $b++) {
-                        if ($Lines[$b] -match '^\s*-\s+requestReview:\s*$' -and (GetIndentLength -Line $Lines[$b]) -eq $listIndentLength) {
-                            for ($c = $b + 1; $c -lt $k; $c++) {
-                                if ($Lines[$c] -match '^\s*-\s+' -and (GetIndentLength -Line $Lines[$c]) -eq $listIndentLength) { break }
-                                if ($Lines[$c] -match '^\s*reviewer:\s*(\S+)\s*$') {
-                                    $existingReviewers[$Matches[1]] = $true
-                                    $lastReviewEnd = $c
-                                }
-                            }
-                        }
-                    }
-                    if ($lastReviewEnd -lt 0) { $lastReviewEnd = $lastAddLabelEnd }
-                    if ($lastReviewEnd -lt 0) { $lastReviewEnd = $k - 1 }
-                    if ($lastReviewEnd -ge 0) {
-                        $reviewInsertLines = [System.Collections.Generic.List[string]]::new()
-                        foreach ($squadLabel in $labelsToAdd) {
-                            if (-not $existingReviewers.ContainsKey($squadLabel)) {
-                                $reviewInsertLines.Add((" " * $listIndentLength) + "- requestReview:")
-                                $reviewInsertLines.Add((" " * $reviewIndent) + "reviewer: $squadLabel")
-                            }
-                        }
-                        if ($reviewInsertLines.Count -gt 0) {
-                            $insertions.Add([PSCustomObject]@{ Index = $lastReviewEnd + 1; Lines = $reviewInsertLines })
-                        }
-                    }
-                }
-
-                $mentionUsersIndex = -1
-                $mentioneesIndent = -1
-                $mentionItemIndent = -1
-                $existingMentions = @{}
-                $lastMentionEnd = -1
-                for ($b = $j; $b -lt $k; $b++) {
-                    $lineAtB = $Lines[$b]
-                    $indentAtB = GetIndentLength -Line $lineAtB
-                    if ($lineAtB -match '^\s*-\s+mentionUsers:\s*$' -and $indentAtB -eq $listIndentLength) { $mentionUsersIndex = $b; continue }
-                    if ($mentionUsersIndex -ge 0) {
-                        if ($lineAtB.Trim().Length -ne 0 -and $indentAtB -le $listIndentLength -and $lineAtB -match '^\s*-\s+') { break }
-                        if ($lineAtB -match '^\s*mentionees:\s*$') { $mentioneesIndent = $indentAtB; continue }
-                        if ($lineAtB -match '^\s*-\s+(\S+)\s*$') {
-                            if ($mentionItemIndent -lt 0) { $mentionItemIndent = $indentAtB }
-                            $existingMention = $Matches[1]
-                            $existingMentions[$existingMention] = $true
-                            $existingMentions[(NormalizeMentioneeValue -Mentionee $existingMention)] = $true
-                            $lastMentionEnd = $b
-                        }
-                    }
-                }
-                if ($mentionUsersIndex -ge 0 -and $lastMentionEnd -ge 0) {
-                    if ($mentionItemIndent -lt 0) { $mentionItemIndent = ($mentioneesIndent -gt 0) ? $mentioneesIndent : ($listIndentLength + 4) }
-                    $mentionInsertLines = [System.Collections.Generic.List[string]]::new()
-                    foreach ($squadLabel in $labelsToAdd) {
-                        $mentioneeValue = NormalizeMentioneeValue -Mentionee $squadLabel
-                        if (-not $existingMentions.ContainsKey($mentioneeValue)) {
-                            $mentionInsertLines.Add((" " * $mentionItemIndent) + "- $mentioneeValue")
-                        }
-                    }
-                    if ($mentionInsertLines.Count -gt 0) {
-                        $insertions.Add([PSCustomObject]@{ Index = $lastMentionEnd + 1; Lines = $mentionInsertLines })
-                    }
+        $targets = [System.Collections.Generic.List[string]]::new()
+        foreach ($componentLabel in $componentLabels) {
+            if ($LabelToSquad.ContainsKey($componentLabel)) {
+                $squad = $LabelToSquad[$componentLabel]
+                if (-not [string]::IsNullOrWhiteSpace($squad) -and -not $targets.Contains($squad)) {
+                    $targets.Add($squad)
                 }
             }
         }
+
+        if ($targets.Count -eq 0) {
+            continue
+        }
+
+        $isPR = $false
+        for ($p = $i - 1; $p -ge 0; $p--) {
+            if ($Lines[$p] -match '^\s*description:') { break }
+            if ($Lines[$p] -match 'payloadType:\s*Pull_Request') { $isPR = $true; break }
+        }
+
+        $labelExtraLines = [System.Collections.Generic.List[string]]::new()
+        for ($t = 0; $t -lt $targets.Count; $t++) {
+            $squadLabel = ToSquadLabel -Squad $targets[$t]
+            if ($t -lt $addLabelSquadLines.Count) {
+                $lineIndex = $addLabelSquadLines[$t]
+                $indent = " " * (GetIndentLength -Line $work[$lineIndex])
+                $work[$lineIndex] = "${indent}label: $squadLabel"
+            } elseif ($lastAddLabelLine -ge 0) {
+                $labelExtraLines.Add((" " * $listIndentLength) + "- addLabel:")
+                $labelExtraLines.Add((" " * $listIndentLength) + "    label: $squadLabel")
+            }
+        }
+        if ($labelExtraLines.Count -gt 0) {
+            $insertions.Add([PSCustomObject]@{ Index = $lastAddLabelLine + 1; Lines = $labelExtraLines })
+        }
+
+        $reviewerAnchor = if ($lastReviewerLine -ge 0) { $lastReviewerLine } else { $lastAddLabelLine }
+        $reviewerExtraLines = [System.Collections.Generic.List[string]]::new()
+        for ($t = 0; $t -lt $targets.Count; $t++) {
+            $reviewerTeam = NormalizeMentioneeValue -Mentionee $targets[$t]
+            if ($t -lt $reviewerSquadLines.Count) {
+                $lineIndex = $reviewerSquadLines[$t]
+                $indent = " " * (GetIndentLength -Line $work[$lineIndex])
+                $work[$lineIndex] = "${indent}reviewer: $reviewerTeam"
+            } elseif ($isPR -and $reviewerAnchor -ge 0) {
+                $reviewerExtraLines.Add((" " * $listIndentLength) + "- requestReview:")
+                $reviewerExtraLines.Add((" " * ($listIndentLength + 4)) + "reviewer: $reviewerTeam")
+            }
+        }
+        if ($reviewerExtraLines.Count -gt 0) {
+            $insertions.Add([PSCustomObject]@{ Index = $reviewerAnchor + 1; Lines = $reviewerExtraLines })
+        }
+
+        $mentionIndent = if ($mentionItemIndent -ge 0) { $mentionItemIndent } else { $listIndentLength + 4 }
+        $mentionExtraLines = [System.Collections.Generic.List[string]]::new()
+        for ($t = 0; $t -lt $targets.Count; $t++) {
+            $mentionTeam = NormalizeMentioneeValue -Mentionee $targets[$t]
+            if ($t -lt $mentioneeSquadLines.Count) {
+                $lineIndex = $mentioneeSquadLines[$t]
+                $indent = " " * (GetIndentLength -Line $work[$lineIndex])
+                $work[$lineIndex] = "${indent}- $mentionTeam"
+            } elseif ($hasMentionees -and $lastMentionLine -ge 0) {
+                $mentionExtraLines.Add((" " * $mentionIndent) + "- $mentionTeam")
+            }
+        }
+        if ($mentionExtraLines.Count -gt 0) {
+            $insertions.Add([PSCustomObject]@{ Index = $lastMentionLine + 1; Lines = $mentionExtraLines })
+        }
     }
 
-    if ($insertions.Count -eq 0) { return $Lines }
+    if ($insertions.Count -eq 0) {
+        return $work.ToArray()
+    }
+
     $sortedInsertions = $insertions | Sort-Object Index -Descending
-    $lineList = [System.Collections.Generic.List[string]]::new(); $lineList.AddRange($Lines)
-    foreach ($insertion in $sortedInsertions) { $lineList.InsertRange($insertion.Index, $insertion.Lines) }
-    return $lineList.ToArray()
+    foreach ($insertion in $sortedInsertions) {
+        $work.InsertRange($insertion.Index, $insertion.Lines)
+    }
+
+    return $work.ToArray()
 }
 
 $labelToSquad = GetSquadMapping -AccessToken $AccessToken
@@ -296,7 +370,7 @@ if ($yamlContent.Contains("`r`n")) { $lineEnding = "`r`n" }
 $endsWithNewline = $yamlContent.EndsWith("`n")
 $yamlLines = [regex]::Split($yamlContent, "\r?\n", [System.Text.RegularExpressions.RegexOptions]::None)
 $updatedLines = AddSquadLabelsToYaml -Lines $yamlLines -LabelToSquad $labelToSquad
-$updatedLines = NormalizeExistingSquadMentionees -Lines $updatedLines
+$updatedLines = NormalizeSquadTeamForms -Lines $updatedLines
 $updatedContent = [string]::Join($lineEnding, $updatedLines)
 if (-not $endsWithNewline -and $updatedContent.EndsWith($lineEnding)) { $updatedContent = $updatedContent.Substring(0, $updatedContent.Length - $lineEnding.Length) }
 [System.IO.File]::WriteAllText($yamlConfigPath, $updatedContent)

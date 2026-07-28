@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IProxyResource"
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterProxyResource"
         /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ProxyResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterProxyResource __securityPerimeterProxyResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterProxyResource();
 
         /// <summary>Access mode on the association.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
@@ -31,16 +31,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Id; }
 
         /// <summary>Internal Acessors for HasProvisioningIssue</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.HasProvisioningIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).HasProvisioningIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).HasProvisioningIssue = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateLinkResource</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.PrivateLinkResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).PrivateLinkResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).PrivateLinkResource = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.PrivateLinkResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).PrivateLinkResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).PrivateLinkResource = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Profile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.Profile { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).Profile; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).Profile = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.Profile { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).Profile; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).Profile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationProperties Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.NspAssociationProperties()); set { {_property = value;} } }
@@ -49,38 +49,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Name; }
 
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
@@ -109,37 +109,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceInternal)__proxyResource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal)__securityPerimeterProxyResource).Type; }
 
         /// <summary>Creates an new <see cref="NspAssociation" /> instance.</summary>
         public NspAssociation()
@@ -155,14 +155,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
-            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertNotNull(nameof(__securityPerimeterProxyResource), __securityPerimeterProxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__securityPerimeterProxyResource), __securityPerimeterProxyResource);
         }
     }
     /// The NSP resource association resource
     public partial interface INspAssociation :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IProxyResource
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterProxyResource
     {
         /// <summary>Access mode on the association.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     }
     /// The NSP resource association resource
     internal partial interface INspAssociationInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IProxyResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterProxyResourceInternal
     {
         /// <summary>Access mode on the association.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Learning", "Enforced", "Audit")]
@@ -233,11 +233,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Specifies if there are provisioning issues</summary>
         string HasProvisioningIssue { get; set; }
         /// <summary>The PaaS resource to be associated.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource PrivateLinkResource { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource PrivateLinkResource { get; set; }
         /// <summary>Resource ID.</summary>
         string PrivateLinkResourceId { get; set; }
         /// <summary>Profile id to which the PaaS resource is associated.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Profile { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Profile { get; set; }
         /// <summary>Resource ID.</summary>
         string ProfileId { get; set; }
         /// <summary>Properties of the NSP resource association.</summary>

@@ -282,7 +282,7 @@ Describe 'New-AzFunctionApp' {
 
         $myError = $null
         $errorId = "RuntimeNotSupported"
-        $expectedErrorMessage = "Runtime 'Go' is not supported. Currently supported runtimes: 'Custom', 'DotNet', 'DotNet-Isolated', 'Java', 'Node', 'PowerShell', 'Python'."
+        $expectedErrorMessage = "Runtime 'Ruby' is not supported. Currently supported runtimes: 'Custom', 'DotNet', 'DotNet-Isolated', 'Go', 'Java', 'Node', 'PowerShell', 'Python'."
         try
         {
             Write-Verbose "Create function app with an invalid runtime" -Verbose
@@ -290,7 +290,7 @@ Describe 'New-AzFunctionApp' {
                               -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                               -PlanName $env.planNameWorkerTypeWindows `
                               -StorageAccount $env.storageAccountWindows  `
-                              -Runtime Go
+                              -Runtime Ruby
         }
         catch
         {

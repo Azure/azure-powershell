@@ -18,7 +18,7 @@ New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String>
  [-Type <String>] [-Mode <String>] -InternalMapping <String[]> -ExternalMapping <String[]>
  [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
@@ -27,7 +27,7 @@ New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <Stri
  -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRange <String[]>]
  [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
@@ -36,7 +36,7 @@ New-AzVpnGatewayNatRule -ParentResourceId <String> -Name <String> [-Type <String
  -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRange <String[]>]
  [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,11 +77,41 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hu
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
