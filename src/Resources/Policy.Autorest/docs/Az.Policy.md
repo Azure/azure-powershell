@@ -67,7 +67,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 This operation updates an existing policy definition in the given subscription or management group with the given name.
 
 ### [Update-AzPolicyEnrollment](Update-AzPolicyEnrollment.md)
-This operation update a policy enrollment with the newly provided properties.
+This operation updates a policy enrollment with the newly provided properties.
 
 ### [Update-AzPolicyExemption](Update-AzPolicyExemption.md)
 This operation updates a policy exemption with the given scope and name.

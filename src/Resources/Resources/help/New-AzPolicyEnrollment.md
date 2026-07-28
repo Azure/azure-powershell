@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyenrollment
 schema: 2.0.0
@@ -55,7 +55,7 @@ The final command creates the policy enrollment for the assignment in $Assignmen
 $subscription = (Get-AzContext).Subscription
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 $ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
-New-AzPolicyEnrollment -Name 'VirtualMachinePolicyEnrollment' -Scope $subscription.Id -PolicyAssignmentId $Assignment.Id -ResourceSelector $ResourceSelector
+New-AzPolicyEnrollment -Name 'VirtualMachinePolicyEnrollment' -Scope "/subscriptions/$($subscription.Id)" -PolicyAssignmentId $Assignment.Id -ResourceSelector $ResourceSelector
 ```
 
 The first command gets the subscription that the enrollment will be created at, the currently used one.
@@ -233,3 +233,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

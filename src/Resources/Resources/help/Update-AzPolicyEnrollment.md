@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyenrollment
 schema: 2.0.0
@@ -8,32 +8,31 @@ schema: 2.0.0
 # Update-AzPolicyEnrollment
 
 ## SYNOPSIS
-This operation update a policy enrollment with the newly provided properties.
+This operation updates a policy enrollment with the newly provided properties.
 
 ## SYNTAX
 
 ### UpdateByNameAndScope (Default)
 ```
-Update-AzPolicyEnrollment -Name <String> -Scope <String> [-Description <String>] [-DisplayName <String>]
- [-AssignmentScopeValidation <String>] [-ResourceSelector <IResourceSelector[]>]
- [-PolicyDefinitionReferenceId <String[]>] [-Metadata <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### UpdateByInputObject
-```
-Update-AzPolicyEnrollment -InputObject <IPolicyEnrollment> [-Description <String>] [-DisplayName <String>]
- [-AssignmentScopeValidation <String>] [-ResourceSelector <IResourceSelector[]>]
- [-PolicyDefinitionReferenceId <String[]>] [-Metadata <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Update-AzPolicyEnrollment -Name <String> -Scope <String> [-AssignmentScopeValidation <String>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
-Update-AzPolicyEnrollment -Id <String> [-Description <String>] [-DisplayName <String>]
- [-AssignmentScopeValidation <String>] [-ResourceSelector <IResourceSelector[]>]
- [-PolicyDefinitionReferenceId <String[]>] [-Metadata <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Update-AzPolicyEnrollment -Id <String> [-AssignmentScopeValidation <String>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-PolicyDefinitionReferenceId <String[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### UpdateByInputObject
+```
+Update-AzPolicyEnrollment -InputObject <IPolicyEnrollment> [-AssignmentScopeValidation <String>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +57,7 @@ The final command updates the display name on the policy enrollment identified b
 
 ### Example 2: Update via pipeline
 ```powershell
-$PolicyEnrollment = Get-AzPolicyEnrollment -Name 'PolicyEnrollment07'
+$PolicyEnrollment = Get-AzPolicyEnrollment -Name 'PolicyEnrollment07' -Scope "/subscriptions/$((Get-AzContext).Subscription.Id)"
 $PolicyEnrollment.DisplayName = 'Updated VM Enrollment'
 $PolicyEnrollment | Update-AzPolicyEnrollment
 ```
@@ -272,3 +271,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

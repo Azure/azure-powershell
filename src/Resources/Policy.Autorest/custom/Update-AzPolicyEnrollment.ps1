@@ -16,7 +16,7 @@
 
 <#
 .Synopsis
-This operation update a policy enrollment with the newly provided properties.
+This operation updates a policy enrollment with the newly provided properties.
 .Description
 The **Update-AzPolicyEnrollment** cmdlet updates a policy enrollment with the newly provided properties. 
 Any properties not provided will be preserved from the existing enrollment.
@@ -192,18 +192,12 @@ process {
         Write-Host -ForegroundColor Blue -> Get-AzPolicyEnrollment'(' $getParameters ')'
     }
 
+    # retrieve existing enrollment to preserve properties not provided in the update
     try {
         $existing = Get-AzPolicyEnrollment @getParameters
     }
     catch {
-        # treat any error on get as nonexistent
-        if ($writeln) {
-            Write-Host -ForegroundColor DarkGray 'Swallowed exception: ' $_
-        }
-    }
-
-    if (!$existing) {
-        throw "[PolicyEnrollmentNotFound] : The policy enrollment '$($resolved.ResourceId)' is not found."
+        throw "Unable to update due to error retrieving existing policy enrollment: $($_.Exception.Message)"
     }
 
     $calledParameters = @{}

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyexemption
 schema: 2.0.0
@@ -14,28 +14,28 @@ This operation updates a policy exemption with the given scope and name.
 
 ### Name (Default)
 ```
-Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-DisplayName <String>] [-Description <String>]
- [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
- [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyExemption -Name <String> [-ExemptionCategory <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
+ [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] -Id <String>
- [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
- [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-AssignmentScopeValidation <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
+ [-AssignmentScopeValidation <String>] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
+ [-ExpiresOn <DateTime?>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
- [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
- [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-AssignmentScopeValidation <String>]
- -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyExemption -InputObject <IPolicyExemption> [-ExemptionCategory <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-ClearExpiration]
+ [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -232,6 +232,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 
+
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
 Parameter Sets: InputObject
@@ -240,7 +241,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -378,3 +379,4 @@ ALIASES
 Set-AzPolicyExemption
 
 ## RELATED LINKS
+

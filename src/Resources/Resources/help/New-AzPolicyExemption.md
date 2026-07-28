@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyexemption
 schema: 2.0.0
@@ -13,10 +13,11 @@ Creates or updates a policy exemption.
 ## SYNTAX
 
 ```
-New-AzPolicyExemption -Name <String> -ExemptionCategory <String> -PolicyAssignment <PSObject> [-Scope <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-DisplayName <String>]
- [-Description <String>] [-ExpiresOn <DateTime>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyExemption -ExemptionCategory <String> -Name <String> -PolicyAssignment <PSObject>
+ [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
+ [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +162,7 @@ Accept wildcard characters: False
 The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +215,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -315,3 +316,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

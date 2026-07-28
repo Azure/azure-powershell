@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyassignment
 schema: 2.0.0
@@ -14,40 +14,41 @@ Creates or updates a policy assignment.
 
 ### Default (Default)
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-Location <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-Description <String>] [-DisplayName <String>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ParameterObject
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-Location <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-PolicyDefinition <PSObject>] [-DefinitionVersion <String>]
- -PolicyParameterObject <Hashtable> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope <String>]
+ [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-PolicyDefinition <PSObject>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-Location <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-PolicyDefinition <PSObject>] [-DefinitionVersion <String>]
- -PolicyParameter <String> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>]
+ [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-PolicyDefinition <PSObject>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PolicyDefinitionOrPolicySetDefinition
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-Location <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] -PolicyDefinition <PSObject> [-DefinitionVersion <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>]
+ [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -404,19 +405,7 @@ Accept policy definition or policy set definition object
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: ParameterObject, ParameterString
-Aliases: PolicySetDefinition
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: PolicyDefinitionOrPolicySetDefinition
+Parameter Sets: ParameterObject, ParameterString, PolicyDefinitionOrPolicySetDefinition
 Aliases: PolicySetDefinition
 
 Required: True
@@ -540,3 +529,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

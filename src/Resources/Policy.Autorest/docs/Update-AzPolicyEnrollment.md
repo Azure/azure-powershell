@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPolicyEnrollment
 
 ## SYNOPSIS
-This operation update a policy enrollment with the newly provided properties.
+This operation updates a policy enrollment with the newly provided properties.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ The final command updates the display name on the policy enrollment identified b
 
 ### Example 2: Update via pipeline
 ```powershell
-$PolicyEnrollment = Get-AzPolicyEnrollment -Name 'PolicyEnrollment07'
+$PolicyEnrollment = Get-AzPolicyEnrollment -Name 'PolicyEnrollment07' -Scope "/subscriptions/$((Get-AzContext).Subscription.Id)"
 $PolicyEnrollment.DisplayName = 'Updated VM Enrollment'
 $PolicyEnrollment | Update-AzPolicyEnrollment
 ```

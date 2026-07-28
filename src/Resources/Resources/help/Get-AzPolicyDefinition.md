@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicydefinition
 schema: 2.0.0
@@ -18,33 +18,15 @@ Get-AzPolicyDefinition [-Name <String>] [-ListVersion] [-Version <String>] [-Def
  [<CommonParameters>]
 ```
 
-### ManagementGroupName
-```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupId <String> [-ListVersion] [-Version <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-ListVersion] [-Version <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Builtin
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupId <String>] [-Builtin]
+Get-AzPolicyDefinition -Builtin [-ManagementGroupId <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupId <String>] [-Custom]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Static
-```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupId <String>] [-Static]
+Get-AzPolicyDefinition -Custom [-ManagementGroupId <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -52,6 +34,24 @@ Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupId <String>] 
 ```
 Get-AzPolicyDefinition -Id <String> [-ListVersion] [-Version <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Get-AzPolicyDefinition -ManagementGroupId <String> [-Name <String>] [-ListVersion] [-Version <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Static
+```
+Get-AzPolicyDefinition -Static [-ManagementGroupId <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Get-AzPolicyDefinition -SubscriptionId <String> [-Name <String>] [-ListVersion] [-Version <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,7 +184,7 @@ Causes cmdlet to return only custom policy definitions versions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Parameter Sets: Id, ManagementGroupName, Name, SubscriptionId
 Aliases:
 
 Required: False
@@ -199,22 +199,10 @@ The name of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: Builtin, Custom, ManagementGroupName, Static
 Aliases: ManagementGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Builtin, Custom, Static
-Aliases: ManagementGroupName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -226,7 +214,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionName
 
 Required: False
@@ -256,22 +244,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId
+Parameter Sets: Builtin, Custom, Static, SubscriptionId
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Builtin, Custom, Static
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -283,7 +259,7 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Parameter Sets: Id, ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionVersion
 
 Required: False
@@ -309,3 +285,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicysetdefinition
 schema: 2.0.0
@@ -15,33 +15,31 @@ This operation deletes the policy set definition in the given subscription with 
 ### Name (Default)
 ```
 Remove-AzPolicySetDefinition -Name <String> [-Force] [-Version <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Remove-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-Force] [-Version <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Force] [-Version <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicySetDefinition -Id <String> [-Force] [-Version <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Id <String> [-Force] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Remove-AzPolicySetDefinition -ManagementGroupId <String> -Name <String> [-Force] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Force] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +131,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -157,19 +155,7 @@ The name of the policy set definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: PolicySetDefinitionName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ManagementGroupName, SubscriptionId
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicySetDefinitionName
 
 Required: True
@@ -214,7 +200,7 @@ The policy set definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Parameter Sets: Id, ManagementGroupName, Name, SubscriptionId
 Aliases: PolicySetDefinitionVersion
 
 Required: False
@@ -271,3 +257,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

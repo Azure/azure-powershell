@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicyenrollment
 schema: 2.0.0
@@ -15,19 +15,19 @@ Deletes a policy enrollment.
 ### DeleteByNameAndScope (Default)
 ```
 Remove-AzPolicyEnrollment -Name <String> -Scope <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteById
 ```
-Remove-AzPolicyEnrollment -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyEnrollment -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteByInputObject
 ```
 Remove-AzPolicyEnrollment -InputObject <IPolicyEnrollment> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,3 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
