@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             // Resolve the provided Associated RouteTable
-            PSResourceId associatedRouteTable = null;
+            PSVHubRouteTable associatedRouteTable = null;
             if (!string.IsNullOrWhiteSpace(AssociatedRouteTable))
             {
                 associatedRouteTable = ResolveRouteTableId(AssociatedRouteTable);
