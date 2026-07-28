@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="workerName">Name of the HybridWorker.
         /// </param>
-        public HybridRunbookWorkerProperties(string ip = default(string), System.DateTimeOffset registeredDateTime = default(System.DateTimeOffset), System.DateTimeOffset lastSeenDateTime = default(System.DateTimeOffset), string vmResourceId = default(string), string workerType = default(string), string workerName = default(string))
+        public HybridRunbookWorkerProperties(string ip = default(string), System.DateTimeOffset? registeredDateTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastSeenDateTime = default(System.DateTimeOffset?), string vmResourceId = default(string), string workerType = default(string), string workerName = default(string))
 
         {
             this.IP = ip;
@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the registration time of the worker machine.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "registeredDateTime")]
-        public System.DateTimeOffset RegisteredDateTime {get; set; }
+        public System.DateTimeOffset? RegisteredDateTime {get; set; }
 
         /// <summary>
         /// Gets or sets last Heartbeat from the Worker
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastSeenDateTime")]
-        public System.DateTimeOffset LastSeenDateTime {get; set; }
+        public System.DateTimeOffset? LastSeenDateTime {get; set; }
 
         /// <summary>
         /// Gets or sets azure Resource Manager Id for a virtual machine.

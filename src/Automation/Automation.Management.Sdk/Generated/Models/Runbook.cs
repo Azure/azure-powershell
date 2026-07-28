@@ -25,28 +25,37 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the Runbook class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="location">The Azure Region where the resource lives
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="etag">Gets or sets the etag of the resource.
         /// </param>
 
+        /// <param name="runtimeEnvironment">Runtime Environment of the runbook execution.
+        /// </param>
+
         /// <param name="runbookType">Gets or sets the type of the runbook.
         /// Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;,
         /// &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;,
-        /// &#39;Python3&#39;, &#39;PowerShell72&#39;, &#39;Python&#39;</param>
+        /// &#39;Python3&#39;, &#39;Python&#39;, &#39;PowerShell72&#39;</param>
 
         /// <param name="publishContentLink">Gets or sets the published runbook content link.
         /// </param>
@@ -89,11 +98,12 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public Runbook(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string etag = default(string), string runbookType = default(string), ContentLink publishContentLink = default(ContentLink), string state = default(string), bool? logVerbose = default(bool?), bool? logProgress = default(bool?), int? logActivityTrace = default(int?), int? jobCount = default(int?), System.Collections.Generic.IDictionary<string, RunbookParameter> parameters = default(System.Collections.Generic.IDictionary<string, RunbookParameter>), System.Collections.Generic.IList<string> outputTypes = default(System.Collections.Generic.IList<string>), RunbookDraft draft = default(RunbookDraft), RunbookProvisioningState? provisioningState = default(RunbookProvisioningState?), string lastModifiedBy = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public Runbook(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string runtimeEnvironment = default(string), string runbookType = default(string), ContentLink publishContentLink = default(ContentLink), string state = default(string), bool? logVerbose = default(bool?), bool? logProgress = default(bool?), int? logActivityTrace = default(int?), int? jobCount = default(int?), System.Collections.Generic.IDictionary<string, RunbookParameter> parameters = default(System.Collections.Generic.IDictionary<string, RunbookParameter>), System.Collections.Generic.IList<string> outputTypes = default(System.Collections.Generic.IList<string>), RunbookDraft draft = default(RunbookDraft), RunbookPropertiesProvisioningState? provisioningState = default(RunbookPropertiesProvisioningState?), string lastModifiedBy = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
-        : base(id, name, type, tags, location)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
+            this.RuntimeEnvironment = runtimeEnvironment;
             this.RunbookType = runbookType;
             this.PublishContentLink = publishContentLink;
             this.State = state;
@@ -125,7 +135,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string Etag {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;, &#39;PowerShell72&#39;, &#39;Python&#39;
+        /// Gets or sets runtime Environment of the runbook execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runtimeEnvironment")]
+        public string RuntimeEnvironment {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;, &#39;Python&#39;, &#39;PowerShell72&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runbookType")]
         public string RunbookType {get; set; }
@@ -188,7 +204,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the provisioning state of the runbook. Possible values include: &#39;Succeeded&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public RunbookProvisioningState? ProvisioningState {get; set; }
+        public RunbookPropertiesProvisioningState? ProvisioningState {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified by.
@@ -200,13 +216,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.
@@ -219,8 +235,10 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
+
 
 
             if (this.PublishContentLink != null)

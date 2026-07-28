@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class JobStreamType
     {
+        /// <summary>
+        /// Progress
+        /// </summary>
         public const string Progress = "Progress";
+        /// <summary>
+        /// Output
+        /// </summary>
         public const string Output = "Output";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
+        /// <summary>
+        /// Error
+        /// </summary>
         public const string Error = "Error";
+        /// <summary>
+        /// Debug
+        /// </summary>
         public const string Debug = "Debug";
+        /// <summary>
+        /// Verbose
+        /// </summary>
         public const string Verbose = "Verbose";
+        /// <summary>
+        /// Any
+        /// </summary>
         public const string Any = "Any";
     }
 }

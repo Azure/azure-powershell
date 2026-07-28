@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets the name of the resource.
+        /// Gets gets or sets the name of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
+        public string Name {get; private set; }
 
         /// <summary>
         /// Gets or sets azure Resource Manager Id for a virtual machine.

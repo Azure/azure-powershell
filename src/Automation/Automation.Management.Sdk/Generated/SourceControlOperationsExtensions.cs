@@ -13,190 +13,13 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class SourceControlOperationsExtensions
     {
         /// <summary>
-        /// Create a source control.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The source control name.
-        /// </param>
-        public static SourceControl CreateOrUpdate(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlCreateOrUpdateParameters parameters)
-        {
-                return ((ISourceControlOperations)operations).CreateOrUpdateAsync(resourceGroupName, automationAccountName, sourceControlName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create a source control.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The source control name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SourceControl> CreateOrUpdateAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlCreateOrUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update a source control.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The source control name.
-        /// </param>
-        public static SourceControl Update(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlUpdateParameters parameters)
-        {
-                return ((ISourceControlOperations)operations).UpdateAsync(resourceGroupName, automationAccountName, sourceControlName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update a source control.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The source control name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SourceControl> UpdateAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Delete the source control.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The name of source control.
-        /// </param>
-        public static void Delete(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName)
-        {
-                ((ISourceControlOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, sourceControlName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete the source control.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The name of source control.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Retrieve the source control identified by source control name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The name of source control.
-        /// </param>
-        public static SourceControl Get(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName)
-        {
-                return ((ISourceControlOperations)operations).GetAsync(resourceGroupName, automationAccountName, sourceControlName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve the source control identified by source control name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='sourceControlName'>
-        /// The name of source control.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SourceControl> GetAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieve a list of source controls.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -216,7 +39,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -228,51 +51,6 @@ namespace Microsoft.Azure.Management.Automation
         /// The cancellation token.
         /// </param>
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SourceControl>> ListByAutomationAccountAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, filter, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieve a list of source controls.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='filter'>
-        /// The filter to apply on the operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SourceControlAutoGenerated> ListByAutomationAccount(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string))
-        {
-                return ((ISourceControlOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, filter).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve a list of source controls.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='filter'>
-        /// The filter to apply on the operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SourceControlAutoGenerated>> ListByAutomationAccountAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, filter, null, cancellationToken).ConfigureAwait(false))
             {
@@ -294,7 +72,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='sourceControlName'>
         /// The name of source control.
         /// </param>
-        public static SourceControlAutoGenerated Get(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName)
+        public static SourceControl Get(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName)
         {
                 return ((ISourceControlOperations)operations).GetAsync(resourceGroupName, automationAccountName, sourceControlName).GetAwaiter().GetResult();
         }
@@ -317,7 +95,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SourceControlAutoGenerated> GetAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SourceControl> GetAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -339,7 +117,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='sourceControlName'>
         /// The name of source control.
         /// </param>
-        public static SourceControlAutoGenerated CreateOrUpdate(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlCreateOrUpdateParametersAutoGenerated parameters)
+        public static SourceControl CreateOrUpdate(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlCreateOrUpdateParameters parameters)
         {
                 return ((ISourceControlOperations)operations).CreateOrUpdateAsync(resourceGroupName, automationAccountName, sourceControlName, parameters).GetAwaiter().GetResult();
         }
@@ -362,7 +140,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SourceControlAutoGenerated> CreateOrUpdateAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlCreateOrUpdateParametersAutoGenerated parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SourceControl> CreateOrUpdateAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlCreateOrUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -384,7 +162,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='sourceControlName'>
         /// The name of source control.
         /// </param>
-        public static SourceControlAutoGenerated Update(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlUpdateParametersAutoGenerated parameters)
+        public static SourceControl Update(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlUpdateParameters parameters)
         {
                 return ((ISourceControlOperations)operations).UpdateAsync(resourceGroupName, automationAccountName, sourceControlName, parameters).GetAwaiter().GetResult();
         }
@@ -407,7 +185,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SourceControlAutoGenerated> UpdateAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlUpdateParametersAutoGenerated parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SourceControl> UpdateAsync(this ISourceControlOperations operations, string resourceGroupName, string automationAccountName, string sourceControlName, SourceControlUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, sourceControlName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -483,39 +261,6 @@ namespace Microsoft.Azure.Management.Automation
         /// The cancellation token.
         /// </param>
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SourceControl>> ListByAutomationAccountNextAsync(this ISourceControlOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByAutomationAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieve a list of source controls.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SourceControlAutoGenerated> ListByAutomationAccountNext(this ISourceControlOperations operations, string nextPageLink)
-        {
-                return ((ISourceControlOperations)operations).ListByAutomationAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve a list of source controls.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SourceControlAutoGenerated>> ListByAutomationAccountNextAsync(this ISourceControlOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByAutomationAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

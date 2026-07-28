@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Automation
     using Models;
 
     /// <summary>
-    /// APIs for managing software update configurations.
+    /// Automation Client
     /// </summary>
     public partial interface IAutomationClient :  System.IDisposable
     {
@@ -36,11 +36,15 @@ namespace Microsoft.Azure.Management.Automation
 
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The API version to use for this operation.
         /// </summary>
-        string SubscriptionId { get; set;}
+        string ApiVersion { get;}
+
+
+        /// <summary>
+        /// The ID of the target subscription. The value must be an UUID.
+        /// </summary>
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -65,34 +69,24 @@ namespace Microsoft.Azure.Management.Automation
 
 
         /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IAutomationAccountOperations
+        /// </summary>
+        IAutomationAccountOperations AutomationAccount { get; }
+
+        /// <summary>
+        /// Gets the IDeletedAutomationAccountsOperations
+        /// </summary>
+        IDeletedAutomationAccountsOperations DeletedAutomationAccounts { get; }
+
+        /// <summary>
         /// Gets the IAgentRegistrationInformationOperations
         /// </summary>
         IAgentRegistrationInformationOperations AgentRegistrationInformation { get; }
-
-        /// <summary>
-        /// Gets the IDscNodeOperations
-        /// </summary>
-        IDscNodeOperations DscNode { get; }
-
-        /// <summary>
-        /// Gets the INodeReportsOperations
-        /// </summary>
-        INodeReportsOperations NodeReports { get; }
-
-        /// <summary>
-        /// Gets the IDscNodeConfigurationOperations
-        /// </summary>
-        IDscNodeConfigurationOperations DscNodeConfiguration { get; }
-
-        /// <summary>
-        /// Gets the IDscCompilationJobOperations
-        /// </summary>
-        IDscCompilationJobOperations DscCompilationJob { get; }
-
-        /// <summary>
-        /// Gets the IDscCompilationJobStreamOperations
-        /// </summary>
-        IDscCompilationJobStreamOperations DscCompilationJobStream { get; }
 
         /// <summary>
         /// Gets the ICertificateOperations
@@ -100,49 +94,9 @@ namespace Microsoft.Azure.Management.Automation
         ICertificateOperations Certificate { get; }
 
         /// <summary>
-        /// Gets the ICredentialOperations
+        /// Gets the IDscConfigurationOperations
         /// </summary>
-        ICredentialOperations Credential { get; }
-
-        /// <summary>
-        /// Gets the IJobScheduleOperations
-        /// </summary>
-        IJobScheduleOperations JobSchedule { get; }
-
-        /// <summary>
-        /// Gets the IScheduleOperations
-        /// </summary>
-        IScheduleOperations Schedule { get; }
-
-        /// <summary>
-        /// Gets the IActivityOperations
-        /// </summary>
-        IActivityOperations Activity { get; }
-
-        /// <summary>
-        /// Gets the IModuleOperations
-        /// </summary>
-        IModuleOperations Module { get; }
-
-        /// <summary>
-        /// Gets the IObjectDataTypesOperations
-        /// </summary>
-        IObjectDataTypesOperations ObjectDataTypes { get; }
-
-        /// <summary>
-        /// Gets the IFieldsOperations
-        /// </summary>
-        IFieldsOperations Fields { get; }
-
-        /// <summary>
-        /// Gets the IVariableOperations
-        /// </summary>
-        IVariableOperations Variable { get; }
-
-        /// <summary>
-        /// Gets the IConnectionOperations
-        /// </summary>
-        IConnectionOperations Connection { get; }
+        IDscConfigurationOperations DscConfiguration { get; }
 
         /// <summary>
         /// Gets the IConnectionTypeOperations
@@ -150,24 +104,29 @@ namespace Microsoft.Azure.Management.Automation
         IConnectionTypeOperations ConnectionType { get; }
 
         /// <summary>
-        /// Gets the ISourceControlOperations
+        /// Gets the IConnectionOperations
         /// </summary>
-        ISourceControlOperations SourceControl { get; }
+        IConnectionOperations Connection { get; }
 
         /// <summary>
-        /// Gets the ISourceControlSyncJobOperations
+        /// Gets the ICredentialOperations
         /// </summary>
-        ISourceControlSyncJobOperations SourceControlSyncJob { get; }
+        ICredentialOperations Credential { get; }
 
         /// <summary>
-        /// Gets the ISourceControlSyncJobStreamsOperations
+        /// Gets the IHybridRunbookWorkerGroupOperations
         /// </summary>
-        ISourceControlSyncJobStreamsOperations SourceControlSyncJobStreams { get; }
+        IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; }
 
         /// <summary>
-        /// Gets the IDscConfigurationOperations
+        /// Gets the IHybridRunbookWorkersOperations
         /// </summary>
-        IDscConfigurationOperations DscConfiguration { get; }
+        IHybridRunbookWorkersOperations HybridRunbookWorkers { get; }
+
+        /// <summary>
+        /// Gets the IJobScheduleOperations
+        /// </summary>
+        IJobScheduleOperations JobSchedule { get; }
 
         /// <summary>
         /// Gets the IJobOperations
@@ -180,34 +139,9 @@ namespace Microsoft.Azure.Management.Automation
         IJobStreamOperations JobStream { get; }
 
         /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationsOperations
+        /// Gets the ILinkedWorkspaceOperations
         /// </summary>
-        ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; }
-
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationRunsOperations
-        /// </summary>
-        ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; }
-
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations
-        /// </summary>
-        ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; }
-
-        /// <summary>
-        /// Gets the IAutomationAccountOperations
-        /// </summary>
-        IAutomationAccountOperations AutomationAccount { get; }
-
-        /// <summary>
-        /// Gets the IStatisticsOperations
-        /// </summary>
-        IStatisticsOperations Statistics { get; }
-
-        /// <summary>
-        /// Gets the IUsagesOperations
-        /// </summary>
-        IUsagesOperations Usages { get; }
+        ILinkedWorkspaceOperations LinkedWorkspace { get; }
 
         /// <summary>
         /// Gets the IKeysOperations
@@ -215,69 +149,44 @@ namespace Microsoft.Azure.Management.Automation
         IKeysOperations Keys { get; }
 
         /// <summary>
-        /// Gets the IWebhookOperations
+        /// Gets the IModuleOperations
         /// </summary>
-        IWebhookOperations Webhook { get; }
+        IModuleOperations Module { get; }
 
         /// <summary>
-        /// Gets the IRunbookDraftOperations
+        /// Gets the IActivityOperations
         /// </summary>
-        IRunbookDraftOperations RunbookDraft { get; }
+        IActivityOperations Activity { get; }
 
         /// <summary>
-        /// Gets the IRunbookOperations
+        /// Gets the IObjectDataTypesOperations
         /// </summary>
-        IRunbookOperations Runbook { get; }
+        IObjectDataTypesOperations ObjectDataTypes { get; }
 
         /// <summary>
-        /// Gets the ITestJobStreamsOperations
+        /// Gets the IFieldsOperations
         /// </summary>
-        ITestJobStreamsOperations TestJobStreams { get; }
+        IFieldsOperations Fields { get; }
 
         /// <summary>
-        /// Gets the ITestJobOperations
+        /// Gets the IDscNodeConfigurationOperations
         /// </summary>
-        ITestJobOperations TestJob { get; }
-
-        /// <summary>
-        /// Gets the IPowerShell72ModuleOperations
-        /// </summary>
-        IPowerShell72ModuleOperations PowerShell72Module { get; }
-
-        /// <summary>
-        /// Gets the IHybridRunbookWorkersOperations
-        /// </summary>
-        IHybridRunbookWorkersOperations HybridRunbookWorkers { get; }
-
-        /// <summary>
-        /// Gets the IHybridRunbookWorkerGroupOperations
-        /// </summary>
-        IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; }
-
-        /// <summary>
-        /// Gets the IPython3PackageOperations
-        /// </summary>
-        IPython3PackageOperations Python3Package { get; }
-
-        /// <summary>
-        /// Gets the IOperations
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IDeletedAutomationAccountsOperations
-        /// </summary>
-        IDeletedAutomationAccountsOperations DeletedAutomationAccounts { get; }
-
-        /// <summary>
-        /// Gets the ILinkedWorkspaceOperations
-        /// </summary>
-        ILinkedWorkspaceOperations LinkedWorkspace { get; }
+        IDscNodeConfigurationOperations DscNodeConfiguration { get; }
 
         /// <summary>
         /// Gets the INodeCountInformationOperations
         /// </summary>
         INodeCountInformationOperations NodeCountInformation { get; }
+
+        /// <summary>
+        /// Gets the IDscNodeOperations
+        /// </summary>
+        IDscNodeOperations DscNode { get; }
+
+        /// <summary>
+        /// Gets the INodeReportsOperations
+        /// </summary>
+        INodeReportsOperations NodeReports { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
@@ -295,6 +204,31 @@ namespace Microsoft.Azure.Management.Automation
         IPython2PackageOperations Python2Package { get; }
 
         /// <summary>
+        /// Gets the IPython3PackageOperations
+        /// </summary>
+        IPython3PackageOperations Python3Package { get; }
+
+        /// <summary>
+        /// Gets the IRunbookOperations
+        /// </summary>
+        IRunbookOperations Runbook { get; }
+
+        /// <summary>
+        /// Gets the IRunbookDraftOperations
+        /// </summary>
+        IRunbookDraftOperations RunbookDraft { get; }
+
+        /// <summary>
+        /// Gets the ITestJobOperations
+        /// </summary>
+        ITestJobOperations TestJob { get; }
+
+        /// <summary>
+        /// Gets the ITestJobStreamsOperations
+        /// </summary>
+        ITestJobStreamsOperations TestJobStreams { get; }
+
+        /// <summary>
         /// Gets the IRuntimeEnvironmentsOperations
         /// </summary>
         IRuntimeEnvironmentsOperations RuntimeEnvironments { get; }
@@ -305,9 +239,64 @@ namespace Microsoft.Azure.Management.Automation
         IPackageOperations Package { get; }
 
         /// <summary>
+        /// Gets the IScheduleOperations
+        /// </summary>
+        IScheduleOperations Schedule { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations
+        /// </summary>
+        ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationRunsOperations
+        /// </summary>
+        ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; }
+
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationsOperations
+        /// </summary>
+        ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; }
+
+        /// <summary>
+        /// Gets the ISourceControlOperations
+        /// </summary>
+        ISourceControlOperations SourceControl { get; }
+
+        /// <summary>
+        /// Gets the ISourceControlSyncJobOperations
+        /// </summary>
+        ISourceControlSyncJobOperations SourceControlSyncJob { get; }
+
+        /// <summary>
+        /// Gets the ISourceControlSyncJobStreamsOperations
+        /// </summary>
+        ISourceControlSyncJobStreamsOperations SourceControlSyncJobStreams { get; }
+
+        /// <summary>
+        /// Gets the IStatisticsOperations
+        /// </summary>
+        IStatisticsOperations Statistics { get; }
+
+        /// <summary>
+        /// Gets the IUsagesOperations
+        /// </summary>
+        IUsagesOperations Usages { get; }
+
+        /// <summary>
+        /// Gets the IVariableOperations
+        /// </summary>
+        IVariableOperations Variable { get; }
+
+        /// <summary>
         /// Gets the IWatcherOperations
         /// </summary>
         IWatcherOperations Watcher { get; }
+
+        /// <summary>
+        /// Gets the IWebhookOperations
+        /// </summary>
+        IWebhookOperations Webhook { get; }
 
         /// <summary>
         /// Post operation to serialize or deserialize GraphRunbookContent

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="error">Details of provisioning error
         /// </param>
-        public SoftwareUpdateConfigurationMachineRun(string name = default(string), string id = default(string), string targetComputer = default(string), string targetComputerType = default(string), UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string osType = default(string), System.Guid? correlationId = default(System.Guid?), System.Guid? sourceComputerId = default(System.Guid?), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string configuredDuration = default(string), JobNavigation job = default(JobNavigation), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), ErrorResponse error = default(ErrorResponse))
+        public SoftwareUpdateConfigurationMachineRun(string name = default(string), string id = default(string), string targetComputer = default(string), string targetComputerType = default(string), UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string osType = default(string), System.Guid? correlationId = default(System.Guid?), System.Guid? sourceComputerId = default(System.Guid?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string configuredDuration = default(string), JobNavigation job = default(JobNavigation), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string createdBy = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string lastModifiedBy = default(string), AutomationErrorResponse error = default(AutomationErrorResponse))
 
         {
             this.Name = name;
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets start time of the software update configuration machine run.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTime")]
-        public System.DateTimeOffset StartTime {get; private set; }
+        public System.DateTimeOffset? StartTime {get; private set; }
 
         /// <summary>
         /// Gets end time of the software update configuration machine run.
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets creation time of the resource, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets createdBy property, which only appears in the response.
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets last time resource was modified, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets lastModifiedBy property, which only appears in the response.
@@ -217,6 +217,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets details of provisioning error
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.error")]
-        public ErrorResponse Error {get; set; }
+        public AutomationErrorResponse Error {get; set; }
     }
 }

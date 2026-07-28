@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="tasks">Software update configuration tasks triggered in this run
         /// </param>
-        public SoftwareUpdateConfigurationRunProperties(UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string configuredDuration = default(string), string osType = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), int? computerCount = default(int?), int? failedCount = default(int?), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), SoftwareUpdateConfigurationRunTasks tasks = default(SoftwareUpdateConfigurationRunTasks))
+        public SoftwareUpdateConfigurationRunProperties(UpdateConfigurationNavigation softwareUpdateConfiguration = default(UpdateConfigurationNavigation), string status = default(string), string configuredDuration = default(string), string osType = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), int? computerCount = default(int?), int? failedCount = default(int?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string createdBy = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string lastModifiedBy = default(string), SoftwareUpdateConfigurationRunTasks tasks = default(SoftwareUpdateConfigurationRunTasks))
 
         {
             this.SoftwareUpdateConfiguration = softwareUpdateConfiguration;
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets start time of the software update configuration run.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset StartTime {get; private set; }
+        public System.DateTimeOffset? StartTime {get; private set; }
 
         /// <summary>
         /// Gets end time of the software update configuration run.
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets creation time of the resource, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets createdBy property, which only appears in the response.
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets last time resource was modified, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets lastModifiedBy property, which only appears in the response.

@@ -13,278 +13,6 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class DscConfigurationOperationsExtensions
     {
         /// <summary>
-        /// Delete the dsc configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The configuration name.
-        /// </param>
-        public static void Delete(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
-        {
-                ((IDscConfigurationOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, configurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete the dsc configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The configuration name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Retrieve the configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The configuration name.
-        /// </param>
-        public static DscConfiguration Get(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
-        {
-                return ((IDscConfigurationOperations)operations).GetAsync(resourceGroupName, automationAccountName, configurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve the configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The configuration name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DscConfiguration> GetAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Create the configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The create or update parameters for configuration.
-        /// </param>
-        public static DscConfiguration CreateOrUpdate(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationCreateOrUpdateParameters parameters)
-        {
-                return ((IDscConfigurationOperations)operations).CreateOrUpdateAsync(resourceGroupName, automationAccountName, configurationName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create the configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The create or update parameters for configuration.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DscConfiguration> CreateOrUpdateAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationCreateOrUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Create the configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The create or update parameters for configuration.
-        /// </param>
-        public static DscConfiguration Update(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationUpdateParameters parameters = default(DscConfigurationUpdateParameters))
-        {
-                return ((IDscConfigurationOperations)operations).UpdateAsync(resourceGroupName, automationAccountName, configurationName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create the configuration identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The create or update parameters for configuration.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DscConfiguration> UpdateAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationUpdateParameters parameters = default(DscConfigurationUpdateParameters), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieve the configuration script identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The configuration name.
-        /// </param>
-        public static System.IO.Stream GetContent(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
-        {
-                return ((IDscConfigurationOperations)operations).GetContentAsync(resourceGroupName, automationAccountName, configurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve the configuration script identified by configuration name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The configuration name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.IO.Stream> GetContentAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            var _result = await operations.GetContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, null, cancellationToken).ConfigureAwait(false);
-            _result.Request.Dispose();
-            return _result.Body;
-        }
-        /// <summary>
-        /// Retrieve a list of configurations.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='inlinecount'>
-        /// Return total rows.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<DscConfiguration> ListByAutomationAccount(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<DscConfiguration> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DscConfiguration>), string inlinecount = default(string))
-        {
-                return ((IDscConfigurationOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, odataQuery, inlinecount).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve a list of configurations.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='inlinecount'>
-        /// Return total rows.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscConfiguration>> ListByAutomationAccountAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<DscConfiguration> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DscConfiguration>), string inlinecount = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, odataQuery, inlinecount, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieve a list of configurations.
         /// </summary>
         /// <param name='operations'>
@@ -308,7 +36,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='inlinecount'>
         /// Return total rows.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DscConfigurationAutoGenerated> ListByAutomationAccount(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string))
+        public static Microsoft.Rest.Azure.IPage<DscConfiguration> ListByAutomationAccount(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string))
         {
                 return ((IDscConfigurationOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, filter, skip, top, inlinecount).GetAwaiter().GetResult();
         }
@@ -340,7 +68,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscConfigurationAutoGenerated>> ListByAutomationAccountAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscConfiguration>> ListByAutomationAccountAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, filter, skip, top, inlinecount, null, cancellationToken).ConfigureAwait(false))
             {
@@ -362,7 +90,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='configurationName'>
         /// The configuration name.
         /// </param>
-        public static DscConfigurationAutoGenerated Get(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
+        public static DscConfiguration Get(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
         {
                 return ((IDscConfigurationOperations)operations).GetAsync(resourceGroupName, automationAccountName, configurationName).GetAwaiter().GetResult();
         }
@@ -385,7 +113,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DscConfigurationAutoGenerated> GetAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DscConfiguration> GetAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -407,7 +135,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='configurationName'>
         /// The configuration name.
         /// </param>
-        public static DscConfigurationAutoGenerated CreateOrUpdate(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationCreateOrUpdateParametersAutoGenerated parameters)
+        public static DscConfiguration CreateOrUpdate(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationCreateOrUpdateParameters parameters)
         {
                 return ((IDscConfigurationOperations)operations).CreateOrUpdateAsync(resourceGroupName, automationAccountName, configurationName, parameters).GetAwaiter().GetResult();
         }
@@ -430,7 +158,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DscConfigurationAutoGenerated> CreateOrUpdateAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationCreateOrUpdateParametersAutoGenerated parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DscConfiguration> CreateOrUpdateAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationCreateOrUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -452,7 +180,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='configurationName'>
         /// The configuration name.
         /// </param>
-        public static DscConfigurationAutoGenerated Update(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationUpdateParametersAutoGenerated parameters = default(DscConfigurationUpdateParametersAutoGenerated))
+        public static DscConfiguration Update(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationUpdateParameters parameters = default(DscConfigurationUpdateParameters))
         {
                 return ((IDscConfigurationOperations)operations).UpdateAsync(resourceGroupName, automationAccountName, configurationName, parameters).GetAwaiter().GetResult();
         }
@@ -475,7 +203,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DscConfigurationAutoGenerated> UpdateAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationUpdateParametersAutoGenerated parameters = default(DscConfigurationUpdateParametersAutoGenerated), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DscConfiguration> UpdateAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, DscConfigurationUpdateParameters parameters = default(DscConfigurationUpdateParameters), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -596,39 +324,6 @@ namespace Microsoft.Azure.Management.Automation
         /// The cancellation token.
         /// </param>
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscConfiguration>> ListByAutomationAccountNextAsync(this IDscConfigurationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByAutomationAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieve a list of configurations.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<DscConfigurationAutoGenerated> ListByAutomationAccountNext(this IDscConfigurationOperations operations, string nextPageLink)
-        {
-                return ((IDscConfigurationOperations)operations).ListByAutomationAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve a list of configurations.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscConfigurationAutoGenerated>> ListByAutomationAccountNextAsync(this IDscConfigurationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByAutomationAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

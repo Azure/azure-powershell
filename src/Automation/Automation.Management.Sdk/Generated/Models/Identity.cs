@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the Identity class.
         /// </summary>
 
-        /// <param name="principalId">The principal ID of resource identity.
+        /// <param name="principalId">The principal ID of resource identity. The value must be an UUID.
         /// </param>
 
         /// <param name="tenantId">The tenant ID of resource.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets the principal ID of resource identity.
+        /// Gets the principal ID of resource identity. The value must be an UUID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "principalId")]
         public string PrincipalId {get; private set; }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Automation
     using Models;
 
     /// <summary>
-    /// APIs for managing software update configurations.
+    /// Automation Client
     /// </summary>
     public partial class AutomationClient : Microsoft.Rest.ServiceClient<AutomationClient>, IAutomationClient, IAzureClient
     {
@@ -33,11 +33,14 @@ namespace Microsoft.Azure.Management.Automation
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The API version to use for this operation.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription. The value must be an UUID.
+        /// </summary>
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -58,89 +61,53 @@ namespace Microsoft.Azure.Management.Automation
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+        /// <summary>
+        /// Gets the IAutomationAccountOperations
+        /// </summary>
+        public virtual IAutomationAccountOperations AutomationAccount { get; private set; }
+        /// <summary>
+        /// Gets the IDeletedAutomationAccountsOperations
+        /// </summary>
+        public virtual IDeletedAutomationAccountsOperations DeletedAutomationAccounts { get; private set; }
+        /// <summary>
         /// Gets the IAgentRegistrationInformationOperations
         /// </summary>
         public virtual IAgentRegistrationInformationOperations AgentRegistrationInformation { get; private set; }
-        /// <summary>
-        /// Gets the IDscNodeOperations
-        /// </summary>
-        public virtual IDscNodeOperations DscNode { get; private set; }
-        /// <summary>
-        /// Gets the INodeReportsOperations
-        /// </summary>
-        public virtual INodeReportsOperations NodeReports { get; private set; }
-        /// <summary>
-        /// Gets the IDscNodeConfigurationOperations
-        /// </summary>
-        public virtual IDscNodeConfigurationOperations DscNodeConfiguration { get; private set; }
-        /// <summary>
-        /// Gets the IDscCompilationJobOperations
-        /// </summary>
-        public virtual IDscCompilationJobOperations DscCompilationJob { get; private set; }
-        /// <summary>
-        /// Gets the IDscCompilationJobStreamOperations
-        /// </summary>
-        public virtual IDscCompilationJobStreamOperations DscCompilationJobStream { get; private set; }
         /// <summary>
         /// Gets the ICertificateOperations
         /// </summary>
         public virtual ICertificateOperations Certificate { get; private set; }
         /// <summary>
-        /// Gets the ICredentialOperations
+        /// Gets the IDscConfigurationOperations
         /// </summary>
-        public virtual ICredentialOperations Credential { get; private set; }
-        /// <summary>
-        /// Gets the IJobScheduleOperations
-        /// </summary>
-        public virtual IJobScheduleOperations JobSchedule { get; private set; }
-        /// <summary>
-        /// Gets the IScheduleOperations
-        /// </summary>
-        public virtual IScheduleOperations Schedule { get; private set; }
-        /// <summary>
-        /// Gets the IActivityOperations
-        /// </summary>
-        public virtual IActivityOperations Activity { get; private set; }
-        /// <summary>
-        /// Gets the IModuleOperations
-        /// </summary>
-        public virtual IModuleOperations Module { get; private set; }
-        /// <summary>
-        /// Gets the IObjectDataTypesOperations
-        /// </summary>
-        public virtual IObjectDataTypesOperations ObjectDataTypes { get; private set; }
-        /// <summary>
-        /// Gets the IFieldsOperations
-        /// </summary>
-        public virtual IFieldsOperations Fields { get; private set; }
-        /// <summary>
-        /// Gets the IVariableOperations
-        /// </summary>
-        public virtual IVariableOperations Variable { get; private set; }
-        /// <summary>
-        /// Gets the IConnectionOperations
-        /// </summary>
-        public virtual IConnectionOperations Connection { get; private set; }
+        public virtual IDscConfigurationOperations DscConfiguration { get; private set; }
         /// <summary>
         /// Gets the IConnectionTypeOperations
         /// </summary>
         public virtual IConnectionTypeOperations ConnectionType { get; private set; }
         /// <summary>
-        /// Gets the ISourceControlOperations
+        /// Gets the IConnectionOperations
         /// </summary>
-        public virtual ISourceControlOperations SourceControl { get; private set; }
+        public virtual IConnectionOperations Connection { get; private set; }
         /// <summary>
-        /// Gets the ISourceControlSyncJobOperations
+        /// Gets the ICredentialOperations
         /// </summary>
-        public virtual ISourceControlSyncJobOperations SourceControlSyncJob { get; private set; }
+        public virtual ICredentialOperations Credential { get; private set; }
         /// <summary>
-        /// Gets the ISourceControlSyncJobStreamsOperations
+        /// Gets the IHybridRunbookWorkerGroupOperations
         /// </summary>
-        public virtual ISourceControlSyncJobStreamsOperations SourceControlSyncJobStreams { get; private set; }
+        public virtual IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; private set; }
         /// <summary>
-        /// Gets the IDscConfigurationOperations
+        /// Gets the IHybridRunbookWorkersOperations
         /// </summary>
-        public virtual IDscConfigurationOperations DscConfiguration { get; private set; }
+        public virtual IHybridRunbookWorkersOperations HybridRunbookWorkers { get; private set; }
+        /// <summary>
+        /// Gets the IJobScheduleOperations
+        /// </summary>
+        public virtual IJobScheduleOperations JobSchedule { get; private set; }
         /// <summary>
         /// Gets the IJobOperations
         /// </summary>
@@ -150,85 +117,45 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual IJobStreamOperations JobStream { get; private set; }
         /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationsOperations
+        /// Gets the ILinkedWorkspaceOperations
         /// </summary>
-        public virtual ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; private set; }
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationRunsOperations
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; private set; }
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; private set; }
-        /// <summary>
-        /// Gets the IAutomationAccountOperations
-        /// </summary>
-        public virtual IAutomationAccountOperations AutomationAccount { get; private set; }
-        /// <summary>
-        /// Gets the IStatisticsOperations
-        /// </summary>
-        public virtual IStatisticsOperations Statistics { get; private set; }
-        /// <summary>
-        /// Gets the IUsagesOperations
-        /// </summary>
-        public virtual IUsagesOperations Usages { get; private set; }
+        public virtual ILinkedWorkspaceOperations LinkedWorkspace { get; private set; }
         /// <summary>
         /// Gets the IKeysOperations
         /// </summary>
         public virtual IKeysOperations Keys { get; private set; }
         /// <summary>
-        /// Gets the IWebhookOperations
+        /// Gets the IModuleOperations
         /// </summary>
-        public virtual IWebhookOperations Webhook { get; private set; }
+        public virtual IModuleOperations Module { get; private set; }
         /// <summary>
-        /// Gets the IRunbookDraftOperations
+        /// Gets the IActivityOperations
         /// </summary>
-        public virtual IRunbookDraftOperations RunbookDraft { get; private set; }
+        public virtual IActivityOperations Activity { get; private set; }
         /// <summary>
-        /// Gets the IRunbookOperations
+        /// Gets the IObjectDataTypesOperations
         /// </summary>
-        public virtual IRunbookOperations Runbook { get; private set; }
+        public virtual IObjectDataTypesOperations ObjectDataTypes { get; private set; }
         /// <summary>
-        /// Gets the ITestJobStreamsOperations
+        /// Gets the IFieldsOperations
         /// </summary>
-        public virtual ITestJobStreamsOperations TestJobStreams { get; private set; }
+        public virtual IFieldsOperations Fields { get; private set; }
         /// <summary>
-        /// Gets the ITestJobOperations
+        /// Gets the IDscNodeConfigurationOperations
         /// </summary>
-        public virtual ITestJobOperations TestJob { get; private set; }
-        /// <summary>
-        /// Gets the IPowerShell72ModuleOperations
-        /// </summary>
-        public virtual IPowerShell72ModuleOperations PowerShell72Module { get; private set; }
-        /// <summary>
-        /// Gets the IHybridRunbookWorkersOperations
-        /// </summary>
-        public virtual IHybridRunbookWorkersOperations HybridRunbookWorkers { get; private set; }
-        /// <summary>
-        /// Gets the IHybridRunbookWorkerGroupOperations
-        /// </summary>
-        public virtual IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; private set; }
-        /// <summary>
-        /// Gets the IPython3PackageOperations
-        /// </summary>
-        public virtual IPython3PackageOperations Python3Package { get; private set; }
-        /// <summary>
-        /// Gets the IOperations
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-        /// <summary>
-        /// Gets the IDeletedAutomationAccountsOperations
-        /// </summary>
-        public virtual IDeletedAutomationAccountsOperations DeletedAutomationAccounts { get; private set; }
-        /// <summary>
-        /// Gets the ILinkedWorkspaceOperations
-        /// </summary>
-        public virtual ILinkedWorkspaceOperations LinkedWorkspace { get; private set; }
+        public virtual IDscNodeConfigurationOperations DscNodeConfiguration { get; private set; }
         /// <summary>
         /// Gets the INodeCountInformationOperations
         /// </summary>
         public virtual INodeCountInformationOperations NodeCountInformation { get; private set; }
+        /// <summary>
+        /// Gets the IDscNodeOperations
+        /// </summary>
+        public virtual IDscNodeOperations DscNode { get; private set; }
+        /// <summary>
+        /// Gets the INodeReportsOperations
+        /// </summary>
+        public virtual INodeReportsOperations NodeReports { get; private set; }
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
@@ -242,6 +169,26 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual IPython2PackageOperations Python2Package { get; private set; }
         /// <summary>
+        /// Gets the IPython3PackageOperations
+        /// </summary>
+        public virtual IPython3PackageOperations Python3Package { get; private set; }
+        /// <summary>
+        /// Gets the IRunbookOperations
+        /// </summary>
+        public virtual IRunbookOperations Runbook { get; private set; }
+        /// <summary>
+        /// Gets the IRunbookDraftOperations
+        /// </summary>
+        public virtual IRunbookDraftOperations RunbookDraft { get; private set; }
+        /// <summary>
+        /// Gets the ITestJobOperations
+        /// </summary>
+        public virtual ITestJobOperations TestJob { get; private set; }
+        /// <summary>
+        /// Gets the ITestJobStreamsOperations
+        /// </summary>
+        public virtual ITestJobStreamsOperations TestJobStreams { get; private set; }
+        /// <summary>
         /// Gets the IRuntimeEnvironmentsOperations
         /// </summary>
         public virtual IRuntimeEnvironmentsOperations RuntimeEnvironments { get; private set; }
@@ -250,9 +197,53 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual IPackageOperations Package { get; private set; }
         /// <summary>
+        /// Gets the IScheduleOperations
+        /// </summary>
+        public virtual IScheduleOperations Schedule { get; private set; }
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; private set; }
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationRunsOperations
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; private set; }
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationsOperations
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the ISourceControlOperations
+        /// </summary>
+        public virtual ISourceControlOperations SourceControl { get; private set; }
+        /// <summary>
+        /// Gets the ISourceControlSyncJobOperations
+        /// </summary>
+        public virtual ISourceControlSyncJobOperations SourceControlSyncJob { get; private set; }
+        /// <summary>
+        /// Gets the ISourceControlSyncJobStreamsOperations
+        /// </summary>
+        public virtual ISourceControlSyncJobStreamsOperations SourceControlSyncJobStreams { get; private set; }
+        /// <summary>
+        /// Gets the IStatisticsOperations
+        /// </summary>
+        public virtual IStatisticsOperations Statistics { get; private set; }
+        /// <summary>
+        /// Gets the IUsagesOperations
+        /// </summary>
+        public virtual IUsagesOperations Usages { get; private set; }
+        /// <summary>
+        /// Gets the IVariableOperations
+        /// </summary>
+        public virtual IVariableOperations Variable { get; private set; }
+        /// <summary>
         /// Gets the IWatcherOperations
         /// </summary>
         public virtual IWatcherOperations Watcher { get; private set; }
+        /// <summary>
+        /// Gets the IWebhookOperations
+        /// </summary>
+        public virtual IWebhookOperations Webhook { get; private set; }
         /// <summary>
         /// Initializes a new instance of the AutomationClient class.
         /// </summary>
@@ -491,56 +482,54 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         private void Initialize()
         {
+            this.Operations = new Operations(this);
+            this.AutomationAccount = new AutomationAccountOperations(this);
+            this.DeletedAutomationAccounts = new DeletedAutomationAccountsOperations(this);
             this.AgentRegistrationInformation = new AgentRegistrationInformationOperations(this);
-            this.DscNode = new DscNodeOperations(this);
-            this.NodeReports = new NodeReportsOperations(this);
-            this.DscNodeConfiguration = new DscNodeConfigurationOperations(this);
-            this.DscCompilationJob = new DscCompilationJobOperations(this);
-            this.DscCompilationJobStream = new DscCompilationJobStreamOperations(this);
             this.Certificate = new CertificateOperations(this);
-            this.Credential = new CredentialOperations(this);
-            this.JobSchedule = new JobScheduleOperations(this);
-            this.Schedule = new ScheduleOperations(this);
-            this.Activity = new ActivityOperations(this);
-            this.Module = new ModuleOperations(this);
-            this.ObjectDataTypes = new ObjectDataTypesOperations(this);
-            this.Fields = new FieldsOperations(this);
-            this.Variable = new VariableOperations(this);
-            this.Connection = new ConnectionOperations(this);
-            this.ConnectionType = new ConnectionTypeOperations(this);
-            this.SourceControl = new SourceControlOperations(this);
-            this.SourceControlSyncJob = new SourceControlSyncJobOperations(this);
-            this.SourceControlSyncJobStreams = new SourceControlSyncJobStreamsOperations(this);
             this.DscConfiguration = new DscConfigurationOperations(this);
+            this.ConnectionType = new ConnectionTypeOperations(this);
+            this.Connection = new ConnectionOperations(this);
+            this.Credential = new CredentialOperations(this);
+            this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
+            this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
+            this.JobSchedule = new JobScheduleOperations(this);
             this.Job = new JobOperations(this);
             this.JobStream = new JobStreamOperations(this);
-            this.SoftwareUpdateConfigurations = new SoftwareUpdateConfigurationsOperations(this);
-            this.SoftwareUpdateConfigurationRuns = new SoftwareUpdateConfigurationRunsOperations(this);
-            this.SoftwareUpdateConfigurationMachineRuns = new SoftwareUpdateConfigurationMachineRunsOperations(this);
-            this.AutomationAccount = new AutomationAccountOperations(this);
-            this.Statistics = new StatisticsOperations(this);
-            this.Usages = new UsagesOperations(this);
-            this.Keys = new KeysOperations(this);
-            this.Webhook = new WebhookOperations(this);
-            this.RunbookDraft = new RunbookDraftOperations(this);
-            this.Runbook = new RunbookOperations(this);
-            this.TestJobStreams = new TestJobStreamsOperations(this);
-            this.TestJob = new TestJobOperations(this);
-            this.PowerShell72Module = new PowerShell72ModuleOperations(this);
-            this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
-            this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
-            this.Python3Package = new Python3PackageOperations(this);
-            this.Operations = new Operations(this);
-            this.DeletedAutomationAccounts = new DeletedAutomationAccountsOperations(this);
             this.LinkedWorkspace = new LinkedWorkspaceOperations(this);
+            this.Keys = new KeysOperations(this);
+            this.Module = new ModuleOperations(this);
+            this.Activity = new ActivityOperations(this);
+            this.ObjectDataTypes = new ObjectDataTypesOperations(this);
+            this.Fields = new FieldsOperations(this);
+            this.DscNodeConfiguration = new DscNodeConfigurationOperations(this);
             this.NodeCountInformation = new NodeCountInformationOperations(this);
+            this.DscNode = new DscNodeOperations(this);
+            this.NodeReports = new NodeReportsOperations(this);
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.Python2Package = new Python2PackageOperations(this);
+            this.Python3Package = new Python3PackageOperations(this);
+            this.Runbook = new RunbookOperations(this);
+            this.RunbookDraft = new RunbookDraftOperations(this);
+            this.TestJob = new TestJobOperations(this);
+            this.TestJobStreams = new TestJobStreamsOperations(this);
             this.RuntimeEnvironments = new RuntimeEnvironmentsOperations(this);
             this.Package = new PackageOperations(this);
+            this.Schedule = new ScheduleOperations(this);
+            this.SoftwareUpdateConfigurationMachineRuns = new SoftwareUpdateConfigurationMachineRunsOperations(this);
+            this.SoftwareUpdateConfigurationRuns = new SoftwareUpdateConfigurationRunsOperations(this);
+            this.SoftwareUpdateConfigurations = new SoftwareUpdateConfigurationsOperations(this);
+            this.SourceControl = new SourceControlOperations(this);
+            this.SourceControlSyncJob = new SourceControlSyncJobOperations(this);
+            this.SourceControlSyncJobStreams = new SourceControlSyncJobStreamsOperations(this);
+            this.Statistics = new StatisticsOperations(this);
+            this.Usages = new UsagesOperations(this);
+            this.Variable = new VariableOperations(this);
             this.Watcher = new WatcherOperations(this);
+            this.Webhook = new WebhookOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
+            this.ApiVersion = "2024-10-23";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -618,10 +607,11 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
             }
 
-            if (this.SubscriptionId == null)
+            if (this.ApiVersion == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
@@ -643,7 +633,6 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "automationAccountName");
             }
 
-            string apiVersion = "2024-10-23";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -651,7 +640,6 @@ namespace Microsoft.Azure.Management.Automation
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
 
@@ -664,14 +652,14 @@ namespace Microsoft.Azure.Management.Automation
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.SubscriptionId, this.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -739,11 +727,11 @@ namespace Microsoft.Azure.Management.Automation
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorResponseAutoGeneratedException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponseAutoGenerated _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponseAutoGenerated>(_responseContent, this.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
