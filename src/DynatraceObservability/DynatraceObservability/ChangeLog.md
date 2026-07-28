@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Regenerated cmdlet reference documentation and help to include the complete usage examples for 'Get-AzDynatraceMonitoredSubscription', 'New-AzDynatraceMonitoredSubscription', 'Remove-AzDynatraceMonitoredSubscription', 'Invoke-AzDynatraceManageMonitorAgentInstallation', and 'Update-AzDynatraceMonitorPlan'.
+    - Corrected an invalid bash-style pipeline continuation ('| \') in the 'Update-AzDynatraceMonitorPlan' example so it parses as valid PowerShell.
 
 ## Version 0.4.0
 * Added complete help examples for Dynatrace Observability cmdlets

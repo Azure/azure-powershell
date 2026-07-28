@@ -44,7 +44,7 @@ Shows how to supply all plan data via the -Request object instead of individual 
 $rg = "myResourceGroup"
 $monitor = "myDynatraceMonitor"
 
-Get-AzDynatraceMonitor -ResourceGroupName $rg -Name $monitor | \
+Get-AzDynatraceMonitor -ResourceGroupName $rg -Name $monitor |
 	Update-AzDynatraceMonitorPlan -PlanDataUsageType COMMITTED -PlanDataBillingCycle "1-Month" -PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" -PassThru
 ```
 

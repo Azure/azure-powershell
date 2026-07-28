@@ -31,19 +31,45 @@ Delete the subscriptions that are being monitored by the Dynatrace monitor resou
 
 ## EXAMPLES
 
-### Example 1: Remove monitored subscription associations from a Dynatrace monitor
+### Example 1: Validate delete parameters (WhatIf)
 ```powershell
-Remove-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -Confirm:$false
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -WhatIf
 ```
 
-Deletes monitored subscription entries for the specified monitor. The -Confirm:$false switch suppresses the confirmation prompt for non-interactive execution.
+Performs a dry run; this matches the recorded validation step.
 
-### Example 2: Remove and return success status
+### Example 2: Delete monitored subscription (explicit parameters)
 ```powershell
-Remove-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -PassThru
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
 ```
 
-Performs the removal and returns a Boolean True on success, allowing script logic to branch based on the outcome.
+Attempts deletion.
+If the backend is fully provisioned, this should succeed; otherwise you may see `ResourceDeletionFailed`.
+
+### Example 3: Idempotent second delete
+```powershell
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false -ErrorAction SilentlyContinue
+```
+
+Safe to run again; if already deleted, no change occurs.
+
+### Example 4: Handle transient backend errors
+```powershell
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+try {
+	Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
+} catch {
+	Write-Warning "Deletion failed: $($_.Exception.Message). Retry after confirming the monitored subscription was fully created." 
+}
+```
+
+Provides a pattern for handling intermittent service errors gracefully.
 
 ## PARAMETERS
 
