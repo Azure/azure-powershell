@@ -67,7 +67,7 @@ $rg = "myResourceGroup"
 $monitor = "myDynatraceMonitor"
 
 # Move from trial/preview plan to committed monthly plan
-$result = Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor `
+Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor `
 	-PlanDataUsageType COMMITTED `
 	-PlanDataBillingCycle "1-Month" `
 	-PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" `
@@ -91,10 +91,10 @@ $req = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Upgrade
 $req.PlanData = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.PlanData]::new()
 $req.PlanData.UsageType = "COMMITTED"
 $req.PlanData.BillingCycle = "1-Month"
-$req.PlanData.PlanDetails = "dynatrace_azure_enterprise@TIDgmz7xq9ge3py"
+$req.PlanData.PlanDetail = "dynatrace_azure_enterprise@TIDgmz7xq9ge3py"
 $req.PlanData.EffectiveDate = Get-Date
 
-$ok = Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -Request $req -PassThru
+Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -Request $req -PassThru
 ```
 
 ```output
@@ -147,7 +147,7 @@ Shows what would change without performing the actual update.
 ```powershell
 Update-AzDynatraceMonitorPlan -ResourceGroupName $rg -MonitorName $monitor -PlanDataUsageType COMMITTED -PlanDataBillingCycle "1-Month" -PlanDataPlanDetail "dynatrace_azure_enterprise@TIDgmz7xq9ge3py" -PassThru | Out-Null
 $updated = Get-AzDynatraceMonitor -ResourceGroupName $rg -Name $monitor
-$updated.planData | Format-List UsageType,BillingCycle,PlanDetails,EffectiveDate
+$updated.planData | Format-List UsageType,BillingCycle,PlanDetail,EffectiveDate
 ```
 
 Retrieves the monitor to validate the new plan details after a successful upgrade.
