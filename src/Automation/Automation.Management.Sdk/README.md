@@ -55,7 +55,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/hybridRunbookWorker.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/hybridRunbookWorkerGroup.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/python3package.json
-
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
 
 output-folder: Generated
 

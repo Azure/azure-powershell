@@ -23,10 +23,18 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="location">
         /// </param>
-        public RunbookDraftReplaceContentHeaders(string location = default(string))
+
+        /// <param name="azureAsyncOperation">
+        /// </param>
+
+        /// <param name="retryAfter">
+        /// </param>
+        public RunbookDraftReplaceContentHeaders(string location = default(string), string azureAsyncOperation = default(string), int? retryAfter = default(int?))
 
         {
             this.Location = location;
+            this.AzureAsyncOperation = azureAsyncOperation;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -41,5 +49,17 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
         public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
+        public string AzureAsyncOperation {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

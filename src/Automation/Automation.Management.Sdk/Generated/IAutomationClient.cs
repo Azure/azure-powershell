@@ -259,5 +259,84 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         IPython3PackageOperations Python3Package { get; }
 
+        /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IDeletedAutomationAccountsOperations
+        /// </summary>
+        IDeletedAutomationAccountsOperations DeletedAutomationAccounts { get; }
+
+        /// <summary>
+        /// Gets the ILinkedWorkspaceOperations
+        /// </summary>
+        ILinkedWorkspaceOperations LinkedWorkspace { get; }
+
+        /// <summary>
+        /// Gets the INodeCountInformationOperations
+        /// </summary>
+        INodeCountInformationOperations NodeCountInformation { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IPython2PackageOperations
+        /// </summary>
+        IPython2PackageOperations Python2Package { get; }
+
+        /// <summary>
+        /// Gets the IRuntimeEnvironmentsOperations
+        /// </summary>
+        IRuntimeEnvironmentsOperations RuntimeEnvironments { get; }
+
+        /// <summary>
+        /// Gets the IPackageOperations
+        /// </summary>
+        IPackageOperations Package { get; }
+
+        /// <summary>
+        /// Gets the IWatcherOperations
+        /// </summary>
+        IWatcherOperations Watcher { get; }
+
+        /// <summary>
+        /// Post operation to serialize or deserialize GraphRunbookContent
+        /// </summary>
+        /// <remarks>
+        /// Post operation to serialize or deserialize GraphRunbookContent
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='parameters'>
+        /// Input data describing the graphical runbook.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GraphicalRunbookContent>> ConvertGraphRunbookContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, GraphicalRunbookContent parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
     }
 }

@@ -63,5 +63,89 @@ namespace Microsoft.Azure.Management.Automation
                 return _result.Body;
             }
         }
+        /// <summary>
+        /// Retrieve a list of fields of a given type identified by module name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='moduleName'>
+        /// The module name.
+        /// </param>
+        /// <param name='typeName'>
+        /// The name of type.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<TypeField> ListByType(this IFieldsOperations operations, string resourceGroupName, string automationAccountName, string moduleName, string typeName)
+        {
+                return ((IFieldsOperations)operations).ListByTypeAsync(resourceGroupName, automationAccountName, moduleName, typeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieve a list of fields of a given type identified by module name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='moduleName'>
+        /// The module name.
+        /// </param>
+        /// <param name='typeName'>
+        /// The name of type.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TypeField>> ListByTypeAsync(this IFieldsOperations operations, string resourceGroupName, string automationAccountName, string moduleName, string typeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByTypeWithHttpMessagesAsync(resourceGroupName, automationAccountName, moduleName, typeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieve a list of fields of a given type identified by module name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<TypeField> ListByTypeNext(this IFieldsOperations operations, string nextPageLink)
+        {
+                return ((IFieldsOperations)operations).ListByTypeNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieve a list of fields of a given type identified by module name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TypeField>> ListByTypeNextAsync(this IFieldsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByTypeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
     }
 }
