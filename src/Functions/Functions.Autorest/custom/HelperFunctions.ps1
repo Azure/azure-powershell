@@ -11,6 +11,7 @@ $constants["RuntimeToFormattedName"] = @{
     'python' = 'Python'
     'java' = 'Java'
     'powershell' = 'PowerShell'
+    'go' = 'Go'
 }
 $constants["RuntimeToDefaultOSType"] = @{
     'DotNet'= 'Windows'
@@ -20,6 +21,7 @@ $constants["RuntimeToDefaultOSType"] = @{
     'Java' = 'Windows'
     'PowerShell' = 'Windows'
     'Python' = 'Linux'
+    'Go' = 'Linux'
 }
 $constants["ReservedFunctionAppSettingNames"] = @(
     'FUNCTIONS_WORKER_RUNTIME'
@@ -41,7 +43,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
 $constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0'
-$constants["FlexConsumptionSupportedRuntimes"] = @('DotNet-Isolated', 'Node', 'Java', 'PowerShell', 'Python','Custom')
+$constants["FlexConsumptionSupportedRuntimes"] = @('DotNet-Isolated', 'Node', 'Java', 'PowerShell', 'Python', 'Custom', 'Go')
 
 foreach ($variableName in $constants.Keys)
 {
@@ -2017,6 +2019,15 @@ function ParseMinorVersion
 
     $runtimeName = GetRuntimeName -AppSettingsDictionary $RuntimeSettings.AppSettingsDictionary
 
+    if ([string]::IsNullOrWhiteSpace($runtimeName))
+    {
+        # Some runtime stacks (for example, Go on Flex Consumption) do not expose a
+        # FUNCTIONS_WORKER_RUNTIME app setting. Fall back to the runtime name reported
+        # by the Flex functionAppConfigProperties, when available, so the stack can be
+        # parsed instead of skipped.
+        $runtimeName = GetRuntimeNameFromConfigProperties -RuntimeSettings $RuntimeSettings
+    }
+
     $version = $null
     if ($RuntimeName -eq "Java" -and $RuntimeSettings.RuntimeVersion -eq "1.8")
     {
@@ -2179,12 +2190,56 @@ function GetRuntimeName
 
     $name = $settingHashTable['FUNCTIONS_WORKER_RUNTIME']
 
+    if ([string]::IsNullOrWhiteSpace($name))
+    {
+        # Some runtime stacks (for example, Go on Flex Consumption) do not define a
+        # FUNCTIONS_WORKER_RUNTIME app setting. Return $null so callers can fall back to
+        # another runtime-name source (or skip the stack) instead of throwing on a null
+        # key lookup below.
+        return $null
+    }
+
     if ($RuntimeToFormattedName.ContainsKey($name))
     {
         return $RuntimeToFormattedName[$name]
     }
 
     return $name
+}
+
+function GetRuntimeNameFromConfigProperties
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [PSCustomObject]
+        $RuntimeSettings
+    )
+
+    # Flex Consumption runtime stacks (for example, Go) may not define a
+    # FUNCTIONS_WORKER_RUNTIME app setting. In that case, the canonical runtime name is
+    # available under the SKU's functionAppConfigProperties.runtime.name (for example, 'go').
+    if (-not (ContainsProperty -Object $RuntimeSettings -PropertyName "Sku"))
+    {
+        return $null
+    }
+
+    foreach ($sku in $RuntimeSettings.Sku)
+    {
+        $name = $sku.functionAppConfigProperties.runtime.name
+        if (-not [string]::IsNullOrWhiteSpace($name))
+        {
+            if ($RuntimeToFormattedName.ContainsKey($name))
+            {
+                return $RuntimeToFormattedName[$name]
+            }
+
+            return $name
+        }
+    }
+
+    return $null
 }
 
 function GetSupportedFunctionsExtensionVersion
@@ -2281,6 +2336,10 @@ function SetLinuxandWindowsSupportedRuntimes
 
     Write-Debug "$DEBUG_PREFIX Build function stack definitions."
 
+    # Track runtime stacks skipped because they do not expose a mappable runtime name.
+    # Used to emit a single message per stack.
+    $skippedRuntimeStacks = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+
     # Get Function App Runtime Definitions
     $json = GetFunctionAppStackDefinition
     $functionAppStackDefinition = $json | ConvertFrom-Json
@@ -2311,9 +2370,14 @@ function SetLinuxandWindowsSupportedRuntimes
                                                  -PreferredOs $preferredOs `
                                                  -StackMinorVersion $stackMinorVersion
 
-                    if ($runtime)
+                    if ($runtime -and -not [string]::IsNullOrWhiteSpace($runtime.Name))
                     {
                         AddRuntimeToDictionary -Runtime $runtime -RuntimeToVersionDictionary ([Ref]$RuntimeToVersionWindows)
+                    }
+                    elseif ($runtime -and $skippedRuntimeStacks.Add($stackName))
+                    {
+                        Write-Verbose "Skipping runtime stack '$stackName' while building runtime tab-completion data; it does not expose a mappable runtime name."
+                        Write-Debug   "$DEBUG_PREFIX Skipping runtime stack '$stackName'; no mappable runtime name."
                     }
                 }
 
@@ -2324,9 +2388,14 @@ function SetLinuxandWindowsSupportedRuntimes
                                                  -PreferredOs $preferredOs `
                                                  -StackIsLinux $true
 
-                    if ($runtime)
+                    if ($runtime -and -not [string]::IsNullOrWhiteSpace($runtime.Name))
                     {
                         AddRuntimeToDictionary -Runtime $runtime -RuntimeToVersionDictionary ([Ref]$RuntimeToVersionLinux)
+                    }
+                    elseif ($runtime -and $skippedRuntimeStacks.Add($stackName))
+                    {
+                        Write-Verbose "Skipping runtime stack '$stackName' while building runtime tab-completion data; it does not expose a mappable runtime name."
+                        Write-Debug   "$DEBUG_PREFIX Skipping runtime stack '$stackName'; no mappable runtime name."
                     }
                 }
             }

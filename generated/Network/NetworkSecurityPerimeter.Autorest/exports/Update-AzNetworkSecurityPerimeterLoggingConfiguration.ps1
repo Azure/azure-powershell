@@ -37,13 +37,13 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construc
   [Id <String>]: Resource identity path
   [LinkName <String>]: The name of the NSP link.
   [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
+  [Location <String>]: The name of the Azure region.
   [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
   [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
   [OperationId <String>]: The operation id of the async operation.
   [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterloggingconfiguration
 #>

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.12.1
+* Updated Automation account identity handling to explicitly use the Automation SDK `Identity` model in create/update flows.
+
 ## Version 1.12.0
 * Added ChangeSafety Support
 

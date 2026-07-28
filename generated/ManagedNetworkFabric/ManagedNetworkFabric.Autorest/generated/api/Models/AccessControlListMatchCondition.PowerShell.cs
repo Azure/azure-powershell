@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortCondition = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortCondition) content.GetValueForProperty("PortCondition",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortCondition, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPortConditionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("IcmpConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationProperties) content.GetValueForProperty("IcmpConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IcmpConfigurationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("EtherType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).EtherType = (System.Collections.Generic.List<string>) content.GetValueForProperty("EtherType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).EtherType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -99,6 +103,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("DscpMarking"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).DscpMarking = (System.Collections.Generic.List<string>) content.GetValueForProperty("DscpMarking",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).DscpMarking, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ProtocolNeighbor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).ProtocolNeighbor = (System.Collections.Generic.List<string>) content.GetValueForProperty("ProtocolNeighbor",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).ProtocolNeighbor, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("VlanMatchConditionVlan"))
             {
@@ -159,6 +167,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("PortConditionFlag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortConditionFlag = (System.Collections.Generic.List<string>) content.GetValueForProperty("PortConditionFlag",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortConditionFlag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("IcmpConfigurationIcmpType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfigurationIcmpType = (System.Collections.Generic.List<string>) content.GetValueForProperty("IcmpConfigurationIcmpType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfigurationIcmpType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializeDictionary(content);
         }
@@ -181,6 +193,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortCondition = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortCondition) content.GetValueForProperty("PortCondition",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortCondition, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPortConditionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("IcmpConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationProperties) content.GetValueForProperty("IcmpConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IcmpConfigurationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("EtherType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).EtherType = (System.Collections.Generic.List<string>) content.GetValueForProperty("EtherType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).EtherType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -200,6 +216,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("DscpMarking"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).DscpMarking = (System.Collections.Generic.List<string>) content.GetValueForProperty("DscpMarking",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).DscpMarking, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ProtocolNeighbor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).ProtocolNeighbor = (System.Collections.Generic.List<string>) content.GetValueForProperty("ProtocolNeighbor",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).ProtocolNeighbor, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("VlanMatchConditionVlan"))
             {
@@ -260,6 +280,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("PortConditionFlag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortConditionFlag = (System.Collections.Generic.List<string>) content.GetValueForProperty("PortConditionFlag",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).PortConditionFlag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("IcmpConfigurationIcmpType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfigurationIcmpType = (System.Collections.Generic.List<string>) content.GetValueForProperty("IcmpConfigurationIcmpType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal)this).IcmpConfigurationIcmpType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

@@ -15,7 +15,7 @@ Implements an IP Community PUT method.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFabricIPCommunity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Annotation <String>] [-IPCommunityRule <IIPCommunityRule[]>] [-Tag <Hashtable>]
+ -IPCommunityRule <IIPCommunityRule[]> -Location <String> [-Annotation <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -115,7 +115,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunit
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

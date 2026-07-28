@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Lists the networks available for a fabric.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -50,14 +49,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the details of a network.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -83,8 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Lists the networks available in a vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of Network Fabric Controllers.</summary>
+    /// <summary>Paged collection of NetworkFabricController items</summary>
     public partial class NetworkFabricControllersListResult
     {
 

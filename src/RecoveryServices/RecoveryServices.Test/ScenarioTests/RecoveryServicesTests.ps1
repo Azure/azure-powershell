@@ -289,3 +289,73 @@ function Test-RecoveryServicesSoftDeletedVaultOperations
         }        
     }
 }
+
+<#
+.SYNOPSIS
+Recovery Services Cost Management Settings CRUD Tests
+#>
+function Test-RecoveryServicesCostManagementSettings
+{
+    $location = "westus"
+    $resourceGroupName = "vijami-rg"
+    $name = "vijamivault"
+
+    # 1. Create a new Recovery Services Vault
+        $vault = New-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
+
+        Assert-NotNull($vault.Name)
+        Assert-NotNull($vault.ID)
+        Assert-NotNull($vault.Type)
+
+        # 2. Get the vault and verify initial CostManagementSettings (should be null or default)
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault)
+        Write-Host "Initial CostManagementSettings: $($vault.Properties.CostManagementSettings)"
+
+        # # 3. Update vault with CostManagementSettings - VaultLevel
+        $vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name -CostManagementGranularity "VaultLevel"
+
+        Assert-NotNull($vault)
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "VaultLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+        Write-Host "CostManagementSettings updated to VaultLevel"
+
+        # # 4. Verify the settings persisted by getting the vault again
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "VaultLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+
+        # # 5. Update vault with CostManagementSettings - ProtectedItemLevel
+        $vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name -CostManagementGranularity "ProtectedItemLevel"
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+        Write-Host "CostManagementSettings updated to ProtectedItemLevel"
+
+        # # 6. Verify the updated settings
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+
+        # # 7. Update vault with CostManagementSettings - ProtectedItemWithParentTag
+        $vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name -CostManagementGranularity "ProtectedItemWithParentTag"
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemWithParentTag" $vault.Properties.CostManagementSettings.GranularityLevel
+        Write-Host "CostManagementSettings updated to ProtectedItemWithParentTag"
+
+        # # 8. Final verification
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemWithParentTag" $vault.Properties.CostManagementSettings.GranularityLevel
+
+        # # 9. Clean up - Remove the vault
+        Remove-AzRecoveryServicesVault -Vault $vault
+
+        $vaults = Get-AzRecoveryServicesVault -Name $name -ErrorAction SilentlyContinue
+        Assert-True { $vaults.Count -eq 0 }
+}

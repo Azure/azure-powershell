@@ -13,51 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRouteLinksOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the specified ExpressRouteLink resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRoutePortName'>
-        /// The name of the ExpressRoutePort resource.
-        /// </param>
-        /// <param name='linkName'>
-        /// The name of the ExpressRouteLink resource.
-        /// </param>
-        public static ExpressRouteLink Get(this IExpressRouteLinksOperations operations, string resourceGroupName, string expressRoutePortName, string linkName)
-        {
-                return ((IExpressRouteLinksOperations)operations).GetAsync(resourceGroupName, expressRoutePortName, linkName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the specified ExpressRouteLink resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRoutePortName'>
-        /// The name of the ExpressRoutePort resource.
-        /// </param>
-        /// <param name='linkName'>
-        /// The name of the ExpressRouteLink resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteLink> GetAsync(this IExpressRouteLinksOperations operations, string resourceGroupName, string expressRoutePortName, string linkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, linkName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieve the ExpressRouteLink sub-resources of the specified
         /// ExpressRoutePort resource.
         /// </summary>
@@ -65,10 +20,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
-        /// The name of the ExpressRoutePort resource.
+        /// The name of ExpressRoutePort.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<ExpressRouteLink> List(this IExpressRouteLinksOperations operations, string resourceGroupName, string expressRoutePortName)
         {
@@ -83,10 +38,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
-        /// The name of the ExpressRoutePort resource.
+        /// The name of ExpressRoutePort.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -94,6 +49,51 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteLink>> ListAsync(this IExpressRouteLinksOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the specified ExpressRouteLink resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='linkName'>
+        /// The name of the express route link.
+        /// </param>
+        public static ExpressRouteLink Get(this IExpressRouteLinksOperations operations, string resourceGroupName, string expressRoutePortName, string linkName)
+        {
+                return ((IExpressRouteLinksOperations)operations).GetAsync(resourceGroupName, expressRoutePortName, linkName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the specified ExpressRouteLink resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='linkName'>
+        /// The name of the express route link.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteLink> GetAsync(this IExpressRouteLinksOperations operations, string resourceGroupName, string expressRoutePortName, string linkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, linkName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

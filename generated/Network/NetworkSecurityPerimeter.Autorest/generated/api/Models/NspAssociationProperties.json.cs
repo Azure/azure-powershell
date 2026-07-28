@@ -76,8 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 return;
             }
-            {_privateLinkResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonObject>("privateLinkResource"), out var __jsonPrivateLinkResource) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource.FromJson(__jsonPrivateLinkResource) : _privateLinkResource;}
-            {_profile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonObject>("profile"), out var __jsonProfile) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource.FromJson(__jsonProfile) : _profile;}
+            {_privateLinkResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonObject>("privateLinkResource"), out var __jsonPrivateLinkResource) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource.FromJson(__jsonPrivateLinkResource) : _privateLinkResource;}
+            {_profile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonObject>("profile"), out var __jsonProfile) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource.FromJson(__jsonProfile) : _profile;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_accessMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString>("accessMode"), out var __jsonAccessMode) ? (string)__jsonAccessMode : (string)_accessMode;}
             {_hasProvisioningIssue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString>("hasProvisioningIssues"), out var __jsonHasProvisioningIssues) ? (string)__jsonHasProvisioningIssues : (string)_hasProvisioningIssue;}

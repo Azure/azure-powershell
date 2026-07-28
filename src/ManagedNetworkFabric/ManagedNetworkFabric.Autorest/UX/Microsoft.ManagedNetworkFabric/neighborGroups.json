@@ -1,6 +1,6 @@
 {
   "resourceType": "neighborGroups",
-  "apiVersion": "2023-06-15",
+  "apiVersion": "2025-07-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
   },
@@ -29,6 +29,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.neighborGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricResyncNeighborGroup",
+      "description": "Resync the Neighbor Group after a configuration change.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}/resync",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricresyncneighborgroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NeighborGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Resync the Neighbor Group after a configuration change.",
+          "parameters": [
+            {
+              "name": "-NeighborGroupName",
               "value": "[Path.neighborGroupName]"
             },
             {

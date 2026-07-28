@@ -1,10 +1,6 @@
-### Example 1: Remove an Edge Action Execution Filter
+### Example 1: Remove an EdgeAction execution filter
 ```powershell
-Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -ExecutionFilter "filter001"
+Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
 ```
 
-```output
-True
-```
-
-Remove a specific Edge Action Execution Filter
+Removes the specified EdgeAction execution filter.

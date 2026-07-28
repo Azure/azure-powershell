@@ -48,9 +48,9 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
@@ -63,9 +63,9 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
@@ -78,9 +78,9 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
   [Rights <List<String>>]: The rights associated with the rule.
@@ -118,15 +118,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
-    # Name of the resource group within the azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]

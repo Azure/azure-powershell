@@ -1025,3 +1025,60 @@ function Test-PublicIpAddressInEdgeZone
         Clean-ResourceGroup $resourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Tests Invoke-AzPublicIpAddressCloudServiceReservation error handling when the public IP does not exist.
+#>
+function Test-PublicIpAddressInvokeCloudServiceReservation
+{
+    $rgname = Get-ResourceGroupName
+    $fakePipName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $rglocation | Out-Null
+        $subId = (Get-AzContext).Subscription.Id
+        $resourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Network/publicIPAddresses/$fakePipName"
+
+        Assert-ThrowsContains { Invoke-AzPublicIpAddressCloudServiceReservation -ResourceGroupName $rgname -Name $fakePipName } "not found"
+        Assert-ThrowsContains { Invoke-AzPublicIpAddressCloudServiceReservation -ResourceId $resourceId } "not found"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp error handling when the public IP does not exist.
+#>
+function Test-PublicIpAddressInvokeDisassociateCloudServiceReservedIp
+{
+    $rgname = Get-ResourceGroupName
+    $fakeCloudServicePip = Get-ResourceName
+    $fakeStandalonePip = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $rglocation | Out-Null
+        $subId = (Get-AzContext).Subscription.Id
+        $cloudPipResourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Network/publicIPAddresses/$fakeCloudServicePip"
+        $standaloneArmId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Network/publicIPAddresses/$fakeStandalonePip"
+
+        Assert-ThrowsContains {
+            Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp -ResourceGroupName $rgname -Name $fakeCloudServicePip -PublicIpArmId $standaloneArmId
+        } "not found"
+
+        Assert-ThrowsContains {
+            Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp -ResourceId $cloudPipResourceId -PublicIpArmId $standaloneArmId
+        } "not found"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}

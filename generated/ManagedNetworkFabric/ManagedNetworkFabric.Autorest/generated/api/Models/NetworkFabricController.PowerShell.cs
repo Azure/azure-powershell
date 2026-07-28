@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricControllerPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -169,18 +173,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("Annotation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation, global::System.Convert.ToString);
-            }
-            if (content.Contains("InfrastructureExpressRouteConnection"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("InfrastructureExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("WorkloadExpressRouteConnection"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("WorkloadExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
-            }
             if (content.Contains("InfrastructureService"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureService = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices) content.GetValueForProperty("InfrastructureService",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureService, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServicesTypeConverter.ConvertFrom);
@@ -193,13 +185,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedResourceGroupConfiguration) content.GetValueForProperty("ManagedResourceGroupConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedResourceGroupConfigurationTypeConverter.ConvertFrom);
             }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Annotation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("InfrastructureExpressRouteConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("InfrastructureExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("WorkloadExpressRouteConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("WorkloadExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("NetworkFabricId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).NetworkFabricId = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkFabricId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).NetworkFabricId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("WorkloadManagementNetwork"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadManagementNetwork = (bool?) content.GetValueForProperty("WorkloadManagementNetwork",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadManagementNetwork, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("IsWorkloadManagementNetworkEnabled"))
             {
@@ -225,6 +229,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfigurationLocation = (string) content.GetValueForProperty("ManagedResourceGroupConfigurationLocation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfigurationLocation, global::System.Convert.ToString);
             }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("InfrastructureServiceIpv4AddressSpace"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureServiceIpv4AddressSpace = (System.Collections.Generic.List<string>) content.GetValueForProperty("InfrastructureServiceIpv4AddressSpace",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureServiceIpv4AddressSpace, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -240,6 +260,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadServiceIpv6AddressSpace"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadServiceIpv6AddressSpace = (System.Collections.Generic.List<string>) content.GetValueForProperty("WorkloadServiceIpv6AddressSpace",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadServiceIpv6AddressSpace, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -262,6 +286,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricControllerPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -318,18 +346,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("Annotation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation, global::System.Convert.ToString);
-            }
-            if (content.Contains("InfrastructureExpressRouteConnection"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("InfrastructureExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("WorkloadExpressRouteConnection"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("WorkloadExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
-            }
             if (content.Contains("InfrastructureService"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureService = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices) content.GetValueForProperty("InfrastructureService",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureService, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServicesTypeConverter.ConvertFrom);
@@ -342,13 +358,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedResourceGroupConfiguration) content.GetValueForProperty("ManagedResourceGroupConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedResourceGroupConfigurationTypeConverter.ConvertFrom);
             }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Annotation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("InfrastructureExpressRouteConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("InfrastructureExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("WorkloadExpressRouteConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>) content.GetValueForProperty("WorkloadExpressRouteConnection",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadExpressRouteConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("NetworkFabricId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).NetworkFabricId = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkFabricId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).NetworkFabricId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("WorkloadManagementNetwork"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadManagementNetwork = (bool?) content.GetValueForProperty("WorkloadManagementNetwork",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadManagementNetwork, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("IsWorkloadManagementNetworkEnabled"))
             {
@@ -374,6 +402,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfigurationLocation = (string) content.GetValueForProperty("ManagedResourceGroupConfigurationLocation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).ManagedResourceGroupConfigurationLocation, global::System.Convert.ToString);
             }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("InfrastructureServiceIpv4AddressSpace"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureServiceIpv4AddressSpace = (System.Collections.Generic.List<string>) content.GetValueForProperty("InfrastructureServiceIpv4AddressSpace",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).InfrastructureServiceIpv4AddressSpace, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -389,6 +433,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadServiceIpv6AddressSpace"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadServiceIpv6AddressSpace = (System.Collections.Generic.List<string>) content.GetValueForProperty("WorkloadServiceIpv6AddressSpace",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).WorkloadServiceIpv6AddressSpace, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

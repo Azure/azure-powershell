@@ -46,16 +46,18 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <ICluster>: Single Event Hubs Cluster resource in List or Get operations.
-  [Location <String>]: Resource location.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [Capacity <Int32?>]: The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
+  [ConfidentialComputeMode <String>]: Setting to Enable or Disable Confidential Compute
+  [Location <String>]: Resource location.
   [SupportsScaling <Boolean?>]: A value that indicates whether Scaling is Supported.
+  [Tag <IClusterTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [ZoneRedundant <Boolean?>]: A value that indicates whether the cluster is zone redundant.
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 #>
