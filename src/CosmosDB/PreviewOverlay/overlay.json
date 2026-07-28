@@ -2,15 +2,42 @@
   "_comment": "Preview-branch-only overlay values. Apply-PreviewOverlay.ps1 patches the built artifacts in artifacts/<Config>/Az.<Module>/ using these values. Keep the source files (Az.<Module>.psd1, AssemblyInfo.cs, ChangeLog.md) byte-identical to main to eliminate merge conflicts.",
   "modules": {
     "Az.CosmosDB": {
-      "moduleVersion": "2.0.9",
-      "assemblyVersion": "2.0.9",
+      "moduleVersion": "2.0.10",
+      "assemblyVersion": "2.0.10",
       "prerelease": "preview",
       "releaseNotes": [
-        "* Added support for specifying default throughput bucket.",
-        "* Updated Azure.Core from 1.45.0 to 1.47.3",
-        "* Source list parameter for redistribute throughput optional as it is no longer required"
+        "* Added soft delete cmdlets for Cosmos DB accounts, SQL databases, and SQL containers",
+        "    - `Get-AzCosmosDBSoftDeletedAccount`: List or get soft-deleted database accounts by location",
+        "    - `Remove-AzCosmosDBSoftDeletedAccount`: Permanently purge a soft-deleted database account",
+        "    - `Restore-AzCosmosDBSoftDeletedAccount`: Recover a soft-deleted database account",
+        "    - `Get-AzCosmosDBSqlSoftDeletedDatabase`: List or get soft-deleted SQL databases",
+        "    - `Remove-AzCosmosDBSqlSoftDeletedDatabase`: Permanently purge a soft-deleted SQL database",
+        "    - `Restore-AzCosmosDBSqlSoftDeletedDatabase`: Recover a soft-deleted SQL database",
+        "    - `Get-AzCosmosDBSqlSoftDeletedContainer`: List or get soft-deleted SQL containers",
+        "    - `Remove-AzCosmosDBSqlSoftDeletedContainer`: Permanently purge a soft-deleted SQL container",
+        "    - `Restore-AzCosmosDBSqlSoftDeletedContainer`: Recover a soft-deleted SQL container",
+        "* Added soft delete configuration parameters to `Update-AzCosmosDBAccount`",
+        "    - `-EnableSoftDelete`: Enable or disable soft delete on the account",
+        "    - `-SoftDeleteRetentionPeriodInMinutes`: Set the retention period for soft-deleted resources",
+        "    - `-MinMinutesBeforePermanentDeletionAllowed`: Set minimum wait time before permanent deletion"
       ],
       "changeLogPreviewEntries": [
+        "## Version 2.0.10",
+        "* Added soft delete cmdlets for Cosmos DB accounts, SQL databases, and SQL containers",
+        "    - `Get-AzCosmosDBSoftDeletedAccount`: List or get soft-deleted database accounts by location",
+        "    - `Remove-AzCosmosDBSoftDeletedAccount`: Permanently purge a soft-deleted database account",
+        "    - `Restore-AzCosmosDBSoftDeletedAccount`: Recover a soft-deleted database account",
+        "    - `Get-AzCosmosDBSqlSoftDeletedDatabase`: List or get soft-deleted SQL databases",
+        "    - `Remove-AzCosmosDBSqlSoftDeletedDatabase`: Permanently purge a soft-deleted SQL database",
+        "    - `Restore-AzCosmosDBSqlSoftDeletedDatabase`: Recover a soft-deleted SQL database",
+        "    - `Get-AzCosmosDBSqlSoftDeletedContainer`: List or get soft-deleted SQL containers",
+        "    - `Remove-AzCosmosDBSqlSoftDeletedContainer`: Permanently purge a soft-deleted SQL container",
+        "    - `Restore-AzCosmosDBSqlSoftDeletedContainer`: Recover a soft-deleted SQL container",
+        "* Added soft delete configuration parameters to `Update-AzCosmosDBAccount`",
+        "    - `-EnableSoftDelete`: Enable or disable soft delete on the account",
+        "    - `-SoftDeleteRetentionPeriodInMinutes`: Set the retention period for soft-deleted resources",
+        "    - `-MinMinutesBeforePermanentDeletionAllowed`: Set minimum wait time before permanent deletion",
+        "",
         "## Version 2.0.9",
         "* Added support for specifying default throughput bucket.",
         "* Updated Azure.Core from 1.45.0 to 1.47.3",
@@ -26,6 +53,6 @@
     }
   },
   "azPreviewModuleVersions": {
-    "Az.CosmosDB": "2.0.9"
+    "Az.CosmosDB": "2.0.10"
   }
 }
