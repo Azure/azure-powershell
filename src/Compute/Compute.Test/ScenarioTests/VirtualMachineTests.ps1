@@ -7978,6 +7978,39 @@ function Test-VirtualMachineAddProxyAgentExtension
 
 <#
 .SYNOPSIS
+Test-VirtualMachineProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on VM config.
+#>
+function Test-VirtualMachineProxyAgentUseLocalFileRules
+{
+    # Step 1: Create base VM config and confirm endpoint settings are initially null.
+    $vmName = Get-ComputeTestResourceName
+    $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true
+    Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer
+    Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+    # Step 2: Set WireServer local file rules by itself.
+    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $true
+    Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+    Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+    # Step 3: Set IMDS local file rules by itself.
+    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -ImdsUseLocalFileRules $false
+    Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+    # Step 4: Set both local file rules together with endpoint modes.
+    $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+}
+
+<#
+.SYNOPSIS
 Test-VirtualMachineGalleryApplicationFlags tests GalleryApplication Creation and Addition of TreatFailureAsDeploymentFailure and EnableAutomaticUpgrade flags
 #>
 function Test-VirtualMachineGalleryApplicationFlags
