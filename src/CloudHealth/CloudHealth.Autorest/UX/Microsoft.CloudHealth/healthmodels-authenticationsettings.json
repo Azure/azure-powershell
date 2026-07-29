@@ -1,0 +1,95 @@
+{
+  "resourceType": "healthmodels/authenticationsettings",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorHealthModelAuthenticationSetting",
+      "description": "Get a AuthenticationSetting",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/authenticationsettings/{authenticationSettingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodelauthenticationsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a AuthenticationSetting",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.authenticationSettingName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorHealthModelAuthenticationSetting",
+      "description": "Delete a AuthenticationSetting",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/authenticationsettings/{authenticationSettingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/remove-azmonitorhealthmodelauthenticationsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a AuthenticationSetting",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.authenticationSettingName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

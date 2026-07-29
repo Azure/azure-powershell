@@ -1,0 +1,95 @@
+{
+  "resourceType": "healthmodels/discoveryrules",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorHealthModelDiscoveryRule",
+      "description": "Get a DiscoveryRule",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/discoveryrules/{discoveryRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodeldiscoveryrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DiscoveryRule",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.discoveryRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorHealthModelDiscoveryRule",
+      "description": "Delete a DiscoveryRule",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/discoveryrules/{discoveryRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/remove-azmonitorhealthmodeldiscoveryrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DiscoveryRule",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.discoveryRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
