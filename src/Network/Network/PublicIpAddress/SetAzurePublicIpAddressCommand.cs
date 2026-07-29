@@ -31,6 +31,19 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The DDoS custom policy id to attach to the Public IP address. Requires the Public IP address ProtectionMode to be 'Enabled'.")]
+        [ValidateNotNullOrEmpty]
+        public string DdosCustomPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Removes the DDoS custom policy association from the Public IP address")]
+        public SwitchParameter RemoveDdosCustomPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -41,6 +54,30 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+            }
+
+            if (this.RemoveDdosCustomPolicy.IsPresent && !string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                throw new ArgumentException("Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.");
+            }
+
+            if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                if (this.PublicIpAddress.DdosSettings == null ||
+                    string.IsNullOrEmpty(this.PublicIpAddress.DdosSettings.ProtectionMode) ||
+                    !this.PublicIpAddress.DdosSettings.ProtectionMode.Equals(MNM.DdosSettingsProtectionMode.Enabled, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("DdosCustomPolicyId can only be set when the Public IP address has ProtectionMode set to 'Enabled'.");
+                }
+
+                this.PublicIpAddress.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
+            }
+            else if (this.RemoveDdosCustomPolicy.IsPresent)
+            {
+                if (this.PublicIpAddress.DdosSettings != null)
+                {
+                    this.PublicIpAddress.DdosSettings.DdosCustomPolicy = null;
+                }
             }
 
             // Map to the sdk object

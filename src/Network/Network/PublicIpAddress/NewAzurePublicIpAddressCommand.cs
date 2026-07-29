@@ -159,6 +159,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The DDoS custom policy id to attach to the Public IP address. Requires DdosProtectionMode to be 'Enabled'.")]
+        [ValidateNotNullOrEmpty]
+        public string DdosCustomPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -245,6 +252,22 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     publicIp.DdosSettings.DdosProtectionPlan = new PSResourceId { Id = DdosProtectionPlanId };
                 }
+            }
+
+            if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                if (string.IsNullOrEmpty(this.DdosProtectionMode) ||
+                    !this.DdosProtectionMode.Equals(MNM.DdosSettingsProtectionMode.Enabled, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSArgumentException("DdosCustomPolicyId can only be set when DdosProtectionMode is 'Enabled'.");
+                }
+
+                if (publicIp.DdosSettings == null)
+                {
+                    publicIp.DdosSettings = new PSDdosSettings();
+                }
+
+                publicIp.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
             }
 
                 if (!string.IsNullOrEmpty(this.Tier))

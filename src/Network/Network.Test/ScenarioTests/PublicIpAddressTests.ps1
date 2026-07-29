@@ -776,6 +776,62 @@ function Test-PublicIpAddressCRUD-DdosProtection
 
 <#
 .SYNOPSIS
+Tests associating a DDoS custom policy with a publicIpAddress on create, then removing and re-attaching it via Set.
+#>
+function Test-PublicIpAddressCRUD-DdosCustomPolicy
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $ddosCustomPolicyName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create a DDoS custom policy with a detection rule
+        $tcpRule = New-AzDdosCustomPolicyDetectionRule -Name tcpRule1 -TrafficType Tcp -PacketsPerSecond 1000000
+        $dcp = New-AzDdosCustomPolicy -ResourceGroupName $rgname -Name $ddosCustomPolicyName -Location $location -DetectionRule @($tcpRule)
+        Assert-NotNull $dcp
+
+        # Create publicIpAddress with the DDoS custom policy attached
+        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DdosProtectionMode "Enabled" -DdosCustomPolicyId $dcp.Id
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual "Enabled" $expected.DdosSettings.ProtectionMode
+        Assert-AreEqual $dcp.Id $expected.DdosSettings.DdosCustomPolicy.Id
+
+        # Remove the DDoS custom policy association via Set
+        $pip = Set-AzPublicIpAddress -PublicIpAddress $expected -RemoveDdosCustomPolicy
+        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+        Assert-Null $pip.DdosSettings.DdosCustomPolicy
+
+        # Re-attach the DDoS custom policy via Set
+        $pip = Set-AzPublicIpAddress -PublicIpAddress $pip -DdosCustomPolicyId $dcp.Id
+        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $dcp.Id $pip.DdosSettings.DdosCustomPolicy.Id
+
+        # delete
+        $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpAddress with Static allocation and global tier.
 #>
 function Test-PublicIpAddressCRUD-StandardSkuGlobalTier

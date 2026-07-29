@@ -14,7 +14,8 @@ Updates a public IP address.
 ## SYNTAX
 
 ```
-Set-AzPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Set-AzPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-DdosCustomPolicyId <String>]
+ [-RemoveDdosCustomPolicy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -123,6 +124,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DdosCustomPolicyId
+The DDoS custom policy id to attach to the Public IP address. Requires the Public IP address ProtectionMode to be 'Enabled'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -150,6 +166,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RemoveDdosCustomPolicy
+Removes the DDoS custom policy association from the Public IP address.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
