@@ -64,7 +64,7 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ### Example 1: Add a new private link scope in a subscription
 ```powershell
-New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
+New-AzConnectedPrivateLinkScope -ResourceGroupName "myResourceGroup" -ScopeName "myPrivateLinkScope" -PublicNetworkAccess "Enabled" -Location "eastus"
 ```
 
 ```output
