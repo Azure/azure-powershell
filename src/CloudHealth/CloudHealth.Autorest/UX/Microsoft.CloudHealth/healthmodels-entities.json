@@ -1,0 +1,138 @@
+{
+  "resourceType": "healthmodels/entities",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorHealthModelEntitySignalRecommendation",
+      "description": "Get recommended signal configurations for a given Entity (only applicable for Entities representing Azure resources)",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}/getSignalRecommendations",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodelentitysignalrecommendation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EntityName <String>",
+              "-HealthModelName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get recommended signal configurations for a given Entity (only applicable for Entities representing Azure resources)",
+          "parameters": [
+            {
+              "name": "-EntityName",
+              "value": "[Path.entityName]"
+            },
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzMonitorHealthModelEntity",
+      "description": "Get a Entity",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodelentity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Entity",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.entityName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorHealthModelEntity",
+      "description": "Delete a Entity",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities/{entityName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/remove-azmonitorhealthmodelentity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Entity",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.entityName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

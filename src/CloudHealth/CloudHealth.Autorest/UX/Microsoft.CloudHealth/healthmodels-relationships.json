@@ -1,0 +1,95 @@
+{
+  "resourceType": "healthmodels/relationships",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorHealthModelRelationship",
+      "description": "Get a Relationship",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/relationships/{relationshipName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/get-azmonitorhealthmodelrelationship"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Relationship",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.relationshipName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorHealthModelRelationship",
+      "description": "Delete a Relationship",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/relationships/{relationshipName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudhealth/remove-azmonitorhealthmodelrelationship"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HealthModelName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Relationship",
+          "parameters": [
+            {
+              "name": "-HealthModelName",
+              "value": "[Path.healthModelName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.relationshipName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
