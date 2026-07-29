@@ -1,0 +1,40 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Pinecone/Pinecone.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "Pinecone"
+    service-name: "Pinecone"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Hide the Operations endpoint from public interface
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId to current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Preserve current read-only surface (only Get-AzPineconeOrganization):
+      # remove create/update/delete cmdlets
+      - where:
+          verb: New
+        remove: true
+      - where:
+          verb: Update
+        remove: true
+      - where:
+          verb: Remove
+        remove: true
+      - where:
+          verb: Set
+        remove: true
