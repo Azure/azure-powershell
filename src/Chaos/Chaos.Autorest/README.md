@@ -83,6 +83,17 @@ directive:
     where: $.definitions.ScenarioProperties
     transform: >-
       $.properties.description.description = "Description of what this scenario does."
+  # --- ScenarioConfigurationProperties already marks scenarioId required, but
+  #     that nested required array cannot affect flattened cmdlet parameters while
+  #     the ScenarioConfiguration envelope itself leaves properties optional. Match
+  #     Workspace's envelope shape so -ScenarioId becomes mandatory on expanded
+  #     create variants. Do not apply this to Scenario: it would also force
+  #     -Parameter on every scenario create, which is a worse user experience and
+  #     needs product/service confirmation. ---
+  - from: swagger-document
+    where: $.definitions.ScenarioConfiguration
+    transform: >-
+      if (!$.required) { $.required = []; } if ($.required.indexOf("properties") < 0) { $.required.push("properties"); }
   # --- These LRO POST operations return terminal resources from their Location
   #     polling targets. The swagger omits those final 200 response schemas, so
   #     generated cmdlets currently discard the terminal bodies and return $true. ---
