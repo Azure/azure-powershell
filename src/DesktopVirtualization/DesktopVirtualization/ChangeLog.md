@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.1.0
 * Upgraded API version to 2026-04-01-preview
     - Replaced the `ResourceDisk` allowed value with `TempDisk` for `DiffDiskSettingPlacement` in `SessionHostConfiguration`.
     - Added the `ConditionalRdpProperty` parameter to `HostPool`.
