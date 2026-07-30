@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 587a15661041e26ff8a3059a4886ff9e092adfda
+commit: 313ab2816c394ff5e645f59127f8f030b42edacc
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/azureWebCategory.json
@@ -89,19 +89,19 @@ directive:
 # the legacy names.
 # Long-term fix: drop the "Common." prefix at the TypeSpec/swagger source so this workaround
 # can be removed.
-  - from: swagger-document
-    where: $.definitions
-    transform: >
-      for (const k of Object.keys($)) {
-        if (k.startsWith('Common.')) {
-          $[k]['x-ms-client-name'] = k.substring('Common.'.length);
-        }
-      }
+  # - from: swagger-document
+  #   where: $.definitions
+  #   transform: >
+  #     for (const k of Object.keys($)) {
+  #       if (k.startsWith('Common.')) {
+  #         $[k]['x-ms-client-name'] = k.substring('Common.'.length);
+  #       }
+  #     }
 # rename Common.CloudError to CloudError, see https://github.com/Azure/azure-rest-api-specs/blob/906c9971ea117692ad6e7e15fe1a0b38ac109c76/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/common.json#L2026
 # Srijani, I noticed in the swaggers generated from tsp, some model names are added the prefix "common.", the change will lead to the change of the generated C# class name. As a result, it may cause some issues and breaking changes. Following is a case. I would suggest you remove the prefix "common.".
-  - from: swagger-document
-    where: $.definitions["Common.CloudError"]
-    transform: $["x-ms-client-name"] = "CloudError"
+  # - from: swagger-document
+  #   where: $.definitions["Common.CloudError"]
+  #   transform: $["x-ms-client-name"] = "CloudError"
 # Keep SubscriptionId on NetworkManagementClient typed as string. TypeSpec emits the global subscriptionId
 # parameter with `format: uuid`, which makes the generated client property a System.Guid and breaks the
 # handwritten helpers (e.g. ApplicationGatewayChildResourceHelper) that expect a string.
@@ -115,10 +115,10 @@ directive:
 # Yabo, Not sure if allof and x-ms-azure-resource could co-existed in a model. If so, we need to add support for it.
 # move x-ms-azure-resource from Common.SubResourceModel to Common.SubResource
   - from: swagger-document
-    where: $.definitions["Common.SubResourceModel"]
+    where: $.definitions["SubResourceModel"]
     transform: delete $["x-ms-azure-resource"]
   - from: swagger-document
-    where: $.definitions["Common.SubResource"]
+    where: $.definitions["SubResource"]
     transform: $["x-ms-azure-resource"] = true
 # move x-ms-azure-resource from CommonProxyResource and CommonTrackedResource to CommonResource
   - from: swagger-document
