@@ -53,9 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (this.RemoveDdosCustomPolicy.IsPresent && !string.IsNullOrEmpty(this.DdosCustomPolicyId))
             {
-                throw new ArgumentException(
-                    "Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.",
-                    nameof(DdosCustomPolicyId));
+                throw new ArgumentException("Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.");
             }
 
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
