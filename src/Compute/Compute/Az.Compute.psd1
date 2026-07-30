@@ -209,7 +209,8 @@ CmdletsToExport = 'Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity',
                'Set-AzVmssOrchestrationServiceState', 'Set-AzVmssOsProfile', 
                'Set-AzVmssProxyAgentSetting', 'Set-AzVmssRollingUpgradePolicy', 
                'Set-AzVmssSecurityProfile', 'Set-AzVmssStorageProfile', 
-               'Set-AzVmssUefi', 'Set-AzVmssVM', 'Set-AzVMUefi', 'Start-AzVM', 
+               'Set-AzVmssUefi', 'Set-AzVmssVM', 'Set-AzVMUefi', 
+               'Set-AzVMZoneMovement', 'Start-AzVM', 
                'Start-AzVmss', 'Start-AzVmssRollingExtensionUpgrade', 
                'Start-AzAvailabilitySetMigration', 'Start-AzVmssRollingOSUpgrade', 
                'Stop-AzVM', 'Stop-AzVmss', 'Stop-AzVmssRollingUpgrade', 
@@ -294,4 +295,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
