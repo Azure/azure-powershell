@@ -19,7 +19,5 @@
 -->
 ## Upcoming Release
 * Migrated code generation from AutoRest (Swagger) to TypeSpec. No user-facing changes in this release.
-
-## Version 0.1.0
 * First preview release for module Az.Pinecone
 

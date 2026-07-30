@@ -22,3 +22,4 @@ AutoRest does not generate authentication code for the module. Authentication is
 ## Development
 For information on how to develop for `Az.Pinecone`, see [how-to.md](how-to.md).
 <!-- endregion -->
+

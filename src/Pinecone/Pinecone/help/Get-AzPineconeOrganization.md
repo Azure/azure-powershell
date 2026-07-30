@@ -1,45 +1,58 @@
----
-external help file: Az.Pinecone-help.xml
+﻿---
+document type: cmdlet
+external help file: 
+HelpUri: https://learn.microsoft.com/powershell/module/az.pinecone/get-azpineconeorganization
 Module Name: Az.Pinecone
-online version: https://learn.microsoft.com/powershell/module/az.pinecone/get-azpineconeorganization
-schema: 2.0.0
+ms.date: 07-30-2026
+PlatyPS schema version: 2024-05-01
 ---
 
 # Get-AzPineconeOrganization
 
 ## SYNOPSIS
+
 Get a OrganizationResource
 
 ## SYNTAX
 
 ### List (Default)
+
 ```
-Get-AzPineconeOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPineconeOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
+
 ```
 Get-AzPineconeOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+
+```
+Get-AzPineconeOrganization -InputObject <IPineconeIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### List1
+
 ```
 Get-AzPineconeOrganization -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzPineconeOrganization -InputObject <IPineconeIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
+## ALIASES
 
 ## DESCRIPTION
+
 Get a OrganizationResource
 
 ## EXAMPLES
 
 ### Example 1: List all Pinecone organizations
+
 ```powershell
 Get-AzPineconeOrganization -ResourceGroupName clitest
 ```
@@ -54,6 +67,7 @@ Get-AzPineconeOrganization -ResourceGroupName clitest
 This command will get all organization details for a subscription id
 
 ### Example 2: Get Pineone organization details
+
 ```powershell
 Get-AzPineconeOrganization -Name  test-cli-instance-1 -ResourceGroupName clitest
 ```
@@ -105,85 +119,140 @@ This command will get all organization details for a resource name in a given su
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+DefaultValue: None
+SupportsWildcards: false
+Aliases:
+- AzureRMContext
+- AzureCredential
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Pinecone.Models.IPineconeIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: GetViaIdentity
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -Name
+
 Name of the Organization resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: Organizationname
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+DefaultValue: None
+SupportsWildcards: false
+Aliases:
+- Organizationname
+ParameterSets:
+- Name: Get
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: List1
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Get
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
+DefaultValue: (Get-AzContext).Subscription.Id
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: List1
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: List
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Get
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -196,3 +265,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+{{ Fill in the related links here }}
+

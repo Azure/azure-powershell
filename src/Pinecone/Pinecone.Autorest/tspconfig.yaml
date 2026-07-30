@@ -7,27 +7,34 @@ options:
     module-version: 0.1.0
     prefix: "Az"
     subject-prefix: "Pinecone"
-    service-name: "Pinecone"
+    service-name: Pinecone
     module-name: "{prefix}.{service-name}"
     output-folder: "{output-dir}"
     exclude-tableview-properties:
       - Id
       - Type
+
     directive:
-      # Hide the Operations endpoint from public interface
+      # Following are common directives which are normally required in all the RPs
+      # 1. Remove the unexpanded parameter set
+      # 2. For New-* cmdlets, ViaIdentity is not required
       - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+      # Remove the Operation command
+      - where:
+          verb: Get
           subject: Operation
-        hide: true
-      # Default SubscriptionId to current context
-      - where:
-          parameter-name: SubscriptionId
-        set:
-          default:
-            script: "(Get-AzContext).Subscription.Id"
-      # Preserve current read-only surface (only Get-AzPineconeOrganization):
-      # remove create/update/delete cmdlets
+        remove: true
+      # Read-only surface: remove all write cmdlets
       - where:
           verb: New
+        remove: true
+      - where:
+          verb: Set
         remove: true
       - where:
           verb: Update
@@ -35,6 +42,11 @@ options:
       - where:
           verb: Remove
         remove: true
+      # Default SubscriptionId from the current context
       - where:
-          verb: Set
-        remove: true
+          parameter-name: SubscriptionId
+        set:
+          default:
+            name: SubscriptionId Default
+            description: Gets the SubscriptionId from the current context.
+            script: '(Get-AzContext).Subscription.Id'
