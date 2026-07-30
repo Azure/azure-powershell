@@ -37,12 +37,17 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="security">Security profile to enable security features on cilium based cluster.
         /// </param>
-        public AdvancedNetworking(bool? enabled = default(bool?), AdvancedNetworkingObservability observability = default(AdvancedNetworkingObservability), AdvancedNetworkingSecurity security = default(AdvancedNetworkingSecurity))
+
+        /// <param name="performance">Profile to enable performance-enhancing features on clusters that use Azure
+        /// CNI powered by Cilium.
+        /// </param>
+        public AdvancedNetworking(bool? enabled = default(bool?), AdvancedNetworkingObservability observability = default(AdvancedNetworkingObservability), AdvancedNetworkingSecurity security = default(AdvancedNetworkingSecurity), AdvancedNetworkingPerformance performance = default(AdvancedNetworkingPerformance))
 
         {
             this.Enabled = enabled;
             this.Observability = observability;
             this.Security = security;
+            this.Performance = performance;
             CustomInit();
         }
 
@@ -74,5 +79,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "security")]
         public AdvancedNetworkingSecurity Security {get; set; }
+
+        /// <summary>
+        /// Gets or sets profile to enable performance-enhancing features on clusters
+        /// that use Azure CNI powered by Cilium.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "performance")]
+        public AdvancedNetworkingPerformance Performance {get; set; }
     }
 }

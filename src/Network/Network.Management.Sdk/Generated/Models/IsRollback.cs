@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class IsRollback
     {
+        /// <summary>
+        /// true
+        /// </summary>
         public const string True = "true";
+        /// <summary>
+        /// false
+        /// </summary>
         public const string False = "false";
     }
 }

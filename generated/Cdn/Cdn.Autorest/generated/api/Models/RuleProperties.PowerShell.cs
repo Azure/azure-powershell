@@ -111,31 +111,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             // actually deserialize
             if (content.Contains("RuleSetName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).RuleSetName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).RuleSetName, global::System.Convert.ToString);
             }
             if (content.Contains("Order"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Condition"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Condition = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>) content.GetValueForProperty("Condition",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Condition, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleConditionTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Condition = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>) content.GetValueForProperty("Condition",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Condition, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleConditionTypeConverter.ConvertFrom));
             }
             if (content.Contains("Action"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Action = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Action, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleActionTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Action = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Action, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleActionTypeConverter.ConvertFrom));
             }
             if (content.Contains("MatchProcessingBehavior"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).MatchProcessingBehavior = (string) content.GetValueForProperty("MatchProcessingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).MatchProcessingBehavior, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).MatchProcessingBehavior = (string) content.GetValueForProperty("MatchProcessingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).MatchProcessingBehavior, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("DeploymentStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -156,31 +156,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             // actually deserialize
             if (content.Contains("RuleSetName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).RuleSetName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).RuleSetName, global::System.Convert.ToString);
             }
             if (content.Contains("Order"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Order = (int?) content.GetValueForProperty("Order",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Order, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Condition"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Condition = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>) content.GetValueForProperty("Condition",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Condition, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleConditionTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Condition = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>) content.GetValueForProperty("Condition",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Condition, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleConditionTypeConverter.ConvertFrom));
             }
             if (content.Contains("Action"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Action = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).Action, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleActionTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Action = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).Action, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleActionTypeConverter.ConvertFrom));
             }
             if (content.Contains("MatchProcessingBehavior"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).MatchProcessingBehavior = (string) content.GetValueForProperty("MatchProcessingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)this).MatchProcessingBehavior, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).MatchProcessingBehavior = (string) content.GetValueForProperty("MatchProcessingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).MatchProcessingBehavior, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("DeploymentStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

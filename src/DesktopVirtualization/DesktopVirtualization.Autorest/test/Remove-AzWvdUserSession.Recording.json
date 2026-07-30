@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "357" ],
-        "x-ms-client-request-id": [ "1a9538f9-8d24-4bcd-80d6-e93e63d90359" ],
+        "x-ms-unique-id": [ "361" ],
+        "x-ms-client-request-id": [ "bdfd44f7-256c-46e9-8887-7aaf6c24ccf9" ],
         "CommandName": [ "Remove-AzWvdUserSession" ],
         "FullCommandName": [ "Remove-AzWvdUserSession_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.3", "Az.DesktopVirtualization/6.0.0" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.DesktopVirtualization/6.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,25 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=013197b6e8d5716d01e3846fb275a5eab577c3fd161fa277dfd53147a460c6fe;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=013197b6e8d5716d01e3846fb275a5eab577c3fd161fa277dfd53147a460c6fe;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=28a8215d94aede3bb9c56605e8c43cd5e262d139709eee14e5899a5b34316794;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=28a8215d94aede3bb9c56605e8c43cd5e262d139709eee14e5899a5b34316794;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "5m" ],
-        "X-Rate-Limit-Remaining": [ "9824" ],
-        "X-Rate-Limit-Reset": [ "2026-07-07T08:12:29.3582888Z" ],
+        "X-Rate-Limit-Remaining": [ "9890" ],
+        "X-Rate-Limit-Reset": [ "2026-07-29T06:32:02.9621601Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0cy9hdXRvLTAvdXNlclNlc3Npb25zLzQ=" ],
-        "x-ms-lamport-ts": [ "-9223372036854775762" ],
-        "x-ms-correlation-id": [ "8fffd464-ef7a-4a19-8c23-495fa6b86f71" ],
-        "x-ms-request-id": [ "1a9538f9-8d24-4bcd-80d6-e93e63d90359" ],
+        "x-ms-lamport-ts": [ "-9223372036854775785" ],
+        "x-ms-correlation-id": [ "d66aeec8-eff6-48a3-a3f5-bf68739fdf36" ],
+        "x-ms-request-id": [ "bdfd44f7-256c-46e9-8887-7aaf6c24ccf9" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/e8c489a3-c602-44b8-9682-672c761a26bc" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "f1f9c2ca-70ea-4477-add4-50793d3daa12" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260707T081120Z:f1f9c2ca-70ea-4477-add4-50793d3daa12" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/771d330a-d089-43b6-9919-54df76c23e84" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "197" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2997" ],
+        "x-ms-correlation-request-id": [ "f37bd687-0909-447b-9e6b-188df98ff640" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260729T062845Z:f37bd687-0909-447b-9e6b-188df98ff640" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7382299507CA450FBD276ABB615992B5 Ref B: PNQ231110909062 Ref C: 2026-07-07T08:11:19Z" ],
-        "Date": [ "Tue, 07 Jul 2026 08:11:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4D35F954EBEA4776A07FA21384CFBC77 Ref B: PNQ231110909052 Ref C: 2026-07-29T06:28:45Z" ],
+        "Date": [ "Wed, 29 Jul 2026 06:28:45 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -56,12 +56,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "358" ],
-        "x-ms-client-request-id": [ "4cc12683-e014-4712-9441-320266f4ff87" ],
+        "x-ms-unique-id": [ "362" ],
+        "x-ms-client-request-id": [ "19bede3c-4023-4818-837a-4b6d4e4fc332" ],
         "CommandName": [ "Get-AzWvdUserSession" ],
         "FullCommandName": [ "Get-AzWvdUserSession_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.3", "Az.DesktopVirtualization/6.0.0" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.DesktopVirtualization/6.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -72,32 +72,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=f7a16db6be2f870d36effc44bbd4a537657e5d385d1aa06fd08aa2a9e0840d97;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=f7a16db6be2f870d36effc44bbd4a537657e5d385d1aa06fd08aa2a9e0840d97;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=39eae58dae3e9ce3daa32a653411adeefc8bac631df7d8341ac09f4a2566b7ae;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=39eae58dae3e9ce3daa32a653411adeefc8bac631df7d8341ac09f4a2566b7ae;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "5m" ],
-        "X-Rate-Limit-Remaining": [ "9823" ],
-        "X-Rate-Limit-Reset": [ "2026-07-07T08:12:29.3582888Z" ],
+        "X-Rate-Limit-Remaining": [ "9889" ],
+        "X-Rate-Limit-Reset": [ "2026-07-29T06:32:02.9621601Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0cy9hdXRvLTAvdXNlclNlc3Npb25zLzQ=" ],
-        "x-ms-lamport-ts": [ "-9223372036854775766" ],
-        "x-ms-correlation-id": [ "3288a3cf-5828-45a6-bd19-67a9820dce47" ],
-        "x-ms-request-id": [ "4cc12683-e014-4712-9441-320266f4ff87" ],
+        "x-ms-lamport-ts": [ "-9223372036854775539" ],
+        "x-ms-correlation-id": [ "e7b335de-bcdd-4014-be17-efdd850e8ba8" ],
+        "x-ms-request-id": [ "19bede3c-4023-4818-837a-4b6d4e4fc332" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/5fa32f4d-dd0d-4fa5-94ba-d6c900edcbff" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/0f22989a-a4c0-4ea8-9be5-2509fb48e7bb" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "cdcdce31-5da0-449e-9e0a-28efb5a7956d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260707T081120Z:cdcdce31-5da0-449e-9e0a-28efb5a7956d" ],
+        "x-ms-correlation-request-id": [ "85830f96-08f1-4e1c-bd27-5e6ecca6e04b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260729T062846Z:85830f96-08f1-4e1c-bd27-5e6ecca6e04b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 91C587DA53764B2EBC8783A588136AA9 Ref B: PNQ231110909062 Ref C: 2026-07-07T08:11:20Z" ],
-        "Date": [ "Tue, 07 Jul 2026 08:11:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A7B846AC78A04C559758A52AF5B04A11 Ref B: PNQ231110909052 Ref C: 2026-07-29T06:28:46Z" ],
+        "Date": [ "Wed, 29 Jul 2026 06:28:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "120" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 3288a3cf-5828-45a6-bd19-67a9820dce47 Error: User session does not exist\"}}",
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: e7b335de-bcdd-4014-be17-efdd850e8ba8 Error: User session does not exist\"}}",
       "isContentBase64": false
     }
   }

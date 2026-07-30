@@ -1,0 +1,182 @@
+{
+  "Get-AzDiscoveryTool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "124" ],
+        "x-ms-client-request-id": [ "280af91e-3837-4907-9e00-e223189ddda1" ],
+        "CommandName": [ "Get-AzDiscoveryTool" ],
+        "FullCommandName": [ "Get-AzDiscoveryTool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a1016145-0000-1100-0000-6a6241c20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3427b817-701a-4a99-8cec-e70b215f7b1e" ],
+        "x-ms-correlation-request-id": [ "d00a4dab-4619-43ae-87eb-6ce8ebfdafb3" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164815Z:d00a4dab-4619-43ae-87eb-6ce8ebfdafb3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 79A4399E8D474B6ABCED726C03AD8110 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:14Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1142" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01\",\"name\":\"pstest-tool-get01\",\"type\":\"microsoft.discovery/tools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T14:48:11.6268748Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:29:51.033895Z\"},\"properties\":{\"version\":\"1.0.0\",\"definitionContent\":{\"name\":\"pstest-tool\",\"description\":\"PowerShell test tool\",\"version\":\"1.0.0\",\"category\":\"general\",\"infra\":[{\"name\":\"worker\",\"infra_type\":\"container\",\"image\":{\"acr\":\"mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:latest\"},\"compute\":{\"min_resources\":{\"cpu\":\"1\",\"ram\":\"2Gi\",\"gpu\":\"0\",\"storage\":\"0\"},\"max_resources\":{\"cpu\":\"2\",\"ram\":\"4Gi\",\"storage\":\"0\"},\"recommended_sku\":[\"Standard_D4s_v6\"],\"pool_type\":\"static\",\"pool_size\":1}}],\"code_environments\":[{\"language\":\"python\",\"command\":\"echo hello\",\"description\":\"Test env\",\"infra_node\":\"worker\"}]},\"environmentVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryTool+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "125" ],
+        "x-ms-client-request-id": [ "af6e9e95-3d68-44d8-8576-8126b3f6ce85" ],
+        "CommandName": [ "Get-AzDiscoveryTool" ],
+        "FullCommandName": [ "Get-AzDiscoveryTool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "645ed7cd-fdc3-41cf-99df-aa278dddf8b9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "4b8b8e4c-32e7-48df-a36f-83867bef151c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "4b8b8e4c-32e7-48df-a36f-83867bef151c" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164816Z:4b8b8e4c-32e7-48df-a36f-83867bef151c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 580D80C6E63749609D3EDF20BA3C5CB8 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:15Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3438" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01\",\"name\":\"pstest-tool-get01\",\"type\":\"microsoft.discovery/tools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T14:48:11.6268748Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:29:51.033895Z\"},\"properties\":{\"version\":\"1.0.0\",\"definitionContent\":{\"name\":\"pstest-tool\",\"description\":\"PowerShell test tool\",\"version\":\"1.0.0\",\"category\":\"general\",\"infra\":[{\"name\":\"worker\",\"infra_type\":\"container\",\"image\":{\"acr\":\"mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:latest\"},\"compute\":{\"min_resources\":{\"cpu\":\"1\",\"ram\":\"2Gi\",\"gpu\":\"0\",\"storage\":\"0\"},\"max_resources\":{\"cpu\":\"2\",\"ram\":\"4Gi\",\"storage\":\"0\"},\"recommended_sku\":[\"Standard_D4s_v6\"],\"pool_type\":\"static\",\"pool_size\":1}}],\"code_environments\":[{\"language\":\"python\",\"command\":\"echo hello\",\"description\":\"Test env\",\"infra_node\":\"worker\"}]},\"environmentVariables\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-deltool01\",\"name\":\"pstest-deltool01\",\"type\":\"microsoft.discovery/tools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T16:31:28.2214179Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:31:28.2214179Z\"},\"properties\":{\"version\":\"1.0.0\",\"definitionContent\":{\"name\":\"pstest-tool\",\"description\":\"PowerShell test tool\",\"version\":\"1.0.0\",\"category\":\"general\",\"infra\":[{\"name\":\"worker\",\"infra_type\":\"container\",\"image\":{\"acr\":\"mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:latest\"},\"compute\":{\"min_resources\":{\"cpu\":\"1\",\"ram\":\"2Gi\",\"gpu\":\"0\",\"storage\":\"0\"},\"max_resources\":{\"cpu\":\"2\",\"ram\":\"4Gi\",\"storage\":\"0\"},\"recommended_sku\":[\"Standard_D4s_v6\"],\"pool_type\":\"static\",\"pool_size\":1}}],\"code_environments\":[{\"language\":\"python\",\"command\":\"echo hello\",\"description\":\"Test env\",\"infra_node\":\"worker\"}]},\"environmentVariables\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-deltool02\",\"name\":\"pstest-deltool02\",\"type\":\"microsoft.discovery/tools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T16:33:02.7817098Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:33:02.7817098Z\"},\"properties\":{\"version\":\"1.0.0\",\"definitionContent\":{\"name\":\"pstest-tool\",\"description\":\"PowerShell test tool\",\"version\":\"1.0.0\",\"category\":\"general\",\"infra\":[{\"name\":\"worker\",\"infra_type\":\"container\",\"image\":{\"acr\":\"mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:latest\"},\"compute\":{\"min_resources\":{\"cpu\":\"1\",\"ram\":\"2Gi\",\"gpu\":\"0\",\"storage\":\"0\"},\"max_resources\":{\"cpu\":\"2\",\"ram\":\"4Gi\",\"storage\":\"0\"},\"recommended_sku\":[\"Standard_D4s_v6\"],\"pool_type\":\"static\",\"pool_size\":1}}],\"code_environments\":[{\"language\":\"python\",\"command\":\"echo hello\",\"description\":\"Test env\",\"infra_node\":\"worker\"}]},\"environmentVariables\":{},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryTool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "a14f55b1-e25e-4b72-a7dd-2fa46c9b77b9" ],
+        "CommandName": [ "Get-AzDiscoveryTool" ],
+        "FullCommandName": [ "Get-AzDiscoveryTool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a1016145-0000-1100-0000-6a6241c20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ff0a1dbd-738c-47fb-bc37-b2b38876dd43" ],
+        "x-ms-correlation-request-id": [ "f1fbc0d5-e369-4419-b7ef-8840884be7d2" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164817Z:f1fbc0d5-e369-4419-b7ef-8840884be7d2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 95D4CF97F1734ADABF96DDE493EF1400 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:16Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1142" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01\",\"name\":\"pstest-tool-get01\",\"type\":\"microsoft.discovery/tools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T14:48:11.6268748Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:29:51.033895Z\"},\"properties\":{\"version\":\"1.0.0\",\"definitionContent\":{\"name\":\"pstest-tool\",\"description\":\"PowerShell test tool\",\"version\":\"1.0.0\",\"category\":\"general\",\"infra\":[{\"name\":\"worker\",\"infra_type\":\"container\",\"image\":{\"acr\":\"mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:latest\"},\"compute\":{\"min_resources\":{\"cpu\":\"1\",\"ram\":\"2Gi\",\"gpu\":\"0\",\"storage\":\"0\"},\"max_resources\":{\"cpu\":\"2\",\"ram\":\"4Gi\",\"storage\":\"0\"},\"recommended_sku\":[\"Standard_D4s_v6\"],\"pool_type\":\"static\",\"pool_size\":1}}],\"code_environments\":[{\"language\":\"python\",\"command\":\"echo hello\",\"description\":\"Test env\",\"infra_node\":\"worker\"}]},\"environmentVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryTool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "4a6fe9fa-121a-420e-a0a1-ee330b4ad0ce" ],
+        "CommandName": [ "Get-AzDiscoveryTool" ],
+        "FullCommandName": [ "Get-AzDiscoveryTool_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a1016145-0000-1100-0000-6a6241c20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e154224f-faea-43cc-baf1-678acfe58568" ],
+        "x-ms-correlation-request-id": [ "07df6634-e549-4796-87e9-d93916900547" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164817Z:07df6634-e549-4796-87e9-d93916900547" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 82E9CA66E9F445BABA91C792AE0C994D Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:17Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1142" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/tools/pstest-tool-get01\",\"name\":\"pstest-tool-get01\",\"type\":\"microsoft.discovery/tools\",\"location\":\"uksouth\",\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T14:48:11.6268748Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T16:29:51.033895Z\"},\"properties\":{\"version\":\"1.0.0\",\"definitionContent\":{\"name\":\"pstest-tool\",\"description\":\"PowerShell test tool\",\"version\":\"1.0.0\",\"category\":\"general\",\"infra\":[{\"name\":\"worker\",\"infra_type\":\"container\",\"image\":{\"acr\":\"mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:latest\"},\"compute\":{\"min_resources\":{\"cpu\":\"1\",\"ram\":\"2Gi\",\"gpu\":\"0\",\"storage\":\"0\"},\"max_resources\":{\"cpu\":\"2\",\"ram\":\"4Gi\",\"storage\":\"0\"},\"recommended_sku\":[\"Standard_D4s_v6\"],\"pool_type\":\"static\",\"pool_size\":1}}],\"code_environments\":[{\"language\":\"python\",\"command\":\"echo hello\",\"description\":\"Test env\",\"infra_node\":\"worker\"}]},\"environmentVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

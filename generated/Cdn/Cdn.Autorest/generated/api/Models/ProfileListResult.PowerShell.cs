@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list profiles. It contains a list of profile objects and a URL link to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a Profile list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ProfileListResultTypeConverter))]
     public partial class ProfileListResult
     {
@@ -164,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list profiles. It contains a list of profile objects and a URL link to get the next set of results.
+    /// The response of a Profile list operation.
     [System.ComponentModel.TypeConverter(typeof(ProfileListResultTypeConverter))]
     public partial interface IProfileListResult
 

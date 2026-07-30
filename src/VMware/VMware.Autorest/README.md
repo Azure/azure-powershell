@@ -152,15 +152,26 @@ directive:
       verb: Update
       subject: HcxEnterpriseSite|ScriptExecution|Addon
     remove: true
+  # Prevent flattening of discriminated union types — these must be passed as full objects.
+  # AddonProperties and PlacementPolicyProperties are polymorphic base types whose subtypes
+  # are constructed via dedicated New-AzVMware*Object cmdlets.
+  # VcfLicense is a discriminated union type (base: VcfLicense, concrete: Vcf5License).
+  # AutoRest cannot safely flatten it, so we keep it as a single -VcfLicense parameter.
   - no-inline:
       - AddonProperties
       - PlacementPolicyProperties
-  # Re-name and custom it
+      - VcfLicense
+  # Generate helper object cmdlets for model types that are discriminated unions and
+  # cannot be flattened into individual cmdlet parameters.
   - model-cmdlet:
       - model-name: VMPlacementPolicyProperties
         cmdlet-name: New-AzVMwareVMPlacementPolicyPropertyObject
       - model-name: VmHostPlacementPolicyProperties
         cmdlet-name: New-AzVMwareVmHostPlacementPolicyPropertyObject
+      # Vcf5License is the only concrete subtype of VcfLicense in the 2025-09-01 API.
+      # The helper cmdlet constructs a Vcf5License object for use with New-AzVMwarePrivateCloud -VcfLicense.
+      - model-name: Vcf5License
+        cmdlet-name: New-AzVMwareVcf5LicenseObject
       # - model-name: ScriptSecureStringExecutionParameter
       # - model-name: ScriptStringExecutionParameter
       # - model-name: PSCredentialExecutionParameter

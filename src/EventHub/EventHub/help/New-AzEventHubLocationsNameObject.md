@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/Az.EventHub/new-azeventhublocationsnameobject
 schema: 2.0.0
@@ -91,4 +91,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

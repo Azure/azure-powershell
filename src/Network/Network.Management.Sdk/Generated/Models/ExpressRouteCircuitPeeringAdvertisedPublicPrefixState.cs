@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
     {
+        /// <summary>
+        /// NotConfigured
+        /// </summary>
         public const string NotConfigured = "NotConfigured";
+        /// <summary>
+        /// Configuring
+        /// </summary>
         public const string Configuring = "Configuring";
+        /// <summary>
+        /// Configured
+        /// </summary>
         public const string Configured = "Configured";
+        /// <summary>
+        /// ValidationNeeded
+        /// </summary>
         public const string ValidationNeeded = "ValidationNeeded";
     }
 }

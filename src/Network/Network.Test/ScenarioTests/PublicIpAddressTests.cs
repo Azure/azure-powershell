@@ -167,5 +167,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PublicIpAddressInEdgeZone");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpAddressInvokeCloudServiceReservation()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressInvokeCloudServiceReservation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpAddressInvokeDisassociateCloudServiceReservedIp()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressInvokeDisassociateCloudServiceReservedIp");
+        }
     }
 }

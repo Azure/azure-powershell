@@ -13,46 +13,40 @@ namespace Microsoft.Azure.Management.Network
     public static partial class PacketCapturesOperationsExtensions
     {
         /// <summary>
-        /// Create and start a packet capture on the specified VM.
+        /// Lists all packet capture sessions within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='packetCaptureName'>
-        /// The name of the packet capture session.
-        /// </param>
-        public static PacketCaptureResult Create(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, PacketCapture parameters)
+        public static Microsoft.Rest.Azure.IPage<PacketCaptureResult> List(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName)
         {
-                return ((IPacketCapturesOperations)operations).CreateAsync(resourceGroupName, networkWatcherName, packetCaptureName, parameters).GetAwaiter().GetResult();
+                return ((IPacketCapturesOperations)operations).ListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create and start a packet capture on the specified VM.
+        /// Lists all packet capture sessions within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
-        /// </param>
-        /// <param name='packetCaptureName'>
-        /// The name of the packet capture session.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PacketCaptureResult> CreateAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, PacketCapture parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PacketCaptureResult>> ListAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -64,7 +58,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -84,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -103,13 +97,58 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Create and start a packet capture on the specified VM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='packetCaptureName'>
+        /// The name of the packet capture session.
+        /// </param>
+        public static PacketCaptureResult Create(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, PacketCapture parameters)
+        {
+                return ((IPacketCapturesOperations)operations).CreateAsync(resourceGroupName, networkWatcherName, packetCaptureName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create and start a packet capture on the specified VM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='packetCaptureName'>
+        /// The name of the packet capture session.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PacketCaptureResult> CreateAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, PacketCapture parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified packet capture session.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -129,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -145,13 +184,58 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Query the status of a running packet capture session.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='packetCaptureName'>
+        /// The name of the packet capture session.
+        /// </param>
+        public static PacketCaptureQueryStatusResult GetStatus(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        {
+                return ((IPacketCapturesOperations)operations).GetStatusAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Query the status of a running packet capture session.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='packetCaptureName'>
+        /// The name of the packet capture session.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PacketCaptureQueryStatusResult> GetStatusAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Stops a specified packet capture session.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -171,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -187,97 +271,13 @@ namespace Microsoft.Azure.Management.Network
             (await operations.StopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Query the status of a running packet capture session.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='packetCaptureName'>
-        /// The name given to the packet capture session.
-        /// </param>
-        public static PacketCaptureQueryStatusResult GetStatus(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
-        {
-                return ((IPacketCapturesOperations)operations).GetStatusAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Query the status of a running packet capture session.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='packetCaptureName'>
-        /// The name given to the packet capture session.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<PacketCaptureQueryStatusResult> GetStatusAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all packet capture sessions within the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<PacketCaptureResult> List(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName)
-        {
-                return ((IPacketCapturesOperations)operations).ListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all packet capture sessions within the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<PacketCaptureResult>> ListAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Create and start a packet capture on the specified VM.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -358,13 +358,58 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Query the status of a running packet capture session.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='packetCaptureName'>
+        /// The name of the packet capture session.
+        /// </param>
+        public static PacketCaptureQueryStatusResult BeginGetStatus(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        {
+                return ((IPacketCapturesOperations)operations).BeginGetStatusAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Query the status of a running packet capture session.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='packetCaptureName'>
+        /// The name of the packet capture session.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PacketCaptureQueryStatusResult> BeginGetStatusAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Stops a specified packet capture session.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -384,7 +429,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -400,46 +445,34 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Query the status of a running packet capture session.
+        /// Lists all packet capture sessions within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='packetCaptureName'>
-        /// The name given to the packet capture session.
-        /// </param>
-        public static PacketCaptureQueryStatusResult BeginGetStatus(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        public static Microsoft.Rest.Azure.IPage<PacketCaptureResult> ListNext(this IPacketCapturesOperations operations, string nextPageLink)
         {
-                return ((IPacketCapturesOperations)operations).BeginGetStatusAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+                return ((IPacketCapturesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Query the status of a running packet capture session.
+        /// Lists all packet capture sessions within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='packetCaptureName'>
-        /// The name given to the packet capture session.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PacketCaptureQueryStatusResult> BeginGetStatusAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PacketCaptureResult>> ListNextAsync(this IPacketCapturesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginGetStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

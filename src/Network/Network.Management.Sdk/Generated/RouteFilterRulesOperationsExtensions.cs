@@ -13,48 +13,42 @@ namespace Microsoft.Azure.Management.Network
     public static partial class RouteFilterRulesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified rule from a route filter.
+        /// Gets all RouteFilterRules in a route filter.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
-        /// <param name='ruleName'>
-        /// The name of the rule.
-        /// </param>
-        public static RouteFilterRulesDeleteHeaders Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        public static Microsoft.Rest.Azure.IPage<RouteFilterRule> ListByRouteFilter(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName)
         {
-                return ((IRouteFilterRulesOperations)operations).DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+                return ((IRouteFilterRulesOperations)operations).ListByRouteFilterAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified rule from a route filter.
+        /// Gets all RouteFilterRules in a route filter.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
-        /// </param>
-        /// <param name='ruleName'>
-        /// The name of the rule.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteFilterRulesDeleteHeaders> DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RouteFilterRule>> ListByRouteFilterAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByRouteFilterWithHttpMessagesAsync(resourceGroupName, routeFilterName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
             }
         }
         /// <summary>
@@ -64,13 +58,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
         /// <param name='ruleName'>
-        /// The name of the rule.
+        /// The name of the route filter rule.
         /// </param>
         public static RouteFilterRule Get(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
         {
@@ -84,13 +78,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
         /// <param name='ruleName'>
-        /// The name of the rule.
+        /// The name of the route filter rule.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -109,7 +103,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
@@ -129,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
@@ -148,62 +142,23 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all RouteFilterRules in a route filter.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='routeFilterName'>
-        /// The name of the route filter.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<RouteFilterRule> ListByRouteFilter(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName)
-        {
-                return ((IRouteFilterRulesOperations)operations).ListByRouteFilterAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all RouteFilterRules in a route filter.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='routeFilterName'>
-        /// The name of the route filter.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RouteFilterRule>> ListByRouteFilterAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByRouteFilterWithHttpMessagesAsync(resourceGroupName, routeFilterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes the specified rule from a route filter.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
         /// <param name='ruleName'>
-        /// The name of the rule.
+        /// The name of the route filter rule.
         /// </param>
-        public static RouteFilterRulesDeleteHeaders BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        public static void Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
         {
-                return ((IRouteFilterRulesOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+                ((IRouteFilterRulesOperations)operations).DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -213,23 +168,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
         /// <param name='ruleName'>
-        /// The name of the rule.
+        /// The name of the route filter rule.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteFilterRulesDeleteHeaders> BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a route in the specified route filter.
@@ -238,7 +190,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
@@ -258,7 +210,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
@@ -275,6 +227,48 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified rule from a route filter.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='routeFilterName'>
+        /// The name of the route filter.
+        /// </param>
+        /// <param name='ruleName'>
+        /// The name of the route filter rule.
+        /// </param>
+        public static void BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        {
+                ((IRouteFilterRulesOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified rule from a route filter.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='routeFilterName'>
+        /// The name of the route filter.
+        /// </param>
+        /// <param name='ruleName'>
+        /// The name of the route filter rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all RouteFilterRules in a route filter.

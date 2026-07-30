@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DdosDetectionMode
     {
+        /// <summary>
+        /// TrafficThreshold
+        /// </summary>
         public const string TrafficThreshold = "TrafficThreshold";
     }
 }

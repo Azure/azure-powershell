@@ -1,0 +1,95 @@
+{
+  "resourceType": "supercomputers/nodePools",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.discovery"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDiscoveryNodePool",
+      "description": "Get a NodePool",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}/nodePools/{nodePoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/get-azdiscoverynodepool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-SupercomputerName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a NodePool",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.nodePoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-SupercomputerName",
+              "value": "[Path.supercomputerName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDiscoveryNodePool",
+      "description": "Delete a NodePool",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}/nodePools/{nodePoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/remove-azdiscoverynodepool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-SupercomputerName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a NodePool",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.nodePoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-SupercomputerName",
+              "value": "[Path.supercomputerName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -43,14 +43,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
             }
         }
 
+        internal static bool IsEC(string keyType)
+        {
+            return string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
+        }
+
         /// <summary>
         /// Export the public key of a JsonWebKey to PEM format.
         /// </summary>
-        /// <param name="jwk"></param>
-        /// <returns></returns>
         internal static string ExportPublicKeyToPem(JsonWebKey jwk)
         {
-
             var csp = new RSACryptoServiceProvider();
             csp.ImportParameters(new RSAParameters()
             {
@@ -173,9 +176,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
                 }
             }
         }
-
-        internal static bool IsEC(string keyType) =>
-            string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
     }
 }

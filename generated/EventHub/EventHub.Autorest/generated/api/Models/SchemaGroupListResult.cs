@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The result of the List SchemaGroup operation.</summary>
+    /// <summary>The response of a SchemaGroup list operation.</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.DoNotFormat]
     public partial class SchemaGroupListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroupListResult,
@@ -17,16 +17,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of Schema Groups.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup> _value;
 
-        /// <summary>Result of the List SchemaGroups operation.</summary>
+        /// <summary>The SchemaGroup items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup> Value { get => this._value; set => this._value = value; }
 
@@ -36,45 +34,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         }
     }
-    /// The result of the List SchemaGroup operation.
+    /// The response of a SchemaGroup list operation.
     public partial interface ISchemaGroupListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of Schema Groups.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results. Not empty if Value contains incomplete list of Schema Groups.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Result of the List SchemaGroups operation.</summary>
+        /// <summary>The SchemaGroup items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Result of the List SchemaGroups operation.",
+        Description = @"The SchemaGroup items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup> Value { get; set; }
 
     }
-    /// The result of the List SchemaGroup operation.
+    /// The response of a SchemaGroup list operation.
     internal partial interface ISchemaGroupListResultInternal
 
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if Value contains incomplete list of Schema Groups.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Result of the List SchemaGroups operation.</summary>
+        /// <summary>The SchemaGroup items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup> Value { get; set; }
 
     }
