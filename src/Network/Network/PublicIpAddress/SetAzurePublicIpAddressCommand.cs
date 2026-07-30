@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The DDoS custom policy id to attach to the Public IP address. Requires the Public IP address ProtectionMode to be 'Enabled'.")]
+            HelpMessage = "The DDoS custom policy ID to associate with the Public IP address. Requires the Public IP address protection mode to be 'Enabled'.")]
         [ValidateNotNullOrEmpty]
         public string DdosCustomPolicyId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Removes the DDoS custom policy association from the Public IP address")]
+            HelpMessage = "Removes the DDoS custom policy association from the Public IP address.")]
         public SwitchParameter RemoveDdosCustomPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
