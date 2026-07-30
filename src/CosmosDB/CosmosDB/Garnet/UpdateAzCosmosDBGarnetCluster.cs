@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             GarnetClusterResourcePatch patch = new GarnetClusterResourcePatch
             {
-                Properties = patchProperties
+                Properties = patchProperties,
+                Tags = tagsDict
             };
 
             if (ShouldProcess(ClusterName, "Updating Garnet Cluster."))
