@@ -15,6 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Initialize-AzChaosWorkspace')
   function Invoke-AzChaosWorkspaceScenarioEvaluation {
     [CmdletBinding()]
     param([string]$ResourceGroupName, [string]$WorkspaceName, [string]$SubscriptionId, $DefaultProfile, [switch]$NoWait)
+    $script:evaluationCallCount++
+    $script:evaluationBoundParameters = @{} + $MyInvocation.BoundParameters
+    $true
   }
   function Get-AzChaosScenario {
     [CmdletBinding()]
@@ -27,11 +30,16 @@ Describe 'Initialize-AzChaosWorkspace' {
     $workspaceWithIdentity = [pscustomobject]@{ Name = 'ws'; IdentityPrincipalId = '11111111-1111-1111-1111-111111111111' }
 
     BeforeEach {
+        $script:evaluationBoundParameters = $null
+        $script:evaluationCallCount = 0
         Mock New-AzResourceGroup { }
         Mock New-AzChaosWorkspace { $workspaceWithIdentity }
         Mock New-AzRoleAssignment { }
-        Mock Invoke-AzChaosWorkspaceScenarioEvaluation { $true }
         Mock Get-AzChaosScenario { @([pscustomobject]@{ Name = 'sc' }) }
+        Mock Start-Sleep { }
+        Mock Get-Module { $null } -ParameterFilter { $Name -eq 'Az.Resources' -and -not $ListAvailable }
+        Mock Get-Module { [pscustomobject]@{ Name = 'Az.Resources' } } -ParameterFilter { $Name -eq 'Az.Resources' -and $ListAvailable }
+        Mock Import-Module { }
     }
 
     It 'runs the five setup steps' {
@@ -42,8 +50,22 @@ Describe 'Initialize-AzChaosWorkspace' {
         Assert-MockCalled New-AzResourceGroup -Scope It -Times 1 -Exactly
         Assert-MockCalled New-AzChaosWorkspace -Scope It -Times 1 -Exactly -ParameterFilter { $EnableSystemAssignedIdentity.IsPresent }
         Assert-MockCalled New-AzRoleAssignment -Scope It -Times 1 -Exactly -ParameterFilter { $Scope -eq '/subscriptions/00000000-0000-0000-0000-000000000000' -and $RoleDefinitionName -eq 'Reader' }
-        Assert-MockCalled Invoke-AzChaosWorkspaceScenarioEvaluation -Scope It -Times 1 -Exactly
+        $script:evaluationCallCount | Should -Be 1
         Assert-MockCalled Get-AzChaosScenario -Scope It -Times 1 -Exactly
+        Assert-MockCalled Import-Module -Scope It -Times 1 -Exactly -ParameterFilter { $Name -eq 'Az.Resources' }
+    }
+
+    It 'fails before mutation when Az.Resources is not installed even with -SkipPermission' {
+        Mock Get-Module { $null } -ParameterFilter { $Name -eq 'Az.Resources' -and -not $ListAvailable }
+        Mock Get-Module { $null } -ParameterFilter { $Name -eq 'Az.Resources' -and $ListAvailable }
+
+        { Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope -SkipPermission -ErrorAction Stop } |
+            Should -Throw 'Install-Module Az.Resources'
+
+        Assert-MockCalled New-AzResourceGroup -Scope It -Times 0 -Exactly
+        Assert-MockCalled New-AzChaosWorkspace -Scope It -Times 0 -Exactly
+        Assert-MockCalled New-AzRoleAssignment -Scope It -Times 0 -Exactly
+        $script:evaluationCallCount | Should -Be 0
     }
 
     It 'does not create the resource group when it already exists' {
@@ -76,15 +98,39 @@ Describe 'Initialize-AzChaosWorkspace' {
 
         Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope -SkipEvaluationWait | Out-Null
 
-        Assert-MockCalled Invoke-AzChaosWorkspaceScenarioEvaluation -Scope It -Times 1 -Exactly -ParameterFilter { [bool]$NoWait }
+        $script:evaluationCallCount | Should -Be 1
+        $script:evaluationBoundParameters.ContainsKey('NoWait') | Should -Be $false
+        Assert-MockCalled Get-AzChaosScenario -Scope It -Times 1 -Exactly
     }
 
     It 'waits for the evaluation by default' {
         Mock Get-AzResourceGroup { $null }
+        $script:scenarioPoll = 0
+        Mock Get-AzChaosScenario {
+            $script:scenarioPoll++
+            if ($script:scenarioPoll -eq 1) {
+                return @([pscustomobject]@{ Name = 'sc'; CreatedFrom = '/subscriptions/x/scenarioTemplates/t/versions/1'; RecommendationStatus = 'NotEvaluated' })
+            }
+            @([pscustomobject]@{ Name = 'sc'; CreatedFrom = '/subscriptions/x/scenarioTemplates/t/versions/1'; RecommendationStatus = 'Recommended' })
+        }
 
         Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope | Out-Null
 
-        Assert-MockCalled Invoke-AzChaosWorkspaceScenarioEvaluation -Scope It -Times 1 -Exactly -ParameterFilter { -not ([bool]$NoWait) }
+        $script:evaluationCallCount | Should -Be 1
+        $script:evaluationBoundParameters.ContainsKey('NoWait') | Should -Be $false
+        Assert-MockCalled Get-AzChaosScenario -Scope It -Times 2 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
+    }
+
+    It 'treats an empty scenario list as a completed discovery result' {
+        Mock Get-AzResourceGroup { $null }
+        Mock Get-AzChaosScenario { @() }
+
+        $scenarios = Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope
+
+        @($scenarios).Count | Should -Be 0
+        Assert-MockCalled Get-AzChaosScenario -Scope It -Times 1 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
     }
 
     It 'does not mutate under -WhatIf' {
@@ -94,6 +140,6 @@ Describe 'Initialize-AzChaosWorkspace' {
 
         Assert-MockCalled New-AzChaosWorkspace -Scope It -Times 0 -Exactly
         Assert-MockCalled New-AzRoleAssignment -Scope It -Times 0 -Exactly
-        Assert-MockCalled Invoke-AzChaosWorkspaceScenarioEvaluation -Scope It -Times 0 -Exactly
+        $script:evaluationCallCount | Should -Be 0
     }
 }

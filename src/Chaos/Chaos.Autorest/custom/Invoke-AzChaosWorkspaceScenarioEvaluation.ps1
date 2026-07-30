@@ -24,12 +24,13 @@ Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName rg -WorkspaceName w
 .Example
 Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName rg -WorkspaceName ws -NoWait
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.chaos/invoke-azchaosworkspacescenarioevaluation
 #>
 function Invoke-AzChaosWorkspaceScenarioEvaluation {
-    [OutputType([System.Boolean])]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation', 'Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse')]
     [CmdletBinding(DefaultParameterSetName='EvaluateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Name of the workspace.')]
@@ -66,7 +67,8 @@ function Invoke-AzChaosWorkspaceScenarioEvaluation {
         # Discover-plus-evaluate is implemented today by the refresh-recommendations operation.
         # Gate the mutation with ShouldProcess so -WhatIf prevents it.
         if ($PSCmdlet.ShouldProcess("Workspace '$WorkspaceName'", 'Evaluate scenarios')) {
-            Update-AzChaosWorkspaceRecommendation @common -NoWait:$NoWait
+            if ($NoWait) { $common['NoWait'] = $true }
+            Update-AzChaosWorkspaceRecommendation @common
         }
     }
 }

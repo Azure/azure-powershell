@@ -23,6 +23,9 @@ scenarios plus suggested next commands. Discovery and evaluation run under the
 workspace identity and cannot enumerate resources without the Reader grant. Pass
 -SkipPermission to opt out of the RBAC grant. Pass -SkipEvaluationWait to run a
 single evaluation attempt instead of waiting out Azure Resource Graph propagation.
+The default Reader grant enables discovery and evaluation only; most run actions
+need additional permissions. Use Repair-AzChaosScenarioConfigurationResourcePermission
+after creating a scenario configuration to inspect or grant those permissions.
 .Example
 Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000'
 .Example
@@ -60,7 +63,7 @@ function Initialize-AzChaosWorkspace {
         [System.Collections.Hashtable]
         ${Tag},
 
-        [Parameter(HelpMessage='The role definition name granted to the workspace identity on each scope.')]
+        [Parameter(HelpMessage='The role definition name granted to the workspace identity on each scope. Defaults to Reader.')]
         [System.String]
         ${RoleDefinitionName} = 'Reader',
 
@@ -80,9 +83,112 @@ function Initialize-AzChaosWorkspace {
     )
 
     process {
+        function Assert-AzChaosAzResourcesAvailable {
+            $moduleName = 'Az.Resources'
+            $requiredCommands = @('Get-AzResourceGroup', 'New-AzResourceGroup', 'New-AzRoleAssignment')
+
+            if (-not (Get-Module -Name $moduleName)) {
+                $availableModule = Get-Module -ListAvailable -Name $moduleName | Select-Object -First 1
+                if ($null -eq $availableModule) {
+                    throw "Initialize-AzChaosWorkspace requires the $moduleName module for resource group and role assignment operations. Install it with: Install-Module $moduleName -Scope CurrentUser"
+                }
+
+                try {
+                    Import-Module -Name $moduleName -ErrorAction Stop
+                }
+                catch {
+                    throw "Initialize-AzChaosWorkspace found $moduleName but could not load it: $($_.Exception.Message). Update $moduleName or resolve conflicting Az.Accounts versions, then retry."
+                }
+            }
+
+            $missingCommands = @($requiredCommands | Where-Object { -not (Get-Command -Name $_ -ErrorAction SilentlyContinue) })
+            if ($missingCommands.Count -gt 0) {
+                throw "Initialize-AzChaosWorkspace requires $moduleName commands that are not available: $($missingCommands -join ', '). Reinstall or update $moduleName, then retry."
+            }
+        }
+
+        function Test-AzChaosScenarioRecommendationPending {
+            param([object[]]$Scenario)
+
+            foreach ($item in @($Scenario)) {
+                $status = $item.RecommendationStatus
+                $isCatalogScenario = -not [System.String]::IsNullOrEmpty($item.CreatedFrom)
+                # Keep in sync with generated\api\Models\ScenarioProperties.cs:178.
+                if ($status -in @('NotEvaluated', 'Evaluating') -or ($isCatalogScenario -and [System.String]::IsNullOrEmpty($status))) {
+                    return $true
+                }
+
+                if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin @('Recommended', 'NotApplicable', 'EvaluationFailed', 'EvaluationCancelled')) {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
+        function Wait-AzChaosWorkspaceScenarioRecommendation {
+            param(
+                [hashtable]$CommonParameter,
+                [string]$ResourceGroupName,
+                [string]$WorkspaceName
+            )
+
+            $deadline = [System.DateTimeOffset]::UtcNow.AddMinutes(10)
+            $intervalSeconds = 15
+            $knownStatuses = @('NotEvaluated', 'Recommended', 'NotApplicable', 'Evaluating', 'EvaluationFailed', 'EvaluationCancelled')
+            $warnedUnknownStatus = @{}
+            $lastErrorMessage = $null
+
+            do {
+                try {
+                    $scenarios = Get-AzChaosScenario @CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction Stop
+                    $lastErrorMessage = $null
+                }
+                catch {
+                    $lastErrorMessage = $_.Exception.Message
+                    if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
+                        throw "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' after 10 minutes. The last Get-AzChaosScenario attempt failed: $lastErrorMessage"
+                    }
+
+                    Write-Verbose "Get-AzChaosScenario failed while waiting for workspace '$WorkspaceName': $lastErrorMessage. Waiting $intervalSeconds seconds before retrying."
+                    Start-Sleep -Seconds $intervalSeconds
+                    continue
+                }
+
+                foreach ($scenario in @($scenarios)) {
+                    $status = $scenario.RecommendationStatus
+                    if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin $knownStatuses -and -not $warnedUnknownStatus.ContainsKey($status)) {
+                        Write-Warning "Scenario '$($scenario.Name)' in workspace '$WorkspaceName' returned unrecognized recommendation status '$status'. Continuing to poll until the wait timeout."
+                        $warnedUnknownStatus[$status] = $true
+                    }
+                }
+
+                if (-not (Test-AzChaosScenarioRecommendationPending -Scenario $scenarios)) {
+                    if ($null -eq $scenarios -or 0 -eq @($scenarios).Count) {
+                        Write-Verbose "No scenarios were discovered for workspace '$WorkspaceName'."
+                    }
+                    else {
+                        Write-Verbose "Scenario recommendations for workspace '$WorkspaceName' reached a terminal state."
+                    }
+                    return $scenarios
+                }
+
+                if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
+                    throw "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' to reach Recommended, NotApplicable, EvaluationFailed, or EvaluationCancelled after 10 minutes. Re-run Get-AzChaosScenario to inspect current status, or use -SkipEvaluationWait to skip this propagation wait."
+                }
+
+                Write-Verbose "Waiting $intervalSeconds seconds for Azure Resource Graph propagation before checking scenario recommendations again."
+                Start-Sleep -Seconds $intervalSeconds
+            } while ($true)
+        }
+
         $common = @{}
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $common['SubscriptionId'] = $SubscriptionId }
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $common['DefaultProfile'] = $DefaultProfile }
+
+        # This dependency is unconditional: -SkipPermission avoids New-AzRoleAssignment,
+        # but resource-group discovery/creation still needs Az.Resources.
+        Assert-AzChaosAzResourcesAvailable
 
         if (-not $PSCmdlet.ShouldProcess("Workspace '$WorkspaceName'", 'Initialize Chaos Studio workspace')) {
             return
@@ -120,20 +226,26 @@ function Initialize-AzChaosWorkspace {
             }
         }
 
-        # Step 4: evaluate scenarios. Wait for the evaluation unless a single attempt is requested.
+        # Step 4: evaluate scenarios. Wait for the evaluation and ARG propagation unless a single attempt is requested.
         $evaluationParams = @{
             ResourceGroupName = $ResourceGroupName
             WorkspaceName     = $WorkspaceName
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $evaluationParams['SubscriptionId'] = $SubscriptionId }
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $evaluationParams['DefaultProfile'] = $DefaultProfile }
-        $null = Invoke-AzChaosWorkspaceScenarioEvaluation @evaluationParams -NoWait:$SkipEvaluationWait
+        $null = Invoke-AzChaosWorkspaceScenarioEvaluation @evaluationParams
+
+        if (-not $SkipEvaluationWait) {
+            $scenarios = Wait-AzChaosWorkspaceScenarioRecommendation -CommonParameter $common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName
+        }
+        else {
+            $scenarios = Get-AzChaosScenario @common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction SilentlyContinue
+        }
 
         # Step 5: report the discovered scenarios and suggest next commands.
-        $scenarios = Get-AzChaosScenario @common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction SilentlyContinue
-
         Write-Host "Workspace '$WorkspaceName' is ready. Suggested next commands:"
         Write-Host "  Get-AzChaosScenario -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName"
+        Write-Host "  Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ScenarioName <name> -Name <configuration> -WhatIfMode"
         Write-Host "  Start-AzChaosScenarioRun -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ScenarioName <name> -Name <configuration>"
 
         return $scenarios
