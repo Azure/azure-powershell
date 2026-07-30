@@ -6,7 +6,7 @@ Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName c
 ```output
 ```
 
-Runs a pre-flight validation of the `default` scenario configuration. Validation reports errors without starting a run.
+Runs a pre-flight validation of the `default` scenario configuration. Validation reports errors without starting a run. Run this before `Invoke-AzChaosScenarioConfigurationExecution` when you use the direct API path.
 
 ### Example 2: Validate a scenario configuration and branch on the result
 ```powershell
@@ -19,4 +19,4 @@ if (Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceNa
 The scenario configuration is valid.
 ```
 
-Uses `-PassThru` to return `$true` when the configuration is valid, so a script can decide whether to start a run.
+Uses `-PassThru` to return `$true` when the configuration is valid, so a script can decide whether to start a run with `Invoke-AzChaosScenarioConfigurationExecution`. Use `Start-AzChaosScenarioRun` instead when you want one cmdlet that validates and then executes in the required order.

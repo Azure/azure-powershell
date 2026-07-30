@@ -26,12 +26,20 @@
 * Added the V2 scenario configuration cmdlets: `Get/New/Remove-AzChaosScenarioConfiguration`, `Test-AzChaosScenarioConfiguration`, `Invoke-AzChaosScenarioConfigurationExecution`, and `Repair-AzChaosScenarioConfigurationResourcePermission`.
 * Added the V2 scenario run cmdlets: `Get/Stop-AzChaosScenarioRun`.
 * Added `Get-AzChaosDiscoveredResource` to list the resources a workspace discovers.
-* Added the V2 model helper cmdlets: `New-AzChaosScenarioActionObject`, `New-AzChaosScenarioParameterObject`, `New-AzChaosRunAfterObject`, `New-AzChaosExternalResourceObject`, `New-AzChaosKeyValuePairObject`, `New-AzChaosConfigurationFiltersObject`, and `New-AzChaosConfigurationExclusionsObject`.
+* Added the V2 model helper cmdlets: `New-AzChaosActionDependencyObject`, `New-AzChaosKeyValuePairObject`, `New-AzChaosScenarioActionObject`, and `New-AzChaosScenarioParameterObject`.
+    - `New-AzChaosActionDependencyObject` lets users order actions in custom scenarios through `New-AzChaosScenarioActionObject -RunAfterItem` without dropping to `-JsonString`.
+    - Removed unused V2 model helper cmdlets that had no consuming parameters: `New-AzChaosConfigurationExclusionsObject`, `New-AzChaosConfigurationFiltersObject`, `New-AzChaosExternalResourceObject`, and `New-AzChaosRunAfterObject`.
 * Added three workflow cmdlets that wrap the multi-step V2 operations:
     - `Start-AzChaosScenarioRun` validates a scenario configuration before it starts the run and guards catalog scenarios that the workspace has not evaluated.
     - `Invoke-AzChaosWorkspaceScenarioEvaluation` discovers and evaluates a workspace in one step.
     - `Initialize-AzChaosWorkspace` stands up a ready-to-use workspace end to end.
 * Exposed the server-side `whatIf` field on `Repair-AzChaosScenarioConfigurationResourcePermission` as `-WhatIfMode`, distinct from the common `-WhatIf` switch.
+* Raised the `Az.Accounts` dependency floor from 5.0.2 to 5.5.1 to match the current Azure PowerShell authentication baseline.
+* Improved examples for the V2 cmdlets.
+    - Added descriptive example text that explains what each example does and what it returns.
+    - Documented the direct API call order: run `Test-AzChaosScenarioConfiguration` before `Invoke-AzChaosScenarioConfigurationExecution`, or use `Start-AzChaosScenarioRun` to perform both steps.
+    - Clarified the difference between the service-side `-WhatIfMode` dry run and the common PowerShell `-WhatIf` switch.
+    - Corrected `-ActionId` examples to use the documented input format, for example `microsoft-compute-shutdown/1.0`.
 
 ## Version 0.1.2
 * Fixed module name in module metadata

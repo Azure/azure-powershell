@@ -7,31 +7,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzChaosWorkspaceScenar
   function Update-AzChaosWorkspaceRecommendation {
     [CmdletBinding()]
     param([string]$ResourceGroupName, [string]$WorkspaceName, [string]$SubscriptionId, $DefaultProfile, [switch]$NoWait)
+    $script:updateCallCount++
+    $script:updateBoundParameters = @{} + $MyInvocation.BoundParameters
+    $true
   }
 }
 
 Describe 'Invoke-AzChaosWorkspaceScenarioEvaluation' {
-    It 'evaluates the workspace over the refresh-recommendations cmdlet' {
-        Mock Update-AzChaosWorkspaceRecommendation { $true }
+    BeforeEach {
+        $script:updateBoundParameters = $null
+        $script:updateCallCount = 0
+    }
 
+    It 'evaluates the workspace over the refresh-recommendations cmdlet' {
         Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName rg -WorkspaceName ws
 
-        Assert-MockCalled Update-AzChaosWorkspaceRecommendation -Scope It -Times 1 -Exactly -ParameterFilter { $WorkspaceName -eq 'ws' }
+        $script:updateCallCount | Should -Be 1
+        $script:updateBoundParameters['WorkspaceName'] | Should -Be 'ws'
+        $script:updateBoundParameters.ContainsKey('NoWait') | Should -Be $false
     }
 
     It 'forwards -NoWait to the plumbing cmdlet' {
-        Mock Update-AzChaosWorkspaceRecommendation { $true }
-
         Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName rg -WorkspaceName ws -NoWait
 
-        Assert-MockCalled Update-AzChaosWorkspaceRecommendation -Scope It -Times 1 -Exactly -ParameterFilter { [bool]$NoWait }
+        $script:updateCallCount | Should -Be 1
+        $script:updateBoundParameters.ContainsKey('NoWait') | Should -Be $true
     }
 
     It 'does not mutate under -WhatIf' {
-        Mock Update-AzChaosWorkspaceRecommendation { $true }
-
         Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName rg -WorkspaceName ws -WhatIf
 
-        Assert-MockCalled Update-AzChaosWorkspaceRecommendation -Scope It -Times 0 -Exactly
+        $script:updateCallCount | Should -Be 0
     }
 }

@@ -1,6 +1,6 @@
 ### Example 1: Create a scenario with a single action
 ```powershell
-$action = New-AzChaosScenarioActionObject -Name 'stop-vm' -ActionId 'urn:csci:microsoft:virtualMachine:shutdown/1.0' -Duration 'PT10M'
+$action = New-AzChaosScenarioActionObject -Name 'stop-vm' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT10M'
 New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -Description 'Shut down the target virtual machine.' -Action $action
 ```
 
