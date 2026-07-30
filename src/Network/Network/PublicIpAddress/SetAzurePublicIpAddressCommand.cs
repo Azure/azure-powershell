@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
-            if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
-            {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
-
             if (this.RemoveDdosCustomPolicy.IsPresent && !string.IsNullOrEmpty(this.DdosCustomPolicyId))
             {
                 throw new ArgumentException("Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.");
+            }
+
+            if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
+            {
+                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
