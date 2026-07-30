@@ -52,6 +52,83 @@ directive:
     where: $..physicalZones
     transform: >-
       $.description = "Array of physical availability zone identifiers in '{region}-az{N}' format (for example, 'westus2-az1'). Only resources in the corresponding logical zone for each subscription are included. At execution time, each physical zone is resolved to per-subscription logical zones via the Azure locations API. The resolved mapping is surfaced on the scenario run response. Null or omitted means physical zone targeting is not used. Only one physical zone is supported in preview. Mutually exclusive with the zones filter; set one or the other, not both."
+  # --- Sanitize the ScenarioRuns_Get operation description at the swagger source.
+  #     The generator emits escaped newlines literally in the help synopsis. Keep the
+  #     synopsis as one sentence so generated help has no '\n\n' text. ---
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "ScenarioRuns_Get")]
+    transform: >-
+      $.description = "Get a scenario run. This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location). While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body."
+  # --- Preserve the service field name for ScenarioRun.scenarioRunJson. Without
+  #     this, flattening strips the ScenarioRun prefix and exposes the property as
+  #     Json, which is easy to confuse with the -JsonString input parameter. ---
+  - from: swagger-document
+    where: $.definitions.ScenarioRunProperties.properties.scenarioRunJson
+    transform: >-
+      $["x-ms-client-name"] = "ScenarioRunJson"
+  - from: code-model-v3
+    where: $..virtualProperties..[?(@.property.serializedName == "scenarioRunJson")]
+    transform: >-
+      $.name = "ScenarioRunJson"
+  - where:
+      model-name: ScenarioRun
+      property-name: Json
+    set:
+      property-name: ScenarioRunJson
+  # --- The service requires Scenario.description even though the swagger marks it
+  #     optional, but flattened body-property requiredness is not reflected in
+  #     generated cmdlet Mandatory metadata. Keep this as a help-text-only
+  #     correction; requiredness must be fixed in the service-owned contract. ---
+  - from: swagger-document
+    where: $.definitions.ScenarioProperties
+    transform: >-
+      $.properties.description.description = "Description of what this scenario does."
+  # --- ScenarioConfigurationProperties already marks scenarioId required, but
+  #     that nested required array cannot affect flattened cmdlet parameters while
+  #     the ScenarioConfiguration envelope itself leaves properties optional. Match
+  #     Workspace's envelope shape so -ScenarioId becomes mandatory on expanded
+  #     create variants. Do not apply this to Scenario: it would also force
+  #     -Parameter on every scenario create, which is a worse user experience and
+  #     needs product/service confirmation. ---
+  - from: swagger-document
+    where: $.definitions.ScenarioConfiguration
+    transform: >-
+      if (!$.required) { $.required = []; } if ($.required.indexOf("properties") < 0) { $.required.push("properties"); }
+  # --- These LRO POST operations return terminal resources from their Location
+  #     polling targets. The swagger omits those final 200 response schemas, so
+  #     generated cmdlets currently discard the terminal bodies and return $true. ---
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "ScenarioConfigurations_Execute")]
+    transform: >-
+      $.responses["200"] = $.responses["200"] || { description: "Scenario run result.", schema: { "$ref": "#/definitions/ScenarioRun" } }
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "ScenarioConfigurations_Validate")]
+    transform: >-
+      $.responses["200"] = $.responses["200"] || { description: "Validation result.", schema: { "$ref": "#/definitions/Validation" } }
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "ScenarioConfigurations_FixResourcePermissions")]
+    transform: >-
+      $.responses["200"] = $.responses["200"] || { description: "Permissions fix result.", schema: { "$ref": "#/definitions/PermissionsFix" } }
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "Workspaces_RefreshRecommendations")]
+    transform: >-
+      $.responses["200"] = $.responses["200"] || { description: "Workspace evaluation result.", schema: { "$ref": "#/definitions/WorkspaceEvaluation" } }
+  # --- DELETE on existing scenario resources returns 202 Accepted. The swagger
+  #     only declares 200/204 for Scenarios_Delete, so generated clients route a
+  #     successful delete to the default error handler. ScenarioConfiguration
+  #     already declares 202 but incorrectly marks the operation as an LRO without
+  #     the polling headers the generated LRO loop requires; the service returns a
+  #     ScenarioConfiguration body with provisioningState=Deleting, so treat 202 as
+  #     a terminal accepted response. Do not attach the response body schema here:
+  #     Remove-* cmdlets should emit nothing unless -PassThru is supplied. ---
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "Scenarios_Delete")]
+    transform: >-
+      $.responses["202"] = $.responses["202"] || { description: "Accepted." }
+  - from: swagger-document
+    where: $.paths.*[?(@.operationId == "ScenarioConfigurations_Delete")]
+    transform: >-
+      delete $["x-ms-long-running-operation"]; delete $["x-ms-long-running-operation-options"]
 
   # --- Prune the retired V1 experiment-era nouns (PR2). The V2 openapi.json still
   #     carries the V1 surface, so directives remove every non-V2 noun. ---
@@ -137,15 +214,11 @@ directive:
       parameter-name: WhatIf
     set:
       parameter-name: WhatIfMode
-
   # --- V2 model helpers: the nested request-body models a user builds to call the
   #     V2 create cmdlets. ---
   - model-cmdlet:
     - model-name: ScenarioAction
     - model-name: ScenarioParameter
-    - model-name: RunAfter
-    - model-name: ExternalResource
+    - model-name: ActionDependency
     - model-name: KeyValuePair
-    - model-name: ConfigurationFilters
-    - model-name: ConfigurationExclusions
 ```
