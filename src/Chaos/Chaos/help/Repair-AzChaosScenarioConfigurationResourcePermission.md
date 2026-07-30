@@ -16,8 +16,7 @@ Fixes resource permissions for the given scenario configuration.
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName <String>
  -ScenarioConfigurationName <String> -ScenarioName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-WhatIfMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WhatIfMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Fix
@@ -25,55 +24,55 @@ Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName <String
 Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName <String>
  -ScenarioConfigurationName <String> -ScenarioName <String> -WorkspaceName <String>
  -Body <IFixResourcePermissionsRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FixViaIdentity
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -InputObject <IChaosIdentity>
- -Body <IFixResourcePermissionsRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Body <IFixResourcePermissionsRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### FixViaIdentityExpanded
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -InputObject <IChaosIdentity> [-WhatIfMode]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FixViaIdentityScenario
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ScenarioConfigurationName <String>
  -ScenarioInputObject <IChaosIdentity> -Body <IFixResourcePermissionsRequest> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FixViaIdentityScenarioExpanded
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ScenarioConfigurationName <String>
  -ScenarioInputObject <IChaosIdentity> [-WhatIfMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FixViaIdentityWorkspace
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ScenarioConfigurationName <String>
  -ScenarioName <String> -WorkspaceInputObject <IChaosIdentity> -Body <IFixResourcePermissionsRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FixViaIdentityWorkspaceExpanded
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ScenarioConfigurationName <String>
  -ScenarioName <String> -WorkspaceInputObject <IChaosIdentity> [-WhatIfMode] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FixViaJsonFilePath
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName <String>
  -ScenarioConfigurationName <String> -ScenarioName <String> -WorkspaceName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -81,7 +80,7 @@ Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName <String
 ```
 Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName <String>
  -ScenarioConfigurationName <String> -ScenarioName <String> -WorkspaceName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -90,20 +89,26 @@ Fixes resource permissions for the given scenario configuration.
 
 ## EXAMPLES
 
-### Example 1: Fix resource permissions for a scenario configuration
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
 ```
 
-Grants the workspace identity the role assignments that the `default` scenario configuration needs on its target resources.
 
-### Example 2: Preview the permission changes without applying them
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -WhatIfMode
 ```
 
-Uses the server-side `-WhatIfMode` switch to report the role assignments the service would create, without changing any permissions.
-The `-WhatIfMode` switch is distinct from the common `-WhatIf` switch, which gates the HTTP call itself.
+
+
+### -------------------------- EXAMPLE 3 --------------------------
+```powershell
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -WhatIf
+```
+
+
 
 ## PARAMETERS
 
@@ -200,21 +205,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -392,7 +382,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IPermissionsFix
 
 ## NOTES
 

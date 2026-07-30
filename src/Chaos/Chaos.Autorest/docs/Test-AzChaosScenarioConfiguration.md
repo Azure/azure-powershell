@@ -15,26 +15,26 @@ Validate the given scenario configuration.
 ### Validate (Default)
 ```
 Test-AzChaosScenarioConfiguration -Name <String> -ResourceGroupName <String> -ScenarioName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
 Test-AzChaosScenarioConfiguration -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityScenario
 ```
 Test-AzChaosScenarioConfiguration -Name <String> -ScenarioInputObject <IChaosIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityWorkspace
 ```
 Test-AzChaosScenarioConfiguration -Name <String> -ScenarioName <String> -WorkspaceInputObject <IChaosIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,26 +42,21 @@ Validate the given scenario configuration.
 
 ## EXAMPLES
 
-### Example 1: Validate a scenario configuration
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
-Runs a pre-flight validation of the `default` scenario configuration.
-Validation reports errors without starting a run.
 
-### Example 2: Validate a scenario configuration and branch on the result
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 if (Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -PassThru) {
     Write-Host 'The scenario configuration is valid.'
 }
 ```
 
-```output
-The scenario configuration is valid.
-```
 
-Uses `-PassThru` to return `$true` when the configuration is valid, so a script can decide whether to start a run.
 
 ## PARAMETERS
 
@@ -128,21 +123,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -288,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IValidation
 
 ## NOTES
 

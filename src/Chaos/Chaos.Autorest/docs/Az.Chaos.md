@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Chaos
-Module Guid: b03ea101-848d-4e29-b18d-079da4ed70ff
+Module Guid: 50f50ac7-1d8a-49cd-b641-5bf6d1b83acd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.chaos
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,8 +21,9 @@ Get a scenario.
 Get a scenario definition.
 
 ### [Get-AzChaosScenarioRun](Get-AzChaosScenarioRun.md)
-Get a scenario run.\n\nThis endpoint is also the polling target for ScenarioConfigurations.execute\nand ScenarioRuns.cancel (final-state-via: location).
-While the run is in\nprogress the service returns 202 with a Location header pointing back to\nthis URL; clients must keep polling until they receive 200, which carries\nthe final ScenarioRun body.
+Get a scenario run.
+This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
+While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body.
 
 ### [Get-AzChaosWorkspace](Get-AzChaosWorkspace.md)
 Get a Workspace resource.
@@ -36,20 +37,11 @@ Execute the scenario execution with the given scenario configuration.
 ### [Invoke-AzChaosWorkspaceScenarioEvaluation](Invoke-AzChaosWorkspaceScenarioEvaluation.md)
 Evaluate a workspace end to end.
 
-### [New-AzChaosConfigurationExclusionsObject](New-AzChaosConfigurationExclusionsObject.md)
-Create an in-memory object for ConfigurationExclusions.
-
-### [New-AzChaosConfigurationFiltersObject](New-AzChaosConfigurationFiltersObject.md)
-Create an in-memory object for ConfigurationFilters.
-
-### [New-AzChaosExternalResourceObject](New-AzChaosExternalResourceObject.md)
-Create an in-memory object for ExternalResource.
+### [New-AzChaosActionDependencyObject](New-AzChaosActionDependencyObject.md)
+Create an in-memory object for ActionDependency.
 
 ### [New-AzChaosKeyValuePairObject](New-AzChaosKeyValuePairObject.md)
 Create an in-memory object for KeyValuePair.
-
-### [New-AzChaosRunAfterObject](New-AzChaosRunAfterObject.md)
-Create an in-memory object for RunAfter.
 
 ### [New-AzChaosScenario](New-AzChaosScenario.md)
 Create a scenario.

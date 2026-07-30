@@ -32,31 +32,19 @@ Update a Workspace resource.
 
 ## EXAMPLES
 
-### Example 1: Update the scopes of a workspace
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Update-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg','/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/payments-rg'
 ```
 
-```output
-Name              Location ResourceGroupName ProvisioningState
-----              -------- ----------------- -----------------
-contoso-workspace eastus   contoso-rg        Succeeded
-```
 
-Replaces the resource scopes that the `contoso-workspace` workspace discovers and evaluates.
 
-### Example 2: Update the tags on a workspace
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Update-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Tag @{ env = 'prod'; owner = 'resilience-team' }
 ```
 
-```output
-Name              Location ResourceGroupName ProvisioningState
-----              -------- ----------------- -----------------
-contoso-workspace eastus   contoso-rg        Succeeded
-```
 
-Updates the resource tags on the `contoso-workspace` workspace without changing any other property.
 
 ## PARAMETERS
 
@@ -95,7 +83,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 

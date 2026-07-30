@@ -27,29 +27,19 @@ independent of how many API operations implement it.
 
 ## EXAMPLES
 
-### Example 1: Evaluate a workspace end to end
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 ```
 
-```output
-True
-```
 
-Discovers the in-scope resources for the `contoso-workspace` workspace and evaluates which catalog scenarios apply to them, refreshing each per-scenario recommendation status.
-Run this before you start a catalog scenario.
 
-### Example 2: Evaluate a workspace and return immediately
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -NoWait
 ```
 
-```output
-True
-```
 
-Starts the discover-plus-evaluate workflow and returns before it completes with `-NoWait`.
-Query the scenarios with `Get-AzChaosScenario` to read the refreshed recommendation status.
 
 ## PARAMETERS
 
@@ -167,7 +157,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation
+
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse
 
 ## NOTES
 

@@ -35,19 +35,19 @@ Delete a scenario.
 
 ## EXAMPLES
 
-### Example 1: Delete a scenario
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario
 ```
 
-Deletes the `contoso-scenario` scenario and its scenario configurations from the `contoso-workspace` workspace.
 
-### Example 2: Delete a scenario by pipeline input
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Get-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario | Remove-AzChaosScenario
 ```
 
-Gets the `contoso-scenario` scenario and deletes it through the pipeline.
+
 
 ## PARAMETERS
 

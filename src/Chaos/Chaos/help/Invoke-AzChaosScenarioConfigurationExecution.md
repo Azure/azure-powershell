@@ -16,27 +16,27 @@ Execute the scenario execution with the given scenario configuration.
 ```
 Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName <String> -ScenarioConfigurationName <String>
  -ScenarioName <String> -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ExecuteViaIdentity
 ```
 Invoke-AzChaosScenarioConfigurationExecution -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ExecuteViaIdentityScenario
 ```
 Invoke-AzChaosScenarioConfigurationExecution -ScenarioConfigurationName <String>
- -ScenarioInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -ScenarioInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ExecuteViaIdentityWorkspace
 ```
 Invoke-AzChaosScenarioConfigurationExecution -ScenarioConfigurationName <String> -ScenarioName <String>
- -WorkspaceInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -WorkspaceInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,22 +44,19 @@ Execute the scenario execution with the given scenario configuration.
 
 ## EXAMPLES
 
-### Example 1: Execute a scenario configuration
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
 ```
 
-Starts a scenario run from the `default` scenario configuration and waits for the run to reach a terminal state.
-This is the raw execute operation; it does not run validation first.
-Prefer `Start-AzChaosScenarioRun` for the validate-then-execute workflow.
 
-### Example 2: Execute a scenario configuration asynchronously
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -NoWait
 ```
 
-Starts the run and returns immediately with `-NoWait`.
-Poll the run status with `Get-AzChaosScenarioRun`.
+
 
 ## PARAMETERS
 
@@ -111,21 +108,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -286,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun
 
 ## NOTES
 

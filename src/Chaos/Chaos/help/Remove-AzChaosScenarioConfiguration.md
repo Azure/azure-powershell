@@ -15,27 +15,27 @@ Delete a scenario definition.
 ### Delete (Default)
 ```
 Remove-AzChaosScenarioConfiguration -Name <String> -ResourceGroupName <String> -ScenarioName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzChaosScenarioConfiguration -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzChaosScenarioConfiguration -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityScenario
 ```
 Remove-AzChaosScenarioConfiguration -Name <String> -ScenarioInputObject <IChaosIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityWorkspace
 ```
 Remove-AzChaosScenarioConfiguration -Name <String> -ScenarioName <String>
- -WorkspaceInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -WorkspaceInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,36 +43,21 @@ Delete a scenario definition.
 
 ## EXAMPLES
 
-### Example 1: Delete a scenario configuration
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
-Deletes the `default` scenario configuration from the `contoso-scenario` scenario.
 
-### Example 2: Delete a scenario configuration by pipeline input
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default | Remove-AzChaosScenarioConfiguration
 ```
 
-Gets the `default` scenario configuration and deletes it through the pipeline.
+
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -114,21 +99,6 @@ Parameter Sets: Delete, DeleteViaIdentityScenario, DeleteViaIdentityWorkspace
 Aliases: ScenarioConfigurationName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

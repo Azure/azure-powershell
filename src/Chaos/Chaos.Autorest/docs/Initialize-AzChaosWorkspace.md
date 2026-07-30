@@ -31,24 +31,21 @@ Pass
 -SkipPermission to opt out of the RBAC grant.
 Pass -SkipEvaluationWait to run a
 single evaluation attempt instead of waiting out Azure Resource Graph propagation.
+The default Reader grant enables discovery and evaluation only; most run actions
+need additional permissions.
+Use Repair-AzChaosScenarioConfigurationResourcePermission
+after creating a scenario configuration to inspect or grant those permissions.
 
 ## EXAMPLES
 
-### Example 1: Stand up a ready-to-use workspace end to end
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Initialize-AzChaosWorkspace -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg'
 ```
 
-```output
-Name             ResourceGroupName RecommendationStatus
-----             ----------------- --------------------
-zone-down        contoso-rg        Recommended
-disk-io-pressure contoso-rg        Recommended
-```
 
-Runs the five first-day setup steps: ensure the resource group exists, create the workspace with a system-assigned identity, grant that identity the `Reader` role on the scope, evaluate scenarios, and report the discovered scenarios plus suggested next commands.
 
-### Example 2: Stand up a workspace over multiple scopes without granting permissions
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $scopes = @(
     '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg',
@@ -57,13 +54,7 @@ $scopes = @(
 Initialize-AzChaosWorkspace -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Location eastus -Scope $scopes -SkipPermission -SkipEvaluationWait
 ```
 
-```output
-Name             ResourceGroupName RecommendationStatus
-----             ----------------- --------------------
-zone-down        contoso-rg        Recommended
-```
 
-Sets up the workspace over two scopes, opts out of the RBAC grant with `-SkipPermission` (grant the `Reader` role yourself later), and runs a single evaluation attempt with `-SkipEvaluationWait` instead of waiting out Azure Resource Graph propagation.
 
 ## PARAMETERS
 
@@ -115,6 +106,7 @@ Accept wildcard characters: False
 
 ### -RoleDefinitionName
 The role definition name granted to the workspace identity on each scope.
+Defaults to Reader.
 
 ```yaml
 Type: System.String
@@ -256,7 +248,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario
 
 ## NOTES
 

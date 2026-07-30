@@ -15,14 +15,14 @@ Refreshes recommendation status for all scenarios in a given workspace.
 ### Refresh (Default)
 ```
 Update-AzChaosWorkspaceRecommendation -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RefreshViaIdentity
 ```
 Update-AzChaosWorkspaceRecommendation -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,24 +30,19 @@ Refreshes recommendation status for all scenarios in a given workspace.
 
 ## EXAMPLES
 
-### Example 1: Refresh recommendations for a workspace
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 ```
 
-Re-runs discovery and evaluation for the `contoso-workspace` workspace so that each catalog scenario gets a fresh recommendation status.
 
-### Example 2: Refresh recommendations and return the result object
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -PassThru
 ```
 
-```output
-True
-```
 
-Refreshes recommendations and returns `$true` when the refresh completes.
-Use `-PassThru` when you script the call and need to branch on the outcome.
 
 ## PARAMETERS
 
@@ -99,21 +94,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -214,7 +194,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation
 
 ## NOTES
 

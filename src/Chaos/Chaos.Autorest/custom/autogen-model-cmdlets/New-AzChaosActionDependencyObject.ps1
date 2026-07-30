@@ -16,31 +16,38 @@
 
 <#
 .Synopsis
-Create an in-memory object for ExternalResource.
+Create an in-memory object for ActionDependency.
 .Description
-Create an in-memory object for ExternalResource.
+Create an in-memory object for ActionDependency.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExternalResource
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency
 .Link
-https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosexternalresourceobject
+https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosactiondependencyobject
 #>
-function New-AzChaosExternalResourceObject {
+function New-AzChaosActionDependencyObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExternalResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The resource ID of the external resource.")]
+        [Parameter(Mandatory, HelpMessage="Name of the action this depends on.")]
         [string]
-        $ResourceId
+        $Name,
+        [Parameter(HelpMessage="The lifecycle state of the dependency action that triggers this action to start.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("AnyTerminal", "Start", "Running", "Success", "Failure", "Skipped")]
+        [string]
+        $OnActionLifecycle
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExternalResource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency]::New()
 
-        if ($PSBoundParameters.ContainsKey('ResourceId')) {
-            $Object.ResourceId = $ResourceId
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.Name = $Name
+        }
+        if ($PSBoundParameters.ContainsKey('OnActionLifecycle')) {
+            $Object.OnActionLifecycle = $OnActionLifecycle
         }
         return $Object
     }

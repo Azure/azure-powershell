@@ -8,8 +8,9 @@ schema: 2.0.0
 # Get-AzChaosScenarioRun
 
 ## SYNOPSIS
-Get a scenario run.\n\nThis endpoint is also the polling target for ScenarioConfigurations.execute\nand ScenarioRuns.cancel (final-state-via: location).
-While the run is in\nprogress the service returns 202 with a Location header pointing back to\nthis URL; clients must keep polling until they receive 200, which carries\nthe final ScenarioRun body.
+Get a scenario run.
+This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
+While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body.
 
 ## SYNTAX
 
@@ -43,38 +44,25 @@ Get-AzChaosScenarioRun -RunId <String> -ScenarioName <String> -WorkspaceInputObj
 ```
 
 ## DESCRIPTION
-Get a scenario run.\n\nThis endpoint is also the polling target for ScenarioConfigurations.execute\nand ScenarioRuns.cancel (final-state-via: location).
-While the run is in\nprogress the service returns 202 with a Location header pointing back to\nthis URL; clients must keep polling until they receive 200, which carries\nthe final ScenarioRun body.
+Get a scenario run.
+This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
+While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body.
 
 ## EXAMPLES
 
-### Example 1: List all runs for a scenario
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario
 ```
 
-```output
-RunId                                Status    ProvisioningState
------                                ------    -----------------
-11111111-1111-1111-1111-111111111111 Succeeded Succeeded
-22222222-2222-2222-2222-222222222222 Running   Succeeded
-```
 
-Lists every scenario run recorded for the `contoso-scenario` scenario.
 
-### Example 2: Get a single scenario run by run id
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 11111111-1111-1111-1111-111111111111
 ```
 
-```output
-RunId                                Status    ProvisioningState
------                                ------    -----------------
-11111111-1111-1111-1111-111111111111 Succeeded Succeeded
-```
 
-Gets a single scenario run by its run id.
-This is also the polling target for a run started by `Invoke-AzChaosScenarioConfigurationExecution`.
 
 ## PARAMETERS
 
