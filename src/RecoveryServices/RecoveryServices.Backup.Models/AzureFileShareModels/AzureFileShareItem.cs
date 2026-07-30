@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Runtime.Versioning;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 // (DeferredDeleteTimeRemaining).
                 // avoids relying on SoftDeleteRetentionPeriodInDays, which the service returns under the
                 // differently-named "softDeleteRetentionPeriod" field and the SDK therefore never binds.
-                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out TimeSpan remaining))
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, CultureInfo.InvariantCulture, out TimeSpan remaining))
                 {
                     DateOfPurge = DateTime.UtcNow.Add(remaining);
                 }
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 // Compute DateOfPurge from the service-returned remaining deferred-delete window
                 // (DeferredDeleteTimeRemaining), avoiding the SoftDeleteRetentionPeriodInDays property
-                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out TimeSpan remaining))
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, CultureInfo.InvariantCulture, out TimeSpan remaining))
                 {
                     DateOfPurge = DateTime.UtcNow.Add(remaining);
                 }

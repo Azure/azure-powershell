@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 * Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
+* Refined soft delete behavior for Azure File share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.
+    - Corrected the `DateOfPurge` computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
 * Added Cross Subscription Backup (CSB) support for Azure VM:
     - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
     - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).

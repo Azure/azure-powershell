@@ -2817,6 +2817,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to The target storage account location should be same as the secondary (paired) region when restoring to the secondary region.
+        /// </summary>
+        public static string CrossRegionRestoreIncorrectTargetRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("CrossRegionRestoreIncorrectTargetRegion", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.
         /// </summary>
         public static string AFSPolicyUpdateNotAllowed

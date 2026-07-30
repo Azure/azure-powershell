@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 if (storageAccountLocation != secondaryRegion)
                 {
-                    throw new Exception(Resources.TriggerRestoreIncorrectRegion);
+                    throw new Exception(Resources.CrossRegionRestoreIncorrectTargetRegion);
                 }
             }
             

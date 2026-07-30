@@ -386,6 +386,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="TriggerRestoreIncorrectRegion" xml:space="preserve">
     <value>Storage account location should be same as vault location</value>
   </data>
+  <data name="CrossRegionRestoreIncorrectTargetRegion" xml:space="preserve">
+    <value>The target storage account location should be same as the secondary (paired) region when restoring to the secondary region.</value>
+  </data>
   <data name="RestoreDiskMoreThanOneAccFound" xml:space="preserve">
     <value>Found more than one StorageAccount with same name. Some thing went wrong</value>
   </data>

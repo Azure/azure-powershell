@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             // CRR supports only Alternate Location Restore for AFS; both target storage account and target file share are required
-            if (useSecondaryRegion && (targetStorageAccountName == null || targetFileShareName == null))
+            if (useSecondaryRegion && (string.IsNullOrEmpty(targetStorageAccountName) || targetFileShareName == null))
             {
                 throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
             }
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(recoveryPoint.ContainerName.Split(';')[2]);
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
-            if (targetStorageAccountName != null)
+            if (!string.IsNullOrEmpty(targetStorageAccountName))
             {                
                 targetStorageAccountResource = ServiceClientAdapter.GetStorageAccountResource(targetStorageAccountName);
                 

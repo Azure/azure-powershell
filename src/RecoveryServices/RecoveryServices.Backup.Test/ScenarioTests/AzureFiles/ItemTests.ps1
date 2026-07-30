@@ -745,10 +745,11 @@ function Test-AzureFSGetItemSecondaryRegion
 		-UseSecondaryRegion
 	Assert-NotNull $secItem
 	Assert-NotNull $secItem.ExtendedInfo
-	Assert-True { $secItem.ExtendedInfo.RecoveryPointCount -ge 0 }
+	# A protected share with backups must report at least one recovery point in its ExtendedInfo.
+	Assert-True { $secItem.ExtendedInfo.RecoveryPointCount -gt 0 }
 
-	# VARIATION-3: soft-delete state surfaces on secondary-region items
-	Assert-NotNull $secItem.DeleteState
+	# VARIATION-3: an actively-protected item must surface as not soft-deleted on the secondary region.
+	Assert-AreEqual ([string]$secItem.DeleteState) "NotDeleted"
 }
 
 function Test-AzureFSGetRPsSecondaryRegion

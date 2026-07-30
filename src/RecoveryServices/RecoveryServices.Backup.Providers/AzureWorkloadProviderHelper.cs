@@ -330,7 +330,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     return filteredByUniqueName || filteredByFriendlyName;
                 }).ToList();
 
-                // bug: below API calls should be made to secondary region 
+                // Known limitation (tracked as follow-up): the CRR list response does not include the
+                // extendedInfo block, so it is fetched via a per-item GetProtectedItem call. That GET is
+                // served from the PRIMARY region, which means -UseSecondaryRegion -FriendlyName currently
+                // depends on the primary region being available. The service does not yet expose a
+                // secondary-region GET that returns extendedInfo; until it does, this cross-region fetch is
+                // the only way to populate ExtendedInfo. TODO: link/track the service work item and switch
+                // to a secondary-region call (or leave ExtendedInfo null on the CRR path) once available.
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
                     new ODataQuery<GetProtectedItemQueryObject>(q => q.Expand == "extendedinfo");
 
