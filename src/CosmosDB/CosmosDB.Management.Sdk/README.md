@@ -27,6 +27,7 @@ title: CosmosDBManagementClient
 ### 
 ``` yaml 
 commit: b99dfe6606f232f454660bf361bc32c0dfade9fb
+garnetcommit: 2a9623113834b7945a1af2dc759b4e9ee82f32a2
 apiversion: "2025-10-15"
 previewapiversion: "2024-12-01-preview"
 garnetpreviewapiversion: "2026-04-01-preview"
@@ -42,7 +43,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/services.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/fleet.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(previewapiversion)/tablerbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(garnetpreviewapiversion)/openapi.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(garnetcommit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(garnetpreviewapiversion)/openapi.json
 
 output-folder: Generated
 
