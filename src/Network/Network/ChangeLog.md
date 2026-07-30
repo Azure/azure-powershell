@@ -19,9 +19,9 @@
 --->
 
 ## Upcoming Release
-* Added support to associate a DDoS custom policy (DCP) with a Public IP address.
-    - Added the `-DdosCustomPolicyId` parameter to `New-AzPublicIpAddress` and `Set-AzPublicIpAddress`.
-    - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzPublicIpAddress` to remove an existing DDoS custom policy association.
+* Added support to associate a DDoS custom policy (DCP) with an instance-level Public IP address.
+    - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
+    - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub

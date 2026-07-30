@@ -17,8 +17,7 @@ Creates a public IP address.
 New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
  [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>]
  [-DomainNameLabel <String>] [-DomainNameLabelScope <PSDomainNameLabelScopeType>] [-IpTag <PSPublicIpTag[]>]
- [-PublicIpPrefix <PSPublicIpPrefix>] [-DdosCustomPolicyId <String>] [-DdosProtectionMode <String>]
- [-DdosProtectionPlanId <String>]
+ [-PublicIpPrefix <PSPublicIpPrefix>] [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>]
  [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
@@ -167,21 +166,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DdosCustomPolicyId
-The DDoS custom policy id to attach to the Public IP address. Requires DdosProtectionMode to be 'Enabled'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
