@@ -776,7 +776,7 @@ function Test-PublicIpAddressCRUD-DdosProtection
 
 <#
 .SYNOPSIS
-Tests associating a DDoS custom policy with a publicIpAddress on create, then removing and re-attaching it via Set.
+Tests associating a DDoS custom policy with an instance-level public IP address, then removing and re-attaching it.
 #>
 function Test-PublicIpAddressCRUD-DdosCustomPolicy
 {
@@ -784,6 +784,9 @@ function Test-PublicIpAddressCRUD-DdosCustomPolicy
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $ddosCustomPolicyName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $nicName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
     $location = Get-ProviderLocation $resourceTypeParent
@@ -798,9 +801,17 @@ function Test-PublicIpAddressCRUD-DdosCustomPolicy
         $dcp = New-AzDdosCustomPolicy -ResourceGroupName $rgname -Name $ddosCustomPolicyName -Location $location -DetectionRule @($tcpRule)
         Assert-NotNull $dcp
 
-        # Create publicIpAddress with the DDoS custom policy attached
-        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DdosProtectionMode "Enabled" -DdosCustomPolicyId $dcp.Id
-        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+        # Create an instance-level public IP address
+        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname -Location $location -AllocationMethod Static -Sku Standard -DdosProtectionMode "Enabled"
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $actual.Id
+        Assert-NotNull $nic
+
+        # Attach the DDoS custom policy
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
+        $expected = Set-AzPublicIpAddress -PublicIpAddress $expected -DdosCustomPolicyId $dcp.Id
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.Name $actual.Name
         Assert-AreEqual "Enabled" $expected.DdosSettings.ProtectionMode
@@ -808,16 +819,19 @@ function Test-PublicIpAddressCRUD-DdosCustomPolicy
 
         # Remove the DDoS custom policy association via Set
         $pip = Set-AzPublicIpAddress -PublicIpAddress $expected -RemoveDdosCustomPolicy
-        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
         Assert-Null $pip.DdosSettings.DdosCustomPolicy
 
         # Re-attach the DDoS custom policy via Set
         $pip = Set-AzPublicIpAddress -PublicIpAddress $pip -DdosCustomPolicyId $dcp.Id
-        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
         Assert-AreEqual $dcp.Id $pip.DdosSettings.DdosCustomPolicy.Id
 
         # delete
-        $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+        $deleteNic = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $nicName -PassThru -Force
+        Assert-AreEqual true $deleteNic
+
+        $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -Name $rname -PassThru -Force
         Assert-AreEqual true $delete
 
         $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
