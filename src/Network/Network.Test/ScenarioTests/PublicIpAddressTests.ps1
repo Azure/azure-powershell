@@ -802,7 +802,7 @@ function Test-PublicIpAddressCRUD-DdosCustomPolicy
 
         # Create an instance-level public IP address
         $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname -Location $location -AllocationMethod Static -Sku Standard -DdosProtectionMode "Enabled"
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $actual.Id
         Assert-NotNull $nic
