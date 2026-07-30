@@ -20,9 +20,17 @@ Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-StayProvisio
  [<CommonParameters>]
 ```
 
+### ResourceGroupForceDeallocateParameterSet
+```
+Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-ForceDeallocate] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### ResourceGroupHibernateParameterSet
 ```
-Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-Hibernate] [-AsJob]
+Stop-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Force] [-NoWait] [-Hibernate] [-ForceDeallocate]
+ [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -34,10 +42,18 @@ Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [
  [<CommonParameters>]
 ```
 
+### IdForceDeallocateParameterSet
+```
+Stop-AzVM [-Force] [-NoWait] [-ForceDeallocate] [-Id] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### IdHibernateParameterSet
 ```
-Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzVM [-Force] [-NoWait] [-Hibernate] [-ForceDeallocate] [-Id] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +67,13 @@ Stop-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command stops the virtual machine named VirtualMachine07 in ResourceGroup11.
+
+### Example 2: Force deallocate a virtual machine during stop
+```powershell
+Stop-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -ForceDeallocate
+```
+
+This command force deallocates the virtual machine named VirtualMachine07 in ResourceGroup11 during the stop operation.
 
 ## PARAMETERS
 
@@ -99,6 +122,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceDeallocate
+Optional parameter to force deallocate a virtual machine during stop operations.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ResourceGroupForceDeallocateParameterSet, ResourceGroupHibernateParameterSet, IdForceDeallocateParameterSet, IdHibernateParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Hibernate
 Optional parameter to hibernate a virtual machine. (Feature in Preview)
 
@@ -119,7 +157,7 @@ The ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSetName
+Parameter Sets: IdParameterSetName, IdForceDeallocateParameterSet, IdHibernateParameterSet
 Aliases:
 
 Required: True
@@ -134,7 +172,7 @@ The virtual machine name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupHibernateParameterSet
+Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupForceDeallocateParameterSet, ResourceGroupHibernateParameterSet
 Aliases:
 
 Required: True
@@ -164,7 +202,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupHibernateParameterSet
+Parameter Sets: ResourceGroupNameParameterSetName, ResourceGroupForceDeallocateParameterSet, ResourceGroupHibernateParameterSet
 Aliases:
 
 Required: True

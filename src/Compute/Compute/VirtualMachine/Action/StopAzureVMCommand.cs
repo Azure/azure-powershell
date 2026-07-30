@@ -30,7 +30,9 @@ namespace Microsoft.Azure.Commands.Compute
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         private const string ResourceGroupHibernateParamSet = "ResourceGroupHibernateParameterSet",
-                             IdHibernateParamSet = "IdHibernateParameterSet";
+                             IdHibernateParamSet = "IdHibernateParameterSet",
+                             ResourceGroupForceDeallocateParamSet = "ResourceGroupForceDeallocateParameterSet",
+                             IdForceDeallocateParamSet = "IdForceDeallocateParameterSet";
 
         [Parameter(
            Mandatory = true,
@@ -42,6 +44,12 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ParameterSetName = ResourceGroupHibernateParamSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ResourceGroupForceDeallocateParamSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -60,9 +68,37 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ResourceGroupHibernateParamSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ParameterSetName = ResourceGroupForceDeallocateParamSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = IdParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The ID of the virtual machine.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = IdHibernateParamSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The ID of the virtual machine.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = IdForceDeallocateParamSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The ID of the virtual machine.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
+        public new string Id { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -106,6 +142,24 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Optional parameter to hibernate a virtual machine. (Feature in Preview)")]
         public SwitchParameter Hibernate { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupForceDeallocateParamSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdForceDeallocateParamSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupHibernateParamSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdHibernateParamSet,
+            HelpMessage = "Optional parameter to force deallocate a virtual machine during stop operations.")]
+        public SwitchParameter ForceDeallocate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -115,7 +169,10 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.ShouldProcess(Name, VerbsLifecycle.Stop) 
                     && (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption)))
                 {
-                    if (ParameterSetName.Equals(IdParameterSet) && string.IsNullOrEmpty(Name))
+                    if ((ParameterSetName.Equals(IdParameterSet)
+                        || ParameterSetName.Equals(IdHibernateParamSet)
+                        || ParameterSetName.Equals(IdForceDeallocateParamSet))
+                        && string.IsNullOrEmpty(Name))
                     {
                         ResourceIdentifier parsedId = new ResourceIdentifier(Id);
                         this.ResourceGroupName = parsedId.ResourceGroupName;
@@ -123,6 +180,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
 
                     Rest.Azure.AzureOperationResponse op;
+                    bool? forceDeallocate = this.IsParameterBound(c => c.ForceDeallocate) ? this.ForceDeallocate : (bool?)null;
                     if (this.StayProvisioned) 
                     {
                         bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?)true : null;
@@ -139,22 +197,22 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (NoWait.IsPresent)
                         {
-                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, null, CancellationToken.None).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, forceDeallocate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, null, CancellationToken.None).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, forceDeallocate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                     }
                     else
                     {
                         if (NoWait.IsPresent)
                         {
-                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, forceDeallocate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, forceDeallocate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
 
                     }
