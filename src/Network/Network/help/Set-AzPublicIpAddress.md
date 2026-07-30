@@ -149,6 +149,7 @@ Accept wildcard characters: False
 The DDoS custom policy ID to associate with a supported public IP address.
 The public IP address must have its DDoS protection mode set to `Enabled`.
 The service validates whether the public IP address attachment supports a DDoS custom policy.
+This parameter cannot be used with `-RemoveDdosCustomPolicy`.
 
 ```yaml
 Type: System.String
@@ -194,6 +195,7 @@ Accept wildcard characters: False
 
 ### -RemoveDdosCustomPolicy
 Removes the DDoS custom policy association from the Public IP address.
+This parameter cannot be used with `-DdosCustomPolicyId`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

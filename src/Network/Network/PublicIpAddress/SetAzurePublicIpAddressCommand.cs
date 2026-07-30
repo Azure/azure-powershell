@@ -53,7 +53,9 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (this.RemoveDdosCustomPolicy.IsPresent && !string.IsNullOrEmpty(this.DdosCustomPolicyId))
             {
-                throw new ArgumentException("Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.");
+                throw new ArgumentException(
+                    "Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.",
+                    nameof(DdosCustomPolicyId));
             }
 
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
@@ -67,7 +69,9 @@ namespace Microsoft.Azure.Commands.Network
                     string.IsNullOrEmpty(this.PublicIpAddress.DdosSettings.ProtectionMode) ||
                     !this.PublicIpAddress.DdosSettings.ProtectionMode.Equals(MNM.DdosSettingsProtectionMode.Enabled, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new ArgumentException("DdosCustomPolicyId can only be set when the Public IP address has ProtectionMode set to 'Enabled'.");
+                    throw new ArgumentException(
+                        "DdosCustomPolicyId can only be set when the Public IP address has ProtectionMode set to 'Enabled'.",
+                        nameof(DdosCustomPolicyId));
                 }
 
                 this.PublicIpAddress.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
