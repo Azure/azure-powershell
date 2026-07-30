@@ -26,7 +26,9 @@
 * Added the V2 scenario configuration cmdlets: `Get/New/Remove-AzChaosScenarioConfiguration`, `Test-AzChaosScenarioConfiguration`, `Invoke-AzChaosScenarioConfigurationExecution`, and `Repair-AzChaosScenarioConfigurationResourcePermission`.
 * Added the V2 scenario run cmdlets: `Get/Stop-AzChaosScenarioRun`.
 * Added `Get-AzChaosDiscoveredResource` to list the resources a workspace discovers.
-* Added the V2 model helper cmdlets: `New-AzChaosScenarioActionObject`, `New-AzChaosScenarioParameterObject`, `New-AzChaosRunAfterObject`, `New-AzChaosExternalResourceObject`, `New-AzChaosKeyValuePairObject`, `New-AzChaosConfigurationFiltersObject`, and `New-AzChaosConfigurationExclusionsObject`.
+* Added the V2 model helper cmdlets: `New-AzChaosActionDependencyObject`, `New-AzChaosKeyValuePairObject`, `New-AzChaosScenarioActionObject`, and `New-AzChaosScenarioParameterObject`.
+    - `New-AzChaosActionDependencyObject` lets users order actions in custom scenarios through `New-AzChaosScenarioActionObject -RunAfterItem` without dropping to `-JsonString`.
+    - Removed unused V2 model helper cmdlets that had no consuming parameters: `New-AzChaosConfigurationExclusionsObject`, `New-AzChaosConfigurationFiltersObject`, `New-AzChaosExternalResourceObject`, and `New-AzChaosRunAfterObject`.
 * Added three workflow cmdlets that wrap the multi-step V2 operations:
     - `Start-AzChaosScenarioRun` validates a scenario configuration before it starts the run and guards catalog scenarios that the workspace has not evaluated.
     - `Invoke-AzChaosWorkspaceScenarioEvaluation` discovers and evaluates a workspace in one step.
