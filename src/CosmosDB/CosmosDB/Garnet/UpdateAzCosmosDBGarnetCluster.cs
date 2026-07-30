@@ -70,16 +70,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            IDictionary<string, string> tagsDict;
-            if (Tag != null)
-            {
-                tagsDict = base.PopulateTags(Tag);
-            }
-            else
-            {
-                tagsDict = existingCluster.Tags;
-            }
-
             IList<string> extensionsList;
             if (Extensions != null)
             {
@@ -100,8 +90,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             GarnetClusterResourcePatch patch = new GarnetClusterResourcePatch
             {
-                Properties = patchProperties,
-                Tags = tagsDict
+                Properties = patchProperties
             };
 
             if (ShouldProcess(ClusterName, "Updating Garnet Cluster."))
