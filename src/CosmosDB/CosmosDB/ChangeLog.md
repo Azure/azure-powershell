@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Garnet cache cluster management cmdlets: `New-AzCosmosDBGarnetCluster`, `Get-AzCosmosDBGarnetCluster`, `Update-AzCosmosDBGarnetCluster`, `Remove-AzCosmosDBGarnetCluster`.
 
 ## Version 1.19.1
 * Updated Azure.Core from 1.47.3 to 1.50.0
