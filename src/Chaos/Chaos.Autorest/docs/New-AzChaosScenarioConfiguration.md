@@ -15,28 +15,27 @@ Create a scenario definition.
 ### CreateExpanded (Default)
 ```
 New-AzChaosScenarioConfiguration -Name <String> -ResourceGroupName <String> -ScenarioName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-ExclusionResource <String[]>]
+ -WorkspaceName <String> -ScenarioId <String> [-SubscriptionId <String>] [-ExclusionResource <String[]>]
  [-ExclusionTag <IKeyValuePair[]>] [-ExclusionType <String[]>] [-FilterLocation <String[]>]
  [-FilterPhysicalZone <String[]>] [-FilterZone <String[]>] [-Parameter <IKeyValuePair[]>]
- [-ScenarioId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityScenarioExpanded
 ```
-New-AzChaosScenarioConfiguration -Name <String> -ScenarioInputObject <IChaosIdentity>
+New-AzChaosScenarioConfiguration -Name <String> -ScenarioInputObject <IChaosIdentity> -ScenarioId <String>
  [-ExclusionResource <String[]>] [-ExclusionTag <IKeyValuePair[]>] [-ExclusionType <String[]>]
  [-FilterLocation <String[]>] [-FilterPhysicalZone <String[]>] [-FilterZone <String[]>]
- [-Parameter <IKeyValuePair[]>] [-ScenarioId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <IKeyValuePair[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityWorkspaceExpanded
 ```
 New-AzChaosScenarioConfiguration -Name <String> -ScenarioName <String> -WorkspaceInputObject <IChaosIdentity>
- [-ExclusionResource <String[]>] [-ExclusionTag <IKeyValuePair[]>] [-ExclusionType <String[]>]
- [-FilterLocation <String[]>] [-FilterPhysicalZone <String[]>] [-FilterZone <String[]>]
- [-Parameter <IKeyValuePair[]>] [-ScenarioId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ScenarioId <String> [-ExclusionResource <String[]>] [-ExclusionTag <IKeyValuePair[]>]
+ [-ExclusionType <String[]>] [-FilterLocation <String[]>] [-FilterPhysicalZone <String[]>]
+ [-FilterZone <String[]>] [-Parameter <IKeyValuePair[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -308,7 +307,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityScenarioExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
