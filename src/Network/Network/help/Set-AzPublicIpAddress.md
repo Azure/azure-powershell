@@ -77,16 +77,16 @@ First command gets the public IP address resource with name $publicIPName in the
     Set-AzPublicIPAddress command updates the public IP address resource with the 
     updated object. DomainNameLabel & Fqdn are modified as expected.
 
-### Example 4: Associate a DDoS custom policy with an instance-level public IP address
+### Example 4: Associate a DDoS custom policy with a supported public IP address
 ```powershell
 $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
 Set-AzPublicIpAddress -PublicIpAddress $publicIp -DdosCustomPolicyId $ddosCustomPolicyId
 ```
 
-The first command gets a Standard public IP address that is attached to a network interface and
-has DDoS protection mode set to `Enabled`. The second command associates the DDoS custom policy
-with that instance-level public IP address.
+The first command gets a Standard public IP address with DDoS protection mode set to `Enabled`.
+The second command associates the DDoS custom policy with the public IP address. The service
+validates that the public IP address has a supported attachment, such as a network interface.
 
 ### Example 5: Remove a DDoS custom policy association
 ```powershell
@@ -146,8 +146,9 @@ Accept wildcard characters: False
 ```
 
 ### -DdosCustomPolicyId
-The DDoS custom policy ID to associate with an instance-level public IP address.
-The public IP address must be attached to a network interface and have its DDoS protection mode set to `Enabled`.
+The DDoS custom policy ID to associate with a supported public IP address.
+The public IP address must have its DDoS protection mode set to `Enabled`.
+The service validates whether the public IP address attachment supports a DDoS custom policy.
 
 ```yaml
 Type: System.String

@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (!string.IsNullOrEmpty(this.Tier))
+                if (!string.IsNullOrEmpty(this.Tier))
             {
                 if(publicIp.Sku == null)
                 {
