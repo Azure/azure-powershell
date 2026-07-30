@@ -785,9 +785,8 @@ function Test-PublicIpAddressCRUD-DdosCustomPolicy
     $rname = Get-ResourceName
     $ddosCustomPolicyName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $resourceTypeParent = "Microsoft.Network/ddosCustomPolicies"
     $location = Get-ProviderLocation $resourceTypeParent
-
     try
     {
         # Create the resource group
