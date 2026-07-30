@@ -39,6 +39,7 @@
     - Added descriptive example text that explains what each example does and what it returns.
     - Documented the direct API call order: run `Test-AzChaosScenarioConfiguration` before `Invoke-AzChaosScenarioConfigurationExecution`, or use `Start-AzChaosScenarioRun` to perform both steps.
     - Clarified the difference between the service-side `-WhatIfMode` dry run and the common PowerShell `-WhatIf` switch.
+    - Corrected `-ActionId` examples to use the documented input format, for example `microsoft-compute-shutdown/1.0`.
 
 ## Version 0.1.2
 * Fixed module name in module metadata
