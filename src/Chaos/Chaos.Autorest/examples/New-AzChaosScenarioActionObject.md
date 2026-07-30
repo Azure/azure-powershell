@@ -11,15 +11,16 @@ stop-vm microsoft-compute-shutdown/1.0 PT10M
 
 Creates an in-memory scenario action that uses the documented compute shutdown action identifier and runs for ten minutes. Pass the result to `New-AzChaosScenario -Action`.
 
-### Example 2: Create a scenario action with a delay and description
+### Example 2: Create a parameterized CPU pressure action
 ```powershell
-New-AzChaosScenarioActionObject -Name 'delayed-stop-vm' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT5M' -WaitBefore 'PT1M' -Description 'Stop the virtual machine after a one-minute delay.'
+$cpuParam = New-AzChaosKeyValuePairObject -Key 'pressureLevel' -Value '95'
+New-AzChaosScenarioActionObject -Name 'cpu-pressure' -ActionId 'microsoft-compute-cpuPressure/1.0' -Duration 'PT5M' -WaitBefore 'PT1M' -Parameter $cpuParam
 ```
 
 ```output
-Name            ActionId                       Duration WaitBefore
-----            --------                       -------- ----------
-delayed-stop-vm microsoft-compute-shutdown/1.0 PT5M     PT1M
+Name         ActionId                           Duration WaitBefore Parameter
+----         --------                           -------- ---------- ---------
+cpu-pressure microsoft-compute-cpuPressure/1.0  PT5M     PT1M      {pressureLevel}
 ```
 
-Creates an in-memory shutdown action that waits one minute before it starts. Use `-WaitBefore` when a custom scenario needs a delay before this action runs.
+Creates an in-memory CPU pressure action using an action identifier that has been verified against the service create path. Use `-Parameter` when the action requires action-specific settings, and `-WaitBefore` when it should wait before starting.
