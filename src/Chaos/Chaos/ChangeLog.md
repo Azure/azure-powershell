@@ -32,7 +32,7 @@
     - `Invoke-AzChaosWorkspaceScenarioEvaluation` discovers and evaluates a workspace in one step.
     - `Initialize-AzChaosWorkspace` stands up a ready-to-use workspace end to end.
 * Exposed the server-side `whatIf` field on `Repair-AzChaosScenarioConfigurationResourcePermission` as `-WhatIfMode`, distinct from the common `-WhatIf` switch.
-* Added `Az.Resources` as a required module dependency and raised the `Az.Accounts` floor to stay compatible with current `Az.Resources` releases.
+* Raised the `Az.Accounts` dependency floor from 5.0.2 to 5.5.1 to match the current Azure PowerShell authentication baseline.
 * Improved examples for the V2 cmdlets.
     - Added descriptive example text that explains what each example does and what it returns.
     - Documented the direct API call order: run `Test-AzChaosScenarioConfiguration` before `Invoke-AzChaosScenarioConfigurationExecution`, or use `Start-AzChaosScenarioRun` to perform both steps.
