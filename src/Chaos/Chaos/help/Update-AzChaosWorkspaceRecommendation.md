@@ -30,19 +30,25 @@ Refreshes recommendation status for all scenarios in a given workspace.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Refresh recommendations for a workspace
 ```powershell
 Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 ```
 
+Re-runs discovery and evaluation for the `contoso-workspace` workspace so that each catalog scenario gets a fresh recommendation status.
+The service stores a terminal workspace evaluation record that you can read later with `Get-AzChaosWorkspaceEvaluation`.
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Refresh recommendations and return the result object
 ```powershell
 Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -PassThru
 ```
 
+```output
+True
+```
 
+Refreshes recommendations and returns `$true` when the refresh completes.
+Use `-PassThru` when you script the call and need to branch on the outcome; use `Get-AzChaosWorkspaceEvaluation` when you need to inspect the stored evaluation result after the refresh.
 
 ## PARAMETERS
 
