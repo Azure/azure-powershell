@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,17 @@ namespace Microsoft.Azure.Commands.Profile.Test.UnitTest
 
     public class AcquirePolicyTokenHandlerTests
     {
+        public AcquirePolicyTokenHandlerTests()
+        {
+            // ContextAdapter's constructor reads AzureSession.Instance, so ensure a session exists.
+            AzureSessionInitializer.CreateOrReplaceSession(new MemoryDataStore());
+        }
+
         private static int CountAppendedSteps(IDictionary<string, object> boundParameters)
         {
             int appended = 0;
             Action<PipelineStep> appendStep = _ => appended++;
-            ContextAdapter.AddAcquirePolicyTokenHandler(boundParameters, appendStep);
+            ContextAdapter.Instance.AddAcquirePolicyTokenHandler(boundParameters, appendStep);
             return appended;
         }
 

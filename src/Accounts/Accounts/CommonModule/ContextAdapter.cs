@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.Common
             prependStep(UniqueId.Instance.SendAsync);
             appendStep(new UserAgent(invocationInfo).SendAsync);
             appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
-            this.AddAcquirePolicyTokenHandler(invocationInfo, appendStep);
         }
 
         internal void AddRequestUserAgentHandler(
@@ -125,23 +124,22 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Conditionally appends a change safety step to the HTTP pipeline that acquires an Azure Policy
-        /// token and stamps it onto outgoing write requests. When the feature is off (neither
-        /// -AcquirePolicyToken nor -ChangeReference supplied) no pipeline step is added, so there is no
-        /// added cost for the common case.
+        /// Change safety pipeline hook, exposed as its own VTable delegate and invoked by the generated
+        /// module right after OnNewRequest. Conditionally appends a step that acquires an Azure Policy
+        /// token and stamps it onto outgoing write requests, based on the -AcquirePolicyToken /
+        /// -ChangeReference bound parameters. When the feature is off, no step is added (zero added cost).
         /// </summary>
-        private void AddAcquirePolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
+        internal void PolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
         {
-            AddAcquirePolicyTokenHandler(invocationInfo?.BoundParameters, appendStep);
+            this.AddAcquirePolicyTokenHandler(invocationInfo?.BoundParameters, appendStep);
         }
 
         /// <summary>
-        /// Testable core of <see cref="AddAcquirePolicyTokenHandler(InvocationInfo, PipelineChangeDelegate)"/>.
         /// Evaluates the change safety bound parameters up front and only appends a pipeline step when the
         /// feature is requested. The write-verb gate lives inside <c>StampPolicyTokenAsync</c>, so GET
         /// sub-requests are skipped even though the step is added for the cmdlet.
         /// </summary>
-        internal static void AddAcquirePolicyTokenHandler(IDictionary<string, object> boundParameters, PipelineChangeDelegate appendStep)
+        internal void AddAcquirePolicyTokenHandler(IDictionary<string, object> boundParameters, PipelineChangeDelegate appendStep)
         {
             if (boundParameters == null) { return; }
 
