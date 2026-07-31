@@ -60,14 +60,16 @@ Create a scenario definition.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-New-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+$scenarioId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Chaos/workspaces/contoso-workspace/scenarios/contoso-scenario'
+New-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -ScenarioId $scenarioId
 ```
 
 
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-New-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name canary `
+$scenarioId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Chaos/workspaces/contoso-workspace/scenarios/contoso-scenario'
+New-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name canary -ScenarioId $scenarioId `
     -FilterLocation 'eastus' -FilterZone '1' -ExclusionType 'Microsoft.Compute/virtualMachines'
 ```
 

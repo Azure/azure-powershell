@@ -12,18 +12,18 @@ Create a scenario.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateViaIdentityWorkspaceExpanded (Default)
 ```
-New-AzChaosScenario -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Action <IScenarioAction[]>] [-Description <String>]
- [-Parameter <IScenarioParameter[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzChaosScenario -Name <String> -WorkspaceInputObject <IChaosIdentity> -Action <IScenarioAction[]>
+ -Description <String> [-Parameter <IScenarioParameter[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentityWorkspaceExpanded
+### CreateExpanded
 ```
-New-AzChaosScenario -Name <String> -WorkspaceInputObject <IChaosIdentity> [-Action <IScenarioAction[]>]
- [-Description <String>] [-Parameter <IScenarioParameter[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzChaosScenario -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -Action <IScenarioAction[]> -Description <String> [-SubscriptionId <String>]
+ [-Parameter <IScenarioParameter[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -53,7 +53,7 @@ New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspa
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -JsonFilePath ./scenario.json
+New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -JsonFilePath .\scenario.json
 ```
 
 
@@ -68,7 +68,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioAction[]
 Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +99,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

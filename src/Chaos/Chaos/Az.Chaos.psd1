@@ -70,7 +70,8 @@ NestedModules = @('Chaos.Autorest/Az.Chaos.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzChaosDiscoveredResource', 'Get-AzChaosScenario', 'Get-AzChaosScenarioConfiguration', 
-               'Get-AzChaosScenarioRun', 'Get-AzChaosWorkspace', 'Initialize-AzChaosWorkspace', 
+               'Get-AzChaosScenarioConfigurationResourcePermission', 'Get-AzChaosScenarioConfigurationValidation', 'Get-AzChaosScenarioRun', 
+               'Get-AzChaosWorkspace', 'Get-AzChaosWorkspaceEvaluation', 'Initialize-AzChaosWorkspace', 
                'Invoke-AzChaosScenarioConfigurationExecution', 'Invoke-AzChaosWorkspaceScenarioEvaluation', 'New-AzChaosActionDependencyObject', 
                'New-AzChaosKeyValuePairObject', 'New-AzChaosScenario', 'New-AzChaosScenarioActionObject', 
                'New-AzChaosScenarioConfiguration', 'New-AzChaosScenarioParameterObject', 'New-AzChaosWorkspace', 

@@ -20,6 +20,12 @@ Get a scenario.
 ### [Get-AzChaosScenarioConfiguration](Get-AzChaosScenarioConfiguration.md)
 Get a scenario definition.
 
+### [Get-AzChaosScenarioConfigurationResourcePermission](Get-AzChaosScenarioConfigurationResourcePermission.md)
+Get the latest scenario configuration resource permission fix result.
+
+### [Get-AzChaosScenarioConfigurationValidation](Get-AzChaosScenarioConfigurationValidation.md)
+Get the latest scenario configuration validation result.
+
 ### [Get-AzChaosScenarioRun](Get-AzChaosScenarioRun.md)
 Get a scenario run.
 This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
@@ -27,6 +33,9 @@ While the run is in progress the service returns 202 with a Location header poin
 
 ### [Get-AzChaosWorkspace](Get-AzChaosWorkspace.md)
 Get a Workspace resource.
+
+### [Get-AzChaosWorkspaceEvaluation](Get-AzChaosWorkspaceEvaluation.md)
+Get the latest workspace evaluation result.
 
 ### [Initialize-AzChaosWorkspace](Initialize-AzChaosWorkspace.md)
 Stand up a ready-to-use Chaos Studio workspace end to end.

@@ -23,7 +23,7 @@ Create an in-memory object for ActionDependency.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-$dependency = New-AzChaosActionDependencyObject -Name 'stop-vm' -OnActionLifecycle 'Success'
+$dependency = New-AzChaosActionDependencyObject -Name 'stop-primary-vm' -OnActionLifecycle 'Success'
 New-AzChaosScenarioActionObject -Name 'stop-secondary-vm' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT5M' -RunAfterItem $dependency
 ```
 
@@ -32,10 +32,10 @@ New-AzChaosScenarioActionObject -Name 'stop-secondary-vm' -ActionId 'microsoft-c
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $dependencies = @(
-    New-AzChaosActionDependencyObject -Name 'stop-vm' -OnActionLifecycle 'Success'
     New-AzChaosActionDependencyObject -Name 'stop-zone-two' -OnActionLifecycle 'AnyTerminal'
+    New-AzChaosActionDependencyObject -Name 'stop-zone-three' -OnActionLifecycle 'AnyTerminal'
 )
-New-AzChaosScenarioActionObject -Name 'stop-zone-three' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT2M' -RunAfterItem $dependencies
+New-AzChaosScenarioActionObject -Name 'stop-zone-one' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT2M' -RunAfterItem $dependencies
 ```
 
 

@@ -196,6 +196,102 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Get-AzChaosScenarioConfigurationResourcePermission",
+      "description": "Get the latest scenario configuration resource permission fix result.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/fixResourcePermissions/latest",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenarioconfigurationresourcepermission"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ScenarioConfigurationName <String>",
+              "-ScenarioName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the latest scenario configuration resource permission fix result.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ScenarioConfigurationName",
+              "value": "[Path.scenarioConfigurationName]"
+            },
+            {
+              "name": "-ScenarioName",
+              "value": "[Path.scenarioName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzChaosScenarioConfigurationValidation",
+      "description": "Get the latest scenario configuration validation result.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/validations/latest",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenarioconfigurationvalidation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ScenarioConfigurationName <String>",
+              "-ScenarioName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the latest scenario configuration validation result.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ScenarioConfigurationName",
+              "value": "[Path.scenarioConfigurationName]"
+            },
+            {
+              "name": "-ScenarioName",
+              "value": "[Path.scenarioName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

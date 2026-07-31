@@ -80,6 +80,44 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Get-AzChaosWorkspaceEvaluation",
+      "description": "Get the latest workspace evaluation result.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/evaluations/latest",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosworkspaceevaluation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the latest workspace evaluation result.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
