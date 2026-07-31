@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     catch (Exception)
                     {
-                        //TODO:
                     }
                     finally
                     {
@@ -105,11 +104,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public override void ClearCache()
         {
             ClearCacheInternal(null);
+            ClearAppTokenCache();
         }
 
         public override void ClearCache(string authority)
         {
             ClearCacheInternal(authority);
+            ClearAppTokenCache();
         }
 
         private void ClearCacheInternal(string authority)

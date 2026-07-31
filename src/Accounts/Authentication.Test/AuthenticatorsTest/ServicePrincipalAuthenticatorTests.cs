@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -104,6 +105,56 @@ namespace Common.Authenticators.Test
             mockAzureCredentialFactory.Verify(f => f.CreateClientSecretCredential(TestTenantId, accountId, securePassword, It.IsAny<ClientSecretCredentialOptions>()), Times.Once());
             Assert.Equal(fakeToken, token.AccessToken);
             Assert.Equal(TestTenantId, token.TenantId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public async Task ServicePrincipalAuthenticationUsesSharedAppTokenCache()
+        {
+            var securePassword = new SecureString();
+            "pa88w0rd!".ToCharArray().ForEach(c => securePassword.AppendChar(c));
+            var cacheProvider = new InMemoryTokenCacheProvider();
+            var cacheOptions = new List<TokenCachePersistenceOptions>();
+            var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+            mockAzureCredentialFactory.Setup(f => f.CreateClientSecretCredential(
+                It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SecureString>(), It.IsAny<ClientSecretCredentialOptions>()))
+                .Callback<string, string, SecureString, ClientSecretCredentialOptions>((_, _, _, options) => cacheOptions.Add(options.TokenCachePersistenceOptions))
+                .Returns(() => new TokenCredentialMock());
+
+            AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
+
+            var parameter = new ServicePrincipalParameters(
+                cacheProvider,
+                AzureEnvironment.PublicEnvironments["AzureCloud"],
+                null,
+                TestTenantId,
+                TestResourceId,
+                "testuser",
+                null,
+                null,
+                null,
+                securePassword,
+                null);
+            var authenticator = new ServicePrincipalAuthenticator();
+
+            await authenticator.Authenticate(parameter);
+            await authenticator.Authenticate(parameter);
+
+            Assert.Equal(2, cacheOptions.Count);
+            Assert.Same(cacheProvider.GetAppTokenCachePersistenceOptions(), cacheOptions[0]);
+            Assert.Same(cacheOptions[0], cacheOptions[1]);
+            Assert.NotSame(cacheProvider.GetTokenCachePersistenceOptions(), cacheOptions[0]);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AppTokenCacheCanBeCleared()
+        {
+            var cacheOptions = new InMemoryTokenCacheOptions(new byte[] { 1, 2, 3 });
+
+            cacheOptions.Clear();
+
+            Assert.Empty(cacheOptions.CachedToken.ToArray());
         }
 
         [Fact]
