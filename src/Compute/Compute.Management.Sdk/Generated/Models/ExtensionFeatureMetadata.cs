@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Additional metadata for extension features.
+    /// Additional metadata about extension features, including compliance and
+    /// capability tags.
     /// </summary>
     public partial class ExtensionFeatureMetadata
     {
@@ -24,10 +25,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the ExtensionFeatureMetadata class.
         /// </summary>
 
-        /// <param name="extensionFeatureTags">Dictionary for additional metadata properties (e.g., compliance flags,
-        /// supported features).
+        /// <param name="extensionFeatureTags">List of additional metadata properties (e.g., compliance flags, supported
+        /// features).
         /// </param>
-        public ExtensionFeatureMetadata(object extensionFeatureTags = default(object))
+        public ExtensionFeatureMetadata(System.Collections.Generic.IList<ExtensionFeatureTag> extensionFeatureTags = default(System.Collections.Generic.IList<ExtensionFeatureTag>))
 
         {
             this.ExtensionFeatureTags = extensionFeatureTags;
@@ -41,10 +42,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
         /// <summary>
-        /// Gets or sets dictionary for additional metadata properties (e.g.,
-        /// compliance flags, supported features).
+        /// Gets or sets list of additional metadata properties (e.g., compliance
+        /// flags, supported features).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extensionFeatureTags")]
-        public object ExtensionFeatureTags {get; set; }
+        public System.Collections.Generic.IList<ExtensionFeatureTag> ExtensionFeatureTags {get; set; }
     }
 }

@@ -156,6 +156,10 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public virtual IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMS { get; private set; }
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations
+        /// </summary>
+        public virtual IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations VirtualMachineScaleSetVMDiagnosticRunCommands { get; private set; }
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMExtensionsOperations
         /// </summary>
         public virtual IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; private set; }
@@ -163,6 +167,10 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations
         /// </summary>
         public virtual IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualMachineDiagnosticRunCommandsOperations
+        /// </summary>
+        public virtual IVirtualMachineDiagnosticRunCommandsOperations VirtualMachineDiagnosticRunCommands { get; private set; }
         /// <summary>
         /// Gets the IVirtualMachineExtensionsOperations
         /// </summary>
@@ -259,14 +267,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IResourceSkusOperations
         /// </summary>
         public virtual IResourceSkusOperations ResourceSkus { get; private set; }
-        /// <summary>
-        /// Gets the ISharedVMExtensionOperations
-        /// </summary>
-        public virtual ISharedVMExtensionOperations SharedVMExtension { get; private set; }
-        /// <summary>
-        /// Gets the ISharedVMExtensionVersionOperations
-        /// </summary>
-        public virtual ISharedVMExtensionVersionOperations SharedVMExtensionVersion { get; private set; }
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
         /// </summary>
@@ -530,8 +530,10 @@ namespace Microsoft.Azure.Management.Compute
             this.VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             this.VirtualMachineScaleSetLifeCycleHookEvents = new VirtualMachineScaleSetLifeCycleHookEventsOperations(this);
             this.VirtualMachineScaleSetVMS = new VirtualMachineScaleSetVMSOperations(this);
+            this.VirtualMachineScaleSetVMDiagnosticRunCommands = new VirtualMachineScaleSetVMDiagnosticRunCommandsOperations(this);
             this.VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
             this.VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
+            this.VirtualMachineDiagnosticRunCommands = new VirtualMachineDiagnosticRunCommandsOperations(this);
             this.VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             this.DiskAccesses = new DiskAccessesOperations(this);
             this.DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
@@ -556,8 +558,6 @@ namespace Microsoft.Azure.Management.Compute
             this.GallerySharingProfile = new GallerySharingProfileOperations(this);
             this.SoftDeletedResource = new SoftDeletedResourceOperations(this);
             this.ResourceSkus = new ResourceSkusOperations(this);
-            this.SharedVMExtension = new SharedVMExtensionOperations(this);
-            this.SharedVMExtensionVersion = new SharedVMExtensionVersionOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

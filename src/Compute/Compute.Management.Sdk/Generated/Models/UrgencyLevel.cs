@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
     public static class UrgencyLevel
     {
+        /// <summary>
+        /// Regular urgency level.
+        /// </summary>
         public const string Regular = "Regular";
+        /// <summary>
+        /// Expedited urgency level.
+        /// </summary>
         public const string Expedited = "Expedited";
+        /// <summary>
+        /// Emergency urgency level.
+        /// </summary>
         public const string Emergency = "Emergency";
     }
 }

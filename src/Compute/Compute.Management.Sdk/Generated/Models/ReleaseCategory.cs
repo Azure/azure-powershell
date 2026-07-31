@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Compute.Models
 
     public static class ReleaseCategory
     {
+        /// <summary>
+        /// Other type of change.
+        /// </summary>
         public const string Other = "Other";
+        /// <summary>
+        /// Bug fix change.
+        /// </summary>
         public const string BugFix = "BugFix";
+        /// <summary>
+        /// Security fix change.
+        /// </summary>
         public const string SecurityFix = "SecurityFix";
+        /// <summary>
+        /// Compatibility update change.
+        /// </summary>
         public const string CompatibilityUpdate = "CompatibilityUpdate";
+        /// <summary>
+        /// New feature change.
+        /// </summary>
         public const string NewFeature = "NewFeature";
     }
 }

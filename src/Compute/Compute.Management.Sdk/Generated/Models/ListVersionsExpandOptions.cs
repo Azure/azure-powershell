@@ -7,14 +7,15 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for ExtensionState.
+    /// Defines values for ListVersionsExpandOptions.
     /// </summary>
 
 
-    public static class ExtensionState
+    public static class ListVersionsExpandOptions
     {
-        public const string Active = "Active";
-        public const string ScheduledForDeprecation = "ScheduledForDeprecation";
-        public const string Deprecated = "Deprecated";
+        /// <summary>
+        /// Expand to include all properties in the response.
+        /// </summary>
+        public const string Properties = "properties";
     }
 }
