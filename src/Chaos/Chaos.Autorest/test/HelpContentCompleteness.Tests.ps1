@@ -14,8 +14,11 @@
 <#
 Static, offline completeness check. Fails if a debugging/experiment placeholder
 sentinel (e.g. a stray swagger-transform artifact) leaks into shipped
-documentation or custom cmdlet source. Added after a `SENTRECURSIVE` placeholder
-description shipped in five tracked files (see DEV-012 in the deviation log).
+documentation or custom cmdlet source. Also fails if generated cmdlet help loses
+authored example prose and ships bare command-only examples. Added after a
+`SENTRECURSIVE` placeholder description shipped in five tracked files (see
+DEV-012 in the deviation log), and after a no-profile help regeneration order
+bug stripped all example descriptions from generated cmdlet help.
 This test intentionally does not depend on HttpPipelineMocking/recordings — it
 only inspects tracked text files on disk.
 #>
@@ -53,11 +56,51 @@ Describe 'Shipped help and custom cmdlet content is free of placeholder sentinel
                 }
             }
         }
+
+        $manifest = Import-PowerShellDataFile -Path (Join-Path $moduleRoot 'Az.Chaos.psd1')
+        $exportedCmdlets = @($manifest.FunctionsToExport | Where-Object { $_ -like '*-AzChaos*' } | Sort-Object)
+        $exampleDescriptionFailures = @()
+        foreach ($cmdletName in $exportedCmdlets) {
+            $helpFile = Join-Path (Join-Path $moduleRoot 'docs') "$cmdletName.md"
+            if (-not (Test-Path -Path $helpFile)) {
+                $exampleDescriptionFailures += "$cmdletName has no generated docs file at '$helpFile'."
+                continue
+            }
+
+            $helpContent = Get-Content -Path $helpFile -Raw
+            if ($helpContent -notmatch '(?ms)^## EXAMPLES\s*(?<Examples>.*?)(?=^##\s|\z)') {
+                $exampleDescriptionFailures += "$cmdletName has no EXAMPLES section in generated docs."
+                continue
+            }
+
+            $exampleSection = $Matches.Examples
+            $exampleBlocks = [regex]::Matches($exampleSection, '(?ms)^###\s+.*?(?=^###\s+|\z)')
+            if ($exampleBlocks.Count -eq 0) {
+                $exampleDescriptionFailures += "$cmdletName has no generated example blocks."
+                continue
+            }
+
+            for ($i = 0; $i -lt $exampleBlocks.Count; $i++) {
+                $block = $exampleBlocks[$i].Value
+                $exampleNumber = $i + 1
+                $withoutCodeFences = [regex]::Replace($block, '(?ms)```.*?```', '')
+                $descriptionLines = @($withoutCodeFences -split "`r?`n" | Where-Object {
+                    $_ -notmatch '^###\s+' -and -not [System.String]::IsNullOrWhiteSpace($_)
+                })
+                if ($descriptionLines.Count -eq 0) {
+                    $exampleDescriptionFailures += "$cmdletName example $exampleNumber has no description prose in generated docs."
+                }
+            }
+        }
     }
 
     It 'contains no placeholder sentinel tokens in docs, help, or custom' {
         $sentinelHits | Should -BeNullOrEmpty -Because (
             ($sentinelHits | ForEach-Object { "$($_.File) matched '$($_.Pattern)'" }) -join "`n"
         )
+    }
+
+    It 'has description prose for every generated example of every exported cmdlet' {
+        $exampleDescriptionFailures | Should -BeNullOrEmpty -Because ($exampleDescriptionFailures -join "`n")
     }
 }
