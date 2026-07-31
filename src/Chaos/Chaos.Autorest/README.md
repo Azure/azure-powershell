@@ -75,21 +75,28 @@ directive:
       property-name: Json
     set:
       property-name: ScenarioRunJson
-  # --- The service requires Scenario.description even though the swagger marks it
-  #     optional, but flattened body-property requiredness is not reflected in
-  #     generated cmdlet Mandatory metadata. Keep this as a help-text-only
-  #     correction; requiredness must be fixed in the service-owned contract. ---
+  # --- The service requires Scenario.description and at least one action, but
+  #     accepts a scenario with no parameters key. Requiredness for flattened body
+  #     parameters only reaches the cmdlet when the containing resource envelope
+  #     requires properties, so fix the envelope and the nested ScenarioProperties
+  #     required list together: make -Description and -Action mandatory, keep
+  #     -Parameter optional. Required cannot enforce minItems: actions: [] remains
+  #     a service-side validation failure. ---
+  - from: swagger-document
+    where: $.definitions.Scenario
+    transform: >-
+      if (!$.required) { $.required = []; } if ($.required.indexOf("properties") < 0) { $.required.push("properties"); }
   - from: swagger-document
     where: $.definitions.ScenarioProperties
     transform: >-
-      $.properties.description.description = "Description of what this scenario does."
+      $.properties.description.description = "Description of what this scenario does."; $.required = ($.required || []).filter(function(x) { return x !== "parameters"; }); if ($.required.indexOf("actions") < 0) { $.required.push("actions"); } if ($.required.indexOf("description") < 0) { $.required.push("description"); }
   # --- ScenarioConfigurationProperties already marks scenarioId required, but
   #     that nested required array cannot affect flattened cmdlet parameters while
   #     the ScenarioConfiguration envelope itself leaves properties optional. Match
   #     Workspace's envelope shape so -ScenarioId becomes mandatory on expanded
-  #     create variants. Do not apply this to Scenario: it would also force
-  #     -Parameter on every scenario create, which is a worse user experience and
-  #     needs product/service confirmation. ---
+  #     create variants. Scenario is handled separately above because its nested
+  #     required list overstates -Parameter and must be corrected at the same time
+  #     as its envelope. ---
   - from: swagger-document
     where: $.definitions.ScenarioConfiguration
     transform: >-
@@ -113,6 +120,15 @@ directive:
     where: $.paths.*[?(@.operationId == "Workspaces_RefreshRecommendations")]
     transform: >-
       $.responses["200"] = $.responses["200"] || { description: "Workspace evaluation result.", schema: { "$ref": "#/definitions/WorkspaceEvaluation" } }
+  # --- The service exposes /latest GET endpoints for the terminal resources that
+  #     Location-based LROs already poll at runtime. Declare only the observed
+  #     endpoints whose response schemas already exist in the pinned swagger by
+  #     absolute $ref; injected paths have no reliable relative-ref base. Do not
+  #     invent a discoveries/latest schema while the contract lacks one. ---
+  - from: swagger-document
+    where: $.paths
+    transform: >-
+      var api = { name: "api-version", in: "query", description: "The API version to use for this operation.", required: true, type: "string" }; var sub = { name: "subscriptionId", in: "path", description: "The ID of the target subscription.", required: true, type: "string" }; var rg = { name: "resourceGroupName", in: "path", description: "The name of the resource group.", required: true, type: "string" }; var ws = { name: "workspaceName", in: "path", description: "String that represents a Workspace resource name.", required: true, type: "string", minLength: 1 }; var scenario = { name: "scenarioName", in: "path", description: "Name of the scenario.", required: true, type: "string", minLength: 1 }; var config = { name: "scenarioConfigurationName", in: "path", description: "Name of the scenario definition.", required: true, type: "string", minLength: 1 }; $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/evaluations/latest"] = $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/evaluations/latest"] || { get: { tags: ["Workspaces"], operationId: "WorkspaceEvaluations_Get", description: "Get the latest workspace evaluation result.", produces: ["application/json"], parameters: [api, sub, rg, ws], responses: { "200": { description: "Workspace evaluation result.", schema: { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/f228b86c72657cd366e26c77420bfbd436938821/specification/chaos/resource-manager/Microsoft.Chaos/Chaos/preview/2026-05-01-preview/openapi.json#/definitions/WorkspaceEvaluation" } }, default: { description: "Error response describing why the operation failed." } } } }; $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/validations/latest"] = $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/validations/latest"] || { get: { tags: ["ScenarioConfigurations"], operationId: "ScenarioConfigurationValidations_Get", description: "Get the latest scenario configuration validation result.", produces: ["application/json"], parameters: [api, sub, rg, ws, scenario, config], responses: { "200": { description: "Validation result.", schema: { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/f228b86c72657cd366e26c77420bfbd436938821/specification/chaos/resource-manager/Microsoft.Chaos/Chaos/preview/2026-05-01-preview/openapi.json#/definitions/Validation" } }, default: { description: "Error response describing why the operation failed." } } } }; $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/fixResourcePermissions/latest"] = $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/scenarios/{scenarioName}/configurations/{scenarioConfigurationName}/fixResourcePermissions/latest"] || { get: { tags: ["ScenarioConfigurations"], operationId: "ScenarioConfigurationResourcePermissions_Get", description: "Get the latest scenario configuration resource permission fix result.", produces: ["application/json"], parameters: [api, sub, rg, ws, scenario, config], responses: { "200": { description: "Permissions fix result.", schema: { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/f228b86c72657cd366e26c77420bfbd436938821/specification/chaos/resource-manager/Microsoft.Chaos/Chaos/preview/2026-05-01-preview/openapi.json#/definitions/PermissionsFix" } }, default: { description: "Error response describing why the operation failed." } } } };
   # --- DELETE on existing scenario resources returns 202 Accepted. The swagger
   #     only declares 200/204 for Scenarios_Delete, so generated clients route a
   #     successful delete to the default error handler. ScenarioConfiguration
