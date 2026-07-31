@@ -135,8 +135,13 @@ directive:
   #     already declares 202 but incorrectly marks the operation as an LRO without
   #     the polling headers the generated LRO loop requires; the service returns a
   #     ScenarioConfiguration body with provisioningState=Deleting, so treat 202 as
-  #     a terminal accepted response. Do not attach the response body schema here:
-  #     Remove-* cmdlets should emit nothing unless -PassThru is supplied. ---
+  #     a terminal accepted response. ScenarioConfigurations_Delete also returns
+  #     404 for an absent configuration even though ARM delete should return 204;
+  #     declare 404 so generated cmdlets expose an overrideOnNotFound hook that
+  #     custom code can use to preserve idempotent Remove-* behavior. Remove this
+  #     workaround when the service/spec returns and declares 204 for absent
+  #     deletes. Do not attach response body schemas here: Remove-* cmdlets should
+  #     emit nothing unless -PassThru is supplied. ---
   - from: swagger-document
     where: $.paths.*[?(@.operationId == "Scenarios_Delete")]
     transform: >-
@@ -144,7 +149,7 @@ directive:
   - from: swagger-document
     where: $.paths.*[?(@.operationId == "ScenarioConfigurations_Delete")]
     transform: >-
-      delete $["x-ms-long-running-operation"]; delete $["x-ms-long-running-operation-options"]
+      delete $["x-ms-long-running-operation"]; delete $["x-ms-long-running-operation-options"]; $["responses"]["404"] = $["responses"]["404"] || { description: "Not Found." }
 
   # --- Prune the retired V1 experiment-era nouns (PR2). The V2 openapi.json still
   #     carries the V1 surface, so directives remove every non-V2 noun. ---
