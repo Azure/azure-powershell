@@ -120,6 +120,33 @@ Describe 'Start-AzChaosScenarioRun' {
         Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
     }
 
+    It 'retries generated permission errors when other error collections contain only empty placeholders' {
+        $script:validationAttempt = 0
+        Mock Test-AzChaosScenarioConfiguration {
+            $script:validationAttempt++
+            if ($script:validationAttempt -eq 1) {
+                return [pscustomobject]@{
+                    Status = 'RequiresAttention'
+                    ErrorPermission = @([pscustomobject]@{
+                        ResourceId = '/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm1'
+                        MissingPermission = @('Microsoft.Compute/virtualMachines/start/action')
+                        RecommendedRole = @('9980e02c-c2be-4d73-94e8-173b1dc7cf3c')
+                    })
+                    ErrorResource = @([pscustomobject]@{ ResourceId = $null; ErrorMessage = $null })
+                    Errors = @([pscustomobject]@{ ErrorCode = $null; ErrorMessage = $null })
+                }
+            }
+            $succeededValidation
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -Verbose
+
+        $script:validationAttempt | Should -Be 2
+        $script:executeCallCount | Should -Be 1
+        Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
+    }
+
     It 'reports permission details after bounded RBAC propagation retries are exhausted' {
         Mock Test-AzChaosScenarioConfiguration {
             [pscustomobject]@{
