@@ -147,11 +147,123 @@ Describe 'Start-AzChaosScenarioRun' {
         Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
     }
 
+    It 'retries permission validation errors when operation errors carry the service RBAC validation code' {
+        $script:validationAttempt = 0
+        Mock Test-AzChaosScenarioConfiguration {
+            $script:validationAttempt++
+            if ($script:validationAttempt -eq 1) {
+                return [pscustomobject]@{
+                    Properties = [pscustomobject]@{
+                        Status = 'RequiresAttention'
+                        ValidationErrors = [pscustomobject]@{
+                            Permission = @([pscustomobject]@{
+                                ResourceId = '/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm1'
+                                MissingPermission = @('Microsoft.Compute/virtualMachines/start/action')
+                                RecommendedRole = @('9980e02c-c2be-4d73-94e8-173b1dc7cf3c')
+                            })
+                            Resource = @()
+                        }
+                        Errors = @([pscustomobject]@{
+                            ErrorCode = 'ScenarioExecutionRbacValidationError'
+                            ErrorMessage = 'Performed RBAC validation and found failures.'
+                        })
+                    }
+                }
+            }
+            $succeededValidation
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -Verbose
+
+        $script:validationAttempt | Should -Be 2
+        $script:executeCallCount | Should -Be 1
+        Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
+    }
+
+    It 'does not retry permission validation errors with discovery operation errors' {
+        Mock Test-AzChaosScenarioConfiguration {
+            [pscustomobject]@{
+                Status = 'RequiresAttention'
+                ErrorPermission = @([pscustomobject]@{
+                    ResourceId = '/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm1'
+                    MissingPermission = @('Microsoft.Compute/virtualMachines/start/action')
+                    RecommendedRole = @('9980e02c-c2be-4d73-94e8-173b1dc7cf3c')
+                })
+                ErrorResource = @()
+                Errors = @([pscustomobject]@{
+                    ErrorCode = 'ResourceDiscoveryPermissionError'
+                    ErrorMessage = 'The workspace identity cannot discover resources. HTTP 403.'
+                })
+            }
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
+
+        $script:executeCallCount | Should -Be 0
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 1 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
+        $startError[0].Exception.Message | Should -BeLike "*ResourceDiscoveryPermissionError*"
+    }
+
+    It 'does not retry permission validation errors with unrelated operation errors' {
+        Mock Test-AzChaosScenarioConfiguration {
+            [pscustomobject]@{
+                Status = 'RequiresAttention'
+                ErrorPermission = @([pscustomobject]@{
+                    ResourceId = '/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm1'
+                    MissingPermission = @('Microsoft.Compute/virtualMachines/start/action')
+                    RecommendedRole = @('9980e02c-c2be-4d73-94e8-173b1dc7cf3c')
+                })
+                ErrorResource = @()
+                Errors = @([pscustomobject]@{
+                    ErrorCode = 'InternalServerError'
+                    ErrorMessage = 'The validation service failed.'
+                })
+            }
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
+
+        $script:executeCallCount | Should -Be 0
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 1 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
+        $startError[0].Exception.Message | Should -BeLike "*InternalServerError*"
+    }
+
     It 'does not retry NoResolvedResources because empty target resolution is terminal' {
         Mock Test-AzChaosScenarioConfiguration {
             [pscustomobject]@{
                 Status = 'NoResolvedResources'
                 ErrorPermission = @()
+                ErrorResource = @()
+                Errors = @([pscustomobject]@{
+                    ErrorCode = 'ResourceTargetingNoResourcesError'
+                    ErrorMessage = 'No resources matched the scenario filters.'
+                })
+            }
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
+
+        $script:executeCallCount | Should -Be 0
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 1 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
+        $startError[0].Exception.Message | Should -BeLike "*status 'NoResolvedResources'*"
+    }
+
+    It 'does not retry NoResolvedResources even if permission errors are present' {
+        Mock Test-AzChaosScenarioConfiguration {
+            [pscustomobject]@{
+                Status = 'NoResolvedResources'
+                ErrorPermission = @([pscustomobject]@{
+                    ResourceId = '/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm1'
+                    MissingPermission = @('Microsoft.Compute/virtualMachines/start/action')
+                    RecommendedRole = @('9980e02c-c2be-4d73-94e8-173b1dc7cf3c')
+                })
                 ErrorResource = @()
                 Errors = @()
             }
@@ -164,6 +276,25 @@ Describe 'Start-AzChaosScenarioRun' {
         Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 1 -Exactly
         Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
         $startError[0].Exception.Message | Should -BeLike "*status 'NoResolvedResources'*"
+    }
+
+    It 'does not retry RequiresAttention when permission errors are empty' {
+        Mock Test-AzChaosScenarioConfiguration {
+            [pscustomobject]@{
+                Status = 'RequiresAttention'
+                ErrorPermission = @()
+                ErrorResource = @()
+                Errors = @()
+            }
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
+
+        $script:executeCallCount | Should -Be 0
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 1 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
+        $startError[0].Exception.Message | Should -BeLike "*status 'RequiresAttention'*"
     }
 
     It 'retries transient validation states instead of failing fast' {

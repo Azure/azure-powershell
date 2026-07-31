@@ -170,8 +170,16 @@ function Start-AzChaosScenarioRun {
             $permissionErrors = @(Get-AzChaosValidationErrorCollection -Validation $Validation -Name @('ErrorPermission', 'ValidationErrorPermission', 'Permission') | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ResourceId', 'MissingPermission', 'MissingPermissions', 'RecommendedRole', 'RecommendedRoles') })
             $resourceErrors = @(Get-AzChaosValidationErrorCollection -Validation $Validation -Name @('ErrorResource', 'ValidationErrorResource', 'Resource') | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ResourceId', 'ErrorMessage', 'Message') })
             $operationErrors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Validation -Name @('Errors', 'Error')) | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ErrorCode', 'Code', 'ErrorMessage', 'Message') })
+            $retryableOperationErrorCodes = @(
+                # Chaos.Workspaces.Worker/ErrorCodes.cs emits this as the typed summary for RBAC validation failures.
+                'ScenarioExecutionRbacValidationError'
+            )
+            $blockingOperationErrors = @($operationErrors | Where-Object {
+                $code = Get-AzChaosObjectPropertyValue -InputObject $_ -Name @('ErrorCode', 'Code')
+                $code -notin $retryableOperationErrorCodes
+            })
 
-            return ($permissionErrors.Count -gt 0 -and $resourceErrors.Count -eq 0 -and $operationErrors.Count -eq 0)
+            return ($permissionErrors.Count -gt 0 -and $resourceErrors.Count -eq 0 -and $blockingOperationErrors.Count -eq 0)
         }
 
         function Format-AzChaosValidationFailure {
