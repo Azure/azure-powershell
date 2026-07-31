@@ -20,7 +20,7 @@ New-AzChaosScenarioActionObject -Name 'cpu-pressure' -ActionId 'microsoft-comput
 ```output
 Name         ActionId                           Duration WaitBefore Parameter
 ----         --------                           -------- ---------- ---------
-cpu-pressure microsoft-compute-cpuPressure/1.0  PT5M     PT1M      {pressureLevel}
+cpu-pressure microsoft-compute-cpuPressure/1.0  PT5M     PT1M       {pressureLevel}
 ```
 
 Creates an in-memory CPU pressure action using an action identifier that has been verified against the service create path. Use `-Parameter` when the action requires action-specific settings, and `-WaitBefore` when it should wait before starting.
