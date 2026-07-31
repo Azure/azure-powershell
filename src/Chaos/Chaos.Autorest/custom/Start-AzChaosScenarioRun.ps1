@@ -108,27 +108,78 @@ function Start-AzChaosScenarioRun {
                 [string[]]$Name
             )
 
-            $errors = @(Get-AzChaosObjectPropertyValue -InputObject $Validation -Name $Name | Where-Object { $null -ne $_ })
+            $errors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Validation -Name $Name) | Where-Object { $null -ne $_ })
             if ($errors.Count -gt 0) {
                 return $errors
             }
 
             $validationErrors = Get-AzChaosObjectPropertyValue -InputObject $Validation -Name @('ValidationErrors')
             if ($null -ne $validationErrors) {
-                return @(Get-AzChaosObjectPropertyValue -InputObject $validationErrors -Name $Name | Where-Object { $null -ne $_ })
+                return @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $validationErrors -Name $Name) | Where-Object { $null -ne $_ })
             }
 
             return @()
         }
 
+        function ConvertTo-AzChaosCollection {
+            param([object]$InputObject)
+
+            if ($null -eq $InputObject) {
+                return @()
+            }
+
+            if ($InputObject -is [string]) {
+                return @($InputObject)
+            }
+
+            if ($InputObject -is [System.Collections.IEnumerable]) {
+                return @($InputObject)
+            }
+
+            return @($InputObject)
+        }
+
+        function Test-AzChaosErrorObjectHasContent {
+            param(
+                [object]$InputObject,
+                [string[]]$Name
+            )
+
+            if ($null -eq $InputObject) {
+                return $false
+            }
+
+            foreach ($candidate in $Name) {
+                $value = Get-AzChaosObjectPropertyValue -InputObject $InputObject -Name @($candidate)
+                if ($value -is [System.Collections.IEnumerable] -and $value -isnot [string]) {
+                    if (@($value | Where-Object { -not [System.String]::IsNullOrWhiteSpace([string]$_) }).Count -gt 0) {
+                        return $true
+                    }
+                }
+                elseif (-not [System.String]::IsNullOrWhiteSpace([string]$value)) {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
         function Test-AzChaosValidationHasPermissionOnlyErrors {
             param([object]$Validation)
 
-            $permissionErrors = @(Get-AzChaosValidationErrorCollection -Validation $Validation -Name @('ErrorPermission', 'ValidationErrorPermission', 'Permission'))
-            $resourceErrors = @(Get-AzChaosValidationErrorCollection -Validation $Validation -Name @('ErrorResource', 'ValidationErrorResource', 'Resource'))
-            $operationErrors = @(Get-AzChaosObjectPropertyValue -InputObject $Validation -Name @('Errors', 'Error') | Where-Object { $null -ne $_ })
+            $permissionErrors = @(Get-AzChaosValidationErrorCollection -Validation $Validation -Name @('ErrorPermission', 'ValidationErrorPermission', 'Permission') | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ResourceId', 'MissingPermission', 'MissingPermissions', 'RecommendedRole', 'RecommendedRoles') })
+            $resourceErrors = @(Get-AzChaosValidationErrorCollection -Validation $Validation -Name @('ErrorResource', 'ValidationErrorResource', 'Resource') | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ResourceId', 'ErrorMessage', 'Message') })
+            $operationErrors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Validation -Name @('Errors', 'Error')) | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ErrorCode', 'Code', 'ErrorMessage', 'Message') })
+            $retryableOperationErrorCodes = @(
+                # Chaos.Workspaces.Worker/ErrorCodes.cs emits this as the typed summary for RBAC validation failures.
+                'ScenarioExecutionRbacValidationError'
+            )
+            $blockingOperationErrors = @($operationErrors | Where-Object {
+                $code = Get-AzChaosObjectPropertyValue -InputObject $_ -Name @('ErrorCode', 'Code')
+                $code -notin $retryableOperationErrorCodes
+            })
 
-            return ($permissionErrors.Count -gt 0 -and $resourceErrors.Count -eq 0 -and $operationErrors.Count -eq 0)
+            return ($permissionErrors.Count -gt 0 -and $resourceErrors.Count -eq 0 -and $blockingOperationErrors.Count -eq 0)
         }
 
         function Format-AzChaosValidationFailure {

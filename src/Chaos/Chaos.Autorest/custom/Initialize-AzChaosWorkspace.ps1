@@ -64,6 +64,7 @@ function Initialize-AzChaosWorkspace {
         ${Tag},
 
         [Parameter(HelpMessage='The role definition name granted to the workspace identity on each scope. Defaults to Reader.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='"Reader"')]
         [System.String]
         ${RoleDefinitionName} = 'Reader',
 
@@ -126,20 +127,231 @@ function Initialize-AzChaosWorkspace {
             return $false
         }
 
-        function Wait-AzChaosWorkspaceScenarioRecommendation {
+        function Get-AzChaosObjectPropertyValue {
+            param(
+                [object]$InputObject,
+                [string[]]$Name
+            )
+
+            if ($null -eq $InputObject) {
+                return $null
+            }
+
+            foreach ($candidate in $Name) {
+                $property = $InputObject.PSObject.Properties[$candidate]
+                if ($null -ne $property) {
+                    return $property.Value
+                }
+            }
+
+            $properties = $InputObject.PSObject.Properties['Properties']
+            if ($null -ne $properties -and $null -ne $properties.Value -and -not [object]::ReferenceEquals($InputObject, $properties.Value)) {
+                foreach ($candidate in $Name) {
+                    $property = $properties.Value.PSObject.Properties[$candidate]
+                    if ($null -ne $property) {
+                        return $property.Value
+                    }
+                }
+            }
+
+            return $null
+        }
+
+        function ConvertTo-AzChaosCollection {
+            param([object]$InputObject)
+
+            if ($null -eq $InputObject) {
+                return @()
+            }
+
+            if ($InputObject -is [string]) {
+                return @($InputObject)
+            }
+
+            if ($InputObject -is [System.Collections.IEnumerable]) {
+                return @($InputObject)
+            }
+
+            return @($InputObject)
+        }
+
+        function Test-AzChaosErrorObjectHasContent {
+            param(
+                [object]$InputObject,
+                [string[]]$Name
+            )
+
+            if ($null -eq $InputObject) {
+                return $false
+            }
+
+            foreach ($candidate in $Name) {
+                $value = Get-AzChaosObjectPropertyValue -InputObject $InputObject -Name @($candidate)
+                if ($value -is [System.Collections.IEnumerable] -and $value -isnot [string]) {
+                    if (@($value | Where-Object { -not [System.String]::IsNullOrWhiteSpace([string]$_) }).Count -gt 0) {
+                        return $true
+                    }
+                }
+                elseif (-not [System.String]::IsNullOrWhiteSpace([string]$value)) {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
+        function Format-AzChaosWorkspaceEvaluationFailure {
+            param(
+                [string]$WorkspaceName,
+                [object]$Evaluation
+            )
+
+            $status = Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Status')
+            $errors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Errors', 'Error')) | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ErrorCode', 'Code', 'ErrorMessage', 'Message') })
+            $details = @()
+            foreach ($errorItem in $errors) {
+                $code = Get-AzChaosObjectPropertyValue -InputObject $errorItem -Name @('ErrorCode', 'Code')
+                $message = Get-AzChaosObjectPropertyValue -InputObject $errorItem -Name @('ErrorMessage', 'Message')
+                if ([System.String]::IsNullOrWhiteSpace($code)) {
+                    $details += $message
+                }
+                elseif ([System.String]::IsNullOrWhiteSpace($message)) {
+                    $details += $code
+                }
+                else {
+                    $details += "$code`: $message"
+                }
+            }
+
+            if ($details.Count -eq 0) {
+                $details += 'No detailed evaluation errors were returned.'
+            }
+
+            return "Workspace evaluation for workspace '$WorkspaceName' returned status '$status'. $($details -join ' ')"
+        }
+
+        function Test-AzChaosWorkspaceEvaluationHasRbacPropagationError {
+            param([object]$Evaluation)
+
+            $errors = @(ConvertTo-AzChaosCollection -InputObject (Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Errors', 'Error')) | Where-Object { Test-AzChaosErrorObjectHasContent -InputObject $_ -Name @('ErrorCode', 'Code', 'ErrorMessage', 'Message') })
+            foreach ($errorItem in $errors) {
+                $code = Get-AzChaosObjectPropertyValue -InputObject $errorItem -Name @('ErrorCode', 'Code')
+                # Chaos.Workspaces.Worker/ErrorCodes.cs emits this when discovery cannot read scopes under a just-created role assignment.
+                if ($code -eq 'ResourceDiscoveryPermissionError') {
+                    return $true
+                }
+            }
+
+            return $false
+        }
+
+        function Assert-AzChaosWorkspaceEvaluationNotFailed {
+            param(
+                [string]$WorkspaceName,
+                [object]$Evaluation
+            )
+
+            if ($null -eq $Evaluation -or $Evaluation -is [bool]) {
+                return
+            }
+
+            # Keep status list in sync with generated\api\Models\WorkspaceEvaluationProperties.cs:246.
+            $knownStatuses = @('Pending', 'Queued', 'InProgress', 'Succeeded', 'PartiallySucceeded', 'Failed', 'Canceled')
+            $status = Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Status')
+            if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin $knownStatuses) {
+                throw "Workspace evaluation for workspace '$WorkspaceName' returned unrecognized status '$status'."
+            }
+
+            if ($status -in @('Failed', 'Canceled')) {
+                throw (Format-AzChaosWorkspaceEvaluationFailure -WorkspaceName $WorkspaceName -Evaluation $Evaluation)
+            }
+        }
+
+        function Invoke-AzChaosWorkspaceScenarioEvaluationWithRetry {
+            param(
+                [hashtable]$EvaluationParameter,
+                [string]$WorkspaceName,
+                [bool]$RetryRbacPropagation
+            )
+
+            $retryIntervalSeconds = 15
+            $maxAttempts = 7 # Initial evaluation plus six retries: 90 seconds for just-created RBAC assignments to propagate.
+            for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
+                $evaluation = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter
+                $status = Get-AzChaosObjectPropertyValue -InputObject $evaluation -Name @('Status')
+                if ($status -in @('Failed', 'Canceled') -and $RetryRbacPropagation -and (Test-AzChaosWorkspaceEvaluationHasRbacPropagationError -Evaluation $evaluation) -and $attempt -lt $maxAttempts) {
+                    Write-Verbose "Workspace evaluation for '$WorkspaceName' failed with an RBAC propagation error. Waiting $retryIntervalSeconds seconds before retrying evaluation."
+                    Start-Sleep -Seconds $retryIntervalSeconds
+                    continue
+                }
+
+                Assert-AzChaosWorkspaceEvaluationNotFailed -WorkspaceName $WorkspaceName -Evaluation $evaluation
+                return $evaluation
+            }
+        }
+
+        function Get-AzChaosLatestWorkspaceEvaluationIfAvailable {
             param(
                 [hashtable]$CommonParameter,
                 [string]$ResourceGroupName,
                 [string]$WorkspaceName
             )
 
+            if (-not (Get-Command -Name Get-AzChaosWorkspaceEvaluation -ErrorAction SilentlyContinue)) {
+                return $null
+            }
+
+            try {
+                return Get-AzChaosWorkspaceEvaluation @CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction Stop
+            }
+            catch {
+                Write-Verbose "Get-AzChaosWorkspaceEvaluation failed while checking workspace '$WorkspaceName': $($_.Exception.Message). Continuing scenario recommendation polling."
+                return $null
+            }
+        }
+
+        function Wait-AzChaosWorkspaceScenarioRecommendation {
+            param(
+                [hashtable]$CommonParameter,
+                [hashtable]$EvaluationParameter,
+                [string]$ResourceGroupName,
+                [string]$WorkspaceName,
+                [bool]$RetryRbacPropagation
+            )
+
             $deadline = [System.DateTimeOffset]::UtcNow.AddMinutes(10)
             $intervalSeconds = 15
+            $evaluationRetryCount = 0
+            $maxEvaluationRetryCount = 6 # Six re-runs at 15 seconds each: 90 seconds for just-created RBAC assignments to propagate.
             $knownStatuses = @('NotEvaluated', 'Recommended', 'NotApplicable', 'Evaluating', 'EvaluationFailed', 'EvaluationCancelled')
             $warnedUnknownStatus = @{}
             $lastErrorMessage = $null
 
             do {
+                $evaluation = Get-AzChaosLatestWorkspaceEvaluationIfAvailable -CommonParameter $CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName
+                $evaluationStatus = Get-AzChaosObjectPropertyValue -InputObject $evaluation -Name @('Status')
+                if ($evaluationStatus -in @('Failed', 'Canceled')) {
+                    if ($evaluationStatus -eq 'Failed' -and $RetryRbacPropagation -and (Test-AzChaosWorkspaceEvaluationHasRbacPropagationError -Evaluation $evaluation) -and $evaluationRetryCount -lt $maxEvaluationRetryCount) {
+                        $evaluationRetryCount++
+                        Write-Verbose "Workspace evaluation for '$WorkspaceName' failed with ResourceDiscoveryPermissionError. Waiting $intervalSeconds seconds before re-running evaluation."
+                        Start-Sleep -Seconds $intervalSeconds
+                        $null = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter
+                        continue
+                    }
+
+                    Assert-AzChaosWorkspaceEvaluationNotFailed -WorkspaceName $WorkspaceName -Evaluation $evaluation
+                }
+
+                if ($evaluationStatus -in @('Pending', 'Queued', 'InProgress')) {
+                    if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
+                        throw "Timed out waiting for workspace evaluation in workspace '$WorkspaceName' to finish after 10 minutes. Re-run Get-AzChaosWorkspaceEvaluation to inspect current status, or use -SkipEvaluationWait to skip this propagation wait."
+                    }
+
+                    Write-Verbose "Workspace evaluation for '$WorkspaceName' is '$evaluationStatus'. Waiting $intervalSeconds seconds before checking again."
+                    Start-Sleep -Seconds $intervalSeconds
+                    continue
+                }
+
                 try {
                     $scenarios = Get-AzChaosScenario @CommonParameter -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction Stop
                     $lastErrorMessage = $null
@@ -233,10 +445,10 @@ function Initialize-AzChaosWorkspace {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $evaluationParams['SubscriptionId'] = $SubscriptionId }
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $evaluationParams['DefaultProfile'] = $DefaultProfile }
-        $null = Invoke-AzChaosWorkspaceScenarioEvaluation @evaluationParams
+        $null = Invoke-AzChaosWorkspaceScenarioEvaluationWithRetry -EvaluationParameter $evaluationParams -WorkspaceName $WorkspaceName -RetryRbacPropagation:(-not $SkipPermission -and -not $SkipEvaluationWait)
 
         if (-not $SkipEvaluationWait) {
-            $scenarios = Wait-AzChaosWorkspaceScenarioRecommendation -CommonParameter $common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName
+            $scenarios = Wait-AzChaosWorkspaceScenarioRecommendation -CommonParameter $common -EvaluationParameter $evaluationParams -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -RetryRbacPropagation:(-not $SkipPermission)
         }
         else {
             $scenarios = Get-AzChaosScenario @common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction SilentlyContinue
