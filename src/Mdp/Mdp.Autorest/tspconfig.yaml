@@ -44,3 +44,8 @@ options:
           - AgentProfile
           - OrganizationProfile
           - FabricProfile
+
+# Remove this once the spec repo drops that rule set.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
