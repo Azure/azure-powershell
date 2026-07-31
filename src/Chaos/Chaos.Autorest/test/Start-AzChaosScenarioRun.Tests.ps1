@@ -147,6 +147,43 @@ Describe 'Start-AzChaosScenarioRun' {
         Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
     }
 
+    It 'does not retry NoResolvedResources because empty target resolution is terminal' {
+        Mock Test-AzChaosScenarioConfiguration {
+            [pscustomobject]@{
+                Status = 'NoResolvedResources'
+                ErrorPermission = @()
+                ErrorResource = @()
+                Errors = @()
+            }
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
+
+        $script:executeCallCount | Should -Be 0
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 1 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
+        $startError[0].Exception.Message | Should -BeLike "*status 'NoResolvedResources'*"
+    }
+
+    It 'retries transient validation states instead of failing fast' {
+        $script:validationAttempt = 0
+        Mock Test-AzChaosScenarioConfiguration {
+            $script:validationAttempt++
+            if ($script:validationAttempt -eq 1) {
+                return [pscustomobject]@{ Status = 'NotStarted' }
+            }
+            $succeededValidation
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -Verbose
+
+        $script:validationAttempt | Should -Be 2
+        $script:executeCallCount | Should -Be 1
+        Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
+    }
+
     It 'reports permission details after bounded RBAC propagation retries are exhausted' {
         Mock Test-AzChaosScenarioConfiguration {
             [pscustomobject]@{
@@ -172,6 +209,32 @@ Describe 'Start-AzChaosScenarioRun' {
         Assert-MockCalled Start-Sleep -Scope It -Times 6 -Exactly -ParameterFilter { $Seconds -eq 15 }
         $startError[0].Exception.Message | Should -BeLike '*Missing permissions: Microsoft.Compute/virtualMachines/powerOff/action*'
         $startError[0].Exception.Message | Should -BeLike '*Recommended roles: 9980e02c-c2be-4d73-94e8-173b1dc7cf3c*'
+    }
+
+    It 'keeps the permission retry budget to 90 seconds so validation returns promptly' {
+        $script:retrySleepSeconds = 0
+        Mock Start-Sleep { $script:retrySleepSeconds += $Seconds }
+        Mock Test-AzChaosScenarioConfiguration {
+            [pscustomobject]@{
+                Status = 'RequiresAttention'
+                ErrorPermission = @([pscustomobject]@{
+                    ResourceId = '/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm1'
+                    MissingPermission = @('Microsoft.Compute/virtualMachines/powerOff/action')
+                    RecommendedRole = @('9980e02c-c2be-4d73-94e8-173b1dc7cf3c')
+                })
+                ErrorResource = @()
+                Errors = @()
+            }
+        }
+        Mock Get-AzChaosScenario { $customScenario }
+
+        Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
+
+        $script:executeCallCount | Should -Be 0
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 7 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 6 -Exactly -ParameterFilter { $Seconds -eq 15 }
+        $script:retrySleepSeconds | Should -Be 90
+        $startError | Should -Not -BeNullOrEmpty
     }
 
     It 'does not execute when validation returns an unrecognized status' {
