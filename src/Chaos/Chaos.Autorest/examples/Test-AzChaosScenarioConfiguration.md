@@ -15,7 +15,7 @@ if ($validation.Status -eq 'Succeeded') {
     Write-Host 'The scenario configuration is valid.'
 } else {
     Write-Host "Validation returned '$($validation.Status)'."
-    $validation.ValidationErrorPermission | Format-List ResourceId, MissingPermission, RecommendedRole
+    $validation.ErrorPermission | Format-List ResourceId, MissingPermission, RecommendedRole
 }
 ```
 
@@ -27,4 +27,4 @@ MissingPermission : {Microsoft.Compute/virtualMachines/powerOff/action, Microsof
 RecommendedRole   : {9980e02c-c2be-4d73-94e8-173b1dc7cf3c}
 ```
 
-Branches on the returned validation record. The command returns a validation object, not a boolean, so test `Status` explicitly &mdash; testing the object itself is always true and would treat a failed validation as a success. A terminal status of `Succeeded` means the configuration is ready to run; `RequiresAttention` means the errors on `ValidationErrorPermission` and `ValidationErrorResource` must be resolved first. To re-read this record later, call `Get-AzChaosScenarioConfigurationValidation`.
+Branches on the returned validation record. The command returns a validation object, not a boolean, so test `Status` explicitly &mdash; testing the object itself is always true and would treat a failed validation as a success. A terminal status of `Succeeded` means the configuration is ready to run; `RequiresAttention` means the errors on `ErrorPermission` and `ErrorResource` must be resolved first. To re-read this record later, call `Get-AzChaosScenarioConfigurationValidation`.
