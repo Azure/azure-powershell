@@ -699,6 +699,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineProxyAgentUseLocalFileRules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGalleryApplicationFlags()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGalleryApplicationFlags");

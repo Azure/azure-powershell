@@ -15,7 +15,8 @@ Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 ```
 Set-AzVMProxyAgentSetting -VM <PSVirtualMachine> [-EnableProxyAgent <Boolean>] [-WireServerMode <String>]
  [-WireServerProfile <String>] [-ImdsMode <String>] [-ImdsProfile <String>] [-KeyIncarnationId <Int32>]
- [-AddProxyAgentExtension <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-AddProxyAgentExtension <Boolean>] [-WireServerUseLocalFileRules <Boolean>] [-ImdsUseLocalFileRules <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -27,11 +28,11 @@ Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 ### Example 1
 ```powershell
 $vmconfig = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
-Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -AddProxyAgentExtension false -WireServerMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}"
+Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -AddProxyAgentExtension false -WireServerMode "Enforce" -WireServerUseLocalFileRules $true -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}" -ImdsUseLocalFileRules $true
 ```
 
-This command sets the Proxy Agent settings for a virtual machine configuration object `$vmconfig`. 
-It enables the Proxy Agent, sets the Wire Server mode to "Enforce", specifies the IMDS profile.
+This command sets the Proxy Agent settings for a virtual machine configuration object `$vmconfig`.
+It enables the Proxy Agent, sets the Wire Server mode to "Enforce", and enables local file rules for Wire Server and IMDS endpoints.
 
 ## PARAMETERS
 
@@ -113,6 +114,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ImdsUseLocalFileRules
+Specifies whether IMDS endpoint should use local file rules.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -KeyIncarnationId
 Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.
 
@@ -166,6 +182,21 @@ Format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/pro
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WireServerUseLocalFileRules
+Specifies whether Wire Server endpoint should use local file rules.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
