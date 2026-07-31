@@ -8,13 +8,17 @@ Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceNa
 
 Re-runs discovery and evaluation for the `contoso-workspace` workspace so that each catalog scenario gets a fresh recommendation status. The service stores a terminal workspace evaluation record that you can read later with `Get-AzChaosWorkspaceEvaluation`.
 
-### Example 2: Refresh recommendations and return the result object
+### Example 2: Refresh recommendations and inspect the evaluation result
 ```powershell
-Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -PassThru
+$evaluation = Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+$evaluation | Format-List Status, NumScenariosToEvaluate, NumScenariosEvaluatedSucceeded, NumScenariosEvaluatedFailed
 ```
 
 ```output
-True
+Status                        : Succeeded
+NumScenariosToEvaluate        : 12
+NumScenariosEvaluatedSucceeded : 12
+NumScenariosEvaluatedFailed   : 0
 ```
 
-Refreshes recommendations and returns `$true` when the refresh completes. Use `-PassThru` when you script the call and need to branch on the outcome; use `Get-AzChaosWorkspaceEvaluation` when you need to inspect the stored evaluation result after the refresh.
+Captures the workspace evaluation record the refresh produces and reports how many catalog scenarios were evaluated. The command returns an evaluation object, not a boolean, so branch on `Status` rather than on the object itself. Use `Get-AzChaosWorkspaceEvaluation` to re-read the same record later without triggering another refresh.

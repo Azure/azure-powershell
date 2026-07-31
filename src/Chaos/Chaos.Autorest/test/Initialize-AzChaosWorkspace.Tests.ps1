@@ -215,7 +215,7 @@ Describe 'Initialize-AzChaosWorkspace' {
         Assert-MockCalled Get-AzChaosScenario -Scope It -Times 1 -Exactly
     }
 
-    It 'keeps re-running failed discovery evaluations to a 90 second RBAC propagation budget' {
+    It 'keeps re-running failed discovery evaluations to a 300 second RBAC propagation budget' {
         Mock Get-AzResourceGroup { $null }
         Mock Invoke-AzChaosWorkspaceScenarioEvaluation {
             $script:evaluationCallCount++
@@ -240,9 +240,9 @@ Describe 'Initialize-AzChaosWorkspace' {
             $_.Exception.Message | Should -BeLike '*ResourceDiscoveryPermissionError*'
         }
 
-        $script:evaluationCallCount | Should -Be 7
-        Assert-MockCalled Get-AzChaosWorkspaceEvaluation -Scope It -Times 7 -Exactly
-        Assert-MockCalled Start-Sleep -Scope It -Times 6 -Exactly -ParameterFilter { $Seconds -eq 15 }
+        $script:evaluationCallCount | Should -Be 21
+        Assert-MockCalled Get-AzChaosWorkspaceEvaluation -Scope It -Times 21 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 20 -Exactly -ParameterFilter { $Seconds -eq 15 }
         Assert-MockCalled Get-AzChaosScenario -Scope It -Times 0 -Exactly
     }
 

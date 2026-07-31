@@ -10,13 +10,21 @@ Runs a pre-flight validation of the `default` scenario configuration. Validation
 
 ### Example 2: Validate a scenario configuration and branch on the result
 ```powershell
-if (Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -PassThru) {
+$validation = Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+if ($validation.Status -eq 'Succeeded') {
     Write-Host 'The scenario configuration is valid.'
+} else {
+    Write-Host "Validation returned '$($validation.Status)'."
+    $validation.ValidationErrorPermission | Format-List ResourceId, MissingPermission, RecommendedRole
 }
 ```
 
 ```output
-The scenario configuration is valid.
+Validation returned 'RequiresAttention'.
+
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm
+MissingPermission : {Microsoft.Compute/virtualMachines/powerOff/action, Microsoft.Compute/virtualMachines/start/action}
+RecommendedRole   : {9980e02c-c2be-4d73-94e8-173b1dc7cf3c}
 ```
 
-Uses `-PassThru` to return `$true` when the configuration is valid, so a script can decide whether to start a run. To inspect a previous validation result after the command finishes, call `Get-AzChaosScenarioConfigurationValidation`.
+Branches on the returned validation record. The command returns a validation object, not a boolean, so test `Status` explicitly &mdash; testing the object itself is always true and would treat a failed validation as a success. A terminal status of `Succeeded` means the configuration is ready to run; `RequiresAttention` means the errors on `ValidationErrorPermission` and `ValidationErrorResource` must be resolved first. To re-read this record later, call `Get-AzChaosScenarioConfigurationValidation`.

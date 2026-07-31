@@ -84,6 +84,25 @@ function Initialize-AzChaosWorkspace {
     )
 
     process {
+        # Emit errors through $PSCmdlet so PowerShell attributes them to the cmdlet and
+        # the caller's own command line. A bare `throw` raised inside one of the private
+        # helpers below reports this file's path, line number and the private function's
+        # name instead -- none of which the caller can act on. See DEV-040.
+        function New-AzChaosErrorRecord {
+            param(
+                [string]$Message,
+                [string]$ErrorId,
+                [System.Management.Automation.ErrorCategory]$Category = [System.Management.Automation.ErrorCategory]::InvalidOperation,
+                [object]$TargetObject
+            )
+
+            return [System.Management.Automation.ErrorRecord]::new(
+                [System.InvalidOperationException]::new($Message),
+                $ErrorId,
+                $Category,
+                $TargetObject)
+        }
+
         function Assert-AzChaosAzResourcesAvailable {
             $moduleName = 'Az.Resources'
             $requiredCommands = @('Get-AzResourceGroup', 'New-AzResourceGroup', 'New-AzRoleAssignment')
@@ -91,20 +110,32 @@ function Initialize-AzChaosWorkspace {
             if (-not (Get-Module -Name $moduleName)) {
                 $availableModule = Get-Module -ListAvailable -Name $moduleName | Select-Object -First 1
                 if ($null -eq $availableModule) {
-                    throw "Initialize-AzChaosWorkspace requires the $moduleName module for resource group and role assignment operations. Install it with: Install-Module $moduleName -Scope CurrentUser"
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Initialize-AzChaosWorkspace requires the $moduleName module for resource group and role assignment operations. Install it with: Install-Module $moduleName -Scope CurrentUser" `
+                        -ErrorId 'RequiredModuleNotInstalled' `
+                        -Category ([System.Management.Automation.ErrorCategory]::NotInstalled) `
+                        -TargetObject $moduleName))
                 }
 
                 try {
                     Import-Module -Name $moduleName -ErrorAction Stop
                 }
                 catch {
-                    throw "Initialize-AzChaosWorkspace found $moduleName but could not load it: $($_.Exception.Message). Update $moduleName or resolve conflicting Az.Accounts versions, then retry."
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Initialize-AzChaosWorkspace found $moduleName but could not load it: $($_.Exception.Message). Update $moduleName or resolve conflicting Az.Accounts versions, then retry." `
+                        -ErrorId 'RequiredModuleNotLoadable' `
+                        -Category ([System.Management.Automation.ErrorCategory]::ResourceUnavailable) `
+                        -TargetObject $moduleName))
                 }
             }
 
             $missingCommands = @($requiredCommands | Where-Object { -not (Get-Command -Name $_ -ErrorAction SilentlyContinue) })
             if ($missingCommands.Count -gt 0) {
-                throw "Initialize-AzChaosWorkspace requires $moduleName commands that are not available: $($missingCommands -join ', '). Reinstall or update $moduleName, then retry."
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message "Initialize-AzChaosWorkspace requires $moduleName commands that are not available: $($missingCommands -join ', '). Reinstall or update $moduleName, then retry." `
+                    -ErrorId 'RequiredModuleCommandMissing' `
+                    -Category ([System.Management.Automation.ErrorCategory]::ResourceUnavailable) `
+                    -TargetObject $moduleName))
             }
         }
 
@@ -259,11 +290,17 @@ function Initialize-AzChaosWorkspace {
             $knownStatuses = @('Pending', 'Queued', 'InProgress', 'Succeeded', 'PartiallySucceeded', 'Failed', 'Canceled')
             $status = Get-AzChaosObjectPropertyValue -InputObject $Evaluation -Name @('Status')
             if (-not [System.String]::IsNullOrEmpty($status) -and $status -notin $knownStatuses) {
-                throw "Workspace evaluation for workspace '$WorkspaceName' returned unrecognized status '$status'."
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message "Workspace evaluation for workspace '$WorkspaceName' returned unrecognized status '$status'." `
+                    -ErrorId 'WorkspaceEvaluationUnrecognizedStatus' `
+                    -TargetObject $WorkspaceName))
             }
 
             if ($status -in @('Failed', 'Canceled')) {
-                throw (Format-AzChaosWorkspaceEvaluationFailure -WorkspaceName $WorkspaceName -Evaluation $Evaluation)
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message (Format-AzChaosWorkspaceEvaluationFailure -WorkspaceName $WorkspaceName -Evaluation $Evaluation) `
+                    -ErrorId 'WorkspaceEvaluationFailed' `
+                    -TargetObject $WorkspaceName))
             }
         }
 
@@ -275,7 +312,12 @@ function Initialize-AzChaosWorkspace {
             )
 
             $retryIntervalSeconds = 15
-            $maxAttempts = 7 # Initial evaluation plus six retries: 90 seconds for just-created RBAC assignments to propagate.
+            # 21 attempts: the initial evaluation plus twenty retries, so five minutes for
+            # just-created RBAC assignments to propagate. Sized from a measured 222-second
+            # worst case on the scenario-validation path; this discovery path shares the
+            # same underlying ARM RBAC propagation but was not separately measured. The
+            # previous 90-second budget was under half the measured figure. See DEV-041.
+            $maxAttempts = 21
             for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
                 $evaluation = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter
                 $status = Get-AzChaosObjectPropertyValue -InputObject $evaluation -Name @('Status')
@@ -322,7 +364,7 @@ function Initialize-AzChaosWorkspace {
             $deadline = [System.DateTimeOffset]::UtcNow.AddMinutes(10)
             $intervalSeconds = 15
             $evaluationRetryCount = 0
-            $maxEvaluationRetryCount = 6 # Six re-runs at 15 seconds each: 90 seconds for just-created RBAC assignments to propagate.
+            $maxEvaluationRetryCount = 20 # Twenty re-runs at 15 seconds each: five minutes for just-created RBAC assignments to propagate (DEV-041). The 10-minute deadline above still bounds the whole wait.
             $knownStatuses = @('NotEvaluated', 'Recommended', 'NotApplicable', 'Evaluating', 'EvaluationFailed', 'EvaluationCancelled')
             $warnedUnknownStatus = @{}
             $lastErrorMessage = $null
@@ -344,7 +386,11 @@ function Initialize-AzChaosWorkspace {
 
                 if ($evaluationStatus -in @('Pending', 'Queued', 'InProgress')) {
                     if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
-                        throw "Timed out waiting for workspace evaluation in workspace '$WorkspaceName' to finish after 10 minutes. Re-run Get-AzChaosWorkspaceEvaluation to inspect current status, or use -SkipEvaluationWait to skip this propagation wait."
+                        $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                            -Message "Timed out waiting for workspace evaluation in workspace '$WorkspaceName' to finish after 10 minutes. Re-run Get-AzChaosWorkspaceEvaluation to inspect current status, or use -SkipEvaluationWait to skip this propagation wait." `
+                            -ErrorId 'WorkspaceEvaluationTimedOut' `
+                            -Category ([System.Management.Automation.ErrorCategory]::OperationTimeout) `
+                            -TargetObject $WorkspaceName))
                     }
 
                     Write-Verbose "Workspace evaluation for '$WorkspaceName' is '$evaluationStatus'. Waiting $intervalSeconds seconds before checking again."
@@ -359,7 +405,11 @@ function Initialize-AzChaosWorkspace {
                 catch {
                     $lastErrorMessage = $_.Exception.Message
                     if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
-                        throw "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' after 10 minutes. The last Get-AzChaosScenario attempt failed: $lastErrorMessage"
+                        $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                            -Message "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' after 10 minutes. The last Get-AzChaosScenario attempt failed: $lastErrorMessage" `
+                            -ErrorId 'ScenarioRecommendationTimedOut' `
+                            -Category ([System.Management.Automation.ErrorCategory]::OperationTimeout) `
+                            -TargetObject $WorkspaceName))
                     }
 
                     Write-Verbose "Get-AzChaosScenario failed while waiting for workspace '$WorkspaceName': $lastErrorMessage. Waiting $intervalSeconds seconds before retrying."
@@ -386,7 +436,11 @@ function Initialize-AzChaosWorkspace {
                 }
 
                 if ([System.DateTimeOffset]::UtcNow -ge $deadline) {
-                    throw "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' to reach Recommended, NotApplicable, EvaluationFailed, or EvaluationCancelled after 10 minutes. Re-run Get-AzChaosScenario to inspect current status, or use -SkipEvaluationWait to skip this propagation wait."
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Timed out waiting for scenario recommendations in workspace '$WorkspaceName' to reach Recommended, NotApplicable, EvaluationFailed, or EvaluationCancelled after 10 minutes. Re-run Get-AzChaosScenario to inspect current status, or use -SkipEvaluationWait to skip this propagation wait." `
+                        -ErrorId 'ScenarioRecommendationTimedOut' `
+                        -Category ([System.Management.Automation.ErrorCategory]::OperationTimeout) `
+                        -TargetObject $WorkspaceName))
                 }
 
                 Write-Verbose "Waiting $intervalSeconds seconds for Azure Resource Graph propagation before checking scenario recommendations again."

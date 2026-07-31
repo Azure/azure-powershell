@@ -336,13 +336,13 @@ Describe 'Start-AzChaosScenarioRun' {
         Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
 
         $script:executeCallCount | Should -Be 0
-        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 7 -Exactly
-        Assert-MockCalled Start-Sleep -Scope It -Times 6 -Exactly -ParameterFilter { $Seconds -eq 15 }
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 21 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 20 -Exactly -ParameterFilter { $Seconds -eq 15 }
         $startError[0].Exception.Message | Should -BeLike '*Missing permissions: Microsoft.Compute/virtualMachines/powerOff/action*'
         $startError[0].Exception.Message | Should -BeLike '*Recommended roles: 9980e02c-c2be-4d73-94e8-173b1dc7cf3c*'
     }
 
-    It 'keeps the permission retry budget to 90 seconds so validation returns promptly' {
+    It 'keeps the permission retry budget to the measured 300 second RBAC propagation window' {
         $script:retrySleepSeconds = 0
         Mock Start-Sleep { $script:retrySleepSeconds += $Seconds }
         Mock Test-AzChaosScenarioConfiguration {
@@ -362,9 +362,9 @@ Describe 'Start-AzChaosScenarioRun' {
         Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -ErrorAction SilentlyContinue -ErrorVariable startError
 
         $script:executeCallCount | Should -Be 0
-        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 7 -Exactly
-        Assert-MockCalled Start-Sleep -Scope It -Times 6 -Exactly -ParameterFilter { $Seconds -eq 15 }
-        $script:retrySleepSeconds | Should -Be 90
+        Assert-MockCalled Test-AzChaosScenarioConfiguration -Scope It -Times 21 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 20 -Exactly -ParameterFilter { $Seconds -eq 15 }
+        $script:retrySleepSeconds | Should -Be 300
         $startError | Should -Not -BeNullOrEmpty
     }
 

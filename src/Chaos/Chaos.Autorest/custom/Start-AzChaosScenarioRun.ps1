@@ -72,6 +72,26 @@ function Start-AzChaosScenarioRun {
     )
 
     process {
+        # Emit errors through $PSCmdlet so PowerShell attributes them to the cmdlet and
+        # the caller's own command line. A bare `throw` or `Write-Error` raised inside one
+        # of the private helpers below reports this file's path, line number and the
+        # private function's name instead -- none of which the caller can act on. See
+        # DEV-040 in the deviation log.
+        function New-AzChaosErrorRecord {
+            param(
+                [string]$Message,
+                [string]$ErrorId,
+                [System.Management.Automation.ErrorCategory]$Category = [System.Management.Automation.ErrorCategory]::InvalidOperation,
+                [object]$TargetObject
+            )
+
+            return [System.Management.Automation.ErrorRecord]::new(
+                [System.InvalidOperationException]::new($Message),
+                $ErrorId,
+                $Category,
+                $TargetObject)
+        }
+
         function Get-AzChaosObjectPropertyValue {
             param(
                 [object]$InputObject,
@@ -227,7 +247,12 @@ function Start-AzChaosScenarioRun {
             # Keep status list in sync with generated\api\Models\ValidationProperties.cs:163.
             $knownStatuses = @('Resolving', 'Generating', 'Validating', 'Accepted', 'NotStarted', 'RequiresAttention', 'NoResolvedResources', 'Succeeded')
             $retryIntervalSeconds = 15
-            $maxAttempts = 7 # Initial validation plus six retries: 90 seconds for RBAC propagation.
+            # 21 attempts: the initial validation plus twenty retries, so five minutes of
+            # RBAC propagation. Sized from a measured worst case of 222 seconds between a
+            # successful permission repair and validation clearing; the previous 90-second
+            # budget was under half of that and failed a repair-then-run sequence that
+            # would have succeeded. See DEV-041 in the deviation log.
+            $maxAttempts = 21
 
             for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
                 $validation = Test-AzChaosScenarioConfiguration @CommonParameter -ScenarioName $ScenarioName -Name $ScenarioConfigurationName -ErrorAction Stop
@@ -236,7 +261,10 @@ function Start-AzChaosScenarioRun {
                         return $validation
                     }
 
-                    Write-Error "Validation failed for scenario configuration '$ScenarioConfigurationName'. The scenario run was not started. Fix the reported validation errors, or re-run with -SkipValidation to bypass the pre-flight check."
+                    $PSCmdlet.WriteError((New-AzChaosErrorRecord `
+                        -Message "Validation failed for scenario configuration '$ScenarioConfigurationName'. The scenario run was not started. Fix the reported validation errors, or re-run with -SkipValidation to bypass the pre-flight check." `
+                        -ErrorId 'ScenarioConfigurationValidationFailed' `
+                        -TargetObject $ScenarioConfigurationName))
                     return $null
                 }
 
@@ -246,13 +274,19 @@ function Start-AzChaosScenarioRun {
                 }
 
                 if ([System.String]::IsNullOrEmpty($status) -or $status -notin $knownStatuses) {
-                    throw "Validation for scenario configuration '$ScenarioConfigurationName' returned unrecognized status '$status'. The scenario run was not started."
+                    $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                        -Message "Validation for scenario configuration '$ScenarioConfigurationName' returned unrecognized status '$status'. The scenario run was not started." `
+                        -ErrorId 'ScenarioConfigurationValidationUnrecognizedStatus' `
+                        -TargetObject $ScenarioConfigurationName))
                 }
 
                 $permissionOnly = Test-AzChaosValidationHasPermissionOnlyErrors -Validation $validation
                 $shouldRetry = ($status -in @('Resolving', 'Generating', 'Validating', 'Accepted', 'NotStarted')) -or ($status -eq 'RequiresAttention' -and $permissionOnly)
                 if (-not $shouldRetry -or $attempt -eq $maxAttempts) {
-                    Write-Error (Format-AzChaosValidationFailure -ScenarioConfigurationName $ScenarioConfigurationName -Validation $validation)
+                    $PSCmdlet.WriteError((New-AzChaosErrorRecord `
+                        -Message (Format-AzChaosValidationFailure -ScenarioConfigurationName $ScenarioConfigurationName -Validation $validation) `
+                        -ErrorId 'ScenarioConfigurationValidationFailed' `
+                        -TargetObject $ScenarioConfigurationName))
                     return $null
                 }
 
@@ -290,7 +324,10 @@ function Start-AzChaosScenarioRun {
         if ($null -ne $scenario -and -not [System.String]::IsNullOrEmpty($scenario.CreatedFrom)) {
             $recommendationStatus = $scenario.RecommendationStatus
             if ([System.String]::IsNullOrEmpty($recommendationStatus) -or $recommendationStatus -eq 'NotEvaluated') {
-                throw "Scenario '$ScenarioName' is a catalog scenario, but workspace '$WorkspaceName' has not been evaluated yet. Evaluate the workspace first with 'Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName', then start the run again."
+                $PSCmdlet.ThrowTerminatingError((New-AzChaosErrorRecord `
+                    -Message "Scenario '$ScenarioName' is a catalog scenario, but workspace '$WorkspaceName' has not been evaluated yet. Evaluate the workspace first with 'Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName', then start the run again." `
+                    -ErrorId 'WorkspaceNotEvaluated' `
+                    -TargetObject $ScenarioName))
             }
         }
 
@@ -305,7 +342,10 @@ function Start-AzChaosScenarioRun {
 
             # Keep failure statuses in sync with generated\api\Models\ScenarioRunProperties.cs:375.
             if ($run.Status -in @('Failed', 'Canceled')) {
-                Write-Error "Scenario run '$($run.RunId)' completed with status '$($run.Status)'."
+                $PSCmdlet.WriteError((New-AzChaosErrorRecord `
+                    -Message "Scenario run '$($run.RunId)' completed with status '$($run.Status)'." `
+                    -ErrorId 'ScenarioRunDidNotSucceed' `
+                    -TargetObject $run.RunId))
             }
             return $run
         }
