@@ -159,15 +159,15 @@ Describe 'Initialize-AzChaosWorkspace' {
         Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
     }
 
-    It 'stops waiting when the latest workspace evaluation has failed' {
+    It 'stops waiting when the latest workspace evaluation has failed with a non-transient error' {
         Mock Get-AzResourceGroup { $null }
         Mock Get-AzChaosScenario { @([pscustomobject]@{ Name = 'sc'; CreatedFrom = '/subscriptions/x/scenarioTemplates/t/versions/1'; RecommendationStatus = 'NotEvaluated' }) }
         Mock Get-AzChaosWorkspaceEvaluation {
             [pscustomobject]@{
                 Status = 'Failed'
                 Error = @([pscustomobject]@{
-                    ErrorCode = 'ResourceDiscoveryPermissionError'
-                    ErrorMessage = 'Reader assignment has not propagated. HTTP 403.'
+                    ErrorCode = 'WorkspaceIdentityError'
+                    ErrorMessage = 'The workspace identity is not available.'
                 })
             }
         }
@@ -177,11 +177,73 @@ Describe 'Initialize-AzChaosWorkspace' {
             throw 'Expected Initialize-AzChaosWorkspace to fail.'
         }
         catch {
-            $_.Exception.Message | Should -BeLike '*ResourceDiscoveryPermissionError*'
+            $_.Exception.Message | Should -BeLike '*WorkspaceIdentityError*'
         }
 
         Assert-MockCalled Get-AzChaosScenario -Scope It -Times 0 -Exactly
         Assert-MockCalled Start-Sleep -Scope It -Times 0 -Exactly
+    }
+
+    It 're-runs evaluation when the latest workspace evaluation failed from RBAC propagation' {
+        Mock Get-AzResourceGroup { $null }
+        Mock Invoke-AzChaosWorkspaceScenarioEvaluation {
+            $script:evaluationCallCount++
+            $true
+        }
+        $script:workspaceEvaluationPoll = 0
+        Mock Get-AzChaosWorkspaceEvaluation {
+            $script:workspaceEvaluationPoll++
+            if ($script:workspaceEvaluationPoll -eq 1) {
+                return [pscustomobject]@{
+                    Status = 'Failed'
+                    Error = @([pscustomobject]@{
+                        ErrorCode = 'ResourceDiscoveryPermissionError'
+                        ErrorMessage = 'The workspace identity cannot discover resources. HTTP 403.'
+                    })
+                }
+            }
+
+            [pscustomobject]@{ Status = 'Succeeded' }
+        }
+        Mock Get-AzChaosScenario { @([pscustomobject]@{ Name = 'sc'; CreatedFrom = '/subscriptions/x/scenarioTemplates/t/versions/1'; RecommendationStatus = 'Recommended' }) }
+
+        Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope | Out-Null
+
+        $script:evaluationCallCount | Should -Be 2
+        Assert-MockCalled Get-AzChaosWorkspaceEvaluation -Scope It -Times 2 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 1 -Exactly -ParameterFilter { $Seconds -eq 15 }
+        Assert-MockCalled Get-AzChaosScenario -Scope It -Times 1 -Exactly
+    }
+
+    It 'keeps re-running failed discovery evaluations to a 90 second RBAC propagation budget' {
+        Mock Get-AzResourceGroup { $null }
+        Mock Invoke-AzChaosWorkspaceScenarioEvaluation {
+            $script:evaluationCallCount++
+            $true
+        }
+        Mock Get-AzChaosWorkspaceEvaluation {
+            [pscustomobject]@{
+                Status = 'Failed'
+                Error = @([pscustomobject]@{
+                    ErrorCode = 'ResourceDiscoveryPermissionError'
+                    ErrorMessage = 'The workspace identity cannot discover resources. HTTP 403.'
+                })
+            }
+        }
+        Mock Get-AzChaosScenario { @([pscustomobject]@{ Name = 'sc'; CreatedFrom = '/subscriptions/x/scenarioTemplates/t/versions/1'; RecommendationStatus = 'NotEvaluated' }) }
+
+        try {
+            Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope -ErrorAction Stop
+            throw 'Expected Initialize-AzChaosWorkspace to fail.'
+        }
+        catch {
+            $_.Exception.Message | Should -BeLike '*ResourceDiscoveryPermissionError*'
+        }
+
+        $script:evaluationCallCount | Should -Be 7
+        Assert-MockCalled Get-AzChaosWorkspaceEvaluation -Scope It -Times 7 -Exactly
+        Assert-MockCalled Start-Sleep -Scope It -Times 6 -Exactly -ParameterFilter { $Seconds -eq 15 }
+        Assert-MockCalled Get-AzChaosScenario -Scope It -Times 0 -Exactly
     }
 
     It 'retries RBAC propagation failures from the evaluation it just triggered' {
