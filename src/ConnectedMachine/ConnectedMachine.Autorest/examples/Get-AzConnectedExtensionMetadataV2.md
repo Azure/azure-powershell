@@ -22,5 +22,3 @@ Name
 
 Gets extension metadata for a specific version.
 
-{{ Add description here }}
-

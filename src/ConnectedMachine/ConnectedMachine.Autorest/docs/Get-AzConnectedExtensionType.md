@@ -36,8 +36,6 @@ NetworkWatcherAgentLinux
 
 Gets all extension types available from the specified publisher in the given Azure region.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -DefaultProfile

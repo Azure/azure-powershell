@@ -13,5 +13,3 @@ Microsoft.Azure.Monitor
 
 Gets all extension publishers available in the specified Azure region.
 
-{{ Add description here }}
-
