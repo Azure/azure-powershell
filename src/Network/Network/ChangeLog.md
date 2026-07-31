@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-* Fixed `Set-AzPublicIpAddress` to allow DDoS custom policy association without requiring DDoS protection mode `Enabled` (follow-up to [#29925]).
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
