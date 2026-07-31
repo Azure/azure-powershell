@@ -4,71 +4,121 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzChaosScenarioConfigu
 }
 
 Describe 'Remove-AzChaosScenarioConfiguration' {
-    $deleteVariants = @(
-        'RemoveAzChaosScenarioConfiguration_Delete',
-        'RemoveAzChaosScenarioConfiguration_DeleteViaIdentity',
-        'RemoveAzChaosScenarioConfiguration_DeleteViaIdentityScenario',
-        'RemoveAzChaosScenarioConfiguration_DeleteViaIdentityWorkspace'
-    )
+    $subscriptionId = '00000000-0000-0000-0000-000000000000'
+    $workspaceId = "/subscriptions/$subscriptionId/resourceGroups/rg/providers/Microsoft.Chaos/workspaces/ws"
+    $scenarioId = "$workspaceId/scenarios/sc"
+    $configurationId = "$scenarioId/configurations/cfg"
 
-    function New-ErrorResponseTask {
-        param(
-            [string]$Code,
-            [string]$Message
-        )
+    function New-ChaosIdentity {
+        param([string]$Id)
 
-        $json = '{{"error":{{"code":"{0}","message":"{1}"}}}}' -f $Code, $Message
-        $errorResponse = [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ErrorResponse].GetMethod('FromJsonString', [System.Reflection.BindingFlags]'Public, Static').Invoke($null, @($json))
-        $source = New-Object 'System.Threading.Tasks.TaskCompletionSource[Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponse]'
-        $source.SetResult($errorResponse)
-        $source.Task
+        $identity = [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosIdentity]::new()
+        $identity.Id = $Id
+        $identity
     }
 
-    function Invoke-PrivateResponseHandler {
+    function New-HttpPipelineStep {
+        param(
+            [System.Net.HttpStatusCode]$StatusCode,
+            [string]$Body = $null
+        )
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep]{
+            param($request, $callback, $next)
+
+            $response = [System.Net.Http.HttpResponseMessage]::new($StatusCode)
+            if ($Body) {
+                $response.Content = [System.Net.Http.StringContent]::new($Body, [System.Text.Encoding]::UTF8, 'application/json')
+            }
+
+            [System.Threading.Tasks.Task]::FromResult($response)
+        }.GetNewClosure()
+    }
+
+    function Invoke-ScenarioConfigurationDelete {
+        [CmdletBinding()]
         param(
             [string]$Variant,
-            [string]$Method,
             [System.Net.HttpStatusCode]$StatusCode,
-            [System.Threading.Tasks.Task[Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponse]]$ErrorResponse
+            [switch]$PassThru,
+            [string]$Body = $null
         )
 
-        $type = [type]"Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets.$Variant"
-        $cmdlet = $type::new()
-        $handler = $type.GetMethod($Method, [System.Reflection.BindingFlags]'NonPublic, Instance')
-        $response = [System.Net.Http.HttpResponseMessage]::new($StatusCode)
-        if ($Method -eq 'onDefault') {
-            $task = $handler.Invoke($cmdlet, @($response, $ErrorResponse))
-        }
-        else {
-            $task = $handler.Invoke($cmdlet, @($response))
+        $params = @{
+            HttpPipelinePrepend = New-HttpPipelineStep -StatusCode $StatusCode -Body $Body
+            Confirm = $false
         }
 
-        $task.Wait()
+        switch ($Variant) {
+            'Delete' {
+                $params.SubscriptionId = $subscriptionId
+                $params.ResourceGroupName = 'rg'
+                $params.WorkspaceName = 'ws'
+                $params.ScenarioName = 'sc'
+                $params.Name = 'cfg'
+            }
+            'DeleteViaIdentityWorkspace' {
+                $params.WorkspaceInputObject = New-ChaosIdentity -Id $workspaceId
+                $params.ScenarioName = 'sc'
+                $params.Name = 'cfg'
+            }
+            'DeleteViaIdentityScenario' {
+                $params.ScenarioInputObject = New-ChaosIdentity -Id $scenarioId
+                $params.Name = 'cfg'
+            }
+            'DeleteViaIdentity' {
+                $params.InputObject = New-ChaosIdentity -Id $configurationId
+            }
+            default {
+                throw "Unknown scenario configuration delete variant '$Variant'."
+            }
+        }
+
+        if ($PassThru) {
+            $params.PassThru = $true
+        }
+        if ($PSBoundParameters.ContainsKey('ErrorAction')) {
+            $params.ErrorAction = $PSBoundParameters.ErrorAction
+        }
+        if ($PSBoundParameters.ContainsKey('ErrorVariable')) {
+            $params.ErrorVariable = $PSBoundParameters.ErrorVariable
+        }
+
+        Remove-AzChaosScenarioConfiguration @params
     }
 
+    $deleteVariants = @(
+        'Delete',
+        'DeleteViaIdentity',
+        'DeleteViaIdentityScenario',
+        'DeleteViaIdentityWorkspace'
+    )
+
     foreach ($variant in $deleteVariants) {
-        It "treats an already-absent scenario configuration as a successful delete in $variant" {
-            {
-                Invoke-PrivateResponseHandler -Variant $variant -Method 'onDefault' -StatusCode NotFound -ErrorResponse (New-ErrorResponseTask -Code 'NotFound' -Message 'The scenario configuration was not found.')
-            } | Should -Not -Throw
+        It "treats a present scenario configuration delete 202 as successful in $variant" {
+            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode Accepted -PassThru | Should -BeTrue
         }
 
-        It "still treats accepted scenario configuration deletes as successful in $variant" {
-            {
-                Invoke-PrivateResponseHandler -Variant $variant -Method 'onAccepted' -StatusCode Accepted
-            } | Should -Not -Throw
+        It "treats a present scenario configuration delete 204 as successful in $variant" {
+            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NoContent -PassThru | Should -BeTrue
         }
 
-        It "still treats no-content scenario configuration deletes as successful in $variant" {
-            {
-                Invoke-PrivateResponseHandler -Variant $variant -Method 'onNoContent' -StatusCode NoContent
-            } | Should -Not -Throw
+        It "treats an already-absent scenario configuration delete 404 as successful in $variant" {
+            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NotFound -PassThru | Should -BeTrue
+        }
+
+        It "does not emit output for an already-absent scenario configuration delete without PassThru in $variant" {
+            @(Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NotFound).Count | Should -Be 0
         }
 
         It "does not swallow non-NotFound scenario configuration delete failures in $variant" {
-            {
-                Invoke-PrivateResponseHandler -Variant $variant -Method 'onDefault' -StatusCode InternalServerError -ErrorResponse (New-ErrorResponseTask -Code 'InternalError' -Message 'The service failed.')
-            } | Should -Throw
+            $body = '{"error":{"code":"InternalError","message":"The service failed.","details":[{"code":"Inner","message":"A nested failure occurred."}]}}'
+            $errors = @()
+
+            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode InternalServerError -Body $body -PassThru -ErrorAction SilentlyContinue -ErrorVariable errors | Should -BeNullOrEmpty
+
+            $errors.Count | Should -Be 1
+            $errors[0].FullyQualifiedErrorId | Should -Be "InternalError,Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets.RemoveAzChaosScenarioConfiguration_$variant"
         }
     }
 
