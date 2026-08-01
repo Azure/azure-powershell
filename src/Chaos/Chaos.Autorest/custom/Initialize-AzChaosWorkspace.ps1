@@ -43,7 +43,7 @@ function Initialize-AzChaosWorkspace {
         [System.String]
         ${WorkspaceName},
 
-        [Parameter(Mandatory, HelpMessage='Name of the resource group.')]
+        [Parameter(Mandatory, HelpMessage='Name of the resource group. The resource group is created in -Location if it does not already exist.')]
         [System.String]
         ${ResourceGroupName},
 
@@ -461,17 +461,34 @@ function Initialize-AzChaosWorkspace {
         # but resource-group discovery/creation still needs Az.Resources.
         Assert-AzChaosAzResourcesAvailable
 
-        if (-not $PSCmdlet.ShouldProcess("Workspace '$WorkspaceName'", 'Initialize Chaos Studio workspace')) {
+        # Resolve the resource group before ShouldProcess so the confirmation and -WhatIf can
+        # disclose everything this operation creates. This is a read and is safe to run under
+        # -WhatIf. Previously ShouldProcess named only the workspace, so a user who typo'd
+        # -ResourceGroupName was not told a resource group would be created, and then it was.
+        # See DEV-045.
+        # SilentlyContinue covers the expected not-found case; the catch re-attributes anything
+        # genuinely terminating, such as an auth or subscription failure, which it does not suppress.
+        try { $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
+        $mustCreateResourceGroup = ($null -eq $resourceGroup)
+
+        $shouldProcessTargets = @("workspace '$WorkspaceName'")
+        if ($mustCreateResourceGroup) {
+            $shouldProcessTargets += "new resource group '$ResourceGroupName' in '$Location'"
+        }
+        $shouldProcessTargets += 'a system-assigned managed identity'
+        if (-not $SkipPermission) {
+            $shouldProcessTargets += "a '$RoleDefinitionName' role assignment on $(@($Scope).Count) scope(s)"
+        }
+
+        if (-not $PSCmdlet.ShouldProcess(($shouldProcessTargets -join ', '), 'Initialize Chaos Studio workspace')) {
             return
         }
 
-        # Step 1: ensure the resource group exists. SilentlyContinue covers the expected
-        # not-found case; the catch re-attributes anything genuinely terminating, such as an
-        # auth or subscription failure, which SilentlyContinue does not suppress.
-        try { $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue }
-        catch { $PSCmdlet.ThrowTerminatingError($_) }
-        if ($null -eq $resourceGroup) {
-            Write-Verbose "Creating resource group '$ResourceGroupName' in '$Location'."
+        # Step 1: create the resource group if it does not exist. Announce it rather than only
+        # writing it to the verbose stream, which is invisible unless the user asked for it.
+        if ($mustCreateResourceGroup) {
+            Write-Host "Creating resource group '$ResourceGroupName' in '$Location'."
             try { $null = New-AzResourceGroup -Name $ResourceGroupName -Location $Location }
             catch { $PSCmdlet.ThrowTerminatingError($_) }
         }

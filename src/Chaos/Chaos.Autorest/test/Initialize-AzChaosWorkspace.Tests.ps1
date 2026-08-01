@@ -87,6 +87,54 @@ Describe 'Initialize-AzChaosWorkspace' {
         Assert-MockCalled New-AzResourceGroup -Scope It -Times 0 -Exactly
     }
 
+    It 'discloses every resource it creates in the ShouldProcess target' {
+        # -WhatIf is the surface a careful user reaches for to learn the blast radius before
+        # committing. Naming only the workspace hid a resource group, an identity and an RBAC
+        # grant, so a typo'd -ResourceGroupName silently created four objects (DEV-045).
+        #
+        # The "What if:" line is written straight to the host and cannot be captured by any
+        # stream redirection, so this asserts the target is built from the right inputs at the
+        # source level instead. Paired with the ordering test below, that pins both halves:
+        # the data is available, and it reaches the target.
+        $source = Get-Content -Path (Join-Path (Split-Path $PSScriptRoot -Parent) 'custom/Initialize-AzChaosWorkspace.ps1') -Raw
+        $ast = [System.Management.Automation.Language.Parser]::ParseInput($source, [ref]$null, [ref]$null)
+        $shouldProcess = $ast.FindAll({
+            $args[0] -is [System.Management.Automation.Language.InvokeMemberExpressionAst] -and
+            $args[0].Member.Value -eq 'ShouldProcess'
+        }, $true) | Select-Object -First 1
+
+        $shouldProcess | Should -Not -BeNullOrEmpty -Because 'the cmdlet must gate its mutations behind ShouldProcess'
+
+        $targetExpression = $shouldProcess.Arguments[0].Extent.Text
+        $targetVariable = ($targetExpression -replace '[^\w$]', ' ') -split '\s+' |
+            Where-Object { $_ -like '$*' } | Select-Object -First 1
+        $targetVariable | Should -Not -BeNullOrEmpty -Because 'the target must be composed, not a fixed string naming only the workspace'
+
+        # The composed list must mention the resource group, the identity and the role grant.
+        $assignments = $ast.FindAll({
+            $args[0] -is [System.Management.Automation.Language.AssignmentStatementAst] -and
+            $args[0].Left.Extent.Text -like "$targetVariable*"
+        }, $true)
+        $composed = ($assignments | ForEach-Object { $_.Right.Extent.Text }) -join ' '
+
+        $composed | Should -Match 'ResourceGroupName' -Because 'a created resource group must be disclosed before it is created'
+        $composed | Should -Match 'identity' -Because 'the system-assigned identity is a security principal the user should be told about'
+        $composed | Should -Match 'RoleDefinitionName' -Because 'the RBAC grant must be disclosed'
+    }
+
+    It 'checks resource group existence before asking for confirmation' {
+        # The existence check has to run before ShouldProcess or the target cannot name the
+        # resource group. Asserting the read happens under -WhatIf pins that ordering: if the
+        # check moves back after ShouldProcess, -WhatIf returns early and never calls it.
+        Mock Get-AzResourceGroup { $null }
+
+        Initialize-AzChaosWorkspace -ResourceGroupName rg -WorkspaceName ws -Location eastus -Scope $scope -WhatIf | Out-Null
+
+        Assert-MockCalled Get-AzResourceGroup -Scope It -Times 1 -Exactly
+        Assert-MockCalled New-AzResourceGroup -Scope It -Times 0 -Exactly
+        Assert-MockCalled New-AzRoleAssignment -Scope It -Times 0 -Exactly
+    }
+
     It 'skips the RBAC grant with -SkipPermission' {
         Mock Get-AzResourceGroup { $null }
 

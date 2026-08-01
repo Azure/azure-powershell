@@ -104,6 +104,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Name of the resource group.
+The resource group is created in -Location if it does not already exist.
 
 ```yaml
 Type: System.String
