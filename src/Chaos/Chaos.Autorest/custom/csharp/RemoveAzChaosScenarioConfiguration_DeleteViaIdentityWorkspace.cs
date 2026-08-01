@@ -10,13 +10,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
     public partial class RemoveAzChaosScenarioConfiguration_DeleteViaIdentityWorkspace
     {
         partial void overrideOnDefault(HttpResponseMessage responseMessage, Task<IErrorResponse> response, ref Task<bool> returnNow) => this.writeError(responseMessage, response, ref returnNow);
-
-        partial void overrideOnNotFound(HttpResponseMessage responseMessage, ref Task<bool> returnNow)
-        {
-            if (this.treatScenarioConfigurationNotFoundAsSuccessfulDelete(responseMessage, PassThru.IsPresent))
-            {
-                returnNow = Task.FromResult(true);
-            }
-        }
     }
 }

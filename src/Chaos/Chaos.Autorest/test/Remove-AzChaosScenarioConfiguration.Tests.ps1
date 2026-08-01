@@ -103,12 +103,34 @@ Describe 'Remove-AzChaosScenarioConfiguration' {
             Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NoContent -PassThru | Should -BeTrue
         }
 
-        It "treats an already-absent scenario configuration delete 404 as successful in $variant" {
-            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NotFound -PassThru | Should -BeTrue
+        It "reports an absent scenario configuration delete 404 rather than swallowing it in $variant" {
+            # A 404 here does not mean "the configuration is already gone". The service returns
+            # 404 with a different code for every absent ancestor -- ResourceGroupNotFound,
+            # ResourceNotFound, NotFound -- and none of them identifies the configuration
+            # itself, so a wrong resource group, workspace or scenario name is indistinguishable
+            # from an already-deleted configuration. Swallowing 404 reported a successful delete
+            # while the configuration was still live under the correctly-spelled parent
+            # (DEV-046). Surfacing it matches Remove-AzChaosScenario.
+            $body = '{"error":{"code":"ResourceGroupNotFound","message":"Resource group ''contos-rg'' could not be found."}}'
+            $errors = @()
+
+            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NotFound -Body $body -PassThru -ErrorAction SilentlyContinue -ErrorVariable errors | Should -BeNullOrEmpty
+
+            $errors.Count | Should -Be 1
+            $errors[0].FullyQualifiedErrorId | Should -Be "ResourceGroupNotFound,Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets.RemoveAzChaosScenarioConfiguration_$variant"
+            $errors[0].Exception.Message | Should -BeLike '*contos-rg*'
         }
 
-        It "does not emit output for an already-absent scenario configuration delete without PassThru in $variant" {
-            @(Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NotFound).Count | Should -Be 0
+        It "reports a 404 naming an absent parent scenario in $variant" {
+            # Second 404 shape, distinct error code. Guards against a fix that special-cases
+            # only the resource-group code and leaves the other ancestors swallowed.
+            $body = '{"error":{"code":"NotFound","message":"Parent workspace could not be found."}}'
+            $errors = @()
+
+            Invoke-ScenarioConfigurationDelete -Variant $variant -StatusCode NotFound -Body $body -PassThru -ErrorAction SilentlyContinue -ErrorVariable errors | Should -BeNullOrEmpty
+
+            $errors.Count | Should -Be 1
+            $errors[0].FullyQualifiedErrorId | Should -Be "NotFound,Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets.RemoveAzChaosScenarioConfiguration_$variant"
         }
 
         It "does not swallow non-NotFound scenario configuration delete failures in $variant" {

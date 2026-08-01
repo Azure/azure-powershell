@@ -13,28 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
 
     internal static class CmdletRestExtension
     {
-        public static bool treatScenarioConfigurationNotFoundAsSuccessfulDelete(this Cmdlet cmdlet, HttpResponseMessage responseMessage, bool passThru)
-        {
-            if (!IsNotFound(responseMessage))
-            {
-                return false;
-            }
-
-            // Workaround for the service returning 404 for an already-deleted scenario configuration.
-            // Remove this with the companion directive when the service returns ARM-compliant 204.
-            if (passThru)
-            {
-                cmdlet.WriteObject(true);
-            }
-
-            return true;
-        }
-
-        internal static bool IsNotFound(HttpResponseMessage responseMessage)
-        {
-            return responseMessage?.StatusCode == HttpStatusCode.NotFound;
-        }
-
         public static void writeError(this Cmdlet cmdlet, HttpResponseMessage responseMessage, Task<IErrorResponse> errorResponseTask, ref Task<bool> returnNow)
         {
             string code;

@@ -136,11 +136,20 @@ directive:
   #     the polling headers the generated LRO loop requires; the service returns a
   #     ScenarioConfiguration body with provisioningState=Deleting, so treat 202 as
   #     a terminal accepted response. ScenarioConfigurations_Delete also returns
-  #     404 for an absent configuration even though ARM delete should return 204;
-  #     declare 404 so generated cmdlets expose an overrideOnNotFound hook that
-  #     custom code can use to preserve idempotent Remove-* behavior. Remove this
-  #     workaround when the service/spec returns and declares 204 for absent
-  #     deletes. Do not attach response body schemas here: Remove-* cmdlets should
+  #     404 for an absent configuration even though ARM delete should return 204.
+  #     Do NOT declare 404 here. Declaring it makes the generator treat 404 as a
+  #     success shape whose onNotFound writes nothing unless -PassThru, and the
+  #     generated handler cannot see *which* resource was absent -- so a wrong
+  #     resource group, workspace or scenario name was reported as a successful
+  #     delete while the configuration was still live (DEV-046). The service
+  #     returns three different codes for the three ancestors
+  #     (ResourceGroupNotFound / ResourceNotFound / NotFound) and none of them
+  #     identifies the configuration itself, so the client cannot distinguish
+  #     target-absent from ancestor-absent. Leaving 404 undeclared routes it to
+  #     onDefault, where the C3 handler renders a real error. This matches
+  #     Scenarios_Delete, which surfaces its 404. Revisit only if the service
+  #     returns 204 for an absent delete, as Workspaces_Delete already does.
+  #     Do not attach response body schemas here: Remove-* cmdlets should
   #     emit nothing unless -PassThru is supplied. ---
   - from: swagger-document
     where: $.paths.*[?(@.operationId == "Scenarios_Delete")]
@@ -149,7 +158,7 @@ directive:
   - from: swagger-document
     where: $.paths.*[?(@.operationId == "ScenarioConfigurations_Delete")]
     transform: >-
-      delete $["x-ms-long-running-operation"]; delete $["x-ms-long-running-operation-options"]; $["responses"]["404"] = $["responses"]["404"] || { description: "Not Found." }
+      delete $["x-ms-long-running-operation"]; delete $["x-ms-long-running-operation-options"]
 
   # --- Prune the retired V1 experiment-era nouns (PR2). The V2 openapi.json still
   #     carries the V1 surface, so directives remove every non-V2 noun. ---
