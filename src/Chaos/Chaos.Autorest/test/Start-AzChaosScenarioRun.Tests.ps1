@@ -408,12 +408,22 @@ Describe 'Start-AzChaosScenarioRun' {
     }
 
     It 'does not mutate under -WhatIf' {
-        Mock Test-AzChaosScenarioConfiguration { $succeededValidation }
-        Mock Get-AzChaosScenario { $customScenario }
+        # This asserted only that the execute call was skipped, and was named as though it
+        # covered every mutation. It did not: validation is a POST that creates a server-side
+        # record, it ran above the ShouldProcess gate, and with the RBAC propagation budget it
+        # could block -WhatIf for five minutes. Count every service call, not just the last one
+        # (DEV-048).
+        $script:executeCallCount = 0
+        $script:whatIfValidateCalls = 0
+        $script:whatIfScenarioCalls = 0
+        Mock Test-AzChaosScenarioConfiguration { $script:whatIfValidateCalls++; $succeededValidation }
+        Mock Get-AzChaosScenario { $script:whatIfScenarioCalls++; $customScenario }
 
         Start-AzChaosScenarioRun -ResourceGroupName rg -WorkspaceName ws -ScenarioName sc -Name cfg -WhatIf
 
         $script:executeCallCount | Should -Be 0
+        $script:whatIfValidateCalls | Should -Be 0 -Because 'validation is a POST that creates a validation record, so -WhatIf must not run it'
+        $script:whatIfScenarioCalls | Should -Be 0 -Because '-WhatIf should not call the service at all once the operation is declined'
     }
 
     It 'returns the operation handle with -NoWait' {

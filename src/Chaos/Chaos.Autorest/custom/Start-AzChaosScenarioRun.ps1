@@ -313,6 +313,16 @@ function Start-AzChaosScenarioRun {
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $common['SubscriptionId'] = $SubscriptionId }
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $common['DefaultProfile'] = $DefaultProfile }
 
+        # Gate the entire mutating sequence, not just the execute call. Validation is a POST
+        # that creates a server-side validation record -- the one Get-AzChaosScenarioConfigurationValidation
+        # reads back -- so running it under -WhatIf both mutates and, with the RBAC propagation
+        # budget, can block for five minutes. -WhatIf must be side-effect-free and prompt.
+        # Reads may sit above ShouldProcess when they make the disclosure accurate (see
+        # Initialize-AzChaosWorkspace); writes may not. See DEV-048.
+        if (-not $PSCmdlet.ShouldProcess("Scenario configuration '$Name'", 'Start scenario run')) {
+            return
+        }
+
         # Step 1: validate the scenario configuration first, unless bypassed.
         if (-not $SkipValidation) {
             $validation = Invoke-AzChaosScenarioConfigurationValidationWithRetry -CommonParameter $common -ScenarioName $ScenarioName -ScenarioConfigurationName $Name
@@ -336,24 +346,22 @@ function Start-AzChaosScenarioRun {
             }
         }
 
-        # Step 3: execute the run. Gate the mutation with ShouldProcess so -WhatIf prevents it.
-        if ($PSCmdlet.ShouldProcess("Scenario configuration '$Name'", 'Start scenario run')) {
-            $executeParameters = @{} + $common
-            if ($NoWait) { $executeParameters['NoWait'] = $true }
-            try { $run = Invoke-AzChaosScenarioConfigurationExecution @executeParameters -ScenarioName $ScenarioName -ScenarioConfigurationName $Name }
-            catch { $PSCmdlet.ThrowTerminatingError($_) }
-            if ($NoWait) {
-                return $run
-            }
-
-            # Keep failure statuses in sync with generated\api\Models\ScenarioRunProperties.cs:375.
-            if ($run.Status -in @('Failed', 'Canceled')) {
-                $PSCmdlet.WriteError((New-AzChaosErrorRecord `
-                    -Message "Scenario run '$($run.RunId)' completed with status '$($run.Status)'." `
-                    -ErrorId 'ScenarioRunDidNotSucceed' `
-                    -TargetObject $run.RunId))
-            }
+        # Step 3: execute the run. Already gated by the ShouldProcess check above.
+        $executeParameters = @{} + $common
+        if ($NoWait) { $executeParameters['NoWait'] = $true }
+        try { $run = Invoke-AzChaosScenarioConfigurationExecution @executeParameters -ScenarioName $ScenarioName -ScenarioConfigurationName $Name }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
+        if ($NoWait) {
             return $run
         }
+
+        # Keep failure statuses in sync with generated\api\Models\ScenarioRunProperties.cs:375.
+        if ($run.Status -in @('Failed', 'Canceled')) {
+            $PSCmdlet.WriteError((New-AzChaosErrorRecord `
+                -Message "Scenario run '$($run.RunId)' completed with status '$($run.Status)'." `
+                -ErrorId 'ScenarioRunDidNotSucceed' `
+                -TargetObject $run.RunId))
+        }
+        return $run
     }
 }
