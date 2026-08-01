@@ -945,10 +945,6 @@
     "module": "ArizeAI"
   },
   {
-    "module": "Pinecone",
-    "alias": "Pinecone"
-  },
-  {
     "alias": "LambdaTest",
     "module": "LambdaTest"
   },
@@ -1035,6 +1031,10 @@
   {
     "module": "Napster",
     "alias": "Napster"
+  },
+  {
+    "alias": "Dell",
+    "module": "Dell"
   },
   {
     "alias": "Mission",
