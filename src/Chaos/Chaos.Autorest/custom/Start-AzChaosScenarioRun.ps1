@@ -255,7 +255,11 @@ function Start-AzChaosScenarioRun {
             $maxAttempts = 21
 
             for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
-                $validation = Test-AzChaosScenarioConfiguration @CommonParameter -ScenarioName $ScenarioName -Name $ScenarioConfigurationName -ErrorAction Stop
+                # Re-attribute plumbing failures to this cmdlet. Without the catch, PowerShell
+                # names the internal generated cmdlet variant and this file's line, which points
+                # the user at a command they did not call. See DEV-044.
+                try { $validation = Test-AzChaosScenarioConfiguration @CommonParameter -ScenarioName $ScenarioName -Name $ScenarioConfigurationName -ErrorAction Stop }
+                catch { $PSCmdlet.ThrowTerminatingError($_) }
                 if ($validation -is [bool]) {
                     if ($validation) {
                         return $validation
@@ -320,7 +324,8 @@ function Start-AzChaosScenarioRun {
         # Step 2: guard catalog (non-custom) scenarios that the workspace has not evaluated.
         # A catalog scenario carries a CreatedFrom template reference; a run needs a prior
         # workspace evaluation. Do not trigger evaluation here as a side effect.
-        $scenario = Get-AzChaosScenario @common -Name $ScenarioName -ErrorAction Stop
+        try { $scenario = Get-AzChaosScenario @common -Name $ScenarioName -ErrorAction Stop }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
         if ($null -ne $scenario -and -not [System.String]::IsNullOrEmpty($scenario.CreatedFrom)) {
             $recommendationStatus = $scenario.RecommendationStatus
             if ([System.String]::IsNullOrEmpty($recommendationStatus) -or $recommendationStatus -eq 'NotEvaluated') {
@@ -335,7 +340,8 @@ function Start-AzChaosScenarioRun {
         if ($PSCmdlet.ShouldProcess("Scenario configuration '$Name'", 'Start scenario run')) {
             $executeParameters = @{} + $common
             if ($NoWait) { $executeParameters['NoWait'] = $true }
-            $run = Invoke-AzChaosScenarioConfigurationExecution @executeParameters -ScenarioName $ScenarioName -ScenarioConfigurationName $Name
+            try { $run = Invoke-AzChaosScenarioConfigurationExecution @executeParameters -ScenarioName $ScenarioName -ScenarioConfigurationName $Name }
+            catch { $PSCmdlet.ThrowTerminatingError($_) }
             if ($NoWait) {
                 return $run
             }

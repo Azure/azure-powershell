@@ -319,7 +319,11 @@ function Initialize-AzChaosWorkspace {
             # previous 90-second budget was under half the measured figure. See DEV-041.
             $maxAttempts = 21
             for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
-                $evaluation = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter
+                # Re-attribute plumbing failures to this cmdlet. Without the catch, PowerShell
+                # names the internal generated cmdlet variant and this file's line, which points
+                # the user at a command they did not call. See DEV-044.
+                try { $evaluation = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter }
+                catch { $PSCmdlet.ThrowTerminatingError($_) }
                 $status = Get-AzChaosObjectPropertyValue -InputObject $evaluation -Name @('Status')
                 if ($status -in @('Failed', 'Canceled') -and $RetryRbacPropagation -and (Test-AzChaosWorkspaceEvaluationHasRbacPropagationError -Evaluation $evaluation) -and $attempt -lt $maxAttempts) {
                     Write-Verbose "Workspace evaluation for '$WorkspaceName' failed with an RBAC propagation error. Waiting $retryIntervalSeconds seconds before retrying evaluation."
@@ -377,7 +381,8 @@ function Initialize-AzChaosWorkspace {
                         $evaluationRetryCount++
                         Write-Verbose "Workspace evaluation for '$WorkspaceName' failed with ResourceDiscoveryPermissionError. Waiting $intervalSeconds seconds before re-running evaluation."
                         Start-Sleep -Seconds $intervalSeconds
-                        $null = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter
+                        try { $null = Invoke-AzChaosWorkspaceScenarioEvaluation @EvaluationParameter }
+                        catch { $PSCmdlet.ThrowTerminatingError($_) }
                         continue
                     }
 
@@ -460,11 +465,15 @@ function Initialize-AzChaosWorkspace {
             return
         }
 
-        # Step 1: ensure the resource group exists.
-        $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
+        # Step 1: ensure the resource group exists. SilentlyContinue covers the expected
+        # not-found case; the catch re-attributes anything genuinely terminating, such as an
+        # auth or subscription failure, which SilentlyContinue does not suppress.
+        try { $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
         if ($null -eq $resourceGroup) {
             Write-Verbose "Creating resource group '$ResourceGroupName' in '$Location'."
-            $null = New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+            try { $null = New-AzResourceGroup -Name $ResourceGroupName -Location $Location }
+            catch { $PSCmdlet.ThrowTerminatingError($_) }
         }
 
         # Step 2: create the workspace with a system-assigned managed identity.
@@ -476,7 +485,8 @@ function Initialize-AzChaosWorkspace {
             EnableSystemAssignedIdentity = $true
         }
         if ($PSBoundParameters.ContainsKey('Tag')) { $workspaceParams['Tag'] = $Tag }
-        $workspace = New-AzChaosWorkspace @common @workspaceParams
+        try { $workspace = New-AzChaosWorkspace @common @workspaceParams }
+        catch { $PSCmdlet.ThrowTerminatingError($_) }
 
         # Step 3: grant the workspace identity the Reader role on each scope.
         if (-not $SkipPermission) {
@@ -487,7 +497,8 @@ function Initialize-AzChaosWorkspace {
             else {
                 foreach ($resourceScope in $Scope) {
                     Write-Verbose "Granting '$RoleDefinitionName' to identity '$principalId' on '$resourceScope'."
-                    $null = New-AzRoleAssignment -ObjectId $principalId -RoleDefinitionName $RoleDefinitionName -Scope $resourceScope -ErrorAction Stop
+                    try { $null = New-AzRoleAssignment -ObjectId $principalId -RoleDefinitionName $RoleDefinitionName -Scope $resourceScope -ErrorAction Stop }
+                    catch { $PSCmdlet.ThrowTerminatingError($_) }
                 }
             }
         }
@@ -505,7 +516,8 @@ function Initialize-AzChaosWorkspace {
             $scenarios = Wait-AzChaosWorkspaceScenarioRecommendation -CommonParameter $common -EvaluationParameter $evaluationParams -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -RetryRbacPropagation:(-not $SkipPermission)
         }
         else {
-            $scenarios = Get-AzChaosScenario @common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction SilentlyContinue
+            try { $scenarios = Get-AzChaosScenario @common -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -ErrorAction SilentlyContinue }
+            catch { $PSCmdlet.ThrowTerminatingError($_) }
         }
 
         # Step 5: report the discovered scenarios and suggest next commands.

@@ -68,7 +68,10 @@ function Invoke-AzChaosWorkspaceScenarioEvaluation {
         # Gate the mutation with ShouldProcess so -WhatIf prevents it.
         if ($PSCmdlet.ShouldProcess("Workspace '$WorkspaceName'", 'Evaluate scenarios')) {
             if ($NoWait) { $common['NoWait'] = $true }
-            Update-AzChaosWorkspaceRecommendation @common
+            # Re-attribute plumbing failures to this cmdlet. Without the catch, PowerShell names
+            # the internal generated cmdlet variant and this file's line. See DEV-044.
+            try { Update-AzChaosWorkspaceRecommendation @common }
+            catch { $PSCmdlet.ThrowTerminatingError($_) }
         }
     }
 }
