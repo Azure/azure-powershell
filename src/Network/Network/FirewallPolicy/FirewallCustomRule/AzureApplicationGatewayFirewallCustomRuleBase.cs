@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Type of Actions.")]
-        [ValidateSet("Allow", "Block", "Log", IgnoreCase = true)]
+        [ValidateSet("Allow", "Block", "Log", "CAPTCHA", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Action { get; set; }
 

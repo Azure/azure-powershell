@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
+    - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
+    - Added the `-CaptchaExpirationInMins` parameter to `New-AzApplicationGatewayFirewallPolicySetting`.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
