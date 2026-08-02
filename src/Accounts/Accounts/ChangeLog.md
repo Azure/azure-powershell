@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
 * Upgraded `System.ClientModel` dependency from 1.12.0 to 1.13.0.
 
