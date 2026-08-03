@@ -23,6 +23,8 @@ Gets the list of resources that are onboarded with NSP.
 These resources can be associated with a network security perimeter
 .Example
 Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
+.Example
+Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap | Select-Object DisplayName, ReadinessState, OutboundSupported, Description, ServiceTag
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResource
@@ -36,15 +38,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
-    # The location of network security perimeter.
+    # The name of the Azure region.
     ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]

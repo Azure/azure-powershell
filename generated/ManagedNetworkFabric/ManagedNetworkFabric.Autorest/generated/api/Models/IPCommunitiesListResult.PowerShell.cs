@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of IP Communities.</summary>
+    /// <summary>Paged collection of IpCommunity items</summary>
     [System.ComponentModel.TypeConverter(typeof(IPCommunitiesListResultTypeConverter))]
     public partial class IPCommunitiesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of IP Communities.
+    /// Paged collection of IpCommunity items
     [System.ComponentModel.TypeConverter(typeof(IPCommunitiesListResultTypeConverter))]
     public partial interface IIPCommunitiesListResult
 

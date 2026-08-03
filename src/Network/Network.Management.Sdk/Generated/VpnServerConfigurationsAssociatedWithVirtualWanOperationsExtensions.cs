@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         public static VpnServerConfigurationsResponse List(this IVpnServerConfigurationsAssociatedWithVirtualWanOperations operations, string resourceGroupName, string virtualWANName)
         {
@@ -39,11 +38,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -63,11 +61,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         public static VpnServerConfigurationsResponse BeginList(this IVpnServerConfigurationsAssociatedWithVirtualWanOperations operations, string resourceGroupName, string virtualWANName)
         {
@@ -82,11 +79,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

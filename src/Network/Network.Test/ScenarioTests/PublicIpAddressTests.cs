@@ -139,6 +139,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestPublicIpDdosCustomPolicy()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-DdosCustomPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpStandardSkuGlobalTier()
         {
@@ -166,6 +174,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestPublicIpAddressInEdgeZone()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpAddressInvokeCloudServiceReservation()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressInvokeCloudServiceReservation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpAddressInvokeDisassociateCloudServiceReservedIp()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressInvokeDisassociateCloudServiceReservedIp");
         }
     }
 }

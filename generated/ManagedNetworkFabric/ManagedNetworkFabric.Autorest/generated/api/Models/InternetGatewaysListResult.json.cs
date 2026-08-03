@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of InternetGateways.</summary>
+    /// <summary>Paged collection of InternetGateway items</summary>
     public partial class InternetGatewaysListResult
     {
 

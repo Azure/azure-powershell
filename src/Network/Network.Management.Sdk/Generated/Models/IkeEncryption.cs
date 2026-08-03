@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class IkeEncryption
     {
+        /// <summary>
+        /// DES
+        /// </summary>
         public const string DES = "DES";
+        /// <summary>
+        /// DES3
+        /// </summary>
         public const string DES3 = "DES3";
+        /// <summary>
+        /// AES128
+        /// </summary>
         public const string AES128 = "AES128";
+        /// <summary>
+        /// AES192
+        /// </summary>
         public const string AES192 = "AES192";
+        /// <summary>
+        /// AES256
+        /// </summary>
         public const string AES256 = "AES256";
+        /// <summary>
+        /// GCMAES256
+        /// </summary>
         public const string Gcmaes256 = "GCMAES256";
+        /// <summary>
+        /// GCMAES128
+        /// </summary>
         public const string Gcmaes128 = "GCMAES128";
     }
 }

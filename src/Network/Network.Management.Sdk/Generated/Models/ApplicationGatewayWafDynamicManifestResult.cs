@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Response for ApplicationGatewayWafDynamicManifest API service call.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayWafDynamicManifestResult
+    public partial class ApplicationGatewayWafDynamicManifestResult : ProxyResourceWithSettableId
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayWafDynamicManifestResult class.
@@ -44,10 +44,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
         public ApplicationGatewayWafDynamicManifestResult(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet> availableRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet>), string ruleSetType = default(string), string ruleSetVersion = default(string))
 
+        : base(id, name, type)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.AvailableRuleSets = availableRuleSets;
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
@@ -59,24 +57,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the available rulesets.
