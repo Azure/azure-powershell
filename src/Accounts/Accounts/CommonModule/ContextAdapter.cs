@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Common
         /// token and stamps it onto outgoing write requests, based on the -AcquirePolicyToken /
         /// -ChangeReference bound parameters. When the feature is off, no step is added (zero added cost).
         /// </summary>
-        internal void PolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
+        internal void AddChangeSafetyPolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
         {
             this.AddAcquirePolicyTokenHandler(invocationInfo?.BoundParameters, appendStep);
         }
