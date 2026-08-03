@@ -59,9 +59,18 @@ Describe 'Shipped help and custom cmdlet content is free of placeholder sentinel
 
         $manifest = Import-PowerShellDataFile -Path (Join-Path $moduleRoot 'Az.Chaos.psd1')
         $exportedCmdlets = @($manifest.FunctionsToExport | Where-Object { $_ -like '*-AzChaos*' } | Sort-Object)
+
+        # docs/ is a source-only folder. CI runs this suite against the built module under
+        # artifacts, where it is not present -- a packaged Az module ships
+        # bin/custom/exports/internal/utils and nothing else. Skip rather than fail there:
+        # absent docs mean there is nothing to check, not that a check failed. See DEV-056.
+        $docsRoot = Join-Path $moduleRoot 'docs'
+        $hasDocsTree = Test-Path -Path $docsRoot
+
         $exampleDescriptionFailures = @()
         foreach ($cmdletName in $exportedCmdlets) {
-            $helpFile = Join-Path (Join-Path $moduleRoot 'docs') "$cmdletName.md"
+            if (-not $hasDocsTree) { break }
+            $helpFile = Join-Path $docsRoot "$cmdletName.md"
             if (-not (Test-Path -Path $helpFile)) {
                 $exampleDescriptionFailures += "$cmdletName has no generated docs file at '$helpFile'."
                 continue
@@ -100,7 +109,7 @@ Describe 'Shipped help and custom cmdlet content is free of placeholder sentinel
         )
     }
 
-    It 'has description prose for every generated example of every exported cmdlet' {
+    It 'has description prose for every generated example of every exported cmdlet' -Skip:(-not $hasDocsTree) {
         $exampleDescriptionFailures | Should -BeNullOrEmpty -Because ($exampleDescriptionFailures -join "`n")
     }
 }

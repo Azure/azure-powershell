@@ -55,6 +55,13 @@ Describe 'Authored examples only use parameters that exist' {
         $exampleRoot = Join-Path $moduleRoot 'examples'
         $exportRoot = Join-Path $moduleRoot 'exports'
 
+        # These are build-time guards over the *source* tree. CI runs this suite against the
+        # built module under artifacts, where source-only folders (examples/, docs/) are not
+        # present -- a packaged Az module ships bin/custom/exports/internal/utils and nothing
+        # else. Skip rather than fail there: an absent examples/ folder means there is nothing
+        # to check, not that a check failed. See DEV-056.
+        $hasSourceTree = (Test-Path -Path $exampleRoot) -and (Test-Path -Path $exportRoot)
+
         # Parameters PowerShell adds to every advanced function. These never appear
         # in the param block but always bind.
         $commonParameters = @(
@@ -139,7 +146,7 @@ Describe 'Authored examples only use parameters that exist' {
         }
     }
 
-    It 'discovers example files and the exported cmdlet parameter surface' {
+    It 'discovers example files and the exported cmdlet parameter surface' -Skip:(-not $hasSourceTree) {
         # Guards the guard: if either collection is empty the parameter check below
         # passes vacuously, which is exactly the failure mode this suite exists to
         # prevent elsewhere.
@@ -147,7 +154,7 @@ Describe 'Authored examples only use parameters that exist' {
         $declaredParameters.Count | Should -BeGreaterThan 0 -Because 'exports/*.ps1 must be present for this check to mean anything'
     }
 
-    It 'uses only declared parameters in every example invocation of a module cmdlet' {
+    It 'uses only declared parameters in every example invocation of a module cmdlet' -Skip:(-not $hasSourceTree) {
         $invalidParameterUsages | Should -BeNullOrEmpty -Because (
             "the following examples document parameters that do not exist:`n" +
             (($invalidParameterUsages | Sort-Object -Unique) -join "`n")
@@ -233,6 +240,10 @@ Describe 'Authored examples only read properties that exist' {
             $exampleFiles = @(Get-ChildItem -Path $exampleRoot -Filter '*.md' -File |
                 Where-Object { $_.Name -ne 'README.md' })
         }
+
+        # Same layout guard as the parameter check above: skip in the packaged layout where
+        # examples/ and the built assembly are not present. See DEV-056.
+        $hasSourceTree = (Test-Path -Path $exampleRoot) -and (Test-Path -Path $privateAssembly)
 
         foreach ($exampleFile in $exampleFiles) {
             $content = Get-Content -Path $exampleFile.FullName -Raw
@@ -326,14 +337,14 @@ Describe 'Authored examples only read properties that exist' {
         }
     }
 
-    It 'resolves the shipped assembly and tracks at least one cmdlet result variable' {
+    It 'resolves the shipped assembly and tracks at least one cmdlet result variable' -Skip:(-not $hasSourceTree) {
         # Guards the guard: with no types or no tracked assignments the check below
         # passes vacuously.
         $typesByFullName.Count | Should -BeGreaterThan 0 -Because 'bin/Az.Chaos.private.dll must be loadable for this check to mean anything'
         $trackedAssignments | Should -BeGreaterThan 0 -Because 'at least one example must assign a cmdlet result to a variable'
     }
 
-    It 'reads only properties that exist on the declared output type' {
+    It 'reads only properties that exist on the declared output type' -Skip:(-not $hasSourceTree) {
         $invalidPropertyReads | Should -BeNullOrEmpty -Because (
             "the following examples read properties that do not exist:`n" +
             (($invalidPropertyReads | Sort-Object -Unique) -join "`n")
