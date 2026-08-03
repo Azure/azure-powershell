@@ -14,25 +14,25 @@ Checks that the pool name is valid and is not already in use.
 
 ### CheckExpanded (Default)
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <String> -Name <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzMdpPoolNameAvailability -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <String> -Body <ICheckNameAvailability>
+Test-AzMdpPoolNameAvailability -Body <ICheckNameAvailability> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+Test-AzMdpPoolNameAvailability -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <String> -JsonString <String> [-DefaultProfile <PSObject>]
+Test-AzMdpPoolNameAvailability -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -150,9 +150,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

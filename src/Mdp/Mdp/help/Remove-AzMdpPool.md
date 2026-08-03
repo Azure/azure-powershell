@@ -18,7 +18,7 @@ Delete a Pool
 ### Delete (Default)
 
 ```
-Remove-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
+Remove-AzMdpPool -Name <string> -ResourceGroupName <string> [-SubscriptionId <string>]
  [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
 ```
 
@@ -239,13 +239,13 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: Delete
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

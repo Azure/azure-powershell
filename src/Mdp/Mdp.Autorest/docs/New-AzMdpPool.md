@@ -14,7 +14,7 @@ Create a Pool
 
 ### CreateExpanded (Default)
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
  [-ProvisioningState <String>] [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>]
@@ -24,7 +24,7 @@ New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 
 ### Create
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Resource <IPool>
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -Resource <IPool> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,13 +45,13 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfile <IAg
 
 ### CreateViaJsonFilePath
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -JsonFilePath <String>
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -JsonString <String>
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -360,9 +360,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

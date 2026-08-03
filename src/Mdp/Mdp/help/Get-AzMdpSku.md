@@ -18,14 +18,14 @@ List ResourceSku resources by subscription ID
 ### Default (Default)
 
 ```
-Get-AzMdpSku -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzMdpSku -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List (Default)
 
 ```
-Get-AzMdpSku -Location <string> -SubscriptionId <string[]> [-DefaultProfile <psobject>]
+Get-AzMdpSku -Location <string> [-SubscriptionId <string[]>] [-DefaultProfile <psobject>]
 ```
 
 ## ALIASES
@@ -98,13 +98,13 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

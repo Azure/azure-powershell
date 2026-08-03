@@ -18,7 +18,7 @@ List Quota resources by subscription ID
 ### Usages (Default)
 
 ```
-Invoke-AzMdpUsageSubscriptionUsage -Location <String> -SubscriptionId <String>
+Invoke-AzMdpUsageSubscriptionUsage -Location <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -136,13 +136,13 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: Usages
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

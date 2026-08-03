@@ -18,14 +18,14 @@ List ResourceDetailsObject resources by Pool
 ### Default (Default)
 
 ```
-Get-AzMdpPoolAgent -PoolName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzMdpPoolAgent -PoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List (Default)
 
 ```
-Get-AzMdpPoolAgent -PoolName <string> -ResourceGroupName <string> -SubscriptionId <string[]>
+Get-AzMdpPoolAgent -PoolName <string> -ResourceGroupName <string> [-SubscriptionId <string[]>]
  [-DefaultProfile <psobject>]
 ```
 
@@ -122,13 +122,13 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

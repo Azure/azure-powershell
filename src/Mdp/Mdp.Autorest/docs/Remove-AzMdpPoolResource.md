@@ -14,15 +14,14 @@ A synchronous resource action.
 
 ### DeleteExpanded (Default)
 ```
-Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ResourceId <String[]> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -ResourceId <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Body <IDeleteResourcesDetails> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -Body <IDeleteResourcesDetails>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -39,14 +38,14 @@ Remove-AzMdpPoolResource -InputObject <IMdpIdentity> -ResourceId <String[]> [-De
 
 ### DeleteViaJsonFilePath
 ```
-Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaJsonString
 ```
-Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMdpPoolResource -PoolName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -225,9 +224,9 @@ Type: System.String
 Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

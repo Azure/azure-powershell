@@ -18,28 +18,28 @@ Checks that the pool name is valid and is not already in use.
 ### CheckExpanded (Default)
 
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <string> -Name <string> [-DefaultProfile <psobject>]
- [-WhatIf] [-Confirm]
+Test-AzMdpPoolNameAvailability -Name <string> [-SubscriptionId <string>]
+ [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
 ```
 
 ### Check
 
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <string> -Body <ICheckNameAvailability>
+Test-AzMdpPoolNameAvailability -Body <ICheckNameAvailability> [-SubscriptionId <string>]
  [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
 ```
 
 ### CheckViaJsonFilePath
 
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <string> -JsonFilePath <string>
+Test-AzMdpPoolNameAvailability -JsonFilePath <string> [-SubscriptionId <string>]
  [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
 ```
 
 ### CheckViaJsonString
 
 ```
-Test-AzMdpPoolNameAvailability -SubscriptionId <string> -JsonString <string>
+Test-AzMdpPoolNameAvailability -JsonString <string> [-SubscriptionId <string>]
  [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
 ```
 
@@ -214,13 +214,13 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

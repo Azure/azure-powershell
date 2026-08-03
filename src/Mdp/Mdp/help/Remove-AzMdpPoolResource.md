@@ -18,15 +18,16 @@ A synchronous resource action.
 ### DeleteExpanded (Default)
 
 ```
-Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -SubscriptionId <string>
- -ResourceId <string[]> [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -ResourceId <string[]>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ### Delete
 
 ```
-Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -SubscriptionId <string>
- -Body <IDeleteResourcesDetails> [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string>
+ -Body <IDeleteResourcesDetails> [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-PassThru]
+ [-WhatIf] [-Confirm]
 ```
 
 ### DeleteViaIdentity
@@ -46,15 +47,15 @@ Remove-AzMdpPoolResource -InputObject <IMdpIdentity> -ResourceId <string[]>
 ### DeleteViaJsonFilePath
 
 ```
-Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -SubscriptionId <string>
- -JsonFilePath <string> [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -JsonFilePath <string>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ### DeleteViaJsonString
 
 ```
-Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -SubscriptionId <string>
- -JsonString <string> [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Remove-AzMdpPoolResource -PoolName <string> -ResourceGroupName <string> -JsonString <string>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 ## ALIASES
@@ -368,31 +369,31 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: DeleteViaJsonString
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: DeleteViaJsonFilePath
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: DeleteExpanded
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: Delete
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

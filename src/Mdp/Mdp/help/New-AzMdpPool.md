@@ -18,8 +18,8 @@ Create a Pool
 ### CreateExpanded (Default)
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string> -Location <string>
- [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <string>]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -Location <string>
+ [-SubscriptionId <string>] [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <string>]
  [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <int>]
  [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>]
  [-RuntimeConfigurationWorkFolder <string>] [-Tag <hashtable>] [-UserAssignedIdentity <string[]>]
@@ -29,8 +29,8 @@ New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string
 ### Create
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string> -Resource <IPool>
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -Resource <IPool>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### CreateViaIdentity
@@ -54,15 +54,15 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Location <string> [-AgentProfile <IAg
 ### CreateViaJsonFilePath
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
- -JsonFilePath <string> [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -JsonFilePath <string>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### CreateViaJsonString
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
- -JsonString <string> [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -JsonString <string>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ## ALIASES
@@ -608,31 +608,31 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: CreateViaJsonString
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: CreateViaJsonFilePath
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: CreateExpanded
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: Create
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

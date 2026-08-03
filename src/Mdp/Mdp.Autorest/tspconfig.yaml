@@ -15,6 +15,12 @@ options:
       - Type
 
     directive:
+      # Default SubscriptionId to current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
       # Don't expose images and usages endpoints
       - where:
           subject: ImageVersion

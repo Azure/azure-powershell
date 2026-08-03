@@ -18,7 +18,7 @@ Update a Pool
 ### UpdateExpanded (Default)
 
 ```
-Update-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
+Update-AzMdpPool -Name <string> -ResourceGroupName <string> [-SubscriptionId <string>]
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <string>]
  [-EnableSystemAssignedIdentity <bool>] [-FabricProfile <IFabricProfile>]
  [-MaximumConcurrency <int>] [-OrganizationProfile <IOrganizationProfile>]
@@ -30,8 +30,8 @@ Update-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <str
 ### Update
 
 ```
-Update-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
- -Resource <IPool> [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzMdpPool -Name <string> -ResourceGroupName <string> -Resource <IPool>
+ [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### UpdateViaIdentity
@@ -502,19 +502,19 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: None
+DefaultValue: (Get-AzContext).Subscription.Id
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: UpdateExpanded
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: Update
   Position: Named
-  IsRequired: true
+  IsRequired: false
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
