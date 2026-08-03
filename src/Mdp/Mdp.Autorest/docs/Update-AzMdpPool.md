@@ -14,17 +14,17 @@ Update a Pool
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>]
  [-EnableSystemAssignedIdentity <Boolean?>] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
+ [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzMdpPool -Name <String> -ResourceGroupName <String> -Resource <IPool> [-SubscriptionId <String>]
+Update-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Resource <IPool>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -39,8 +39,9 @@ Update-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile 
 Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity <Boolean?>]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -279,6 +280,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RuntimeConfigurationWorkFolder
+The target work folder of the task agent on the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -288,9 +304,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

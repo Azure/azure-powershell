@@ -14,16 +14,17 @@ Create a Pool
 
 ### CreateExpanded (Default)
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -Resource <IPool> [-SubscriptionId <String>]
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Resource <IPool>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,19 +39,19 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PS
 New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>]
  [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+New-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -335,6 +336,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RuntimeConfigurationWorkFolder
+The target work folder of the task agent on the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -344,9 +360,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

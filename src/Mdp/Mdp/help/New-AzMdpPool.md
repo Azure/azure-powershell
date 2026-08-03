@@ -3,7 +3,7 @@ document type: cmdlet
 external help file: 
 HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/new-azmdppool
 Module Name: Az.Mdp
-ms.date: 07-31-2026
+ms.date: 08-03-2026
 PlatyPS schema version: 2024-05-01
 ---
 
@@ -18,19 +18,19 @@ Create a Pool
 ### CreateExpanded (Default)
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -Location <string>
- [-SubscriptionId <string>] [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <string>]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string> -Location <string>
+ [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <string>]
  [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <int>]
- [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>] [-Tag <hashtable>]
- [-UserAssignedIdentity <string[]>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>]
+ [-RuntimeConfigurationWorkFolder <string>] [-Tag <hashtable>] [-UserAssignedIdentity <string[]>]
+ [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### Create
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -Resource <IPool>
- [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string> -Resource <IPool>
+ [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### CreateViaIdentity
@@ -46,23 +46,23 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <ps
 New-AzMdpPool -InputObject <IMdpIdentity> -Location <string> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <string>] [-EnableSystemAssignedIdentity]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <int>]
- [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>] [-Tag <hashtable>]
- [-UserAssignedIdentity <string[]>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>]
+ [-RuntimeConfigurationWorkFolder <string>] [-Tag <hashtable>] [-UserAssignedIdentity <string[]>]
+ [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### CreateViaJsonFilePath
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -JsonFilePath <string>
- [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
+ -JsonFilePath <string> [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### CreateViaJsonString
 
 ```
-New-AzMdpPool -Name <string> -ResourceGroupName <string> -JsonString <string>
- [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
+ -JsonString <string> [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ## ALIASES
@@ -574,24 +574,17 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -SubscriptionId
+### -RuntimeConfigurationWorkFolder
 
-The ID of the target subscription.
-The value must be an UUID.
+The target work folder of the task agent on the machine.
 
 ```yaml
 Type: System.String
-DefaultValue: (Get-AzContext).Subscription.Id
+DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: CreateViaJsonString
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: CreateViaJsonFilePath
+- Name: CreateViaIdentityExpanded
   Position: Named
   IsRequired: false
   ValueFromPipeline: false
@@ -603,9 +596,43 @@ ParameterSets:
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -SubscriptionId
+
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: CreateViaJsonString
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: CreateViaJsonFilePath
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: CreateExpanded
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
 - Name: Create
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

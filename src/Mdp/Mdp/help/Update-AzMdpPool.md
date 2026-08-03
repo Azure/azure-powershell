@@ -3,7 +3,7 @@ document type: cmdlet
 external help file: 
 HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/update-azmdppool
 Module Name: Az.Mdp
-ms.date: 07-31-2026
+ms.date: 08-03-2026
 PlatyPS schema version: 2024-05-01
 ---
 
@@ -18,19 +18,20 @@ Update a Pool
 ### UpdateExpanded (Default)
 
 ```
-Update-AzMdpPool -Name <string> -ResourceGroupName <string> [-SubscriptionId <string>]
+Update-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <string>]
  [-EnableSystemAssignedIdentity <bool>] [-FabricProfile <IFabricProfile>]
  [-MaximumConcurrency <int>] [-OrganizationProfile <IOrganizationProfile>]
- [-ProvisioningState <string>] [-Tag <hashtable>] [-UserAssignedIdentity <string[]>]
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-ProvisioningState <string>] [-RuntimeConfigurationWorkFolder <string>] [-Tag <hashtable>]
+ [-UserAssignedIdentity <string[]>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm]
 ```
 
 ### Update
 
 ```
-Update-AzMdpPool -Name <string> -ResourceGroupName <string> -Resource <IPool>
- [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
+ -Resource <IPool> [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ### UpdateViaIdentity
@@ -46,9 +47,9 @@ Update-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile 
 Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <string>] [-EnableSystemAssignedIdentity <bool>]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <int>]
- [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>] [-Tag <hashtable>]
- [-UserAssignedIdentity <string[]>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <string>]
+ [-RuntimeConfigurationWorkFolder <string>] [-Tag <hashtable>] [-UserAssignedIdentity <string[]>]
+ [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
 ```
 
 ## ALIASES
@@ -467,6 +468,33 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
+### -RuntimeConfigurationWorkFolder
+
+The target work folder of the task agent on the machine.
+
+```yaml
+Type: System.String
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: UpdateViaIdentityExpanded
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: UpdateExpanded
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
 ### -SubscriptionId
 
 The ID of the target subscription.
@@ -474,19 +502,19 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: (Get-AzContext).Subscription.Id
+DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: UpdateExpanded
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: Update
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

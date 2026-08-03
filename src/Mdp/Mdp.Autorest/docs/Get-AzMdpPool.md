@@ -12,14 +12,14 @@ Get a Pool
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
-Get-AzMdpPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMdpPool -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -28,9 +28,9 @@ Get-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 Get-AzMdpPool -InputObject <IMdpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
-Get-AzMdpPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzMdpPool -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -123,7 +123,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -142,9 +142,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

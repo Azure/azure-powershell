@@ -1,76 +1,96 @@
 ﻿---
 document type: cmdlet
 external help file: 
-HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/remove-azmdppool
+HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/test-azmdppoolnameavailability
 Module Name: Az.Mdp
 ms.date: 08-03-2026
 PlatyPS schema version: 2024-05-01
 ---
 
-# Remove-AzMdpPool
+# Test-AzMdpPoolNameAvailability
 
 ## SYNOPSIS
 
-Delete a Pool
+Checks that the pool name is valid and is not already in use.
 
 ## SYNTAX
 
-### Delete (Default)
+### CheckExpanded (Default)
 
 ```
-Remove-AzMdpPool -Name <string> -ResourceGroupName <string> -SubscriptionId <string>
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+Test-AzMdpPoolNameAvailability -SubscriptionId <string> -Name <string> [-DefaultProfile <psobject>]
+ [-WhatIf] [-Confirm]
 ```
 
-### DeleteViaIdentity
+### Check
 
 ```
-Remove-AzMdpPool -InputObject <IMdpIdentity> [-DefaultProfile <psobject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm]
+Test-AzMdpPoolNameAvailability -SubscriptionId <string> -Body <ICheckNameAvailability>
+ [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
+```
+
+### CheckViaJsonFilePath
+
+```
+Test-AzMdpPoolNameAvailability -SubscriptionId <string> -JsonFilePath <string>
+ [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
+```
+
+### CheckViaJsonString
+
+```
+Test-AzMdpPoolNameAvailability -SubscriptionId <string> -JsonString <string>
+ [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
 ```
 
 ## ALIASES
 
 ## DESCRIPTION
 
-Delete a Pool
+Checks that the pool name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Delete a Managed DevOps Pool
+### Example 1: {{ Add title here }}
 
 ```powershell
-Remove-AzMdpPool -Name Contoso -ResourceGroupName testRg
+{{ Add code here }}
 ```
 
-This command deletes the Managed DevOps Pool named "Contoso" in the resource group "testRg".
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
-### Example 2: Delete a Managed DevOps Pool using InputObject
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 
 ```powershell
-$pool = Get-AzMdpPool -ResourceGroupName testRg -Name Contoso
-
-Remove-AzMdpPool -InputObject $pool
+{{ Add code here }}
 ```
 
-This command deletes the Managed DevOps Pool named "Contoso" in the resource group "testRg".
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
+### -Body
 
-Run the command as a job
+The parameters used to check the availability of a resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.ICheckNameAvailability
 DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: (All)
+- Name: Check
   Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
+  IsRequired: true
+  ValueFromPipeline: true
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 DontShow: false
@@ -124,20 +144,41 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -InputObject
+### -JsonFilePath
 
-Identity Parameter
+Path of Json file supplied to the Check operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IMdpIdentity
+Type: System.String
 DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: DeleteViaIdentity
+- Name: CheckViaJsonFilePath
   Position: Named
   IsRequired: true
-  ValueFromPipeline: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### -JsonString
+
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: CheckViaJsonString
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 DontShow: false
@@ -147,73 +188,7 @@ HelpMessage: ''
 
 ### -Name
 
-Name of the pool.
-It needs to be globally unique.
-
-```yaml
-Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- PoolName
-ParameterSets:
-- Name: Delete
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -NoWait
-
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -PassThru
-
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -ResourceGroupName
-
-The name of the resource group.
-The name is case insensitive.
+The name of the resource.
 
 ```yaml
 Type: System.String
@@ -221,7 +196,7 @@ DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: Delete
+- Name: CheckExpanded
   Position: Named
   IsRequired: true
   ValueFromPipeline: false
@@ -243,7 +218,7 @@ DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: Delete
+- Name: (All)
   Position: Named
   IsRequired: true
   ValueFromPipeline: false
@@ -287,11 +262,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IMdpIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.ICheckNameAvailability
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.ICheckNameAvailabilityResult
 
 ## NOTES
 

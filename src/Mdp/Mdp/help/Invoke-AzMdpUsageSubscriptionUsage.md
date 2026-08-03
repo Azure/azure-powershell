@@ -1,49 +1,65 @@
 ﻿---
 document type: cmdlet
 external help file: 
-HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/get-azmdppoolagent
+HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/invoke-azmdpusagesubscriptionusage
 Module Name: Az.Mdp
 ms.date: 08-03-2026
 PlatyPS schema version: 2024-05-01
 ---
 
-# Get-AzMdpPoolAgent
+# Invoke-AzMdpUsageSubscriptionUsage
 
 ## SYNOPSIS
 
-List ResourceDetailsObject resources by Pool
+List Quota resources by subscription ID
 
 ## SYNTAX
 
-### Default (Default)
+### Usages (Default)
 
 ```
-Get-AzMdpPoolAgent -PoolName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Invoke-AzMdpUsageSubscriptionUsage -Location <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List (Default)
+### UsagesViaIdentity
 
 ```
-Get-AzMdpPoolAgent -PoolName <string> -ResourceGroupName <string> -SubscriptionId <string[]>
- [-DefaultProfile <psobject>]
+Invoke-AzMdpUsageSubscriptionUsage -InputObject <IMdpIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## ALIASES
 
 ## DESCRIPTION
 
-List ResourceDetailsObject resources by Pool
+List Quota resources by subscription ID
 
 ## EXAMPLES
 
-### Example 1: List agents for a pool in a resource group
+### Example 1: {{ Add title here }}
 
 ```powershell
-Get-AzMdpPoolAgent -ResourceGroupName testRg -PoolName Contoso
+{{ Add code here }}
 ```
 
-This command gets the agents for Managed DevOps Pool named "Contoso" under the resource group "testRg".
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -71,21 +87,20 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -PoolName
+### -InputObject
 
-Name of the pool.
-It needs to be globally unique.
+Identity Parameter
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IMdpIdentity
 DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: (All)
+- Name: UsagesViaIdentity
   Position: Named
   IsRequired: true
-  ValueFromPipeline: false
+  ValueFromPipeline: true
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 DontShow: false
@@ -93,10 +108,9 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -ResourceGroupName
+### -Location
 
-The name of the resource group.
-The name is case insensitive.
+The name of the Azure region.
 
 ```yaml
 Type: System.String
@@ -104,7 +118,7 @@ DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: (All)
+- Name: Usages
   Position: Named
   IsRequired: true
   ValueFromPipeline: false
@@ -121,12 +135,12 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: (All)
+- Name: Usages
   Position: Named
   IsRequired: true
   ValueFromPipeline: false
@@ -146,9 +160,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IMdpIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IResourceDetailsObject
+### Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IQuota
 
 ## NOTES
 

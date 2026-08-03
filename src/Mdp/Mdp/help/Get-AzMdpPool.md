@@ -3,7 +3,7 @@ document type: cmdlet
 external help file: 
 HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/get-azmdppool
 Module Name: Az.Mdp
-ms.date: 07-31-2026
+ms.date: 08-03-2026
 PlatyPS schema version: 2024-05-01
 ---
 
@@ -15,16 +15,16 @@ Get a Pool
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 
 ```
-Get-AzMdpPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMdpPool -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 
 ```
-Get-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMdpPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -34,10 +34,10 @@ Get-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 Get-AzMdpPool -InputObject <IMdpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 
 ```
-Get-AzMdpPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzMdpPool -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -163,7 +163,7 @@ DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
-- Name: List1
+- Name: List
   Position: Named
   IsRequired: true
   ValueFromPipeline: false
@@ -187,25 +187,25 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-DefaultValue: (Get-AzContext).Subscription.Id
+DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: List1
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: List
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
 - Name: Get
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false

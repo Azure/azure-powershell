@@ -3,7 +3,7 @@ document type: cmdlet
 external help file: 
 HelpUri: https://learn.microsoft.com/powershell/module/az.mdp/get-azmdpsku
 Module Name: Az.Mdp
-ms.date: 07-31-2026
+ms.date: 08-03-2026
 PlatyPS schema version: 2024-05-01
 ---
 
@@ -18,14 +18,14 @@ List ResourceSku resources by subscription ID
 ### Default (Default)
 
 ```
-Get-AzMdpSku -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzMdpSku -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List (Default)
 
 ```
-Get-AzMdpSku -Location <string> [-SubscriptionId <string[]>] [-DefaultProfile <psobject>]
+Get-AzMdpSku -Location <string> -SubscriptionId <string[]> [-DefaultProfile <psobject>]
 ```
 
 ## ALIASES
@@ -98,13 +98,13 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-DefaultValue: (Get-AzContext).Subscription.Id
+DefaultValue: None
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
 - Name: (All)
   Position: Named
-  IsRequired: false
+  IsRequired: true
   ValueFromPipeline: false
   ValueFromPipelineByPropertyName: false
   ValueFromRemainingArguments: false
