@@ -1,4 +1,4 @@
-namespace Microsoft.Azure.Management.Resources.Models
+namespace Microsoft.Azure.Management.ResourceManager.Models
 {
     using System.Collections.Generic;
 

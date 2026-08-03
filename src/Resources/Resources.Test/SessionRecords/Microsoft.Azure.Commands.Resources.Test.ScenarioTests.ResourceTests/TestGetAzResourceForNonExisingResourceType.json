@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resources?$filter=resourceType%20EQ%20'Microsoft.FakeProvider/fakeType'&api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjhkMTk0ZTAtZmE5Mi00MGVlLWIzZTctMmU3NmRmNjJmMTZiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMEVRJTIwJ01pY3Jvc29mdC5GYWtlUHJvdmlkZXIvZmFrZVR5cGUnJmFwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestUri": "/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resources?$filter=resourceType%20EQ%20'Microsoft.FakeProvider/fakeType'&api-version=2024-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGMzMDI0MzEtMWFkMC00MTg3LTg3YzktZDRjZWJjZjdlZGMyL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMEVRJTIwJ01pY3Jvc29mdC5GYWtlUHJvdmlkZXIvZmFrZVR5cGUnJmFwaS12ZXJzaW9uPTIwMjQtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "a74f5187-e79f-42e2-93b9-66ae6aef9134"
+          "58a3d021-2a67-4409-aba9-91c44623a581"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2926.32403",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/10.0.1"
         ]
       },
       "RequestBody": "",
@@ -33,13 +33,13 @@
           "3749"
         ],
         "x-ms-request-id": [
-          "bb89a718-8e6b-46e2-a399-5a58ecf0bc32"
+          "f23b1762-f563-4451-b54f-e37f77e21781"
         ],
         "x-ms-correlation-request-id": [
-          "bb89a718-8e6b-46e2-a399-5a58ecf0bc32"
+          "f23b1762-f563-4451-b54f-e37f77e21781"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250426T155103Z:bb89a718-8e6b-46e2-a399-5a58ecf0bc32"
+          "SOUTHEASTASIA:20260722T013057Z:f23b1762-f563-4451-b54f-e37f77e21781"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: A5026A4D46004F1E9DA2BFDD4310916B Ref B: MAA201060513009 Ref C: 2025-04-26T15:51:03Z"
+          "Ref A: 63B8FD8ACC4C4E6180EEF9E05C3456A7 Ref B: KUL201100110036 Ref C: 2026-07-22T01:30:56Z"
         ],
         "Date": [
-          "Sat, 26 Apr 2025 15:51:03 GMT"
+          "Wed, 22 Jul 2026 01:30:57 GMT"
         ],
         "Content-Length": [
           "12"
@@ -75,6 +75,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "28d194e0-fa92-40ee-b3e7-2e76df62f16b"
+    "SubscriptionId": "0c302431-1ad0-4187-87c9-d4cebcf7edc2"
   }
 }

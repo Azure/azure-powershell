@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             using (var response = new AzureOperationResponse<IPage<Provider>> { Body = pageResponse })
             {
                 this.providerOperationsMock
-                    .Setup(p => p.ListAtTenantScopeWithHttpMessagesAsync(It.IsAny<int?>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                    .Setup(p => p.ListAtTenantScopeWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
                     .Returns(() => Task.FromResult(response));
             };
         }
