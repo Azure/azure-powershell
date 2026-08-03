@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Added parameters 'GeoDataReplicationMaxReplicationLagDurationInSecond', 'GeoDataReplicationLocation', and 'IPAddressType' to cmdlets 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace'
 * Added new cmdlets for doing namespace failover - 'Start-AzServiceBusNamespaceFailOver'
 * Added new cmdlets for generating replication object for Replication parameter - 'New-AzServiceBusLocationsNameObject'
