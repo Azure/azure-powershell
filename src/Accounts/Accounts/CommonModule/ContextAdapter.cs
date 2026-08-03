@@ -152,8 +152,6 @@ namespace Microsoft.Azure.Commands.Common
             bool shouldAcquire = acquire || changeReference != null;
             if (!shouldAcquire) { return; } // feature off -> no added pipeline step (zero cost)
 
-            // Generated write cmdlets gate the HTTP call behind ShouldProcess, so under -WhatIf the write
-            // request (and therefore this pipeline step) is never sent. No WhatIf handling is needed here.
             var acquirer = new Microsoft.WindowsAzure.Commands.Common.PolicyTokenAcquirer();
             appendStep(
                 async (request, cancelToken, cancelAction, signal, next) =>
