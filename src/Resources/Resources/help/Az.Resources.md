@@ -117,6 +117,9 @@ Get deployment operation for management group deployment
 ### [Get-AzManagementGroupDeploymentStack](Get-AzManagementGroupDeploymentStack.md)
 Gets Management Group scoped Deployment Stacks.
 
+### [Get-AzManagementGroupDeploymentStackWhatIfResult](Get-AzManagementGroupDeploymentStackWhatIfResult.md)
+Gets a management group scoped deployment stack WhatIf result.
+
 ### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at management group scope. 
 
@@ -179,6 +182,9 @@ Gets the resource group deployment operation
 ### [Get-AzResourceGroupDeploymentStack](Get-AzResourceGroupDeploymentStack.md)
 Gets Resource Group scoped Deployment Stacks.
 
+### [Get-AzResourceGroupDeploymentStackWhatIfResult](Get-AzResourceGroupDeploymentStackWhatIfResult.md)
+Gets a resource group scoped deployment stack WhatIf result.
+
 ### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at resource group scope. 
 
@@ -238,6 +244,9 @@ Get the specified role management policy assignment for a resource scope
 
 ### [Get-AzSubscriptionDeploymentStack](Get-AzSubscriptionDeploymentStack.md)
 Gets Subscription scoped Deployment Stacks.
+
+### [Get-AzSubscriptionDeploymentStackWhatIfResult](Get-AzSubscriptionDeploymentStackWhatIfResult.md)
+Gets a subscription scoped deployment stack WhatIf result.
 
 ### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
@@ -313,6 +322,9 @@ Create a deployment at a management group
 ### [New-AzManagementGroupDeploymentStack](New-AzManagementGroupDeploymentStack.md)
 Creates a new Management Group scoped Deployment Stack.
 
+### [New-AzManagementGroupDeploymentStackWhatIfResult](New-AzManagementGroupDeploymentStackWhatIfResult.md)
+Creates a management group scoped deployment stack WhatIf result.
+
 ### [New-AzManagementGroupHierarchySetting](New-AzManagementGroupHierarchySetting.md)
 Creates Hierarchy Settings under the current tenant
 
@@ -348,6 +360,9 @@ Adds an Azure deployment to a resource group.
 
 ### [New-AzResourceGroupDeploymentStack](New-AzResourceGroupDeploymentStack.md)
 Creates a new Resource Group scoped Deployment Stack.
+
+### [New-AzResourceGroupDeploymentStackWhatIfResult](New-AzResourceGroupDeploymentStackWhatIfResult.md)
+Creates a resource group scoped deployment stack WhatIf result.
 
 ### [New-AzResourceLock](New-AzResourceLock.md)
 Creates a resource lock.
@@ -385,6 +400,9 @@ Create a role management policy assignment
 
 ### [New-AzSubscriptionDeploymentStack](New-AzSubscriptionDeploymentStack.md)
 Creates a new Subscription scoped Deployment Stack.
+
+### [New-AzSubscriptionDeploymentStackWhatIfResult](New-AzSubscriptionDeploymentStackWhatIfResult.md)
+Creates a subscription scoped deployment stack WhatIf result.
 
 ### [New-AzTag](New-AzTag.md)
 Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
@@ -468,6 +486,9 @@ Removes a deployment at a management group and any associated operations
 ### [Remove-AzManagementGroupDeploymentStack](Remove-AzManagementGroupDeploymentStack.md)
 Removes a Management Group scoped Deployment Stack.
 
+### [Remove-AzManagementGroupDeploymentStackWhatIfResult](Remove-AzManagementGroupDeploymentStackWhatIfResult.md)
+Removes a management group scoped deployment stack WhatIf result.
+
 ### [Remove-AzManagementGroupHierarchySetting](Remove-AzManagementGroupHierarchySetting.md)
 Deletes all Hierarchy Settings under the current tenant
 
@@ -506,6 +527,9 @@ Removes a resource group deployment and any associated operations.
 ### [Remove-AzResourceGroupDeploymentStack](Remove-AzResourceGroupDeploymentStack.md)
 Removes a Resource Group scoped Deployment Stack.
 
+### [Remove-AzResourceGroupDeploymentStackWhatIfResult](Remove-AzResourceGroupDeploymentStackWhatIfResult.md)
+Removes a resource group scoped deployment stack WhatIf result.
+
 ### [Remove-AzResourceLock](Remove-AzResourceLock.md)
 Removes a resource lock.
 
@@ -538,6 +562,9 @@ Delete a role management policy assignment
 
 ### [Remove-AzSubscriptionDeploymentStack](Remove-AzSubscriptionDeploymentStack.md)
 Removes a Subscription scoped Deployment Stack.
+
+### [Remove-AzSubscriptionDeploymentStackWhatIfResult](Remove-AzSubscriptionDeploymentStackWhatIfResult.md)
+Removes a subscription scoped deployment stack WhatIf result.
 
 ### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
@@ -584,6 +611,9 @@ Updates managed application definition
 ### [Set-AzManagementGroupDeploymentStack](Set-AzManagementGroupDeploymentStack.md)
 Sets a new Management Group scoped Deployment Stack.
 
+### [Set-AzManagementGroupDeploymentStackWhatIfResult](Set-AzManagementGroupDeploymentStackWhatIfResult.md)
+Updates a management group scoped deployment stack WhatIf result.
+
 ### [Set-AzResource](Set-AzResource.md)
 Modifies a resource.
 
@@ -592,6 +622,9 @@ Modifies a resource group.
 
 ### [Set-AzResourceGroupDeploymentStack](Set-AzResourceGroupDeploymentStack.md)
 Sets a new Resource Group scoped Deployment Stack.
+
+### [Set-AzResourceGroupDeploymentStackWhatIfResult](Set-AzResourceGroupDeploymentStackWhatIfResult.md)
+Updates a resource group scoped deployment stack WhatIf result.
 
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
@@ -618,6 +651,9 @@ Finally, save the role definition using this command.
 
 ### [Set-AzSubscriptionDeploymentStack](Set-AzSubscriptionDeploymentStack.md)
 Sets a new Subscription scoped Deployment Stack.
+
+### [Set-AzSubscriptionDeploymentStackWhatIfResult](Set-AzSubscriptionDeploymentStackWhatIfResult.md)
+Updates a subscription scoped deployment stack WhatIf result.
 
 ### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
 Modifies a Template Spec.
@@ -706,7 +742,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 This operation updates an existing policy definition in the given subscription or management group with the given name.
 
 ### [Update-AzPolicyEnrollment](Update-AzPolicyEnrollment.md)
-This operation update a policy enrollment with the newly provided properties.
+This operation updates a policy enrollment with the newly provided properties.
 
 ### [Update-AzPolicyExemption](Update-AzPolicyExemption.md)
 This operation updates a policy exemption with the given scope and name.

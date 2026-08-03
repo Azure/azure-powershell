@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicysetdefinition
 schema: 2.0.0
@@ -14,25 +14,26 @@ Creates or updates a policy set definition.
 
 ### Name (Default)
 ```
-New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-New-AzPolicySetDefinition -ManagementGroupId <String> -Name <String> -PolicyDefinition <String>
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> -PolicyDefinition <String>
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -334,4 +335,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

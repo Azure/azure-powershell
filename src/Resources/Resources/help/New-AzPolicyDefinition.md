@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicydefinition
 schema: 2.0.0
@@ -14,35 +14,35 @@ Creates or updates a policy definition.
 
 ### Name (Default)
 ```
-New-AzPolicyDefinition -Name <String> -Policy <String> [-Description <String>] [-DisplayName <String>]
- [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+New-AzPolicyDefinition -Name <String> -Policy <String> [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-New-AzPolicyDefinition -ManagementGroupId <String> -Name <String> -Policy <String> [-Description <String>]
- [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+New-AzPolicyDefinition -Name <String> -ManagementGroupId <String> -Policy <String> [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-Description <String>]
- [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -431,4 +431,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

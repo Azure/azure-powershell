@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicydefinition
 schema: 2.0.0
@@ -15,31 +15,33 @@ This operation deletes the policy definition in the given subscription with the 
 ### Name (Default)
 ```
 Remove-AzPolicyDefinition -Name <String> [-Version <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Remove-AzPolicyDefinition -Name <String> [-Version <String>] -ManagementGroupId <String> [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Remove-AzPolicyDefinition -Name <String> [-Version <String>] -SubscriptionId <String> [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyDefinition -Id <String> [-Version <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition [-Version <String>] -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Remove-AzPolicyDefinition -ManagementGroupId <String> -Name <String> [-Version <String>] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Version <String>] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,7 +131,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -153,7 +155,19 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: Name
+Aliases: PolicyDefinitionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupName, SubscriptionId
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -198,7 +212,7 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id, ManagementGroupName, Name, SubscriptionId
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
 Aliases: PolicyDefinitionVersion
 
 Required: False
@@ -255,4 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

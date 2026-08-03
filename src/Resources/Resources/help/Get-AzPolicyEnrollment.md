@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyenrollment
 schema: 2.0.0
@@ -14,34 +14,38 @@ Gets policy enrollments.
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzPolicyEnrollment [-IncludeDescendent] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzPolicyEnrollment [-SubscriptionId <String[]>] [-IncludeDescendent] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetById
-```
-Get-AzPolicyEnrollment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByName
-```
-Get-AzPolicyEnrollment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListByManagementGroupId
-```
-Get-AzPolicyEnrollment -ManagementGroupId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
-Get-AzPolicyEnrollment -ResourceGroupName <String> [-IncludeDescendent] [-SubscriptionId <String[]>]
+Get-AzPolicyEnrollment [-SubscriptionId <String[]>] [-IncludeDescendent] -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByScope
 ```
-Get-AzPolicyEnrollment -Scope <String> [-IncludeDescendent] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyEnrollment [-IncludeDescendent] -Scope <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByName
+```
+Get-AzPolicyEnrollment -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetById
+```
+Get-AzPolicyEnrollment -Id <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByManagementGroupId
+```
+Get-AzPolicyEnrollment -ManagementGroupId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +118,7 @@ If not provided, only policy enrollments at and above the given scope are includ
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListByResourceGroupName, ListByScope, ListBySubscriptionId
+Parameter Sets: ListBySubscriptionId, ListByResourceGroupName, ListByScope
 Aliases:
 
 Required: False
@@ -176,7 +180,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByScope
+Parameter Sets: ListByScope, GetByName
 Aliases:
 
 Required: True
@@ -191,7 +195,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ListByResourceGroupName, ListBySubscriptionId
+Parameter Sets: ListBySubscriptionId, ListByResourceGroupName
 Aliases:
 
 Required: False
@@ -219,4 +223,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

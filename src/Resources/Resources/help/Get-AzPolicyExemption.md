@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyexemption
 schema: 2.0.0
@@ -14,19 +14,20 @@ Gets policy exemptions.
 
 ### Name (Default)
 ```
-Get-AzPolicyExemption [-Name <String>] [-PolicyAssignmentIdFilter <String>] [-Scope <String>]
+Get-AzPolicyExemption [-Name <String>] [-Scope <String>] [-PolicyAssignmentIdFilter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Id
-```
-Get-AzPolicyExemption -Id <String> [-PolicyAssignmentIdFilter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### IncludeDescendent
 ```
-Get-AzPolicyExemption -IncludeDescendent [-Scope <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicyExemption [-PolicyAssignmentIdFilter <String>] -Id <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +131,7 @@ The policy assignment id filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id, Name
+Parameter Sets: Name, Id
 Aliases:
 
 Required: False
@@ -146,7 +147,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: IncludeDescendent, Name
+Parameter Sets: Name, IncludeDescendent
 Aliases:
 
 Required: False
@@ -172,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

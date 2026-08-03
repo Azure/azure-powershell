@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicydefinition
 schema: 2.0.0
@@ -14,56 +14,56 @@ This operation updates an existing policy definition in the given subscription o
 
 ### Name (Default)
 ```
-Update-AzPolicyDefinition -Name <String> [-Description <String>] [-DisplayName <String>]
- [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+Update-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Id
-```
-Update-AzPolicyDefinition -Id <String> [-Description <String>] [-DisplayName <String>]
- [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InputObject
-```
-Update-AzPolicyDefinition -InputObject <IPolicyDefinition> [-Description <String>] [-DisplayName <String>]
- [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Update-AzPolicyDefinition -ManagementGroupId <String> -Name <String> [-Description <String>]
- [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
- [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
+ [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
+ [-Version <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Update-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-DisplayName <String>]
+ [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
+ [-Version <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Id
+```
+Update-AzPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
+ [-Parameter <String>] [-Mode <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Update-AzPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -246,7 +246,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 Parameter Sets: InputObject
@@ -255,7 +254,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -311,7 +310,7 @@ The name of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: Name, SubscriptionId, ManagementGroupName
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -342,7 +341,7 @@ The policy rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: InputObject, ManagementGroupName, Name, SubscriptionId
+Parameter Sets: Name, SubscriptionId, ManagementGroupName, InputObject
 Aliases:
 
 Required: False
@@ -372,7 +371,7 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: Name, SubscriptionId, ManagementGroupName
 Aliases: PolicyDefinitionVersion
 
 Required: False
@@ -435,4 +434,3 @@ ALIASES
 Set-AzPolicyDefinition
 
 ## RELATED LINKS
-

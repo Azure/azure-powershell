@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyenrollment
 schema: 2.0.0
@@ -14,25 +14,26 @@ This operation updates a policy enrollment with the newly provided properties.
 
 ### UpdateByNameAndScope (Default)
 ```
-Update-AzPolicyEnrollment -Name <String> -Scope <String> [-AssignmentScopeValidation <String>]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### UpdateById
-```
-Update-AzPolicyEnrollment -Id <String> [-AssignmentScopeValidation <String>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-PolicyDefinitionReferenceId <String[]>]
- [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzPolicyEnrollment -Name <String> -Scope <String> [-Description <String>] [-DisplayName <String>]
+ [-AssignmentScopeValidation <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-PolicyDefinitionReferenceId <String[]>] [-Metadata <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### UpdateByInputObject
 ```
-Update-AzPolicyEnrollment -InputObject <IPolicyEnrollment> [-AssignmentScopeValidation <String>]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzPolicyEnrollment -InputObject <IPolicyEnrollment> [-Description <String>] [-DisplayName <String>]
+ [-AssignmentScopeValidation <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-PolicyDefinitionReferenceId <String[]>] [-Metadata <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### UpdateById
+```
+Update-AzPolicyEnrollment -Id <String> [-Description <String>] [-DisplayName <String>]
+ [-AssignmentScopeValidation <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-PolicyDefinitionReferenceId <String[]>] [-Metadata <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,4 +272,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

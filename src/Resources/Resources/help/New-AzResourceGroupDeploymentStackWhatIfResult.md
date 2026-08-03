@@ -20,8 +20,8 @@ New-AzResourceGroupDeploymentStackWhatIfResult -Name <String> -StackResourceId <
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterFile
@@ -104,8 +104,8 @@ New-AzResourceGroupDeploymentStackWhatIfResult -Name <String> -StackResourceId <
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateUri <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterFile
@@ -152,8 +152,8 @@ New-AzResourceGroupDeploymentStackWhatIfResult -Name <String> -StackResourceId <
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
@@ -164,8 +164,8 @@ New-AzResourceGroupDeploymentStackWhatIfResult -Name <String> -StackResourceId <
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScope] [-ValidationLevel <String>] [-DebugSettingDetailLevel <String>]
  [-BypassStackOutOfSyncError] [-Force] [-AsJob] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -201,7 +201,7 @@ Action to take on resources that become unmanaged.
 Possible values include: 'detachAll', 'deleteResources', and 'deleteAll'.
 
 ```yaml
-Type: PSActionOnUnmanage
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSActionOnUnmanage
 Parameter Sets: (All)
 Aliases:
 Accepted values: DetachAll, DeleteResources, DeleteAll
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 Run cmdlet in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -232,24 +232,9 @@ Accept wildcard characters: False
 Flag to bypass stack out-of-sync error.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -263,7 +248,7 @@ Debug setting detail level (e.g.
 RequestContent, ResponseContent).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +263,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -293,7 +278,7 @@ Accept wildcard characters: False
 Apply to child scopes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +294,7 @@ List of role-based management operations excluded from the denySettings.
 Up to 200 actions are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -325,7 +310,7 @@ List of AAD principal IDs excluded from the lock.
 Up to 5 principals are permitted.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -341,7 +326,7 @@ Mode for DenySettings.
 Possible values include: 'denyDelete', 'denyWriteAndDelete', and 'none'.
 
 ```yaml
-Type: PSDenySettingsMode
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDenySettingsMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, DenyDelete, DenyWriteAndDelete
@@ -357,7 +342,7 @@ Accept wildcard characters: False
 Description for the WhatIf result.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -372,7 +357,7 @@ Accept wildcard characters: False
 Do not ask for confirmation when an existing WhatIf result will be overwritten.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -387,7 +372,7 @@ Accept wildcard characters: False
 The name of the WhatIf result resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +387,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -418,7 +403,7 @@ The query string (for example, a SAS token) to be used with the TemplateUri para
 Would be used in case of linked templates
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -433,7 +418,7 @@ Accept wildcard characters: False
 The name of the ResourceGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -449,7 +434,7 @@ The interval to persist the WhatIf result in ISO 8601 format (e.g.
 P1D for 1 day).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -466,7 +451,7 @@ This check would prompt the user to provide a value for the missing parameters, 
 For non-interactive scripts, -SkipTemplateParameterPrompt can be provided to provide a better error message in the case where not all required parameters are satisfied.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -481,7 +466,7 @@ Accept wildcard characters: False
 The fully-qualified resource ID of the deployment stack to use as the basis for comparison.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -496,7 +481,7 @@ Accept wildcard characters: False
 TemplateFile to be used to create the stack.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileWithParameterFile, ByTemplateFileWithParameterUri, ByTemplateFileWithParameterObject
 Aliases:
 
@@ -511,7 +496,7 @@ Accept wildcard characters: False
 Parameter file to use for the template.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
@@ -526,7 +511,7 @@ Accept wildcard characters: False
 A hash table which represents the parameters.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: ByTemplateFileWithParameterObject, ByTemplateUriWithParameterObject, ByTemplateSpecWithParameterObject
 Aliases:
 
@@ -541,7 +526,7 @@ Accept wildcard characters: False
 Location of the Parameter file to use for the template.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileWithParameterUri, ByTemplateUriWithParameterUri, ByTemplateSpecWithParameterUri
 Aliases:
 
@@ -556,7 +541,7 @@ Accept wildcard characters: False
 ResourceId of the TemplateSpec to be used to create the stack.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateSpecWithParameterFile, ByTemplateSpecWithParameterUri, ByTemplateSpecWithParameterObject, ByTemplateSpecWithNoParameters
 Aliases:
 
@@ -571,7 +556,7 @@ Accept wildcard characters: False
 Location of the Template to be used to create the stack.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateUriWithParameterFile, ByTemplateUriWithParameterUri, ByTemplateUriWithParameterObject, ByTemplateUriWithNoParameters
 Aliases:
 
@@ -587,9 +572,24 @@ Validation level.
 Possible values: Template, Provider, ProviderNoRbac.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -603,7 +603,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -630,4 +630,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
