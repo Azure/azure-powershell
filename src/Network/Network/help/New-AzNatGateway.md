@@ -17,7 +17,7 @@ New-AzNatGateway -ResourceGroupName <String> -Name <String> [-IdleTimeoutInMinut
  [-Sku <String>] [-Location <String>] [-Tag <Hashtable>] [-PublicIpAddress <PSResourceId[]>]
  [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
  [-SourceVirtualNetwork <PSResourceId>] [-Nat64 <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
 
  [<CommonParameters>]
 ```
@@ -185,21 +185,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
