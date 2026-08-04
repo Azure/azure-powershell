@@ -34,6 +34,44 @@ Describe 'Remove-AzChaosScenario' {
         }.GetNewClosure()
     }
 
+    # The generated proxy refuses to run without an Azure login unless it can see a
+    # playback-mode PipelineMock in HttpPipelinePrepend:
+    #
+    #   $testPlayback = $false
+    #   $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or
+    #     ('...Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+    #   $context = Get-AzContext
+    #   if (-not $context -and -not $testPlayback) { throw "No Azure login detected..." }
+    #
+    # A SendAsyncStep built from a script block has a compiler-generated closure as its
+    # .Target, so it can never satisfy that check. On a CI agent -- which has no Azure login --
+    # the cmdlet therefore throws before any pipeline step runs, and none of the delete
+    # behaviour below is exercised. Every generated *.Tests.ps1 gets past the same gate by
+    # dot-sourcing generated/runtime/HttpPipelineMocking.ps1, which assigns a playback-mode
+    # PipelineMock object to $PSDefaultParameterValues["*:HttpPipelinePrepend"]. These tests
+    # need a synthesised response rather than a recording, so they pass both: the mock to
+    # satisfy the check, and the responder to answer the request.
+    #
+    # Order matters and is load-bearing. HttpPipeline.Prepend appends to its step list and
+    # builds the chain by wrapping `next` in list order, so the LAST element of the array ends
+    # up outermost and runs FIRST. The responder runs first and returns without calling $next,
+    # so the mock is never invoked. The mock deliberately names a recording file that does not
+    # exist: if that ordering ever changes, PipelineMock.LoadMessage throws "Missing recording
+    # file" and these tests fail loudly instead of passing vacuously.
+    $unusedRecording = Join-Path $PSScriptRoot 'this-recording-must-never-be-read.json'
+
+    function New-HttpPipelinePrepend {
+        param(
+            [System.Net.HttpStatusCode]$StatusCode,
+            [string]$Body = $null
+        )
+
+        $mock = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock -ArgumentList $unusedRecording
+        $mock.SetPlayback()
+
+        @($mock, (New-HttpPipelineStep -StatusCode $StatusCode -Body $Body))
+    }
+
     function Invoke-ScenarioDelete {
         [CmdletBinding()]
         param(
@@ -44,7 +82,7 @@ Describe 'Remove-AzChaosScenario' {
         )
 
         $params = @{
-            HttpPipelinePrepend = New-HttpPipelineStep -StatusCode $StatusCode -Body $Body
+            HttpPipelinePrepend = New-HttpPipelinePrepend -StatusCode $StatusCode -Body $Body
             Confirm = $false
         }
 

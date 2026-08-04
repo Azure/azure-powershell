@@ -27,9 +27,10 @@ Describe 'Shipped help and custom cmdlet content is free of placeholder sentinel
 
     BeforeAll {
         $moduleRoot = Split-Path -Path $PSScriptRoot -Parent
-        $scanRoots = @('docs', 'help', 'custom') | ForEach-Object {
+        $scanRootNames = @('docs', 'help', 'custom')
+        $scanRoots = @($scanRootNames | ForEach-Object {
             Join-Path $moduleRoot $_
-        } | Where-Object { Test-Path -Path $_ }
+        } | Where-Object { Test-Path -Path $_ })
 
         # Patterns that indicate leftover debugging/experiment placeholders rather
         # than authored content. Kept intentionally narrow to avoid false positives
@@ -42,8 +43,10 @@ Describe 'Shipped help and custom cmdlet content is free of placeholder sentinel
         )
 
         $sentinelHits = @()
+        $scannedFileCount = 0
         foreach ($root in $scanRoots) {
-            $files = Get-ChildItem -Path $root -Recurse -File -Include '*.md', '*.ps1'
+            $files = @(Get-ChildItem -Path $root -Recurse -File -Include '*.md', '*.ps1')
+            $scannedFileCount += $files.Count
             foreach ($file in $files) {
                 $content = Get-Content -Path $file.FullName -Raw
                 foreach ($pattern in $placeholderPatterns) {
@@ -101,6 +104,16 @@ Describe 'Shipped help and custom cmdlet content is free of placeholder sentinel
                 }
             }
         }
+    }
+
+    It 'scans at least one content root and finds files in it' {
+        # Guards the guard. docs/ and help/ are source-only, so against the packaged module
+        # under artifacts only custom/ resolves and $scanRoots silently narrows from three
+        # entries to one. If it ever narrowed to zero -- a rename, a packaging change -- the
+        # sentinel check below would keep passing while reading nothing at all. An empty scan
+        # is not a clean scan.
+        $scanRoots.Count | Should -BeGreaterThan 0 -Because "none of '$($scanRootNames -join "', '")' resolved under '$moduleRoot'"
+        $scannedFileCount | Should -BeGreaterThan 0 -Because "no *.md or *.ps1 files were found under: $($scanRoots -join ', ')"
     }
 
     It 'contains no placeholder sentinel tokens in docs, help, or custom' {
