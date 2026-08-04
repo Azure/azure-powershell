@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Mdp
-Module Guid: c9f4a15f-58e0-4476-821d-a0d998e51a11
+Module Guid: 36446a1a-ea50-43a4-9483-a924d07fd42b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mdp
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: Mdp cmdlets
 
 ## Az.Mdp Cmdlets
+### [Get-AzMdpOperation](Get-AzMdpOperation.md)
+List the operations for the provider
+
 ### [Get-AzMdpPool](Get-AzMdpPool.md)
 Get a Pool
 
@@ -20,12 +23,21 @@ List ResourceDetailsObject resources by Pool
 ### [Get-AzMdpSku](Get-AzMdpSku.md)
 List ResourceSku resources by subscription ID
 
+### [Invoke-AzMdpUsageSubscriptionUsage](Invoke-AzMdpUsageSubscriptionUsage.md)
+List Quota resources by subscription ID
+
 ### [New-AzMdpPool](New-AzMdpPool.md)
-create a Pool
+Create a Pool
 
 ### [Remove-AzMdpPool](Remove-AzMdpPool.md)
 Delete a Pool
 
+### [Remove-AzMdpPoolResource](Remove-AzMdpPoolResource.md)
+A synchronous resource action.
+
+### [Test-AzMdpPoolNameAvailability](Test-AzMdpPoolNameAvailability.md)
+Checks that the pool name is valid and is not already in use.
+
 ### [Update-AzMdpPool](Update-AzMdpPool.md)
-update a Pool
+Update a Pool
 
