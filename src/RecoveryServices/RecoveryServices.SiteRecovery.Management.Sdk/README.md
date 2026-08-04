@@ -23,7 +23,7 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 4980179cd5e522715e97ae438694680993add4e0
+commit: 06c6ea290536079e382f8499c6bfda2001021332
 input-file:
   - https://github.com/sisunkar/azure-rest-api-specs-pr/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-06-01/service.json
 
