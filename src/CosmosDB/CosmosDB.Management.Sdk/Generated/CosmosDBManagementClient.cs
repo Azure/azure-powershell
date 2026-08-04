@@ -216,6 +216,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IFleetspaceAccountOperations FleetspaceAccount { get; private set; }
         /// <summary>
+        /// Gets the IGarnetClustersOperations
+        /// </summary>
+        public virtual IGarnetClustersOperations GarnetClusters { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the CosmosDBManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -493,6 +497,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.Fleet = new FleetOperations(this);
             this.Fleetspace = new FleetspaceOperations(this);
             this.FleetspaceAccount = new FleetspaceAccountOperations(this);
+            this.GarnetClusters = new GarnetClustersOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

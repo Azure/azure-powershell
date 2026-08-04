@@ -262,5 +262,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         IFleetspaceAccountOperations FleetspaceAccount { get; }
 
+        /// <summary>
+        /// Gets the IGarnetClustersOperations
+        /// </summary>
+        IGarnetClustersOperations GarnetClusters { get; }
+
     }
 }

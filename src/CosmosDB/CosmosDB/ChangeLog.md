@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Garnet cache cluster management cmdlets: `New-AzCosmosDBGarnetCluster`, `Get-AzCosmosDBGarnetCluster`, `Update-AzCosmosDBGarnetCluster`, `Remove-AzCosmosDBGarnetCluster`.
 
 ## Version 1.21.1
 * Upgraded `Azure.Security.KeyVault.Keys` to `4.10.0` to align with other modules.
