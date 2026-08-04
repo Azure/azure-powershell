@@ -1,0 +1,97 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    api-version: "2025-09-01"
+    emitter-output-dir: "{output-dir}/{service-dir}/Quota/Quota.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "Quota"
+    service-name: "Quota"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    identity-correction-for-post: true
+    resourcegroup-append: true
+    nested-object-to-string: true
+    auto-switch-view: false
+    inlining-threshold: 50
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - from: source-file-csharp
+        where: $
+        transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          subject: GroupQuotaSubscriptionRequest
+        remove: true
+      - where:
+          variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+          subject: ^(?!GroupQuotaSubscription$).*$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          verb: Get
+          subject: RequestStatus|Usage
+          variant: ^GetViaIdentity$
+        remove: true
+      - where:
+          verb: New|Update
+          parameter-name: NameValue
+        set:
+          parameter-name: Name
+      - where:
+          verb: New|Update
+          parameter-name: AnyProperty
+        hide: true
+      - where:
+          verb: Get
+          subject: Usage
+          parameter-name: ResourceName
+        set:
+          parameter-name: Name
+      - where:
+          model-name: CurrentQuotaLimitBase
+        set:
+          format-table:
+            properties:
+              - Name
+              - NameLocalizedValue
+              - LimitObjectType
+              - Unit
+              - ETag
+      - where:
+          model-name: CurrentUsagesBase
+        set:
+          format-table:
+            properties:
+              - Name
+              - NameLocalizedValue
+              - UsageUsagesType
+              - UsageValue
+              - ETag
+      - where:
+          model-name: QuotaRequestDetails
+        set:
+          format-table:
+            properties:
+              - Name
+              - ProvisioningState
+              - ErrorMessage
+              - Code
+      - no-inline:
+          - LimitJsonObject
+      - model-cmdlet:
+          - model-name: LimitObject
+            cmdlet-name: New-AzQuotaLimitObject
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
