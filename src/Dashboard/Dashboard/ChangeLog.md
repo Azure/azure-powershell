@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated Dashboard module generation from Swagger to TypeSpec with no intended cmdlet behavior changes.
 
 ## Version 0.3.0
 * Updated swagger version to 2025-08-01 to include dashboard operations.
@@ -36,4 +37,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.Dashboard
-
