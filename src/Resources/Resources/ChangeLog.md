@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed `Get-AzResourceProvider` returning outdated API versions for `Microsoft.Resources/resourceGroups`
+    - Updated the provider metadata query to use ARM (Azure Resource Manager) API version 2024-11-01, which surfaces the latest registered API versions for all resource types including `resourceGroups`
+    - Fixed issue [#29883]
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
