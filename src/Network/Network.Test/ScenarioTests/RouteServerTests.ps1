@@ -206,3 +206,222 @@ function Test-RouteServerPeerRoutes
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test route server peer with routing configuration and hub virtual network connection
+#>
+function Test-RouteServerPeerWithRoutingConfiguration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $routeServerName = Get-ResourceName
+    $subnetName = "RouteServerSubnet"
+    $peerName = Get-ResourceName
+    $publicIpAddressName = Get-ResourceName
+    $routeMapName = Get-ResourceName
+
+    try
+    {
+        # Create resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create virtual network with RouteServerSubnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16
+
+        # Add RouteServerSubnet as a private subnet
+        $vnet = Add-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false -VirtualNetwork $vnet
+        
+        # Commit the VNet changes
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -VirtualNetwork $vnet
+
+        # Create the public ip address for route server
+        $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+        $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname
+
+        # Create route server
+        $routeServer = New-AzRouteServer -ResourceGroupName $rgname -Location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedSubnet.Id -PublicIpAddress $publicIp
+        $routeServer = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
+        Assert-AreEqual $routeServerName $routeServer.Name
+
+        # Get the route server hub and wait for provisioning
+        $virtualHubName = $routeServerName
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+        $routingStatePollIntervalSeconds = 180
+        $maxRoutingStatePollAttempts = 10
+        $routingStatePollAttempt = 0
+        while ($virtualHub.RoutingState -eq "Provisioning" -and $routingStatePollAttempt -lt $maxRoutingStatePollAttempts)
+        {
+            Start-TestSleep -Seconds $routingStatePollIntervalSeconds
+            $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+            $routingStatePollAttempt++
+        }
+        Assert-AreEqual "Provisioned" $virtualHub.RoutingState
+
+        # Create a route map on the route server hub
+        $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+        $routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+        $routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+        $routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+        New-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1)
+        $routeMap = Get-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName
+        Assert-AreEqual $routeMapName $routeMap.Name
+        Assert-AreEqual 1 $routeMap.Rules.Count
+
+        # Create routing configuration with inbound and outbound route maps
+        $routingConfig = New-AzRoutingConfiguration -InboundRouteMap $routeMap.Id -OutboundRouteMap $routeMap.Id
+
+        # Create route server peer with routing configuration
+        $result = Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "10.0.0.5" -PeerAsn "65010" -RoutingConfiguration $routingConfig
+        $peer = Get-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName
+        Assert-AreEqual $peerName $peer.PeerName
+        Assert-AreEqual "10.0.0.5" $peer.PeerIp
+        Assert-AreEqual "65010" $peer.PeerAsn
+        Assert-NotNull $peer.RoutingConfiguration
+        Assert-AreEqual $peer.RoutingConfiguration.InboundRouteMap.Id $routeMap.Id
+        Assert-AreEqual $peer.RoutingConfiguration.OutboundRouteMap.Id $routeMap.Id
+
+        # Delete route server peer
+        $deleteResult = Remove-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -Force
+        Assert-AreEqual 0 @($deleteResult.Peerings).Count
+
+        # Delete route map
+        Remove-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -Force
+
+        # Delete route server
+        $deleteRouteServer = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force
+        Assert-AreEqual true $deleteRouteServer
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+function Test-RouteServerPeerWithHubVnetConnection
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $hubVnetName = Get-ResourceName
+    $spokeVnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $routeServerName = Get-ResourceName
+    $routeServerSubnetName = "RouteServerSubnet"
+    $peerName = Get-ResourceName
+    $publicIpAddressName = Get-ResourceName
+    $routeMapName = Get-ResourceName
+    $hubVnetPeeringName = Get-ResourceName
+    $spokeVnetPeeringName = Get-ResourceName
+    $hubVnetConnectionName = Get-ResourceName
+
+    try
+    {
+        # Create resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create hub virtual network with RouteServerSubnet
+        $hubVnet = New-AzVirtualNetwork -Name $hubVnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16
+        
+        # Add RouteServerSubnet as a private subnet
+        $hubVnet = Add-AzVirtualNetworkSubnetConfig -Name $routeServerSubnetName -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false -VirtualNetwork $hubVnet
+        
+        # Commit the VNet changes
+        $hubVnet = Set-AzVirtualNetwork -VirtualNetwork $hubVnet
+        $hubVnet = Get-AzVirtualNetwork -Name $hubVnetName -ResourceGroupName $rgname
+        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $routeServerSubnetName -VirtualNetwork $hubVnet
+
+        # Create spoke virtual network with SpokeSubnet
+        $spokeSubnet = New-AzVirtualNetworkSubnetConfig -Name "SpokeSubnet" -AddressPrefix 10.1.0.0/24 -DefaultOutboundAccess $false
+        $spokeVnet = New-AzVirtualNetwork -Name $spokeVnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.1.0.0/16 -Subnet $spokeSubnet
+        $spokeVnet = Get-AzVirtualNetwork -Name $spokeVnetName -ResourceGroupName $rgname
+
+        # Create the public ip address for route server
+        $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+        $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname
+
+        # Create route server
+        $routeServer = New-AzRouteServer -ResourceGroupName $rgname -Location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedSubnet.Id -PublicIpAddress $publicIp
+        $routeServer = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
+        Assert-AreEqual $routeServerName $routeServer.Name
+
+        # Get the route server hub and wait for provisioning
+        $virtualHubName = $routeServerName
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+        $routingStatePollIntervalSeconds = 180
+        $maxRoutingStatePollAttempts = 10
+        $routingStatePollAttempt = 0
+        while ($virtualHub.RoutingState -eq "Provisioning" -and $routingStatePollAttempt -lt $maxRoutingStatePollAttempts)
+        {
+            Start-TestSleep -Seconds $routingStatePollIntervalSeconds
+            $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+            $routingStatePollAttempt++
+        }
+        Assert-AreEqual "Provisioned" $virtualHub.RoutingState
+
+        # Create hub-to-spoke VNet peering with allowGatewayTransit = true
+        $hubToSpokePeering = Add-AzVirtualNetworkPeering -Name $hubVnetPeeringName -VirtualNetwork $hubVnet -RemoteVirtualNetworkId $spokeVnet.Id -AllowGatewayTransit
+        Assert-AreEqual $hubVnetPeeringName $hubToSpokePeering.Name
+        Assert-AreEqual $true $hubToSpokePeering.AllowGatewayTransit
+
+        # Create spoke-to-hub VNet peering with useRemoteGateway = true
+        $spokeToHubPeering = Add-AzVirtualNetworkPeering -Name $spokeVnetPeeringName -VirtualNetwork $spokeVnet -RemoteVirtualNetworkId $hubVnet.Id -UseRemoteGateway
+        Assert-AreEqual $spokeVnetPeeringName $spokeToHubPeering.Name
+        Assert-AreEqual $true $spokeToHubPeering.UseRemoteGateway
+
+        # Create a route map on the route server hub
+        $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16", "10.1.0.0/16")
+        $routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("65010")
+        $routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+        $routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+        New-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1)
+        $routeMap = Get-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName
+        Assert-AreEqual $routeMapName $routeMap.Name
+        Assert-AreEqual 1 $routeMap.Rules.Count
+
+        # Create hub VNet connection for spoke VNet
+        $hubVnetConnection = New-AzVirtualHubVnetConnection -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetworkId $spokeVnet.Id
+        Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
+        Assert-AreEqual $spokeVnet.Id $hubVnetConnection.RemoteVirtualNetworkId
+
+        # Create route server peer with routing configuration referencing hub VNet connection
+        # Use first IP from spokeVnet address space (10.1.0.5 from 10.1.0.0/16)
+        $result = Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "10.1.0.5" -PeerAsn "65011" -HubVnetConnectionReference $hubVnetConnection.Id
+        $peer = Get-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName
+        Assert-AreEqual $peerName $peer.PeerName
+        Assert-AreEqual "10.1.0.5" $peer.PeerIp
+        Assert-AreEqual "65011" $peer.PeerAsn
+        Assert-NotNull $peer.HubVnetConnectionReference
+        Assert-AreEqual $peer.HubVnetConnectionReference.Id $hubVnetConnection.Id
+
+        # Delete route server peer
+        $deleteResult = Remove-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -Force
+        Assert-AreEqual 0 @($deleteResult.Peerings).Count
+
+        # Delete hub VNet connection
+        Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -Force
+
+        # Delete VNet peerings
+        Remove-AzVirtualNetworkPeering -Name $hubVnetPeeringName -VirtualNetwork $hubVnet -Force
+        Remove-AzVirtualNetworkPeering -Name $spokeVnetPeeringName -VirtualNetwork $spokeVnet -Force
+
+        # Delete route map
+        Remove-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -Force
+
+        # Delete route server
+        $deleteRouteServer = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force
+        Assert-AreEqual true $deleteRouteServer
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

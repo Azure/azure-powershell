@@ -25,8 +25,9 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AuthenticationType <String>]
  [-CertificateAuthentication <PSCertificateAuthentication>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -41,8 +42,9 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AuthenticationType <String>]
  [-CertificateAuthentication <PSCertificateAuthentication>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -485,6 +487,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingConfiguration
+The routing configuration for this connection, specifying inbound and outbound route maps.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
