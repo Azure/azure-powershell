@@ -8,6 +8,24 @@ autorest --reset
 autorest --use:@autorest/powershell@4.x
 ```
 
+### MoveIpConfigurations overlay
+
+`MoveIpConfigurations` uses the `2025-09-01` virtual network specification at commit
+`bf9fcb11e7d9fdb97ea44419f1fdd2fd6cf2ce28`. The full specification cannot replace
+the `2025-07-01` input below because it also renames models used by existing hand-written
+cmdlets.
+
+To refresh this operation after running the standard generation:
+1. Temporarily replace the `2025-07-01/virtualNetwork.json` input with
+   `https://github.com/Azure/azure-rest-api-specs/blob/bf9fcb11e7d9fdb97ea44419f1fdd2fd6cf2ce28/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualNetwork.json`.
+2. Run AutoRest and retain the generated `MoveIpConfigurationItem`,
+   `MoveIpConfigurationResourceReference`, and `MoveIpConfigurationsRequest` models.
+3. Retain only the generated `MoveIpConfigurations` and `BeginMoveIpConfigurations`
+   members in `IVirtualNetworksOperations.cs`, `VirtualNetworksOperations.cs`, and
+   `VirtualNetworksOperationsExtensions.cs`.
+4. Restore all unrelated generated changes and the `2025-07-01/virtualNetwork.json`
+   input.
+
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml

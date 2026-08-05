@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -61,9 +62,24 @@ namespace Microsoft.Azure.Commands.Network
             var moveItems = new List<MoveIpConfigurationItem>();
             foreach (var item in this.MoveIpConfigurationItem)
             {
+                if (item == null)
+                {
+                    throw new PSArgumentNullException(nameof(MoveIpConfigurationItem), "Move IP configuration items cannot contain null values.");
+                }
+
+                if (string.IsNullOrWhiteSpace(item.SourceIpConfigurationId))
+                {
+                    throw new PSArgumentNullException(nameof(item.SourceIpConfigurationId), "The source IP configuration resource ID cannot be null or empty.");
+                }
+
+                if (string.IsNullOrWhiteSpace(item.TargetIpConfigurationId))
+                {
+                    throw new PSArgumentNullException(nameof(item.TargetIpConfigurationId), "The target IP configuration resource ID cannot be null or empty.");
+                }
+
                 moveItems.Add(new MoveIpConfigurationItem(
-                    sourceIpConfiguration: new SubResource(item.SourceIpConfigurationId),
-                    targetIpConfiguration: new SubResource(item.TargetIpConfigurationId)));
+                    sourceIPConfiguration: new MoveIpConfigurationResourceReference(item.SourceIpConfigurationId),
+                    targetIPConfiguration: new MoveIpConfigurationResourceReference(item.TargetIpConfigurationId)));
             }
 
             var parameters = new MoveIpConfigurationsRequest(moveItems);
