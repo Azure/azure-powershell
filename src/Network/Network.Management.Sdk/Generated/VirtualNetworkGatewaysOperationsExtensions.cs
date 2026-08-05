@@ -554,47 +554,6 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// This operation retrieves a list of effective routes configured for the
-        /// virtual network gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the virtual network gateway.
-        /// </param>
-        public static GatewayEffectiveRouteListResult GetEffectiveRoutes(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
-        {
-                return ((IVirtualNetworkGatewaysOperations)operations).GetEffectiveRoutesAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// This operation retrieves a list of effective routes configured for the
-        /// virtual network gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the virtual network gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<GatewayEffectiveRouteListResult> GetEffectiveRoutesAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetEffectiveRoutesWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
         /// <param name='operations'>
@@ -1816,67 +1775,6 @@ namespace Microsoft.Azure.Management.Network
                 return _result.Body;
             }
         }
-        /// <summary>
-        /// This operation retrieves a list of effective routes configured for the
-        /// virtual network gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the virtual network gateway.
-        /// </param>
-        public static GatewayEffectiveRouteListResult BeginGetEffectiveRoutes(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
-        {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetEffectiveRoutesAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// This operation retrieves a list of effective routes configured for the
-        /// virtual network gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the virtual network gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<GatewayEffectiveRouteListResult> BeginGetEffectiveRoutesAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginGetEffectiveRoutesWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the virtual network gateway.
-        /// </param>
-        /// <param name='peer'>
-        /// The IP address of the peer to retrieve the status of.
-        /// </param>
-        public static BgpPeerStatusListResult BeginGetBgpPeerStatus(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peer = default(string))
-        {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetBgpPeerStatusAsync(resourceGroupName, virtualNetworkGatewayName, peer).GetAwaiter().GetResult();
-        }
-
         /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
