@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `Set-AzVMZoneMovement` to set ZoneMovement configuration on a VM (Virtual Machine) model and persist it with `Update-AzVM`.
+    - Added `ResiliencyProfile` support in VM create and update flows so ZoneMovement is sent to the Compute API.
+    - Fixed issue [#1562]
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
