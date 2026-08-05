@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of IP Communities.</summary>
+    /// <summary>Paged collection of IpCommunity items</summary>
     public partial class IPCommunitiesListResult
     {
 

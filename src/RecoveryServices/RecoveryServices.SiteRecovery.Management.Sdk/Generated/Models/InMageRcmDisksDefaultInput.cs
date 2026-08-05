@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM Id.
         /// </param>
 
+        /// <param name="confidentialDiskEncryptionSetId">The ConfidentialDiskEncryptionSet ARM Id.
+        /// </param>
+
         /// <param name="sectorSizeInBytes">The logical sector size (in bytes), 512 by default.
         /// </param>
 
@@ -45,12 +48,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="diskSizeInGb">The target disk size in GB.
         /// </param>
-        public InMageRcmDisksDefaultInput(string logStorageAccountId, string diskType, string diskEncryptionSetId = default(string), int? sectorSizeInBytes = default(int?), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
+        public InMageRcmDisksDefaultInput(string logStorageAccountId, string diskType, string diskEncryptionSetId = default(string), string confidentialDiskEncryptionSetId = default(string), int? sectorSizeInBytes = default(int?), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
 
         {
             this.LogStorageAccountId = logStorageAccountId;
             this.DiskType = diskType;
             this.DiskEncryptionSetId = diskEncryptionSetId;
+            this.ConfidentialDiskEncryptionSetId = confidentialDiskEncryptionSetId;
             this.SectorSizeInBytes = sectorSizeInBytes;
             this.Iops = iops;
             this.ThroughputInMbps = throughputInMbps;
@@ -81,6 +85,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the ConfidentialDiskEncryptionSet ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionSetId")]
+        public string ConfidentialDiskEncryptionSetId {get; set; }
 
         /// <summary>
         /// Gets or sets the logical sector size (in bytes), 512 by default.
@@ -121,6 +131,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "DiskType");
             }
+
 
 
 

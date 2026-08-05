@@ -628,7 +628,7 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "description", "locked", "etag")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]
@@ -831,6 +831,7 @@ ENTITY <ISnapshot>: A snapshot is a named, immutable subset of an App Configurat
     [Label <String>]: Filters key-values by their label field.
     [Tag <List<String>>]: Filters key-values by their tags field.
   [CompositionType <String>]: The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label.
+  [Description <String>]: The description of the snapshot.
   [ETag <String>]: 
   [Link <String>]: 
   [OperationLocation <String>]: 
@@ -908,6 +909,13 @@ param(
     # The 'key' composition type ensures there are no two key-values containing the same key.
     # The 'key_label' composition type ensures there are no two key-values containing the same key and label.
     ${CompositionType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
+    [System.String]
+    # The description of the snapshot.
+    ${Description},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -1596,6 +1604,12 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
     [System.String]
+    # The description of the key-value.
+    ${Description},
+
+    [Parameter(ParameterSetName='PutExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
+    [System.String]
     # A value representing the current state of the resource.
     ${Etag},
 
@@ -2033,7 +2047,7 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "description", "locked", "etag")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]

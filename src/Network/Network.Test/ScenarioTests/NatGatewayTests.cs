@@ -72,5 +72,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkSubnetConfigWithNatGateway");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestNatGatewayNat64Parameter()
+        {
+            TestRunner.RunTestScript("Test-NatGatewayNat64Parameter");
+        }
     }
 }

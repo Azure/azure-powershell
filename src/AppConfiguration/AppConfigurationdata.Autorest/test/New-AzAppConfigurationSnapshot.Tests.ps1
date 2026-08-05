@@ -21,6 +21,7 @@ Describe 'New-AzAppConfigurationSnapshot' {
         $result = New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $snapshotName
+        $result.PSObject.Properties.Name | Should -Contain 'Description'
     }
 
     It 'CreateViaJsonString' {
@@ -29,5 +30,6 @@ Describe 'New-AzAppConfigurationSnapshot' {
         $result = New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -JsonString $jsonString
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $snapshotName
+        $result.PSObject.Properties.Name | Should -Contain 'Description'
     }
 }

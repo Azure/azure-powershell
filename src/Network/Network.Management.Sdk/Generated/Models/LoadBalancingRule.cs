@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A load balancing rule for a load balancer.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LoadBalancingRule : SubResource
+    public partial class LoadBalancingRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the LoadBalancingRule class.
@@ -28,15 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of load balancing
-        /// rules used by the load balancer. This name can be used to access the
-        /// resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="loadDistribution">The load distribution policy for this rule.
@@ -95,13 +93,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// tracked and associated to the same backend VM over its lifetime when using
         /// UDP protocol.
         /// </param>
-        public LoadBalancingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?))
+        public LoadBalancingRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.LoadDistribution = loadDistribution;
             this.ProvisioningState = provisioningState;
             this.FrontendIPConfiguration = frontendIPConfiguration;
@@ -126,25 +122,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of load
-        /// balancing rules used by the load balancer. This name can be used to access
-        /// the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the load distribution policy for this rule. Possible values include: &#39;Default&#39;, &#39;SourceIP&#39;, &#39;SourceIPProtocol&#39;

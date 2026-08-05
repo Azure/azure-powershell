@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The result of the List Alias(Disaster Recovery configuration) operation.</summary>
+    /// <summary>The response of a ArmDisasterRecovery list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ArmDisasterRecoveryListResultTypeConverter))]
     public partial class ArmDisasterRecoveryListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The result of the List Alias(Disaster Recovery configuration) operation.
+    /// The response of a ArmDisasterRecovery list operation.
     [System.ComponentModel.TypeConverter(typeof(ArmDisasterRecoveryListResultTypeConverter))]
     public partial interface IArmDisasterRecoveryListResult
 

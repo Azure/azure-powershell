@@ -47,7 +47,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '20.19.6'
+      versionSpec: '24.16.0'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -102,7 +102,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install autorest
     inputs:
-      versionSpec: '20.19.6'
+      versionSpec: '24.16.0'
       command: custom
       verbose: false
       customCommand: install autorest@latest

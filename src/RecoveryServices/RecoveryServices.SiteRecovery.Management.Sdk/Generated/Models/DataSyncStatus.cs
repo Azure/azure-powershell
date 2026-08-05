@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class DataSyncStatus
     {
+        /// <summary>
+        /// ForDownTime
+        /// </summary>
         public const string ForDownTime = "ForDownTime";
+        /// <summary>
+        /// ForSynchronization
+        /// </summary>
         public const string ForSynchronization = "ForSynchronization";
     }
 }

@@ -61,8 +61,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 CifsChangeNotifications = props.CifsChangeNotifications,
                 GlobalFileLocking = props.GlobalFileLocking,
                 WriteBack = props.WriteBack,
-                FileAccessLogs = props.FileAccessLogs,
-                
+                FileAccessLogs = props.FileAccessLogs,                
             };
         }
 

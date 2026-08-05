@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         resourceIdentityType = ResourceIdentityType.SystemAssigned;
                     }
 
-                    createParameters.Identity = new Identity(resourceIdentityType);
+                    createParameters.Identity = new Microsoft.Azure.Management.CognitiveServices.Models.Identity(resourceIdentityType);
                     if (this.UserAssignedIdentityId != null)
                     {
                         createParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();

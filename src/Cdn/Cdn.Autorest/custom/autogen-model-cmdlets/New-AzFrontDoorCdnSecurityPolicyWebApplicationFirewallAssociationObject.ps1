@@ -36,7 +36,10 @@ function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
         $Domain,
         [Parameter(HelpMessage="List of paths.")]
         [string[]]
-        $PatternsToMatch
+        $PatternsToMatch,
+        [Parameter(HelpMessage="List of routes.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
+        $Route
     )
 
     process {
@@ -47,6 +50,9 @@ function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
         }
         if ($PSBoundParameters.ContainsKey('PatternsToMatch')) {
             $Object.PatternsToMatch = $PatternsToMatch
+        }
+        if ($PSBoundParameters.ContainsKey('Route')) {
+            $Object.Route = $Route
         }
         return $Object
     }

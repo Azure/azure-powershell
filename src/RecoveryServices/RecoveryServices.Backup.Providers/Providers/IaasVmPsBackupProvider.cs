@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string[] exclusionDisksList = ProviderData.ContainsKey(ItemParams.ExclusionDisksList) ? (string[])ProviderData[ItemParams.ExclusionDisksList] : null;
             SwitchParameter resetDiskExclusionSetting = ProviderData.ContainsKey(ItemParams.ResetExclusionSettings) ? (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings] : new SwitchParameter(false);
             bool excludeAllDataDisks = ProviderData.ContainsKey(ItemParams.ExcludeAllDataDisks) ? (bool)ProviderData[ItemParams.ExcludeAllDataDisks] : false;
+            string containerSubscriptionId = ProviderData.ContainsKey(ItemParams.ContainerSubscriptionId) ? (string)ProviderData[ItemParams.ContainerSubscriptionId] : null;
             PolicyBase policy = (PolicyBase)ProviderData[ItemParams.Policy];
             ItemBase itemBase = ProviderData.ContainsKey(ItemParams.Item) ? (ItemBase)ProviderData[ItemParams.Item] : null;
             AzureVmItem item = ProviderData.ContainsKey(ItemParams.Item) ? (AzureVmItem)ProviderData[ItemParams.Item] : null;
@@ -141,27 +142,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     azureVMResourceGroupName,
                     policy);
 
-                WorkloadProtectableItemResource protectableObjectResource =
-                    GetAzureVMProtectableObject(
-                        azureVMName,
-                        azureVMRGName,
-                        isComputeAzureVM,
-                        vaultName: vaultName,
-                        resourceGroupName: resourceGroupName);
-
-                Dictionary<UriEnums, string> keyValueDict =
-                    HelperUtils.ParseUri(protectableObjectResource.Id);
-                containerUri = HelperUtils.GetContainerUri(
-                    keyValueDict, protectableObjectResource.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(
-                    keyValueDict, protectableObjectResource.Id);
-
-                IaaSVMProtectableItem iaasVmProtectableItem =
-                    (IaaSVMProtectableItem)protectableObjectResource.Properties;                
-
-                if (iaasVmProtectableItem != null)
+                if (!string.IsNullOrEmpty(containerSubscriptionId))
                 {
-                    sourceResourceId = iaasVmProtectableItem.VirtualMachineId;                    
+                    // CSB: the VM is in a different subscription than the vault, so discovery (which only
+                    // sees the vault's subscription) is skipped and the URIs/sourceResourceId are built
+                    // directly; the backend derives the VM's subscription from sourceResourceId.
+                    // -ContainerSubscriptionId is compute-only, so the VM is always an ARM compute VM here.
+
+                    // Discovery can't run cross-subscription. Validate the VM here (in its own subscription)
+                    // so a wrong -Name/-ResourceGroupName/-ContainerSubscriptionId or a region mismatch fails
+                    // with a clear, VM-specific error instead of an ambiguous backend one.
+                    GenericResource csbVmResource;
+                    try
+                    {
+                        csbVmResource = ServiceClientAdapter.GetVmResource(azureVMName, azureVMRGName, containerSubscriptionId);
+                    }
+                    catch (Exception ex)
+                    {
+                        RestAzureNS.CloudException cloudEx = ex as RestAzureNS.CloudException
+                            ?? ex.InnerException as RestAzureNS.CloudException;
+                        if (cloudEx != null && cloudEx.Response != null &&
+                            cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                        {
+                            throw new ArgumentException(string.Format(
+                                Resources.CSBVMNotFound, azureVMName, azureVMRGName, containerSubscriptionId));
+                        }
+                        throw;
+                    }
+
+                    string csbVaultLocation = ServiceClientAdapter.GetVault(resourceGroupName, vaultName).Location;
+                    if (!string.Equals(
+                            (csbVmResource.Location ?? "").Replace(" ", ""),
+                            (csbVaultLocation ?? "").Replace(" ", ""),
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException(string.Format(
+                            Resources.CSBVMNotInVaultLocation, azureVMName, csbVmResource.Location, csbVaultLocation));
+                    }
+
+                    string containerType = "iaasvmcontainerv2";
+
+                    containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
+                        containerType, azureVMRGName, azureVMName);
+                    protectedItemUri = string.Format("vm;{0};{1};{2}",
+                        containerType, azureVMRGName, azureVMName);
+                    sourceResourceId = string.Format(
+                        "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/virtualMachines/{3}",
+                        containerSubscriptionId, azureVMRGName, computeAzureVMVersion, azureVMName);
+                }
+                else
+                {
+                    WorkloadProtectableItemResource protectableObjectResource =
+                        GetAzureVMProtectableObject(
+                            azureVMName,
+                            azureVMRGName,
+                            isComputeAzureVM,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
+
+                    Dictionary<UriEnums, string> keyValueDict =
+                        HelperUtils.ParseUri(protectableObjectResource.Id);
+                    containerUri = HelperUtils.GetContainerUri(
+                        keyValueDict, protectableObjectResource.Id);
+                    protectedItemUri = HelperUtils.GetProtectableItemUri(
+                        keyValueDict, protectableObjectResource.Id);
+
+                    IaaSVMProtectableItem iaasVmProtectableItem =
+                        (IaaSVMProtectableItem)protectableObjectResource.Properties;
+
+                    if (iaasVmProtectableItem != null)
+                    {
+                        sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
+                    }
                 }
             }
             else if(isDiskExclusionParamPresent && parameterSetName.Contains("Modify"))
@@ -521,7 +573,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string cVMOsDiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId) ?
                 ProviderData[RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId].ToString() : null;
 
-            if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+            if (targetSubscriptionId == null || targetSubscriptionId == "")
+            {
+                // For OLR of a CSB item, resolve the target storage account in the VM's subscription by
+                // deriving it from the recovery point's SourceResourceId (no extra customer input); otherwise
+                // fall back to the vault's (context) subscription.
+                if (string.Compare(restoreType, "OriginalLocation") == 0 && !string.IsNullOrEmpty(rp.SourceResourceId))
+                {
+                    Dictionary<UriEnums, string> sourceResourceUriDict = HelperUtils.ParseUri(rp.SourceResourceId);
+                    targetSubscriptionId = HelperUtils.GetSubscriptionIdFromId(sourceResourceUriDict, rp.SourceResourceId);
+                }
+                else
+                {
+                    targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+                }
+            }
 
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName, targetSubscriptionId);
 
