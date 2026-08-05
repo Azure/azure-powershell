@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Updated Policy cmdlets to use `2026-01-01` API
+* Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` cmdlets to interact with new Policy Enrollments resources.
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
@@ -32,9 +34,7 @@
 * Added ChangeSafety Support
 * Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
 * Fixed `Set-AzRoleAssignment` unable to delete conditions
-* Updated Policy.Autorest to 2026-01-01
-    - Added `-Expand`, `-EnforcementMode`, `-Version`; removed `-BackwardCompatible`
-    - Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` cmdlets to interact with new Policy Enrollments resources.
+* Updated Policy.Autorest to 2025-03-01: added -Expand, -EnforcementMode, -Version; removed -BackwardCompatible
 * Fixed `Get-AzRoleDefinition` null ABAC `Condition` [#29058] [#25940]
 * [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions
 

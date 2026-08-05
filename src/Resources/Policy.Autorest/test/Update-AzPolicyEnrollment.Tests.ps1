@@ -101,18 +101,18 @@ Describe 'UpdatePolicyEnrollment' {
     It 'Update-AzPolicyEnrollment -Id -DisplayName' {
         {
             Update-AzPolicyEnrollment -Id $someId -DisplayName $someDisplayName
-        } | Should -Throw $policyEnrollmentNotFound
+        } | Should -Throw $unableToUpdateEnrollment
     }
 
     It 'Update-AzPolicyEnrollment -Id -Metadata' {
         {
             Update-AzPolicyEnrollment -Id $someId -Metadata $metadata
-        } | Should -Throw $policyEnrollmentNotFound
+        } | Should -Throw $unableToUpdateEnrollment
     }
 
     It 'Update-AzPolicyEnrollment -Id -Description' {
         {
             Update-AzPolicyEnrollment -Id $someId -Description $description
-        } | Should -Throw $policyEnrollmentNotFound
+        } | Should -Throw $unableToUpdateEnrollment
     }
 }
