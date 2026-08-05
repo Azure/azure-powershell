@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed unused System.Configuration.ConfigurationManager dependency from the Az.RecoveryServices module package.
 
 ## Version 7.14.0
 * Added Cross Subscription Backup (CSB) support for Azure VM:
