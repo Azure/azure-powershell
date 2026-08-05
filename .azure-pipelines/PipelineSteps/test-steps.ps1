@@ -35,24 +35,59 @@ dotnet msbuild $buildProjPath /t:Test "/p:Configuration=$Configuration;TestFrame
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
 # Test AutoGen Modules With PowerShell Core
-Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with PowerShell Core ... --------------------"
-$executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
-$currentPath = $PWD
-$debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
-Set-Location $debugFolderPath
+if ($PowerShellPlatform -ieq 'PowerShell Core') {
+    Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with PowerShell Core ... --------------------"
+    $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
+    $currentPath = $PWD
+    $debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
+    Set-Location $debugFolderPath
 
-Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
-if ($IsWindows) { $sp = ";" } else { $sp = ":" }
-$env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
-Write-Host $_.Directory.FullName
-$repoArtifact = Join-Path $RepoRoot 'artifacts'
-& $executeCIStepScriptPath -TestAutorest -AutorestDirectory $_.Directory.FullName -RepoArtifacts $repoArtifact
+    Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
+    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
+    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
+    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+    Write-Host $_.Directory.FullName
+    $repoArtifact = Join-Path $RepoRoot 'artifacts'
+    & $executeCIStepScriptPath -TestAutorest -AutorestDirectory $_.Directory.FullName -RepoArtifacts $repoArtifact
+    }
+
+    $ErrorActionPreference = $preference
+    Set-Location $currentPath
+    Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------`n`n`n`n`n"
 }
 
-$ErrorActionPreference = $preference
-Set-Location $currentPath
-Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------`n`n`n`n`n"
+# Test AutoGen Modules With Windows PowerShell 5.1
+if ($IsWindows -and $PowerShellPlatform -ieq 'Windows PowerShell') {
+    Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with Windows PowerShell 5.1 ... --------------------"
+    $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
+    $currentPath = $PWD
+    $debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
+    Set-Location $debugFolderPath
+    
+    $winPs = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
+    & $winPs -NoLogo -NoProfile -NonInteractive -Command @"
+    `$ErrorActionPreference = 'Stop'
+    `$IsWindows = `$true
+    `$IsLinux = `$false
+    `$IsMacOS = `$false
+    `$env:PowerShellPlatform = 'Windows PowerShell'
+    Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -ErrorAction Stop
+    `$env:PSModulePath = `$env:PSModulePath + ';' + (pwd).Path
+    `$rootFolder = (Get-Item `$PWD -ErrorAction Stop).Parent.Parent.FullName
+    Get-ChildItem -Recurse -File -Filter test-module.ps1 -ErrorAction Stop | ForEach-Object {
+        Write-Host `$_.Directory.FullName
+        Set-Location `$rootFolder
+        & '$executeCIStepScriptPath' -TestAutorest -AutorestDirectory `$_.Directory.FullName
+    }
+"@
+    $winPsExitCode = $LASTEXITCODE
+    
+    Set-Location $currentPath
+    if ($winPsExitCode -ne 0) {
+        throw "Windows PowerShell 5.1 AutoGen module tests failed with exit code $winPsExitCode."
+    }
+    Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with Windows PowerShell 5.1 ... --------------------`n`n`n`n`n"
+}
 
 # Analyze test coverage
 Write-Host -ForegroundColor Green "-------------------- Start analyzing test coverage ... --------------------"
