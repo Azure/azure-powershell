@@ -393,6 +393,34 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteListResult>> GetAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peer, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayEffectiveRouteListResult>> GetEffectiveRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
         /// <remarks>
@@ -1242,6 +1270,34 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteListResult>> BeginGetAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peer, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayEffectiveRouteListResult>> BeginGetEffectiveRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
