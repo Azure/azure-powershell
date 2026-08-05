@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated code generation from Swagger to TypeSpec. No change to cmdlet behavior or parameters.
 
 ## Version 0.3.0
 * Updated swagger version to 2025-08-01 to include dashboard operations.
