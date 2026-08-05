@@ -1775,7 +1775,6 @@ namespace Microsoft.Azure.Management.Network
                 return _result.Body;
             }
         }
-
         /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
@@ -1795,6 +1794,7 @@ namespace Microsoft.Azure.Management.Network
         {
                 return ((IVirtualNetworkGatewaysOperations)operations).BeginGetBgpPeerStatusAsync(resourceGroupName, virtualNetworkGatewayName, peer).GetAwaiter().GetResult();
         }
+
         /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
