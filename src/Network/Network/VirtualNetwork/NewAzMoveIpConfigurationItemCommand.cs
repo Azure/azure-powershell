@@ -17,7 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MoveIpConfigurationItem"),
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MoveIpConfigurationItem",
+        SupportsShouldProcess = false),
         OutputType(typeof(PSMoveIpConfigurationItem))]
     public class NewAzMoveIpConfigurationItemCommand : NetworkBaseCmdlet
     {
