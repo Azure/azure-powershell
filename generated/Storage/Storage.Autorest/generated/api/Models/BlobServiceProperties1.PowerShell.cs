@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeleteRetentionPolicy) content.GetValueForProperty("DeleteRetentionPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicy, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeleteRetentionPolicyTypeConverter.ConvertFrom);
             }
+            if (content.Contains("StaticWebsite"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsite = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsite) content.GetValueForProperty("StaticWebsite",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsite, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StaticWebsiteTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ChangeFeed"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).ChangeFeed = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IChangeFeed) content.GetValueForProperty("ChangeFeed",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).ChangeFeed, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ChangeFeedTypeConverter.ConvertFrom);
@@ -120,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyDay = (int?) content.GetValueForProperty("DeleteRetentionPolicyDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("StaticWebsiteIndexDocument"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteIndexDocument = (string) content.GetValueForProperty("StaticWebsiteIndexDocument",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteIndexDocument, global::System.Convert.ToString);
+            }
             if (content.Contains("LastAccessTimeTrackingPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).LastAccessTimeTrackingPolicyName = (string) content.GetValueForProperty("LastAccessTimeTrackingPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).LastAccessTimeTrackingPolicyName, global::System.Convert.ToString);
@@ -135,6 +143,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("DeleteRetentionPolicyAllowPermanentDelete"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyAllowPermanentDelete = (bool?) content.GetValueForProperty("DeleteRetentionPolicyAllowPermanentDelete",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyAllowPermanentDelete, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StaticWebsiteEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteEnabled = (bool?) content.GetValueForProperty("StaticWebsiteEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StaticWebsiteDefaultIndexDocumentPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteDefaultIndexDocumentPath = (string) content.GetValueForProperty("StaticWebsiteDefaultIndexDocumentPath",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteDefaultIndexDocumentPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("StaticWebsiteErrorDocument404Path"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteErrorDocument404Path = (string) content.GetValueForProperty("StaticWebsiteErrorDocument404Path",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteErrorDocument404Path, global::System.Convert.ToString);
             }
             if (content.Contains("ChangeFeedEnabled"))
             {
@@ -205,6 +225,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeleteRetentionPolicy) content.GetValueForProperty("DeleteRetentionPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicy, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeleteRetentionPolicyTypeConverter.ConvertFrom);
             }
+            if (content.Contains("StaticWebsite"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsite = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsite) content.GetValueForProperty("StaticWebsite",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsite, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StaticWebsiteTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ChangeFeed"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).ChangeFeed = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IChangeFeed) content.GetValueForProperty("ChangeFeed",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).ChangeFeed, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ChangeFeedTypeConverter.ConvertFrom);
@@ -241,6 +265,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyDay = (int?) content.GetValueForProperty("DeleteRetentionPolicyDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("StaticWebsiteIndexDocument"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteIndexDocument = (string) content.GetValueForProperty("StaticWebsiteIndexDocument",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteIndexDocument, global::System.Convert.ToString);
+            }
             if (content.Contains("LastAccessTimeTrackingPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).LastAccessTimeTrackingPolicyName = (string) content.GetValueForProperty("LastAccessTimeTrackingPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).LastAccessTimeTrackingPolicyName, global::System.Convert.ToString);
@@ -256,6 +284,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("DeleteRetentionPolicyAllowPermanentDelete"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyAllowPermanentDelete = (bool?) content.GetValueForProperty("DeleteRetentionPolicyAllowPermanentDelete",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).DeleteRetentionPolicyAllowPermanentDelete, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StaticWebsiteEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteEnabled = (bool?) content.GetValueForProperty("StaticWebsiteEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StaticWebsiteDefaultIndexDocumentPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteDefaultIndexDocumentPath = (string) content.GetValueForProperty("StaticWebsiteDefaultIndexDocumentPath",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteDefaultIndexDocumentPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("StaticWebsiteErrorDocument404Path"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteErrorDocument404Path = (string) content.GetValueForProperty("StaticWebsiteErrorDocument404Path",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal)this).StaticWebsiteErrorDocument404Path, global::System.Convert.ToString);
             }
             if (content.Contains("ChangeFeedEnabled"))
             {

@@ -29,7 +29,7 @@ Describe 'Get-AzFileShareSnapshot' {
                            -ProvisionedThroughputMiBPerSec 228 `
                            -Redundancy "Local" `
                            -PublicNetworkAccess "Enabled" `
-                           -NfProtocolPropertyRootSquash "NoRootSquash" `
+                           -RootSquash "NoRootSquash" `
                            -Tag @{"environment" = "test"; "purpose" = "testing"}
         }
     }

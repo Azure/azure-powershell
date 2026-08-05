@@ -25,11 +25,9 @@ Description for Validate if a resource can be created.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateResponse
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,7 +37,7 @@ APPSERVICEENVIRONMENT <IAppServiceEnvironment>: App Service Environment Properti
   VirtualNetworkId <String>: Resource id of the Virtual Network.
   [AllowNewPrivateEndpointConnection <Boolean?>]: Property to enable and disable new private endpoint connection creation on ASE
   [CertificateUrl <String>]: The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
-  [ClusterSetting <INameValuePair[]>]: Custom settings for changing the behavior of the App Service Environment.
+  [ClusterSetting <List<INameValuePair>>]: Custom settings for changing the behavior of the App Service Environment.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [CustomDnsSuffixConfigurationKind <String>]: Kind of resource.
@@ -49,97 +47,26 @@ APPSERVICEENVIRONMENT <IAppServiceEnvironment>: App Service Environment Properti
   [FrontEndScaleFactor <Int32?>]: Scale factor for front-ends.
   [FtpEnabled <Boolean?>]: Property to enable and disable FTP on ASEV3
   [InboundIPAddressOverride <String>]: Customer provided Inbound IP Address. Only able to be set on Ase create.
-  [InternalLoadBalancingMode <LoadBalancingMode?>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+  [InternalLoadBalancingMode <String>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   [IpsslAddressCount <Int32?>]: Number of IP SSL addresses reserved for the App Service Environment.
   [KeyVaultReferenceIdentity <String>]: The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   [MultiSize <String>]: Front-end VM size, e.g. "Medium", "Large".
   [NetworkingConfigurationKind <String>]: Kind of resource.
   [RemoteDebugEnabled <Boolean?>]: Property to enable and disable Remote Debug on ASEV3
-  [UpgradePreference <UpgradePreference?>]: Upgrade Preference
-  [UserWhitelistedIPRange <String[]>]: User added ip ranges to whitelist on ASE db
+  [UpgradePreference <String>]: Upgrade Preference
+  [UserWhitelistedIPRange <List<String>>]: User added ip ranges to whitelist on ASE db
   [VirtualNetworkSubnet <String>]: Subnet within the Virtual Network.
   [ZoneRedundant <Boolean?>]: Whether or not this App Service Environment is zone-redundant.
-
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [ActionName <String>]: The workflow action name.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ConnectionStringKey <String>]: 
-  [ContainerName <String>]: Site Container Name
-  [DatabaseConnectionName <String>]: Name of the database connection.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [EnvironmentName <String>]: The stage site identifier.
-  [FunctionAppName <String>]: Name of the function app registered with the static site build.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [RepetitionName <String>]: The workflow repetition.
-  [RequestHistoryName <String>]: The request history name.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [RunName <String>]: The workflow run name.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [TriggerName <String>]: The workflow trigger name.
-  [Userid <String>]: The user id of the user.
-  [VersionId <String>]: The workflow versionId.
-  [View <String>]: The type of view. Only "summary" is supported at this time.
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
-  [WorkflowName <String>]: Workflow name.
 
 VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
   Location <String>: Expected location of the resource.
   Name <String>: Resource name to verify.
-  Type <ValidateResourceTypes>: Resource type used for verification.
+  Type <String>: Resource type used for verification.
   [AppServiceEnvironment <IAppServiceEnvironment>]: App Service Environment Properties
     VirtualNetworkId <String>: Resource id of the Virtual Network.
     [AllowNewPrivateEndpointConnection <Boolean?>]: Property to enable and disable new private endpoint connection creation on ASE
     [CertificateUrl <String>]: The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
-    [ClusterSetting <INameValuePair[]>]: Custom settings for changing the behavior of the App Service Environment.
+    [ClusterSetting <List<INameValuePair>>]: Custom settings for changing the behavior of the App Service Environment.
       [Name <String>]: Pair name.
       [Value <String>]: Pair value.
     [CustomDnsSuffixConfigurationKind <String>]: Kind of resource.
@@ -149,14 +76,14 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
     [FrontEndScaleFactor <Int32?>]: Scale factor for front-ends.
     [FtpEnabled <Boolean?>]: Property to enable and disable FTP on ASEV3
     [InboundIPAddressOverride <String>]: Customer provided Inbound IP Address. Only able to be set on Ase create.
-    [InternalLoadBalancingMode <LoadBalancingMode?>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+    [InternalLoadBalancingMode <String>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
     [IpsslAddressCount <Int32?>]: Number of IP SSL addresses reserved for the App Service Environment.
     [KeyVaultReferenceIdentity <String>]: The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
     [MultiSize <String>]: Front-end VM size, e.g. "Medium", "Large".
     [NetworkingConfigurationKind <String>]: Kind of resource.
     [RemoteDebugEnabled <Boolean?>]: Property to enable and disable Remote Debug on ASEV3
-    [UpgradePreference <UpgradePreference?>]: Upgrade Preference
-    [UserWhitelistedIPRange <String[]>]: User added ip ranges to whitelist on ASE db
+    [UpgradePreference <String>]: Upgrade Preference
+    [UserWhitelistedIPRange <List<String>>]: User added ip ranges to whitelist on ASE db
     [VirtualNetworkSubnet <String>]: Subnet within the Virtual Network.
     [ZoneRedundant <Boolean?>]: Whether or not this App Service Environment is zone-redundant.
   [Capacity <Int32?>]: Target capacity of the App Service plan (number of VMs).
@@ -176,18 +103,16 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
 https://learn.microsoft.com/powershell/module/az.functions/test-az
 #>
 function Test-Az {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateResponse])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Validate', Mandatory)]
-    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Validate')]
-    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -196,142 +121,126 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateRequest]
     # Resource validation request content.
-    # To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
     ${ValidateRequest},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Expected location of the resource.
     ${Location},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Resource name to verify.
     ${Name},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("ServerFarm", "Site", "Microsoft.Web/hostingEnvironments")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes]
+    [System.String]
     # Resource type used for verification.
     ${Type},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServiceEnvironment]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServiceEnvironment]
     # App Service Environment Properties
-    # To construct, see NOTES section for APPSERVICEENVIRONMENT properties and create a hash table.
     ${AppServiceEnvironment},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Target capacity of the App Service plan (number of VMs).
     ${Capacity},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Platform (windows or linux)
     ${ContainerImagePlatform},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Repository name (image name)
     ${ContainerImageRepository},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Image tag
     ${ContainerImageTag},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Base URL of the container registry
     ${ContainerRegistryBaseUrl},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Password for to access the container registry
     ${ContainerRegistryPassword},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Username for to access the container registry
     ${ContainerRegistryUsername},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of App Service Environment where app or App Service plan should be created.
     ${HostingEnvironment},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>.
     ${IsSpot},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if App Service plan is running as a windows container
     ${IsXenon},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.
     ${NeedLinuxWorker},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # ARM resource ID of an App Service plan that would host the app.
     ${ServerFarmId},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of the target SKU for the App Service plan.
     ${SkuName},
+
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Validate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Validate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -389,16 +298,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Validate = 'Az.Functions.private\Test-Az_Validate';
             ValidateExpanded = 'Az.Functions.private\Test-Az_ValidateExpanded';
-            ValidateViaIdentity = 'Az.Functions.private\Test-Az_ValidateViaIdentity';
-            ValidateViaIdentityExpanded = 'Az.Functions.private\Test-Az_ValidateViaIdentityExpanded';
+            ValidateViaJsonFilePath = 'Az.Functions.private\Test-Az_ValidateViaJsonFilePath';
+            ValidateViaJsonString = 'Az.Functions.private\Test-Az_ValidateViaJsonString';
         }
-        if (('Validate', 'ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Validate', 'ValidateExpanded', 'ValidateViaJsonFilePath', 'ValidateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -407,6 +317,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

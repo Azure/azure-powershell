@@ -35,12 +35,12 @@ Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -Mo
 Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRMS/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverprepare
 #>
 function Invoke-AzResourceMoverPrepare {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='PrepareExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -62,25 +62,37 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='PrepareExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
     [System.String[]]
     # Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
     ${MoveResource},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType])]
+    [Parameter(ParameterSetName='PrepareExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.PSArgumentCompleterAttribute("MoveResourceId", "MoveResourceSourceId")]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType]
+    [System.String]
     # Defines the move resource input type.
     ${MoveResourceInputType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PrepareExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets a value indicating whether the operation needs to only run pre-requisite.
     ${ValidateOnly},
+
+    [Parameter(ParameterSetName='PrepareViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Prepare operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PrepareViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Prepare operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -150,6 +162,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -170,10 +190,10 @@ begin {
 
         $mapping = @{
             PrepareExpanded = 'Az.ResourceMover.private\Invoke-AzResourceMoverPrepare_PrepareExpanded';
+            PrepareViaJsonFilePath = 'Az.ResourceMover.private\Invoke-AzResourceMoverPrepare_PrepareViaJsonFilePath';
+            PrepareViaJsonString = 'Az.ResourceMover.private\Invoke-AzResourceMoverPrepare_PrepareViaJsonString';
         }
-        if (('PrepareExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('PrepareExpanded', 'PrepareViaJsonFilePath', 'PrepareViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -187,6 +207,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

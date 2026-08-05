@@ -140,6 +140,41 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public PSCorsRule[] CorsRule { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether static website support is enabled for the specified account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableStaticWebsite
+        {
+            get
+            {
+                return enableStaticWebsite is null ? false : enableStaticWebsite.Value;
+            }
+            set
+            {
+                enableStaticWebsite = value;
+            }
+        }
+        private bool? enableStaticWebsite = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The webpage that Azure Storage serves for requests to the root of a website or any subfolder (for example, index.html). The value is case-sensitive.")]
+        [ValidateNotNull]
+        public string StaticWebsiteIndexDocument { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The absolute path where the default index file is present. This absolute path is mutually exclusive to IndexDocument and it is case-sensitive.")]
+        [ValidateNotNull]
+        public string StaticWebsiteDefaultIndexDocumentPath { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. Only a single custom 404 page is supported in each static website.")]
+        [ValidateNotNull]
+        public string StaticWebsiteErrorDocument404Path { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -194,6 +229,37 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         CorsRulesProperty = this.CorsRule
                     };
                     serviceProperties.Cors = corsRules.ParseCorsRules();
+                }
+
+                if (this.enableStaticWebsite != null)
+                {
+                    serviceProperties.StaticWebsite = new StaticWebsite();
+                    serviceProperties.StaticWebsite.Enabled = this.enableStaticWebsite.Value;
+
+                    if (this.StaticWebsiteIndexDocument != null)
+                    {
+                        serviceProperties.StaticWebsite.IndexDocument = this.StaticWebsiteIndexDocument;
+                    }
+                    
+                    if (this.StaticWebsiteDefaultIndexDocumentPath != null)
+                    {
+                        serviceProperties.StaticWebsite.DefaultIndexDocumentPath = this.StaticWebsiteDefaultIndexDocumentPath;
+                    }
+                    
+                    if (this.StaticWebsiteErrorDocument404Path != null)
+                    {
+                        serviceProperties.StaticWebsite.ErrorDocument404Path = this.StaticWebsiteErrorDocument404Path;
+                    }
+                }
+                else
+                {
+                    // If EnableStaticWebsite is not specified, check if any static website properties are provided
+                    if (this.StaticWebsiteIndexDocument != null ||
+                        this.StaticWebsiteDefaultIndexDocumentPath != null ||
+                        this.StaticWebsiteErrorDocument404Path != null)
+                    {
+                        throw new ArgumentException("StaticWebsite properties can only be specified when EnableStaticWebsite is set.");
+                    }
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);

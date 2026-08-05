@@ -21,6 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string Description { get => this._description; set => this._description = value; }
 
+        /// <summary>Backing field for <see cref="EndpointKind" /> property.</summary>
+        private string _endpointKind;
+
+        /// <summary>The Endpoint resource kind source or target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string EndpointKind { get => this._endpointKind; set => this._endpointKind = value; }
+
         /// <summary>Backing field for <see cref="EndpointType" /> property.</summary>
         private string _endpointType;
 
@@ -59,6 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string Description { get; set; }
+        /// <summary>The Endpoint resource kind source or target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The Endpoint resource kind source or target.",
+        SerializedName = @"endpointKind",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+        string EndpointKind { get; set; }
         /// <summary>The Endpoint resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -69,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Description = @"The Endpoint resource type.",
         SerializedName = @"endpointType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare", "S3WithHMAC")]
         string EndpointType { get; set; }
         /// <summary>The provisioning state of this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
@@ -91,8 +110,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
     {
         /// <summary>A description for the Endpoint.</summary>
         string Description { get; set; }
+        /// <summary>The Endpoint resource kind source or target.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+        string EndpointKind { get; set; }
         /// <summary>The Endpoint resource type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare", "S3WithHMAC")]
         string EndpointType { get; set; }
         /// <summary>The provisioning state of this resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Succeeded", "Canceled", "Failed", "Deleting")]

@@ -16,16 +16,30 @@ Starts SQL virtual machine troubleshooting.
 ```
 Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <String>
  [-SubscriptionId <String>] [-EndTimeUtc <DateTime>] [-StartTimeUtc <DateTime>]
- [-TroubleshootingScenario <TroubleshootingScenario>] [-UnhealthyReplicaInfoAvailabilityGroupName <String>]
+ [-TroubleshootingScenario <String>] [-UnhealthyReplicaInfoAvailabilityGroupName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### TroubleshootViaIdentityExpanded
 ```
 Invoke-AzSqlVMTroubleshoot -InputObject <ISqlVirtualMachineIdentity> [-EndTimeUtc <DateTime>]
- [-StartTimeUtc <DateTime>] [-TroubleshootingScenario <TroubleshootingScenario>]
+ [-StartTimeUtc <DateTime>] [-TroubleshootingScenario <String>]
  [-UnhealthyReplicaInfoAvailabilityGroupName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### TroubleshootViaJsonFilePath
+```
+Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### TroubleshootViaJsonString
+```
+Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +112,7 @@ End time in UTC timezone.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: TroubleshootExpanded, TroubleshootViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -110,7 +124,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
@@ -121,6 +134,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Troubleshoot operation
+
+```yaml
+Type: System.String
+Parameter Sets: TroubleshootViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Troubleshoot operation
+
+```yaml
+Type: System.String
+Parameter Sets: TroubleshootViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,7 +188,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: TroubleshootExpanded
+Parameter Sets: TroubleshootExpanded, TroubleshootViaJsonFilePath, TroubleshootViaJsonString
 Aliases:
 
 Required: True
@@ -160,7 +203,7 @@ Name of the SQL virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: TroubleshootExpanded
+Parameter Sets: TroubleshootExpanded, TroubleshootViaJsonFilePath, TroubleshootViaJsonString
 Aliases:
 
 Required: True
@@ -175,7 +218,7 @@ Start time in UTC timezone.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: TroubleshootExpanded, TroubleshootViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -190,7 +233,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: TroubleshootExpanded
+Parameter Sets: TroubleshootExpanded, TroubleshootViaJsonFilePath, TroubleshootViaJsonString
 Aliases:
 
 Required: False
@@ -204,8 +247,8 @@ Accept wildcard characters: False
 SQL VM troubleshooting scenario.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.TroubleshootingScenario
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: TroubleshootExpanded, TroubleshootViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -220,7 +263,7 @@ The name of the availability group
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: TroubleshootExpanded, TroubleshootViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -270,7 +313,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVMTroubleshooting
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVMTroubleshooting
 
 ## NOTES
 

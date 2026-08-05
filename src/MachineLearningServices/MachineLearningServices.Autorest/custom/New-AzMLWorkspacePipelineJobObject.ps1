@@ -21,27 +21,34 @@ Create an in-memory object for PipelineJob.
 Create an in-memory object for PipelineJob.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.PipelineJob
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspacePipelineJobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacepipelinejobobject
 #>
 function New-AzMLWorkspacePipelineJobObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.PipelineJob')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Inputs for the pipeline job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobInputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobInputs]
         $JobInput,
         [Parameter(HelpMessage="Jobs construct the Pipeline Job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobJobs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobJobs]
         $Job,
         [Parameter(HelpMessage="Outputs for the pipeline job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobOutputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobOutputs]
         $JobOutput,
         [Parameter(HelpMessage="Pipeline settings, for things like ContinueRunOnStepFailure etc.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny]
         $Setting,
+        [Parameter(HelpMessage="ARM resource ID of source job.")]
+        [string]
+        $SourceJobId,
+        [Parameter(HelpMessage="ARM resource ID of the component resource.")]
+        [string]
+        $ComponentId,
         [Parameter(HelpMessage="ARM resource ID of the compute resource.")]
         [string]
         $ComputeId,
@@ -52,15 +59,25 @@ function New-AzMLWorkspacePipelineJobObject {
         [string]
         $ExperimentName,
         [Parameter(HelpMessage="[Required] Specifies the type of identity framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Managed", "AMLToken", "UserIdentity")]
+        [string]
         $IdentityType,
         [Parameter(HelpMessage="Is the asset archived?.")]
         [bool]
         $IsArchived,
+        [Parameter(HelpMessage="This is the email recipient list which has a limitation of 499 characters in total concat with comma separator.")]
+        [string[]]
+        $NotificationSettingEmail,
+        [Parameter(HelpMessage="Send email notification to user on specified notification type.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("JobCompleted", "JobFailed", "JobCancelled")]
+        [string[]]
+        $NotificationSettingEmailOn,
+        [Parameter(HelpMessage="Send webhook callback to a service. Key is a user-provided name for the webhook.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks]
+        $NotificationSettingWebhook,
         # [Parameter(HelpMessage="List of JobEndpoints.
         # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseServices]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices]
         # $Service,
         [Parameter(HelpMessage="Url for endpoint.")]
         [string]
@@ -69,27 +86,25 @@ function New-AzMLWorkspacePipelineJobObject {
         [int]
         $ServicePort,
         [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties]
         $ServiceProperty,
         [Parameter(HelpMessage="Endpoint type.")]
         [string]
         $ServiceType,
-
         [Parameter(HelpMessage="The asset description text.")]
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob]::New()
-        $Object.JobType = 'Pipeline'
-        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobBaseServices]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.PipelineJob]::New()
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.JobBaseServices]::New()
 
         if ($PSBoundParameters.ContainsKey('JobInput')) {
             $Object.Input = $JobInput
@@ -102,6 +117,12 @@ function New-AzMLWorkspacePipelineJobObject {
         }
         if ($PSBoundParameters.ContainsKey('Setting')) {
             $Object.Setting = $Setting
+        }
+        if ($PSBoundParameters.ContainsKey('SourceJobId')) {
+            $Object.SourceJobId = $SourceJobId
+        }
+        if ($PSBoundParameters.ContainsKey('ComponentId')) {
+            $Object.ComponentId = $ComponentId
         }
         if ($PSBoundParameters.ContainsKey('ComputeId')) {
             $Object.ComputeId = $ComputeId
@@ -118,6 +139,15 @@ function New-AzMLWorkspacePipelineJobObject {
         if ($PSBoundParameters.ContainsKey('IsArchived')) {
             $Object.IsArchived = $IsArchived
         }
+        if ($PSBoundParameters.ContainsKey('NotificationSettingEmail')) {
+            $Object.NotificationSettingEmail = $NotificationSettingEmail
+        }
+        if ($PSBoundParameters.ContainsKey('NotificationSettingEmailOn')) {
+            $Object.NotificationSettingEmailOn = $NotificationSettingEmailOn
+        }
+        if ($PSBoundParameters.ContainsKey('NotificationSettingWebhook')) {
+            $Object.NotificationSettingWebhook = $NotificationSettingWebhook
+        }
         # if ($PSBoundParameters.ContainsKey('Service')) {
         #     $Object.Service = $Service
         # }
@@ -133,7 +163,7 @@ function New-AzMLWorkspacePipelineJobObject {
         if ($PSBoundParameters.ContainsKey('ServiceType')) {
             $Service.Type = $ServiceType
         }
-
+        $Object.Service = $Service
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
         }
@@ -143,7 +173,6 @@ function New-AzMLWorkspacePipelineJobObject {
         if ($PSBoundParameters.ContainsKey('Tag')) {
             $Object.Tag = $Tag
         }
-        $Object.Service = $Service
         return $Object
     }
 }

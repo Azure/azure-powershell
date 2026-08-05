@@ -82,44 +82,6 @@
       ]
     },
     {
-      "name": "Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit",
-      "description": "Extends Software Assurance Benefit to a cluster",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/extendSoftwareAssuranceBenefit",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciextendclustersoftwareassurancebenefit"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-ClusterName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Extends Software Assurance Benefit to a cluster",
-          "parameters": [
-            {
-              "name": "-ClusterName",
-              "value": "[Path.clusterName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Remove-AzStackHciCluster",
       "description": "Delete an HCI cluster.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",

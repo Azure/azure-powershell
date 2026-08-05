@@ -248,6 +248,9 @@ Gets the properties of a VMSS.
 ### [Get-AzVmssDiskEncryption](Get-AzVmssDiskEncryption.md)
 Shows the disk encryption status of a VM scale set.
 
+### [Get-AzVmssLifecycleHookEvent](Get-AzVmssLifecycleHookEvent.md)
+Lists or retrieves lifecycle hook events for a Virtual Machine Scale Set (VMSS).
+
 ### [Get-AzVmssRollingUpgrade](Get-AzVmssRollingUpgrade.md)
 Shows the status of the latest virtual machine scale set rolling upgrade.
 
@@ -416,6 +419,9 @@ Creates an IP configuration for a network interface of a VMSS.
 ### [New-AzVmssIpTagConfig](New-AzVmssIpTagConfig.md)
 Creates an IP Tag object for a network interface of a VMSS.
 
+### [New-AzVmssLifecycleHookConfig](New-AzVmssLifecycleHookConfig.md)
+Creates an in-memory lifecycle hook configuration object for use with a Virtual Machine Scale Set (VMSS).
+
 ### [New-AzVmssVaultCertificateConfig](New-AzVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
 
@@ -562,6 +568,9 @@ Removes an extension from the VMSS.
 
 ### [Remove-AzVmssGalleryApplication](Remove-AzVmssGalleryApplication.md)
 Remove a VMGalleryApplication object from the PSVirtualMachineScaleSetVMProfile object.
+
+### [Remove-AzVmssLifecycleHook](Remove-AzVmssLifecycleHook.md)
+Removes one or all lifecycle hooks from a Virtual Machine Scale Set (VMSS).
 
 ### [Remove-AzVmssNetworkInterfaceConfiguration](Remove-AzVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
@@ -713,6 +722,9 @@ Sets the virtual machine scale set boot diagnostics profile.
 ### [Set-AzVmssDiskEncryptionExtension](Set-AzVmssDiskEncryptionExtension.md)
 Enables disk encryption on a VM scale set.
 
+### [Set-AzVmssLifecycleHooksProfile](Set-AzVmssLifecycleHooksProfile.md)
+Attaches lifecycle hooks to a Virtual Machine Scale Set (VMSS) configuration or live VMSS object.
+
 ### [Set-AzVmssOrchestrationServiceState](Set-AzVmssOrchestrationServiceState.md)
 Sets the orchestration service state for the VMSS.
 
@@ -835,6 +847,9 @@ Updates the state of a VMSS.
 
 ### [Update-AzVmssInstance](Update-AzVmssInstance.md)
 Starts a manual upgrade of the VMSS instance.
+
+### [Update-AzVmssLifecycleHookEvent](Update-AzVmssLifecycleHookEvent.md)
+Responds to a Virtual Machine Scale Set (VMSS) lifecycle hook event by approving, rejecting, or delaying it.
 
 ### [Update-AzVmssVM](Update-AzVmssVM.md)
 Updates the state of a Vmss VM.

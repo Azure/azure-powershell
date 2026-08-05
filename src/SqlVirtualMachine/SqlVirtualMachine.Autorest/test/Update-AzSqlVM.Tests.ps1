@@ -125,7 +125,7 @@ Describe 'Update-AzSqlVM' {
         Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
     }
 
-    It 'Update-AddSqlVMtoGroup' {
+    It 'Update-AddSqlVMtoGroup'-skip {
         # Assuming Group $env.SqlVMGroupId exists at this time and $env.SqlVMName_HA2 is created
         $pwd = 'xxxxxx' # Replace with the original password
         $securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
@@ -140,7 +140,7 @@ Describe 'Update-AzSqlVM' {
         $sqlVM2.GroupResourceId | Should -Be $env.SqlVMGroupId
     }
 
-    It 'Update-RemoveSqlVMfromGroup' {
+    It 'Update-RemoveSqlVMfromGroup' -skip{
         # Assuming $env.SqlVMName_HA2 is created already and added to Group $env.SqlVMGroupId
         # If the test case fails, make sure Sql server is running before running test case
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 `

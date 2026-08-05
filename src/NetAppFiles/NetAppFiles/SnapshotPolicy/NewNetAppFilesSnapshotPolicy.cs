@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
                 Location = AccountObject.Location;
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
             Management.NetApp.Models.SnapshotPolicy existingSnapshotPolicy = null;

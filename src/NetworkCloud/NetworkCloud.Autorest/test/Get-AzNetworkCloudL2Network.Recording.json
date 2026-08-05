@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudL2Network+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudL2Network+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudL2Network+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudL2Network+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -89,10 +89,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudL2Network+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudL2Network+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -127,6 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The auth provider for the users.",
         SerializedName = @"authprovider",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The custom domain name.",
         SerializedName = @"domainName",
         PossibleTypes = new [] { typeof(string) })]
@@ -143,6 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The stage site identifier.",
         SerializedName = @"environmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -151,6 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the function app registered with the static site build.",
         SerializedName = @"functionAppName",
         PossibleTypes = new [] { typeof(string) })]
@@ -159,6 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -167,6 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"History ID.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -175,6 +193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Location where you plan to create the static site.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -183,6 +204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the static site.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -191,6 +215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -199,6 +226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the resource group to which the resource belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -209,6 +239,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.",
         SerializedName = @"slot",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,6 +252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -227,6 +263,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The user id of the user.",
         SerializedName = @"userid",
         PossibleTypes = new [] { typeof(string) })]
@@ -235,6 +274,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Web Job.",
         SerializedName = @"webJobName",
         PossibleTypes = new [] { typeof(string) })]

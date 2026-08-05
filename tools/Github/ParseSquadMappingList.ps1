@@ -53,6 +53,37 @@ function NormalizeMentioneeValue {
     return $Mentionee
 }
 
+function NormalizeExistingSquadMentionees {
+    [CmdletBinding()]
+    param([string[]] $Lines)
+
+    $result = [System.Collections.Generic.List[string]]::new()
+    $inMentionees = $false
+    $mentioneesIndent = -1
+    foreach ($line in $Lines) {
+        if ($line -match '^\s*mentionees:\s*$') {
+            $inMentionees = $true
+            $mentioneesIndent = GetIndentLength -Line $line
+            $result.Add($line)
+            continue
+        }
+        if ($inMentionees) {
+            if ($line -match '^(\s*)-\s+(act-[a-z0-9-]+-squad)\s*$') {
+                $result.Add("$($Matches[1])- Azure/$($Matches[2])")
+                continue
+            }
+
+            if ($line.Trim().Length -ne 0 -and -not ($line -match '^\s*-\s+')) {
+                $inMentionees = $false
+            } elseif ($line -match '^\s*-\s+' -and (GetIndentLength -Line $line) -lt $mentioneesIndent) {
+                $inMentionees = $false
+            }
+        }
+        $result.Add($line)
+    }
+    return $result.ToArray()
+}
+
 function GetSquadMapping {
     [CmdletBinding()]
     param([string] $AccessToken)
@@ -265,6 +296,7 @@ if ($yamlContent.Contains("`r`n")) { $lineEnding = "`r`n" }
 $endsWithNewline = $yamlContent.EndsWith("`n")
 $yamlLines = [regex]::Split($yamlContent, "\r?\n", [System.Text.RegularExpressions.RegexOptions]::None)
 $updatedLines = AddSquadLabelsToYaml -Lines $yamlLines -LabelToSquad $labelToSquad
+$updatedLines = NormalizeExistingSquadMentionees -Lines $updatedLines
 $updatedContent = [string]::Join($lineEnding, $updatedLines)
 if (-not $endsWithNewline -and $updatedContent.EndsWith($lineEnding)) { $updatedContent = $updatedContent.Substring(0, $updatedContent.Length - $lineEnding.Length) }
 [System.IO.File]::WriteAllText($yamlConfigPath, $updatedContent)

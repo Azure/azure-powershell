@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list frontend endpoints. It contains a list of Frontend endpoint objects and a URL link to get
-    /// the next set of results.
-    /// </summary>
+    /// <summary>Paged collection of FrontendEndpoint items</summary>
     public partial class FrontendEndpointsListResult :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointsListResult,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointsListResultInternal
@@ -22,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of frontend endpoints if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint> _value;
 
-        /// <summary>List of Frontend endpoints within a Front Door.</summary>
+        /// <summary>The FrontendEndpoint items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint> Value { get => this._value; }
 
@@ -39,43 +36,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         }
     }
-    /// Result of the request to list frontend endpoints. It contains a list of Frontend endpoint objects and a URL link to get
-    /// the next set of results.
+    /// Paged collection of FrontendEndpoint items
     public partial interface IFrontendEndpointsListResult :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of frontend endpoints if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of frontend endpoints if there are any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of Frontend endpoints within a Front Door.</summary>
+        /// <summary>The FrontendEndpoint items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of Frontend endpoints within a Front Door.",
+        Description = @"The FrontendEndpoint items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint> Value { get;  }
 
     }
-    /// Result of the request to list frontend endpoints. It contains a list of Frontend endpoint objects and a URL link to get
-    /// the next set of results.
+    /// Paged collection of FrontendEndpoint items
     internal partial interface IFrontendEndpointsListResultInternal
 
     {
-        /// <summary>URL to get the next set of frontend endpoints if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Frontend endpoints within a Front Door.</summary>
+        /// <summary>The FrontendEndpoint items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint> Value { get; set; }
 
     }

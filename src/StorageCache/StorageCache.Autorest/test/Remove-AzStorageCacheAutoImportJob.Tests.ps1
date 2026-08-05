@@ -18,7 +18,7 @@ Describe 'Remove-AzStorageCacheAutoImportJob' {
     It 'Delete' {
         {
             # Create the auto import job first
-            New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/path1', '/path2')
+            New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/')
             Start-Sleep -Seconds 30
             
             # Now remove it
@@ -29,7 +29,7 @@ Describe 'Remove-AzStorageCacheAutoImportJob' {
     It 'DeleteViaIdentityAmlFilesystem' {
         {
             # Create the auto import job first
-            New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob2' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/path1', '/path2')
+            New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob2' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/')
             Start-Sleep -Seconds 30
             
             # Now remove it using identity
@@ -45,7 +45,7 @@ Describe 'Remove-AzStorageCacheAutoImportJob' {
     It 'DeleteViaIdentity' {
         {
             # Create the auto import job first
-            New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob3' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/path1', '/path2')
+            New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob3' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/')
             Start-Sleep -Seconds 30
             
             # Now remove it using full identity

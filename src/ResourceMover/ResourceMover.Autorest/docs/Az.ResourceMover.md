@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ResourceMover
-Module Guid: 0ba90d79-503d-4960-9f28-a730b4c6d67b
+Module Guid: e7c8ea8b-2ece-4942-a60b-f19c17889f80
 Download Help Link: https://learn.microsoft.com/powershell/module/az.resourcemover
 Help Version: 1.0.0.0
 Locale: en-US
@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: ResourceMover cmdlets
 
 ## Az.ResourceMover Cmdlets
 ### [Add-AzResourceMoverMoveResource](Add-AzResourceMoverMoveResource.md)
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
@@ -76,7 +76,7 @@ To aid the user to prerequisite the operation the client can call operation with
 **The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
 
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
-Creates or updates a move collection.
+Create a move collection.
 The following types of move collections based on the move scenario are supported currently:
 
 **1.

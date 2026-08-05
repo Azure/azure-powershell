@@ -179,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys
 
 ## NOTES
 

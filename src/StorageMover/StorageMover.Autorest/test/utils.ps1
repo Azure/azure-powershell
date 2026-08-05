@@ -106,10 +106,83 @@ function setupEnv() {
 
     $env.MultiCloudConnectorId = "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector"
     $env.AwsS3BucketId = "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket"
+
+    # Create a destination IP-based Private Link Service for Connection cmdlet tests.
+    # Reuses an existing VNet/subnet that has connectivity to the destination IP.
+    # The subnet must have privateLinkServiceNetworkPolicies disabled.
+    $env.VNetResourceGroupName = "E2E-Management-RGsyn"
+    $env.VNetName = "e2e-sm-vpc-vnet-eastus2euap"
+    $env.SubnetName = "pls-subnet"
+    $env.PrivateLinkServiceName = "testPls" + $env.RandomString
+    $env.ConnectionName = "conn" + $env.RandomString
+    $env.PlsDestinationIp = "10.1.0.186"
+
+    $vnet = Get-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.VNetResourceGroupName
+    $subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $vnet
+
+    # New-AzPrivateLinkService doesn't support -DestinationIPAddress, so use
+    # the REST API directly to create a destination-IP-based PLS.
+    $plsPath = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.VNetResourceGroupName)/providers/Microsoft.Network/privateLinkServices/$($env.PrivateLinkServiceName)?api-version=2024-05-01"
+    $plsBody = @{
+        location = $env.Location
+        properties = @{
+            ipConfigurations = @(
+                @{
+                    name = "testPlsIpConfig1"
+                    properties = @{
+                        privateIPAllocationMethod = "Dynamic"
+                        subnet = @{ id = $subnet.Id }
+                        primary = $true
+                    }
+                },
+                @{
+                    name = "testPlsIpConfig2"
+                    properties = @{
+                        privateIPAllocationMethod = "Dynamic"
+                        subnet = @{ id = $subnet.Id }
+                    }
+                }
+            )
+            destinationIPAddress = $env.PlsDestinationIp
+        }
+    } | ConvertTo-Json -Depth 10
+    $plsResponse = Invoke-AzRestMethod -Method PUT -Path $plsPath -Payload $plsBody
+    if ($plsResponse.StatusCode -ne 200 -and $plsResponse.StatusCode -ne 201) {
+        throw "Failed to create PLS: $($plsResponse.Content)"
+    }
+    $plsResult = $plsResponse.Content | ConvertFrom-Json
+    $env.PrivateLinkServiceId = $plsResult.id
+
+    # Pre-create a connection on the initial Storage Mover so Get-AzStorageMoverConnection tests can find it.
+    New-AzStorageMoverConnection -Name $env.ConnectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId -Description "setupEnv connection" | Out-Null
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.ResourceGroupName
+    # Delete the Connection resource created by setupEnv/tests.
+    if ($env.ConnectionName) {
+        Remove-AzStorageMoverConnection -Name $env.ConnectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -ErrorAction SilentlyContinue
+    }
+
+    # Delete the Private Link Service created by setupEnv. The PLS cannot be
+    # deleted while it has Private Endpoint Connections referencing it, so we
+    # first delete each linked private endpoint, then the PLS itself.
+    if ($env.PrivateLinkServiceName) {
+        $plsRg = if ($env.VNetResourceGroupName) { $env.VNetResourceGroupName } else { $env.ResourceGroupName }
+        $pls = Get-AzPrivateLinkService -Name $env.PrivateLinkServiceName -ResourceGroupName $plsRg -ErrorAction SilentlyContinue
+        if ($pls) {
+            foreach ($pec in $pls.PrivateEndpointConnections) {
+                # PrivateEndpoint.Id format:
+                # /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Network/privateEndpoints/{name}
+                if ($pec.PrivateEndpoint -and $pec.PrivateEndpoint.Id) {
+                    $peSegments = $pec.PrivateEndpoint.Id -split '/'
+                    $peRg = $peSegments[4]
+                    $peName = $peSegments[-1]
+                    Remove-AzPrivateEndpoint -Name $peName -ResourceGroupName $peRg -Force -ErrorAction SilentlyContinue
+                }
+            }
+            Remove-AzPrivateLinkService -Name $env.PrivateLinkServiceName -ResourceGroupName $plsRg -Force -ErrorAction SilentlyContinue
+        }
+    }
 }
 

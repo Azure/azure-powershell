@@ -63,6 +63,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -74,6 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).",
         SerializedName = @"marketplaceIdentifier",
         PossibleTypes = new [] { typeof(string) })]
@@ -82,6 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The GUID of the registration assignment.",
         SerializedName = @"registrationAssignmentId",
         PossibleTypes = new [] { typeof(string) })]
@@ -90,6 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The GUID of the registration definition.",
         SerializedName = @"registrationDefinitionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -98,6 +110,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The scope of the resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]

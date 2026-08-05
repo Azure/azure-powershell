@@ -95,21 +95,9 @@ function New-AzWvdRegistrationInfo {
     process {
         $saveExpirationTime = $PSBoundParameters["ExpirationTime"]
         $null = $PSBoundParameters.Remove("ExpirationTime")
-        $hostpool = Az.DesktopVirtualization\Get-AzWvdHostPool @PSBoundParameters
-        $hostpool = Az.DesktopVirtualization\New-AzWvdHostPool @PSBoundParameters `
-            -Location $hostpool.Location `
-            -HostPoolType $hostpool.HostPoolType `
-            -LoadBalancerType $hostpool.LoadBalancerType `
-            -RegistrationTokenOperation "Update" `
-            -ExpirationTime $saveExpirationTime `
-            -Description $hostpool.Description `
-            -FriendlyName $hostpool.FriendlyName `
-            -MaxSessionLimit $hostpool.MaxSessionLimit `
-            -VMTemplate $hostpool.VMTemplate `
-            -CustomRdpProperty $hostpool.CustomRdpProperty `
-            -Ring $hostpool.Ring `
-            -ValidationEnvironment:$hostpool.ValidationEnvironment `
-            -PreferredAppGroupType $hostpool.PreferredAppGroupType
+        $hostpool = Az.DesktopVirtualization\Update-AzWvdHostPool @PSBoundParameters `
+            -RegistrationInfoRegistrationTokenOperation "Update" `
+            -RegistrationInfoExpirationTime $saveExpirationTime
         New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfo' `
             -Property @{ `
                 ExpirationTime = $hostpool.RegistrationInfoExpirationTime; `

@@ -27,14 +27,14 @@ List all the backups for a given server.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerBackup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
-  [AdvancedThreatProtectionName <AdvancedThreatProtectionName?>]: The name of the Advanced Threat Protection state.
+FLEXIBLESERVERINPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [AdvancedThreatProtectionName <String>]: The name of the Advanced Threat Protection state.
   [BackupName <String>]: The name of the backup.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
@@ -42,18 +42,29 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LocationName <String>]: The name of the location.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
   [ServerName <String>]: The name of the server.
   [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [AdvancedThreatProtectionName <String>]: The name of the Advanced Threat Protection state.
+  [BackupName <String>]: The name of the backup.
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlbackup
 #>
 function Get-AzMySqlBackup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerBackup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityFlexibleServer', Mandatory)]
     [Alias('BackupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -87,8 +98,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityFlexibleServer', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
+    # Identity Parameter
+    ${FlexibleServerInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -146,15 +162,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.MySql.private\Get-AzMySqlBackup_Get';
             GetViaIdentity = 'Az.MySql.private\Get-AzMySqlBackup_GetViaIdentity';
+            GetViaIdentityFlexibleServer = 'Az.MySql.private\Get-AzMySqlBackup_GetViaIdentityFlexibleServer';
             List = 'Az.MySql.private\Get-AzMySqlBackup_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -163,6 +181,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

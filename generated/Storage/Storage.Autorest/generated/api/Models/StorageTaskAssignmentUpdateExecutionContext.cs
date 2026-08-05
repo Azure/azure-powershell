@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The trigger type of the storage task assignment execution",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
         string TriggerType { get; set; }
 
     }
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The trigger parameters of the storage task assignment execution</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITriggerParametersUpdate TriggerParameter { get; set; }
         /// <summary>The trigger type of the storage task assignment execution</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
         string TriggerType { get; set; }
 
     }

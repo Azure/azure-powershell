@@ -25,13 +25,13 @@ Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter 
+INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter  To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [ActionId <String>]: Action ID
   [AlertRuleTemplateId <String>]: Alert rule template ID
   [AutomationRuleId <String>]: Automation rule ID
@@ -61,17 +61,17 @@ PERMISSIONCUSTOM <PermissionsCustomsItem[]>:
 
 PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: 
   [PermissionsDisplayText <String>]: Permission description text
-  [Provider <ProviderName?>]: Provider name
+  [Provider <String>]: Provider name
   [ProviderDisplayName <String>]: Permission provider display name
   [RequiredPermissionAction <Boolean?>]: action permission
   [RequiredPermissionDelete <Boolean?>]: delete permission
   [RequiredPermissionRead <Boolean?>]: read permission
   [RequiredPermissionWrite <Boolean?>]: write permission
-  [Scope <PermissionProviderScope?>]: Permission provider scope
+  [Scope <String>]: Permission provider scope
 
 UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
-  [Type <ConnectivityType?>]: type of connectivity
-  [Value <String[]>]: Queries for checking connectivity
+  [Type <String>]: type of connectivity
+  [Value <List<String>>]: Queries for checking connectivity
 
 UICONFIGDATATYPE <LastDataReceivedDataType[]>: 
   [LastDataReceivedQuery <String>]: Query for indicate last data received
@@ -84,9 +84,7 @@ UICONFIGGRAPHQUERY <GraphQueries[]>:
 
 UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
   [Description <String>]: Instruction step description
-  [Instruction <IConnectorInstructionModelBase[]>]: Instruction step details
-    Type <SettingType>: The kind of the setting
-    [Parameter <IAny>]: The parameters for the setting
+  [Instruction <List<IInstructionStepsInstructionsItem>>]: Instruction step details
   [Title <String>]: Instruction step title
 
 UICONFIGSAMPLEQUERY <SampleQueries[]>: 
@@ -96,7 +94,7 @@ UICONFIGSAMPLEQUERY <SampleQueries[]>:
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
 #>
 function Update-AzSentinelDataConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector])]
 [CmdletBinding(DefaultParameterSetName='UpdateAADAATP', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateAADAATP', Mandatory)]
@@ -199,8 +197,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
     # [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]
     #  Identity Parameter
-    # 
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    #  To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateAADAATP')]
@@ -247,7 +244,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftCloudAppSecurity')]
     [Parameter(ParameterSetName='UpdateViaIdentityAzureSecurityCenter')]
     [Parameter(ParameterSetName='UpdateViaIdentityAADAATP')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Alerts},
@@ -295,49 +292,49 @@ param(
 
     [Parameter(ParameterSetName='UpdateThreatIntelligenceTaxii')]
     [Parameter(ParameterSetName='UpdateViaIdentityThreatIntelligenceTaxii')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("OnceAMinute", "OnceAnHour", "OnceADay")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency]
+    [System.String]
     ${PollingFrequency},
 
     [Parameter(ParameterSetName='UpdateThreatIntelligence')]
     [Parameter(ParameterSetName='UpdateViaIdentityThreatIntelligence')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Indicator},
 
     [Parameter(ParameterSetName='UpdateOffice365')]
     [Parameter(ParameterSetName='UpdateViaIdentityOffice365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Exchange},
 
     [Parameter(ParameterSetName='UpdateOffice365')]
     [Parameter(ParameterSetName='UpdateViaIdentityOffice365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${SharePoint},
 
     [Parameter(ParameterSetName='UpdateOffice365')]
     [Parameter(ParameterSetName='UpdateViaIdentityOffice365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Teams},
 
     [Parameter(ParameterSetName='UpdateMicrosoftThreatProtection')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatProtection')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Incident},
 
     [Parameter(ParameterSetName='UpdateMicrosoftThreatIntelligence')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatIntelligence')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${BingSafetyPhishinURL},
@@ -350,7 +347,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateMicrosoftThreatIntelligence')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatIntelligence')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${MicrosoftEmergingThreatFeed},
@@ -363,14 +360,14 @@ param(
 
     [Parameter(ParameterSetName='UpdateMicrosoftCloudAppSecurity')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftCloudAppSecurity')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${DiscoveryLog},
 
     [Parameter(ParameterSetName='UpdateDynamics365')]
     [Parameter(ParameterSetName='UpdateViaIdentityDynamics365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${CommonDataServiceActivity},
@@ -394,7 +391,7 @@ param(
     [Parameter(ParameterSetName='UpdateAmazonWebServicesCloudTrail')]
     [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesS3')]
     [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesCloudTrail')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Log},
@@ -444,29 +441,29 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]]
-    # To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.GraphQueries[]]
+    # 
     ${UiConfigGraphQuery},
 
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]]
-    # To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.SampleQueries[]]
+    # 
     ${UiConfigSampleQuery},
 
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]]
-    # To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType[]]
+    # 
     ${UiConfigDataType},
 
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]]
-    # To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ConnectivityCriteria[]]
+    # 
     ${UiConfigConnectivityCriterion},
 
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
@@ -485,22 +482,22 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]]
-    # To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsResourceProviderItem[]]
+    # 
     ${PermissionResourceProvider},
 
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]]
-    # To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsCustomsItem[]]
+    # 
     ${PermissionCustom},
 
     [Parameter(ParameterSetName='UpdateViaIdentityGenericUI')]
     [Parameter(ParameterSetName='UpdateGenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]]
-    # To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.InstructionSteps[]]
+    # 
     ${UiConfigInstructionStep},
 
     [Parameter()]
@@ -659,6 +656,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -709,19 +714,17 @@ begin {
             UpdateViaIdentityGenericUI = 'Az.SecurityInsights.custom\Update-AzSentinelDataConnector';
             UpdateGenericUI = 'Az.SecurityInsights.custom\Update-AzSentinelDataConnector';
         }
-        if (('UpdateAADAATP', 'UpdateThreatIntelligenceTaxii', 'UpdateThreatIntelligence', 'UpdateOfficeIRM', 'UpdateOfficeATP', 'UpdateOffice365', 'UpdateMicrosoftThreatProtection', 'UpdateMicrosoftThreatIntelligence', 'UpdateMicrosoftDefenderAdvancedThreatProtection', 'UpdateMicrosoftCloudAppSecurity', 'UpdateDynamics365', 'UpdateAzureSecurityCenter', 'UpdateAmazonWebServicesS3', 'UpdateAmazonWebServicesCloudTrail') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateAADAATP', 'UpdateThreatIntelligenceTaxii', 'UpdateThreatIntelligence', 'UpdateOfficeIRM', 'UpdateOfficeATP', 'UpdateOffice365', 'UpdateMicrosoftThreatProtection', 'UpdateMicrosoftThreatIntelligence', 'UpdateMicrosoftDefenderAdvancedThreatProtection', 'UpdateMicrosoftCloudAppSecurity', 'UpdateDynamics365', 'UpdateAzureSecurityCenter', 'UpdateAmazonWebServicesS3', 'UpdateAmazonWebServicesCloudTrail') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('UpdateAADAATP', 'UpdateThreatIntelligenceTaxii', 'UpdateThreatIntelligence', 'UpdateOfficeIRM', 'UpdateOfficeATP', 'UpdateOffice365', 'UpdateMicrosoftThreatProtection', 'UpdateMicrosoftThreatIntelligence', 'UpdateMicrosoftDefenderAdvancedThreatProtection', 'UpdateMicrosoftCloudAppSecurity', 'UpdateDynamics365', 'UpdateViaIdentityThreatIntelligenceTaxii', 'UpdateViaIdentityThreatIntelligence', 'UpdateViaIdentityOfficeIRM', 'UpdateViaIdentityOfficeATP', 'UpdateViaIdentityOffice365', 'UpdateViaIdentityMicrosoftThreatProtection', 'UpdateViaIdentityMicrosoftThreatIntelligence', 'UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection', 'UpdateViaIdentityMicrosoftCloudAppSecurity', 'UpdateViaIdentityDynamics365', 'UpdateViaIdentityAzureSecurityCenter', 'UpdateViaIdentityAADAATP', 'UpdateViaIdentityAmazonWebServicesS3', 'UpdateViaIdentityAmazonWebServicesCloudTrail') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId')) {
+        if (('UpdateAADAATP', 'UpdateThreatIntelligenceTaxii', 'UpdateThreatIntelligence', 'UpdateOfficeIRM', 'UpdateOfficeATP', 'UpdateOffice365', 'UpdateMicrosoftThreatProtection', 'UpdateMicrosoftThreatIntelligence', 'UpdateMicrosoftDefenderAdvancedThreatProtection', 'UpdateMicrosoftCloudAppSecurity', 'UpdateDynamics365', 'UpdateViaIdentityThreatIntelligenceTaxii', 'UpdateViaIdentityThreatIntelligence', 'UpdateViaIdentityOfficeIRM', 'UpdateViaIdentityOfficeATP', 'UpdateViaIdentityOffice365', 'UpdateViaIdentityMicrosoftThreatProtection', 'UpdateViaIdentityMicrosoftThreatIntelligence', 'UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection', 'UpdateViaIdentityMicrosoftCloudAppSecurity', 'UpdateViaIdentityDynamics365', 'UpdateViaIdentityAzureSecurityCenter', 'UpdateViaIdentityAADAATP', 'UpdateViaIdentityAmazonWebServicesS3', 'UpdateViaIdentityAmazonWebServicesCloudTrail') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId') ) {
             $PSBoundParameters['TenantId'] = (Get-AzContext).Tenant.Id
         }
-        if (('UpdateViaIdentityGenericUI', 'UpdateGenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('AvailabilityStatus')) {
+        if (('UpdateViaIdentityGenericUI', 'UpdateGenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('AvailabilityStatus') ) {
             $PSBoundParameters['AvailabilityStatus'] = 1
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -731,6 +734,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

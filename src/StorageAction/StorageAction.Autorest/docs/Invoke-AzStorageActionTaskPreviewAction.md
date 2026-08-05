@@ -349,7 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location to perform preview of the actions.
+Represents an Azure geography region where supported resource providers live.
 
 ```yaml
 Type: System.String

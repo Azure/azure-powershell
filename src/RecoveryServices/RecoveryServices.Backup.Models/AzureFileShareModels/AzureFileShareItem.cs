@@ -64,6 +64,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
             DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
 
+            DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
+            {
+                int softDeleteRetentionDays = protectedItem?.SoftDeleteRetentionPeriodInDays ?? 14;
+                if (protectedItem.DeferredDeleteTimeInUtc.HasValue)
+                {
+                    DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(softDeleteRetentionDays);
+                }
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+
             if (protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
             {
                 ResourceState = protectedItem.ExtendedInfo.ResourceState;

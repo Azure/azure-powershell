@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             {_metric = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("metrics"), out var __jsonMetrics) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetrics.FromJson(__jsonMetrics) : _metric;}
             {_priorityReplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("priorityReplication"), out var __jsonPriorityReplication) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesPriorityReplication.FromJson(__jsonPriorityReplication) : _priorityReplication;}
+            {_tagsReplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tagsReplication"), out var __jsonTagsReplication) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesTagsReplication.FromJson(__jsonTagsReplication) : _tagsReplication;}
             {_policyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("policyId"), out var __jsonPolicyId) ? (string)__jsonPolicyId : (string)_policyId;}
             {_enabledTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("enabledTime"), out var __jsonEnabledTime) ? global::System.DateTime.TryParse((string)__jsonEnabledTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonEnabledTimeValue) ? __jsonEnabledTimeValue : _enabledTime : _enabledTime;}
             {_sourceAccount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sourceAccount"), out var __jsonSourceAccount) ? (string)__jsonSourceAccount : (string)_sourceAccount;}
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             AddIf( null != this._metric ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._metric.ToJson(null,serializationMode) : null, "metrics" ,container.Add );
             AddIf( null != this._priorityReplication ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._priorityReplication.ToJson(null,serializationMode) : null, "priorityReplication" ,container.Add );
+            AddIf( null != this._tagsReplication ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._tagsReplication.ToJson(null,serializationMode) : null, "tagsReplication" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._policyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._policyId.ToString()) : null, "policyId" ,container.Add );

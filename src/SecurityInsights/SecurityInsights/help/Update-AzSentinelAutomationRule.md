@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelAutomationRule
 
 ## SYNOPSIS
-Creates or updates the automation rule.
+Update the automation rule.
 
 ## SYNTAX
 
@@ -30,14 +30,14 @@ Update-AzSentinelAutomationRule -InputObject <ISecurityInsightsIdentity> [-Actio
 ```
 
 ## DESCRIPTION
-Creates or updates the automation rule.
+Update the automation rule.
 
 ## EXAMPLES
 
 ### Example 1: Updates an automation rule
 ```powershell
 $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "RunPlaybook"
  $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
@@ -51,10 +51,9 @@ This command updates an automation rule
 
 ### -Action
 The actions to execute when the automation rule is triggered
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +112,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -177,7 +175,7 @@ Accept wildcard characters: False
 The conditions to evaluate to determine if the automation rule should be triggered on a given object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -273,7 +271,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 
 ## NOTES
 

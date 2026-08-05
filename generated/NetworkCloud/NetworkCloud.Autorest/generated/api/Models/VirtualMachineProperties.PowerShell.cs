@@ -190,6 +190,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkData = (string) content.GetValueForProperty("NetworkData",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkData, global::System.Convert.ToString);
             }
+            if (content.Contains("NetworkDataContent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkDataContent = (string) content.GetValueForProperty("NetworkDataContent",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkDataContent, global::System.Convert.ToString);
+            }
             if (content.Contains("PlacementHint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).PlacementHint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint>) content.GetValueForProperty("PlacementHint",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).PlacementHint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePlacementHintTypeConverter.ConvertFrom));
@@ -209,6 +213,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("UserData"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserData = (string) content.GetValueForProperty("UserData",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserData, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserDataContent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserDataContent = (string) content.GetValueForProperty("UserDataContent",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserDataContent, global::System.Convert.ToString);
             }
             if (content.Contains("VirtioInterface"))
             {
@@ -375,6 +383,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkData = (string) content.GetValueForProperty("NetworkData",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkData, global::System.Convert.ToString);
             }
+            if (content.Contains("NetworkDataContent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkDataContent = (string) content.GetValueForProperty("NetworkDataContent",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).NetworkDataContent, global::System.Convert.ToString);
+            }
             if (content.Contains("PlacementHint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).PlacementHint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint>) content.GetValueForProperty("PlacementHint",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).PlacementHint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePlacementHintTypeConverter.ConvertFrom));
@@ -394,6 +406,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("UserData"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserData = (string) content.GetValueForProperty("UserData",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserData, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserDataContent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserDataContent = (string) content.GetValueForProperty("UserDataContent",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)this).UserDataContent, global::System.Convert.ToString);
             }
             if (content.Contains("VirtioInterface"))
             {

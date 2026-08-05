@@ -16,36 +16,69 @@
 
 <#
 .Synopsis
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
+Description for create a new static site in an existing resource group, or create an existing static site.
 .Description
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
+Description for create a new static site in an existing resource group, or create an existing static site.
 .Example
 New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name 'staticweb-45asde' -Location 'Central US' -RepositoryUrl 'https://github.com/LucasYao93/blazor-starter' -RepositoryToken 'githubAccessToken' -Branch 'branch02' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
 .Example
 New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name staticweb-pwsh01 -Location "Central US" -RepositoryToken  'xxxxxxxxxxxxxxxxx' -TemplateRepositoryUrl 'https://github.com/staticwebdev/blazor-starter' -ForkRepositoryDescription "Test template repository function of the azure static web." -ForkRepositoryName "test-blazor-starter" -ForkRepositoryOwner 'LucasYao93' -Branch 'main' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteArmResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled?
+  [Name <String>]: Name of the SKU capability.
+  [Reason <String>]: Reason of the SKU capability.
+  [Value <String>]: Value of the SKU capability.
 .Link
 https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteArmResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # Name of the static site to create or update.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -54,139 +87,91 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Resource Location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
     ${AllowConfigFileUpdate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # A custom command to run during deployment of the Azure Functions API application.
     ${ApiBuildCommand},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # The path to the api code within the repository.
     ${ApiLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
     ${AppArtifactLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # A custom command to run during deployment of the static content application.
     ${AppBuildCommand},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # The path to the app code within the repository.
     ${AppLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # The target branch in the repository.
     ${Branch},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.Int32]
     # Current number of instances assigned to the resource.
     ${Capacity},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # Github Action secret name override.
-    ${GithubActionSecretNameOverride},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType]
-    # Type of managed service identity.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IManagedServiceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user assigned identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # Kind of resource.
-    ${Kind},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # The output path of the app after building.
-    ${OutputLocation},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # A user's github repository token.
-    # This is used to setup the Github Actions workflow file and API secrets.
-    ${RepositoryToken},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # URL for the repository of the static site.
-    ${RepositoryUrl},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Skip Github Action workflow generation.
-    ${SkipGithubActionWorkflowGeneration},
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # Name of the resource SKU.
-    ${SkuName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy]
-    # State indicating whether staging environments are allowed or not allowed for a static web app.
-    ${StagingEnvironmentPolicy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Description of the newly generated repository.
     ${ForkRepositoryDescription},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether or not the newly generated repository is a private repository.
@@ -194,31 +179,194 @@ param(
     # public).
     ${ForkRepositoryIsPrivate},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [System.String]
-    # Owner of the newly generated repository.
-    ${ForkRepositoryOwner},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Name of the newly generated repository.
     ${ForkRepositoryName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Owner of the newly generated repository.
+    ${ForkRepositoryOwner},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Github Action secret name override.
+    ${GithubActionSecretNameOverride},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Kind of resource.
+    ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # The output path of the app after building.
+    ${OutputLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # A user's github repository token.
+    # This is used to setup the Github Actions workflow file and API secrets.
+    ${RepositoryToken},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # URL for the repository of the static site.
+    ${RepositoryUrl},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Skip Github Action workflow generation.
+    ${SkipGithubActionWorkflowGeneration},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.ICapability[]]
+    # Capabilities of the SKU, e.g., is traffic manager enabled?
+    ${SkuCapability},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.Int32]
+    # Default number of workers for this App Service plan SKU.
+    ${SkuCapacityDefault},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.Int32]
+    # Maximum number of Elastic workers for this App Service plan SKU.
+    ${SkuCapacityElasticMaximum},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.Int32]
+    # Maximum number of workers for this App Service plan SKU.
+    ${SkuCapacityMaximum},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.Int32]
+    # Minimum number of workers for this App Service plan SKU.
+    ${SkuCapacityMinimum},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Available scale configurations for an App Service plan.
+    ${SkuCapacityScaleType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Family code of the resource SKU.
+    ${SkuFamily},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String[]]
+    # Locations of the SKU.
+    ${SkuLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Name of the resource SKU.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Size specifier of the resource SKU.
+    ${SkuSize},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Service tier of the resource SKU.
+    ${SkuTier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # State indicating whether staging environments are allowed or not allowed for a static web app.
+    ${StagingEnvironmentPolicy},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # URL of the template repository.
     # The newly generated repository will be based on this one.
     ${TemplateRepositoryUrl},
 
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -280,6 +428,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -300,10 +456,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Websites.custom\New-AzStaticWebApp';
+            CreateViaJsonString = 'Az.Websites.custom\New-AzStaticWebApp';
+            CreateViaJsonFilePath = 'Az.Websites.custom\New-AzStaticWebApp';
+            CreateViaIdentityExpanded = 'Az.Websites.custom\New-AzStaticWebApp';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -317,6 +474,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

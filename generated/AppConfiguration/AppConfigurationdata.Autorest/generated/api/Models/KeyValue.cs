@@ -21,6 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public string ContentType { get => this._contentType; set => this._contentType = value; }
 
+        /// <summary>Backing field for <see cref="Description" /> property.</summary>
+        private string _description;
+
+        /// <summary>The description of the key-value.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
+        public string Description { get => this._description; set => this._description = value; }
+
         /// <summary>Backing field for <see cref="Etag" /> property.</summary>
         private string _etag;
 
@@ -122,6 +129,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         SerializedName = @"content_type",
         PossibleTypes = new [] { typeof(string) })]
         string ContentType { get; set; }
+        /// <summary>The description of the key-value.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The description of the key-value.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
         /// <summary>A value representing the current state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
@@ -229,6 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
     {
         /// <summary>The content type of the value stored within the key-value.</summary>
         string ContentType { get; set; }
+        /// <summary>The description of the key-value.</summary>
+        string Description { get; set; }
         /// <summary>A value representing the current state of the resource.</summary>
         string Etag { get; set; }
         /// <summary>The key of the key-value.</summary>

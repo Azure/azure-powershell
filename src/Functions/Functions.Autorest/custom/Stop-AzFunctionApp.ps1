@@ -1,9 +1,5 @@
 function Stop-AzFunctionApp {
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n
-    * At least one change applies to this cmdlet.                                                     *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
-    ***************************************************************************************************")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*******************************************************************************************`n    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n    * At least one change applies to this cmdlet.                                                    *`n    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n    *******************************************************************************************")]
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='StopByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Stops a function app.')]
@@ -14,7 +10,7 @@ function Stop-AzFunctionApp {
         [ValidateNotNullOrEmpty()]
         ${Name},
 
-        [Parameter(ParameterSetName='StopByName',  Mandatory=$true)]
+        [Parameter(ParameterSetName='StopByName',  Mandatory=$true, HelpMessage='The name of the resource group.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [System.String]
         [ValidateNotNullOrEmpty()]
@@ -27,8 +23,8 @@ function Stop-AzFunctionApp {
         [ValidateNotNullOrEmpty()]
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true, HelpMessage='The function app object.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
         [ValidateNotNullOrEmpty()]
         ${InputObject},
 

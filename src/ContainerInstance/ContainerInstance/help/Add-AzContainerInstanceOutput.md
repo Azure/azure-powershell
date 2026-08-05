@@ -12,10 +12,17 @@ Attach to the output stream of a specific container instance in a specified reso
 
 ## SYNTAX
 
+### Attach (Default)
 ```
-Add-AzContainerInstanceOutput -GroupName <String> -Name <String> -ResourceGroupName <String>
+Add-AzContainerInstanceOutput -Name <String> -GroupName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### AttachViaIdentityContainerGroup
+```
+Add-AzContainerInstanceOutput -Name <String> -ContainerGroupInputObject <IContainerInstanceIdentity>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +47,21 @@ Please send `Password` as an Authorization header value when connecting to the `
 
 ## PARAMETERS
 
+### -ContainerGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
+Parameter Sets: AttachViaIdentityContainerGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -61,7 +83,7 @@ The name of the container group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Attach
 Aliases: ContainerGroupName
 
 Required: True
@@ -92,7 +114,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Attach
 Aliases:
 
 Required: True
@@ -108,7 +130,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Attach
 Aliases:
 
 Required: False
@@ -154,9 +176,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerAttachResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerAttachResponse
 
 ## NOTES
 

@@ -76,6 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
                 return;
             }
             {_rootSquash = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString>("rootSquash"), out var __jsonRootSquash) ? (string)__jsonRootSquash : (string)_rootSquash;}
+            {_encryptionInTransitRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString>("encryptionInTransitRequired"), out var __jsonEncryptionInTransitRequired) ? (string)__jsonEncryptionInTransitRequired : (string)_encryptionInTransitRequired;}
             AfterFromJson(json);
         }
 
@@ -99,6 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
                 return container;
             }
             AddIf( null != (((object)this._rootSquash)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString(this._rootSquash.ToString()) : null, "rootSquash" ,container.Add );
+            AddIf( null != (((object)this._encryptionInTransitRequired)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString(this._encryptionInTransitRequired.ToString()) : null, "encryptionInTransitRequired" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

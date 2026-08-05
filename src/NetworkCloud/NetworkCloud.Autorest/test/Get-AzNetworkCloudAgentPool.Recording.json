@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudAgentPool+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudAgentPool+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudAgentPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools/pstest-agentpool?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudAgentPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools/pstest-agentpool?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools/pstest-agentpool?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev09-ee2bad/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-28e42/agentPools/pstest-agentpool?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

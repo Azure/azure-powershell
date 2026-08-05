@@ -77,10 +77,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+The function app plan object.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -122,6 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -186,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 
 ## OUTPUTS
 

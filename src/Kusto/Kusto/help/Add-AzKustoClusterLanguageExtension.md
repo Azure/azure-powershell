@@ -19,6 +19,20 @@ Add-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <St
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AddViaJsonString
+```
+Add-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaJsonFilePath
+```
+Add-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### AddViaIdentityExpanded
 ```
 Add-AzKustoClusterLanguageExtension -InputObject <IKustoIdentity> [-Value <ILanguageExtension[]>]
@@ -60,7 +74,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
 Aliases:
 
 Required: True
@@ -88,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -99,6 +112,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Add operation
+
+```yaml
+Type: System.String
+Parameter Sets: AddViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Add operation
+
+```yaml
+Type: System.String
+Parameter Sets: AddViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -138,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
 Aliases:
 
 Required: True
@@ -153,7 +196,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
 Aliases:
 
 Required: False
@@ -165,11 +208,10 @@ Accept wildcard characters: False
 
 ### -Value
 The list of language extensions.
-To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ILanguageExtension[]
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False

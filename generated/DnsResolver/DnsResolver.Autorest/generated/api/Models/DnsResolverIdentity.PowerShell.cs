@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.DnsResolverIdentity"
         /// />.
         /// </summary>
@@ -101,25 +109,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsResolverName"))
+            if (content.Contains("DnsForwardingRulesetName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName = (string) content.GetValueForProperty("DnsResolverName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName = (string) content.GetValueForProperty("DnsForwardingRulesetName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName, global::System.Convert.ToString);
             }
             if (content.Contains("VirtualNetworkName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkName = (string) content.GetValueForProperty("VirtualNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkName, global::System.Convert.ToString);
             }
-            if (content.Contains("InboundEndpointName"))
+            if (content.Contains("DnsResolverDomainListName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName = (string) content.GetValueForProperty("InboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName = (string) content.GetValueForProperty("DnsResolverDomainListName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName, global::System.Convert.ToString);
             }
-            if (content.Contains("OutboundEndpointName"))
+            if (content.Contains("DnsResolverPolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName = (string) content.GetValueForProperty("OutboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName = (string) content.GetValueForProperty("DnsResolverPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsForwardingRulesetName"))
+            if (content.Contains("DnsResolverName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName = (string) content.GetValueForProperty("DnsForwardingRulesetName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName = (string) content.GetValueForProperty("DnsResolverName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName, global::System.Convert.ToString);
             }
             if (content.Contains("ForwardingRuleName"))
             {
@@ -129,10 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName = (string) content.GetValueForProperty("VirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsResolverPolicyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName = (string) content.GetValueForProperty("DnsResolverPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName, global::System.Convert.ToString);
-            }
             if (content.Contains("DnsSecurityRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName = (string) content.GetValueForProperty("DnsSecurityRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName, global::System.Convert.ToString);
@@ -141,9 +145,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName = (string) content.GetValueForProperty("DnsResolverPolicyVirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsResolverDomainListName"))
+            if (content.Contains("InboundEndpointName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName = (string) content.GetValueForProperty("DnsResolverDomainListName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName = (string) content.GetValueForProperty("InboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundEndpointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName = (string) content.GetValueForProperty("OutboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -174,25 +182,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsResolverName"))
+            if (content.Contains("DnsForwardingRulesetName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName = (string) content.GetValueForProperty("DnsResolverName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName = (string) content.GetValueForProperty("DnsForwardingRulesetName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName, global::System.Convert.ToString);
             }
             if (content.Contains("VirtualNetworkName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkName = (string) content.GetValueForProperty("VirtualNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkName, global::System.Convert.ToString);
             }
-            if (content.Contains("InboundEndpointName"))
+            if (content.Contains("DnsResolverDomainListName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName = (string) content.GetValueForProperty("InboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName = (string) content.GetValueForProperty("DnsResolverDomainListName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName, global::System.Convert.ToString);
             }
-            if (content.Contains("OutboundEndpointName"))
+            if (content.Contains("DnsResolverPolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName = (string) content.GetValueForProperty("OutboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName = (string) content.GetValueForProperty("DnsResolverPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsForwardingRulesetName"))
+            if (content.Contains("DnsResolverName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName = (string) content.GetValueForProperty("DnsForwardingRulesetName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsForwardingRulesetName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName = (string) content.GetValueForProperty("DnsResolverName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverName, global::System.Convert.ToString);
             }
             if (content.Contains("ForwardingRuleName"))
             {
@@ -202,10 +210,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName = (string) content.GetValueForProperty("VirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsResolverPolicyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName = (string) content.GetValueForProperty("DnsResolverPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName, global::System.Convert.ToString);
-            }
             if (content.Contains("DnsSecurityRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName = (string) content.GetValueForProperty("DnsSecurityRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName, global::System.Convert.ToString);
@@ -214,9 +218,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName = (string) content.GetValueForProperty("DnsResolverPolicyVirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsResolverDomainListName"))
+            if (content.Contains("InboundEndpointName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName = (string) content.GetValueForProperty("DnsResolverDomainListName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName = (string) content.GetValueForProperty("InboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).InboundEndpointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundEndpointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName = (string) content.GetValueForProperty("OutboundEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).OutboundEndpointName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -236,6 +244,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(DnsResolverIdentityTypeConverter))]
     public partial interface IDnsResolverIdentity

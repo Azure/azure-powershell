@@ -18,7 +18,7 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "v10.0",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isDefault": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
@@ -51,7 +51,7 @@
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|10.0",
-                  "isPreview": true,
+                  "isPreview": false,
                   "isDefault": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
@@ -80,7 +80,37 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "dotnet-isolated",
+                          "version": "10.0"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -123,7 +153,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue May 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "DOTNET-ISOLATED|9.0",
@@ -154,7 +184,37 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue May 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "dotnet-isolated",
+                          "version": "9.0"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -230,7 +290,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "dotnet-isolated",
+                          "version": "8.0"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -302,7 +392,8 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue May 14 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue May 14 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -374,7 +465,8 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -488,7 +580,8 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -558,7 +651,8 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -625,7 +719,8 @@
                       "isDeprecated": true,
                       "isDefault": true
                     }
-                  ]
+                  ],
+                  "Sku": null
                 }
               }
             }
@@ -679,6 +774,113 @@
       "value": "node",
       "preferredOs": "windows",
       "majorVersions": [
+        {
+          "displayText": "Node.js 24",
+          "value": "24",
+          "minorVersions": [
+            {
+              "displayText": "Node.js 24",
+              "value": "24 LTS",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "~24",
+                  "isPreview": true,
+                  "isDefault": false,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "24.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "node",
+                    "WEBSITE_NODE_DEFAULT_VERSION": "~24"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "netFrameworkVersion": "v6.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Mon Apr 30 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Node|24",
+                  "isPreview": true,
+                  "isDefault": false,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "24.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "node"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Node|24"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Mon Apr 30 2029 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "node",
+                          "version": "24"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
         {
           "displayText": "Node.js 22",
           "value": "22",
@@ -746,7 +948,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "node",
+                          "version": "22"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -817,7 +1049,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "node",
+                          "version": "20"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -888,7 +1150,8 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Apr 30 2025 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Apr 30 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -911,14 +1174,82 @@
           "value": "3",
           "minorVersions": [
             {
+              "displayText": "Python 3.14",
+              "value": "3.14",
+              "stackSettings": {
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Python|3.14",
+                  "remoteDebuggingSupported": false,
+                  "isPreview": true,
+                  "isDefault": false,
+                  "isHidden": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "3.14"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "python"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Python|3.14"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Thu Oct 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "python",
+                          "version": "3.14"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
               "displayText": "Python 3.13",
               "value": "3.13",
               "stackSettings": {
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Python|3.13",
                   "remoteDebuggingSupported": false,
-                  "isPreview": true,
-                  "isDefault": false,
+                  "isPreview": false,
+                  "isDefault": true,
                   "isHidden": false,
                   "appInsightsSettings": {
                     "isSupported": true
@@ -944,7 +1275,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Oct 31 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Oct 31 2029 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "python",
+                          "version": "3.13"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -982,7 +1343,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Oct 31 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Oct 31 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "python",
+                          "version": "3.12"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -1020,7 +1411,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Sun Oct 31 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Sun Oct 31 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "python",
+                          "version": "3.11"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -1058,7 +1479,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Sat Oct 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Sat Oct 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "python",
+                          "version": "3.10"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -1101,7 +1552,8 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Fri Oct 31 2025 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Oct 31 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             },
@@ -1142,7 +1594,8 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Mon Oct 07 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Mon Oct 07 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             },
@@ -1189,7 +1642,8 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Tue Jun 27 2023 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Jun 27 2023 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -1207,6 +1661,115 @@
       "value": "java",
       "preferredOs": "windows",
       "majorVersions": [
+        {
+          "displayText": "Java 25",
+          "value": "25",
+          "minorVersions": [
+            {
+              "displayText": "Java 25",
+              "value": "25.0",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "25",
+                  "isPreview": true,
+                  "isHidden": false,
+                  "isAutoUpdate": true,
+                  "isDefault": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "25"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "java"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": true,
+                    "javaVersion": "25",
+                    "netFrameworkVersion": "v6.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Wed Sep 01 2032 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Java|25",
+                  "isPreview": true,
+                  "isHidden": false,
+                  "isAutoUpdate": true,
+                  "isDefault": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "25"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "java"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Java|25"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Wed Sep 01 2032 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "java",
+                          "version": "25"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
         {
           "displayText": "Java 21",
           "value": "21",
@@ -1280,7 +1843,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "java",
+                          "version": "21"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1359,7 +1952,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "java",
+                          "version": "17"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1444,7 +2067,37 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "java",
+                          "version": "11"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1500,7 +2153,7 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Mon Nov 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Dec 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)"
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "Java|8",
@@ -1537,7 +2190,37 @@
                       "isDefault": false
                     }
                   ],
-                  "endOfLifeDate": "Mon Nov 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Dec 31 2030 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "java",
+                          "version": "8"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1551,7 +2234,7 @@
     "name": "powershell",
     "type": "Microsoft.Web/functionAppStacks?stackOsType=All",
     "properties": {
-      "displayText": "PowerShell Core",
+      "displayText": "PowerShell",
       "value": "powershell",
       "preferredOs": "windows",
       "majorVersions": [
@@ -1624,7 +2307,37 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "powershell",
+                          "version": "7.4"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -1693,7 +2406,8 @@
                       "isDefault": true
                     }
                   ],
-                  "endOfLifeDate": "Fri Nov 08 2024 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                  "endOfLifeDate": "Fri Nov 08 2024 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": null
                 }
               }
             }
@@ -1795,6 +2509,36 @@
                       "version": "~2",
                       "isDeprecated": true,
                       "isDefault": false
+                    }
+                  ],
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 40,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "custom",
+                          "version": "1.0"
+                        }
+                      }
                     }
                   ]
                 }

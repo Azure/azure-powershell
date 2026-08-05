@@ -24,7 +24,6 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [GenericBreakingChangeWithVersion("Certificate-backed secrets will no longer be returned when listing secrets. Use the certificate cmdlets (Get-AzKeyVaultCertificate) to manage these secrets.", "16.0.0", "7.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultSecretIdentityItem), typeof(PSKeyVaultSecret), typeof(PSDeletedKeyVaultSecretIdentityItem), typeof(PSDeletedKeyVaultSecret), typeof(string))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase

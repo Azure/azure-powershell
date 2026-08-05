@@ -5,7 +5,7 @@ options:
     clear-output-folder: true
     debug: true
     azure: true
-    module-version: 0.1.0
+    module-version: 1.0.0
     prefix: "Az"
     subject-prefix: "FileShare"
     service-name: FileShare
@@ -36,3 +36,27 @@ options:
       - where:
           verb: Set
         remove: true
+      - where:
+          parameter-name: NfProtocolPropertyEncryptionInTransitRequired
+        set:
+          parameter-name: EncryptionInTransitRequired
+      - where:
+          parameter-name: NfProtocolPropertyRootSquash
+        set:
+          parameter-name: RootSquash
+      - where:
+          parameter-name: PublicAccessPropertyAllowedSubnet
+        set:
+          parameter-name: AllowedSubnet
+      - where:
+          property-name: NfProtocolPropertyEncryptionInTransitRequired
+        set:
+          property-name: EncryptionInTransitRequired
+      - where:
+          property-name: NfProtocolPropertyRootSquash
+        set:
+          property-name: RootSquash
+      - where:
+          property-name: PublicAccessPropertyAllowedSubnet
+        set:
+          property-name: AllowedSubnet

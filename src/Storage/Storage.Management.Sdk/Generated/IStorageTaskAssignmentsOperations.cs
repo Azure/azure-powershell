@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageTaskAssignment,StorageTaskAssignmentsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageTaskAssignment,StorageTaskAssignmentsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties = default(StorageTaskAssignmentProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update storage task assignment properties
@@ -191,6 +191,36 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StorageTaskAssignmentsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Stops any active running storage action for the storage task assignment
+        /// </summary>
+        /// <remarks>
+        /// Stops any active running storage action for the storage task assignment
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='storageTaskAssignmentName'>
+        /// The name of the storage task assignment within the specified resource
+        /// group. Storage task assignment names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StorageTaskAssignmentsStopAssignmentHeaders>> StopAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Asynchronously creates a new storage task assignment sub-resource with the
         /// specified parameters. If a storage task assignment is already created and a
         /// subsequent create request is issued with different properties, the storage
@@ -234,7 +264,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageTaskAssignment,StorageTaskAssignmentsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageTaskAssignment,StorageTaskAssignmentsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties = default(StorageTaskAssignmentProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update storage task assignment properties
@@ -301,6 +331,36 @@ namespace Microsoft.Azure.Management.Storage
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StorageTaskAssignmentsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stops any active running storage action for the storage task assignment
+        /// </summary>
+        /// <remarks>
+        /// Stops any active running storage action for the storage task assignment
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='storageTaskAssignmentName'>
+        /// The name of the storage task assignment within the specified resource
+        /// group. Storage task assignment names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<StorageTaskAssignmentsStopAssignmentHeaders>> BeginStopAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List all the storage task assignments in an account

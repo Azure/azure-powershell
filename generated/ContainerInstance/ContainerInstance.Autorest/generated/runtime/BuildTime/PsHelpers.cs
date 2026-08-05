@@ -67,7 +67,7 @@ Get-ChildItem function: | Where-Object {{ ($currentFunctions -notcontains $_) -a
 
         public static IEnumerable<CmdletAndHelpInfo> GetModuleCmdletsAndHelpInfo(PSCmdlet cmdlet, params string[] modulePaths)
         {
-            var getCmdletAndHelp = String.Join(" + ", modulePaths.Select(mp => 
+            var getCmdletAndHelp = String.Join(" + ", modulePaths.Select(mp =>
                     $@"(Get-Command -Module (Import-Module '{mp}' -PassThru) | Where-Object {{ $_.CommandType -ne 'Alias' }} | ForEach-Object {{ @{{ CommandInfo = $_; HelpInfo = ( invoke-command {{ try {{ Get-Help -Name $_.Name -Full }} catch{{ '' }} }} ) }} }})"
             ));
             return (cmdlet?.RunScript<Hashtable>(getCmdletAndHelp) ?? RunScript<Hashtable>(getCmdletAndHelp))
@@ -88,7 +88,7 @@ Get-ChildItem function: | Where-Object {{ ($currentFunctions -notcontains $_) -a
             if (File.Exists(psd1Path))
             {
                 var currentGuid = File.ReadAllLines(psd1Path)
-                    .FirstOrDefault(l => l.StartsWith(GuidStart))?.Split(new[] { " = " }, StringSplitOptions.RemoveEmptyEntries)
+                    .FirstOrDefault(l => l.TrimStart().StartsWith(GuidStart.TrimStart()))?.Split(new[] { " = " }, StringSplitOptions.RemoveEmptyEntries)
                     .LastOrDefault()?.Replace("'", String.Empty);
                 guid = currentGuid != null ? Guid.Parse(currentGuid) : guid;
             }

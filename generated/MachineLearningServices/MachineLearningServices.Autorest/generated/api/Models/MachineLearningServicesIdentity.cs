@@ -179,6 +179,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Container name.",
         SerializedName = @"codeName",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Container name.",
         SerializedName = @"componentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -195,6 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Azure Machine Learning compute.",
         SerializedName = @"computeName",
         PossibleTypes = new [] { typeof(string) })]
@@ -203,6 +212,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Friendly name of the workspace connection",
         SerializedName = @"connectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -211,6 +223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Inference deployment identifier.",
         SerializedName = @"deploymentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,6 +234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Inference Endpoint name.",
         SerializedName = @"endpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -227,6 +245,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Container name.",
         SerializedName = @"environmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -235,6 +256,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Feature Name. This is case-sensitive.",
         SerializedName = @"featureName",
         PossibleTypes = new [] { typeof(string) })]
@@ -243,6 +267,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Featureset name. This is case-sensitive.",
         SerializedName = @"featuresetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -251,6 +278,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Featureset Version identifier. This is case-sensitive.",
         SerializedName = @"featuresetVersion",
         PossibleTypes = new [] { typeof(string) })]
@@ -259,6 +289,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name and identifier for the Job. This is case-sensitive.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -267,6 +300,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -275,6 +311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location for which resource usage is queried.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -283,6 +322,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Container name.",
         SerializedName = @"modelName",
         PossibleTypes = new [] { typeof(string) })]
@@ -291,6 +333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Container name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -299,6 +344,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection associated with the workspace",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -307,6 +355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Azure Machine Learning registry. This is case-insensitive",
         SerializedName = @"registryName",
         PossibleTypes = new [] { typeof(string) })]
@@ -315,6 +366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -323,6 +377,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the workspace managed network outbound rule",
         SerializedName = @"ruleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -331,6 +388,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -339,6 +399,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Version identifier.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
@@ -347,6 +410,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Azure Machine Learning workspace.",
         SerializedName = @"workspaceName",
         PossibleTypes = new [] { typeof(string) })]

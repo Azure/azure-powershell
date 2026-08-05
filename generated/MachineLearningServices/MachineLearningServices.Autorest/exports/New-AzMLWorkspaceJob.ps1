@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
+Create and execute a Job.For update case, the Tags in the definition passed in will replace Tags in the existing job.
 .Description
-Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
+Create and execute a Job.For update case, the Tags in the definition passed in will replace Tags in the existing job.
 .Example
 # The job type includes CommandJob, SweepJob, PipelineJob.
 # You can use following command to create it then pass it as value to Job parameter of the New-AzMLWorkspaceJob cmdlet.
@@ -26,22 +26,23 @@ Creates and executes a Job.\r\nFor update case, the Tags in the definition passe
 # New-AzMLWorkspaceSweepJobObject
 # New-AzMLWorkspacePipelineJobObject
 
-New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name commandjobenv -Version 1 -Image "library/python:latest"
+New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name commandjobenv -Version 1 -Image "library/python:latest"
 $commandJob = New-AzMLWorkspaceCommandJobObject -Command "echo `"hello world`"" `
--ComputeId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02' `
--EnvironmentId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/environments/commandjobenv/versions/1'`
+-ComputeId '/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml02' `
+-EnvironmentId '/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/environments/commandjobenv/versions/1'`
 -DisplayName 'commandjob01' -ExperimentName 'commandjobexperiment'
-New-AzMLWorkspaceJob -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name commandJob01 -Job $commandJob
+New-AzMLWorkspaceJob -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name commandJob01 -Job $commandJob
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 JOB <IJobBaseProperties>: [Required] Additional attributes of the entity.
-  JobType <JobType>: [Required] Specifies the type of job.
   [Description <String>]: The asset description text.
   [Property <IResourceBaseProperties>]: The asset property dictionary.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -51,20 +52,45 @@ JOB <IJobBaseProperties>: [Required] Additional attributes of the entity.
   [ComputeId <String>]: ARM resource ID of the compute resource.
   [DisplayName <String>]: Display name of job.
   [ExperimentName <String>]: The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  [IdentityType <IdentityConfigurationType?>]: [Required] Specifies the type of identity framework.
+  [IdentityType <String>]: [Required] Specifies the type of identity framework.
   [IsArchived <Boolean?>]: Is the asset archived?
-  [NotificationSettingEmail <String[]>]: This is the email recipient list which has a limitation of 499 characters in total concat with comma separator
-  [NotificationSettingEmailOn <EmailNotificationEnableType[]>]: Send email notification to user on specified notification type
+  [JobType <String>]: [Required] Specifies the type of job.
+  [NotificationSettingEmail <List<String>>]: This is the email recipient list which has a limitation of 499 characters in total concat with comma separator
+  [NotificationSettingEmailOn <List<String>>]: Send email notification to user on specified notification type
   [NotificationSettingWebhook <INotificationSettingWebhooks>]: Send webhook callback to a service. Key is a user-provided name for the webhook.
     [(Any) <IWebhook>]: This indicates any property can be added to this object.
   [Service <IJobBaseServices>]: List of JobEndpoints.         For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
     [(Any) <IJobService>]: This indicates any property can be added to this object.
+
+WORKSPACEINPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
 #>
 function New-AzMLWorkspaceJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBase])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityWorkspaceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
@@ -73,32 +99,56 @@ param(
     # This is case-sensitive.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
-    [System.String]
-    # Name of Azure Machine Learning workspace.
-    ${WorkspaceName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseProperties]
     # [Required] Additional attributes of the entity.
-    # To construct, see NOTES section for JOB properties and create a hash table.
     ${Job},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -156,6 +206,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -176,10 +234,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceJob_CreateExpanded';
+            CreateViaIdentityWorkspaceExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceJob_CreateViaIdentityWorkspaceExpanded';
+            CreateViaJsonFilePath = 'Az.MachineLearningServices.private\New-AzMLWorkspaceJob_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MachineLearningServices.private\New-AzMLWorkspaceJob_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -193,6 +252,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

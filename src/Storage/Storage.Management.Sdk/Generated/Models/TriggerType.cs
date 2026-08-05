@@ -15,5 +15,9 @@ namespace Microsoft.Azure.Management.Storage.Models
     {
         public const string RunOnce = "RunOnce";
         public const string OnSchedule = "OnSchedule";
+        /// <summary>
+        /// Run the task as a mock for testing
+        /// </summary>
+        public const string MockRun = "MockRun";
     }
 }

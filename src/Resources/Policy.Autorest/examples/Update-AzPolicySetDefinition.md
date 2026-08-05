@@ -30,9 +30,9 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition from a hash table.
 
-### Example 5: [Backcompat] Update the metadata of a policy set definition
+### Example 5: Update a policy set definition to add an older version by using a policy set file
 ```powershell
-Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
+Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
 ```
 
-This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
+This command updates the existing policy set definition named VMPolicySetDefinition by adding version 1.1.0 that contains the policy definitions specified in C:\VMPolicySet.json.

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Creates or updates the app settings of a static site build.
+Description for create the app settings of a static site build.
 .Description
-Description for Creates or updates the app settings of a static site build.
+Description for create the app settings of a static site build.
 .Example
 New-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -EnvironmentName 'default'  -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 .Example
@@ -27,7 +27,7 @@ Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name staticw
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStringDictionary
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,32 +48,57 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
+
+STATICSITEINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
 .Link
 https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildappsetting
 #>
 function New-AzStaticWebAppBuildAppSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStaticSiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # The stage site identifier.
     ${EnvironmentName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # Name of the static site.
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -86,21 +111,42 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityStaticSiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${StaticSiteInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStaticSiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionaryProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStringDictionaryProperties]))]
     [System.Collections.Hashtable]
     # Settings.
     ${AppSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStaticSiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Kind of resource.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -158,6 +204,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -179,10 +233,11 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.Websites.private\New-AzStaticWebAppBuildAppSetting_CreateExpanded';
             CreateViaIdentityExpanded = 'Az.Websites.private\New-AzStaticWebAppBuildAppSetting_CreateViaIdentityExpanded';
+            CreateViaIdentityStaticSiteExpanded = 'Az.Websites.private\New-AzStaticWebAppBuildAppSetting_CreateViaIdentityStaticSiteExpanded';
+            CreateViaJsonFilePath = 'Az.Websites.private\New-AzStaticWebAppBuildAppSetting_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Websites.private\New-AzStaticWebAppBuildAppSetting_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -196,6 +251,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

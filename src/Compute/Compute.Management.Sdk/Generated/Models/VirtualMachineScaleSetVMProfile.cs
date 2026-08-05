@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// api-version: 2021-04-01.
         /// </param>
 
+        /// <param name="interconnectBlockProfile">Specifies the Interconnect Block related details of a Scale Set. Minimum
+        /// api-version: 2026-03-01.
+        /// </param>
+
         /// <param name="applicationProfile">Specifies the gallery applications that should be made available to the
         /// VM/VMSS
         /// </param>
@@ -108,7 +112,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// creating/updating the VMSS VM Profile. Minimum API version for this
         /// property is 2023-09-01.
         /// </param>
-        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference), SecurityPostureReference securityPostureReference = default(SecurityPostureReference), System.DateTime? timeCreated = default(System.DateTime?))
+        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference), SecurityPostureReference securityPostureReference = default(SecurityPostureReference), System.DateTime? timeCreated = default(System.DateTime?))
 
         {
             this.OsProfile = osProfile;
@@ -124,6 +128,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ScheduledEventsProfile = scheduledEventsProfile;
             this.UserData = userData;
             this.CapacityReservation = capacityReservation;
+            this.InterconnectBlockProfile = interconnectBlockProfile;
             this.ApplicationProfile = applicationProfile;
             this.HardwareProfile = hardwareProfile;
             this.ServiceArtifactReference = serviceArtifactReference;
@@ -240,6 +245,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public CapacityReservationProfile CapacityReservation {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the Interconnect Block related details of a Scale
+        /// Set. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectBlockProfile")]
+        public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the gallery applications that should be made
         /// available to the VM/VMSS
         /// </summary>
@@ -289,6 +301,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 

@@ -76,7 +76,7 @@ This command gets a Storage account with its blob restore status, and show the b
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name myaccount -IncludeGeoReplicationStats
 $account.GeoReplicationStats
-``` 
+```
 
 ```output
 Status                        : Live
@@ -85,7 +85,9 @@ CanFailover                   : True
 CanPlannedFailover            : True
 PostFailoverRedundancy        : Standard_LRS
 PostPlannedFailoverRedundancy : Standard_GRS
-``` 
+```
+
+ 
 
 This command gets a Storage account with its geo-replication stats, and shows the geo-replication stats.
 

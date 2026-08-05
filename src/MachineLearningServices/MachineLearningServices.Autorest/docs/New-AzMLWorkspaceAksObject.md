@@ -15,11 +15,10 @@ Create an in-memory object for Aks.
 ```
 New-AzMLWorkspaceAksObject [-AgentCount <Int32>] [-AgentVMSize <String>] [-AkNetworkingDnsServiceIP <String>]
  [-AkNetworkingDockerBridgeCidr <String>] [-AkNetworkingServiceCidr <String>] [-AkNetworkingSubnetId <String>]
- [-ClusterFqdn <String>] [-ClusterPurpose <ClusterPurpose>] [-Description <String>]
- [-DisableLocalAuth <Boolean>] [-LoadBalancerSubnet <String>] [-LoadBalancerType <LoadBalancerType>]
- [-ResourceId <String>] [-SslCert <String>] [-SslCname <String>] [-SslKey <String>]
- [-SslLeafDomainLabel <String>] [-SslOverwriteExistingDomain <Boolean>] [-SslStatus <SslConfigStatus>]
- [<CommonParameters>]
+ [-ClusterFqdn <String>] [-ClusterPurpose <String>] [-Description <String>] [-DisableLocalAuth <Boolean>]
+ [-LoadBalancerSubnet <String>] [-LoadBalancerType <String>] [-ResourceId <String>] [-SslCert <String>]
+ [-SslCname <String>] [-SslKey <String>] [-SslLeafDomainLabel <String>]
+ [-SslOverwriteExistingDomain <Boolean>] [-SslStatus <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +147,7 @@ Accept wildcard characters: False
 Intended usage of the cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +207,7 @@ Accept wildcard characters: False
 Load Balancer Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +312,7 @@ Accept wildcard characters: False
 Enable or disable ssl for scoring.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -331,7 +330,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Aks
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks
 
 ## NOTES
 

@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Validated SKU in `Update-AzFunctionApp`
+* Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
+* Fixed `Update-AzFunctionApp`
+
 ## Version 4.3.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed an issue where New-AzFunctionApp fails due to duplicate -Name parameter binding. [#29166]

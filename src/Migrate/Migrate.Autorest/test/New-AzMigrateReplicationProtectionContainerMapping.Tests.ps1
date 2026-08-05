@@ -11,9 +11,9 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
+Describe 'New-AzMigrateReplicationProtectionContainerMapping' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
-    $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.VMwareCbtContainerMappingInput]::new()
+    $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtContainerMappingInput]::new()
     $providerSpecificInput.InstanceType = "VMwareCbt"
         $providerSpecificInput.KeyVaultId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.KeyVault/vaults/migratekv942102443"
         $providerSpecificInput.KeyVaultUri = "https://migratekv942102443.vault.azure.net/"
@@ -22,7 +22,7 @@ Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
         $providerSpecificInput.StorageAccountSasSecretName = "migrategwsa1612849844-gwySas"
         $providerSpecificInput.TargetLocation = "centraluseuap"
 
-        $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -MappingName $env.srsMappingName -ProtectionContainerName $env.srsProtectionContainerName -ResourceGroupName $env.migResourceGroup -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -PolicyId $env.srsPolicyId -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId $env.srsTargetPCId
+        $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -MappingName $env.srsMappingName -ProtectionContainerName $env.srsProtectionContainerName -ResourceGroupName $env.migResourceGroup2 -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -PolicyId $env.srsPolicyId -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId $env.srsTargetPCId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

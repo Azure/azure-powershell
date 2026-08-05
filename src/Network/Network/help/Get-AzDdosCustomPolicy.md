@@ -13,8 +13,8 @@ Gets a DDoS custom policy.
 ## SYNTAX
 
 ```
-Get-AzDdosCustomPolicy -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDdosCustomPolicy -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

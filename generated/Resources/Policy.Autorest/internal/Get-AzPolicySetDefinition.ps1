@@ -30,7 +30,9 @@ Get-AzPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
 .Example
 Get-AzPolicySetDefinition | Where-Object {$_.metadata.category -eq "Virtual Machine"}
 .Example
-Get-AzPolicySetDefinition -BackwardCompatible | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition -Id '/providers/Microsoft.Authorization/policySetDefinitions/1bb84455-9e6e-434c-8db6-fa6d03a67e87' -Version "1.1.1"
+.Example
+Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -ListVersion
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -88,6 +90,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]

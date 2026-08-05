@@ -25,11 +25,39 @@ Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSe
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ARCSETTINGINPUTOBJECT <IStackHciIdentity>: Identity Parameter
+  [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
+  [ClusterName <String>]: The name of the cluster.
+  [DeploymentSettingsName <String>]: Name of Deployment Setting
+  [EdgeDeviceName <String>]: Name of Device
+  [ExtensionName <String>]: The name of the machine extension.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [SecuritySettingsName <String>]: Name of security setting
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UpdateName <String>]: The name of the Update
+  [UpdateRunName <String>]: The name of the Update Run
+
+CLUSTERINPUTOBJECT <IStackHciIdentity>: Identity Parameter
+  [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
+  [ClusterName <String>]: The name of the cluster.
+  [DeploymentSettingsName <String>]: Name of Deployment Setting
+  [EdgeDeviceName <String>]: Name of Device
+  [ExtensionName <String>]: The name of the machine extension.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [SecuritySettingsName <String>]: Name of security setting
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UpdateName <String>]: The name of the Update
+  [UpdateRunName <String>]: The name of the Update Run
 
 INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
@@ -48,10 +76,11 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
 #>
 function Get-AzStackHciExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtension])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [System.String]
@@ -66,6 +95,8 @@ param(
     ${ClusterName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityArcSetting', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory)]
     [Alias('ExtensionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [System.String]
@@ -93,8 +124,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityArcSetting', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
+    # Identity Parameter
+    ${ArcSettingInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -152,6 +194,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,11 +223,11 @@ begin {
         $mapping = @{
             Get = 'Az.StackHCI.private\Get-AzStackHciExtension_Get';
             GetViaIdentity = 'Az.StackHCI.private\Get-AzStackHciExtension_GetViaIdentity';
+            GetViaIdentityArcSetting = 'Az.StackHCI.private\Get-AzStackHciExtension_GetViaIdentityArcSetting';
+            GetViaIdentityCluster = 'Az.StackHCI.private\Get-AzStackHciExtension_GetViaIdentityCluster';
             List = 'Az.StackHCI.private\Get-AzStackHciExtension_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -191,6 +241,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

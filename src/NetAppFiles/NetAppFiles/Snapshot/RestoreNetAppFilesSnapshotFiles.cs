@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
             else if (ParameterSetName == ParentObjectParameterSet && this.IsParameterBound(c => c.VolumeObject))
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 if (NameParts.Length > 2)
                 {
                     AccountName = NameParts[0];

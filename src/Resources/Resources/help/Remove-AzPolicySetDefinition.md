@@ -8,49 +8,55 @@ schema: 2.0.0
 # Remove-AzPolicySetDefinition
 
 ## SYNOPSIS
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ## SYNTAX
 
 ### Name (Default)
 ```
-Remove-AzPolicySetDefinition -Name <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Remove-AzPolicySetDefinition -Name <String> [-Force] [-Version <String>] [-DefaultProfile <PSObject>]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Remove-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Force] [-BackwardCompatible]
+Remove-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Force] [-Version <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Force] [-BackwardCompatible]
+Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Force] [-Version <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicySetDefinition -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Id <String> [-Force] [-Version <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ## EXAMPLES
 
-### Example 1: Remove policy set definition by resource ID
+### Example 1: Remove the policy set definition by name
+```powershell
+Remove-AzPolicySetDefinition -Name 'myPSSetDefinition'
+```
+
+This command removes the specified policy set definition.
+
+### Example 2: Remove policy set definition by resource ID
 ```powershell
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
 Remove-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Force
@@ -60,33 +66,14 @@ The first command gets a policy set definition by using the Get-AzPolicySetDefin
 The command stores it in the $PolicySetDefinition variable.
 The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
-### Example 2: [Backcompat] Remove policy set definition by resource ID
+### Example 3: Remove policy set definition version by name
 ```powershell
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' -BackwardCompatible
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
-True
+Remove-AzPolicySetDefinition -Name 'myPSSetDefinition' -Version '1.0.1' -PassThru
 ```
 
-The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
-The command stores it in the $PolicySetDefinition variable.
-The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+This command removes the specified policy set definition version and will return true when the command succeeds.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -120,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The full Id of the policy definition to get.
+The full Id of the policy set definition to get.
 
 ```yaml
 Type: System.String
@@ -166,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy definition to get.
+The name of the policy set definition to get.
 
 ```yaml
 Type: System.String
@@ -216,6 +203,21 @@ Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy set definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Aliases: PolicySetDefinitionVersion
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

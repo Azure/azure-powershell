@@ -13,16 +13,49 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class HealthErrorCategory
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Replication
+        /// </summary>
         public const string Replication = "Replication";
+        /// <summary>
+        /// TestFailover
+        /// </summary>
         public const string TestFailover = "TestFailover";
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public const string Configuration = "Configuration";
+        /// <summary>
+        /// FabricInfrastructure
+        /// </summary>
         public const string FabricInfrastructure = "FabricInfrastructure";
+        /// <summary>
+        /// VersionExpiry
+        /// </summary>
         public const string VersionExpiry = "VersionExpiry";
+        /// <summary>
+        /// AgentAutoUpdateInfra
+        /// </summary>
         public const string AgentAutoUpdateInfra = "AgentAutoUpdateInfra";
+        /// <summary>
+        /// AgentAutoUpdateArtifactDeleted
+        /// </summary>
         public const string AgentAutoUpdateArtifactDeleted = "AgentAutoUpdateArtifactDeleted";
+        /// <summary>
+        /// AgentAutoUpdateRunAsAccount
+        /// </summary>
         public const string AgentAutoUpdateRunAsAccount = "AgentAutoUpdateRunAsAccount";
+        /// <summary>
+        /// AgentAutoUpdateRunAsAccountExpiry
+        /// </summary>
         public const string AgentAutoUpdateRunAsAccountExpiry = "AgentAutoUpdateRunAsAccountExpiry";
+        /// <summary>
+        /// AgentAutoUpdateRunAsAccountExpired
+        /// </summary>
         public const string AgentAutoUpdateRunAsAccountExpired = "AgentAutoUpdateRunAsAccountExpired";
     }
 }

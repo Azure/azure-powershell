@@ -71,7 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {_bmcMacAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("bmcMacAddress"), out var __jsonBmcMacAddress) ? (string)__jsonBmcMacAddress : (string)_bmcMacAddress;}
             {_bootMacAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("bootMacAddress"), out var __jsonBootMacAddress) ? (string)__jsonBootMacAddress : (string)_bootMacAddress;}
             {_machineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("machineName"), out var __jsonMachineName) ? (string)__jsonMachineName : (string)_machineName;}
+            {_safeguardMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("safeguardMode"), out var __jsonSafeguardMode) ? (string)__jsonSafeguardMode : (string)_safeguardMode;}
             {_serialNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("serialNumber"), out var __jsonSerialNumber) ? (string)__jsonSerialNumber : (string)_serialNumber;}
+            {_storagePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("storagePolicy"), out var __jsonStoragePolicy) ? (string)__jsonStoragePolicy : (string)_storagePolicy;}
             AfterFromJson(json);
         }
 
@@ -110,7 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             AddIf( null != (((object)this._bmcMacAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._bmcMacAddress.ToString()) : null, "bmcMacAddress" ,container.Add );
             AddIf( null != (((object)this._bootMacAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._bootMacAddress.ToString()) : null, "bootMacAddress" ,container.Add );
             AddIf( null != (((object)this._machineName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._machineName.ToString()) : null, "machineName" ,container.Add );
+            AddIf( null != (((object)this._safeguardMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._safeguardMode.ToString()) : null, "safeguardMode" ,container.Add );
             AddIf( null != (((object)this._serialNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._serialNumber.ToString()) : null, "serialNumber" ,container.Add );
+            AddIf( null != (((object)this._storagePolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._storagePolicy.ToString()) : null, "storagePolicy" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

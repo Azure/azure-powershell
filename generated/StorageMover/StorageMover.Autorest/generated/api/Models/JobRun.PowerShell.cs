@@ -153,6 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("TriggerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).TriggerType = (string) content.GetValueForProperty("TriggerType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).TriggerType, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -184,6 +188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ExecutionEndTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ExecutionEndTime = (global::System.DateTime?) content.GetValueForProperty("ExecutionEndTime",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ExecutionEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduledExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ScheduledExecutionTime = (global::System.DateTime?) content.GetValueForProperty("ScheduledExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ScheduledExecutionTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("LastStatusUpdate"))
             {
@@ -264,6 +272,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("JobDefinitionProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).JobDefinitionProperty = (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny) content.GetValueForProperty("JobDefinitionProperty",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).JobDefinitionProperty, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AnyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Warning"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).Warning = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning>) content.GetValueForProperty("Warning",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).Warning, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobRunWarningTypeConverter.ConvertFrom));
             }
             if (content.Contains("ErrorCode"))
             {
@@ -338,6 +350,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("TriggerType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).TriggerType = (string) content.GetValueForProperty("TriggerType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).TriggerType, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -369,6 +385,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ExecutionEndTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ExecutionEndTime = (global::System.DateTime?) content.GetValueForProperty("ExecutionEndTime",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ExecutionEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduledExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ScheduledExecutionTime = (global::System.DateTime?) content.GetValueForProperty("ScheduledExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).ScheduledExecutionTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("LastStatusUpdate"))
             {
@@ -449,6 +469,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("JobDefinitionProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).JobDefinitionProperty = (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny) content.GetValueForProperty("JobDefinitionProperty",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).JobDefinitionProperty, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AnyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Warning"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).Warning = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning>) content.GetValueForProperty("Warning",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunInternal)this).Warning, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobRunWarningTypeConverter.ConvertFrom));
             }
             if (content.Contains("ErrorCode"))
             {

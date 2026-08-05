@@ -205,6 +205,13 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "ARM Resource ID for Disk Encryption Set. Allows customer to provide ARM ID for Disk Encryption Set created with ConfidentialVmEncryptedWithCustomerKey encryption type. This will allow customer to use Customer Managed Key (CMK) encryption with Confidential VM. Parameter SecurityEncryptionType value should be DiskwithVMGuestState.")]
         public string SecureVMDiskEncryptionSet { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the storage fault domain alignment type for the OS disk. Valid values are 'Aligned' and 'BestEffortAligned'. Only valid for VMs within a VMSS Flex; CRP returns BadRequest for standalone VMs.")]
+        [PSArgumentCompleter("Aligned", "BestEffortAligned")]
+        public string StorageFaultDomainAlignment { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -355,6 +362,11 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
                 }
                 this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = SecurityEncryptionType;
+            }
+
+            if (this.IsParameterBound(c => c.StorageFaultDomainAlignment))
+            {
+                this.VM.StorageProfile.OsDisk.StorageFaultDomainAlignment = this.StorageFaultDomainAlignment;
             }
 
             WriteObject(this.VM);

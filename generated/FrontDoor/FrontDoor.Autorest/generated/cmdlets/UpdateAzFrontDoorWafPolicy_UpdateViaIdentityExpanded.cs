@@ -93,6 +93,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Etag { get => _parametersBody.Etag ?? null; set => _parametersBody.Etag = value; }
 
+        /// <summary>List of exceptions.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of exceptions.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of exceptions.",
+        SerializedName = @"exceptions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[] ExceptionListException { get => _parametersBody.ExceptionListException?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ExceptionListException = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>(value) : null); }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -580,6 +592,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ManagedRuleSet")))
             {
                 this.ManagedRuleSet = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[])(this.MyInvocation?.BoundParameters["ManagedRuleSet"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExceptionListException")))
+            {
+                this.ExceptionListException = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[])(this.MyInvocation?.BoundParameters["ExceptionListException"]);
             }
         }
 

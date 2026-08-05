@@ -67,12 +67,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 6286ea80b3ac7eecfc2f230d65b2034a656f10bf
+commit: 6e8964026a4ed0f55fdb2c55a141fc7d501b94a6
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dnsresolver.json
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dnsresolverpolicy.json
+  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/DnsResolver/preview/2025-10-01-preview/openapi.json
 
 module-version: 0.2.9
 title: DnsResolver
@@ -82,10 +81,6 @@ inlining-threshold: 50
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -117,12 +112,15 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
     # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
+  # - model-cmdlet: # autorest v4 use for verification
+  #   - model-name: IPConfiguration
+  #   - model-name: TargetDnsServer
   - where:
       verb: Get|New|Update
       subject: DnsForwardingRuleset|ForwardingRule|DnsResolverDomainList|InboundEndpoint|PolicyDnsSecurityRule

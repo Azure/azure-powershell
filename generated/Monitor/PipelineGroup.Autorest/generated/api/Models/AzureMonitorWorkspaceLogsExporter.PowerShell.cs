@@ -80,13 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Api = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfig) content.GetValueForProperty("Api",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Api, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsApiConfigTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Concurrency"))
+            if (content.Contains("Persistence"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Concurrency = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration) content.GetValueForProperty("Concurrency",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Concurrency, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Cache"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Cache = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration) content.GetValueForProperty("Cache",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Cache, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfigurationTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Persistence = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration) content.GetValueForProperty("Persistence",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Persistence, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfigurationTypeConverter.ConvertFrom);
             }
             if (content.Contains("ApiSchema"))
             {
@@ -104,21 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ApiDataCollectionRule = (string) content.GetValueForProperty("ApiDataCollectionRule",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ApiDataCollectionRule, global::System.Convert.ToString);
             }
-            if (content.Contains("ConcurrencyWorkerCount"))
+            if (content.Contains("PersistenceMaxStorageUsage"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyWorkerCount = (int?) content.GetValueForProperty("ConcurrencyWorkerCount",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyWorkerCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceMaxStorageUsage = (int?) content.GetValueForProperty("PersistenceMaxStorageUsage",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceMaxStorageUsage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("ConcurrencyBatchQueueSize"))
+            if (content.Contains("PersistenceRetentionPeriod"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyBatchQueueSize = (int?) content.GetValueForProperty("ConcurrencyBatchQueueSize",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyBatchQueueSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("CacheMaxStorageUsage"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheMaxStorageUsage = (int?) content.GetValueForProperty("CacheMaxStorageUsage",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheMaxStorageUsage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("CacheRetentionPeriod"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheRetentionPeriod = (int?) content.GetValueForProperty("CacheRetentionPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheRetentionPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceRetentionPeriod = (int?) content.GetValueForProperty("PersistenceRetentionPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceRetentionPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SchemaRecordMap"))
             {
@@ -153,13 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Api = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfig) content.GetValueForProperty("Api",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Api, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsApiConfigTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Concurrency"))
+            if (content.Contains("Persistence"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Concurrency = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration) content.GetValueForProperty("Concurrency",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Concurrency, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Cache"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Cache = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration) content.GetValueForProperty("Cache",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Cache, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfigurationTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Persistence = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration) content.GetValueForProperty("Persistence",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).Persistence, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfigurationTypeConverter.ConvertFrom);
             }
             if (content.Contains("ApiSchema"))
             {
@@ -177,21 +161,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ApiDataCollectionRule = (string) content.GetValueForProperty("ApiDataCollectionRule",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ApiDataCollectionRule, global::System.Convert.ToString);
             }
-            if (content.Contains("ConcurrencyWorkerCount"))
+            if (content.Contains("PersistenceMaxStorageUsage"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyWorkerCount = (int?) content.GetValueForProperty("ConcurrencyWorkerCount",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyWorkerCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceMaxStorageUsage = (int?) content.GetValueForProperty("PersistenceMaxStorageUsage",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceMaxStorageUsage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("ConcurrencyBatchQueueSize"))
+            if (content.Contains("PersistenceRetentionPeriod"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyBatchQueueSize = (int?) content.GetValueForProperty("ConcurrencyBatchQueueSize",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).ConcurrencyBatchQueueSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("CacheMaxStorageUsage"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheMaxStorageUsage = (int?) content.GetValueForProperty("CacheMaxStorageUsage",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheMaxStorageUsage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("CacheRetentionPeriod"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheRetentionPeriod = (int?) content.GetValueForProperty("CacheRetentionPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).CacheRetentionPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceRetentionPeriod = (int?) content.GetValueForProperty("PersistenceRetentionPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal)this).PersistenceRetentionPeriod, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SchemaRecordMap"))
             {

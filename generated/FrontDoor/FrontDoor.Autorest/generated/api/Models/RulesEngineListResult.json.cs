@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list Rules Engine Configurations. It contains a list of RulesEngine objects and a URL link to
-    /// get the next set of results.
-    /// </summary>
+    /// <summary>Paged collection of RulesEngine items</summary>
     public partial class RulesEngineListResult
     {
 

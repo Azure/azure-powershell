@@ -42,7 +42,7 @@ Create an in-memory object for MultiSubnetIPConfiguration.
 Creates or updates a SQL virtual machine.
 
 ### [New-AzSqlVMGroup](New-AzSqlVMGroup.md)
-Creates or updates a SQL virtual machine group.
+Create a SQL virtual machine group.
 
 ### [Remove-AzAvailabilityGroupListener](Remove-AzAvailabilityGroupListener.md)
 Deletes an availability group listener.

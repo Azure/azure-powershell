@@ -104,6 +104,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB = (float?) content.GetValueForProperty("StorageCapacityTiB",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
+            if (content.Contains("CurrentStorageCapacityTiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).CurrentStorageCapacityTiB = (float?) content.GetValueForProperty("CurrentStorageCapacityTiB",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).CurrentStorageCapacityTiB, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("ClusterUuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ClusterUuid = (string) content.GetValueForProperty("ClusterUuid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ClusterUuid, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -268,6 +276,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("StorageCapacityTiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB = (float?) content.GetValueForProperty("StorageCapacityTiB",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("CurrentStorageCapacityTiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).CurrentStorageCapacityTiB = (float?) content.GetValueForProperty("CurrentStorageCapacityTiB",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).CurrentStorageCapacityTiB, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("ClusterUuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ClusterUuid = (string) content.GetValueForProperty("ClusterUuid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ClusterUuid, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {

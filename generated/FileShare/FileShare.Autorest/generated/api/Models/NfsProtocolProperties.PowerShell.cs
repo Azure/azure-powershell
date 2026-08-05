@@ -111,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).RootSquash = (string) content.GetValueForProperty("RootSquash",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).RootSquash, global::System.Convert.ToString);
             }
+            if (content.Contains("EncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).EncryptionInTransitRequired = (string) content.GetValueForProperty("EncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).EncryptionInTransitRequired, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,6 +135,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             if (content.Contains("RootSquash"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).RootSquash = (string) content.GetValueForProperty("RootSquash",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).RootSquash, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).EncryptionInTransitRequired = (string) content.GetValueForProperty("EncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)this).EncryptionInTransitRequired, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

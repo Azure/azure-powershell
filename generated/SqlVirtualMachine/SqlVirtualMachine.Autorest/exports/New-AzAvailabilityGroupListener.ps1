@@ -28,20 +28,20 @@ $msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPA
 New-AzAvailabilityGroupListener -Name 'AgListener02' -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -AvailabilityGroupName 'AG02' -MultiSubnetIPConfiguration $msconfig1,$msconfig2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>: Replica configurations.
-  [Commit <Commit?>]: Replica commit mode in availability group.
-  [Failover <Failover?>]: Replica failover mode in availability group.
-  [ReadableSecondary <ReadableSecondary?>]: Replica readable secondary mode in availability group.
-  [Role <Role?>]: Replica Role in availability group.
+AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>: Replica configurations. To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
+  [Commit <String>]: Replica commit mode in availability group.
+  [Failover <String>]: Replica failover mode in availability group.
+  [ReadableSecondary <String>]: Replica readable secondary mode in availability group.
+  [Role <String>]: Replica Role in availability group.
   [SqlVirtualMachineInstanceId <String>]: Sql VirtualMachine Instance Id.
 
-MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet IP configurations for an AG listener.
+MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet IP configurations for an AG listener. To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
   SqlVirtualMachineInstance <String>: SQL virtual machine instance resource id that are enrolled into the availability group listener.
   [PrivateIPAddressIpaddress <String>]: Private IP address bound to the availability group listener.
   [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
@@ -49,7 +49,7 @@ MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 #>
 function New-AzAvailabilityGroupListener {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -83,7 +83,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]]
     # Replica configurations.
     # To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
     ${AvailabilityGroupConfigurationReplica},
@@ -139,7 +139,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]]
     # List of multi subnet IP configurations for an AG listener.
     # To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
     ${MultiSubnetIPConfiguration},
@@ -218,6 +218,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -239,16 +247,14 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.SqlVirtualMachine.custom\New-AzAvailabilityGroupListener';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Port')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Port') ) {
             $PSBoundParameters['Port'] = 1433
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -258,6 +264,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

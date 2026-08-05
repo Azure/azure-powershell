@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Added ChangeSafety Support
+
 ## Version 1.1.0
 * Upgraded nuget package to signed package.
 

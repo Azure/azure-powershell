@@ -41,7 +41,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var tokenCacheProvider = silentParameters.TokenCacheProvider;
 
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
+#pragma warning disable CS0618 // SharedTokenCacheCredentialOptions is obsolete; suppressed pending migration to replacement API
             SharedTokenCacheCredentialOptions options = GetTokenCredentialOptions(silentParameters, tenantId, authority, tokenCacheProvider);
+#pragma warning restore CS0618
             var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
             var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
 
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 silentParameters.HomeAccountId);
         }
 
+#pragma warning disable CS0618 // SharedTokenCacheCredentialBrokerOptions is obsolete; suppressed pending migration
         private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
         {
             SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
@@ -81,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
             return options;
         }
+#pragma warning restore CS0618
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {

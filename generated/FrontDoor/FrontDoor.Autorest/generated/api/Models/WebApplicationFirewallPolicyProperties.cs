@@ -24,6 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule> CustomRuleRules { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRuleListInternal)CustomRule).Rule; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRuleListInternal)CustomRule).Rule = value ?? null /* arrayOf */; }
 
+        /// <summary>List of exceptions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException> ExceptionListException { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)ManagedRule).ExceptionListException; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)ManagedRule).ExceptionListException = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="FrontendEndpointLink" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointLink> _frontendEndpointLink;
 
@@ -52,6 +56,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         /// <summary>Internal Acessors for ManagedRule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetList Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyPropertiesInternal.ManagedRule { get => (this._managedRule = this._managedRule ?? new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetList()); set { {_managedRule = value;} } }
+
+        /// <summary>Internal Acessors for ManagedRuleExceptionsList</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyPropertiesInternal.ManagedRuleExceptionsList { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)ManagedRule).ExceptionsList; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)ManagedRule).ExceptionsList = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -121,6 +128,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"rules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule> CustomRuleRules { get; set; }
+        /// <summary>List of exceptions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of exceptions.",
+        SerializedName = @"exceptions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException> ExceptionListException { get; set; }
         /// <summary>
         /// Describes Frontend Endpoints associated with this Web Application Firewall policy.
         /// </summary>
@@ -211,12 +229,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRuleList CustomRule { get; set; }
         /// <summary>List of rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule> CustomRuleRules { get; set; }
+        /// <summary>List of exceptions.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException> ExceptionListException { get; set; }
         /// <summary>
         /// Describes Frontend Endpoints associated with this Web Application Firewall policy.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointLink> FrontendEndpointLink { get; set; }
         /// <summary>Describes managed rules inside the policy.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetList ManagedRule { get; set; }
+        /// <summary>List of exceptions applied on the managed rule sets.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList ManagedRuleExceptionsList { get; set; }
         /// <summary>List of rule sets.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet> ManagedRuleSet { get; set; }
         /// <summary>Describes settings for the policy.</summary>

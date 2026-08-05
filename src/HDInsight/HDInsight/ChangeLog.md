@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 6.5.0
+* Added ChangeSafety Support
+
 ## Version 6.4.0
 * Supported create cluster with entra user as gateway credential to replace use username and password.
   - Added parameter `-EntraUserIdentity` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using one or more ObjectId or Upn.

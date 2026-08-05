@@ -27,7 +27,7 @@ Describe 'New-AzFileShare' {
                                       -ProvisionedThroughputMiBPerSec 228 `
                                       -Redundancy "Local" `
                                       -PublicNetworkAccess "Enabled" `
-                                      -NfProtocolPropertyRootSquash "NoRootSquash" `
+                                      -RootSquash "NoRootSquash" `
                                       -Tag @{"environment" = "test"; "purpose" = "testing"}
             $config.Name | Should -Be $env.fileShareName01
             $config.ProvisioningState | Should -Be "Succeeded"
@@ -98,6 +98,99 @@ Describe 'New-AzFileShare' {
                                       -JsonString $jsonString
             $config.Name | Should -Be $env.fileShareName03
             $config.ProvisioningState | Should -Be "Succeeded"
+        } | Should -Not -Throw
+    }
+    
+    It 'CreateUpdate FileShare With all parameters' {
+        {
+            $config = New-AzFileShare -ResourceName $env.fileShareName04 `
+                                      -ResourceGroupName $env.resourceGroup `
+                                      -Location $env.location `
+                                      -MediaTier "SSD" `
+                                      -Protocol "NFS" `
+                                      -ProvisionedStorageGiB 1024 `
+                                      -ProvisionedIoPerSec 4024 `
+                                      -ProvisionedThroughputMiBPerSec 228 `
+                                      -Redundancy "Zone" `
+                                      -PublicNetworkAccess "Enabled" `
+                                      -RootSquash "NoRootSquash" `
+                                      -AllowedSubnet $env.subnetId `
+                                      -EncryptionInTransitRequired Enabled
+            $config.Name | Should -Be $env.fileShareName04
+            $config.ProvisioningState | Should -Be "Succeeded"
+            $config.MediaTier | Should -Be "SSD"
+            $config.Location | Should -Be $env.location
+            $config.Protocol | Should -Be "NFS"
+            $config.Redundancy | Should -Be "Zone"
+            $config.ProvisionedStorageGiB | Should -Be 1024
+            $config.ProvisionedIoPerSec | Should -Be 4024
+            $config.ProvisionedThroughputMiBPerSec | Should -Be 228
+            $config.PublicNetworkAccess | Should -Be "Enabled"
+            $config.RootSquash | Should -Be "NoRootSquash"
+            $config.AllowedSubnet.Count | Should -Be 1
+            $config.AllowedSubnet[0] | Should -be $env.subnetId
+            $config.EncryptionInTransitRequired | Should -Be "Enabled"
+
+            $config = Get-AzFileShare -ResourceName $env.fileShareName04 `
+                                   -ResourceGroupName $env.resourceGroup  
+            $config.Name | Should -Be $env.fileShareName04
+            $config.ProvisioningState | Should -Be "Succeeded"
+            $config.Location | Should -Be $env.location
+            $config.MediaTier | Should -Be "SSD"
+            $config.Protocol | Should -Be "NFS"
+            $config.Redundancy | Should -Be "Zone"
+            $config.ProvisionedStorageGiB | Should -Be 1024
+            $config.ProvisionedIoPerSec | Should -Be 4024
+            $config.ProvisionedThroughputMiBPerSec | Should -Be 228
+            $config.PublicNetworkAccess | Should -Be "Enabled"
+            $config.RootSquash | Should -Be "NoRootSquash"
+            $config.AllowedSubnet.Count | Should -Be 1
+            $config.AllowedSubnet[0] | Should -be $env.subnetId
+            $config.EncryptionInTransitRequired | Should -Be "Enabled" 
+
+            $config = Update-AzFileShare -ResourceName $env.fileShareName04 `
+                                      -ResourceGroupName $env.resourceGroup `
+                                      -ProvisionedStorageGiB 1025 `
+                                      -ProvisionedIoPerSec 5001 `
+                                      -ProvisionedThroughputMiBPerSec 229 `
+                                      -PublicNetworkAccess "Disabled" `
+                                      -RootSquash "RootSquash" `
+                                      -AllowedSubnet @() `
+                                      -EncryptionInTransitRequired Disabled
+            $config.Name | Should -Be $env.fileShareName04
+            $config.ProvisioningState | Should -Be "Succeeded"
+            $config.Location | Should -Be $env.location
+            $config.MediaTier | Should -Be "SSD"
+            $config.Protocol | Should -Be "NFS"
+            $config.Redundancy | Should -Be "Zone"
+            $config.ProvisionedStorageGiB | Should -Be 1025
+            $config.ProvisionedIoPerSec | Should -Be 5001
+            $config.ProvisionedThroughputMiBPerSec | Should -Be 229
+            $config.PublicNetworkAccess | Should -Be "Disabled"
+            $config.RootSquash | Should -Be "RootSquash"
+            $config.AllowedSubnet.Count | Should -Be 0
+            $config.EncryptionInTransitRequired | Should -Be "Disabled"
+
+            
+            $config = Get-AzFileShare -ResourceName $env.fileShareName04 `
+                                   -ResourceGroupName $env.resourceGroup  
+            $config.Name | Should -Be $env.fileShareName04
+            $config.ProvisioningState | Should -Be "Succeeded"
+            $config.Location | Should -Be $env.location
+            $config.MediaTier | Should -Be "SSD"
+            $config.Protocol | Should -Be "NFS"
+            $config.Redundancy | Should -Be "Zone"
+            $config.ProvisionedStorageGiB | Should -Be 1025
+            $config.ProvisionedIoPerSec | Should -Be 5001
+            $config.ProvisionedThroughputMiBPerSec | Should -Be 229
+            $config.PublicNetworkAccess | Should -Be "Disabled"
+            $config.RootSquash | Should -Be "RootSquash"
+            $config.AllowedSubnet.Count | Should -Be 0
+            $config.EncryptionInTransitRequired | Should -Be "Disabled"
+
+            Remove-AzFileShare -ResourceName $env.fileShareName04 `
+                               -ResourceGroupName $env.resourceGroup  
+
         } | Should -Not -Throw
     }
 }

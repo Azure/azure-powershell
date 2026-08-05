@@ -8,19 +8,42 @@ schema: 2.0.0
 # New-AzWebPubSubHub
 
 ## SYNOPSIS
-Create or update a hub setting.
+Create a hub setting.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+New-AzWebPubSubHub -ResourceName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>] [-EventListener <IEventListener[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWebPubSubHub -ResourceName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWebPubSubHub -ResourceName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityHubExpanded
+```
+New-AzWebPubSubHub -ResourceName <String> -HubInputObject <IWebPubSubIdentity>
  [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>] [-EventListener <IEventListener[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a hub setting.
+Create a hub setting.
 
 ## EXAMPLES
 
@@ -73,7 +96,7 @@ Default to "deny".
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityHubExpanded
 Aliases:
 
 Required: False
@@ -116,11 +139,10 @@ Accept wildcard characters: False
 
 ### -EventHandler
 Event handler of a hub.
-To construct, see NOTES section for EVENTHANDLER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventHandler[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventHandler[]
+Parameter Sets: CreateExpanded, CreateViaIdentityHubExpanded
 Aliases:
 
 Required: False
@@ -133,14 +155,58 @@ Accept wildcard characters: False
 ### -EventListener
 Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners.
 The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
-To construct, see NOTES section for EVENTLISTENER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventListener[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventListener[]
+Parameter Sets: CreateExpanded, CreateViaIdentityHubExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+Parameter Sets: CreateViaIdentityHubExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -152,7 +218,7 @@ The hub name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: HubName
 
 Required: True
@@ -183,7 +249,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -214,7 +280,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -260,9 +326,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 
 ## NOTES
 

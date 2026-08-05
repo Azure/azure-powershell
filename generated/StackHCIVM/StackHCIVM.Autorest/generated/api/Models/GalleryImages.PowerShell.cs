@@ -187,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             }
             if (content.Contains("ImagePath"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath = (string) content.GetValueForProperty("ImagePath",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath = (System.Security.SecureString) content.GetValueForProperty("ImagePath",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("OSType"))
             {
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             }
             if (content.Contains("ImagePath"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath = (string) content.GetValueForProperty("ImagePath",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath = (System.Security.SecureString) content.GetValueForProperty("ImagePath",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesInternal)this).ImagePath, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("OSType"))
             {

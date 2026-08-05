@@ -1,8 +1,8 @@
 {
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+1": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"keyVaultBaseUri\": \"https://kvcustomcertificatetest.vault.azure.net/\",\r\n    \"keyVaultSecretName\": \"manual-test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {},
@@ -17,14 +17,14 @@
         "Cache-Control": ["no-cache"],
         "Pragma": ["no-cache"],
         "Location": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview"
         ],
         "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
         "X-Content-Type-Options": ["nosniff"],
         "x-ms-client-request-id": ["68ec4b22-7957-4471-93cb-acaa429a6c82"],
         "x-rp-server-mvid": ["54bef194-19f7-4c41-9b83-6785272e94c3"],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": ["b7db628e-28ab-465f-8428-f0fe75b19ccd"],
         "Server": ["Kestrel"],
@@ -40,14 +40,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Creating\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Creating\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview+2": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,14 +88,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261\",\"name\":\"a527661b-ea43-4a1c-ab3c-ff66dcb19261\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:19:51.1871456Z\",\"endTime\":\"2022-11-09T06:19:59.2408659Z\"}",
+      "Content": "{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/a527661b-ea43-4a1c-ab3c-ff66dcb19261\",\"name\":\"a527661b-ea43-4a1c-ab3c-ff66dcb19261\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:19:51.1871456Z\",\"endTime\":\"2022-11-09T06:19:59.2408659Z\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+3": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -136,14 +136,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview+4": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -184,14 +184,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+5": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -232,14 +232,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+6": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -280,15 +280,15 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:19:49.740121Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:19:49.740121Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+7": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+7": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"customCertificate\": {\r\n      \"id\": \"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"\r\n    },\r\n    \"domainName\": \"ps-test-wps.manual-test.dev.signalr.azure.com\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"customCertificate\": {\r\n      \"id\": \"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"\r\n    },\r\n    \"domainName\": \"ps-test-wps.manual-test.dev.signalr.azure.com\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {},
       "ContentHeaders": {
@@ -302,14 +302,14 @@
         "Cache-Control": ["no-cache"],
         "Pragma": ["no-cache"],
         "Location": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview"
         ],
         "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
         "X-Content-Type-Options": ["nosniff"],
         "x-ms-client-request-id": ["0d0d8f37-38df-465a-92d1-bdd447019a22"],
         "x-rp-server-mvid": ["54bef194-19f7-4c41-9b83-6785272e94c3"],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": ["1d78079e-62a6-4823-9be7-9cf99895dcc0"],
         "Server": ["Kestrel"],
@@ -325,14 +325,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Updating\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Updating\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview+8": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -373,14 +373,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e\",\"name\":\"10fa43af-e4ed-4272-a91a-d85c1155132e\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:20:23.8715366Z\",\"endTime\":\"2022-11-09T06:20:44.9441304Z\"}",
+      "Content": "{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/10fa43af-e4ed-4272-a91a-d85c1155132e\",\"name\":\"10fa43af-e4ed-4272-a91a-d85c1155132e\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:20:23.8715366Z\",\"endTime\":\"2022-11-09T06:20:44.9441304Z\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+9": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -421,14 +421,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+10": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -469,14 +469,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview+11": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -517,14 +517,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+12": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -565,14 +565,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+13": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -613,14 +613,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:20:23.5994559Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:20:23.5994559Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+14": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+14": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -644,14 +644,14 @@
         "Cache-Control": ["no-cache"],
         "Pragma": ["no-cache"],
         "Location": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview"
         ],
         "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
         "X-Content-Type-Options": ["nosniff"],
         "x-ms-client-request-id": ["320375db-4e69-42c3-b6c1-3bf2c2cfad20"],
         "x-rp-server-mvid": ["54bef194-19f7-4c41-9b83-6785272e94c3"],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": ["c11a20f8-0349-403b-ab17-4ebdf71a0fb1"],
         "Server": ["Kestrel"],
@@ -670,10 +670,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview+15": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -714,14 +714,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298\",\"name\":\"54c708b4-5e13-4958-9aa0-49fa74abb298\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:20:57.1589032Z\",\"endTime\":\"2022-11-09T06:21:12.4740064Z\"}",
+      "Content": "{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/54c708b4-5e13-4958-9aa0-49fa74abb298\",\"name\":\"54c708b4-5e13-4958-9aa0-49fa74abb298\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:20:57.1589032Z\",\"endTime\":\"2022-11-09T06:21:12.4740064Z\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview+16": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/54c708b4-5e13-4958-9aa0-49fa74abb298?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -764,10 +764,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview+17": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -812,11 +812,11 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+18": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+18": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"customCertificate\": {\r\n      \"id\": \"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"\r\n    },\r\n    \"domainName\": \"ps-test-wps.manual-test.dev.signalr.azure.com\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"customCertificate\": {\r\n      \"id\": \"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"\r\n    },\r\n    \"domainName\": \"ps-test-wps.manual-test.dev.signalr.azure.com\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {},
       "ContentHeaders": {
@@ -830,14 +830,14 @@
         "Cache-Control": ["no-cache"],
         "Pragma": ["no-cache"],
         "Location": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview"
         ],
         "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
         "X-Content-Type-Options": ["nosniff"],
         "x-ms-client-request-id": ["45d7a606-f759-4bad-b8e6-175481c4dc86"],
         "x-rp-server-mvid": ["54bef194-19f7-4c41-9b83-6785272e94c3"],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": ["ae105607-7845-4d16-89ca-e0ee0d44a8f2"],
         "Server": ["Kestrel"],
@@ -853,14 +853,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:21:28.8337632Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:21:28.8337632Z\"},\"properties\":{\"provisioningState\":\"Updating\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:21:28.8337632Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:21:28.8337632Z\"},\"properties\":{\"provisioningState\":\"Updating\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview+19": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -901,14 +901,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5\",\"name\":\"75c77755-eed2-421f-ac27-b405f59bd4a5\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:21:29.3344827Z\",\"endTime\":\"2022-11-09T06:21:50.1868926Z\"}",
+      "Content": "{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/75c77755-eed2-421f-ac27-b405f59bd4a5\",\"name\":\"75c77755-eed2-421f-ac27-b405f59bd4a5\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:21:29.3344827Z\",\"endTime\":\"2022-11-09T06:21:50.1868926Z\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+20": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -949,14 +949,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:21:28.8337632Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:21:28.8337632Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:21:28.8337632Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:21:28.8337632Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+21": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -997,14 +997,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:21:28.8337632Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:21:28.8337632Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:21:28.8337632Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:21:28.8337632Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"domainName\":\"ps-test-wps.manual-test.dev.signalr.azure.com\",\"customCertificate\":{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\"}},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain\",\"name\":\"myDomain\",\"type\":\"Microsoft.SignalRService/WebPubSub/customDomains\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+22": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview+22": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains/myDomain?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1028,14 +1028,14 @@
         "Cache-Control": ["no-cache"],
         "Pragma": ["no-cache"],
         "Location": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview"
         ],
         "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
         "X-Content-Type-Options": ["nosniff"],
         "x-ms-client-request-id": ["4f509ba7-6360-466e-98bf-633c4846ff04"],
         "x-rp-server-mvid": ["54bef194-19f7-4c41-9b83-6785272e94c3"],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": ["6b672a55-cd62-46e7-8963-97a23ef371fd"],
         "Server": ["Kestrel"],
@@ -1054,10 +1054,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview+23": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1098,14 +1098,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188\",\"name\":\"0783965e-ed89-4fb1-9700-a7e1ec204188\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:22:01.1474139Z\",\"endTime\":\"2022-11-09T06:22:13.9588914Z\"}",
+      "Content": "{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/0783965e-ed89-4fb1-9700-a7e1ec204188\",\"name\":\"0783965e-ed89-4fb1-9700-a7e1ec204188\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:22:01.1474139Z\",\"endTime\":\"2022-11-09T06:22:13.9588914Z\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview+24": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/0783965e-ed89-4fb1-9700-a7e1ec204188?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1148,10 +1148,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview+25": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customDomains?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1196,10 +1196,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+26": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+26": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1242,10 +1242,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview+27": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1290,10 +1290,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+28": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+28": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"keyVaultBaseUri\": \"https://kvcustomcertificatetest.vault.azure.net/\",\r\n    \"keyVaultSecretName\": \"manual-test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {},
@@ -1308,14 +1308,14 @@
         "Cache-Control": ["no-cache"],
         "Pragma": ["no-cache"],
         "Location": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationResults/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview"
         ],
         "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
         "X-Content-Type-Options": ["nosniff"],
         "x-ms-client-request-id": ["903dec9b-b880-454a-aeff-5dbde38f668d"],
         "x-rp-server-mvid": ["54bef194-19f7-4c41-9b83-6785272e94c3"],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": ["8b4c6e89-8fd9-409b-8524-204718ed8464"],
         "Server": ["Kestrel"],
@@ -1331,14 +1331,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:22:33.6305725Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:22:33.6305725Z\"},\"properties\":{\"provisioningState\":\"Creating\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:22:33.6305725Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:22:33.6305725Z\"},\"properties\":{\"provisioningState\":\"Creating\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview+29": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview+29": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1379,14 +1379,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9\",\"name\":\"d9999027-f83c-4cd8-9dde-41b37a7892d9\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:22:33.9171587Z\",\"endTime\":\"2022-11-09T06:22:41.5290621Z\"}",
+      "Content": "{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/operationStatuses/d9999027-f83c-4cd8-9dde-41b37a7892d9\",\"name\":\"d9999027-f83c-4cd8-9dde-41b37a7892d9\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T06:22:33.9171587Z\",\"endTime\":\"2022-11-09T06:22:41.5290621Z\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+30": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+30": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1427,14 +1427,14 @@
         "Content-Type": ["application/json; charset=utf-8"],
         "Expires": ["-1"]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:22:33.6305725Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:22:33.6305725Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"ps-test@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T06:22:33.6305725Z\",\"lastModifiedBy\":\"ps-test@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T06:22:33.6305725Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"keyVaultBaseUri\":\"https://kvcustomcertificatetest.vault.azure.net/\",\"keyVaultSecretName\":\"manual-test\",\"keyVaultSecretVersion\":null},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert\",\"name\":\"pstest-customCert\",\"type\":\"Microsoft.SignalRService/WebPubSub/customCertificates\"}",
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+31": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+31": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1479,10 +1479,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview+32": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview+32": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

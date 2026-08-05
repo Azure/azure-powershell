@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Location = InputObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 Name = NameParts[2];
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }

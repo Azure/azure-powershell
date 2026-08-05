@@ -14,11 +14,26 @@ Moves the set of resources included in the request body.The move operation is tr
 
 ## SYNTAX
 
+### InitiateExpanded (Default)
 ```
 Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <String>] [-ValidateOnly]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InitiateViaJsonFilePath
+```
+Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InitiateViaJsonString
+```
+Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -164,6 +179,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Initiate operation
+
+```yaml
+Type: System.String
+Parameter Sets: InitiateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Initiate operation
+
+```yaml
+Type: System.String
+Parameter Sets: InitiateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
@@ -184,7 +229,7 @@ Gets or sets the list of resource Id's, by default it accepts move resource id's
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InitiateExpanded
 Aliases:
 
 Required: True
@@ -198,8 +243,8 @@ Accept wildcard characters: False
 Defines the move resource input type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: InitiateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +304,7 @@ Gets or sets a value indicating whether the operation needs to only run pre-requ
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: InitiateExpanded
 Aliases:
 
 Required: False
@@ -307,7 +352,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 
 ## NOTES
 

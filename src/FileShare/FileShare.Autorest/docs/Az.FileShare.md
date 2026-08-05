@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FileShare
-Module Guid: 2795e2e5-96c9-4af6-afe5-336d3bcd402d
+Module Guid: a87f029d-bd9a-48db-9c29-c0db815acf3d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.fileshare
 Help Version: 1.0.0.0
 Locale: en-US

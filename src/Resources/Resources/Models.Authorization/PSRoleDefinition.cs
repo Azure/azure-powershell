@@ -26,18 +26,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public string Description { get; set; }
 
-        public List<string> Actions { get; set; }
-
-        public List<string> NotActions { get; set; }
-
-        public List<string> DataActions { get; set; }
-
-        public List<string> NotDataActions { get; set; }
-
         public List<string> AssignableScopes { get; set; }
-        
-        public string Condition { get; set; }
 
-        public string ConditionVersion { get; set; }
+        public List<PSPermission> Permissions { get; set; }
     }
 }

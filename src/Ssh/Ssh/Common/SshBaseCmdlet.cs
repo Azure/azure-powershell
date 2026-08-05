@@ -1030,13 +1030,8 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 token = factory.GetSshCredential(context, parameters);
             }
-            catch (KeyNotFoundException exception)
+            catch (Exception exception) when (exception is KeyNotFoundException || exception is InvalidOperationException)
             {
-                if (context.Account.Type != AzureAccount.AccountType.User)
-                {
-                    throw new AzPSApplicationException(String.Format(Resources.FailedToAADUnsupportedAccountType, context.Account.Type));
-                }
-
                 throw new AzPSApplicationException($"Failed to generate AAD certificate with exception: {exception.Message}.");
             }
 

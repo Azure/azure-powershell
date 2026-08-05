@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
@@ -945,10 +941,6 @@
     "module": "ArizeAI"
   },
   {
-    "module": "WeightsAndBiases",
-    "alias": "WeightsAndBiases"
-  },
-  {
     "module": "Pinecone",
     "alias": "Pinecone"
   },
@@ -1027,5 +1019,13 @@
   {
     "module": "Relationships",
     "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
+  },
+  {
+    "module": "Napster",
+    "alias": "Napster"
   }
 ]

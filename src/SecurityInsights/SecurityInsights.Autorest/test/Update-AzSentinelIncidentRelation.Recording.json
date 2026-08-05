@@ -1,15 +1,15 @@
 {
-  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774?api-version=2021-09-01-preview+1": {
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/bookmarks/c2c47dc0-3085-46d4-a419-6ff95a01c603?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774?api-version=2021-09-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"displayName\": \"NewincidentRelationBookmarkNames06o1l\",\n    \"query\": \"SecurityEvent\\\\n| take 1\",\n    \"eventTime\": \"2022-08-16T16:09:05.6524552Z\",\n    \"queryStartTime\": \"2022-08-16T16:09:05.6522030Z\",\n    \"queryEndTime\": \"2022-08-15T16:09:05.6523413Z\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/bookmarks/c2c47dc0-3085-46d4-a419-6ff95a01c603?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"NewincidentRelationBookmarkNamei6d4wr\",\r\n    \"query\": \"SecurityEvent\\\\n| take 1\",\r\n    \"eventTime\": \"2026-03-25T07:46:43.7221027Z\",\r\n    \"queryStartTime\": \"2026-03-25T07:46:43.7220207Z\",\r\n    \"queryEndTime\": \"2026-03-24T07:46:43.7220781Z\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "280" ]
+        "Content-Length": [ "288" ]
       }
     },
     "Response": {
@@ -17,109 +17,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
-        "x-ms-request-id": [ "054f7859-c0f1-4b37-85b1-db0fb165afc6" ],
-        "x-ms-correlation-request-id": [ "054f7859-c0f1-4b37-85b1-db0fb165afc6" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160905Z:054f7859-c0f1-4b37-85b1-db0fb165afc6" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/33664864-ced3-409a-9f2c-71338790fb6b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "27be737f-4725-498b-a5df-b0f0cb914a84" ],
+        "x-ms-correlation-request-id": [ "27be737f-4725-498b-a5df-b0f0cb914a84" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074645Z:27be737f-4725-498b-a5df-b0f0cb914a84" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:09:05 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 85EEA148092645C58101BFE082A0A24C Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:44Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1066" ],
+        "Content-Length": [ "1057" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774\",\"name\":\"7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774\",\"etag\":\"\\\"3c00cc8c-0000-0100-0000-62fbc1210000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"NewincidentRelationBookmarkNames06o1l\",\"created\":\"2022-08-16T16:09:05.8209288+00:00\",\"updated\":\"2022-08-16T16:09:05+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T16:09:05.6524552+00:00\",\"labels\":[],\"query\":\"SecurityEvent\\\\n| take 1\",\"queryStartTime\":\"2022-08-16T16:09:05.652203+00:00\",\"queryEndTime\":\"2022-08-15T16:09:05.6523413+00:00\",\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/c2c47dc0-3085-46d4-a419-6ff95a01c603\",\"name\":\"c2c47dc0-3085-46d4-a419-6ff95a01c603\",\"etag\":\"\\\"3c00e4bd-0000-0100-0000-69c392e50000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"NewincidentRelationBookmarkNamei6d4wr\",\"created\":\"2026-03-25T07:46:45.0624019+00:00\",\"updated\":\"2026-03-25T07:46:45+00:00\",\"createdBy\":{\"objectId\":\"6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb\",\"email\":\"t-helezra@microsoft.com\",\"name\":\"Hadas Elezra\"},\"updatedBy\":{\"objectId\":\"6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb\",\"email\":\"t-helezra@microsoft.com\",\"name\":\"Hadas Elezra\"},\"eventTime\":\"2026-03-25T07:46:43.7221027+00:00\",\"labels\":[],\"query\":\"SecurityEvent\\\\n| take 1\",\"queryStartTime\":\"2026-03-25T07:46:43.7220207+00:00\",\"queryEndTime\":\"2026-03-24T07:46:43.7220781+00:00\",\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
       "isContentBase64": false
     }
   },
-  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/20c587be-2ccb-4fd4-aea6-cce3754722dd/relations/f56dcb87-d5c9-4996-9916-6502828a3ae2?api-version=2021-09-01-preview+2": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/20c587be-2ccb-4fd4-aea6-cce3754722dd/relations/f56dcb87-d5c9-4996-9916-6502828a3ae2?api-version=2021-09-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"relatedResourceId\": \"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774\"\n  }\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "283" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
-        "x-ms-request-id": [ "10075444-109a-460b-b89d-7c5eb6c75174" ],
-        "x-ms-correlation-request-id": [ "10075444-109a-460b-b89d-7c5eb6c75174" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160906Z:10075444-109a-460b-b89d-7c5eb6c75174" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:09:05 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "828" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/20c587be-2ccb-4fd4-aea6-cce3754722dd/relations/f56dcb87-d5c9-4996-9916-6502828a3ae2\",\"name\":\"f56dcb87-d5c9-4996-9916-6502828a3ae2\",\"etag\":\"\\\"4a00d352-0000-0100-0000-62fbc1220000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774\",\"relatedResourceName\":\"7b6ab18b-3ae4-406a-ade2-d9b2b9cfb774\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Bookmarks\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/71b34ee4-7c1a-4508-82a4-1d59250f7821?api-version=2021-09-01-preview+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/71b34ee4-7c1a-4508-82a4-1d59250f7821?api-version=2021-09-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"displayName\": \"NewincidentRelationBookmarkNameszf359\",\n    \"query\": \"SecurityEvent\\\\n| take 1\",\n    \"eventTime\": \"2022-08-16T16:09:06.1743564Z\",\n    \"queryStartTime\": \"2022-08-16T16:09:06.1737787Z\",\n    \"queryEndTime\": \"2022-08-15T16:09:06.1741808Z\"\n  }\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "280" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
-        "x-ms-request-id": [ "79033b04-a0b5-4039-8ac5-35516ccd31ee" ],
-        "x-ms-correlation-request-id": [ "79033b04-a0b5-4039-8ac5-35516ccd31ee" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160906Z:79033b04-a0b5-4039-8ac5-35516ccd31ee" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:09:06 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1067" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/71b34ee4-7c1a-4508-82a4-1d59250f7821\",\"name\":\"71b34ee4-7c1a-4508-82a4-1d59250f7821\",\"etag\":\"\\\"3c00ce8c-0000-0100-0000-62fbc1220000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"NewincidentRelationBookmarkNameszf359\",\"created\":\"2022-08-16T16:09:06.3276662+00:00\",\"updated\":\"2022-08-16T16:09:06+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T16:09:06.1743564+00:00\",\"labels\":[],\"query\":\"SecurityEvent\\\\n| take 1\",\"queryStartTime\":\"2022-08-16T16:09:06.1737787+00:00\",\"queryEndTime\":\"2022-08-15T16:09:06.1741808+00:00\",\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
-      "isContentBase64": false
-    }
-  },
-  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/e6be0e56-c636-4b4b-9793-6f3c0f345a46/relations/903fe51d-b375-49c3-bf17-02b25fab1aa4?api-version=2021-09-01-preview+2": {
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/9e73b493-03a2-4837-9f25-61a39c8841b8/relations/6695e672-3f17-446a-a3ea-f7625b45f1bd?api-version=2021-09-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/e6be0e56-c636-4b4b-9793-6f3c0f345a46/relations/903fe51d-b375-49c3-bf17-02b25fab1aa4?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/9e73b493-03a2-4837-9f25-61a39c8841b8/relations/6695e672-3f17-446a-a3ea-f7625b45f1bd?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "324" ],
-        "x-ms-client-request-id": [ "48672146-5308-4b13-8cbc-22125c1697ef" ],
-        "CommandName": [ "Get-AzSentinelIncidentRelation" ],
-        "FullCommandName": [ "Get-AzSentinelIncidentRelation_Get" ],
+        "x-ms-unique-id": [ "163" ],
+        "x-ms-client-request-id": [ "df1cfb72-1a35-4094-a818-c8b295cb8bc5" ],
+        "CommandName": [ "Update-AzSentinelIncidentRelation" ],
+        "FullCommandName": [ "Update-AzSentinelIncidentRelation_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -130,35 +62,76 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "494" ],
-        "x-ms-request-id": [ "f77cc0e8-f5c9-4670-a240-d83bc75519c5" ],
-        "x-ms-correlation-request-id": [ "f77cc0e8-f5c9-4670-a240-d83bc75519c5" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160906Z:f77cc0e8-f5c9-4670-a240-d83bc75519c5" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/dd04337b-edff-41cc-bacf-71cd0c0f635c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "dba2d760-afb7-4caa-a824-ccfcf65e3799" ],
+        "x-ms-correlation-request-id": [ "dba2d760-afb7-4caa-a824-ccfcf65e3799" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074645Z:dba2d760-afb7-4caa-a824-ccfcf65e3799" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:09:06 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D8E8F3FD80E841FC8441B6C798A6B35E Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:45Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "828" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/e6be0e56-c636-4b4b-9793-6f3c0f345a46/relations/903fe51d-b375-49c3-bf17-02b25fab1aa4\",\"name\":\"903fe51d-b375-49c3-bf17-02b25fab1aa4\",\"etag\":\"\\\"4a005452-0000-0100-0000-62fbc0450000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/00406d21-02f5-485c-a859-19a592ab3f1b\",\"relatedResourceName\":\"00406d21-02f5-485c-a859-19a592ab3f1b\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Bookmarks\"}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Incidents/9e73b493-03a2-4837-9f25-61a39c8841b8/relations/6695e672-3f17-446a-a3ea-f7625b45f1bd\",\"name\":\"6695e672-3f17-446a-a3ea-f7625b45f1bd\",\"etag\":\"\\\"2f006a35-0000-0100-0000-69c38f650000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/192e1c76-76b2-4c5b-b177-ae3989058ff5\",\"relatedResourceName\":\"192e1c76-76b2-4c5b-b177-ae3989058ff5\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Bookmarks\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/e6be0e56-c636-4b4b-9793-6f3c0f345a46/relations/903fe51d-b375-49c3-bf17-02b25fab1aa4?api-version=2021-09-01-preview+3": {
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/9e73b493-03a2-4837-9f25-61a39c8841b8/relations/6695e672-3f17-446a-a3ea-f7625b45f1bd?api-version=2021-09-01-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/e6be0e56-c636-4b4b-9793-6f3c0f345a46/relations/903fe51d-b375-49c3-bf17-02b25fab1aa4?api-version=2021-09-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"relatedResourceId\": \"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/71b34ee4-7c1a-4508-82a4-1d59250f7821\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/9e73b493-03a2-4837-9f25-61a39c8841b8/relations/6695e672-3f17-446a-a3ea-f7625b45f1bd?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"etag\": \"\\\"2f006a35-0000-0100-0000-69c38f650000\\\"\",\r\n  \"properties\": {\r\n    \"relatedResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/c2c47dc0-3085-46d4-a419-6ff95a01c603\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "283" ]
+        "Content-Length": [ "342" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/e3d3fbc9-fc28-4456-a988-c10c3df11bd8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "f604cad1-1599-4466-ad8d-d6c44676f445" ],
+        "x-ms-correlation-request-id": [ "f604cad1-1599-4466-ad8d-d6c44676f445" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074646Z:f604cad1-1599-4466-ad8d-d6c44676f445" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 331A2238981C4A129CCD091F5769F08A Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:45Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "188" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"Conflict\",\"message\":\"Failed to create relation. Relation with name 6695e672-3f17-446a-a3ea-f7625b45f1bd already exists on incident 9e73b493-03a2-4837-9f25-61a39c8841b8\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/bookmarks/4097ffee-c680-4d8a-b769-e32e0c6f6580?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/bookmarks/4097ffee-c680-4d8a-b769-e32e0c6f6580?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"NewincidentRelationBookmarkNamewqdjeb\",\r\n    \"query\": \"SecurityEvent\\\\n| take 1\",\r\n    \"eventTime\": \"2026-03-25T07:46:45.2486916Z\",\r\n    \"queryStartTime\": \"2026-03-25T07:46:45.2485634Z\",\r\n    \"queryEndTime\": \"2026-03-24T07:46:45.2486522Z\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "288" ]
       }
     },
     "Response": {
@@ -166,21 +139,151 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
-        "x-ms-request-id": [ "11467e20-3139-46d4-9df4-b71b723b0506" ],
-        "x-ms-correlation-request-id": [ "11467e20-3139-46d4-9df4-b71b723b0506" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160906Z:11467e20-3139-46d4-9df4-b71b723b0506" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/8203c207-5cfe-4fd1-a5ed-b995d0db8ccb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "bef5fea4-8a85-4065-9364-cb4ba9a8ec68" ],
+        "x-ms-correlation-request-id": [ "bef5fea4-8a85-4065-9364-cb4ba9a8ec68" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074646Z:bef5fea4-8a85-4065-9364-cb4ba9a8ec68" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:09:06 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9F8BC47B416E4D69A12472E3A8960541 Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:46Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1057" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/4097ffee-c680-4d8a-b769-e32e0c6f6580\",\"name\":\"4097ffee-c680-4d8a-b769-e32e0c6f6580\",\"etag\":\"\\\"3c0018be-0000-0100-0000-69c392e60000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"NewincidentRelationBookmarkNamewqdjeb\",\"created\":\"2026-03-25T07:46:46.5702017+00:00\",\"updated\":\"2026-03-25T07:46:46+00:00\",\"createdBy\":{\"objectId\":\"6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb\",\"email\":\"t-helezra@microsoft.com\",\"name\":\"Hadas Elezra\"},\"updatedBy\":{\"objectId\":\"6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb\",\"email\":\"t-helezra@microsoft.com\",\"name\":\"Hadas Elezra\"},\"eventTime\":\"2026-03-25T07:46:45.2486916+00:00\",\"labels\":[],\"query\":\"SecurityEvent\\\\n| take 1\",\"queryStartTime\":\"2026-03-25T07:46:45.2485634+00:00\",\"queryEndTime\":\"2026-03-24T07:46:45.2486522+00:00\",\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "166" ],
+        "x-ms-client-request-id": [ "4aadd1d5-b7b8-4eb9-93b8-355ada319814" ],
+        "CommandName": [ "Get-AzSentinelIncidentRelation" ],
+        "FullCommandName": [ "Get-AzSentinelIncidentRelation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/5123253e-e19b-44e7-a77c-25686705bf01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "854b5514-5afe-46c2-8274-e93c99bf0f80" ],
+        "x-ms-correlation-request-id": [ "854b5514-5afe-46c2-8274-e93c99bf0f80" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074647Z:854b5514-5afe-46c2-8274-e93c99bf0f80" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6144AA27A7814A559C09D824B2D28207 Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:46Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "828" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/e6be0e56-c636-4b4b-9793-6f3c0f345a46/relations/903fe51d-b375-49c3-bf17-02b25fab1aa4\",\"name\":\"903fe51d-b375-49c3-bf17-02b25fab1aa4\",\"etag\":\"\\\"4a00d452-0000-0100-0000-62fbc1220000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/71b34ee4-7c1a-4508-82a4-1d59250f7821\",\"relatedResourceName\":\"71b34ee4-7c1a-4508-82a4-1d59250f7821\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Bookmarks\"}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d\",\"name\":\"9bbb3889-b1ec-4a18-99b0-abface90c56d\",\"etag\":\"\\\"2f006036-0000-0100-0000-69c38f6d0000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/a55092cc-24ce-41d4-a016-60c3e5797351\",\"relatedResourceName\":\"a55092cc-24ce-41d4-a016-60c3e5797351\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Bookmarks\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d?api-version=2021-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "167" ],
+        "x-ms-client-request-id": [ "c1c70947-d902-4fe9-9f4f-f57b7ff7859c" ],
+        "CommandName": [ "Update-AzSentinelIncidentRelation" ],
+        "FullCommandName": [ "Update-AzSentinelIncidentRelation_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/0978c281-b0d5-4f8f-bc19-d5b56b10be87" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "43635cc0-ad38-4e27-94e3-07e30087c505" ],
+        "x-ms-correlation-request-id": [ "43635cc0-ad38-4e27-94e3-07e30087c505" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074647Z:43635cc0-ad38-4e27-94e3-07e30087c505" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 60602A04A6F74B3DA2FF5E594882075D Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:47Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "828" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d\",\"name\":\"9bbb3889-b1ec-4a18-99b0-abface90c56d\",\"etag\":\"\\\"2f006036-0000-0100-0000-69c38f6d0000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/relations\",\"properties\":{\"relatedResourceId\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/a55092cc-24ce-41d4-a016-60c3e5797351\",\"relatedResourceName\":\"a55092cc-24ce-41d4-a016-60c3e5797351\",\"relatedResourceType\":\"Microsoft.SecurityInsights/Bookmarks\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelIncidentRelation+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d?api-version=2021-09-01-preview+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/325fdf3f-6dc0-47d2-87b7-cd3a7342672c/relations/9bbb3889-b1ec-4a18-99b0-abface90c56d?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"etag\": \"\\\"2f006036-0000-0100-0000-69c38f6d0000\\\"\",\r\n  \"properties\": {\r\n    \"relatedResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Bookmarks/4097ffee-c680-4d8a-b769-e32e0c6f6580\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "342" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/004dbed0-7d02-4454-976b-813da9073012" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "d1852d8c-debf-46e7-b09f-0567ee452cec" ],
+        "x-ms-correlation-request-id": [ "d1852d8c-debf-46e7-b09f-0567ee452cec" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074647Z:d1852d8c-debf-46e7-b09f-0567ee452cec" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B45B9BFE563440F4A738C60CDD5571D9 Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:47Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "188" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"Conflict\",\"message\":\"Failed to create relation. Relation with name 9bbb3889-b1ec-4a18-99b0-abface90c56d already exists on incident 325fdf3f-6dc0-47d2-87b7-cd3a7342672c\"}}",
       "isContentBase64": false
     }
   }

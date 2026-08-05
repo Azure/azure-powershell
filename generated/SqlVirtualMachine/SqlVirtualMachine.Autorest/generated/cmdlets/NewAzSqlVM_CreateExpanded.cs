@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates or updates a SQL virtual machine.</summary>
+    /// <summary>create a SQL virtual machine.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSqlVM_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Description(@"Creates or updates a SQL virtual machine.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Description(@"create a SQL virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}", ApiVersion = "2022-08-01-preview")]
     public partial class NewAzSqlVM_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +38,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>A SQL virtual machine.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachine();
+        private Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachine();
 
         /// <summary>Enable or disable R services (SQL 2016 onwards).</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable or disable R services (SQL 2016 onwards).")]
@@ -84,9 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Backup schedule type.",
         SerializedName = @"backupScheduleType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType AutoBackupSettingBackupScheduleType { get => _parametersBody.AutoBackupSettingBackupScheduleType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType)""); set => _parametersBody.AutoBackupSettingBackupScheduleType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Manual", "Automated")]
+        public string AutoBackupSettingBackupScheduleType { get => _parametersBody.AutoBackupSettingBackupScheduleType ?? null; set => _parametersBody.AutoBackupSettingBackupScheduleType = value; }
 
         /// <summary>Include or exclude system databases from auto backup.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Include or exclude system databases from auto backup.")]
@@ -108,9 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Days of the week for the backups when FullBackupFrequency is set to Weekly.",
         SerializedName = @"daysOfWeek",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[] AutoBackupSettingDaysOfWeek { get => _parametersBody.AutoBackupSettingDaysOfWeek ?? null /* arrayOf */; set => _parametersBody.AutoBackupSettingDaysOfWeek = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
+        public string[] AutoBackupSettingDaysOfWeek { get => _parametersBody.AutoBackupSettingDaysOfWeek?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.AutoBackupSettingDaysOfWeek = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Enable or disable autobackup on SQL virtual machine.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable or disable autobackup on SQL virtual machine.")]
@@ -144,9 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Frequency of full backups. In both cases, full backups begin during the next scheduled time window.",
         SerializedName = @"fullBackupFrequency",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType AutoBackupSettingFullBackupFrequency { get => _parametersBody.AutoBackupSettingFullBackupFrequency ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType)""); set => _parametersBody.AutoBackupSettingFullBackupFrequency = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Daily", "Weekly")]
+        public string AutoBackupSettingFullBackupFrequency { get => _parametersBody.AutoBackupSettingFullBackupFrequency ?? null; set => _parametersBody.AutoBackupSettingFullBackupFrequency = value; }
 
         /// <summary>Start time of a given day during which full backups can take place. 0-23 hours.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Start time of a given day during which full backups can take place. 0-23 hours.")]
@@ -246,9 +252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Day of week to apply the patch on.",
         SerializedName = @"dayOfWeek",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek AutoPatchingSettingDayOfWeek { get => _parametersBody.AutoPatchingSettingDayOfWeek ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek)""); set => _parametersBody.AutoPatchingSettingDayOfWeek = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
+        public string AutoPatchingSettingDayOfWeek { get => _parametersBody.AutoPatchingSettingDayOfWeek ?? null; set => _parametersBody.AutoPatchingSettingDayOfWeek = value; }
 
         /// <summary>Enable or disable autopatching on SQL virtual machine.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable or disable autopatching on SQL virtual machine.")]
@@ -302,6 +308,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.SqlVirtualMachineManagementClient Client => Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Module.Instance.ClientAPI;
 
@@ -326,6 +335,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter EnableAutomaticUpgrade { get => _parametersBody.EnableAutomaticUpgrade ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableAutomaticUpgrade = value; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -349,9 +361,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType)""); set => _parametersBody.IdentityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("None", "SystemAssigned")]
+        public string IdentityType { get => _parametersBody.IdentityType ?? null; set => _parametersBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -419,9 +431,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"SQL IaaS Agent least privilege mode.",
         SerializedName = @"leastPrivilegeMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode LeastPrivilegeMode { get => _parametersBody.LeastPrivilegeMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode)""); set => _parametersBody.LeastPrivilegeMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Enabled", "NotSet")]
+        public string LeastPrivilegeMode { get => _parametersBody.LeastPrivilegeMode ?? null; set => _parametersBody.LeastPrivilegeMode = value; }
 
         /// <summary>SQL Server license type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server license type.")]
@@ -431,9 +443,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"SQL Server license type.",
         SerializedName = @"sqlServerLicenseType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType LicenseType { get => _parametersBody.SqlServerLicenseType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType)""); set => _parametersBody.SqlServerLicenseType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("PAYG", "AHUB", "DR")]
+        public string LicenseType { get => _parametersBody.SqlServerLicenseType ?? null; set => _parametersBody.SqlServerLicenseType = value; }
 
         /// <summary>Resource location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource location.")]
@@ -491,7 +503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -534,9 +546,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Day of the week to run assessment.",
         SerializedName = @"dayOfWeek",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek ScheduleDayOfWeek { get => _parametersBody.ScheduleDayOfWeek ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek)""); set => _parametersBody.ScheduleDayOfWeek = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
+        public string ScheduleDayOfWeek { get => _parametersBody.ScheduleDayOfWeek ?? null; set => _parametersBody.ScheduleDayOfWeek = value; }
 
         /// <summary>Enable or disable assessment schedule on SQL virtual machine.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable or disable assessment schedule on SQL virtual machine.")]
@@ -593,9 +605,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"SQL Server edition type.",
         SerializedName = @"sqlImageSku",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku Sku { get => _parametersBody.SqlImageSku ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku)""); set => _parametersBody.SqlImageSku = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Developer", "Express", "Standard", "Enterprise", "Web")]
+        public string Sku { get => _parametersBody.SqlImageSku ?? null; set => _parametersBody.SqlImageSku = value; }
 
         /// <summary>SQL Server connectivity option.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server connectivity option.")]
@@ -605,9 +617,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"SQL Server connectivity option.",
         SerializedName = @"connectivityType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType SqlConnectivityUpdateSettingConnectivityType { get => _parametersBody.SqlConnectivityUpdateSettingConnectivityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType)""); set => _parametersBody.SqlConnectivityUpdateSettingConnectivityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("LOCAL", "PRIVATE", "PUBLIC")]
+        public string SqlConnectivityUpdateSettingConnectivityType { get => _parametersBody.SqlConnectivityUpdateSettingConnectivityType ?? null; set => _parametersBody.SqlConnectivityUpdateSettingConnectivityType = value; }
 
         /// <summary>SQL Server port.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server port.")]
@@ -663,7 +675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         Description = @"Logical Unit Numbers for the disks.",
         SerializedName = @"luns",
         PossibleTypes = new [] { typeof(int) })]
-        public int[] SqlDataSettingLun { get => _parametersBody.SqlDataSettingLun ?? null /* arrayOf */; set => _parametersBody.SqlDataSettingLun = value; }
+        public int[] SqlDataSettingLun { get => _parametersBody.SqlDataSettingLun?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.SqlDataSettingLun = (value != null ? new System.Collections.Generic.List<int>(value) : null); }
 
         /// <summary>SQL Server Collation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server Collation.")]
@@ -763,7 +775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         Description = @"Logical Unit Numbers for the disks.",
         SerializedName = @"luns",
         PossibleTypes = new [] { typeof(int) })]
-        public int[] SqlLogSettingLun { get => _parametersBody.SqlLogSettingLun ?? null /* arrayOf */; set => _parametersBody.SqlLogSettingLun = value; }
+        public int[] SqlLogSettingLun { get => _parametersBody.SqlLogSettingLun?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.SqlLogSettingLun = (value != null ? new System.Collections.Generic.List<int>(value) : null); }
 
         /// <summary>SQL Server Management type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server Management type.")]
@@ -773,9 +785,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"SQL Server Management type.",
         SerializedName = @"sqlManagement",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode SqlManagementType { get => _parametersBody.SqlManagement ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode)""); set => _parametersBody.SqlManagement = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Full", "LightWeight", "NoAgent")]
+        public string SqlManagementType { get => _parametersBody.SqlManagement ?? null; set => _parametersBody.SqlManagement = value; }
 
         /// <summary>Disk configuration to apply to SQL Server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Disk configuration to apply to SQL Server.")]
@@ -785,9 +797,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Disk configuration to apply to SQL Server.",
         SerializedName = @"diskConfigurationType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType SqlStorageUpdateSettingDiskConfigurationType { get => _parametersBody.SqlStorageUpdateSettingDiskConfigurationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType)""); set => _parametersBody.SqlStorageUpdateSettingDiskConfigurationType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NEW", "EXTEND", "ADD")]
+        public string SqlStorageUpdateSettingDiskConfigurationType { get => _parametersBody.SqlStorageUpdateSettingDiskConfigurationType ?? null; set => _parametersBody.SqlStorageUpdateSettingDiskConfigurationType = value; }
 
         /// <summary>Virtual machine disk count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Virtual machine disk count.")]
@@ -887,7 +899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         Description = @"Logical Unit Numbers for the disks.",
         SerializedName = @"luns",
         PossibleTypes = new [] { typeof(int) })]
-        public int[] SqlTempDbSettingLun { get => _parametersBody.SqlTempDbSettingLun ?? null /* arrayOf */; set => _parametersBody.SqlTempDbSettingLun = value; }
+        public int[] SqlTempDbSettingLun { get => _parametersBody.SqlTempDbSettingLun?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.SqlTempDbSettingLun = (value != null ? new System.Collections.Generic.List<int>(value) : null); }
 
         /// <summary>SQL Server tempdb persist folder choice</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server tempdb persist folder choice")]
@@ -932,9 +944,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"SQL Server workload type.",
         SerializedName = @"sqlWorkloadType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType SqlWorkloadTypeUpdateSettingSqlWorkloadType { get => _parametersBody.SqlWorkloadTypeUpdateSettingSqlWorkloadType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType)""); set => _parametersBody.SqlWorkloadTypeUpdateSettingSqlWorkloadType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("GENERAL", "OLTP", "DW")]
+        public string SqlWorkloadTypeUpdateSettingSqlWorkloadType { get => _parametersBody.SqlWorkloadTypeUpdateSettingSqlWorkloadType ?? null; set => _parametersBody.SqlWorkloadTypeUpdateSettingSqlWorkloadType = value; }
 
         /// <summary>Disk configuration to apply to SQL Server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Disk configuration to apply to SQL Server.")]
@@ -944,9 +956,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Disk configuration to apply to SQL Server.",
         SerializedName = @"diskConfigurationType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType StorageConfigurationSettingDiskConfigurationType { get => _parametersBody.StorageConfigurationSettingDiskConfigurationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType)""); set => _parametersBody.StorageConfigurationSettingDiskConfigurationType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NEW", "EXTEND", "ADD")]
+        public string StorageConfigurationSettingDiskConfigurationType { get => _parametersBody.StorageConfigurationSettingDiskConfigurationType ?? null; set => _parametersBody.StorageConfigurationSettingDiskConfigurationType = value; }
 
         /// <summary>SQL Server SystemDb Storage on DataPool if true.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SQL Server SystemDb Storage on DataPool if true.")]
@@ -967,9 +979,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Storage workload type.",
         SerializedName = @"storageWorkloadType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType StorageConfigurationSettingStorageWorkloadType { get => _parametersBody.StorageConfigurationSettingStorageWorkloadType ?? ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType)""); set => _parametersBody.StorageConfigurationSettingStorageWorkloadType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("GENERAL", "OLTP", "DW")]
+        public string StorageConfigurationSettingStorageWorkloadType { get => _parametersBody.StorageConfigurationSettingStorageWorkloadType ?? null; set => _parametersBody.StorageConfigurationSettingStorageWorkloadType = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -985,7 +997,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -998,8 +1011,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// ARM Resource id of underlying virtual machine created from SQL marketplace image.
@@ -1065,24 +1078,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -1120,9 +1133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone._parametersBody = this._parametersBody;
+            clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
-            clone.SubscriptionId = this.SubscriptionId;
             return clone;
         }
 
@@ -1193,11 +1206,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -1209,10 +1247,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -1222,7 +1276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzSqlVM_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzSqlVM_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzSqlVM_CreateExpanded()
         {
@@ -1288,7 +1342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -1301,12 +1355,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SqlVirtualMachinesCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, _parametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.SqlVirtualMachinesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -1344,12 +1398,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -1366,15 +1420,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -1384,12 +1438,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine> response)
         {
             using( NoSynchronizationContext )
             {
@@ -1401,8 +1455,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

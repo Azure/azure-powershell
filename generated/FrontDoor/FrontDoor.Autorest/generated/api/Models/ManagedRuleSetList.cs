@@ -13,12 +13,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal
     {
 
+        /// <summary>List of exceptions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException> ExceptionListException { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionListInternal)ExceptionsList).Exception; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionListInternal)ExceptionsList).Exception = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="ExceptionsList" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList _exceptionsList;
+
+        /// <summary>List of exceptions applied on the managed rule sets.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList ExceptionsList { get => (this._exceptionsList = this._exceptionsList ?? new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionList()); set => this._exceptionsList = value; }
+
         /// <summary>Backing field for <see cref="ManagedRuleSet" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet> _managedRuleSet;
 
         /// <summary>List of rule sets.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet> ManagedRuleSet { get => this._managedRuleSet; set => this._managedRuleSet = value; }
+
+        /// <summary>Internal Acessors for ExceptionsList</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal.ExceptionsList { get => (this._exceptionsList = this._exceptionsList ?? new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionList()); set { {_exceptionsList = value;} } }
 
         /// <summary>Creates an new <see cref="ManagedRuleSetList" /> instance.</summary>
         public ManagedRuleSetList()
@@ -30,6 +44,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     public partial interface IManagedRuleSetList :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
+        /// <summary>List of exceptions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of exceptions.",
+        SerializedName = @"exceptions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException> ExceptionListException { get; set; }
         /// <summary>List of rule sets.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
@@ -47,6 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     internal partial interface IManagedRuleSetListInternal
 
     {
+        /// <summary>List of exceptions.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException> ExceptionListException { get; set; }
+        /// <summary>List of exceptions applied on the managed rule sets.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList ExceptionsList { get; set; }
         /// <summary>List of rule sets.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet> ManagedRuleSet { get; set; }
 

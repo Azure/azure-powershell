@@ -15,5 +15,6 @@ namespace Microsoft.Azure.Management.Storage.Models
     {
         public const string PrivateLink = "PrivateLink";
         public const string AAD = "AAD";
+        public const string All = "All";
     }
 }

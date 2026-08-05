@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets resource ID.
+        /// Gets or sets resource ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
+        public string Id {get; set; }
 
         /// <summary>
         /// Gets resource name.

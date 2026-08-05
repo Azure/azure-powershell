@@ -23,7 +23,7 @@ Updates the alert rule.
 https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateScheduled', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
@@ -160,15 +160,15 @@ function Update-AzSentinelAlertRule {
 
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT", "Office 365 Advanced Threat Protection", "Microsoft Defender Advanced Threat Protection")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName]
+        [System.String]
         ${ProductFilter},
             
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity[]]
+        [System.String[]]
         #High, Medium, Low, Informational
         ${SeveritiesFilter},
 
@@ -209,18 +209,17 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateScheduled')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity]
+        [System.String]
         ${Severity},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
         [System.String[]]
         ${Tactic},
             
@@ -273,9 +272,9 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateScheduled')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
+        [System.String[]]
         ${GroupByAlertDetail}, 
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -283,16 +282,16 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [string[]] 
+        [System.String[]]
         ${GroupByCustomDetail},
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
         [Parameter(ParameterSetName = 'UpdateScheduled')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
+        [System.String[]]
         ${GroupByEntity},
     
         
@@ -302,7 +301,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         #'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]]
         ${EntityMapping},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -352,9 +351,9 @@ function Update-AzSentinelAlertRule {
 
         [Parameter(ParameterSetName = 'UpdateScheduled')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator]
+        [string]
         ${TriggerOperator},
         
         [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -365,9 +364,9 @@ function Update-AzSentinelAlertRule {
 
         [Parameter(ParameterSetName = 'UpdateScheduled')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind]
+        [string]
         ${EventGroupingSettingAggregationKind},
             
         [Parameter()]

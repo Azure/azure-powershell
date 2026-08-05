@@ -70,6 +70,16 @@ The first command gets the container of type AzureStorage, and then stores it in
 The second command gets the Backup item whose friendlyName matches the value passed in FriendlyName Parameter, and then stores it in the $BackupItem variable.
 Using FriendlyName parameter can result in returning more than one Azure File Share. In such cases, execute the cmdlet by passing value for -Name parameter as the Name property returned in the result set of $BackupItem.
 
+### Example 3: List soft-deleted Azure File Share items
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName "StorageAccount1" -VaultId $vault.ID
+$softDeletedItems = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -DeleteState SoftDeleted
+```
+
+Lists Azure File Share backup items that have been disabled with `Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints` and are currently in the soft-deleted state. These items can be rehydrated with `Undo-AzRecoveryServicesBackupItemDeletion` while still within the soft-delete retention window.
+
 ## PARAMETERS
 
 ### -BackupManagementType

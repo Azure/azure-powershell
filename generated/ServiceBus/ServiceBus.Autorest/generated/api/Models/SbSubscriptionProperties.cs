@@ -189,19 +189,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetails Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetail { get => (this._countDetail = this._countDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.MessageCountDetails()); set { {_countDetail = value;} } }
 
         /// <summary>Internal Acessors for CountDetailActiveMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailActiveMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ActiveMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ActiveMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailActiveMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ActiveMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ActiveMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailDeadLetterMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).DeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).DeadLetterMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).DeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).DeadLetterMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailScheduledMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailScheduledMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ScheduledMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ScheduledMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailScheduledMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ScheduledMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).ScheduledMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailTransferDeadLetterMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailTransferDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferDeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferDeadLetterMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailTransferDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferDeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferDeadLetterMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailTransferMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailTransferMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CountDetailTransferMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetailsInternal)CountDetail).TransferMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal.CreatedAt { get => this._createdAt; set { {_createdAt = value;} } }
@@ -232,6 +232,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>The exact time the message was updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public global::System.DateTime? UpdatedAt { get => this._updatedAt; }
+
+        /// <summary>Backing field for <see cref="UserMetadata" /> property.</summary>
+        private string _userMetadata;
+
+        /// <summary>Gets and Sets Metadata of User.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
+        public string UserMetadata { get => this._userMetadata; set => this._userMetadata = value; }
 
         /// <summary>Creates an new <see cref="SbSubscriptionProperties" /> instance.</summary>
         public SbSubscriptionProperties()
@@ -538,6 +545,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"updatedAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? UpdatedAt { get;  }
+        /// <summary>Gets and Sets Metadata of User.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets and Sets Metadata of User.",
+        SerializedName = @"userMetadata",
+        PossibleTypes = new [] { typeof(string) })]
+        string UserMetadata { get; set; }
 
     }
     /// Description of Subscription Resource.
@@ -618,6 +636,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         string Status { get; set; }
         /// <summary>The exact time the message was updated.</summary>
         global::System.DateTime? UpdatedAt { get; set; }
+        /// <summary>Gets and Sets Metadata of User.</summary>
+        string UserMetadata { get; set; }
 
     }
 }

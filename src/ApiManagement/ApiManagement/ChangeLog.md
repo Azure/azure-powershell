@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.0
+* Added ChangeSafety Support
+
 ## Version 4.1.0
 * Upgraded nuget package to signed package.
 * Fixed model creation parameters of ApiCreateOrUpdateParameter, ProductContract, SubscriptionCreateParameters, GroupCreateParameters, OpenidConnectProviderContract, IdentityProviderCreateContract, BackendContract, CacheContract and DiagnosticContract with [#26672].

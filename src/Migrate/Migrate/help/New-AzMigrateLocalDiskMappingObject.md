@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput
 
 ## NOTES
 

@@ -19,6 +19,13 @@ Remove-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleI
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityAlertRule
+```
+Remove-AzSentinelAlertRuleAction -Id <String> -AlertRuleInputObject <ISecurityInsightsIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzSentinelAlertRuleAction -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>]
@@ -38,6 +45,21 @@ Remove-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -Works
 This command removes an alert rule action.
 
 ## PARAMETERS
+
+### -AlertRuleInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: DeleteViaIdentityAlertRule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -60,7 +82,7 @@ Action ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityAlertRule
 Aliases: ActionId
 
 Required: True
@@ -72,7 +94,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity

@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.6.0
+* Added ChangeSafety Support
+
 ## Version 1.5.1
 * Migrated SDK generation from autorest csharp to autorest powershell.
 

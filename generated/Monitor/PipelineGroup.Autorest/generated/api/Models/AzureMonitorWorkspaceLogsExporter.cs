@@ -34,47 +34,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
         public string ApiStream { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfigInternal)Api).Stream; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfigInternal)Api).Stream = value ; }
 
-        /// <summary>Backing field for <see cref="Cache" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration _cache;
-
-        /// <summary>Cache configurations.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration Cache { get => (this._cache = this._cache ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfiguration()); set => this._cache = value; }
-
-        /// <summary>Max storage usage in megabytes.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? CacheMaxStorageUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfigurationInternal)Cache).MaxStorageUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfigurationInternal)Cache).MaxStorageUsage = value ?? default(int); }
-
-        /// <summary>Retention period in minutes.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? CacheRetentionPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfigurationInternal)Cache).RetentionPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfigurationInternal)Cache).RetentionPeriod = value ?? default(int); }
-
-        /// <summary>Backing field for <see cref="Concurrency" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration _concurrency;
-
-        /// <summary>Concurrency configuration for the exporter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration Concurrency { get => (this._concurrency = this._concurrency ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfiguration()); set => this._concurrency = value; }
-
-        /// <summary>Size of the queue for log batches.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? ConcurrencyBatchQueueSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfigurationInternal)Concurrency).BatchQueueSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfigurationInternal)Concurrency).BatchQueueSize = value ?? default(int); }
-
-        /// <summary>Number of parallel workers processing the log queues.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? ConcurrencyWorkerCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfigurationInternal)Concurrency).WorkerCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfigurationInternal)Concurrency).WorkerCount = value ?? default(int); }
-
         /// <summary>Internal Acessors for Api</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfig Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal.Api { get => (this._api = this._api ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsApiConfig()); set { {_api = value;} } }
 
         /// <summary>Internal Acessors for ApiSchema</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISchemaMap Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal.ApiSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfigInternal)Api).Schema; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsApiConfigInternal)Api).Schema = value ?? null /* model class */; }
 
-        /// <summary>Internal Acessors for Cache</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal.Cache { get => (this._cache = this._cache ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfiguration()); set { {_cache = value;} } }
+        /// <summary>Internal Acessors for Persistence</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal.Persistence { get => (this._persistence = this._persistence ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfiguration()); set { {_persistence = value;} } }
 
-        /// <summary>Internal Acessors for Concurrency</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureMonitorWorkspaceLogsExporterInternal.Concurrency { get => (this._concurrency = this._concurrency ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfiguration()); set { {_concurrency = value;} } }
+        /// <summary>Backing field for <see cref="Persistence" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration _persistence;
+
+        /// <summary>Persistence options for the exporter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration Persistence { get => (this._persistence = this._persistence ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfiguration()); set => this._persistence = value; }
+
+        /// <summary>Max storage usage in gigabytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public int? PersistenceMaxStorageUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfigurationInternal)Persistence).MaxStorageUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfigurationInternal)Persistence).MaxStorageUsage = value ?? default(int); }
+
+        /// <summary>Retention period in minutes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public int? PersistenceRetentionPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfigurationInternal)Persistence).RetentionPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfigurationInternal)Persistence).RetentionPeriod = value ?? default(int); }
 
         /// <summary>Record Map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
@@ -140,17 +122,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"stream",
         PossibleTypes = new [] { typeof(string) })]
         string ApiStream { get; set; }
-        /// <summary>Max storage usage in megabytes.</summary>
+        /// <summary>Max storage usage in gigabytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Max storage usage in megabytes.",
+        Description = @"Max storage usage in gigabytes.",
         SerializedName = @"maxStorageUsage",
         PossibleTypes = new [] { typeof(int) })]
-        int? CacheMaxStorageUsage { get; set; }
+        int? PersistenceMaxStorageUsage { get; set; }
         /// <summary>Retention period in minutes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -161,29 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Description = @"Retention period in minutes.",
         SerializedName = @"retentionPeriod",
         PossibleTypes = new [] { typeof(int) })]
-        int? CacheRetentionPeriod { get; set; }
-        /// <summary>Size of the queue for log batches.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Size of the queue for log batches.",
-        SerializedName = @"batchQueueSize",
-        PossibleTypes = new [] { typeof(int) })]
-        int? ConcurrencyBatchQueueSize { get; set; }
-        /// <summary>Number of parallel workers processing the log queues.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Number of parallel workers processing the log queues.",
-        SerializedName = @"workerCount",
-        PossibleTypes = new [] { typeof(int) })]
-        int? ConcurrencyWorkerCount { get; set; }
+        int? PersistenceRetentionPeriod { get; set; }
         /// <summary>Record Map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
@@ -242,18 +202,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// Stream name in destination. Azure Monitor stream is related to the destination table.
         /// </summary>
         string ApiStream { get; set; }
-        /// <summary>Cache configurations.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ICacheConfiguration Cache { get; set; }
-        /// <summary>Max storage usage in megabytes.</summary>
-        int? CacheMaxStorageUsage { get; set; }
+        /// <summary>Persistence options for the exporter.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporterPersistenceConfiguration Persistence { get; set; }
+        /// <summary>Max storage usage in gigabytes.</summary>
+        int? PersistenceMaxStorageUsage { get; set; }
         /// <summary>Retention period in minutes.</summary>
-        int? CacheRetentionPeriod { get; set; }
-        /// <summary>Concurrency configuration for the exporter.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IConcurrencyConfiguration Concurrency { get; set; }
-        /// <summary>Size of the queue for log batches.</summary>
-        int? ConcurrencyBatchQueueSize { get; set; }
-        /// <summary>Number of parallel workers processing the log queues.</summary>
-        int? ConcurrencyWorkerCount { get; set; }
+        int? PersistenceRetentionPeriod { get; set; }
         /// <summary>Record Map.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IRecordMap> SchemaRecordMap { get; set; }
         /// <summary>

@@ -89,6 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {_size = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNumber>("size"), out var __jsonSize) ? (long?)__jsonSize : _size;}
             {_itemsCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNumber>("items_count"), out var __jsonItemsCount) ? (long?)__jsonItemsCount : _itemsCount;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.SnapshotTags.FromJson(__jsonTags) : _tag;}
+            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
             AfterFromJson(json);
         }
 
@@ -147,6 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
                 AddIf( null != this._itemsCount ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNumber((long)this._itemsCount) : null, "items_count" ,container.Add );
             }
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
+            AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

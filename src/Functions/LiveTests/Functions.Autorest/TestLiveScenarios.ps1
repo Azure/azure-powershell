@@ -26,12 +26,12 @@ Invoke-LiveTestScenario -Name "Update function app" -Description "Test updating 
     $rgName = $rg.ResourceGroupName
     $saName = New-LiveTestStorageAccountName
     $funcAppName = New-LiveTestResourceName
-    $location = "eastus"
+    $location = "westus"
 
     New-AzStorageAccount -ResourceGroupName $rgName -Name $saName -Location $location -SkuName Standard_LRS
     $funcApp = New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.4
     $funcApp | Update-AzFunctionApp -Tag @{ "key" = "value" } -Force
-    Update-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -IdentityType SystemAssigned -Force
+    Update-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -EnableSystemAssignedIdentity $true -Force
 
     $actual = Get-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName
     Assert-NotNull $actual
@@ -49,7 +49,7 @@ Invoke-LiveTestScenario -Name "Remove function app" -Description "Test removing 
     $rgName = $rg.ResourceGroupName
     $saName = New-LiveTestStorageAccountName
     $funcAppName = New-LiveTestResourceName
-    $location = "centralus"
+    $location = "westus"
 
     New-AzStorageAccount -ResourceGroupName $rgName -Name $saName -Location $location -SkuName Standard_LRS
     New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.4

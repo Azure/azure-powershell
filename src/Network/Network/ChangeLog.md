@@ -22,6 +22,27 @@
 * Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network
     - Supports moving one or more IP configurations in a single operation
     - The operation is long-running (asynchronous) and supports the `-AsJob` parameter
+* Added new cmdlets for ConnectionPolicy management under VirtualHub
+    - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
+    - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
+    - `Set-AzConnectionPolicy`: Update an existing ConnectionPolicy under a VirtualHub
+    - `Remove-AzConnectionPolicy`: Delete a ConnectionPolicy from a VirtualHub
+* Added Managed HSM support to Application Gateway SSL certificate cmdlets (`New-AzApplicationGatewaySslCertificate`, `Set-AzApplicationGatewaySslCertificate`, `Add-AzApplicationGatewaySslCertificate`) with `-HsmKeyId` and `-HsmPublicCertData` parameters.
+* Updated Virtual Network and Virtual Network Appliance cmdlets to use new properties.
+    - `New-AzVirtualNetwork`: Added `-SummarizedGatewayPrefix` parameter to specify summarized gateway prefixes advertised for the virtual network, and exposed `SummarizedGatewayPrefixes` on the returned object.
+    - `New-AzVirtualNetworkAppliance`: Added `-PrivateIPAddressVersion` parameter (IPv4, DualStack) to support dual-stack Virtual Network Appliances, and exposed `PrivateIPAddressVersion` on the returned object.
+* Added support for equal-cost multi-path (ECMP) routing in route tables
+    - Added the `VirtualApplianceEcmp` next hop type to `New-AzRouteConfig`, `Add-AzRouteConfig`, and `Set-AzRouteConfig`
+    - Extended the `-NextHopIpAddress` parameter to accept a list of next hop IP addresses (2 to 64) for ECMP routes when the next hop type is `VirtualApplianceEcmp`
+    - Added the `NextHop` property to the route output returned by `Get-AzRouteTable`
+* Added DisablePeeringRoute support for Route Table
+    - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
+    - Supported values are `None` and `All`
+* Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
+    - `New-AzNatGateway`
+    - `Set-AzNatGateway`
+* Fixed `Get-AzPrivateDnsZoneGroup` list mode passing the resource group and private endpoint names to the SDK in the wrong order, which caused a `ResourceGroupNotFound` error when listing private DNS zone groups without the `-Name` parameter.
+* Added properties `ServiceTag`, `ReadinessState`, `Description`, and `OutboundSupported` to `Get-AzNetworkSecurityPerimeterAssociableResourceType` response.
 * Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
@@ -32,12 +53,23 @@
     - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
     - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
-* Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
-    - Added the `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
-    - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzLoadBalancerFrontendIpConfig`.
+* Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
+* Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
 * Added cmdlets for cloud service public IP address operations:
     - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
     - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
+
+## Version 8.0.1
+* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+
+## Version 8.0.0
+* Added ChangeSafety Support
+* Changed `UserAssignedIdentityId` type to string[]
+
+## Version 7.27.0
+* Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
+    - Added the `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzLoadBalancerFrontendIpConfig`.
 
 ## Version 7.26.0
 * Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets

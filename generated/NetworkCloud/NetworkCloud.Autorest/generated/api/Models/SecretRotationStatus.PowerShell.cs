@@ -141,6 +141,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultId = (string) content.GetValueForProperty("SecretArchiveReferenceKeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultId, global::System.Convert.ToString);
             }
+            if (content.Contains("SecretArchiveReferenceKeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultUri = (string) content.GetValueForProperty("SecretArchiveReferenceKeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultUri, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -189,6 +193,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("SecretArchiveReferenceKeyVaultId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultId = (string) content.GetValueForProperty("SecretArchiveReferenceKeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecretArchiveReferenceKeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultUri = (string) content.GetValueForProperty("SecretArchiveReferenceKeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal)this).SecretArchiveReferenceKeyVaultUri, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

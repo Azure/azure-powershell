@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = SnaphotPolicyObject.ResourceGroupName;
-                var NameParts = SnaphotPolicyObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(SnaphotPolicyObject.Id);
                 AccountName = NameParts[0];
                 Name = NameParts[1];
             }

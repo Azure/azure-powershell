@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstanceportobject
 schema: 2.0.0
 ---
 
 # New-AzContainerInstancePortObject
 
 ## SYNOPSIS
-Create a in-memory object for ContainerPort
+Create an in-memory object for ContainerPort.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzContainerInstancePortObject -Port <Int32> [-Protocol <String>] [<CommonPar
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ContainerPort
+Create an in-memory object for ContainerPort.
 
 ## EXAMPLES
 
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerPort
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ContainerPort
 
 ## NOTES
 

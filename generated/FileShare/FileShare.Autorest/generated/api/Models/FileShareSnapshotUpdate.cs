@@ -39,8 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Read = true,
-        Create = true,
+        Read = false,
+        Create = false,
         Update = true,
         Description = @"The metadata",
         SerializedName = @"metadata",

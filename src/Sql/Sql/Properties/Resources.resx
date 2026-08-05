@@ -670,9 +670,6 @@
   <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
     <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
   </data>
-  <data name="MissingEnableSoftDelete" xml:space="preserve">
-    <value>SoftDeleteRetentionDays parameter can only be specified if EnableSoftDelete is explicitly specified.</value>
-  </data>
   <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
     <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
   </data>
@@ -780,12 +777,6 @@
   </data>
   <data name="ResourceGroupNotFoundForRestore" xml:space="preserve">
     <value>Cannot restore deleted server '{0}' because resource group '{1}' does not exist. Please create the resource group before restoring the server.</value>
-  </data>
-  <data name="InvalidSoftDeleteRetentionDaysForDisablingSoftDelete" xml:space="preserve">
-    <value>SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false.</value>
-  </data>
-  <data name="InvalidSoftDeleteRetentionDaysRange" xml:space="preserve">
-    <value>SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true.</value>
   </data>
   <data name="LockAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Locking the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>

@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 4.1.1
+* Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.
+
+## Version 4.1.0
+* Added ChangeSafety Support
+
 ## Version 4.0.1
 * Updated Azure.Core from 1.47.3 to 1.50.0
 * Updated the implementation of 'New-AzBatchApplicationPackage' cmdlet to not call 'Get-AzBatchApplicationPackage' to retrieve storage keys for security improvements. No behavior changes to the cmdlet.

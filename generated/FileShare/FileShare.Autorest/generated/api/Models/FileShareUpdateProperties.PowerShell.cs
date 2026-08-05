@@ -124,13 +124,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
-            if (content.Contains("PublicAccessPropertyAllowedSubnet"))
+            if (content.Contains("AllowedSubnet"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicAccessPropertyAllowedSubnet = (System.Collections.Generic.List<string>) content.GetValueForProperty("PublicAccessPropertyAllowedSubnet",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicAccessPropertyAllowedSubnet, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).AllowedSubnet = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedSubnet",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).AllowedSubnet, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("NfProtocolPropertyRootSquash"))
+            if (content.Contains("RootSquash"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).NfProtocolPropertyRootSquash = (string) content.GetValueForProperty("NfProtocolPropertyRootSquash",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).NfProtocolPropertyRootSquash, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).RootSquash = (string) content.GetValueForProperty("RootSquash",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).RootSquash, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).EncryptionInTransitRequired = (string) content.GetValueForProperty("EncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).EncryptionInTransitRequired, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -173,13 +177,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
-            if (content.Contains("PublicAccessPropertyAllowedSubnet"))
+            if (content.Contains("AllowedSubnet"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicAccessPropertyAllowedSubnet = (System.Collections.Generic.List<string>) content.GetValueForProperty("PublicAccessPropertyAllowedSubnet",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).PublicAccessPropertyAllowedSubnet, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).AllowedSubnet = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedSubnet",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).AllowedSubnet, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("NfProtocolPropertyRootSquash"))
+            if (content.Contains("RootSquash"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).NfProtocolPropertyRootSquash = (string) content.GetValueForProperty("NfProtocolPropertyRootSquash",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).NfProtocolPropertyRootSquash, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).RootSquash = (string) content.GetValueForProperty("RootSquash",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).RootSquash, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).EncryptionInTransitRequired = (string) content.GetValueForProperty("EncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdatePropertiesInternal)this).EncryptionInTransitRequired, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

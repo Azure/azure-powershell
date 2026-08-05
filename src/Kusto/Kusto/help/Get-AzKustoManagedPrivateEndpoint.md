@@ -26,6 +26,12 @@ Get-AzKustoManagedPrivateEndpoint -ClusterName <String> -Name <String> -Resource
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzKustoManagedPrivateEndpoint -Name <String> -ClusterInputObject <IKustoIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzKustoManagedPrivateEndpoint -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>]
@@ -66,6 +72,21 @@ The above command returns the Kusto ManagedPrivateEndpoint named "ManagedPrivate
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
@@ -99,7 +120,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -118,7 +138,7 @@ The name of the managed private endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: ManagedPrivateEndpointName
 
 Required: True
@@ -168,7 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
 
 ## NOTES
 

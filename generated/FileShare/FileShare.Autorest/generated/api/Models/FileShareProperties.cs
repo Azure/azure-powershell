@@ -11,6 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileSharePropertiesInternal
     {
 
+        /// <summary>The allowed set of subnets when access is restricted.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> AllowedSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPublicAccessPropertiesInternal)PublicAccessProperty).AllowedSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPublicAccessPropertiesInternal)PublicAccessProperty).AllowedSubnet = value ?? null /* arrayOf */; }
+
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Inlined)]
+        public string EncryptionInTransitRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)NfsProtocolProperty).EncryptionInTransitRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)NfsProtocolProperty).EncryptionInTransitRequired = value ?? null; }
+
         /// <summary>Backing field for <see cref="HostName" /> property.</summary>
         private string _hostName;
 
@@ -83,10 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Owned)]
         public string MountName { get => this._mountName; set => this._mountName = value; }
-
-        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Inlined)]
-        public string NfProtocolPropertyRootSquash { get => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)NfsProtocolProperty).RootSquash; set => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)NfsProtocolProperty).RootSquash = value ?? null; }
 
         /// <summary>Backing field for <see cref="NfsProtocolProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolProperties _nfsProtocolProperty;
@@ -180,10 +184,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPublicAccessProperties PublicAccessProperty { get => (this._publicAccessProperty = this._publicAccessProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.PublicAccessProperties()); set => this._publicAccessProperty = value; }
 
-        /// <summary>The allowed set of subnets when access is restricted.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> PublicAccessPropertyAllowedSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPublicAccessPropertiesInternal)PublicAccessProperty).AllowedSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPublicAccessPropertiesInternal)PublicAccessProperty).AllowedSubnet = value ?? null /* arrayOf */; }
-
         /// <summary>Backing field for <see cref="PublicNetworkAccess" /> property.</summary>
         private string _publicNetworkAccess;
 
@@ -200,6 +200,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Owned)]
         public string Redundancy { get => this._redundancy; set => this._redundancy = value; }
 
+        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Inlined)]
+        public string RootSquash { get => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)NfsProtocolProperty).RootSquash; set => ((Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal)NfsProtocolProperty).RootSquash = value ?? null; }
+
         /// <summary>Creates an new <see cref="FileShareProperties" /> instance.</summary>
         public FileShareProperties()
         {
@@ -210,6 +214,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
     public partial interface IFileShareProperties :
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IJsonSerializable
     {
+        /// <summary>The allowed set of subnets when access is restricted.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The allowed set of subnets when access is restricted.",
+        SerializedName = @"allowedSubnets",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AllowedSubnet { get; set; }
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Encryption in transit defines whether data is encrypted for NFS shares.",
+        SerializedName = @"encryptionInTransitRequired",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EncryptionInTransitRequired { get; set; }
         /// <summary>The host name of the file share.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
         Required = false,
@@ -274,18 +301,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         SerializedName = @"mountName",
         PossibleTypes = new [] { typeof(string) })]
         string MountName { get; set; }
-        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Root squash defines how root users on clients are mapped to the NFS share.",
-        SerializedName = @"rootSquash",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
-        string NfProtocolPropertyRootSquash { get; set; }
         /// <summary>The list of associated private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
         Required = false,
@@ -396,17 +411,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted", "Created", "TransientFailure", "Creating", "Patching", "Posting")]
         string ProvisioningState { get;  }
-        /// <summary>The allowed set of subnets when access is restricted.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The allowed set of subnets when access is restricted.",
-        SerializedName = @"allowedSubnets",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> PublicAccessPropertyAllowedSubnet { get; set; }
         /// <summary>
         /// Gets or sets allow or disallow public network access to azure managed file share
         /// </summary>
@@ -433,12 +437,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Local", "Zone")]
         string Redundancy { get; set; }
+        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Root squash defines how root users on clients are mapped to the NFS share.",
+        SerializedName = @"rootSquash",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
+        string RootSquash { get; set; }
 
     }
     /// File share properties
     internal partial interface IFileSharePropertiesInternal
 
     {
+        /// <summary>The allowed set of subnets when access is restricted.</summary>
+        System.Collections.Generic.List<string> AllowedSubnet { get; set; }
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EncryptionInTransitRequired { get; set; }
         /// <summary>The host name of the file share.</summary>
         string HostName { get; set; }
         /// <summary>
@@ -458,9 +479,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         /// system.
         /// </summary>
         string MountName { get; set; }
-        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
-        string NfProtocolPropertyRootSquash { get; set; }
         /// <summary>Protocol settings specific NFS.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolProperties NfsProtocolProperty { get; set; }
         /// <summary>The list of associated private endpoint connections.</summary>
@@ -494,8 +512,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         string ProvisioningState { get; set; }
         /// <summary>The set of properties for control public access.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPublicAccessProperties PublicAccessProperty { get; set; }
-        /// <summary>The allowed set of subnets when access is restricted.</summary>
-        System.Collections.Generic.List<string> PublicAccessPropertyAllowedSubnet { get; set; }
         /// <summary>
         /// Gets or sets allow or disallow public network access to azure managed file share
         /// </summary>
@@ -504,6 +520,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         /// <summary>The chosen redundancy level of the file share.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Local", "Zone")]
         string Redundancy { get; set; }
+        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
+        string RootSquash { get; set; }
 
     }
 }

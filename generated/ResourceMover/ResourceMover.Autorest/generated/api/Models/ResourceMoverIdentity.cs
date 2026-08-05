@@ -60,6 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -68,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Move Collection Name.",
         SerializedName = @"moveCollectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Move Resource Name.",
         SerializedName = @"moveResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Resource Group Name.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -92,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

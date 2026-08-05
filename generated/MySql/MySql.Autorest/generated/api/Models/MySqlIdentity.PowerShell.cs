@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.MySqlIdentity"
         /// />.
         /// </summary>
@@ -112,13 +120,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).ServerName = (string) content.GetValueForProperty("ServerName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).ServerName, global::System.Convert.ToString);
             }
+            if (content.Contains("BackupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName = (string) content.GetValueForProperty("BackupName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName, global::System.Convert.ToString);
+            }
             if (content.Contains("FirewallRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).FirewallRuleName = (string) content.GetValueForProperty("FirewallRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).FirewallRuleName, global::System.Convert.ToString);
-            }
-            if (content.Contains("VirtualNetworkRuleName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).VirtualNetworkRuleName = (string) content.GetValueForProperty("VirtualNetworkRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).VirtualNetworkRuleName, global::System.Convert.ToString);
             }
             if (content.Contains("DatabaseName"))
             {
@@ -132,17 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).LocationName, global::System.Convert.ToString);
             }
-            if (content.Contains("SecurityAlertPolicyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).SecurityAlertPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SecurityAlertPolicyName?) content.GetValueForProperty("SecurityAlertPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).SecurityAlertPolicyName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SecurityAlertPolicyName.CreateFrom);
-            }
-            if (content.Contains("BackupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName = (string) content.GetValueForProperty("BackupName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName, global::System.Convert.ToString);
-            }
             if (content.Contains("AdvancedThreatProtectionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName?) content.GetValueForProperty("AdvancedThreatProtectionName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName = (string) content.GetValueForProperty("AdvancedThreatProtectionName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -177,13 +177,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).ServerName = (string) content.GetValueForProperty("ServerName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).ServerName, global::System.Convert.ToString);
             }
+            if (content.Contains("BackupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName = (string) content.GetValueForProperty("BackupName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName, global::System.Convert.ToString);
+            }
             if (content.Contains("FirewallRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).FirewallRuleName = (string) content.GetValueForProperty("FirewallRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).FirewallRuleName, global::System.Convert.ToString);
-            }
-            if (content.Contains("VirtualNetworkRuleName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).VirtualNetworkRuleName = (string) content.GetValueForProperty("VirtualNetworkRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).VirtualNetworkRuleName, global::System.Convert.ToString);
             }
             if (content.Contains("DatabaseName"))
             {
@@ -197,17 +197,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).LocationName, global::System.Convert.ToString);
             }
-            if (content.Contains("SecurityAlertPolicyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).SecurityAlertPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SecurityAlertPolicyName?) content.GetValueForProperty("SecurityAlertPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).SecurityAlertPolicyName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SecurityAlertPolicyName.CreateFrom);
-            }
-            if (content.Contains("BackupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName = (string) content.GetValueForProperty("BackupName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName, global::System.Convert.ToString);
-            }
             if (content.Contains("AdvancedThreatProtectionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName?) content.GetValueForProperty("AdvancedThreatProtectionName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName = (string) content.GetValueForProperty("AdvancedThreatProtectionName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -220,6 +212,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(MySqlIdentityTypeConverter))]
     public partial interface IMySqlIdentity

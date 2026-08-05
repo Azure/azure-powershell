@@ -46,25 +46,20 @@ jobs:
         New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
 
   - task: DownloadPipelineArtifact@2
-    condition: ${{ in(parameters.galleryName, 'DailyBuild', 'Sign') }}
+    condition: ${{ eq(parameters.galleryName, 'Sign') }}
     displayName: Download artifacts from ${{ parameters.galleryName }}
     inputs:
       buildType: 'specific'
-      ${{ if eq(parameters.galleryName, 'DailyBuild') }}:
-        project: $(BuildPipelineProject)
-        definition: $(BuildPipelineDefinitionId)
-        artifactName: 'artifacts'
-      ${{ elseif eq(parameters.galleryName, 'Sign') }}:
-        project: $(SignPipelineProject)
-        definition: $(SignPipelineDefinitionId)
-        artifactName: $(ArtifactName)
-        itemPattern: '**/artifacts/**'
+      project: $(SignPipelineProject)
+      definition: $(SignPipelineDefinitionId)
+      artifactName: $(ArtifactName)
+      itemPattern: '**/artifacts/**'
       ${{ if eq(replace(parameters.pipelineBuildId, ' ', ''), '') }}:
         buildVersionToDownload: 'latestFromBranch'
         branchName: refs/heads/$(PipelineBranchName)
       ${{ else }}:
         buildVersionToDownload: 'specific'
-        pipelineId: ${{ parameters.PipelineBuildId }}
+        pipelineId: ${{ parameters.pipelineBuildId }}
       targetPath: $(Pipeline.Workspace)
 
   - task: PowerShell@2

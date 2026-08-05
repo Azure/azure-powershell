@@ -16,27 +16,26 @@ This operation updates a policy exemption with the given scope and name.
 ```
 Update-AzPolicyExemption -Name <String> [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
- [-BackwardCompatible] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
- [-ExpiresOn <DateTime?>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
- [-AssignmentScopeValidation <String>] [-BackwardCompatible] [-ClearExpiration] [-Description <String>]
- [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
- [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AssignmentScopeValidation <String>] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
+ [-ExpiresOn <DateTime?>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicyExemption -InputObject <IPolicyExemption> [-ExemptionCategory <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-BackwardCompatible]
- [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
- [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-ClearExpiration]
+ [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,17 +106,6 @@ Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $Reso
 The first command creates a resource selector object that will be used to specify the exemption should only apply to resources in locations other than East US or East US 2 and stores it in the $ResourceSelector variable.
 The final command updates the policy exemption named VirtualMachineExemption with the resource selector specified by $ResourceSelector.
 
-### Example 6: [Backcompat] Clear the expiration date time
-```powershell
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -BackwardCompatible
-Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration -BackwardCompatible
-```
-
-The first command gets the policy exemption named PolicyExemption07 by using the Get-AzPolicyExemption cmdlet.
-The command stores that object in the $PolicyExemption variable.
-The second command clears the expiration date time for the policy exemption on the default subscription.
-The updated exemption will never expire.
-
 ## PARAMETERS
 
 ### -AssignmentScopeValidation
@@ -125,21 +113,6 @@ The option whether validate the exemption is at or under the assignment scope.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -335,7 +308,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy exemption.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

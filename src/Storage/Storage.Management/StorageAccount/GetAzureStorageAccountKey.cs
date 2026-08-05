@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             
 
 
-            Enum70? listkeyExpend = null;
+            Enum75? listkeyExpend = null;
             if (ListKerbKey.IsPresent)
             {
-                listkeyExpend = Enum70.Kerb;
+                listkeyExpend = Enum75.Kerb;
             }
 
             var storageKeys = this.StorageClient.StorageAccounts.ListKeys(

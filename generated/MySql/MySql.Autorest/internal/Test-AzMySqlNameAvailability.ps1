@@ -16,27 +16,27 @@
 
 <#
 .Synopsis
-Check the availability of name for resource
+Check the availability of name for server
 .Description
-Check the availability of name for resource
+Check the availability of name for server
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.INameAvailabilityRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.INameAvailability
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
-  [AdvancedThreatProtectionName <AdvancedThreatProtectionName?>]: The name of the Advanced Threat Protection state.
+  [AdvancedThreatProtectionName <String>]: The name of the Advanced Threat Protection state.
   [BackupName <String>]: The name of the backup.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
@@ -44,10 +44,8 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LocationName <String>]: The name of the location.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
   [ServerName <String>]: The name of the server.
   [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check resource name availability.
   Name <String>: Resource name to verify.
@@ -56,11 +54,22 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
 https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlnameavailability
 #>
 function Test-AzMySqlNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.INameAvailability])]
 [CmdletBinding(DefaultParameterSetName='TestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Test', Mandatory)]
+    [Parameter(ParameterSetName='TestExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [System.String]
+    # The name of the location.
+    ${LocationName},
+
     [Parameter(ParameterSetName='Test')]
     [Parameter(ParameterSetName='TestExpanded')]
+    [Parameter(ParameterSetName='TestViaJsonFilePath')]
+    [Parameter(ParameterSetName='TestViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -72,15 +81,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.INameAvailabilityRequest]
     # Request from client to check resource name availability.
-    # To construct, see NOTES section for NAMEAVAILABILITYREQUEST properties and create a hash table.
     ${NameAvailabilityRequest},
 
     [Parameter(ParameterSetName='TestExpanded', Mandatory)]
@@ -96,6 +103,18 @@ param(
     [System.String]
     # Resource type used for verification.
     ${Type},
+
+    [Parameter(ParameterSetName='TestViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Test operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='TestViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Json string supplied to the Test operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -153,16 +172,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Test = 'Az.MySql.private\Test-AzMySqlNameAvailability_Test';
             TestExpanded = 'Az.MySql.private\Test-AzMySqlNameAvailability_TestExpanded';
             TestViaIdentity = 'Az.MySql.private\Test-AzMySqlNameAvailability_TestViaIdentity';
             TestViaIdentityExpanded = 'Az.MySql.private\Test-AzMySqlNameAvailability_TestViaIdentityExpanded';
+            TestViaJsonFilePath = 'Az.MySql.private\Test-AzMySqlNameAvailability_TestViaJsonFilePath';
+            TestViaJsonString = 'Az.MySql.private\Test-AzMySqlNameAvailability_TestViaJsonString';
         }
-        if (('Test', 'TestExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Test', 'TestExpanded', 'TestViaJsonFilePath', 'TestViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -171,6 +193,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

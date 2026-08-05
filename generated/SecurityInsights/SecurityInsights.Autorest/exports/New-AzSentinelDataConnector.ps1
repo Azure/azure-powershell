@@ -23,7 +23,7 @@ Creates or updates the data connector.
 New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,17 +35,17 @@ PERMISSIONCUSTOM <PermissionsCustomsItem[]>: [Parameter(ParameterSetName = 'APIP
 
 PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: [Parameter(ParameterSetName = 'APIPolling')]
   [PermissionsDisplayText <String>]: Permission description text
-  [Provider <ProviderName?>]: Provider name
+  [Provider <String>]: Provider name
   [ProviderDisplayName <String>]: Permission provider display name
   [RequiredPermissionAction <Boolean?>]: action permission
   [RequiredPermissionDelete <Boolean?>]: delete permission
   [RequiredPermissionRead <Boolean?>]: read permission
   [RequiredPermissionWrite <Boolean?>]: write permission
-  [Scope <PermissionProviderScope?>]: Permission provider scope
+  [Scope <String>]: Permission provider scope
 
 UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-  [Type <ConnectivityType?>]: type of connectivity
-  [Value <String[]>]: Queries for checking connectivity
+  [Type <String>]: type of connectivity
+  [Value <List<String>>]: Queries for checking connectivity
 
 UICONFIGDATATYPE <LastDataReceivedDataType[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   [LastDataReceivedQuery <String>]: Query for indicate last data received
@@ -58,9 +58,7 @@ UICONFIGGRAPHQUERY <GraphQueries[]>: [Parameter(ParameterSetName = 'APIPolling',
 
 UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   [Description <String>]: Instruction step description
-  [Instruction <IConnectorInstructionModelBase[]>]: Instruction step details
-    Type <SettingType>: The kind of the setting
-    [Parameter <IAny>]: The parameters for the setting
+  [Instruction <List<IInstructionStepsInstructionsItem>>]: Instruction step details
   [Title <String>]: Instruction step title
 
 UICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
@@ -70,7 +68,7 @@ UICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector])]
 [CmdletBinding(DefaultParameterSetName='AADAATP', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -101,9 +99,9 @@ param(
     ${Id},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("AzureActiveDirectory", "AzureSecurityCenter", "MicrosoftCloudAppSecurity", "ThreatIntelligence", "ThreatIntelligenceTaxii", "Office365", "OfficeATP", "OfficeIRM", "AmazonWebServicesCloudTrail", "AmazonWebServicesS3", "AzureAdvancedThreatProtection", "MicrosoftDefenderAdvancedThreatProtection", "Dynamics365", "MicrosoftThreatProtection", "MicrosoftThreatIntelligence", "GenericUI", "APIPolling")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind]
+    [System.String]
     # Kind of the the data connection
     ${Kind},
 
@@ -130,7 +128,7 @@ param(
     [Parameter(ParameterSetName='MicrosoftDefenderAdvancedThreatProtection')]
     [Parameter(ParameterSetName='MicrosoftCloudAppSecurity')]
     [Parameter(ParameterSetName='AzureSecurityCenter')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Alerts},
@@ -156,9 +154,9 @@ param(
     ${CollectionId},
 
     [Parameter(ParameterSetName='ThreatIntelligenceTaxii', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("OnceAMinute", "OnceAnHour", "OnceADay")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency]
+    [System.String]
     ${PollingFrequency},
 
     [Parameter(ParameterSetName='ThreatIntelligenceTaxii')]
@@ -177,37 +175,37 @@ param(
     ${TaxiiLookbackPeriod},
 
     [Parameter(ParameterSetName='ThreatIntelligence')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Indicator},
 
     [Parameter(ParameterSetName='Office365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Exchange},
 
     [Parameter(ParameterSetName='Office365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${SharePoint},
 
     [Parameter(ParameterSetName='Office365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Teams},
 
     [Parameter(ParameterSetName='MicrosoftThreatProtection')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Incident},
 
     [Parameter(ParameterSetName='MicrosoftThreatIntelligence')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${BingSafetyPhishingURL},
@@ -218,7 +216,7 @@ param(
     ${BingSafetyPhishingUrlLookbackPeriod},
 
     [Parameter(ParameterSetName='MicrosoftThreatIntelligence')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${MicrosoftEmergingThreatFeed},
@@ -229,13 +227,13 @@ param(
     ${MicrosoftEmergingThreatFeedLookbackPeriod},
 
     [Parameter(ParameterSetName='MicrosoftCloudAppSecurity')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${DiscoveryLog},
 
     [Parameter(ParameterSetName='Dynamics365')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${CommonDataServiceActivity},
@@ -254,7 +252,7 @@ param(
 
     [Parameter(ParameterSetName='AmazonWebServicesS3', Mandatory)]
     [Parameter(ParameterSetName='AmazonWebServicesCloudTrail')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     ${Log},
@@ -295,30 +293,26 @@ param(
 
     [Parameter(ParameterSetName='GenericUI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.GraphQueries[]]
     # [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-    # To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
     ${UiConfigGraphQuery},
 
     [Parameter(ParameterSetName='GenericUI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.SampleQueries[]]
     # [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-    # To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
     ${UiConfigSampleQuery},
 
     [Parameter(ParameterSetName='GenericUI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType[]]
     # [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-    # To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
     ${UiConfigDataType},
 
     [Parameter(ParameterSetName='GenericUI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ConnectivityCriteria[]]
     # [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-    # To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
     ${UiConfigConnectivityCriterion},
 
     [Parameter(ParameterSetName='GenericUI', Mandatory)]
@@ -329,9 +323,8 @@ param(
 
     [Parameter(ParameterSetName='GenericUI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.InstructionSteps[]]
     # [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-    # To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
     ${UiConfigInstructionStep},
 
     [Parameter(ParameterSetName='GenericUI')]
@@ -349,16 +342,14 @@ param(
 
     [Parameter(ParameterSetName='GenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsResourceProviderItem[]]
     # [Parameter(ParameterSetName = 'APIPolling')]
-    # To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
     ${PermissionResourceProvider},
 
     [Parameter(ParameterSetName='GenericUI')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsCustomsItem[]]
     # [Parameter(ParameterSetName = 'APIPolling')]
-    # To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
     ${PermissionCustom},
 
     [Parameter()]
@@ -428,6 +419,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -463,22 +462,20 @@ begin {
             AmazonWebServicesCloudTrail = 'Az.SecurityInsights.custom\New-AzSentinelDataConnector';
             GenericUI = 'Az.SecurityInsights.custom\New-AzSentinelDataConnector';
         }
-        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id') ) {
             $PSBoundParameters['Id'] = (New-Guid).Guid
         }
-        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId')) {
+        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId') ) {
             $PSBoundParameters['TenantId'] = (Get-AzContext).Tenant.Id
         }
-        if (('GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('AvailabilityStatus')) {
+        if (('GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('AvailabilityStatus') ) {
             $PSBoundParameters['AvailabilityStatus'] = 1
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -488,6 +485,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

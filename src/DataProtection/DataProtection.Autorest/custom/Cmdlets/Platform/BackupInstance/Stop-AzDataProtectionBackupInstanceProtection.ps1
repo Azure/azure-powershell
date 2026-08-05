@@ -1,4 +1,4 @@
-﻿
+
 
 function Stop-AzDataProtectionBackupInstanceProtection
 {   
@@ -103,7 +103,7 @@ function Stop-AzDataProtectionBackupInstanceProtection
     {
         $parameterSetName = $PsCmdlet.ParameterSetName
         if($parameterSetName -eq "StopViaIdentity"){
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.StopProtectionRequest]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.StopProtectionRequest]::new()
 
             $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
             if($hasResourceGuardOperationRequest){

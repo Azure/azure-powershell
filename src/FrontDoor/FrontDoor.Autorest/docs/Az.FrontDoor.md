@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FrontDoor
-Module Guid: da373e2c-9a59-49f0-ab41-9d25ef4d1519
+Module Guid: 7d4bc594-9700-430c-9585-5cda742b26ef
 Download Help Link: https://learn.microsoft.com/powershell/module/az.frontdoor
 Help Version: 1.0.0.0
 Locale: en-US
@@ -104,6 +104,12 @@ Create an in-memory object for ManagedRuleSet.
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.
 
+### [New-AzFrontDoorWafManagedRuleSetExceptionObject](New-AzFrontDoorWafManagedRuleSetExceptionObject.md)
+Create an in-memory object for ManagedRuleSetException.
+
+### [New-AzFrontDoorWafManagedRuleSetScopeObject](New-AzFrontDoorWafManagedRuleSetScopeObject.md)
+Create an in-memory object for ManagedRuleSetScope.
+
 ### [New-AzFrontDoorWafMatchConditionObject](New-AzFrontDoorWafMatchConditionObject.md)
 Create an in-memory object for MatchCondition.
 
@@ -112,6 +118,12 @@ Create policy with specified rule set name within a resource group.
 
 ### [New-AzFrontDoorWafRuleGroupOverrideObject](New-AzFrontDoorWafRuleGroupOverrideObject.md)
 Create an in-memory object for ManagedRuleGroupOverride.
+
+### [New-AzFrontDoorWafRuleGroupScopeObject](New-AzFrontDoorWafRuleGroupScopeObject.md)
+Create an in-memory object for RuleGroupScope.
+
+### [New-AzFrontDoorWafRuleScopeObject](New-AzFrontDoorWafRuleScopeObject.md)
+Create an in-memory object for RuleScope.
 
 ### [Remove-AzFrontDoor](Remove-AzFrontDoor.md)
 Deletes an existing Front Door with the specified parameters.

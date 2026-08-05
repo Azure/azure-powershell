@@ -22,127 +22,189 @@ Query threat intelligence indicators as per filtering criteria.
 .Example
 Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceInformation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+  [ActionId <String>]: Action ID
+  [AlertRuleTemplateId <String>]: Alert rule template ID
+  [AutomationRuleId <String>]: Automation rule ID
+  [BookmarkId <String>]: Bookmark ID
+  [ConsentId <String>]: consent ID
+  [DataConnectorId <String>]: Connector ID
+  [EntityId <String>]: entity ID
+  [EntityQueryId <String>]: entity query ID
+  [EntityQueryTemplateId <String>]: entity query template ID
+  [Id <String>]: Resource identity path
+  [IncidentCommentId <String>]: Incident comment ID
+  [IncidentId <String>]: Incident ID
+  [MetadataName <String>]: The Metadata name.
+  [Name <String>]: Threat intelligence indicator name field.
+  [RelationName <String>]: Relation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleId <String>]: Alert rule ID
+  [SentinelOnboardingStateName <String>]: The Sentinel onboarding state name. Supports - default
+  [SettingsName <String>]: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+  [SourceControlId <String>]: Source control Id
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
+
 SORTBY <IThreatIntelligenceSortingCriteria[]>: Columns to sort by and sorting order
   [ItemKey <String>]: Column name
-  [SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]: Sorting order (ascending/descending/unsorted).
+  [SortOrder <String>]: Sorting order (ascending/descending/unsorted).
 .Link
 https://learn.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery
 #>
 function Invoke-AzSentinelThreatIntelligenceIndicatorQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceInformation])]
 [CmdletBinding(DefaultParameterSetName='QueryExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='QueryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='QueryViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='QueryViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # The name of the workspace.
-    ${WorkspaceName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaJsonFilePath')]
+    [Parameter(ParameterSetName='QueryViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='QueryViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='QueryViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [System.String]
+    # The name of the workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String[]]
     # Ids of threat intelligence indicators
     ${Id},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Parameter to include/exclude disabled indicators.
     ${IncludeDisabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String[]]
     # Keywords for searching threat intelligence indicators
     ${Keyword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.Int32]
     # Maximum confidence.
     ${MaxConfidence},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     # End time for ValidUntil filter.
     ${MaxValidUntil},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.Int32]
     # Minimum confidence.
     ${MinConfidence},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     # Start time for ValidUntil filter.
     ${MinValidUntil},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.Int32]
     # Page size
     ${PageSize},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String[]]
     # Pattern types
     ${PatternType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     # Skip token.
     ${SkipToken},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceSortingCriteria[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceSortingCriteria[]]
     # Columns to sort by and sorting order
-    # To construct, see NOTES section for SORTBY properties and create a hash table.
     ${SortBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String[]]
     # Sources of threat intelligence indicators
     ${Source},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='QueryExpanded')]
+    [Parameter(ParameterSetName='QueryViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String[]]
     # Threat types of threat intelligence indicators
     ${ThreatType},
+
+    [Parameter(ParameterSetName='QueryViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Query operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='QueryViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Query operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -200,6 +262,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -220,10 +290,11 @@ begin {
 
         $mapping = @{
             QueryExpanded = 'Az.SecurityInsights.private\Invoke-AzSentinelThreatIntelligenceIndicatorQuery_QueryExpanded';
+            QueryViaIdentityExpanded = 'Az.SecurityInsights.private\Invoke-AzSentinelThreatIntelligenceIndicatorQuery_QueryViaIdentityExpanded';
+            QueryViaJsonFilePath = 'Az.SecurityInsights.private\Invoke-AzSentinelThreatIntelligenceIndicatorQuery_QueryViaJsonFilePath';
+            QueryViaJsonString = 'Az.SecurityInsights.private\Invoke-AzSentinelThreatIntelligenceIndicatorQuery_QueryViaJsonString';
         }
-        if (('QueryExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('QueryExpanded', 'QueryViaJsonFilePath', 'QueryViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -237,6 +308,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

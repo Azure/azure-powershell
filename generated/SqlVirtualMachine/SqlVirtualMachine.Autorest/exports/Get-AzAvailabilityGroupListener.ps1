@@ -27,7 +27,7 @@ Get-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,14 +40,23 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
   [SqlVirtualMachineGroupName <String>]: Name of the SQL virtual machine group.
   [SqlVirtualMachineName <String>]: Name of the SQL virtual machine.
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
+
+SQLVIRTUALMACHINEGROUPINPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
+  [AvailabilityGroupListenerName <String>]: Name of the availability group listener.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [SqlVirtualMachineGroupName <String>]: Name of the SQL virtual machine group.
+  [SqlVirtualMachineName <String>]: Name of the SQL virtual machine.
+  [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
 #>
 function Get-AzAvailabilityGroupListener {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySqlVirtualMachineGroup', Mandatory)]
     [Alias('AvailabilityGroupListenerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
@@ -82,11 +91,17 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySqlVirtualMachineGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
+    # Identity Parameter
+    ${SqlVirtualMachineGroupInputObject},
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='GetViaIdentitySqlVirtualMachineGroup')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Query')]
     [System.String]
     # The child resources to include in the response.
@@ -148,6 +163,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -169,11 +192,10 @@ begin {
         $mapping = @{
             Get = 'Az.SqlVirtualMachine.private\Get-AzAvailabilityGroupListener_Get';
             GetViaIdentity = 'Az.SqlVirtualMachine.private\Get-AzAvailabilityGroupListener_GetViaIdentity';
+            GetViaIdentitySqlVirtualMachineGroup = 'Az.SqlVirtualMachine.private\Get-AzAvailabilityGroupListener_GetViaIdentitySqlVirtualMachineGroup';
             List = 'Az.SqlVirtualMachine.private\Get-AzAvailabilityGroupListener_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -187,6 +209,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

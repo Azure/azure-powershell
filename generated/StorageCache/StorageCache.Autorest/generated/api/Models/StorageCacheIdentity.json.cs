@@ -82,6 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {_autoExportJobName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("autoExportJobName"), out var __jsonAutoExportJobName) ? (string)__jsonAutoExportJobName : (string)_autoExportJobName;}
             {_importJobName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("importJobName"), out var __jsonImportJobName) ? (string)__jsonImportJobName : (string)_importJobName;}
             {_autoImportJobName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("autoImportJobName"), out var __jsonAutoImportJobName) ? (string)__jsonAutoImportJobName : (string)_autoImportJobName;}
+            {_expansionJobName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("expansionJobName"), out var __jsonExpansionJobName) ? (string)__jsonExpansionJobName : (string)_expansionJobName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -111,6 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             AddIf( null != (((object)this._autoExportJobName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._autoExportJobName.ToString()) : null, "autoExportJobName" ,container.Add );
             AddIf( null != (((object)this._importJobName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._importJobName.ToString()) : null, "importJobName" ,container.Add );
             AddIf( null != (((object)this._autoImportJobName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._autoImportJobName.ToString()) : null, "autoImportJobName" ,container.Add );
+            AddIf( null != (((object)this._expansionJobName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._expansionJobName.ToString()) : null, "expansionJobName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

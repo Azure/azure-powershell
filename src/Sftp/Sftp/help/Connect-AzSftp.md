@@ -18,7 +18,7 @@ Users can login using Microsoft Entra accounts, or local user accounts via stand
 Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] [-CertificateFile <String>]
  [-PrivateKeyFile <String>] [-PublicKeyFile <String>] [-SftpArg <String[]>] [-SshClientFolder <String>]
  [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,14 +27,14 @@ Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] [-CertificateFile <Str
 Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] -CertificateFile <String> -PrivateKeyFile <String>
  [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>]
  [-StorageAccountEndpoint <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PublicKeyAuth
 ```
 Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArg <String[]>]
  [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] -PublicKeyFile <String
 Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] [-PrivateKeyFile <String>] -LocalUser <String>
  [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>]
  [-StorageAccountEndpoint <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -283,21 +283,6 @@ Parameter Sets: CertificateAuth
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

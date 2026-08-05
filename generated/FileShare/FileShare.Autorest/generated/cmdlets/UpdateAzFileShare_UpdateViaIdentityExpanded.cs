@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Description(@"update a FileShare")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}", ApiVersion = "2026-06-01")]
     public partial class UpdateAzFileShare_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IContext
@@ -45,6 +45,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
 
         /// <summary>The type used for update operations of the FileShare.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareUpdate();
+
+        /// <summary>The allowed set of subnets when access is restricted.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The allowed set of subnets when access is restricted.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The allowed set of subnets when access is restricted.",
+        SerializedName = @"allowedSubnets",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] AllowedSubnet { get => _propertiesBody.AllowedSubnet?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.AllowedSubnet = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -71,6 +83,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Encryption in transit defines whether data is encrypted for NFS shares.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Encryption in transit defines whether data is encrypted for NFS shares.",
+        SerializedName = @"encryptionInTransitRequired",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string EncryptionInTransitRequired { get => _propertiesBody.EncryptionInTransitRequired ?? null; set => _propertiesBody.EncryptionInTransitRequired = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -105,18 +129,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
-
-        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Root squash defines how root users on clients are mapped to the NFS share.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Root squash defines how root users on clients are mapped to the NFS share.",
-        SerializedName = @"rootSquash",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
-        public string NfProtocolPropertyRootSquash { get => _propertiesBody.NfProtocolPropertyRootSquash ?? null; set => _propertiesBody.NfProtocolPropertyRootSquash = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -183,18 +195,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>The allowed set of subnets when access is restricted.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The allowed set of subnets when access is restricted.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The allowed set of subnets when access is restricted.",
-        SerializedName = @"allowedSubnets",
-        PossibleTypes = new [] { typeof(string) })]
-        public string[] PublicAccessPropertyAllowedSubnet { get => _propertiesBody.PublicAccessPropertyAllowedSubnet?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.PublicAccessPropertyAllowedSubnet = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
-
         /// <summary>
         /// Gets or sets allow or disallow public network access to azure managed file share
         /// </summary>
@@ -208,6 +208,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         public string PublicNetworkAccess { get => _propertiesBody.PublicNetworkAccess ?? null; set => _propertiesBody.PublicNetworkAccess = value; }
+
+        /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Root squash defines how root users on clients are mapped to the NFS share.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Root squash defines how root users on clients are mapped to the NFS share.",
+        SerializedName = @"rootSquash",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
+        public string RootSquash { get => _propertiesBody.RootSquash ?? null; set => _propertiesBody.RootSquash = value; }
 
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ExportAs(typeof(global::System.Collections.Hashtable))]

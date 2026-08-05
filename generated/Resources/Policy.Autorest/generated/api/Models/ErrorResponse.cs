@@ -9,62 +9,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
     /// <summary>
     /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
-    /// the OData error response format.)
+    /// the OData error response format.).
     /// </summary>
     public partial class ErrorResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal
     {
 
-        /// <summary>Backing field for <see cref="AdditionalInfo" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> _additionalInfo;
-
         /// <summary>The error additional info.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> AdditionalInfo { get => this._additionalInfo; }
-
-        /// <summary>Backing field for <see cref="Code" /> property.</summary>
-        private string _code;
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).AdditionalInfo; }
 
         /// <summary>The error code.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
-        public string Code { get => this._code; }
-
-        /// <summary>Backing field for <see cref="Detail" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> _detail;
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Code; }
 
         /// <summary>The error details.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> Detail { get => this._detail; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Detail; }
 
-        /// <summary>Backing field for <see cref="Message" /> property.</summary>
-        private string _message;
+        /// <summary>Backing field for <see cref="Error" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail _error;
+
+        /// <summary>The error object.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetail()); set => this._error = value; }
 
         /// <summary>The error message.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
-        public string Message { get => this._message; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.AdditionalInfo { get => this._additionalInfo; set { {_additionalInfo = value;} } }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Code { get => this._code; set { {_code = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Detail { get => this._detail; set { {_detail = value;} } }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for Error</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Message { get => this._message; set { {_message = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Target { get => this._target; set { {_target = value;} } }
-
-        /// <summary>Backing field for <see cref="Target" /> property.</summary>
-        private string _target;
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Target = value ?? null; }
 
         /// <summary>The error target.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
-        public string Target { get => this._target; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetailInternal)Error).Target; }
 
         /// <summary>Creates an new <see cref="ErrorResponse" /> instance.</summary>
         public ErrorResponse()
@@ -73,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         }
     }
     /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
-    /// the OData error response format.)
+    /// the OData error response format.).
     public partial interface IErrorResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable
     {
@@ -108,8 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Update = false,
         Description = @"The error details.",
         SerializedName = @"details",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> Detail { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail> Detail { get;  }
         /// <summary>The error message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -135,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
     }
     /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
-    /// the OData error response format.)
+    /// the OData error response format.).
     internal partial interface IErrorResponseInternal
 
     {
@@ -144,7 +139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// <summary>The error code.</summary>
         string Code { get; set; }
         /// <summary>The error details.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> Detail { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail> Detail { get; set; }
+        /// <summary>The error object.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail Error { get; set; }
         /// <summary>The error message.</summary>
         string Message { get; set; }
         /// <summary>The error target.</summary>

@@ -128,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingContainerUrl = (string) content.GetValueForProperty("CommandOutputSettingContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingContainerUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("CommandOutputSettingOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingOverride = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("CommandOutputSettingOverride",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingOverride, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
+            }
             if (content.Contains("SecretArchiveSettingVaultUri"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).SecretArchiveSettingVaultUri = (string) content.GetValueForProperty("SecretArchiveSettingVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).SecretArchiveSettingVaultUri, global::System.Convert.ToString);
@@ -332,6 +336,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("CommandOutputSettingContainerUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingContainerUrl = (string) content.GetValueForProperty("CommandOutputSettingContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingContainerUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandOutputSettingOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingOverride = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("CommandOutputSettingOverride",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPatchPropertiesInternal)this).CommandOutputSettingOverride, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
             }
             if (content.Contains("SecretArchiveSettingVaultUri"))
             {

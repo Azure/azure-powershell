@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
         public string Location {get; set; }
     }
 }

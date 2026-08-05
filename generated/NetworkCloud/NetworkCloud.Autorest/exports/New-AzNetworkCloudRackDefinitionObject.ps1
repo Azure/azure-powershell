@@ -43,7 +43,7 @@ BAREMETALMACHINECONFIGURATIONDATA <IBareMetalMachineConfigurationData[]>: The un
   RackSlot <Int64>: The slot the physical machine is in the rack based on the BOM configuration.
   SerialNumber <String>: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
   [MachineDetail <String>]: The free-form additional information about the machine, e.g. an asset tag.
-  [MachineName <String>]: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
+  [MachineName <String>]: The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will be generated programmatically.
 
 STORAGEAPPLIANCECONFIGURATIONDATA <IStorageApplianceConfigurationData[]>: The list of storage appliance configuration data for this rack.
   AdminCredentialsPassword <SecureString>: The password of the administrator of the device used during initialization.

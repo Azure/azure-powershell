@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Dns.Models
     /// Describes a DNS zone.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Zone : Resource
+    public partial class Zone : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the Zone class.
@@ -25,29 +25,32 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// Initializes a new instance of the Zone class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
         /// <param name="etag">The etag of the zone.
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
-        /// </param>
-
         /// <param name="zoneType">The type of this DNS zone (Public or Private).
-        /// Possible values include: 'Public', 'Private'</param>
+        /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
 
         /// <param name="maxNumberOfRecordSets">The maximum number of record sets that can be created in this DNS zone. 
         /// This is a read-only property and any attempt to set this value will be
@@ -77,12 +80,11 @@ namespace Microsoft.Azure.Management.Dns.Models
 
         /// <param name="signingKeys">The list of signing keys.
         /// </param>
-        public Zone(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), ZoneType? zoneType = default(ZoneType?), long? maxNumberOfRecordSets = default(long?), long? maxNumberOfRecordsPerRecordSet = default(long?), long? numberOfRecordSets = default(long?), System.Collections.Generic.IList<string> nameServers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SubResource> registrationVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> resolutionVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SigningKey> signingKeys = default(System.Collections.Generic.IList<SigningKey>))
+        public Zone(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ZoneType? zoneType = default(ZoneType?), long? maxNumberOfRecordSets = default(long?), long? maxNumberOfRecordsPerRecordSet = default(long?), long? numberOfRecordSets = default(long?), System.Collections.Generic.IList<string> nameServers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SubResource> registrationVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> resolutionVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SigningKey> signingKeys = default(System.Collections.Generic.IList<SigningKey>))
 
-        : base(location, id, name, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
-            this.SystemData = systemData;
             this.ZoneType = zoneType;
             this.MaxNumberOfRecordSets = maxNumberOfRecordSets;
             this.MaxNumberOfRecordsPerRecordSet = maxNumberOfRecordsPerRecordSet;
@@ -105,12 +107,6 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; set; }
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets or sets the type of this DNS zone (Public or Private). Possible values include: &#39;Public&#39;, &#39;Private&#39;
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Management.Dns.Models
         public override void Validate()
         {
             base.Validate();
-
 
 
 

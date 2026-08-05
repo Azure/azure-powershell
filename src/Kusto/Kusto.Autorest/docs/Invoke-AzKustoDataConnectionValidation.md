@@ -16,8 +16,8 @@ Checks that the data connection parameters are valid.
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -EventHubResourceId <String>
- -Kind <Kind> -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ -Kind <String> -Location <String> [-SubscriptionId <String>] [-Compression <String>]
+ [-DatabaseRouting <String>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,8 +26,8 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -EventHubResourceId <String>
- -Kind <Kind> -Location <String> -StorageAccountResourceId <String> [-SubscriptionId <String>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventGridResourceId <String>]
+ -Kind <String> -Location <String> -StorageAccountResourceId <String> [-SubscriptionId <String>]
+ [-DatabaseRouting <String>] [-DataFormat <String>] [-EventGridResourceId <String>]
  [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -36,8 +36,8 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -IotHubResourceId <String>
- -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ -Kind <String> -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
+ [-DatabaseRouting <String>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -45,8 +45,8 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 ### DataViaIdentityExpandedEventGrid
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
- -DataConnectionName <String> -EventHubResourceId <String> -Kind <Kind> -Location <String>
- -StorageAccountResourceId <String> [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>]
+ -DataConnectionName <String> -EventHubResourceId <String> -Kind <String> -Location <String>
+ -StorageAccountResourceId <String> [-DatabaseRouting <String>] [-DataFormat <String>]
  [-EventGridResourceId <String>] [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -54,34 +54,33 @@ Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGr
 ### DataViaIdentityExpandedEventHub
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
- -DataConnectionName <String> -EventHubResourceId <String> -Kind <Kind> -Location <String>
- [-Compression <Compression>] [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>]
- [-EventSystemProperty <String[]>] [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>]
- [-RetrievalStartDate <DateTime>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -DataConnectionName <String> -EventHubResourceId <String> -Kind <String> -Location <String>
+ [-Compression <String>] [-DatabaseRouting <String>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedIotHub
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
- -DataConnectionName <String> -IotHubResourceId <String> -Kind <Kind> -Location <String>
- -SharedAccessPolicyName <String> [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>]
+ -DataConnectionName <String> -IotHubResourceId <String> -Kind <String> -Location <String>
+ -SharedAccessPolicyName <String> [-DatabaseRouting <String>] [-DataFormat <String>]
  [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
 ```
-Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -DataConnectionName <String> -Kind <Kind>
- -Location <String> [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <String>] [-IgnoreFirstRecord]
+Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -DataConnectionName <String> -Kind <String>
+ -Location <String> [-BlobStorageEventType <String>] [-DataFormat <String>] [-IgnoreFirstRecord]
  [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventGrid
 ```
-Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -DataConnectionName <String> -Kind <Kind>
- -Location <String> [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <String>] [-IgnoreFirstRecord]
+Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -DataConnectionName <String> -Kind <String>
+ -Location <String> [-BlobStorageEventType <String>] [-DataFormat <String>] [-IgnoreFirstRecord]
  [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -178,7 +177,7 @@ The above command validates IotHub data connection named "myiothubdc" for the da
 The name of blob storage event type to process.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
+Type: System.String
 Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
 Aliases:
 
@@ -208,7 +207,7 @@ Accept wildcard characters: False
 The event hub messages compression type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression
+Type: System.String
 Parameter Sets: DataExpandedEventHub, DataViaIdentityExpandedEventHub
 Aliases:
 
@@ -253,7 +252,7 @@ Accept wildcard characters: False
 Indication for database routing information from the data connection, by default only database routing information is allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting
+Type: System.String
 Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
 Aliases:
 
@@ -405,7 +404,7 @@ Accept wildcard characters: False
 Kind of the endpoint for the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -595,7 +594,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidationResult
 
 ## NOTES
 

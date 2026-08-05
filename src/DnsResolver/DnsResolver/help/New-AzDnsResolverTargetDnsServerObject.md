@@ -1,7 +1,7 @@
 ---
 external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
-online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
+online version: https://learn.microsoft.com/powershell/module/Az.DnsResolver/new-azdnsresolvertargetdnsserverobject
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.TargetDnsServer
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.TargetDnsServer
 
 ## NOTES
 

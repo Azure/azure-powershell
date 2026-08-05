@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManager))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"create a new cluster manager or create properties of the cluster manager if it exists.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}", ApiVersion = "2025-09-01")]
     public partial class NewAzNetworkCloudClusterManager_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
@@ -66,16 +66,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure availability zones within the region that will be used to support the cluster manager resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.",
+        Description = @"The Azure availability zones within the region that will be used to support the cluster manager resource.",
         SerializedName = @"availabilityZones",
         PossibleTypes = new [] { typeof(string) })]
         public string[] AvailabilityZone { get => _clusterManagerParametersBody.AvailabilityZone?.ToArray() ?? null /* fixedArrayOf */; set => _clusterManagerParametersBody.AvailabilityZone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -313,15 +312,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The size of the Azure virtual machines to use for hosting the cluster manager resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.",
+        Description = @"The size of the Azure virtual machines to use for hosting the cluster manager resource.",
         SerializedName = @"vmSize",
         PossibleTypes = new [] { typeof(string) })]
         public string VMSize { get => _clusterManagerParametersBody.VMSize ?? null; set => _clusterManagerParametersBody.VMSize = value; }

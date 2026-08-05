@@ -86,11 +86,17 @@ The operation to delete a network interface from a virtual machine.
 ### [Restart-AzStackHCIVMVirtualMachine](Restart-AzStackHCIVMVirtualMachine.md)
 The operation to restart a virtual machine instance.
 
+### [Save-AzStackHCIVMVirtualMachine](Save-AzStackHCIVMVirtualMachine.md)
+The operation to save a virtual machine instance.
+
 ### [Start-AzStackHCIVMVirtualMachine](Start-AzStackHCIVMVirtualMachine.md)
 The operation to start a virtual machine instance.
 
 ### [Stop-AzStackHCIVMVirtualMachine](Stop-AzStackHCIVMVirtualMachine.md)
 The operation to stop a virtual machine instance.
+
+### [Suspend-AzStackHCIVMVirtualMachine](Suspend-AzStackHCIVMVirtualMachine.md)
+The operation to Suspend a virtual machine instance.
 
 ### [Update-AzStackHCIVMImage](Update-AzStackHCIVMImage.md)
 The operation to update an image.

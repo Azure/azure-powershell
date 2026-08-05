@@ -16,46 +16,18 @@
 
 <#
 .Synopsis
-Creates or updates the incident.
+Create the incident.
 .Description
-Creates or updates the incident.
+Create the incident.
 .Example
  New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Title "NewIncident" -Description "My Description" -Severity Low -Status New
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
-  [Etag <String>]: Etag of the azure resource
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Classification <IncidentClassification?>]: The reason the incident was closed
-  [ClassificationComment <String>]: Describes the reason the incident was closed
-  [ClassificationReason <IncidentClassificationReason?>]: The classification reason the incident was closed with
-  [Description <String>]: The description of the incident
-  [FirstActivityTimeUtc <DateTime?>]: The time of the first activity in the incident
-  [Label <IIncidentLabel[]>]: List of labels relevant to this incident
-    LabelName <String>: The name of the label
-  [LastActivityTimeUtc <DateTime?>]: The time of the last activity in the incident
-  [OwnerAssignedTo <String>]: The name of the user the incident is assigned to.
-  [OwnerEmail <String>]: The email of the user the incident is assigned to.
-  [OwnerObjectId <String>]: The object id of the user the incident is assigned to.
-  [OwnerUserPrincipalName <String>]: The user principal name of the user the incident is assigned to.
-  [ProviderIncidentId <String>]: The incident ID assigned by the incident provider
-  [ProviderName <String>]: The name of the source provider that generated the incident
-  [Severity <IncidentSeverity?>]: The severity of the incident
-  [Status <IncidentStatus?>]: The status of the incident
-  [Title <String>]: The title of the incident
 
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident
   LabelName <String>: The name of the label
@@ -63,7 +35,7 @@ LABEL <IIncidentLabel[]>: List of labels relevant to this incident
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincident
 #>
 function New-AzSentinelIncident {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -94,17 +66,10 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident]
-    # Represents an incident in Azure Security Insights.
-    # To construct, see NOTES section for INCIDENT properties and create a hash table.
-    ${Incident},
-
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Undetermined", "TruePositive", "BenignPositive", "FalsePositive")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification]
+    [System.String]
     # The reason the incident was closed
     ${Classification},
 
@@ -115,9 +80,9 @@ param(
     ${ClassificationComment},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SuspiciousActivity", "SuspiciousButExpected", "IncorrectAlertLogic", "InaccurateData")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason]
+    [System.String]
     # The classification reason the incident was closed with
     ${ClassificationReason},
 
@@ -136,9 +101,8 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentLabel[]]
     # List of labels relevant to this incident
-    # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -184,16 +148,16 @@ param(
     ${ProviderName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity]
+    [System.String]
     # The severity of the incident
     ${Severity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("New", "Active", "Closed")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus]
+    [System.String]
     # The status of the incident
     ${Status},
 
@@ -202,6 +166,18 @@ param(
     [System.String]
     # The title of the incident
     ${Title},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -259,6 +235,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -278,15 +262,14 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.SecurityInsights.private\New-AzSentinelIncident_Create';
             CreateExpanded = 'Az.SecurityInsights.private\New-AzSentinelIncident_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.SecurityInsights.private\New-AzSentinelIncident_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SecurityInsights.private\New-AzSentinelIncident_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id') ) {
             $PSBoundParameters['Id'] = (New-Guid).Guid
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -300,6 +283,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

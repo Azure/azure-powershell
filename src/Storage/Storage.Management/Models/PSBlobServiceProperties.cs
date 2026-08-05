@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSCorsRules Cors { get; set; }
         public bool? IsVersioningEnabled { get; set; }
         public PSLastAccessTimeTrackingPolicy LastAccessTimeTrackingPolicy { get; set; }
+        public PSStaticWebsite StaticWebsite { get; set; }
 
         public PSBlobServiceProperties()
         { }
@@ -67,6 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.IsVersioningEnabled = policy.IsVersioningEnabled;
             this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
             this.LastAccessTimeTrackingPolicy = policy.LastAccessTimeTrackingPolicy is null? null : new PSLastAccessTimeTrackingPolicy(policy.LastAccessTimeTrackingPolicy);
+            this.StaticWebsite = policy.StaticWebsite is null ? null : new PSStaticWebsite(policy.StaticWebsite);
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -79,7 +81,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
                 IsVersioningEnabled = this.IsVersioningEnabled,
                 ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
-                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy()
+                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy(),
+                StaticWebsite = this.StaticWebsite is null ? null : this.StaticWebsite.ParseStaticWebsite()
             };
         }
 
@@ -346,6 +349,40 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 Enable = this.Enable,
                 TrackingGranularityInDays = this.TrackingGranularityInDays,
                 BlobType = this.BlobType is null ? null : new List<string>(this.BlobType)
+            };
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type StaticWebsite
+    /// </summary>
+    public class PSStaticWebsite
+    {
+        public bool Enabled { get; set; }
+        public string IndexDocument { get; set; }
+        public string DefaultIndexDocumentPath { get; set; }
+        public string ErrorDocument404Path { get; set; }
+
+        public PSStaticWebsite()
+        {
+        }
+
+        public PSStaticWebsite(StaticWebsite staticWebsite)
+        {
+            this.Enabled = staticWebsite.Enabled;
+            this.IndexDocument = staticWebsite.IndexDocument;
+            this.DefaultIndexDocumentPath = staticWebsite.DefaultIndexDocumentPath;
+            this.ErrorDocument404Path = staticWebsite.ErrorDocument404Path;
+        }
+
+        public StaticWebsite ParseStaticWebsite()
+        {
+            return new StaticWebsite
+            {
+                Enabled = this.Enabled,
+                IndexDocument = this.IndexDocument,
+                DefaultIndexDocumentPath = this.DefaultIndexDocumentPath,
+                ErrorDocument404Path = this.ErrorDocument404Path
             };
         }
     }

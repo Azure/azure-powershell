@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodeOSDiskType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
-        [PSArgumentCompleter("Ubuntu", "Mariner", "AzureLinux", "Windows2019", "Windows2022")]
+        [PSArgumentCompleter("Ubuntu", "Mariner", "AzureLinux", "AzureContainerLinux", "Windows2019", "Windows2022")]
         public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. ")]

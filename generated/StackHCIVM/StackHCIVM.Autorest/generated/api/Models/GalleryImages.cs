@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>location of the image the gallery image should be created from</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ImagePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagePropertiesInternal)Property).ImagePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagePropertiesInternal)Property).ImagePath = value ?? null; }
+        public System.Security.SecureString ImagePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagePropertiesInternal)Property).ImagePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagePropertiesInternal)Property).ImagePath = value ?? null; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inherited)]
@@ -390,8 +390,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Update = true,
         Description = @"location of the image the gallery image should be created from",
         SerializedName = @"imagePath",
-        PossibleTypes = new [] { typeof(string) })]
-        string ImagePath { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ImagePath { get; set; }
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// <summary>The name of the gallery image definition SKU.</summary>
         string IdentifierSku { get; set; }
         /// <summary>location of the image the gallery image should be created from</summary>
-        string ImagePath { get; set; }
+        System.Security.SecureString ImagePath { get; set; }
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         long? OSDiskImageSizeInMb { get; set; }
         /// <summary>Operating system type that the gallery image uses [Windows, Linux]</summary>

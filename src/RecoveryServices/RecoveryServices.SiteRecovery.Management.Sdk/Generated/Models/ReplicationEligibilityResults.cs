@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Replication eligibility results response model.
     /// </summary>
-    public partial class ReplicationEligibilityResults
+    public partial class ReplicationEligibilityResults : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ReplicationEligibilityResults class.
@@ -24,23 +24,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the ReplicationEligibilityResults class.
         /// </summary>
 
-        /// <param name="name">Gets the name of this object.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="type">Gets the object type.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="id">Gets Unique ARM identifier for this object.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">Gets properties model for replication eligibility results API.
         /// </param>
-        public ReplicationEligibilityResults(string name = default(string), string type = default(string), string id = default(string), ReplicationEligibilityResultsProperties properties = default(ReplicationEligibilityResultsProperties))
+        public ReplicationEligibilityResults(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), ReplicationEligibilityResultsProperties properties = default(ReplicationEligibilityResultsProperties))
 
+        : base(id, name, type, systemData)
         {
-            this.Name = name;
-            this.Type = type;
-            this.Id = id;
             this.Properties = properties;
             CustomInit();
         }
@@ -52,27 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
 
         /// <summary>
-        /// Gets gets the name of this object.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets gets the object type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets gets Unique ARM identifier for this object.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets gets properties model for replication eligibility results API.
+        /// Gets or sets gets properties model for replication eligibility results API.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public ReplicationEligibilityResultsProperties Properties {get; private set; }
+        public ReplicationEligibilityResultsProperties Properties {get; set; }
     }
 }

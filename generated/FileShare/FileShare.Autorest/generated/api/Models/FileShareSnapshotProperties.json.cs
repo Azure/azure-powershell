@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 AddIf( null != (((object)this._snapshotTime)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString(this._snapshotTime.ToString()) : null, "snapshotTime" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeRead))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != (((object)this._initiatorId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString(this._initiatorId.ToString()) : null, "initiatorId" ,container.Add );
             }

@@ -48,6 +48,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for AssociatedIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIdentitySelector Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal.AssociatedIdentity { get => (this._associatedIdentity = this._associatedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IdentitySelector()); set { {_associatedIdentity = value;} } }
 
+        /// <summary>Backing field for <see cref="Override" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> _override;
+
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> Override { get => this._override; set => this._override = value; }
+
         /// <summary>Creates an new <see cref="CommandOutputSettings" /> instance.</summary>
         public CommandOutputSettings()
         {
@@ -97,6 +107,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"containerUrl",
         PossibleTypes = new [] { typeof(string) })]
         string ContainerUrl { get; set; }
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of optional overrides allowing for association of storage containers and identities to specific types of command output. If a type is not overridden, the default identity and storage container will be utilized.",
+        SerializedName = @"overrides",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> Override { get; set; }
 
     }
     /// CommandOutputSettings represents the settings for commands run within the cluster such as bare metal machine run read-only
@@ -120,6 +144,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// The URL of the storage account container that is to be used by the specified identities.
         /// </summary>
         string ContainerUrl { get; set; }
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> Override { get; set; }
 
     }
 }

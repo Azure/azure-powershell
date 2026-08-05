@@ -19,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to retrieve next set of managed rule set definitions.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition> _value;
 
-        /// <summary>List of managed rule set definitions.</summary>
+        /// <summary>The ManagedRuleSetDefinition items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition> Value { get => this._value; }
 
@@ -40,25 +40,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     public partial interface IManagedRuleSetDefinitionList :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
-        /// <summary>URL to retrieve next set of managed rule set definitions.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to retrieve next set of managed rule set definitions.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of managed rule set definitions.</summary>
+        /// <summary>The ManagedRuleSetDefinition items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of managed rule set definitions.",
+        Description = @"The ManagedRuleSetDefinition items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition> Value { get;  }
@@ -68,9 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     internal partial interface IManagedRuleSetDefinitionListInternal
 
     {
-        /// <summary>URL to retrieve next set of managed rule set definitions.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of managed rule set definitions.</summary>
+        /// <summary>The ManagedRuleSetDefinition items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition> Value { get; set; }
 
     }

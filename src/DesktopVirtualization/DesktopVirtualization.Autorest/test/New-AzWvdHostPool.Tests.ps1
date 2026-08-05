@@ -22,7 +22,7 @@ Describe 'New-AzWvdHostPool' {
                                 -LoadBalancerType 'DepthFirst' `
                                 -PreferredAppGroupType 'Desktop' `
                                 -DesktopAppGroupName 'FullScenarioCreateAG' `
-                                -WorkspaceName 'FullScenarioCreateWS'
+                                -WorkspaceName 'FullScenarioCreateWS' 
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
@@ -70,7 +70,7 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
@@ -90,7 +90,7 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'

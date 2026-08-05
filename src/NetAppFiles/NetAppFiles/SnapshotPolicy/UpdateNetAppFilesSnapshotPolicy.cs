@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 Name = NameParts[3];
             }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
                 Location = AccountObject.Location;
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
 

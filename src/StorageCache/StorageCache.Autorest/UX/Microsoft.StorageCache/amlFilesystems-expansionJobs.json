@@ -1,0 +1,95 @@
+{
+  "resourceType": "amlFilesystems/expansionJobs",
+  "apiVersion": "2026-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storagecache"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageCacheExpansionJob",
+      "description": "Returns an expansion job.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheexpansionjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AmlFilesystemName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns an expansion job.",
+          "parameters": [
+            {
+              "name": "-AmlFilesystemName",
+              "value": "[Path.amlFilesystemName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.expansionJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageCacheExpansionJob",
+      "description": "Schedules an expansion job for deletion.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheexpansionjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AmlFilesystemName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Schedules an expansion job for deletion.",
+          "parameters": [
+            {
+              "name": "-AmlFilesystemName",
+              "value": "[Path.amlFilesystemName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.expansionJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

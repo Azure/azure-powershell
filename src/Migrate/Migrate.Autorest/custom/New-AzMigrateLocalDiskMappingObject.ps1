@@ -22,8 +22,9 @@ The New-AzMigrateLocalDiskMappingObject cmdlet creates a mapping of the source d
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject
 #>
 function New-AzMigrateLocalDiskMappingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -80,7 +81,7 @@ function New-AzMigrateLocalDiskMappingObject {
             throw "PhysicalSectorSize must be 512 for VHD format but $PhysicalSectorSize is given."
         }
 
-        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput]::new(
+        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput]::new(
             $DiskID, 
             $isDynamicDisk, 
             $Size, 

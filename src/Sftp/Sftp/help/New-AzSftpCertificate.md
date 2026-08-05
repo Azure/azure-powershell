@@ -15,21 +15,21 @@ Generate SSH certificates for SFTP authentication using Microsoft Entra credenti
 ### Default (Default)
 ```
 New-AzSftpCertificate [-CertificatePath <String>] [-PrivateKeyFile <String>] [-SshClientFolder <String>]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### FromPublicKey
 ```
 New-AzSftpCertificate [-CertificatePath <String>] -PublicKeyFile <String> [-SshClientFolder <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### FromPrivateKey
 ```
 New-AzSftpCertificate [-CertificatePath <String>] -PrivateKeyFile <String> [-SshClientFolder <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzSftpCertificate [-CertificatePath <String>] -PrivateKeyFile <String> [-Ssh
 ```
 New-AzSftpCertificate [-CertificatePath <String>] [-PrivateKeyFile <String>] -LocalUser <String>
  [-SshClientFolder <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,21 +216,6 @@ Parameter Sets: FromPrivateKey
 Aliases: i
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

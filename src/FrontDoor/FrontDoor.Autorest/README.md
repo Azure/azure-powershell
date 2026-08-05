@@ -28,16 +28,14 @@ For information on how to develop for `Az.FrontDoor`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 03253947022beee13bf4782c4ebef93a0afa237b
+commit: 3a617d58ce1d84caade01a3a682ec5c06a9088d9
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-10-01/webapplicationfirewall.json
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-10-01/network.json
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-10-01/frontdoor.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/FrontDoor/stable/2025-11-01/openapi.json
 
 try-require: 
   - $(repo)/specification/xxx/resource-manager/readme.powershell.md
@@ -448,5 +446,100 @@ directive:
       property-name: Rule
     set:
       property: RulesEngineRule
+
+  # Hide the Network Experiment Profile / Experiment / Preconfigured Endpoint / Report cmdlets
+  # newly introduced by the 2025-11-01 swagger. These are not part of the public
+  # Az.FrontDoor surface area and should not be exposed.
+  - where:
+      subject: NetworkExperimentProfile
+    hide: true
+  - where:
+      subject: Experiment
+    hide: true
+  - where:
+      subject: PreconfiguredEndpoint
+    hide: true
+  - where:
+      subject: ReportLatencyScorecard
+    hide: true
+  - where:
+      subject: ReportTimesery
+    hide: true
+
+  # --------------------------------------------------------------------------
+  # Preserve direct Id / Name / Type members for static analysis compatibility
+  # --------------------------------------------------------------------------
+  # FrontendEndpoint and RulesEngine model definitions inherit id/name/type via
+  # allOf from BasicResource* in the 2025-10-01 and 2025-11-01 swagger. The
+  # generated C# classes still expose these properties, but the public model
+  # interfaces only inherit them from the base interfaces. The Azure PowerShell
+  # breaking-change analyzer compares direct interface members and reports false
+  # removals for IFrontendEndpoint.Id/Name/Type and IRulesEngine.Id/Name/Type.
+  #
+  # Expand only these two affected models so their generated public interfaces
+  # keep the same direct members as the released Az.FrontDoor surface. Do not
+  # broaden this to every allOf resource model without checking the generated
+  # interface diff and static-analysis output.
+  - from: swagger-document
+    where: $.definitions.FrontendEndpoint
+    transform: >-
+      if ($.allOf && $.allOf.some(item => item.$ref === "#/definitions/BasicResourceWithSettableIDName")) {
+        $.properties = $.properties || {};
+        $.properties.id = { "type": "string", "description": "Resource ID." };
+        $.properties.name = { "type": "string", "description": "Resource name." };
+        $.properties.type = { "type": "string", "description": "Resource type.", "readOnly": true };
+        delete $.allOf;
+      }
+      return $;
+  - from: swagger-document
+    where: $.definitions.RulesEngine
+    transform: >-
+      if ($.allOf && $.allOf.some(item => item.$ref === "#/definitions/BasicResource")) {
+        $.properties = $.properties || {};
+        $.properties.id = { "type": "string", "description": "Resource ID.", "readOnly": true };
+        $.properties.name = { "type": "string", "description": "Resource name.", "readOnly": true };
+        $.properties.type = { "type": "string", "description": "Resource type.", "readOnly": true };
+        delete $.allOf;
+      }
+      return $;
+
+  # --------------------------------------------------------------------------
+  # LRO contract workaround for FrontDoorWebApplicationFirewallPolicies
+  # --------------------------------------------------------------------------
+  # The 2025-10-01 / 2025-11-01 swagger declares
+  #     x-ms-long-running-operation-options:
+  #       final-state-via: location
+  # on Policies_CreateOrUpdate (PUT) and Policies_Delete (DELETE), and the 201
+  # response schema declares a `Location` response header. However the live
+  # service returns 201 Created synchronously with the terminal resource body
+  # (provisioningState: Succeeded) and does NOT emit a Location, Azure-
+  # AsyncOperation, or Operation-Location header. The autorest.powershell v4
+  # generated client therefore ends up calling `new Uri("")` during LRO
+  # finalization and throws `UriFormatException: Invalid URI: The URI is empty.`
+  # (repro: New-AzFrontDoorWafPolicy UT; see FrontDoor.cs Policies*_Call).
+  #
+  # Until the AFD swagger / service contract is fixed upstream, rewrite
+  # final-state-via to `original-uri` so the client re-reads the terminal body
+  # from the original request URI (which the service already returns in
+  # Succeeded state). Scope is intentionally limited to the two exposed WAF
+  # Policies operations that we have empirically validated — do NOT broaden
+  # this to all operations.
+  #
+  # Policies_Update (PATCH) is already dropped via `remove-operation:
+  # Policies_Update` above, so no patch is needed there.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}"].delete
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
 
 ```

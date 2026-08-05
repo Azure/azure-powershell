@@ -23,6 +23,9 @@ Returns an auto export job.
 ### [Get-AzStorageCacheAutoImportJob](Get-AzStorageCacheAutoImportJob.md)
 Returns an auto import job.
 
+### [Get-AzStorageCacheExpansionJob](Get-AzStorageCacheExpansionJob.md)
+Returns an expansion job.
+
 ### [Get-AzStorageCacheImportJob](Get-AzStorageCacheImportJob.md)
 Returns an import job.
 
@@ -38,6 +41,9 @@ Create an auto export job.
 ### [New-AzStorageCacheAutoImportJob](New-AzStorageCacheAutoImportJob.md)
 Create an auto import job.
 
+### [New-AzStorageCacheExpansionJob](New-AzStorageCacheExpansionJob.md)
+Create an expansion job.
+
 ### [New-AzStorageCacheImportJob](New-AzStorageCacheImportJob.md)
 Create an import job.
 
@@ -49,6 +55,9 @@ Schedules an auto export job for deletion.
 
 ### [Remove-AzStorageCacheAutoImportJob](Remove-AzStorageCacheAutoImportJob.md)
 Schedules an auto import job for deletion.
+
+### [Remove-AzStorageCacheExpansionJob](Remove-AzStorageCacheExpansionJob.md)
+Schedules an expansion job for deletion.
 
 ### [Remove-AzStorageCacheImportJob](Remove-AzStorageCacheImportJob.md)
 Schedules an import job for deletion.
@@ -67,6 +76,9 @@ Update an auto export job instance.
 
 ### [Update-AzStorageCacheAutoImportJob](Update-AzStorageCacheAutoImportJob.md)
 Update an auto import job instance.
+
+### [Update-AzStorageCacheExpansionJob](Update-AzStorageCacheExpansionJob.md)
+Update an expansion job instance.
 
 ### [Update-AzStorageCacheImportJob](Update-AzStorageCacheImportJob.md)
 Update an import job instance.

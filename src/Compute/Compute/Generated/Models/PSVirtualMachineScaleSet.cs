@@ -78,5 +78,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public ResiliencyPolicy ResiliencyPolicy { get; set; }
         public Placement Placement { get; set; }
         public string HighSpeedInterconnectPlacement { get; set; }
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
     }
 }

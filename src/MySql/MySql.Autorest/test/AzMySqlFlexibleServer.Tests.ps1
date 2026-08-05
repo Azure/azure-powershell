@@ -44,7 +44,7 @@ Describe 'AzMySqlFlexibleServer' {
             $flxServer = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
             $replica = New-AzMySqlFlexibleServerReplica -InputObject $flxServer -Replica $env.replicaName -ResourceGroupName $env.resourceGroup
             $replica.Name | Should -Be $env.replicaName
-            $replica.SkuName | Should -Be $env.flexibleSku
+            $replica.SkuName | Should -Be $env.GeneralPurposeSku
 
             $replica = Get-AzMySqlFlexibleServerReplica -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
             $replica.Count | Should -Be 1
@@ -60,20 +60,18 @@ Describe 'AzMySqlFlexibleServer' {
             $server = Get-AzMySqlFlexibleServer -InputObject $ID
             $server.Name | Should -Be $env.flexibleServerName
 
-            $server = Update-AzMySqlFlexibleServer -InputObject $server -StorageInMb 20480
-            $server.StorageSizeGb  | Should -Be 20
-
             $server = Update-AzMySqlFlexibleServer -InputObject $server -SkuTier GeneralPurpose -Sku Standard_D4ds_v4
             $server.SkuTier | Should -Be 'GeneralPurpose'
             $server.SkuName | Should -Be 'Standard_D4ds_v4'
 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/stop"
+            $server = Update-AzMySqlFlexibleServer -InputObject $server -StorageInMb 40960
+            $server.StorageSizeGb | Should -Be 40
+
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
             Stop-AzMySqlFlexibleServer -InputObject $ID
 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/start"
             Start-AzMySqlFlexibleServer -InputObject $ID
 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzMySqlFlexibleServer -InputObject $ID
 
             $restorePointInTime = (Get-Date).AddMinutes(-10)

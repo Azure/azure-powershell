@@ -309,7 +309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>AdminPassword - admin password</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string OSProfileAdminPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)Property).OSProfileAdminPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)Property).OSProfileAdminPassword = value ?? null; }
+        public System.Security.SecureString OSProfileAdminPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)Property).OSProfileAdminPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)Property).OSProfileAdminPassword = value ?? null; }
 
         /// <summary>AdminUsername - admin username</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
@@ -809,8 +809,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Update = false,
         Description = @"AdminPassword - admin password",
         SerializedName = @"adminPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string OSProfileAdminPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString OSProfileAdminPassword { get; set; }
         /// <summary>AdminUsername - admin username</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
@@ -1187,7 +1187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfile OSProfile { get; set; }
         /// <summary>AdminPassword - admin password</summary>
-        string OSProfileAdminPassword { get; set; }
+        System.Security.SecureString OSProfileAdminPassword { get; set; }
         /// <summary>AdminUsername - admin username</summary>
         string OSProfileAdminUsername { get; set; }
         /// <summary>ComputerName - name of the compute</summary>

@@ -26,7 +26,7 @@ Save-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
 
 ### SaveByStackObject
 ```
-Save-AzSubscriptionDeploymentStackTemplate [-InputObjet] <PSDeploymentStack> [-Pre]
+Save-AzSubscriptionDeploymentStackTemplate [-InputObject] <PSDeploymentStack> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Save a template (or template link) for a stack named 'MySubStack' under the defa
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,13 +59,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Type: PSDeploymentStack
 Parameter Sets: SaveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ResourceId of the DeploymentStack to get
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SaveByResourceId
 Aliases: Id
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The name of the DeploymentStack to get
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SaveByName
 Aliases:
 

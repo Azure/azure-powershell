@@ -18,7 +18,7 @@ Adds a data disk to a virtual machine.
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-SourceImageUri] <String>]
  [-DiskEncryptionSetId <String>] [-DeleteOption <String>] [-SourceResourceId <String>]
- [-DiskIOPSReadWrite <Int64>] [-DiskMBpsReadWrite <Int64>] [-DefaultProfile <IAzureContextContainer>]
+ [-DiskIOPSReadWrite <Int64>] [-DiskMBpsReadWrite <Int64>] [-StorageFaultDomainAlignment <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <Cachin
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-ManagedDiskId] <String>]
  [[-StorageAccountType] <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DeleteOption <String>]
  [-SourceResourceId <String>] [-DiskIOPSReadWrite <Int64>] [-DiskMBpsReadWrite <Int64>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageFaultDomainAlignment <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -384,6 +384,22 @@ Specifies the bandwidth in MB per second for the disk when StorageAccountType is
 Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageFaultDomainAlignment
+Specifies the storage fault domain alignment type for the data disk. Valid values are 'Aligned' and 'BestEffortAligned'. 'Aligned' maps disk Storage Fault Domains to Compute Fault Domains; deployment fails if disk doesn't support enough FDs. 'BestEffortAligned' attempts mapping but leaves the disk unaligned if it doesn't support enough FDs. Only valid for VMs within a VMSS Flex; CRP returns BadRequest for standalone VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Aligned, BestEffortAligned
 
 Required: False
 Position: Named

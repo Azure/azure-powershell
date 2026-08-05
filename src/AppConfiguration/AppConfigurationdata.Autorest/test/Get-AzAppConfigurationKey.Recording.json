@@ -1,16 +1,16 @@
 {
-  "Get-AzAppConfigurationKey+[NoContext]+Get+$GET+https://sanitized.azconfig.io/keys?api-version=2024-09-01+1": {
+  "Get-AzAppConfigurationKey+[NoContext]+Get+$GET+https://sanitized.azconfig.io/keys?api-version=2026-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/keys?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/keys?api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "0121ec53-6309-4194-9e11-309f93c2b195" ],
+        "x-ms-client-request-id": [ "ce886341-9e60-4211-96d0-b1da39dc0241" ],
         "CommandName": [ "Get-AzAppConfigurationKey" ],
         "FullCommandName": [ "Get-AzAppConfigurationKey_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -19,20 +19,20 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:51:39 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:07:15 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMTE=;sn=79279211" ],
-        "x-ms-request-id": [ "dc651cee-a511-4890-9e24-7d4cdd8266cb" ],
-        "x-ms-correlation-request-id": [ "dc651cee-a511-4890-9e24-7d4cdd8266cb" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:51:39 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxMTU=;sn=90035115" ],
+        "x-ms-request-id": [ "95df3f4f-6656-49c6-89e1-a85167b3a5d3" ],
+        "x-ms-correlation-request-id": [ "95df3f4f-6656-49c6-89e1-a85167b3a5d3" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:07:15 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.keyset+json; charset=utf-8" ]
       },
-      "Content": "{\"items\":[{\"name\":\"2wcg\"}]}",
+      "Content": "{\"items\":[{\"name\":\"dogp\"}]}",
       "isContentBase64": false
     }
   }

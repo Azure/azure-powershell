@@ -17,8 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _attachedNetworkId;
 
         /// <summary>
-        /// The resource ID of the associated network attached to the virtual machine.
-        /// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+        /// The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network,
+        /// l2Network or trunkedNetwork resources.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string AttachedNetworkId { get => this._attachedNetworkId; set => this._attachedNetworkId = value; }
@@ -27,9 +27,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _defaultGateway;
 
         /// <summary>
-        /// The indicator of whether this is the default gateway.
-        /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified
-        /// as True.
+        /// The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork
+        /// attachment) for a single machine may be specified as True.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string DefaultGateway { get => this._defaultGateway; set => this._defaultGateway = value; }
@@ -38,9 +37,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _iPAllocationMethod;
 
         /// <summary>
-        /// The IP allocation mechanism for the virtual machine.
-        /// Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        /// Otherwise, Disabled is the only permitted value.
+        /// The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify
+        /// Disabled. Otherwise, Disabled is the only permitted value.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string IPAllocationMethod { get => this._iPAllocationMethod; set => this._iPAllocationMethod = value; }
@@ -49,13 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _ipv4Address;
 
         /// <summary>
-        /// The IPv4 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the
+        /// subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from
+        /// within the subnet specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string Ipv4Address { get => this._ipv4Address; set => this._ipv4Address = value; }
@@ -64,13 +59,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _ipv6Address;
 
         /// <summary>
-        /// The IPv6 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified
+        /// in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet
+        /// specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string Ipv6Address { get => this._ipv6Address; set => this._ipv6Address = value; }
@@ -91,10 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _name;
 
         /// <summary>
-        /// The associated network's interface name.
-        /// If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        /// If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        /// For a CloudServicesNetwork resource, this name will be ignored.
+        /// The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters
+        /// and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the
+        /// network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
@@ -110,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The resource ID of the associated network attached to the virtual machine.
-        /// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+        /// The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network,
+        /// l2Network or trunkedNetwork resources.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = true,
@@ -119,15 +110,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The resource ID of the associated network attached to the virtual machine.
-        It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.",
+        Description = @"The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.",
         SerializedName = @"attachedNetworkId",
         PossibleTypes = new [] { typeof(string) })]
         string AttachedNetworkId { get; set; }
         /// <summary>
-        /// The indicator of whether this is the default gateway.
-        /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified
-        /// as True.
+        /// The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork
+        /// attachment) for a single machine may be specified as True.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -135,16 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The indicator of whether this is the default gateway.
-        Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.",
+        Description = @"The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.",
         SerializedName = @"defaultGateway",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         string DefaultGateway { get; set; }
         /// <summary>
-        /// The IP allocation mechanism for the virtual machine.
-        /// Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        /// Otherwise, Disabled is the only permitted value.
+        /// The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify
+        /// Disabled. Otherwise, Disabled is the only permitted value.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = true,
@@ -152,21 +139,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The IP allocation mechanism for the virtual machine.
-        Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        Otherwise, Disabled is the only permitted value.",
+        Description = @"The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify Disabled. Otherwise, Disabled is the only permitted value.",
         SerializedName = @"ipAllocationMethod",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
         string IPAllocationMethod { get; set; }
         /// <summary>
-        /// The IPv4 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the
+        /// subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from
+        /// within the subnet specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -174,25 +156,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The IPv4 address of the virtual machine.
-
-        This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-
-        If IPAllocationMethod is:
-        Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.
-        Disabled - this field will be empty.",
+        Description = @"The IPv4 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.  If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network. Disabled - this field will be empty.",
         SerializedName = @"ipv4Address",
         PossibleTypes = new [] { typeof(string) })]
         string Ipv4Address { get; set; }
         /// <summary>
-        /// The IPv6 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified
+        /// in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet
+        /// specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -200,14 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The IPv6 address of the virtual machine.
-
-        This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-
-        If IPAllocationMethod is:
-        Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.
-        Disabled - this field will be empty.",
+        Description = @"The IPv6 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.  If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network. Disabled - this field will be empty.",
         SerializedName = @"ipv6Address",
         PossibleTypes = new [] { typeof(string) })]
         string Ipv6Address { get; set; }
@@ -225,10 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string MacAddress { get;  }
         /// <summary>
-        /// The associated network's interface name.
-        /// If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        /// If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        /// For a CloudServicesNetwork resource, this name will be ignored.
+        /// The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters
+        /// and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the
+        /// network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -236,10 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The associated network's interface name.
-        If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        For a CloudServicesNetwork resource, this name will be ignored.",
+        Description = @"The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.",
         SerializedName = @"networkAttachmentName",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -250,42 +211,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
 
     {
         /// <summary>
-        /// The resource ID of the associated network attached to the virtual machine.
-        /// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+        /// The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network,
+        /// l2Network or trunkedNetwork resources.
         /// </summary>
         string AttachedNetworkId { get; set; }
         /// <summary>
-        /// The indicator of whether this is the default gateway.
-        /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified
-        /// as True.
+        /// The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork
+        /// attachment) for a single machine may be specified as True.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         string DefaultGateway { get; set; }
         /// <summary>
-        /// The IP allocation mechanism for the virtual machine.
-        /// Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        /// Otherwise, Disabled is the only permitted value.
+        /// The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify
+        /// Disabled. Otherwise, Disabled is the only permitted value.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
         string IPAllocationMethod { get; set; }
         /// <summary>
-        /// The IPv4 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the
+        /// subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from
+        /// within the subnet specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         string Ipv4Address { get; set; }
         /// <summary>
-        /// The IPv6 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified
+        /// in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet
+        /// specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         string Ipv6Address { get; set; }
         /// <summary>
@@ -293,10 +246,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         string MacAddress { get; set; }
         /// <summary>
-        /// The associated network's interface name.
-        /// If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        /// If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        /// For a CloudServicesNetwork resource, this name will be ignored.
+        /// The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters
+        /// and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the
+        /// network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
         /// </summary>
         string Name { get; set; }
 

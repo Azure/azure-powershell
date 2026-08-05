@@ -35,7 +35,7 @@ Describe 'FileShare-CRUD' {
                     -ProvisionedThroughputMiBPerSec 228 `
                     -Redundancy "Local" `
                     -PublicNetworkAccess "Enabled" `
-                    -NfProtocolPropertyRootSquash "NoRootSquash" `
+                    -RootSquash "NoRootSquash" `
                     -Tag @{"lifecycle" = "crud"; "test" = "nfs"; "created" = (Get-Date -Format "yyyy-MM-dd")}
                 
                 $share.Name | Should -Be $script:crudShareName

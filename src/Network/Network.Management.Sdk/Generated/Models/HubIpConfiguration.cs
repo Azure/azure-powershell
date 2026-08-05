@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// IpConfigurations.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HubIpConfiguration : SubResource
+    public partial class HubIpConfiguration : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the HubIpConfiguration class.
@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">Name of the Ip Configuration.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Ipconfiguration type.
         /// </param>
 
         /// <param name="subnet">The reference to the subnet resource.
@@ -52,13 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="publicIPAddress">The reference to the public IP resource.
         /// </param>
-        public HubIpConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress))
+        public HubIpConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.Subnet = subnet;
             this.ProvisioningState = provisioningState;
             this.PrivateIPAddress = privateIPAddress;
@@ -74,23 +72,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of the Ip Configuration.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets ipconfiguration type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the reference to the subnet resource.

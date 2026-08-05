@@ -124,9 +124,19 @@ namespace Microsoft.Azure.Management.NetApp
         IPoolsOperations Pools { get; }
 
         /// <summary>
+        /// Gets the ICachesOperations
+        /// </summary>
+        ICachesOperations Caches { get; }
+
+        /// <summary>
         /// Gets the IVolumesOperations
         /// </summary>
         IVolumesOperations Volumes { get; }
+
+        /// <summary>
+        /// Gets the IBucketsOperations
+        /// </summary>
+        IBucketsOperations Buckets { get; }
 
         /// <summary>
         /// Gets the IBackupsUnderVolumeOperations

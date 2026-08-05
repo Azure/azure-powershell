@@ -23,6 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
 #>
 
 function New-AzMigrateProject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessage("**********************************************************************************************`n
   * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
   * At least one change applies to this cmdlet.                                                     *`n
@@ -56,7 +57,7 @@ function New-AzMigrateProject {
 
         [Parameter(ParameterSetName='PutExpandedCustom')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProjectProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProjectProperties]
         # Specifies the project properties.
         ${Property},
 
@@ -70,7 +71,7 @@ function New-AzMigrateProject {
     
     process{
         if ($null -eq $Property) {
-            $Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
+            $Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrateProjectProperties]::new()
             $Property.RegisteredTool = {}
         }
 

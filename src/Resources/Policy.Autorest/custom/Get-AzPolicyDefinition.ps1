@@ -35,8 +35,6 @@ param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicyDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -45,8 +43,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -92,7 +88,10 @@ param(
     # Causes cmdlet to return only static policy definitions.
     ${Static},
 
-    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicyDefinitionVersion')]
@@ -100,17 +99,14 @@ param(
     # The policy definition version in #.#.# format.
     ${Version},
 
-    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
+    # Causes cmdlet to return only custom policy definitions versions.
     ${ListVersion},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -223,12 +219,12 @@ process {
         throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     }
 
-    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'Version is only allowed if Name or Id  are provided.'
+    if ($PSBoundParameters['Version'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'Version is only allowed when exactly one of Name or Id is provided.'
     }
 
-    if ($PSBoundParameters['ListVersion'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'ListVersion is only allowed if Name or Id  are provided.'
+    if ($PSBoundParameters['ListVersion'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'ListVersion is only allowed when exactly one of Name or Id is provided.'
     }
 
     # handle specific parameter sets
@@ -283,7 +279,11 @@ process {
             }
         }
         elseif ($PSBoundParameters['ManagementGroupName']) {
-            $PSBoundParameters['ManagementGroupId'] = $PSBoundParameters['ManagementGroupName']
+            if (!($PSBoundParameters['Version'] -or $PSBoundParameters['ListVersion'])) {
+                $PSBoundParameters['ManagementGroupId'] = $PSBoundParameters['ManagementGroupName']
+                $null = $PSBoundParameters.Remove('ManagementGroupName')
+            }
+
             if ($PSBoundParameters['Name']) {
                 $calledParameterSet = 'NameMG'
             }
@@ -310,8 +310,6 @@ process {
     }
 
     # remove parameters not used by generated cmdlets
-    $null = $PSBoundParameters.Remove('BackwardCompatible')
-    $null = $PSBoundParameters.Remove('ManagementGroupName')
     $null = $PSBoundParameters.Remove('Id')
     $null = $PSBoundParameters.Remove('Builtin')
     $null = $PSBoundParameters.Remove('Custom')
@@ -327,7 +325,6 @@ process {
     $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
     $scriptCmd = {& $wrappedCmd @PSBoundParameters}
 
-    # get output and fix up for backward compatibility
     try {
         $output = Invoke-Command -ScriptBlock $scriptCmd
     }
@@ -353,30 +350,12 @@ process {
     }
 
     foreach ($item in $output) {
-        # add property bag for backward compatibility with previous SDK cmdlets
-        if ($BackwardCompatible) {
-            $propertyBag = @{
-                Description = $item.Description;
-                DisplayName = $item.DisplayName;
-                Metadata = ConvertObjectToPSObject $item.Metadata;
-                Mode = $item.Mode;
-                Parameters = ConvertObjectToPSObject $item.Parameter;
-                PolicyRule = ConvertObjectToPSObject $item.PolicyRule;
-                PolicyType = $item.PolicyType
-            }
-
-            $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-            $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionId' -Value $item.Id
-        }
-
         # use PSCustomObject for JSON properties
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (ConvertObjectToPSObject $item.PolicyRule) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'Versions' -Value ([array]($item.Versions)) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'EndpointSettingDetail' -Value (ConvertObjectToPSObject $item.EndpointSettingDetail) -Force
         $PSCmdlet.WriteObject($item)
     }
 }

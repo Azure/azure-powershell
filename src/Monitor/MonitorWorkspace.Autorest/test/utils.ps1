@@ -39,23 +39,24 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-
 
     $monitorWorkspace1 = RandomString -allChars $false -len 6
     $monitorWorkspace2 = RandomString -allChars $false -len 6
 
     $env.Add("monitorWorkspace1", $monitorWorkspace1)
     $env.Add("monitorWorkspace2", $monitorWorkspace2)
+    $env.Add("metricsContainer1", "default")
 
-    write-host "start to create test group"
     $env.Add("location", "eastus")
-    $resourceGroup = "testgroup-monitorworkspace"
+    $resourceGroup = "azps-test-group-monitorworkspace-" + (RandomString -allChars $false -len 6)
     $env.Add("resourceGroup", $resourceGroup)
-    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+    write-host "start to create test group $resourceGroup"
+    New-AzResourceGroup -Name $resourceGroup -Location $env.location | Out-Null
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -66,6 +67,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

@@ -23,7 +23,7 @@ Migrate data from a Kusto cluster to another cluster.
 Invoke-AzKustoClusterMigration -Name "myCluster" -ResourceGroupName "myResourceGroup" -ClusterResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/xxxx/providers/Microsoft.Kusto/clusters/destinationClusterName"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IClusterMigrateRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
@@ -61,6 +61,8 @@ function Invoke-AzKustoClusterMigration {
 param(
     [Parameter(ParameterSetName='Migrate', Mandatory)]
     [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
     [Alias('ClusterName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
@@ -69,6 +71,8 @@ param(
 
     [Parameter(ParameterSetName='Migrate', Mandatory)]
     [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -77,6 +81,8 @@ param(
 
     [Parameter(ParameterSetName='Migrate')]
     [Parameter(ParameterSetName='MigrateExpanded')]
+    [Parameter(ParameterSetName='MigrateViaJsonFilePath')]
+    [Parameter(ParameterSetName='MigrateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -88,15 +94,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterMigrateRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IClusterMigrateRequest]
     # A cluster migrate request.
-    # To construct, see NOTES section for CLUSTERMIGRATEREQUEST properties and create a hash table.
     ${ClusterMigrateRequest},
 
     [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
@@ -105,6 +109,18 @@ param(
     [System.String]
     # Resource ID of the destination cluster or kusto pool.
     ${ClusterResourceId},
+
+    [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Migrate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Migrate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -180,6 +196,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -203,10 +227,10 @@ begin {
             MigrateExpanded = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateExpanded';
             MigrateViaIdentity = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaIdentity';
             MigrateViaIdentityExpanded = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaIdentityExpanded';
+            MigrateViaJsonFilePath = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaJsonFilePath';
+            MigrateViaJsonString = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaJsonString';
         }
-        if (('Migrate', 'MigrateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Migrate', 'MigrateExpanded', 'MigrateViaJsonFilePath', 'MigrateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -220,6 +244,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

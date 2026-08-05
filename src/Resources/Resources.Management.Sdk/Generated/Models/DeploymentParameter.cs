@@ -24,19 +24,15 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the DeploymentParameter class.
         /// </summary>
 
-        /// <param name="value">Input value to the parameter.
-        /// </param>
-
-        /// <param name="type">Type of the value.
+        /// <param name="value">Input value to the parameter .
         /// </param>
 
         /// <param name="reference">Azure Key Vault parameter reference.
         /// </param>
-        public DeploymentParameter(object value = default(object), string type = default(string), KeyVaultParameterReference reference = default(KeyVaultParameterReference))
+        public DeploymentParameter(object value = default(object), KeyVaultParameterReference reference = default(KeyVaultParameterReference))
 
         {
             this.Value = value;
-            this.Type = type;
             this.Reference = reference;
             CustomInit();
         }
@@ -48,16 +44,10 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets or sets input value to the parameter.
+        /// Gets or sets input value to the parameter .
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public object Value {get; set; }
-
-        /// <summary>
-        /// Gets or sets type of the value.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
 
         /// <summary>
         /// Gets or sets azure Key Vault parameter reference.
@@ -72,7 +62,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </exception>
         public virtual void Validate()
         {
-
 
             if (this.Reference != null)
             {

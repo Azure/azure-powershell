@@ -26,8 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private System.Collections.Generic.List<string> _availabilityZone;
 
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> AvailabilityZone { get => this._availabilityZone; set => this._availabilityZone = value; }
@@ -138,8 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _vMSize;
 
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string VMSize { get => this._vMSize; set => this._vMSize = value; }
@@ -168,8 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string AnalyticsWorkspaceId { get; set; }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -177,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.",
+        Description = @"The Azure availability zones within the region that will be used to support the cluster manager resource.",
         SerializedName = @"availabilityZones",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> AvailabilityZone { get; set; }
@@ -293,8 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Accepted", "Updating")]
         string ProvisioningState { get;  }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -302,7 +298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.",
+        Description = @"The size of the Azure virtual machines to use for hosting the cluster manager resource.",
         SerializedName = @"vmSize",
         PossibleTypes = new [] { typeof(string) })]
         string VMSize { get; set; }
@@ -317,8 +313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         string AnalyticsWorkspaceId { get; set; }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>
@@ -359,8 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Accepted", "Updating")]
         string ProvisioningState { get; set; }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
         string VMSize { get; set; }
 

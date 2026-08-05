@@ -83,6 +83,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("CrashConsistent", "FileSystemConsistent", "ApplicationConsistent")]
         public string ConsistencyMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Duration in minutes for which the instant access snapshot is retained. Valid range: 1 to 300. Only applicable when the parent restore point collection has InstantAccess enabled.")]
+        [ValidateRange(1, 300)]
+        public int? InstantAccessDurationInMinutes { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -116,8 +122,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     restorePoint.ConsistencyMode = this.ConsistencyMode;
 
+                    if (this.IsParameterBound(c => c.InstantAccessDurationInMinutes))
+                    {
+                        restorePoint.InstantAccessDurationMinutes = this.InstantAccessDurationInMinutes;
+                    }
+
                     var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
-                        
+
                     var psObject = new PSRestorePoint();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
                     WriteObject(psObject);

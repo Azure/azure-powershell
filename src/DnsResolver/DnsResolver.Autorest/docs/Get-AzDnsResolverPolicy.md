@@ -12,7 +12,7 @@ Gets properties of a DNS resolver policy.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzDnsResolverPolicy [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -29,7 +29,7 @@ Get-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> [-Subscriptio
 Get-AzDnsResolverPolicy -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzDnsResolverPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -117,7 +117,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -152,7 +151,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List1, List2
 Aliases:
 
 Required: True
@@ -195,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The name of the virtual network.
+The name of the VirtualNetwork
 
 ```yaml
 Type: System.String
@@ -249,9 +248,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicy
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ISubResource
 
 ## NOTES
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation deletes a policy exemption, given its name and the scope it was created in. The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}", ApiVersion = "2022-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}", ApiVersion = "2024-12-01-preview")]
     public partial class RemoveAzPolicyExemption_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IContext

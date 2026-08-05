@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
     /// <summary>
     /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
-    /// the OData error response format.)
+    /// the OData error response format.).
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ErrorResponseTypeConverter))]
     public partial class ErrorResponse
@@ -97,6 +97,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Code"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
@@ -111,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             }
             if (content.Contains("Detail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponseTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetailTypeConverter.ConvertFrom));
             }
             if (content.Contains("AdditionalInfo"))
             {
@@ -134,6 +138,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Code"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
@@ -148,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             }
             if (content.Contains("Detail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponseTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetailTypeConverter.ConvertFrom));
             }
             if (content.Contains("AdditionalInfo"))
             {
@@ -170,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
-    /// the OData error response format.)
+    /// the OData error response format.).
     [System.ComponentModel.TypeConverter(typeof(ErrorResponseTypeConverter))]
     public partial interface IErrorResponse
 

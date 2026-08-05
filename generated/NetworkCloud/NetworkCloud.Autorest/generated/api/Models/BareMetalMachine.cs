@@ -20,6 +20,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.TrackedResource();
 
         /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).ActionState; }
+
+        /// <summary>
         /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
@@ -46,6 +52,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The MAC address of a NIC connected to the PXE network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string BootMacAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).BootMacAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).BootMacAddress = value ; }
+
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string CaCertificateHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificateHash; }
+
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string CaCertificateValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificateValue; }
 
         /// <summary>The resource ID of the cluster this bare metal machine is associated with.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
@@ -164,11 +178,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string MachineSkuId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).MachineSkuId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).MachineSkuId = value ; }
 
+        /// <summary>Internal Acessors for ActionState</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.ActionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).ActionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).ActionState = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for AssociatedResourceId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.AssociatedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).AssociatedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).AssociatedResourceId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for BmcCredentials</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.BmcCredentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).BmcCredentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).BmcCredentials = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for CaCertificate</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.CaCertificate { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificate; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificate = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for CaCertificateHash</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.CaCertificateHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificateHash; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificateHash = value ?? null; }
+
+        /// <summary>Internal Acessors for CaCertificateValue</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.CaCertificateValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificateValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).CaCertificateValue = value ?? null; }
 
         /// <summary>Internal Acessors for ClusterId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal.ClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal)Property).ClusterId = value ?? null; }
@@ -461,6 +487,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResource
     {
         /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The current state of any in progress or completed actions. The most recent known instance of each action type is shown.",
+        SerializedName = @"actionStates",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get;  }
+        /// <summary>
         /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
@@ -530,6 +569,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"bootMacAddress",
         PossibleTypes = new [] { typeof(string) })]
         string BootMacAddress { get; set; }
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The hash value of the X.509 Certificate.",
+        SerializedName = @"hash",
+        PossibleTypes = new [] { typeof(string) })]
+        string CaCertificateHash { get;  }
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The textual value of the X.509 Certificate.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(string) })]
+        string CaCertificateValue { get;  }
         /// <summary>The resource ID of the cluster this bare metal machine is associated with.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -982,6 +1043,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceInternal
     {
         /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get; set; }
+        /// <summary>
         /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
         /// </summary>
         System.Collections.Generic.List<string> AssociatedResourceId { get; set; }
@@ -1001,6 +1066,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string BmcMacAddress { get; set; }
         /// <summary>The MAC address of a NIC connected to the PXE network.</summary>
         string BootMacAddress { get; set; }
+        /// <summary>
+        /// The CA certificate information issued by the platform for connecting to TLS interfaces for the bare metal machine. Callers
+        /// add this certificate to the trusted CA store on the Kubernetes control plane nodes to allow secure communication with
+        /// the bare metal machine.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo CaCertificate { get; set; }
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        string CaCertificateHash { get; set; }
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        string CaCertificateValue { get; set; }
         /// <summary>The resource ID of the cluster this bare metal machine is associated with.</summary>
         string ClusterId { get; set; }
         /// <summary>The cordon status of the bare metal machine.</summary>

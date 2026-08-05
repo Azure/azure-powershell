@@ -1,16 +1,17 @@
 {
-  "Remove-AzMigrateProject+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj1234?api-version=2018-09-01-preview+1": {
+  "Remove-AzMigrateProject+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/singhabh-rg/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj1234?api-version=2018-09-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj1234?api-version=2018-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/singhabh-rg/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj1234?api-version=2018-09-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "d2a05882-fd2d-482a-a4b3-b19b169c3114" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "735f0479-a3fc-45b2-86a3-96a03ab18fab" ],
         "CommandName": [ "Remove-AzMigrateProject" ],
         "FullCommandName": [ "Remove-AzMigrateProject_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,17 +24,22 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "152b8111-bf51-4d70-8a8a-998a0eccb2ce" ],
-        "x-ms-correlation-request-id": [ "152b8111-bf51-4d70-8a8a-998a0eccb2ce" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220926T120338Z:152b8111-bf51-4d70-8a8a-998a0eccb2ce" ],
-        "Date": [ "Mon, 26 Sep 2022 12:03:38 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/e3f659e3-9925-4fcf-bdb9-8616731e70e9" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-request-id": [ "4a73d4df-ff78-4ef2-9393-9916ad120e19" ],
+        "x-ms-correlation-request-id": [ "4a73d4df-ff78-4ef2-9393-9916ad120e19" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T075311Z:4a73d4df-ff78-4ef2-9393-9916ad120e19" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D82A3ABB542F4CD683F8E4189C215893 Ref B: MAA201060515051 Ref C: 2025-11-18T07:53:07Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:53:10 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   }
 }

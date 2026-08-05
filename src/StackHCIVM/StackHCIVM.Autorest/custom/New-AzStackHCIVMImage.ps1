@@ -103,9 +103,10 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ParameterBreakingChangeAttribute("ImagePath", "16.0.0", "2.0.0", "May 2026", OldParamaterType="String", NewParameterType="SecureString")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Local path of image that the image should be created from. 
-    # This parameter is required for non marketplace images. 
+    [System.Security.SecureString]
+    # Local path of image that the image should be created from (as SecureString).
+    # This parameter is required for non marketplace images.
+    # Use: ConvertTo-SecureString -String "path\to\image.vhdx" -AsPlainText -Force
     ${ImagePath},
 
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
@@ -319,7 +320,6 @@ function New-AzStackHCIVMImage{
                 $null = $PSBoundParameters.Remove("Publisher")
                 $null = $PSBoundParameters.Remove("Offer")
                 $null = $PSBoundParameters.Remove("OSType")
-                $null = $PSBoundParameters.Remove("ImagePath")
                 $null = $PSBoundParameters.Remove("CustomLocationId")
                 $null = $PSBoundParameters.Remove("CloudInitDataSource")
                 $null = $PSBoundParameters.Remove("Location")
@@ -334,12 +334,14 @@ function New-AzStackHCIVMImage{
                     Start-Sleep -Seconds 5    
                     if ($image.ProvisioningStatus -eq "Failed") {
                         Break
-                    }           
+                    }
+                    if (($PercentCompleted -ne 100) -and ($image.ProvisioningStatus -ne "Failed")) {
+                        Start-Sleep -Seconds 5
+                    }
                 }
                 if ($image.ProvisioningStatus -eq "Failed"){
                     Write-Error $image.StatusErrorMessage -ErrorAction Stop
                 }
-               
             } catch {
                 $e = $_
                 if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
@@ -381,7 +383,6 @@ function New-AzStackHCIVMImage{
                 $null = $PSBoundParameters.Remove("Publisher")
                 $null = $PSBoundParameters.Remove("Offer")
                 $null = $PSBoundParameters.Remove("OSType")
-                $null = $PSBoundParameters.Remove("ImagePath")
                 $null = $PSBoundParameters.Remove("CustomLocationId")
                 $null = $PSBoundParameters.Remove("CloudInitDataSource")
                 $null = $PSBoundParameters.Remove("Location")

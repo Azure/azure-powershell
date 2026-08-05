@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Create or update a cloud service.
+Create a cloud service.
 Please note some properties can be set only during cloud service creation.
 .Description
-Create or update a cloud service.
+Create a cloud service.
 Please note some properties can be set only during cloud service creation.
 .Example
 # Create role profile object
@@ -185,47 +185,47 @@ $cloudService = New-AzCloudService                                              
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service extension profile.
-  [Extension <IExtension[]>]: List of extensions for the cloud service.
+  [Extension <List<IExtension>>]: List of extensions for the cloud service.
     [AutoUpgradeMinorVersion <Boolean?>]: Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
     [ForceUpdateTag <String>]: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
     [Name <String>]: The name of the extension.
     [ProtectedSetting <String>]: Protected settings for the extension which are encrypted before sent to the role instance.
     [ProtectedSettingFromKeyVaultSecretUrl <String>]: Secret URL which contains the protected settings of the extension
     [Publisher <String>]: The name of the extension handler publisher.
-    [RolesAppliedTo <String[]>]: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
+    [RolesAppliedTo <List<String>>]: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
     [Setting <String>]: Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
     [SourceVaultId <String>]: Resource Id
     [Type <String>]: Specifies the type of the extension.
     [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
 
 NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud service.
-  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
-    FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+  [LoadBalancerConfiguration <List<ILoadBalancerConfiguration>>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+    FrontendIPConfiguration <List<ILoadBalancerFrontendIPConfiguration>>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
       Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
       [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
       [PublicIPAddressId <String>]: Resource Id
       [SubnetId <String>]: Resource Id
     Name <String>: The name of the Load balancer
     [Id <String>]: Resource Id
-  [SlotType <CloudServiceSlotType?>]: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
+  [SlotType <String>]: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
   [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
     [Id <String>]: Resource Id
 
 OSPROFILE <ICloudServiceOSProfile>: Describes the OS profile for the cloud service.
-  [Secret <ICloudServiceVaultSecretGroup[]>]: Specifies set of certificates that should be installed onto the role instances.
+  [Secret <List<ICloudServiceVaultSecretGroup>>]: Specifies set of certificates that should be installed onto the role instances.
     [SourceVaultId <String>]: Resource Id
-    [VaultCertificate <ICloudServiceVaultCertificate[]>]: The list of key vault references in SourceVault which contain certificates.
+    [VaultCertificate <List<ICloudServiceVaultCertificate>>]: The list of key vault references in SourceVault which contain certificates.
       [CertificateUrl <String>]: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
 
 ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud service.
-  [Role <ICloudServiceRoleProfileProperties[]>]: List of roles for the cloud service.
+  [Role <List<ICloudServiceRoleProfileProperties>>]: List of roles for the cloud service.
     [Name <String>]: Resource name.
     [SkuCapacity <Int64?>]: Specifies the number of role instances in the cloud service.
     [SkuName <String>]: The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
@@ -234,7 +234,7 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
 https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -258,12 +258,6 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
@@ -283,25 +277,32 @@ param(
     # The service package URL can be Shared Access Signature (SAS) URI from any storage account.This is a write-only property and is not returned in GET calls.
     ${ConfigurationUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceExtensionProfile]
     # Describes a cloud service extension profile.
-    # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
     ${ExtensionProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceNetworkProfile]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceNetworkProfile]
     # Network Profile for the cloud service.
-    # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceOSProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceOSProfile]
     # Describes the OS profile for the cloud service.
-    # To construct, see NOTES section for OSPROFILE properties and create a hash table.
     ${OSProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -314,12 +315,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceRoleProfile]
     # Describes the role profile for the cloud service.
-    # To construct, see NOTES section for ROLEPROFILE properties and create a hash table.
     ${RoleProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # (Optional) Indicates whether to start the cloud service immediately after it is created.
@@ -328,17 +330,21 @@ param(
     # A deployed service still incurs charges, even if it is poweredoff.
     ${StartCloudService},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.PSArgumentCompleterAttribute("Auto", "Manual", "Simultaneous")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode]
+    [System.String]
     # Update mode for the cloud service.
     # Role instances are allocated to update domains when the service is deployed.
     # Updates can be initiated manually in each update domain or initiated automatically in all update domains.Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />If not specified, the default value is Auto.
@@ -354,6 +360,18 @@ param(
     # List should contain only 1 zone where cloud service should be provisioned.
     # This field is optional.
     ${Zone},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
     [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
@@ -397,6 +415,8 @@ param(
     ${KeyVaultName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Azure')]
@@ -406,18 +426,24 @@ param(
     ${DefaultProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(ParameterSetName='CreateExpanded', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonString', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(ParameterSetName='CreateExpanded', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonString', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
@@ -425,6 +451,8 @@ param(
     ${HttpPipelineAppend},
 
     [Parameter(ParameterSetName='CreateExpanded', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonString', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
@@ -432,18 +460,24 @@ param(
     ${HttpPipelinePrepend},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter(ParameterSetName='CreateExpanded', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonString', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(ParameterSetName='CreateExpanded', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonString', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.PSCredential]
@@ -451,6 +485,8 @@ param(
     ${ProxyCredential},
 
     [Parameter(ParameterSetName='CreateExpanded', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', DontShow)]
+    [Parameter(ParameterSetName='CreateViaJsonString', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -464,6 +500,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -484,12 +528,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.CloudService.private\New-AzCloudService_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.CloudService.private\New-AzCloudService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.CloudService.private\New-AzCloudService_CreateViaJsonString';
             quickCreateParameterSetWithStorage = 'Az.CloudService.custom\New-AzCloudService';
             quickCreateParameterSetWithoutStorage = 'Az.CloudService.custom\New-AzCloudService';
         }
-        if (('CreateExpanded', 'quickCreateParameterSetWithStorage', 'quickCreateParameterSetWithoutStorage') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'quickCreateParameterSetWithStorage', 'quickCreateParameterSetWithoutStorage') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -503,6 +547,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

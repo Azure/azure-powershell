@@ -36,15 +36,32 @@ $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testne
 Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidation
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidation
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidationListResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IKustoIdentity>: Identity Parameter
+  [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
+  [ClusterName <String>]: The name of the Kusto cluster.
+  [DataConnectionName <String>]: The name of the data connection.
+  [DatabaseName <String>]: The name of the database in the Kusto cluster.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
+  [ScriptName <String>]: The name of the Kusto database script.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
@@ -65,17 +82,19 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 
 PARAMETER <IDataConnectionValidation>: Class representing an data connection validation.
   [DataConnectionName <String>]: The name of the data connection.
-  [Kind <DataConnectionKind?>]: Kind of the endpoint for the data connection
+  [Kind <String>]: Kind of the endpoint for the data connection
   [Location <String>]: Resource location.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidationListResult])]
 [CmdletBinding(DefaultParameterSetName='DataExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Data', Mandatory)]
     [Parameter(ParameterSetName='DataExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DataViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DataViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto cluster.
@@ -83,6 +102,10 @@ param(
 
     [Parameter(ParameterSetName='Data', Mandatory)]
     [Parameter(ParameterSetName='DataExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DataViaIdentityCluster', Mandatory)]
+    [Parameter(ParameterSetName='DataViaIdentityClusterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DataViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DataViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the database in the Kusto cluster.
@@ -90,6 +113,8 @@ param(
 
     [Parameter(ParameterSetName='Data', Mandatory)]
     [Parameter(ParameterSetName='DataExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DataViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DataViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -98,6 +123,8 @@ param(
 
     [Parameter(ParameterSetName='Data')]
     [Parameter(ParameterSetName='DataExpanded')]
+    [Parameter(ParameterSetName='DataViaJsonFilePath')]
+    [Parameter(ParameterSetName='DataViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -109,18 +136,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DataViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DataViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
 
     [Parameter(ParameterSetName='Data', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='DataViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DataViaIdentityCluster', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnectionValidation]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidation]
     # Class representing an data connection validation.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='DataExpanded')]
+    [Parameter(ParameterSetName='DataViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='DataViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
@@ -128,19 +162,33 @@ param(
     ${DataConnectionName},
 
     [Parameter(ParameterSetName='DataExpanded')]
+    [Parameter(ParameterSetName='DataViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='DataViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.PSArgumentCompleterAttribute("EventHub", "EventGrid", "IotHub", "CosmosDb")]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind]
+    [System.String]
     # Kind of the endpoint for the data connection
     ${Kind},
 
     [Parameter(ParameterSetName='DataExpanded')]
+    [Parameter(ParameterSetName='DataViaIdentityClusterExpanded')]
     [Parameter(ParameterSetName='DataViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
+
+    [Parameter(ParameterSetName='DataViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Data operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='DataViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Data operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -210,16 +258,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Data = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_Data';
             DataExpanded = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataExpanded';
             DataViaIdentity = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataViaIdentity';
+            DataViaIdentityCluster = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataViaIdentityCluster';
+            DataViaIdentityClusterExpanded = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataViaIdentityClusterExpanded';
             DataViaIdentityExpanded = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataViaIdentityExpanded';
+            DataViaJsonFilePath = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataViaJsonFilePath';
+            DataViaJsonString = 'Az.Kusto.private\Invoke-AzKustoDataConnectionValidation_DataViaJsonString';
         }
-        if (('Data', 'DataExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Data', 'DataExpanded', 'DataViaJsonFilePath', 'DataViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -228,6 +281,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

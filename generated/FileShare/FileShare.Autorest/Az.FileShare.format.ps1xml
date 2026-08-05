@@ -775,12 +775,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>EncryptionInTransitRequired</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>RootSquash</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EncryptionInTransitRequired</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RootSquash</PropertyName>
               </TableColumnItem>

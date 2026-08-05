@@ -196,6 +196,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).ExtendedLocationType = (string) content.GetValueForProperty("ExtendedLocationType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).ExtendedLocationType, global::System.Convert.ToString);
             }
+            if (content.Contains("AllocatedSizeMiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AllocatedSizeMiB = (long?) content.GetValueForProperty("AllocatedSizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AllocatedSizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("AttachedTo"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AttachedTo = (System.Collections.Generic.List<string>) content.GetValueForProperty("AttachedTo",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AttachedTo, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -218,7 +222,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             if (content.Contains("SizeMiB"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB = (long?) content.GetValueForProperty("SizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB = (long) content.GetValueForProperty("SizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("StorageApplianceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).StorageApplianceId = (string) content.GetValueForProperty("StorageApplianceId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).StorageApplianceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -305,6 +313,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).ExtendedLocationType = (string) content.GetValueForProperty("ExtendedLocationType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).ExtendedLocationType, global::System.Convert.ToString);
             }
+            if (content.Contains("AllocatedSizeMiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AllocatedSizeMiB = (long?) content.GetValueForProperty("AllocatedSizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AllocatedSizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("AttachedTo"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AttachedTo = (System.Collections.Generic.List<string>) content.GetValueForProperty("AttachedTo",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).AttachedTo, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -327,7 +339,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             if (content.Contains("SizeMiB"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB = (long?) content.GetValueForProperty("SizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB = (long) content.GetValueForProperty("SizeMiB",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).SizeMiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("StorageApplianceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).StorageApplianceId = (string) content.GetValueForProperty("StorageApplianceId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal)this).StorageApplianceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

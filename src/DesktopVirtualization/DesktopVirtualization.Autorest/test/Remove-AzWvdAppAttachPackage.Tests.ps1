@@ -40,7 +40,8 @@ Describe 'Remove-AzWvdAppAttachPackage' {
 
         $packages = Get-AzWvdAppAttachPackage `
             -ResourceGroupName $env.ResourceGroup `
-            -SubscriptionId $env.SubscriptionId  
+            -SubscriptionId $env.SubscriptionId `
+            -Name 'TestPackage'
 
         $packages.Length | Should -Be 1
         $packages[0].ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'

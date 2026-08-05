@@ -78,11 +78,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return;
             }
             {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("service"), out var __jsonService) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ServiceUpdate.FromJson(__jsonService) : _service;}
+            {_executionPlacement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("executionPlacement"), out var __jsonExecutionPlacement) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExecutionPlacement.FromJson(__jsonExecutionPlacement) : _executionPlacement;}
             {_replica = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNumber>("replicas"), out var __jsonReplicas) ? (int?)__jsonReplicas : _replica;}
             {_receiver = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray>("receivers"), out var __jsonReceivers) ? If( __jsonReceivers as Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiver>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiver) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Receiver.FromJson(__u) )) ))() : null : _receiver;}
             {_processor = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray>("processors"), out var __jsonProcessors) ? If( __jsonProcessors as Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessor>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessor) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Processor.FromJson(__p) )) ))() : null : _processor;}
             {_exporter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray>("exporters"), out var __jsonExporters) ? If( __jsonExporters as Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.Exporter.FromJson(__k) )) ))() : null : _exporter;}
-            {_networkingConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray>("networkingConfigurations"), out var __jsonNetworkingConfigurations) ? If( __jsonNetworkingConfigurations as Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingConfiguration.FromJson(__f) )) ))() : null : _networkingConfiguration;}
+            {_tlsConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray>("tlsConfigurations"), out var __jsonTlsConfigurations) ? If( __jsonTlsConfigurations as Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TlsConfiguration.FromJson(__f) )) ))() : null : _tlsConfiguration;}
             AfterFromJson(json);
         }
 
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return container;
             }
             AddIf( null != this._service ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._service.ToJson(null,serializationMode) : null, "service" ,container.Add );
+            AddIf( null != this._executionPlacement ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._executionPlacement.ToJson(null,serializationMode) : null, "executionPlacement" ,container.Add );
             AddIf( null != this._replica ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNumber((int)this._replica) : null, "replicas" ,container.Add );
             if (null != this._receiver)
             {
@@ -134,14 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 }
                 container.Add("exporters",__m);
             }
-            if (null != this._networkingConfiguration)
+            if (null != this._tlsConfiguration)
             {
                 var __h = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.XNodeArray();
-                foreach( var __i in this._networkingConfiguration )
+                foreach( var __i in this._tlsConfiguration )
                 {
                     AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
                 }
-                container.Add("networkingConfigurations",__h);
+                container.Add("tlsConfigurations",__h);
             }
             AfterToJson(ref container);
             return container;

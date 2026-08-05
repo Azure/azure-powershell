@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Lists all of the protection policies within a subscription.</summary>
+    /// <summary>Lists all of the protection policies within a resource group.</summary>
     /// <remarks>
-    /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFrontDoorWafPolicy_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Lists all of the protection policies within a subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Lists all of the protection policies within a resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies", ApiVersion = "2025-10-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies", ApiVersion = "2025-11-01")]
     public partial class GetAzFrontDoorWafPolicy_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IContext
@@ -123,18 +123,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
-        private string[] _subscriptionId;
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
 
-        /// <summary>
-        /// The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The name of the resource group. The name is case insensitive.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ParameterCategory.Path)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string[] _subscriptionId;
+
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(
@@ -150,12 +161,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -361,13 +372,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.PoliciesListBySubscription(SubscriptionId, onOk, onDefault, this, Pipeline);
+                        await this.Client.PoliciesList(SubscriptionId, ResourceGroupName, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -405,12 +416,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -427,7 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -499,7 +510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.PoliciesListBySubscription_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.PoliciesList_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

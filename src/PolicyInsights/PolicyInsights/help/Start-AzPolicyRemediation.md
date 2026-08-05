@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/start-azpolicyremediation
 schema: 2.0.0
@@ -12,44 +12,88 @@ Creates and starts a policy remediation for a policy assignment.
 
 ## SYNTAX
 
-### ByName (Default)
+### CreateBySubscriptionId (Default)
 ```
-Start-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
- [-ResourceGroupName <String>] -PolicyAssignmentId <String> [-PolicyDefinitionReferenceId <String>]
- [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>] [-ResourceCount <Int32>]
- [-ParallelDeploymentCount <Int32>] [-FailureThreshold <Double>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzPolicyRemediation -Name <String> [-SubscriptionId <String>] -PolicyAssignmentId <String>
+ [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
+ [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
+ [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
+### CreateByResourceGroup
 ```
-Start-AzPolicyRemediation -ResourceId <String> -PolicyAssignmentId <String>
- [-PolicyDefinitionReferenceId <String>] [-LocationFilter <String[]>] [-ResourceDiscoveryMode <String>]
- [-ResourceCount <Int32>] [-ParallelDeploymentCount <Int32>] [-FailureThreshold <Double>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzPolicyRemediation -Name <String> [-SubscriptionId <String>] -ResourceGroupName <String>
+ -PolicyAssignmentId <String> [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>]
+ [-FilterResourceId <String[]>] [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>]
+ [-ResourceCount <Int32>] [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByResourceId
+```
+Start-AzPolicyRemediation -Name <String> -ResourceId <String> -PolicyAssignmentId <String>
+ [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
+ [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
+ [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByScope
+```
+Start-AzPolicyRemediation -Name <String> -PolicyAssignmentId <String> [-FailureThresholdPercentage <Single>]
+ [-FilterLocation <String[]>] [-FilterResourceId <String[]>] [-ParallelDeployment <Int32>]
+ [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>] [-ResourceDiscoveryMode <String>]
+ -Scope <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateByManagementGroup
+```
+Start-AzPolicyRemediation -Name <String> -ManagementGroupId <String> -PolicyAssignmentId <String>
+ [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
+ [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
+ [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+Start-AzPolicyRemediation -InputObject <IPolicyInsightsIdentity> -PolicyAssignmentId <String>
+ [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
+ [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
+ [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzPolicyRemediation** cmdlet creates a policy remediation for a particular policy assignment. All non-compliant resources at or below the remediation's scope will be remediated. Remediation is only supported for policies with the 'deployIfNotExists' and 'modify' effect.
+The **Start-AzPolicyRemediation** cmdlet creates a policy remediation for a particular policy assignment.
+
+All non-compliant resources at or below the remediation's scope will be remediated.
+
+This cmdlet can also be used to restart a previously created Remediation that is in a terminal state.
+
+Remediation is only supported for policies with the 'deployIfNotExists' and 'modify' effect.
 
 ## EXAMPLES
 
 ### Example 1: Start a remediation at subscription scope
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Set-AzContext -Subscription "My Subscription"
-Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1"
+Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -NoWait
 ```
 
-This command creates a new policy remediation in subscription 'My Subscription' for the given policy assignment.
+This command creates a new policy remediation in the current context's subscription for the provided policy assignment.
+The cmdlet will return immediately after the remediation is created without waiting for the remediation to complete.
 
 ### Example 2: Start a remediation at management group scope with optional filters
 ```powershell
 $policyAssignmentId = "/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/pa1"
-Start-AzPolicyRemediation -ManagementGroupName "mg1" -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -LocationFilter "westus","eastus"
+Start-AzPolicyRemediation -ManagementGroupId "mg1" -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -FilterLocation "westus","eastus"
 ```
 
-This command creates a new policy remediation in management group 'mg1' for the given policy assignment. Only resources in the 'westus' or 'eastus' locations will be remediated.
+This command creates a new policy remediation in management group 'mg1' for the given policy assignment.
+Only resources in the 'westus' or 'eastus' locations will be remediated.
 
 ### Example 3: Start a remediation at resource group scope for a policy set definition assignment
 ```powershell
@@ -57,46 +101,45 @@ $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/resou
 Start-AzPolicyRemediation -ResourceGroupName "myRG" -PolicyAssignmentId $policyAssignmentId -PolicyDefinitionReferenceId "0349234412441" -Name "remediation1"
 ```
 
-This command creates a new policy remediation in resource group 'myRG' for the given policy assignment. The policy assignment assigns a policy set definition (also known as an initiative). The policy definition reference ID indicates which policy within the initiative should be remediated.
+This command creates a new policy remediation in resource group 'myRG' for the given policy assignment.
+The policy assignment assigns a policy set definition (also known as an initiative).
+The policy definition reference ID indicates which policy within the initiative should be remediated.
 
 ### Example 4: Start a remediation and wait for it to complete in the background
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Set-AzContext -Subscription f0710c27-9663-4c05-19f8-1b4be01e86a5
 $job = Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -AsJob
 $job | Wait-Job
 $remediation = $job | Receive-Job
 ```
 
-This command starts a new policy remediation in subscription 'My Subscription' for the given policy assignment. It will wait for the remediation to complete before returning the final remediation status.
+This command starts a new policy remediation in the current context's subscription with the provided policy assignment.
+It will wait for the remediation to complete before returning the final remediation status.
 
 ### Example 5: Start a remediation that will discover non-compliant resources before remediating
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ResourceDiscoveryMode ReEvaluateCompliance
 ```
 
-This command creates a new policy remediation in subscription 'My Subscription' for the given policy assignment. The compliance state of resources in the subscription will be re-evaluated against the policy assignment and non-compliant resources will be remediated.
+This command creates a new policy remediation in  the current context's subscription with the provided policy assignment.
+The compliance state of resources in the subscription will be re-evaluated against the policy assignment and non-compliant resources will be remediated.
 
 ### Example 6: Start a remediation that will remediate up to 10,000 non-compliant resources
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ResourceCount 10000
 ```
 
 ### Example 7: Start a remediation that will remediate 30 resources in parallel
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ParallelDeploymentCount 30
 ```
 
 ### Example 8: Start a remediation that will terminate if more than half of the remediation deployments fail
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -FailureThreshold 0.5
 ```
 
@@ -118,12 +161,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -132,24 +176,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FailureThreshold
-Number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
+### -FailureThresholdPercentage
+A number between 0.0 to 1.0 representing the percentage failure threshold.
+The remediation will fail if the percentage of failed remediation operations (i.e.
+failed deployments) exceeds this threshold.
 
 ```yaml
-Type: System.Nullable`1[System.Double]
+Type: System.Single
 Parameter Sets: (All)
-Aliases:
+Aliases: FailureThreshold
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationFilter
+### -FilterLocation
 The resource locations that should be included in the remediation.
+
 Resources that don't reside in these locations will not be remediated.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: LocationFilter
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterResourceId
+The IDs of the resources that will be remediated.
+Can specify at most 100 IDs.
+This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance.
+This filter cannot be empty if provided, or the remediation won't target any resources.
 
 ```yaml
 Type: System.String[]
@@ -159,59 +224,91 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagementGroupId
 Management group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: CreateByManagementGroup
+Aliases: ManagementGroupName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Resource name.
+The name of the remediation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: CreateBySubscriptionId, CreateByResourceGroup, CreateByResourceId, CreateByScope, CreateByManagementGroup
+Aliases: RemediationName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParallelDeploymentCount
-How many resources to remediate at any given time. Can be used to control the pace of the remediation. If not provided, the default parallel deployments value is used.
+### -NoWait
+Run the command asynchronously.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParallelDeployment
+Determines how many resources to remediate at any given time.
+Can be used to increase or reduce the pace of the remediation.
+If not provided, the default parallel deployments value is used.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: ParallelDeploymentCount
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PolicyAssignmentId
-Policy assignment ID.
+The resource ID of the policy assignment that should be remediated.
 E.g.
-'/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{assignmentName}'.
+'/subscriptions/\{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/\{assignmentName}'.
 
 ```yaml
 Type: System.String
@@ -221,13 +318,13 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PolicyDefinitionReferenceId
-Gets the policy definition reference ID of the individual definition that is being remediated.
-Required when the policy assignment assigns a policy set definition.
+The policy definition reference ID of the individual definition that should be remediated.
+Required when the policy assignment being remediated assigns a policy set definition.
 
 ```yaml
 Type: System.String
@@ -237,39 +334,40 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceCount
-Maximum number of non-compliant resources that will be remediated. If not provided, the default resource count is used.
+Determines the max number of non-compliant resources that can be remediated by the remediation job.
+If not provided, the default resource count is used.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceDiscoveryMode
 Describes how the remediation task will discover resources that need to be remediated.
 ReEvaluateCompliance is not supported when remediating management group scopes.
+Defaults to ExistingNonCompliant if not specified.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: ExistingNonCompliant, ReEvaluateCompliance
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -278,45 +376,61 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: CreateByResourceGroup
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+ID of the resource that the remediation is being created for.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: CreateByResourceId
 Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Scope
 Scope of the resource.
 E.g.
-'/subscriptions/{subscriptionId}/resourceGroups/{rgName}'.
+'/subscriptions/\{subscriptionId}/resourceGroups/\{rgName}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: CreateByScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+Uses current subscription if one isn't provided.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateBySubscriptionId, CreateByResourceGroup
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -356,17 +470,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Nullable`1[[System.Double, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IRemediation
 
 ## NOTES
 

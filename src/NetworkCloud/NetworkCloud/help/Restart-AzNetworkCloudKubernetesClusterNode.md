@@ -37,15 +37,13 @@ Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -Res
 ```
 Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -KubernetesClusterRestartNodeParameter <IKubernetesClusterRestartNodeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentityExpanded
 ```
 Restart-AzNetworkCloudKubernetesClusterNode -InputObject <INetworkCloudIdentity> -NodeName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity

@@ -83,8 +83,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );
             AddIf( null != (((object)this._certificateName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._certificateName.ToString()) : null, "certificateName" ,container.Add );
@@ -109,16 +109,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             {
                 return;
             }
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
-            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)CertificateName;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_hubName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("hubName"), out var __jsonHubName) ? (string)__jsonHubName : (string)HubName;}
-            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
-            {_sharedPrivateLinkResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("sharedPrivateLinkResourceName"), out var __jsonSharedPrivateLinkResourceName) ? (string)__jsonSharedPrivateLinkResourceName : (string)SharedPrivateLinkResourceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
+            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)_certificateName;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_hubName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("hubName"), out var __jsonHubName) ? (string)__jsonHubName : (string)_hubName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
+            {_sharedPrivateLinkResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("sharedPrivateLinkResourceName"), out var __jsonSharedPrivateLinkResourceName) ? (string)__jsonSharedPrivateLinkResourceName : (string)_sharedPrivateLinkResourceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
     }

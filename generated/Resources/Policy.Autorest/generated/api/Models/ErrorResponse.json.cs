@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
     /// <summary>
     /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
-    /// the OData error response format.)
+    /// the OData error response format.).
     /// </summary>
     public partial class ErrorResponse
     {
@@ -68,11 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 return;
             }
-            {_code = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("code"), out var __jsonCode) ? (string)__jsonCode : (string)_code;}
-            {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)_message;}
-            {_target = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("target"), out var __jsonTarget) ? (string)__jsonTarget : (string)_target;}
-            {_detail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("details"), out var __jsonDetails) ? If( __jsonDetails as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse) (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(__u) )) ))() : null : _detail;}
-            {_additionalInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("additionalInfo"), out var __jsonAdditionalInfo) ? If( __jsonAdditionalInfo as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo) (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorAdditionalInfo.FromJson(__p) )) ))() : null : _additionalInfo;}
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorDetail.FromJson(__jsonError) : _error;}
             AfterFromJson(json);
         }
 
@@ -105,42 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._code)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._code.ToString()) : null, "code" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._message)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._message.ToString()) : null, "message" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._target)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._target.ToString()) : null, "target" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
-            {
-                if (null != this._detail)
-                {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._detail )
-                    {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                    }
-                    container.Add("details",__w);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
-            {
-                if (null != this._additionalInfo)
-                {
-                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._additionalInfo )
-                    {
-                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
-                    }
-                    container.Add("additionalInfo",__r);
-                }
-            }
+            AddIf( null != this._error ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) this._error.ToJson(null,serializationMode) : null, "error" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

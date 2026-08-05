@@ -18,9 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentials __credentials = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Credentials();
 
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentialsInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentialsInternal)__credentials).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentialsInternal)__credentials).Type = value ; }
-
         /// <summary>Backing field for <see cref="PasswordUri" /> property.</summary>
         private string _passwordUri;
 
@@ -33,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>The Credentials type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inherited)]
-        public string Type { get => "AzureKeyVaultSmb"; }
+        public string Type { get => "AzureKeyVaultSmb"; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentialsInternal)__credentials).Type = "AzureKeyVaultSmb"; }
 
         /// <summary>Backing field for <see cref="UsernameUri" /> property.</summary>
         private string _usernameUri;
@@ -47,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Creates an new <see cref="AzureKeyVaultSmbCredentials" /> instance.</summary>
         public AzureKeyVaultSmbCredentials()
         {
-
+            this.__credentials.Type = "AzureKeyVaultSmb";
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>

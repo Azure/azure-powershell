@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A priority assigned to this rule. ",
+        Description = @"A priority assigned to this rule.",
         SerializedName = @"priority",
         PossibleTypes = new [] { typeof(int) })]
         int Priority { get; set; }

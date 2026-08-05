@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             {_administratorCredentials = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("administratorCredentials"), out var __jsonAdministratorCredentials) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentials.FromJson(__jsonAdministratorCredentials) : _administratorCredentials;}
+            {_caCertificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("caCertificate"), out var __jsonCaCertificate) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo.FromJson(__jsonCaCertificate) : _caCertificate;}
             {_capacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber>("capacity"), out var __jsonCapacity) ? (long?)__jsonCapacity : _capacity;}
             {_capacityUsed = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber>("capacityUsed"), out var __jsonCapacityUsed) ? (long?)__jsonCapacityUsed : _capacityUsed;}
             {_clusterId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterId"), out var __jsonClusterId) ? (string)__jsonClusterId : (string)_clusterId;}
@@ -120,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != this._administratorCredentials ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._administratorCredentials.ToJson(null,serializationMode) : null, "administratorCredentials" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._caCertificate ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._caCertificate.ToJson(null,serializationMode) : null, "caCertificate" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
             {

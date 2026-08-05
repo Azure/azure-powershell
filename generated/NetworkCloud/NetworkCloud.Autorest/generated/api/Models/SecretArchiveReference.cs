@@ -20,8 +20,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string KeyVaultId { get => this._keyVaultId; }
 
+        /// <summary>Backing field for <see cref="KeyVaultUri" /> property.</summary>
+        private string _keyVaultUri;
+
+        /// <summary>The URI of the key containing the secret.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public string KeyVaultUri { get => this._keyVaultUri; }
+
         /// <summary>Internal Acessors for KeyVaultId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal.KeyVaultId { get => this._keyVaultId; set { {_keyVaultId = value;} } }
+
+        /// <summary>Internal Acessors for KeyVaultUri</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal.KeyVaultUri { get => this._keyVaultUri; set { {_keyVaultUri = value;} } }
 
         /// <summary>Internal Acessors for SecretName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal.SecretName { get => this._secretName; set { {_secretName = value;} } }
@@ -64,6 +74,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"keyVaultId",
         PossibleTypes = new [] { typeof(string) })]
         string KeyVaultId { get;  }
+        /// <summary>The URI of the key containing the secret.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The URI of the key containing the secret.",
+        SerializedName = @"keyVaultUri",
+        PossibleTypes = new [] { typeof(string) })]
+        string KeyVaultUri { get;  }
         /// <summary>The name of the secret in the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -94,6 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
     {
         /// <summary>The resource ID of the key vault containing the secret.</summary>
         string KeyVaultId { get; set; }
+        /// <summary>The URI of the key containing the secret.</summary>
+        string KeyVaultUri { get; set; }
         /// <summary>The name of the secret in the key vault.</summary>
         string SecretName { get; set; }
         /// <summary>The version of the secret in the key vault.</summary>

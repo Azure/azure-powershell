@@ -27,6 +27,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
+        /// <summary>The details of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingDetail = value ?? null /* model class */; }
+
+        /// <summary>The kind of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string EndpointSettingKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingKind = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ExternalEvaluationEnforcementSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings _externalEvaluationEnforcementSetting;
+
+        /// <summary>
+        /// The details of the source of external evaluation results required by the policy during enforcement evaluation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings ExternalEvaluationEnforcementSetting { get => (this._externalEvaluationEnforcementSetting = this._externalEvaluationEnforcementSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettings()); set => this._externalEvaluationEnforcementSetting = value; }
+
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string ExternalEvaluationEnforcementSettingMissingTokenAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).MissingTokenAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).MissingTokenAction = value ?? null; }
+
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string ExternalEvaluationEnforcementSettingResultLifespan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).ResultLifespan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).ResultLifespan = value ?? null; }
+
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).RoleDefinitionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).RoleDefinitionId = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="Metadata" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesMetadata _metadata;
 
@@ -35,6 +72,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesMetadata Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionPropertiesMetadata()); set => this._metadata = value; }
+
+        /// <summary>Internal Acessors for ExternalEvaluationEnforcementSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal.ExternalEvaluationEnforcementSetting { get => (this._externalEvaluationEnforcementSetting = this._externalEvaluationEnforcementSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettings()); set { {_externalEvaluationEnforcementSetting = value;} } }
+
+        /// <summary>Internal Acessors for ExternalEvaluationEnforcementSettingEndpointSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal.ExternalEvaluationEnforcementSettingEndpointSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSetting = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Mode" /> property.</summary>
         private string _mode;
@@ -116,6 +159,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
+        /// <summary>The details of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The details of the endpoint.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get; set; }
+        /// <summary>The kind of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The kind of the endpoint.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointSettingKind { get; set; }
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.",
+        SerializedName = @"missingTokenAction",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalEvaluationEnforcementSettingMissingTokenAction { get; set; }
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.",
+        SerializedName = @"resultLifespan",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalEvaluationEnforcementSettingResultLifespan { get; set; }
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.",
+        SerializedName = @"roleDefinitionIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get; set; }
         /// <summary>
         /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
@@ -212,6 +318,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         string Description { get; set; }
         /// <summary>The display name of the policy definition.</summary>
         string DisplayName { get; set; }
+        /// <summary>The details of the endpoint.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get; set; }
+        /// <summary>The kind of the endpoint.</summary>
+        string EndpointSettingKind { get; set; }
+        /// <summary>
+        /// The details of the source of external evaluation results required by the policy during enforcement evaluation.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings ExternalEvaluationEnforcementSetting { get; set; }
+        /// <summary>The settings of an external endpoint providing evaluation results.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings ExternalEvaluationEnforcementSettingEndpointSetting { get; set; }
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        string ExternalEvaluationEnforcementSettingMissingTokenAction { get; set; }
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        string ExternalEvaluationEnforcementSettingResultLifespan { get; set; }
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get; set; }
         /// <summary>
         /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>

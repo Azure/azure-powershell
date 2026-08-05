@@ -18,7 +18,7 @@ Describe 'New-AzStorageCacheAmlFileSystem' {
     It 'CreateExpanded' {
         {
             # Create AML filesystem using expanded parameters
-            $result = New-AzStorageCacheAmlFileSystem -Name "acctest43511-1" -ResourceGroupName "acctest43511" -Location "canadacentral" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
+            $result = New-AzStorageCacheAmlFileSystem -Name "acctest43511-1" -ResourceGroupName "acctest43511" -Location "canadacentral" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
             $result | Should -Not -Be $null
             $result.Name | Should -Be "acctest43511-1"
         } | Should -Not -Throw
@@ -35,7 +35,7 @@ Describe 'New-AzStorageCacheAmlFileSystem' {
             "dayOfWeek": "Saturday",
             "timeOfDayUTC": "03:00"
         },
-        "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511",
+        "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet",
         "storageCapacityTiB": 16
     },
     "sku": {
@@ -61,7 +61,7 @@ Describe 'New-AzStorageCacheAmlFileSystem' {
             "dayOfWeek": "Saturday",
             "timeOfDayUTC": "03:00"
         },
-        "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511",
+        "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet",
         "storageCapacityTiB": 16
     },
     "sku": {
@@ -87,7 +87,7 @@ Describe 'New-AzStorageCacheAmlFileSystem' {
                 ResourceGroupName = "acctest43511"
                 AmlFilesystemName = "acctest43511-4"
             }
-            $result = New-AzStorageCacheAmlFileSystem -InputObject $identity -Location "canadacentral" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
+            $result = New-AzStorageCacheAmlFileSystem -InputObject $identity -Location "canadacentral" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
             $result | Should -Not -Be $null
             $result.Name | Should -Be "acctest43511-4"
         } | Should -Not -Throw

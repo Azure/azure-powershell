@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Subnet in a virtual network resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Subnet : SubResource
+    public partial class Subnet : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the Subnet class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="routeTable">The reference to the RouteTable resource.
@@ -116,13 +115,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="serviceGateway">Reference to an existing service gateway.
         /// </param>
-        public Subnet(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), RouteTable routeTable = default(RouteTable), string provisioningState = default(string), string sharingScope = default(string), string addressPrefix = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), SubResource natGateway = default(SubResource), System.Collections.Generic.IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpointPropertiesFormat>), System.Collections.Generic.IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(System.Collections.Generic.IList<ServiceEndpointPolicy>), System.Collections.Generic.IList<PrivateEndpoint> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpoint>), System.Collections.Generic.IList<IPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<IPConfiguration>), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurationProfiles = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ResourceNavigationLink> resourceNavigationLinks = default(System.Collections.Generic.IList<ResourceNavigationLink>), System.Collections.Generic.IList<ServiceAssociationLink> serviceAssociationLinks = default(System.Collections.Generic.IList<ServiceAssociationLink>), System.Collections.Generic.IList<Delegation> delegations = default(System.Collections.Generic.IList<Delegation>), string purpose = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?), System.Collections.Generic.IList<IpamPoolPrefixAllocation> ipamPoolPrefixAllocations = default(System.Collections.Generic.IList<IpamPoolPrefixAllocation>), SubResource serviceGateway = default(SubResource))
+        public Subnet(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), RouteTable routeTable = default(RouteTable), string provisioningState = default(string), string sharingScope = default(string), string addressPrefix = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), SubResource natGateway = default(SubResource), System.Collections.Generic.IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpointPropertiesFormat>), System.Collections.Generic.IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(System.Collections.Generic.IList<ServiceEndpointPolicy>), System.Collections.Generic.IList<PrivateEndpoint> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpoint>), System.Collections.Generic.IList<IPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<IPConfiguration>), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurationProfiles = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ResourceNavigationLink> resourceNavigationLinks = default(System.Collections.Generic.IList<ResourceNavigationLink>), System.Collections.Generic.IList<ServiceAssociationLink> serviceAssociationLinks = default(System.Collections.Generic.IList<ServiceAssociationLink>), System.Collections.Generic.IList<Delegation> delegations = default(System.Collections.Generic.IList<Delegation>), string purpose = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?), System.Collections.Generic.IList<IpamPoolPrefixAllocation> ipamPoolPrefixAllocations = default(System.Collections.Generic.IList<IpamPoolPrefixAllocation>), SubResource serviceGateway = default(SubResource))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.RouteTable = routeTable;
             this.ProvisioningState = provisioningState;
             this.SharingScope = sharingScope;
@@ -156,24 +153,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets or sets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the RouteTable resource.

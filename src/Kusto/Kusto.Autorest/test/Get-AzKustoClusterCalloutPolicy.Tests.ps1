@@ -20,15 +20,15 @@ Describe 'Get-AzKustoClusterCalloutPolicy' {
         $clusterName = $env.kustoClusterName
         $subscriptionId = $env.subscriptionId
         $apiVersion = $env.kustoApiVersion
-        $cosmosdbCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+        $cosmosdbCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "cosmosdb"
             outboundAccess = "Allow"
-            calloutUriRegex = "*"
+            calloutUriRegex = ".*"
         }
-        $postgresqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+        $postgresqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "postgresql"
             outboundAccess = "Deny"
-            calloutUriRegex = "*"
+            calloutUriRegex = ".*"
         }
         $policies = @($cosmosdbCalloutPolicy, $postgresqlCalloutPolicy)
         Add-AzKustoClusterCalloutPolicy -ResourceGroupName $resourceGroupName -ClusterName $clusterName -SubscriptionId $subscriptionId -Value $policies

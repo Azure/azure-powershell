@@ -37,7 +37,7 @@ Get-AzMigrateLocalJob -ResourceGroupName "test-rg" -ProjectName "testproj"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -98,7 +98,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the job object of the replicating serv
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
 #>
 function Get-AzMigrateLocalJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
@@ -122,23 +122,22 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the job id for which the details needs to be retrieved.
-    ${ID},
-
     [Parameter(ParameterSetName='GetByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Job identifier
     ${Name},
 
+    [Parameter(ParameterSetName='GetById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the job id for which the details needs to be retrieved.
+    ${ID},
+
     [Parameter(ParameterSetName='GetByInputObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Specifies the job object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='ListById', Mandatory)]
@@ -208,6 +207,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -228,14 +235,12 @@ begin {
 
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
-            GetById = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
             GetByName = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
+            GetById = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
             ListById = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
         }
-        if (('ListByName', 'GetById', 'GetByName', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByName', 'GetByName', 'GetById', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -249,6 +254,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

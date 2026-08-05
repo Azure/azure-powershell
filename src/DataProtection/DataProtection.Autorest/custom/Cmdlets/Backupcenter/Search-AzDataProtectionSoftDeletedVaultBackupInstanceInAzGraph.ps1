@@ -118,7 +118,7 @@ function Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph
             foreach($argResponse in $argInstanceResponse)
             {
                 $jsonStringResponse = $argResponse | ConvertTo-Json -Depth 100
-                $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstanceResource]::FromJsonString($jsonStringResponse)
+                $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.DeletedBackupInstanceResource]::FromJsonString($jsonStringResponse)
             }
             
             $skipToken += $pageSize

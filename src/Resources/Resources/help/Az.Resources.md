@@ -287,6 +287,11 @@ Creates key credentials or password credentials for an service principal.
 ### [New-AzADUser](New-AzADUser.md)
 Adds new entity to users
 
+### [New-AzDenyAssignment](New-AzDenyAssignment.md)
+Creates a user-assigned deny assignment at the specified scope.
+By default, the deny assignment targets Everyone and requires at least one excluded principal.
+Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal.
+
 ### [New-AzDeployment](New-AzDeployment.md)
 Create a deployment at the current subscription scope.
 
@@ -433,6 +438,9 @@ Removes key credentials or password credentials for an service principal.
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
 
+### [Remove-AzDenyAssignment](Remove-AzDenyAssignment.md)
+Removes a user-assigned deny assignment at the specified scope.
+
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations
 
@@ -472,7 +480,7 @@ This operation deletes a policy exemption, given its name and the scope it was c
 The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ### [Remove-AzPrivateLinkAssociation](Remove-AzPrivateLinkAssociation.md)
 Delete a specific azure private link association.
@@ -657,19 +665,19 @@ Removes a feature registration from your account.
 Unregisters a resource provider.
 
 ### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
-update the navigation property federatedIdentityCredentials in applications
+Update the navigation property federatedIdentityCredentials in applications
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
-update entity in groups
+Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
 
 ### [Update-AzADServicePrincipalAppRoleAssignment](Update-AzADServicePrincipalAppRoleAssignment.md)
-update the navigation property appRoleAssignments in servicePrincipals
+Update the navigation property appRoleAssignments in servicePrincipals
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates entity in users

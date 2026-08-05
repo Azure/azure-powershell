@@ -12,13 +12,38 @@ Query threat intelligence indicators as per filtering criteria.
 
 ## SYNTAX
 
+### QueryExpanded (Default)
 ```
-Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Id <String[]>] [-IncludeDisabled] [-Keyword <String[]>] [-MaxConfidence <Int32>]
+Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> [-Id <String[]>] [-IncludeDisabled] [-Keyword <String[]>] [-MaxConfidence <Int32>]
  [-MaxValidUntil <String>] [-MinConfidence <Int32>] [-MinValidUntil <String>] [-PageSize <Int32>]
  [-PatternType <String[]>] [-SkipToken <String>] [-SortBy <IThreatIntelligenceSortingCriteria[]>]
  [-Source <String[]>] [-ThreatType <String[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### QueryViaJsonString
+```
+Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### QueryViaJsonFilePath
+```
+Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### QueryViaIdentityExpanded
+```
+Invoke-AzSentinelThreatIntelligenceIndicatorQuery -InputObject <ISecurityInsightsIdentity> [-Id <String[]>]
+ [-IncludeDisabled] [-Keyword <String[]>] [-MaxConfidence <Int32>] [-MaxValidUntil <String>]
+ [-MinConfidence <Int32>] [-MinValidUntil <String>] [-PageSize <Int32>] [-PatternType <String[]>]
+ [-SkipToken <String>] [-SortBy <IThreatIntelligenceSortingCriteria[]>] [-Source <String[]>]
+ [-ThreatType <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +87,7 @@ Ids of threat intelligence indicators
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -77,10 +102,55 @@ Parameter to include/exclude disabled indicators.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: QueryViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Query operation
+
+```yaml
+Type: System.String
+Parameter Sets: QueryViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Query operation
+
+```yaml
+Type: System.String
+Parameter Sets: QueryViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,7 +162,7 @@ Keywords for searching threat intelligence indicators
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -107,7 +177,7 @@ Maximum confidence.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -122,7 +192,7 @@ End time for ValidUntil filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +207,7 @@ Minimum confidence.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -152,7 +222,7 @@ Start time for ValidUntil filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +237,7 @@ Page size
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +252,7 @@ Pattern types
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +268,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaJsonString, QueryViaJsonFilePath
 Aliases:
 
 Required: True
@@ -213,7 +283,7 @@ Skip token.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -225,11 +295,10 @@ Accept wildcard characters: False
 
 ### -SortBy
 Columns to sort by and sorting order
-To construct, see NOTES section for SORTBY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceSortingCriteria[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceSortingCriteria[]
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -244,7 +313,7 @@ Sources of threat intelligence indicators
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -259,7 +328,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaJsonString, QueryViaJsonFilePath
 Aliases:
 
 Required: False
@@ -274,7 +343,7 @@ Threat types of threat intelligence indicators
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -289,7 +358,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueryExpanded, QueryViaJsonString, QueryViaJsonFilePath
 Aliases:
 
 Required: True
@@ -335,9 +404,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceInformation
 
 ## NOTES
 

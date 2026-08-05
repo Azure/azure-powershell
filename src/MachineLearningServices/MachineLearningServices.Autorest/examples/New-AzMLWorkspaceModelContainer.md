@@ -1,12 +1,28 @@
 ### Example 1: Create or update model container
 ```powershell
-New-AzMLWorkspaceModelContainer -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name modelcontainerpwsh01 -Description "code container for test."
+New-AzMLWorkspaceModelContainer -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name modelcontainerpwsh01 -Description "code container for test."
 ```
 
 ```output
-Name                 SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
-----                 ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-modelcontainerpwsh01 6/1/2022 4:04:12 PM UserName (Example)         User                    6/1/2022 4:04:12 PM      UserName (Example)         User                         ml-rg-test
+Description                  : code container for test.
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/modelcontainerpwsh01
+IsArchived                   : False
+LatestVersion                : 
+Name                         : modelcontainerpwsh01
+NextVersion                  : 1
+ProvisioningState            : Succeeded
+ResourceBaseProperty         : {
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 10:04:53 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 10:04:53 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : M
 ```
 
-Create or update model container
+This command creates or update model container.

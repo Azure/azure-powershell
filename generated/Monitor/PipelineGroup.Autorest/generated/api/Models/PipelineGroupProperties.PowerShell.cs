@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Service = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IService) content.GetValueForProperty("Service",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Service, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ServiceTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ExecutionPlacement"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacement = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement) content.GetValueForProperty("ExecutionPlacement",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacement, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExecutionPlacementTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Replica"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Replica = (int?) content.GetValueForProperty("Replica",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Replica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -129,9 +133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Exporter = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter>) content.GetValueForProperty("Exporter",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Exporter, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterTypeConverter.ConvertFrom));
             }
-            if (content.Contains("NetworkingConfiguration"))
+            if (content.Contains("TlsConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).NetworkingConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration>) content.GetValueForProperty("NetworkingConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).NetworkingConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).TlsConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration>) content.GetValueForProperty("TlsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).TlsConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TlsConfigurationTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -141,13 +145,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePipeline = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline>) content.GetValueForProperty("ServicePipeline",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePipeline, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ExecutionPlacementConstraint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementConstraint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint>) content.GetValueForProperty("ExecutionPlacementConstraint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementConstraint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PlacementConstraintTypeConverter.ConvertFrom));
+            }
             if (content.Contains("ServicePersistence"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePersistence = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations) content.GetValueForProperty("ServicePersistence",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePersistence, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PersistenceConfigurationsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ExecutionPlacementDistribution"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementDistribution = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IDistributionPolicy) content.GetValueForProperty("ExecutionPlacementDistribution",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementDistribution, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.DistributionPolicyTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PersistencePersistentVolumeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).PersistencePersistentVolumeName = (string) content.GetValueForProperty("PersistencePersistentVolumeName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).PersistencePersistentVolumeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DistributionMaxInstancesPerHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).DistributionMaxInstancesPerHost = (int?) content.GetValueForProperty("DistributionMaxInstancesPerHost",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).DistributionMaxInstancesPerHost, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -170,6 +186,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Service = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IService) content.GetValueForProperty("Service",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Service, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ServiceTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ExecutionPlacement"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacement = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExecutionPlacement) content.GetValueForProperty("ExecutionPlacement",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacement, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExecutionPlacementTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Replica"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Replica = (int?) content.GetValueForProperty("Replica",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Replica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -186,9 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Exporter = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter>) content.GetValueForProperty("Exporter",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).Exporter, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterTypeConverter.ConvertFrom));
             }
-            if (content.Contains("NetworkingConfiguration"))
+            if (content.Contains("TlsConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).NetworkingConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration>) content.GetValueForProperty("NetworkingConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).NetworkingConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.NetworkingConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).TlsConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration>) content.GetValueForProperty("TlsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).TlsConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TlsConfigurationTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -198,13 +218,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePipeline = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline>) content.GetValueForProperty("ServicePipeline",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePipeline, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipeline>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ExecutionPlacementConstraint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementConstraint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint>) content.GetValueForProperty("ExecutionPlacementConstraint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementConstraint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint>(__y, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PlacementConstraintTypeConverter.ConvertFrom));
+            }
             if (content.Contains("ServicePersistence"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePersistence = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPersistenceConfigurations) content.GetValueForProperty("ServicePersistence",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ServicePersistence, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PersistenceConfigurationsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ExecutionPlacementDistribution"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementDistribution = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IDistributionPolicy) content.GetValueForProperty("ExecutionPlacementDistribution",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).ExecutionPlacementDistribution, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.DistributionPolicyTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PersistencePersistentVolumeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).PersistencePersistentVolumeName = (string) content.GetValueForProperty("PersistencePersistentVolumeName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).PersistencePersistentVolumeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DistributionMaxInstancesPerHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).DistributionMaxInstancesPerHost = (int?) content.GetValueForProperty("DistributionMaxInstancesPerHost",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupPropertiesInternal)this).DistributionMaxInstancesPerHost, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

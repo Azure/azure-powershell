@@ -16,29 +16,29 @@
 
 <#
 .Synopsis
-Method to create or update a migrate project.
+Method to put a migrate project.
 .Description
-Method to create or update a migrate project.
+Method to put a migrate project.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IMigrateProjectProperties>: Gets or sets the nested properties.
-  [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
-  [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
+  [ProvisioningState <String>]: Provisioning state of the migrate project.
+  [RegisteredTool <List<String>>]: Gets or sets the list of tools registered with the migrate project.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateproject
 #>
 function Set-AzMigrateProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProject])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -68,30 +68,41 @@ param(
     # Used by service to respond to client in appropriate language.
     ${AcceptLanguage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # Gets or sets the eTag for concurrency control.
     ${ETag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # Gets or sets the Azure location in which migrate project is created.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProjectProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProjectProperties]
     # Gets or sets the nested properties.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # .
     ${TagAdditionalProperty},
+
+    [Parameter(ParameterSetName='PutViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Put operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PutViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Put operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -149,13 +160,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             PutExpanded = 'Az.Migrate.private\Set-AzMigrateProject_PutExpanded';
+            PutViaJsonFilePath = 'Az.Migrate.private\Set-AzMigrateProject_PutViaJsonFilePath';
+            PutViaJsonString = 'Az.Migrate.private\Set-AzMigrateProject_PutViaJsonString';
         }
-        if (('PutExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('PutExpanded', 'PutViaJsonFilePath', 'PutViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -164,6 +178,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

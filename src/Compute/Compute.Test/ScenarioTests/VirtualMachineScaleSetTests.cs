@@ -514,5 +514,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetZonalPlatformFaultDomainAlignMode()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetZonalPlatformFaultDomainAlignMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfigStorageFaultDomainAlignment()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment");
+        }
     }
 }

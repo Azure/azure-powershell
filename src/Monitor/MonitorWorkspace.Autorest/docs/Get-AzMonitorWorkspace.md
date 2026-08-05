@@ -8,11 +8,11 @@ schema: 2.0.0
 # Get-AzMonitorWorkspace
 
 ## SYNOPSIS
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzMonitorWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,14 +29,14 @@ Get-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzMonitorWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ## EXAMPLES
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure Monitor workspace.
+The name of the Azure Monitor Workspace.
 The name is case insensitive
 
 ```yaml
@@ -134,7 +134,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -146,6 +146,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

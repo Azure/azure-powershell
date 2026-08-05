@@ -98,8 +98,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _parametersBody.DisplayName ?? null; set => _parametersBody.DisplayName = value; }
 
+        /// <summary>The details of the endpoint.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The details of the endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The details of the endpoint.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get => _parametersBody.EndpointSettingDetail ?? null /* object */; set => _parametersBody.EndpointSettingDetail = value; }
+
+        /// <summary>The kind of the endpoint.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The kind of the endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The kind of the endpoint.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EndpointSettingKind { get => _parametersBody.EndpointSettingKind ?? null; set => _parametersBody.EndpointSettingKind = value; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.",
+        SerializedName = @"missingTokenAction",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExternalEvaluationEnforcementSettingMissingTokenAction { get => _parametersBody.ExternalEvaluationEnforcementSettingMissingTokenAction ?? null; set => _parametersBody.ExternalEvaluationEnforcementSettingMissingTokenAction = value; }
+
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.",
+        SerializedName = @"resultLifespan",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExternalEvaluationEnforcementSettingResultLifespan { get => _parametersBody.ExternalEvaluationEnforcementSettingResultLifespan ?? null; set => _parametersBody.ExternalEvaluationEnforcementSettingResultLifespan = value; }
+
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.",
+        SerializedName = @"roleDefinitionIds",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ExternalEvaluationEnforcementSettingRoleDefinitionId { get => _parametersBody.ExternalEvaluationEnforcementSettingRoleDefinitionId?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ExternalEvaluationEnforcementSettingRoleDefinitionId = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -264,12 +329,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -562,6 +627,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
             {
                 this.PropertiesVersions = (string[])(this.MyInvocation?.BoundParameters["PropertiesVersions"]);
             }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExternalEvaluationEnforcementSettingResultLifespan")))
+            {
+                this.ExternalEvaluationEnforcementSettingResultLifespan = (string)(this.MyInvocation?.BoundParameters["ExternalEvaluationEnforcementSettingResultLifespan"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExternalEvaluationEnforcementSettingMissingTokenAction")))
+            {
+                this.ExternalEvaluationEnforcementSettingMissingTokenAction = (string)(this.MyInvocation?.BoundParameters["ExternalEvaluationEnforcementSettingMissingTokenAction"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExternalEvaluationEnforcementSettingRoleDefinitionId")))
+            {
+                this.ExternalEvaluationEnforcementSettingRoleDefinitionId = (string[])(this.MyInvocation?.BoundParameters["ExternalEvaluationEnforcementSettingRoleDefinitionId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("EndpointSettingKind")))
+            {
+                this.EndpointSettingKind = (string)(this.MyInvocation?.BoundParameters["EndpointSettingKind"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("EndpointSettingDetail")))
+            {
+                this.EndpointSettingDetail = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails)(this.MyInvocation?.BoundParameters["EndpointSettingDetail"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -625,12 +710,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -647,7 +732,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

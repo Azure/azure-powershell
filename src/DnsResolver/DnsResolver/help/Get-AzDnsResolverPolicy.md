@@ -12,7 +12,7 @@ Gets properties of a DNS resolver policy.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzDnsResolverPolicy [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzDnsResolverPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzDnsResolverPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -118,7 +118,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -153,7 +152,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List2, List
+Parameter Sets: Get, List2, List1
 Aliases:
 
 Required: True
@@ -169,7 +168,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List2, List
+Parameter Sets: List, Get, List2, List1
 Aliases:
 
 Required: False
@@ -185,7 +184,7 @@ If not specified, returns up to 100 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -196,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The name of the virtual network.
+The name of the VirtualNetwork
 
 ```yaml
 Type: System.String
@@ -250,9 +249,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicy
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ISubResource
 
 ## NOTES
 

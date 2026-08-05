@@ -15,13 +15,32 @@
 
 $accountKey = New-AzMLWorkspaceDatastoreKeyCredentialObject -Key "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 $datastoreBlob = New-AzMLWorkspaceDatastoreBlobObject -AccountName 'mmstorageeastus' -ContainerName "globaldatasets" -Endpoint "core.windows.net" -Protocol "https" -ServiceDataAccessAuthIdentity 'None' -Credentials $accountKey
-New-AzMLWorkspaceDatastore -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-demo -Name blobdatastore -Datastore $datastoreBlob
+New-AzMLWorkspaceDatastore -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name blobdatastore -Datastore $datastoreBlob
 ```
 
 ```output
-Name          SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----          -------------------  ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-blobdatastore 5/27/2022 7:15:04 AM UserName (Example)  User                    5/27/2022 7:15:05 AM     UserName (Example)       User                         ml-rg-test
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/datastores/blobdatastore
+Name                         : blobdatastore
+Property                     : {
+                                 "credentials": {
+                                   "credentialsType": "AccountKey"
+                                 },
+                                 "datastoreType": "AzureBlob",
+                                 "isDefault": false,
+                                 "accountName": "mmstorageeastus",
+                                 "containerName": "globaldatasets",
+                                 "endpoint": "core.windows.net",
+                                 "protocol": "https",
+                                 "serviceDataAccessAuthIdentity": "None"
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 8:56:55 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 8:56:55 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.MachineLearningServices/workspaces/datastores
 ```
 
 These commands create a datastore for specified workspace.

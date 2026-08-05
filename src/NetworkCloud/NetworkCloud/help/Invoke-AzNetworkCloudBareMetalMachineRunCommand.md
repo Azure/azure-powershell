@@ -17,8 +17,7 @@ The URL to storage account with the command execution results and the command ex
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -LimitTimeSecond <Int64> -Script <String> [-Argument <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
@@ -38,8 +37,8 @@ Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -
 ### RunViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunCommand -InputObject <INetworkCloudIdentity> -LimitTimeSecond <Int64>
- -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,7 +165,8 @@ Accept wildcard characters: False
 ```
 
 ### -LimitTimeSecond
-The maximum time the script is allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
+The maximum time the script is allowed to run.
+If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64

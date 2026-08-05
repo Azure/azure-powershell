@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         /// <summary>Backing field for <see cref="AzureMonitorWorkspaceName" /> property.</summary>
         private string _azureMonitorWorkspaceName;
 
-        /// <summary>The name of the Azure Monitor workspace. The name is case insensitive</summary>
+        /// <summary>The name of the Azure Monitor Workspace. The name is case insensitive</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public string AzureMonitorWorkspaceName { get => this._azureMonitorWorkspaceName; set => this._azureMonitorWorkspaceName = value; }
 
@@ -25,6 +25,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="IssueName" /> property.</summary>
+        private string _issueName;
+
+        /// <summary>The name of the IssueResource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string IssueName { get => this._issueName; set => this._issueName = value; }
+
+        /// <summary>Backing field for <see cref="MetricsContainerName" /> property.</summary>
+        private string _metricsContainerName;
+
+        /// <summary>The name of the MetricsContainer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string MetricsContainerName { get => this._metricsContainerName; set => this._metricsContainerName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -36,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -49,11 +63,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
     public partial interface IMonitorWorkspaceIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the Azure Monitor workspace. The name is case insensitive</summary>
+        /// <summary>The name of the Azure Monitor Workspace. The name is case insensitive</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the Azure Monitor workspace.  The name is case insensitive",
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Azure Monitor Workspace. The name is case insensitive",
         SerializedName = @"azureMonitorWorkspaceName",
         PossibleTypes = new [] { typeof(string) })]
         string AzureMonitorWorkspaceName { get; set; }
@@ -61,23 +78,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The name of the IssueResource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the IssueResource",
+        SerializedName = @"issueName",
+        PossibleTypes = new [] { typeof(string) })]
+        string IssueName { get; set; }
+        /// <summary>The name of the MetricsContainer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the MetricsContainer",
+        SerializedName = @"metricsContainerName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MetricsContainerName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -86,13 +134,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
     internal partial interface IMonitorWorkspaceIdentityInternal
 
     {
-        /// <summary>The name of the Azure Monitor workspace. The name is case insensitive</summary>
+        /// <summary>The name of the Azure Monitor Workspace. The name is case insensitive</summary>
         string AzureMonitorWorkspaceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The name of the IssueResource</summary>
+        string IssueName { get; set; }
+        /// <summary>The name of the MetricsContainer</summary>
+        string MetricsContainerName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
 
     }

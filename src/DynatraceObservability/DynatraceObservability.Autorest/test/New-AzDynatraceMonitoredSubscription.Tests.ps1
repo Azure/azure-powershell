@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzDynatraceMonitoredSubscription'))
+﻿if(($null -eq $TestName) -or ($TestName -contains 'New-AzDynatraceMonitoredSubscription'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -56,7 +56,7 @@ Describe 'New-AzDynatraceMonitoredSubscription' {
         Remove-Item -Path $tempFile.FullName -Force
     }
 
-    # Identity pipeline variant removed – cmdlet does not expose a monitor-object identity parameter set; explicit parameters used instead.
+    # Identity pipeline variant removed - cmdlet does not expose a monitor-object identity parameter set; explicit parameters used instead.
 
     It 'JsonShapeValidation' {
         $jsonString = @{

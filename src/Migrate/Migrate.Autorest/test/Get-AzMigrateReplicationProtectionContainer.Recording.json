@@ -1,16 +1,17 @@
 {
-  "Get-AzMigrateReplicationProtectionContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationProtectionContainers?api-version=2025-08-01+1": {
+  "Get-AzMigrateReplicationProtectionContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationProtectionContainers?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationProtectionContainers?api-version=2025-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationProtectionContainers?api-version=2025-08-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "360d465e-54e2-4a41-b005-37b8a663533c" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "b77c1627-5122-4293-8ca6-396420716944" ],
         "CommandName": [ "Get-AzMigrateReplicationProtectionContainer" ],
         "FullCommandName": [ "Get-AzMigrateReplicationProtectionContainer_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,35 +23,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "360d465e-54e2-4a41-b005-37b8a663533c 9/26/2022 11:21:39 AM" ],
+        "x-ms-request-id": [ "b77c1627-5122-4293-8ca6-396420716944 11/18/2025 7:31:22 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "360d465e-54e2-4a41-b005-37b8a663533c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
-        "x-ms-correlation-request-id": [ "c5e0eb88-00fa-44c7-8bee-0538c334740f" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112139Z:c5e0eb88-00fa-44c7-8bee-0538c334740f" ],
-        "Date": [ "Mon, 26 Sep 2022 11:21:39 GMT" ]
+        "x-ms-client-request-id": [ "b77c1627-5122-4293-8ca6-396420716944" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/c0d54708-c988-4a99-bec2-8e13389d8ded" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "c5254bcc-375f-4680-8983-b66c651ac333" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073122Z:c5254bcc-375f-4680-8983-b66c651ac333" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B2B81BF61BF4A5FA3B19A28B09292B6 Ref B: MAA201060516031 Ref C: 2025-11-18T07:31:21Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:31:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "698" ],
+        "Content-Length": [ "669" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer\",\"name\":\"signoffccyappae52replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"signoffccyappae52replicationfabric\",\"friendlyName\":\"signoffccyappae52replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":7,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer\",\"name\":\"ecygqlapp2fd6replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"ecygqlapp2fd6replicationfabric\",\"friendlyName\":\"ecygqlapp2fd6replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":2,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}",
+      "isContentBase64": false
     }
   },
-  "Get-AzMigrateReplicationProtectionContainer+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers?api-version=2025-08-01+1": {
+  "Get-AzMigrateReplicationProtectionContainer+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers?api-version=2025-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers?api-version=2025-08-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "52d72397-2560-4ed1-897f-f46e426da07e" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "6d318bd7-89a2-405f-98a9-e2ef278b7174" ],
         "CommandName": [ "Get-AzMigrateReplicationProtectionContainer" ],
         "FullCommandName": [ "Get-AzMigrateReplicationProtectionContainer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -62,35 +68,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "52d72397-2560-4ed1-897f-f46e426da07e 9/26/2022 11:21:40 AM" ],
+        "x-ms-request-id": [ "6d318bd7-89a2-405f-98a9-e2ef278b7174 11/18/2025 7:31:23 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "52d72397-2560-4ed1-897f-f46e426da07e" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
-        "x-ms-correlation-request-id": [ "e015f50c-20fa-4824-b6b1-d70fdc9a3998" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112140Z:e015f50c-20fa-4824-b6b1-d70fdc9a3998" ],
-        "Date": [ "Mon, 26 Sep 2022 11:21:39 GMT" ]
+        "x-ms-client-request-id": [ "6d318bd7-89a2-405f-98a9-e2ef278b7174" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/d0e8aed0-6cbd-4afb-84e5-3c5b3150eea9" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-correlation-request-id": [ "ef4a3039-9b9f-4772-b1ad-15ee8df4ab0a" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073123Z:ef4a3039-9b9f-4772-b1ad-15ee8df4ab0a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D5509DAF6F224518ABC68440D95F14E5 Ref B: MAA201060516031 Ref C: 2025-11-18T07:31:23Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:31:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "698" ],
+        "Content-Length": [ "669" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer\",\"name\":\"signoffccyappae52replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"signoffccyappae52replicationfabric\",\"friendlyName\":\"signoffccyappae52replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":7,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer\",\"name\":\"ecygqlapp2fd6replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"ecygqlapp2fd6replicationfabric\",\"friendlyName\":\"ecygqlapp2fd6replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":2,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}",
+      "isContentBase64": false
     }
   },
-  "Get-AzMigrateReplicationProtectionContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer?api-version=2025-08-01+1": {
+  "Get-AzMigrateReplicationProtectionContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer?api-version=2025-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer?api-version=2025-08-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "a4f04839-7f61-4802-a441-1fa0f76c86b1" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "f1c2f35e-7cb2-4fcd-8db7-148a1f8e21fe" ],
         "CommandName": [ "Get-AzMigrateReplicationProtectionContainer" ],
         "FullCommandName": [ "Get-AzMigrateReplicationProtectionContainer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -102,21 +113,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a4f04839-7f61-4802-a441-1fa0f76c86b1 9/26/2022 11:21:40 AM" ],
+        "x-ms-request-id": [ "f1c2f35e-7cb2-4fcd-8db7-148a1f8e21fe 11/18/2025 7:31:23 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "a4f04839-7f61-4802-a441-1fa0f76c86b1" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
-        "x-ms-correlation-request-id": [ "1b7dc968-1314-401b-9636-17b8b37db24d" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112141Z:1b7dc968-1314-401b-9636-17b8b37db24d" ],
-        "Date": [ "Mon, 26 Sep 2022 11:21:40 GMT" ]
+        "x-ms-client-request-id": [ "f1c2f35e-7cb2-4fcd-8db7-148a1f8e21fe" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/8f95f426-89e3-4c7b-aa9d-70e3d50d600e" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "9cda22fa-3127-40c2-91f8-45a0b68eb377" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073123Z:9cda22fa-3127-40c2-91f8-45a0b68eb377" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9EBC328AAC9A43ACB871B47F2EAC44F5 Ref B: MAA201060516031 Ref C: 2025-11-18T07:31:23Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:31:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "670" ],
+        "Content-Length": [ "641" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer\",\"name\":\"signoffccyappae52replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"signoffccyappae52replicationfabric\",\"friendlyName\":\"signoffccyappae52replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":7,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}"
+      "Content": "{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer\",\"name\":\"ecygqlapp2fd6replicationcontainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"ecygqlapp2fd6replicationfabric\",\"friendlyName\":\"ecygqlapp2fd6replicationcontainer\",\"fabricType\":\"VMwareV2\",\"protectedItemCount\":2,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}",
+      "isContentBase64": false
     }
   }
 }

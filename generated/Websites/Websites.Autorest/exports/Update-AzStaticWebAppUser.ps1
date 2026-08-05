@@ -16,22 +16,40 @@
 
 <#
 .Synopsis
-Description for Updates a user entry with the listed roles
+Description for update a user entry with the listed roles
 .Description
-Description for Updates a user entry with the listed roles
+Description for update a user entry with the listed roles
 .Example
 Update-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'github' -Userid 'fa4eba85fa9f4a42b5300dc4c7bb45aa' -Role 'contributor'
 .Example
 Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'all'  | Update-AzStaticWebAppUser -Role 'contributor'
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserArmResource
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource
+Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserArmResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTHPROVIDERINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
@@ -48,32 +66,62 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
+
+STATICSITEINPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  [Authprovider <String>]: The auth provider for the users.
+  [DomainName <String>]: The custom domain name.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [Id <String>]: Resource identity path
+  [JobHistoryId <String>]: History ID.
+  [Location <String>]: Location where you plan to create the static site.
+  [Name <String>]: Name of the static site.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [Slot <String>]: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [WebJobName <String>]: Name of Web Job.
+
+STATICSITEUSERENVELOPE <IStaticSiteUserArmResource>: Static Site User ARM resource.
+  [Kind <String>]: Kind of resource.
+  [Role <String>]: The roles for the static site user, in free-form string format
 .Link
 https://learn.microsoft.com/powershell/module/az.websites/update-azstaticwebappuser
 #>
 function Update-AzStaticWebAppUser {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserArmResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSite', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # The auth provider for this user.
     ${AuthProvider},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # Name of the static site.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -83,29 +131,73 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthprovider', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthproviderExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSite', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [System.String]
     # The user id of the user.
     ${UserId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthprovider', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthproviderExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${AuthproviderInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity]
+    # Identity Parameter
+    ${StaticSiteInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthproviderExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Kind of resource.
     ${Kind},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthproviderExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # The roles for the static site user, in free-form string format
     ${Role},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityAuthprovider', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStaticSite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserArmResource]
+    # Static Site User ARM resource.
+    ${StaticSiteUserEnvelope},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -163,6 +255,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -183,11 +283,15 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateExpanded';
+            UpdateViaIdentityAuthprovider = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaIdentityAuthprovider';
+            UpdateViaIdentityAuthproviderExpanded = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaIdentityAuthproviderExpanded';
             UpdateViaIdentityExpanded = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaIdentityExpanded';
+            UpdateViaIdentityStaticSite = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaIdentityStaticSite';
+            UpdateViaIdentityStaticSiteExpanded = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaIdentityStaticSiteExpanded';
+            UpdateViaJsonFilePath = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Websites.private\Update-AzStaticWebAppUser_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -201,6 +305,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

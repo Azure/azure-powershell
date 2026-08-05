@@ -63,12 +63,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 return;
             }
-            {_nfsProtocolProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonObject>("nfsProtocolProperties"), out var __jsonNfsProtocolProperties) ? Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.NfsProtocolProperties.FromJson(__jsonNfsProtocolProperties) : _nfsProtocolProperty;}
-            {_publicAccessProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonObject>("publicAccessProperties"), out var __jsonPublicAccessProperties) ? Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.PublicAccessProperties.FromJson(__jsonPublicAccessProperties) : _publicAccessProperty;}
-            {_provisionedStorageGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber>("provisionedStorageGiB"), out var __jsonProvisionedStorageGiB) ? (int?)__jsonProvisionedStorageGiB : _provisionedStorageGiB;}
-            {_provisionedIoPerSec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber>("provisionedIOPerSec"), out var __jsonProvisionedIoPerSec) ? (int?)__jsonProvisionedIoPerSec : _provisionedIoPerSec;}
-            {_provisionedThroughputMiBPerSec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber>("provisionedThroughputMiBPerSec"), out var __jsonProvisionedThroughputMiBPerSec) ? (int?)__jsonProvisionedThroughputMiBPerSec : _provisionedThroughputMiBPerSec;}
-            {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             AfterFromJson(json);
         }
 
@@ -103,12 +97,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 return container;
             }
-            AddIf( null != this._nfsProtocolProperty ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) this._nfsProtocolProperty.ToJson(null,serializationMode) : null, "nfsProtocolProperties" ,container.Add );
-            AddIf( null != this._publicAccessProperty ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) this._publicAccessProperty.ToJson(null,serializationMode) : null, "publicAccessProperties" ,container.Add );
-            AddIf( null != this._provisionedStorageGiB ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber((int)this._provisionedStorageGiB) : null, "provisionedStorageGiB" ,container.Add );
-            AddIf( null != this._provisionedIoPerSec ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber((int)this._provisionedIoPerSec) : null, "provisionedIOPerSec" ,container.Add );
-            AddIf( null != this._provisionedThroughputMiBPerSec ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber((int)this._provisionedThroughputMiBPerSec) : null, "provisionedThroughputMiBPerSec" ,container.Add );
-            AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._nfsProtocolProperty ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) this._nfsProtocolProperty.ToJson(null,serializationMode) : null, "nfsProtocolProperties" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._publicAccessProperty ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) this._publicAccessProperty.ToJson(null,serializationMode) : null, "publicAccessProperties" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._provisionedStorageGiB ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber((int)this._provisionedStorageGiB) : null, "provisionedStorageGiB" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._provisionedIoPerSec ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber((int)this._provisionedIoPerSec) : null, "provisionedIOPerSec" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._provisionedThroughputMiBPerSec ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNumber((int)this._provisionedThroughputMiBPerSec) : null, "provisionedThroughputMiBPerSec" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

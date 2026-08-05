@@ -1,17 +1,17 @@
 {
-  "Get-AzDataProtectionBackupPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2025-09-01+1": {
+  "Get-AzDataProtectionBackupPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2026-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "d15ee305-5c4a-47d6-bd5c-80f12d4ae302" ],
+        "x-ms-unique-id": [ "158" ],
+        "x-ms-client-request-id": [ "4c0590b1-3e4a-44b8-aa71-b7a72cfbd7df" ],
         "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.5.0", "PSVersion/v7.6.1", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,17 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/eastus2euap/86dc7883-962e-4b7e-ac6a-b510fad4bc8c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=025ad709-9e1c-4597-b09f-f331c3d683f8/westus2/af5c7386-c275-4ab0-9bc4-5e77b0db2ed4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "24f63612-5df9-4132-9393-94a3a6e60ebf" ],
-        "x-ms-correlation-request-id": [ "24f63612-5df9-4132-9393-94a3a6e60ebf" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260104T204146Z:24f63612-5df9-4132-9393-94a3a6e60ebf" ],
+        "x-ms-request-id": [ "f5c2e4d3-be11-4380-8473-c0ae7955faa2" ],
+        "x-ms-correlation-request-id": [ "f5c2e4d3-be11-4380-8473-c0ae7955faa2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260517T210000Z:f5c2e4d3-be11-4380-8473-c0ae7955faa2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6C88F5D1401A41F59A4EABD1BA3C637A Ref B: PNQ231110909060 Ref C: 2026-01-04T20:41:45Z" ],
-        "Date": [ "Sun, 04 Jan 2026 20:41:45 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 03238FD598EF4453BE9C9A4F00BC0369 Ref B: SN4AA2022304049 Ref C: 2026-05-17T21:00:00Z" ],
+        "Date": [ "Sun, 17 May 2026 21:00:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "9474" ],

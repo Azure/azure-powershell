@@ -13,6 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="ActionState" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> _actionState;
+
+        /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get => this._actionState; }
+
         /// <summary>Backing field for <see cref="AssociatedResourceId" /> property.</summary>
         private System.Collections.Generic.List<string> _associatedResourceId;
 
@@ -61,6 +70,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The MAC address of a NIC connected to the PXE network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string BootMacAddress { get => this._bootMacAddress; set => this._bootMacAddress = value; }
+
+        /// <summary>Backing field for <see cref="CaCertificate" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo _caCertificate;
+
+        /// <summary>
+        /// The CA certificate information issued by the platform for connecting to TLS interfaces for the bare metal machine. Callers
+        /// add this certificate to the trusted CA store on the Kubernetes control plane nodes to allow secure communication with
+        /// the bare metal machine.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo CaCertificate { get => (this._caCertificate = this._caCertificate ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo()); }
+
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string CaCertificateHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Hash; }
+
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string CaCertificateValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Value; }
 
         /// <summary>Backing field for <see cref="ClusterId" /> property.</summary>
         private string _clusterId;
@@ -201,11 +229,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string MachineSkuId { get => this._machineSkuId; set => this._machineSkuId = value; }
 
+        /// <summary>Internal Acessors for ActionState</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.ActionState { get => this._actionState; set { {_actionState = value;} } }
+
         /// <summary>Internal Acessors for AssociatedResourceId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.AssociatedResourceId { get => this._associatedResourceId; set { {_associatedResourceId = value;} } }
 
         /// <summary>Internal Acessors for BmcCredentials</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.BmcCredentials { get => (this._bmcCredentials = this._bmcCredentials ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentials()); set { {_bmcCredentials = value;} } }
+
+        /// <summary>Internal Acessors for CaCertificate</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.CaCertificate { get => (this._caCertificate = this._caCertificate ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfo()); set { {_caCertificate = value;} } }
+
+        /// <summary>Internal Acessors for CaCertificateHash</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.CaCertificateHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Hash; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Hash = value ?? null; }
+
+        /// <summary>Internal Acessors for CaCertificateValue</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.CaCertificateValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfoInternal)CaCertificate).Value = value ?? null; }
 
         /// <summary>Internal Acessors for ClusterId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePropertiesInternal.ClusterId { get => this._clusterId; set { {_clusterId = value;} } }
@@ -434,6 +474,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable
     {
         /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The current state of any in progress or completed actions. The most recent known instance of each action type is shown.",
+        SerializedName = @"actionStates",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get;  }
+        /// <summary>
         /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
@@ -503,6 +556,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"bootMacAddress",
         PossibleTypes = new [] { typeof(string) })]
         string BootMacAddress { get; set; }
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The hash value of the X.509 Certificate.",
+        SerializedName = @"hash",
+        PossibleTypes = new [] { typeof(string) })]
+        string CaCertificateHash { get;  }
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The textual value of the X.509 Certificate.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(string) })]
+        string CaCertificateValue { get;  }
         /// <summary>The resource ID of the cluster this bare metal machine is associated with.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -922,6 +997,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
 
     {
         /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get; set; }
+        /// <summary>
         /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
         /// </summary>
         System.Collections.Generic.List<string> AssociatedResourceId { get; set; }
@@ -941,6 +1020,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string BmcMacAddress { get; set; }
         /// <summary>The MAC address of a NIC connected to the PXE network.</summary>
         string BootMacAddress { get; set; }
+        /// <summary>
+        /// The CA certificate information issued by the platform for connecting to TLS interfaces for the bare metal machine. Callers
+        /// add this certificate to the trusted CA store on the Kubernetes control plane nodes to allow secure communication with
+        /// the bare metal machine.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo CaCertificate { get; set; }
+        /// <summary>The hash value of the X.509 Certificate.</summary>
+        string CaCertificateHash { get; set; }
+        /// <summary>The textual value of the X.509 Certificate.</summary>
+        string CaCertificateValue { get; set; }
         /// <summary>The resource ID of the cluster this bare metal machine is associated with.</summary>
         string ClusterId { get; set; }
         /// <summary>The cordon status of the bare metal machine.</summary>

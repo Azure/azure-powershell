@@ -14,8 +14,3 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzRedisEnterpriseCache
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion' {
-    It 'Upgrade' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

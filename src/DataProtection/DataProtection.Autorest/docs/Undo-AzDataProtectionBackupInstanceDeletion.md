@@ -25,6 +25,13 @@ Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentit
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UndeleteViaIdentityBackupVault
+```
+Undo-AzDataProtectionBackupInstanceDeletion -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Undeletes a soft deleted backup instance
 
@@ -36,7 +43,7 @@ $softDeletedBI = Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupNam
 Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name 
 ```
 
-The first comamnd is used to fetch the backup instances which are in soft deleted for a give backup vault.
+The first command is used to fetch the backup instances which are in soft deleted for a give backup vault.
 The second command undeletes the backup instance to enable the protection again, revert the soft deleted state.
 
 ## PARAMETERS
@@ -61,13 +68,28 @@ The name of the deleted backup instance
 
 ```yaml
 Type: System.String
-Parameter Sets: Undelete
+Parameter Sets: Undelete, UndeleteViaIdentityBackupVault
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: UndeleteViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -89,7 +111,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
