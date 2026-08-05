@@ -14,8 +14,9 @@ Update a dashboard for Grafana resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,14 +27,14 @@ Update-AzGrafanaManagedDashboard -InputObject <IDashboardIdentity> [-Tag <Hashta
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,9 +171,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

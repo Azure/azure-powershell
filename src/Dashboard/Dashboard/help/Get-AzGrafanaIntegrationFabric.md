@@ -14,7 +14,7 @@ Get a IntegrationFabric
 
 ### List (Default)
 ```
-Get-AzGrafanaIntegrationFabric -ResourceGroupName <String> -SubscriptionId <String[]> -WorkspaceName <String>
+Get-AzGrafanaIntegrationFabric -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Get-AzGrafanaIntegrationFabric -Name <String> -GrafanaInputObject <IDashboardIde
 
 ### Get
 ```
-Get-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -156,9 +156,9 @@ Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

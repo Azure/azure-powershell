@@ -10,11 +10,20 @@ options:
     service-name: Dashboard
     module-name: "{prefix}.{service-name}"
     output-folder: "{output-dir}"
+    # ponytail: pin to the stable version the AutoRest build shipped; bump (and re-record) to move to preview
+    api-version: "2025-08-01"
     exclude-tableview-properties:
       - Id
       - Type
 
     directive:
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            name: SubscriptionId Default
+            description: Gets the SubscriptionId from the current context.
+            script: '(Get-AzContext).Subscription.Id'
       - where:
           variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
         remove: true

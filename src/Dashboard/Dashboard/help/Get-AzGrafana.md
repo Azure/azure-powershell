@@ -14,19 +14,19 @@ Get the properties of a specific workspace for Grafana resource.
 
 ### List1 (Default)
 ```
-Get-AzGrafana -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzGrafana [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzGrafana -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzGrafana -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzGrafana -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -153,9 +153,9 @@ Type: System.String[]
 Parameter Sets: List1, Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

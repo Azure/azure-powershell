@@ -14,8 +14,8 @@ Create a IntegrationFabric
 
 ### CreateExpanded (Default)
 ```
-New-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> -Location <String> [-DataSourceResourceId <String>] [-Scenario <String[]>]
+New-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -Location <String> [-SubscriptionId <String>] [-DataSourceResourceId <String>] [-Scenario <String[]>]
  [-Tag <Hashtable>] [-TargetResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -29,15 +29,15 @@ New-AzGrafanaIntegrationFabric -GrafanaInputObject <IDashboardIdentity> -Name <S
 
 ### CreateViaJsonFilePath
 ```
-New-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+New-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+New-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -251,9 +251,9 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

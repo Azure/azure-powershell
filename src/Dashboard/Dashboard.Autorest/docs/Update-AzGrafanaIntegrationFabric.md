@@ -14,8 +14,8 @@ Update a IntegrationFabric
 
 ### UpdateExpanded (Default)
 ```
-Update-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> [-Scenario <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-Scenario <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,15 +34,15 @@ Update-AzGrafanaIntegrationFabric -GrafanaInputObject <IDashboardIdentity> -Name
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Update-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Update-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -240,9 +240,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

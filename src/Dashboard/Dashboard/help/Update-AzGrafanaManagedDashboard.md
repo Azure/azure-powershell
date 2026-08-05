@@ -14,21 +14,21 @@ Update a dashboard for Grafana resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -173,9 +173,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

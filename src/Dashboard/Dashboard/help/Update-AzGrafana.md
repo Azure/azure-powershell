@@ -15,7 +15,7 @@ This API is idempotent, so user can either update a new grafana or update an exi
 
 ### UpdateExpanded (Default)
 ```
-Update-AzGrafana -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-ApiKey <String>]
+Update-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-ApiKey <String>]
  [-CreatorCanAdmin <String>] [-DeterministicOutboundIP <String>] [-EnableSystemAssignedIdentity <Boolean>]
  [-EnterpriseConfigurationMarketplaceAutoRenew <String>] [-EnterpriseConfigurationMarketplacePlanId <String>]
  [-GrafanaMajorVersion <String>] [-GrafanaPlugin <Hashtable>]
@@ -514,9 +514,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

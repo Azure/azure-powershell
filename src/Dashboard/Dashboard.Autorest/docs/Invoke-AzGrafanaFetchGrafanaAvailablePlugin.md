@@ -14,8 +14,8 @@ A synchronous resource action.
 
 ### Fetch (Default)
 ```
-Invoke-AzGrafanaFetchGrafanaAvailablePlugin -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzGrafanaFetchGrafanaAvailablePlugin -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FetchViaIdentity
@@ -117,9 +117,9 @@ Type: System.String
 Parameter Sets: Fetch
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

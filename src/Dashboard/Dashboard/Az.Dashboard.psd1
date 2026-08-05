@@ -70,17 +70,13 @@ NestedModules = @('Dashboard.Autorest/Az.Dashboard.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzGrafana', 'Get-AzGrafanaDashboard', 
-               'Get-AzGrafanaDashboardDefinition', 
                'Get-AzGrafanaIntegrationFabric', 'Get-AzGrafanaOperation', 
                'Invoke-AzGrafanaFetchGrafanaAvailablePlugin', 'New-AzGrafana', 
-               'New-AzGrafanaDashboardDefinition', 
                'New-AzGrafanaIntegrationFabric', 'New-AzGrafanaManagedDashboard', 
                'New-AzGrafanaMonitorWorkspaceIntegrationObject', 
-               'Remove-AzGrafana', 'Remove-AzGrafanaDashboardDefinition', 
-               'Remove-AzGrafanaIntegrationFabric', 
+               'Remove-AzGrafana', 'Remove-AzGrafanaIntegrationFabric', 
                'Remove-AzGrafanaManagedDashboard', 
                'Test-AzGrafanaEnterpriseDetail', 'Update-AzGrafana', 
-               'Update-AzGrafanaDashboardDefinition', 
                'Update-AzGrafanaIntegrationFabric', 
                'Update-AzGrafanaManagedDashboard'
 

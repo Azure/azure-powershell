@@ -14,12 +14,12 @@ Get the properties of a specific dashboard for grafana resource.
 
 ### List1 (Default)
 ```
-Get-AzGrafanaDashboard -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGrafanaDashboard [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzGrafanaDashboard -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzGrafanaDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzGrafanaDashboard -InputObject <IDashboardIdentity> [-DefaultProfile <PSObj
 
 ### List
 ```
-Get-AzGrafanaDashboard -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzGrafanaDashboard -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -153,9 +153,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

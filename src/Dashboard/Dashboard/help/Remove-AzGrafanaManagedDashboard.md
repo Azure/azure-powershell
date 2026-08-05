@@ -14,7 +14,7 @@ Delete a dashboard for Grafana resource.
 
 ### Delete (Default)
 ```
-Remove-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -132,9 +132,9 @@ Type: System.String
 Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

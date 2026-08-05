@@ -14,7 +14,7 @@ Retrieve enterprise add-on details information
 
 ### Check (Default)
 ```
-Test-AzGrafanaEnterpriseDetail -ResourceGroupName <String> -SubscriptionId <String> -WorkspaceName <String>
+Test-AzGrafanaEnterpriseDetail -ResourceGroupName <String> [-SubscriptionId <String>] -WorkspaceName <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -113,9 +113,9 @@ Type: System.String
 Parameter Sets: Check
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -17,9 +17,6 @@ Get the properties of a specific workspace for Grafana resource.
 ### [Get-AzGrafanaDashboard](Get-AzGrafanaDashboard.md)
 Get the properties of a specific dashboard for grafana resource.
 
-### [Get-AzGrafanaDashboardDefinition](Get-AzGrafanaDashboardDefinition.md)
-Get the properties of a specific dashboard definition.
-
 ### [Get-AzGrafanaIntegrationFabric](Get-AzGrafanaIntegrationFabric.md)
 Get a IntegrationFabric
 
@@ -32,9 +29,6 @@ A synchronous resource action.
 ### [New-AzGrafana](New-AzGrafana.md)
 Create or update a workspace for Grafana resource.
 This API is idempotent, so user can either create a new grafana or update an existing grafana.
-
-### [New-AzGrafanaDashboardDefinition](New-AzGrafanaDashboardDefinition.md)
-Create a dashboard definition to create dashboard resource.
 
 ### [New-AzGrafanaIntegrationFabric](New-AzGrafanaIntegrationFabric.md)
 Create a IntegrationFabric
@@ -49,9 +43,6 @@ Create an in-memory object for AzureMonitorWorkspaceIntegration.
 ### [Remove-AzGrafana](Remove-AzGrafana.md)
 Delete a workspace for Grafana resource.
 
-### [Remove-AzGrafanaDashboardDefinition](Remove-AzGrafanaDashboardDefinition.md)
-Delete a dashboard definition.
-
 ### [Remove-AzGrafanaIntegrationFabric](Remove-AzGrafanaIntegrationFabric.md)
 Delete a IntegrationFabric
 
@@ -64,9 +55,6 @@ Retrieve enterprise add-on details information
 ### [Update-AzGrafana](Update-AzGrafana.md)
 Update a workspace for Grafana resource.
 This API is idempotent, so user can either update a new grafana or update an existing grafana.
-
-### [Update-AzGrafanaDashboardDefinition](Update-AzGrafanaDashboardDefinition.md)
-Update a dashboard definition to update dashboard resource.
 
 ### [Update-AzGrafanaIntegrationFabric](Update-AzGrafanaIntegrationFabric.md)
 Update a IntegrationFabric

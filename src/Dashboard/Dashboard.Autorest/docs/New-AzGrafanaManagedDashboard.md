@@ -15,22 +15,22 @@ This API is idempotent, so user can either create a new dashboard or create an e
 
 ### CreateExpanded (Default)
 ```
-New-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -200,9 +200,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
