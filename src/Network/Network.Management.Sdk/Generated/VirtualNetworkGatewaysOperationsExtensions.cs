@@ -1775,6 +1775,27 @@ namespace Microsoft.Azure.Management.Network
                 return _result.Body;
             }
         }
+
+        /// <summary>
+        /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='peer'>
+        /// The IP address of the peer to retrieve the status of.
+        /// </param>
+        public static BgpPeerStatusListResult BeginGetBgpPeerStatus(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peer = default(string))
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetBgpPeerStatusAsync(resourceGroupName, virtualNetworkGatewayName, peer).GetAwaiter().GetResult();
+        }
+
         /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
