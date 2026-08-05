@@ -55,6 +55,8 @@
 * Added cmdlets for cloud service public IP address operations:
     - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
     - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
+* Added new cmdlet to retrieve effective routes for a Virtual Network Gateway
+    - `Get-AzVirtualNetworkGatewayEffectiveRoute` : Get effective routes for a Virtual Network Gateway
 
 ## Version 8.0.1
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
