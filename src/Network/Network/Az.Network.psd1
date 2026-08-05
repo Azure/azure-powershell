@@ -337,7 +337,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Invoke-AzVirtualNetworkGatewayCommitMigration', 
                'Invoke-AzVirtualNetworkGatewayExecuteMigration', 
                'Invoke-AzVirtualNetworkGatewayPrepareMigration', 
-               'Move-AzExpressRouteCircuit', 'New-AzApplicationGateway', 
+               'Move-AzExpressRouteCircuit', 'Move-AzVirtualNetworkIpConfiguration',
+               'New-AzApplicationGateway',
                'New-AzApplicationGatewayAuthenticationCertificate', 
                'New-AzApplicationGatewayAutoscaleConfiguration', 
                'New-AzApplicationGatewayBackendAddressPool', 
@@ -442,7 +443,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzLoadBalancerInboundNatRuleConfig', 
                'New-AzLoadBalancerOutboundRuleConfig', 
                'New-AzLoadBalancerProbeConfig', 'New-AzLoadBalancerRuleConfig', 
-               'New-AzLocalNetworkGateway', 'New-AzNatGateway', 
+               'New-AzLocalNetworkGateway', 'New-AzMoveIpConfigurationItem',
+               'New-AzNatGateway',
                'New-AzNetworkInterface', 'New-AzNetworkInterfaceIpConfig', 
                'New-AzNetworkManager', 'New-AzNetworkManagerAddressPrefixItem', 
                'New-AzNetworkManagerConnectivityConfiguration', 
@@ -845,4 +847,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

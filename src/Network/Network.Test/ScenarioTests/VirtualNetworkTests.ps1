@@ -14,6 +14,22 @@
 
 <#
 .SYNOPSIS
+Tests creating an IP configuration move item.
+#>
+function Test-NewMoveIpConfigurationItem
+{
+    $sourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/networkInterfaces/source/ipConfigurations/ipconfig1"
+    $targetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/networkInterfaces/target/ipConfigurations/ipconfig2"
+
+    $item = New-AzMoveIpConfigurationItem -SourceIpConfigurationId $sourceId -TargetIpConfigurationId $targetId
+
+    Assert-NotNull $item
+    Assert-AreEqual $sourceId $item.SourceIpConfigurationId
+    Assert-AreEqual $targetId $item.TargetIpConfigurationId
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple virtualNetwork.
 .DESCRIPTION
 SmokeTest

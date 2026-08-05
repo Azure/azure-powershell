@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network
+    - Supports moving one or more IP configurations in a single operation
+    - Use `New-AzMoveIpConfigurationItem` to create each source and target IP configuration pair
+    - The operation is long-running (asynchronous) and supports the `-AsJob` parameter
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub

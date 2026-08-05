@@ -25,6 +25,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestNewMoveIpConfigurationItem()
+        {
+            TestRunner.RunTestScript("Test-NewMoveIpConfigurationItem");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

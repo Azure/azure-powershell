@@ -8,6 +8,15 @@ autorest --reset
 autorest --use:@autorest/powershell@4.x
 ```
 
+### MoveIpConfigurations overlay
+
+`MoveIpConfigurations` comes from the `2025-09-01` virtual network specification at
+commit `bf9fcb11e7d9fdb97ea44419f1fdd2fd6cf2ce28`. The full specification cannot replace
+the `2025-07-01` input below because it also renames models used by existing hand-written
+cmdlets. `moveIpConfigurations.json` contains only this operation and its request models,
+so the standard generation command remains reproducible without importing unrelated
+model changes.
+
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
@@ -47,6 +56,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualNetworkAppliance.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualWan.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2018-10-01/vmssNetwork.json
+  - moveIpConfigurations.json
 
 output-folder: Generated
 
