@@ -440,6 +440,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFutureCapacityReservation()
+        {
+            TestRunner.RunTestScript("Test-FutureCapacityReservation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMwithSSHKey()
         {
             TestRunner.RunTestScript("Test-VMwithSSHKey");

@@ -98,11 +98,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The required start date for a future capacity reservation. This property is immutable and cannot be updated after creation.")]
+        public DateTime ScheduleProfileStart { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. This property is immutable and cannot be updated after creation.")]
+        public int MinimumCommitmentDays { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                if (this.IsParameterBound(c => c.ScheduleProfileStart))
+                {
+                    throw new PSArgumentException("ScheduleProfileStart is immutable and cannot be updated after creation.", "ScheduleProfileStart");
+                }
+                if (this.IsParameterBound(c => c.MinimumCommitmentDays))
+                {
+                    throw new PSArgumentException("MinimumCommitmentDays is immutable and cannot be updated after creation.", "MinimumCommitmentDays");
+                }
+
                 string resourceGroupName;
                 string reservationGroupName;
                 string name;
