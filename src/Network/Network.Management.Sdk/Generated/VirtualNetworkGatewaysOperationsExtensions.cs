@@ -1795,7 +1795,6 @@ namespace Microsoft.Azure.Management.Network
         {
                 return ((IVirtualNetworkGatewaysOperations)operations).BeginGetBgpPeerStatusAsync(resourceGroupName, virtualNetworkGatewayName, peer).GetAwaiter().GetResult();
         }
-
         /// <summary>
         /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
         /// </summary>
