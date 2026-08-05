@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+* Added support to acknowledge ScheduledEvents using 'Set-AzScheduledEvents' and 'Set-AzScheduledEventsList' 
+
 ## Version 1.6.0
 * Added ChangeSafety Support
 

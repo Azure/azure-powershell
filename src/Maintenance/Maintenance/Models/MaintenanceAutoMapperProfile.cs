@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                 cfg.CreateMap<TO.PSApplyUpdate, FROM.ApplyUpdate>()
                     .ForMember(dest => dest.Status, src => src.MapFrom(o => o.Status))
                     .ForMember(src => src.SystemData, s => s.Ignore());
+                cfg.CreateMap<FROM.ScheduledEventsApproveResponse, TO.PSScheduledEventsApproveResponse>()
+                    .ForMember(dest => dest.Value, src => src.MapFrom(o => o.Value));
+                cfg.CreateMap<TO.PSScheduledEventsApproveResponse, FROM.ScheduledEventsApproveResponse>()
+                    .ForMember(dest => dest.Value, src => src.MapFrom(o => o.Value));
                 cfg.CreateMap<FROM.ConfigurationAssignment, TO.PSConfigurationAssignment>()
                     .ForMember(dest => dest.FilterResourceGroup, src => src.MapFrom(o => o.Filter.ResourceGroups))
                     .ForMember(dest => dest.FilterLocation, src => src.MapFrom(o => o.Filter.Locations))

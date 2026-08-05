@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MaintenanceConfiguration> List(this IMaintenanceConfigurationsForResourceGroupOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<MaintenanceConfiguration> List(this IMaintenanceConfigurationsForResourceGroupOperations operations, string resourceGroupName)
         {
                 return ((IMaintenanceConfigurationsForResourceGroupOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -33,14 +33,47 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MaintenanceConfiguration>> ListAsync(this IMaintenanceConfigurationsForResourceGroupOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>> ListAsync(this IMaintenanceConfigurationsForResourceGroupOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get Configuration records within a subscription and resource group
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MaintenanceConfiguration> ListNext(this IMaintenanceConfigurationsForResourceGroupOperations operations, string nextPageLink)
+        {
+                return ((IMaintenanceConfigurationsForResourceGroupOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get Configuration records within a subscription and resource group
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>> ListNextAsync(this IMaintenanceConfigurationsForResourceGroupOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
