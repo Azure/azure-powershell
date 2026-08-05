@@ -1,22 +1,23 @@
 {
-  "resourceType": "dashboards",
+  "resourceType": "dashboards/dashboardDefinitions",
   "apiVersion": "2025-09-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.dashboard"
   },
   "commands": [
     {
-      "name": "Get-AzGrafanaDashboard",
-      "description": "Get the properties of a specific dashboard for grafana resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      "name": "Get-AzGrafanaDashboardDefinition",
+      "description": "Get the properties of a specific dashboard definition.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}/dashboardDefinitions/{definitionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafanadashboard"
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafanadashboarddefinition"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
+              "-DashboardName <String>",
+              "-DefinitionName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -25,11 +26,15 @@
       },
       "examples": [
         {
-          "description": "Get the properties of a specific dashboard for grafana resource.",
+          "description": "Get the properties of a specific dashboard definition.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-DashboardName",
               "value": "[Path.dashboardName]"
+            },
+            {
+              "name": "-DefinitionName",
+              "value": "[Path.definitionName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -44,17 +49,18 @@
       ]
     },
     {
-      "name": "Remove-AzGrafanaManagedDashboard",
-      "description": "Delete a dashboard for Grafana resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      "name": "Remove-AzGrafanaDashboardDefinition",
+      "description": "Delete a dashboard definition.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}/dashboardDefinitions/{definitionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanamanageddashboard"
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanadashboarddefinition"
         },
         "parameterSets": [
           {
             "parameters": [
               "-DashboardName <String>",
+              "-DefinitionName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -63,11 +69,15 @@
       },
       "examples": [
         {
-          "description": "Delete a dashboard for Grafana resource.",
+          "description": "Delete a dashboard definition.",
           "parameters": [
             {
               "name": "-DashboardName",
               "value": "[Path.dashboardName]"
+            },
+            {
+              "name": "-DefinitionName",
+              "value": "[Path.definitionName]"
             },
             {
               "name": "-ResourceGroupName",

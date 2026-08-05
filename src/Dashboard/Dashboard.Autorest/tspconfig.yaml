@@ -1,0 +1,54 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Dashboard/Dashboard.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.3.0
+    prefix: "Az"
+    subject-prefix: "Grafana"
+    service-name: Dashboard
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+
+    directive:
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          subject: Grafana
+          parameter-name: WorkspaceName
+        set:
+          parameter-name: Name
+          alias: GrafanaName
+      - where:
+          subject: PrivateEndpointConnection
+        remove: true
+      - where:
+          subject: ManagedPrivateEndpoint
+        remove: true
+      - where:
+          subject: PrivateLinkResource
+        remove: true
+      - where:
+          verb: New
+          subject: Grafana
+        hide: true
+      - where:
+          parameter-name: GrafanaIntegrationAzureMonitorWorkspaceIntegration
+        set:
+          parameter-name: MonitorWorkspaceIntegration
+      - model-cmdlet:
+        - model-name: AzureMonitorWorkspaceIntegration
+          cmdlet-name: New-AzGrafanaMonitorWorkspaceIntegrationObject
+
+# Remove this once the spec repo drops that rule set.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

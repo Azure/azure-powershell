@@ -14,14 +14,14 @@ Get a IntegrationFabric
 
 ### List (Default)
 ```
-Get-AzGrafanaIntegrationFabric -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGrafanaIntegrationFabric -ResourceGroupName <String> -SubscriptionId <String[]> -WorkspaceName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -149,15 +149,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

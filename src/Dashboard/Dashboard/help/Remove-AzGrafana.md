@@ -14,7 +14,7 @@ Delete a workspace for Grafana resource.
 
 ### Delete (Default)
 ```
-Remove-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzGrafana -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -155,15 +155,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

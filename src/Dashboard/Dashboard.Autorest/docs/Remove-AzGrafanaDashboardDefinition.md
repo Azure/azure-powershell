@@ -1,66 +1,89 @@
 ---
 external help file:
 Module Name: Az.Dashboard
-online version: https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanaintegrationfabric
+online version: https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanadashboarddefinition
 schema: 2.0.0
 ---
 
-# Remove-AzGrafanaIntegrationFabric
+# Remove-AzGrafanaDashboardDefinition
 
 ## SYNOPSIS
-Delete a IntegrationFabric
+Delete a dashboard definition.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzGrafanaDashboardDefinition -DashboardName <String> -DefinitionName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzGrafanaIntegrationFabric -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzGrafanaDashboardDefinition -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityGrafana
+### DeleteViaIdentityDashboard
 ```
-Remove-AzGrafanaIntegrationFabric -GrafanaInputObject <IDashboardIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzGrafanaDashboardDefinition -DashboardInputObject <IDashboardIdentity> -DefinitionName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a IntegrationFabric
+Delete a dashboard definition.
 
 ## EXAMPLES
 
-### Example 1: Delete a Grafana integration fabric
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzGrafanaIntegrationFabric -Name fabric-integration1 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana
+{{ Add code here }}
 ```
 
-Deletes the specified integration fabric from the Azure Managed Grafana workspace.
-
-### Example 2: Delete a Grafana integration fabric using pipeline input
-```powershell
-Get-AzGrafanaIntegrationFabric -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana -Name fabric-integration2 | Remove-AzGrafanaIntegrationFabric
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Deletes the integration fabric by piping the object from Get-AzGrafanaIntegrationFabric.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -DashboardInputObject
+Identity Parameter
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
+Parameter Sets: DeleteViaIdentityDashboard
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DashboardName
+The name of the Azure Managed Dashboard.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,18 +106,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GrafanaInputObject
-Identity Parameter
+### -DefinitionName
+The name of the Dashboard Definition.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
-Parameter Sets: DeleteViaIdentityGrafana
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityDashboard
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -110,36 +133,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The integration fabric name of Azure Managed Grafana.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityGrafana
-Aliases: IntegrationFabricName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,21 +170,6 @@ Accept wildcard characters: False
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-The workspace name of Azure Managed Grafana.
 
 ```yaml
 Type: System.String

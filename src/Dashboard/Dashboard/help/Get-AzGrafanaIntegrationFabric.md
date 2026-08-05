@@ -14,7 +14,7 @@ Get a IntegrationFabric
 
 ### List (Default)
 ```
-Get-AzGrafanaIntegrationFabric -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
+Get-AzGrafanaIntegrationFabric -ResourceGroupName <String> -SubscriptionId <String[]> -WorkspaceName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Get-AzGrafanaIntegrationFabric -Name <String> -GrafanaInputObject <IDashboardIde
 
 ### Get
 ```
-Get-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzGrafanaIntegrationFabric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -149,15 +149,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

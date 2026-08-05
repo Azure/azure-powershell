@@ -1,83 +1,95 @@
 ---
 external help file: Az.Dashboard-help.xml
 Module Name: Az.Dashboard
-online version: https://learn.microsoft.com/powershell/module/az.dashboard/update-azgrafanamanageddashboard
+online version: https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafanadashboarddefinition
 schema: 2.0.0
 ---
 
-# Update-AzGrafanaManagedDashboard
+# New-AzGrafanaDashboardDefinition
 
 ## SYNOPSIS
-Update a dashboard for Grafana resource.
+Create a dashboard definition to create dashboard resource.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzGrafanaDashboardDefinition -DefinitionName <String> -DashboardName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-SerializedData <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### CreateViaJsonString
 ```
-Update-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzGrafanaDashboardDefinition -DefinitionName <String> -DashboardName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### CreateViaJsonFilePath
 ```
-Update-AzGrafanaManagedDashboard -InputObject <IDashboardIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzGrafanaDashboardDefinition -DefinitionName <String> -DashboardName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityDashboardExpanded
+```
+New-AzGrafanaDashboardDefinition -DefinitionName <String> -DashboardInputObject <IDashboardIdentity>
+ [-SerializedData <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a dashboard for Grafana resource.
+Create a dashboard definition to create dashboard resource.
 
 ## EXAMPLES
 
-### Example 1: Update tags for a Grafana managed dashboard
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzGrafanaManagedDashboard -DashboardName dashboard-01 -ResourceGroupName azpstest-gp -Tag @{"Environment"="Production"; "Team"="DevOps"}
+{{ Add code here }}
 ```
 
 ```output
-Name         Location ResourceGroupName
-----         -------- -----------------
-dashboard-01 eastus   azpstest-gp
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Updates the tags of an existing Azure Managed Grafana dashboard.
+{{ Add description here }}
 
-### Example 2: Update a Grafana dashboard using pipeline input
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzGrafanaDashboard -ResourceGroupName azpstest-gp -Name dashboard-02 | Update-AzGrafanaManagedDashboard -Tag @{"Environment"="Staging"}
+{{ Add code here }}
 ```
 
 ```output
-Name         Location ResourceGroupName
-----         -------- -----------------
-dashboard-02 eastus   azpstest-gp
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Updates the Azure Managed Grafana dashboard by piping the dashboard object from Get-AzGrafanaDashboard.
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -DashboardInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
+Parameter Sets: CreateViaIdentityDashboardExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DashboardName
 The name of the Azure Managed Dashboard.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -103,27 +115,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -DefinitionName
+The name of the Dashboard Definition.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Update operation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -134,11 +146,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Update operation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -154,10 +166,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SerializedData
+The dashboard definition data in JSON format.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityDashboardExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,25 +197,10 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-The new tags of the managed dashboard resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -235,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardDefinition
 
 ## NOTES
 

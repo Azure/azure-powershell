@@ -1,57 +1,87 @@
 ---
 external help file: Az.Dashboard-help.xml
 Module Name: Az.Dashboard
-online version: https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanamanageddashboard
+online version: https://learn.microsoft.com/powershell/module/az.dashboard/update-azgrafanadashboarddefinition
 schema: 2.0.0
 ---
 
-# Remove-AzGrafanaManagedDashboard
+# Update-AzGrafanaDashboardDefinition
 
 ## SYNOPSIS
-Delete a dashboard for Grafana resource.
+Update a dashboard definition to update dashboard resource.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzGrafanaManagedDashboard -DashboardName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzGrafanaManagedDashboard -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Update-AzGrafanaDashboardDefinition -DashboardName <String> -DefinitionName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-SerializedData <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityDashboardExpanded
+```
+Update-AzGrafanaDashboardDefinition -DefinitionName <String> -DashboardInputObject <IDashboardIdentity>
+ [-SerializedData <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzGrafanaDashboardDefinition -InputObject <IDashboardIdentity> [-SerializedData <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Delete a dashboard for Grafana resource.
+Update a dashboard definition to update dashboard resource.
 
 ## EXAMPLES
 
-### Example 1: Delete a Grafana managed dashboard
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzGrafanaManagedDashboard -DashboardName dashboard-01 -ResourceGroupName azpstest-gp
+{{ Add code here }}
 ```
 
-Deletes the specified Azure Managed Grafana dashboard from the resource group.
-
-### Example 2: Delete a Grafana dashboard using pipeline input
-```powershell
-Get-AzGrafanaDashboard -ResourceGroupName azpstest-gp -Name dashboard-02 | Remove-AzGrafanaManagedDashboard
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Deletes the Azure Managed Grafana dashboard by piping the dashboard object from Get-AzGrafanaDashboard.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -DashboardInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
+Parameter Sets: UpdateViaIdentityDashboardExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DashboardName
 The name of the Azure Managed Dashboard.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -77,12 +107,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefinitionName
+The name of the Dashboard Definition.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDashboardExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -92,31 +137,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SerializedData
+The dashboard definition data in JSON format.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +174,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -179,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardDefinition
 
 ## NOTES
 

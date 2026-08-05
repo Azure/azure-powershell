@@ -14,7 +14,7 @@ Retrieve enterprise add-on details information
 
 ### Check (Default)
 ```
-Test-AzGrafanaEnterpriseDetail -ResourceGroupName <String> [-SubscriptionId <String>] -WorkspaceName <String>
+Test-AzGrafanaEnterpriseDetail -ResourceGroupName <String> -SubscriptionId <String> -WorkspaceName <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -106,15 +106,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
 Parameter Sets: Check
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

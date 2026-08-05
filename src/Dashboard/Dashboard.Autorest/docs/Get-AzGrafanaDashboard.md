@@ -12,14 +12,14 @@ Get the properties of a specific dashboard for grafana resource.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
-Get-AzGrafanaDashboard [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGrafanaDashboard -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzGrafanaDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzGrafanaDashboard -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -28,9 +28,9 @@ Get-AzGrafanaDashboard -Name <String> -ResourceGroupName <String> [-Subscription
 Get-AzGrafanaDashboard -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
-Get-AzGrafanaDashboard -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzGrafanaDashboard -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -134,7 +134,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -146,15 +146,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
