@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the success message of browser-based interactive login to warn users against using this authentication method and recommend switching to Web Account Manager (WAM) for a more robust authentication mechanism.
 
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
