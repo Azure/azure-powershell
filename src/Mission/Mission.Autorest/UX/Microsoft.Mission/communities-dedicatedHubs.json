@@ -1,0 +1,95 @@
+{
+  "resourceType": "communities/dedicatedHubs",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mission"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMissionDedicatedHub",
+      "description": "Get a DedicatedHubResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/get-azmissiondedicatedhub"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunityName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DedicatedHubResource",
+          "parameters": [
+            {
+              "name": "-CommunityName",
+              "value": "[Path.communityName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.dedicatedHubName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMissionDedicatedHub",
+      "description": "Delete a DedicatedHubResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mission/remove-azmissiondedicatedhub"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunityName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DedicatedHubResource",
+          "parameters": [
+            {
+              "name": "-CommunityName",
+              "value": "[Path.communityName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.dedicatedHubName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
