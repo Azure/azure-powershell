@@ -15,6 +15,7 @@ Update the Capacity Reservation.
 ### DefaultParameter (Default)
 ```
 Update-AzCapacityReservation [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
+ [-ScheduleProfileStart <DateTime>] [-MinimumCommitmentDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -22,20 +23,23 @@ Update-AzCapacityReservation [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashta
 ### DefaultParameterSet
 ```
 Update-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
- [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>] [-ScheduleProfileStart <DateTime>]
+ [-MinimumCommitmentDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzCapacityReservation -CapacityReservation <PSCapacityReservation> [-CapacityToReserve <Int32>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Tag <Hashtable>] [-ScheduleProfileStart <DateTime>] [-MinimumCommitmentDays <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
 Update-AzCapacityReservation -ResourceId <String> [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
+ [-ScheduleProfileStart <DateTime>] [-MinimumCommitmentDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -121,6 +125,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinimumCommitmentDays
+The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. This property is immutable and cannot be updated after creation.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Capacity Reservation.
 
@@ -175,6 +194,21 @@ Parameter Sets: ResourceIDParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScheduleProfileStart
+The required start date for a future capacity reservation. This property is immutable and cannot be updated after creation.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

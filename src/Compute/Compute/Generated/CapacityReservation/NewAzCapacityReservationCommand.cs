@@ -91,11 +91,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Availability Zone to use for this capacity reservation.")]
         public string[] Zone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The required start date for a future capacity reservation. Must be at least 7 days in the future, and maximum 6 months in the future. Providing this parameter creates a future capacity reservation.")]
+        public DateTime ScheduleProfileStart { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. Must be >= 30 if provided. Only valid when -ScheduleProfileStart is also specified.")]
+        public int MinimumCommitmentDays { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                if (this.IsParameterBound(c => c.MinimumCommitmentDays) && !this.IsParameterBound(c => c.ScheduleProfileStart))
+                {
+                    throw new PSArgumentException("MinimumCommitmentDays can only be used when ScheduleProfileStart is also specified.", "MinimumCommitmentDays");
+                }
+
+                if (this.IsParameterBound(c => c.MinimumCommitmentDays) && this.MinimumCommitmentDays < 30)
+                {
+                    throw new PSArgumentException("MinimumCommitmentDays must be greater than or equal to 30.", "MinimumCommitmentDays");
+                }
+
                 if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     CapacityReservation capacityReservation = new CapacityReservation();
@@ -112,6 +134,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Zone))
                     {
                         capacityReservation.Zones = this.Zone;
+                    }
+                    if (this.IsParameterBound(c => c.ScheduleProfileStart))
+                    {
+                        capacityReservation.ScheduleProfile = new ScheduleProfile
+                        {
+                            Start = this.ScheduleProfileStart.ToString("yyyy-MM-dd")
+                        };
+                        if (this.IsParameterBound(c => c.MinimumCommitmentDays))
+                        {
+                            capacityReservation.ScheduleProfile.MinimumCommitmentDays = this.MinimumCommitmentDays;
+                        }
                     }
 
                     var result = CapacityReservationClient.CreateOrUpdate(this.ResourceGroupName, this.ReservationGroupName,this.Name, capacityReservation);

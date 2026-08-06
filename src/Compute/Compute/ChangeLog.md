@@ -26,6 +26,7 @@
 * Added `New-AzInterconnectBlock`, `Get-AzInterconnectBlock`, `Update-AzInterconnectBlock`, and `Remove-AzInterconnectBlock` cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.
 * Marked the `-EnableWAD`, `-SkipStorage`, and `-InstallNewExtension` parameters of `Set-AzVMAEMExtension` as deprecated using breaking-change attributes. They will be removed in a future major release.
 * Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution. [#29880]
+* Added support for Future Capacity Reservations: `New-AzCapacityReservation` now accepts `-ScheduleProfileStart` and `-MinimumCommitmentDays` to create a future capacity reservation, and `Get-AzCapacityReservation` surfaces the `ScheduleProfile` and, with `-InstanceView`, the `ReservationStateInfo`.
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
