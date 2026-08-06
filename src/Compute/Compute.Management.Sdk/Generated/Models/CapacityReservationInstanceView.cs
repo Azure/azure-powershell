@@ -31,11 +31,15 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="statuses">The resource status information.
         /// </param>
-        public CapacityReservationInstanceView(CapacityReservationUtilization utilizationInfo = default(CapacityReservationUtilization), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>))
+
+        /// <param name="reservationStateInfo">The reservation state information for a future capacity reservation.
+        /// </param>
+        public CapacityReservationInstanceView(CapacityReservationUtilization utilizationInfo = default(CapacityReservationUtilization), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), CapacityReservationStateInfo reservationStateInfo = default(CapacityReservationStateInfo))
 
         {
             this.UtilizationInfo = utilizationInfo;
             this.Statuses = statuses;
+            this.ReservationStateInfo = reservationStateInfo;
             CustomInit();
         }
 
@@ -56,5 +60,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "statuses")]
         public System.Collections.Generic.IList<InstanceViewStatus> Statuses {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reservation state information for a future capacity
+        /// reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "reservationStateInfo")]
+        public CapacityReservationStateInfo ReservationStateInfo {get; set; }
     }
 }
