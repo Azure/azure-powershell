@@ -1,3 +1,9 @@
+## 16.3.0 - August 2026
+#### Az.Network 8.2.0
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the '-DdosCustomPolicyId' parameter to 'Set-AzPublicIpAddress'.
+    - Added the '-RemoveDdosCustomPolicy' switch to remove an existing association.
+
 ## 16.2.0 - August 2026
 #### Az.Accounts 5.5.2
 * Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.

@@ -1,3 +1,16 @@
+## 16.3.0 - August 2026
+#### Az.Dell 0.1.0
+* First preview release for module Az.Dell
+
+#### Az.Network 8.2.0
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the '-DdosCustomPolicyId' parameter to 'Set-AzPublicIpAddress'.
+    - Added the '-RemoveDdosCustomPolicy' switch to remove an existing association.
+
+#### Az.VMware 0.10.0
+* Fixed 'New-AzVMwareVcf5LicenseObject' and the '-VcfLicense' parameter on 'New-AzVMwarePrivateCloud' not being available in the '0.9.1' package
+    - The cmdlet and parameter are now correctly generated and exported by the module
+
 ## 16.2.0 - August 2026
 #### Az.Accounts 5.5.2
 * Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.

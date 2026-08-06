@@ -1,3 +1,8 @@
+## 16.3.0 - August 2026
+#### Az.Network 8.2.0 
+* Modified cmdlet `Set-AzPublicIpAddress`
+   - Added parameters `-DdosCustomPolicyId`, `-RemoveDdosCustomPolicy`
+
 ## 16.2.0 - August 2026
 #### Az.Cdn 6.1.0 
 * Modified cmdlet `New-AzCdnEdgeAction`
@@ -7092,6 +7097,7 @@
    - Changed the type of parameter `-StagingEnvironmentPolicy` from `StagingEnvironmentPolicy` to `String`
 * Modified cmdlet `Update-AzStaticWebAppUser`
    - Added parameters `-AuthproviderInputObject`, `-StaticSiteInputObject`, `-StaticSiteUserEnvelope`, `-JsonFilePath`, `-JsonString`
+
 
 
 

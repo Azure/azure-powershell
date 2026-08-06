@@ -2579,6 +2579,11 @@
       "Remove-AzDedicatedHsm": {},
       "Update-AzDedicatedHsm": {}
     },
+    "Az.Dell": {
+      "Get-AzDellFileSystem": {},
+      "New-AzDellFileSystem": {},
+      "Remove-AzDellFileSystem": {}
+    },
     "Az.DependencyMap": {
       "Get-AzDependencyMap": {},
       "Get-AzDependencyMapDiscoverySource": {},
@@ -6542,9 +6547,6 @@
       "Update-AzPeeringRegisteredPrefix": {},
       "Update-AzPeeringService": {}
     },
-    "Az.Pinecone": {
-      "Get-AzPineconeOrganization": {}
-    },
     "Az.PlanetaryComputer": {
       "Get-AzPlanetaryComputerGeoCatalog": {},
       "New-AzPlanetaryComputerGeoCatalog": {},
@@ -9252,6 +9254,7 @@
       "New-AzVMwarePureStoragePolicy": {},
       "New-AzVMwareScriptSecureStringExecutionParameterObject": {},
       "New-AzVMwareScriptStringExecutionParameterObject": {},
+      "New-AzVMwareVcf5LicenseObject": {},
       "New-AzVMwareVmHostPlacementPolicyPropertyObject": {},
       "New-AzVMwareVMPlacementPolicyPropertyObject": {},
       "Remove-AzVMwareAddon": {},
