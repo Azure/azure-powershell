@@ -133,3 +133,58 @@ options:
           verb: Get|New|Remove|Update
           subject: PolicyDefinitionVersion|PolicySetDefinitionVersion
         hide: true
+      # ==========================================================================
+      # RC2: Restore pre-migration named property types that the emitter otherwise
+      # collapses to the shared IAny (a breaking change for consumers referencing the
+      # named types). For each collapsed property we:
+      #   (1) rename the generated flattened property to <Name>Raw to free the original
+      #       name (model-scoped so unrelated models keep their own property),
+      #   (2) re-expose the original name typed as a back-compat marker interface via
+      #       custom partials (see custom/BackCompatTypes.cs and custom/<Model>.cs), and
+      #   (3) restore the flattened create/update parameter name that (1) also renamed.
+      # --------------------------------------------------------------------------
+      # (1) Property renames
+      - where:
+          model-name: PolicyAssignment
+          property-name: Metadata
+        set:
+          property-name: MetadataRaw
+      - where:
+          model-name: PolicyDefinition
+          property-name: Metadata
+        set:
+          property-name: MetadataRaw
+      - where:
+          model-name: PolicyExemption
+          property-name: Metadata
+        set:
+          property-name: MetadataRaw
+      - where:
+          model-name: PolicySetDefinition
+          property-name: Metadata
+        set:
+          property-name: MetadataRaw
+      - where:
+          model-name: PolicyDefinition
+          property-name: PolicyRule
+        set:
+          property-name: PolicyRuleRaw
+      - where:
+          model-name: PolicyDefinition
+          property-name: EndpointSettingDetail
+        set:
+          property-name: EndpointSettingDetailRaw
+      # (3) Restore the flattened create/update parameter names. Only *Raw parameters
+      #     exist as a result of the renames above, so matching by name alone is safe.
+      - where:
+          parameter-name: MetadataRaw
+        set:
+          parameter-name: Metadata
+      - where:
+          parameter-name: PolicyRuleRaw
+        set:
+          parameter-name: PolicyRule
+      - where:
+          parameter-name: EndpointSettingDetailRaw
+        set:
+          parameter-name: EndpointSettingDetail
