@@ -26,6 +26,9 @@
 * Added `New-AzInterconnectBlock`, `Get-AzInterconnectBlock`, `Update-AzInterconnectBlock`, and `Remove-AzInterconnectBlock` cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.
 * Marked the `-EnableWAD`, `-SkipStorage`, and `-InstallNewExtension` parameters of `Set-AzVMAEMExtension` as deprecated using breaking-change attributes. They will be removed in a future major release.
 * Preserved CMD-special characters in `Invoke-AzVMRunCommand` and `Invoke-AzVmssVMRunCommand` parameter values for Windows PowerShell RunCommand execution. [#29880]
+* Added `Set-AzVMZoneMovement` to set ZoneMovement configuration on a VM (Virtual Machine) model and persist it with `Update-AzVM`.
+    - Added `ResiliencyProfile` support in VM create and update flows so ZoneMovement is sent to the Compute API.
+    - Fixed issue [#1562]
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
