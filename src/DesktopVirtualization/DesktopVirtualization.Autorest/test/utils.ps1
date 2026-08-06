@@ -68,7 +68,7 @@ function setupEnv() {
     $null = $env.Add("VnetSubnetId", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + $env.VnetName + "/subnets/default" )
     # Using this HostPool to run the test related to the SHC/SHM/Session Host repovisioning, this doesn't require connect to the VM, but you still might need to create a session host manually in it.
     $null = $env.Add("SHMHostPoolPersistent", "zhongjie-automated2")
-    $null = $env.Add("SHMSessionHostReprovisioning", "auto2-0")
+    $null = $env.Add("SHMSessionHostReprovisioning", "auto2-1")
     $null = $env.Add("SHMSessionHostNameRemove", "auto2-2")
     $null = $env.Add("SHMSessionHostNamePrefix", "auto2")
     # Key vault is used in the SHC creating: New-AzWvdSessionHostConfiguration. Todo: Create this Key vault in the SHC creating test process
@@ -78,7 +78,7 @@ function setupEnv() {
     $null = $env.Add("VMAdminCredentialsUserNameKeyvaultSecretUri", "https://" +$env.KeyVaultPersistentResourceName + ".vault.azure.net/secrets/username")
     # VM information for SHC
     $null = $env.Add("MarketplaceInfoPublisher", "microsoftwindowsdesktop")
-    $null = $env.Add("MarketplaceInfoSku", "win11-24h2-avd")
+    $null = $env.Add("MarketplaceInfoSku", "win11-25h2-avd")
     $null = $env.Add("MarketplaceInfoOffer", "windows-11")
     
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
