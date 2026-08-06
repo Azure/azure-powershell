@@ -188,6 +188,10 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
         /// <summary>
+        /// Gets the ITenantLevelGallerySharingOperations
+        /// </summary>
+        public virtual ITenantLevelGallerySharingOperations TenantLevelGallerySharing { get; private set; }
+        /// <summary>
         /// Gets the IGalleriesOperations
         /// </summary>
         public virtual IGalleriesOperations Galleries { get; private set; }
@@ -215,6 +219,10 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the ISharedGalleryImageVersionsOperations
         /// </summary>
         public virtual ISharedGalleryImageVersionsOperations SharedGalleryImageVersions { get; private set; }
+        /// <summary>
+        /// Gets the IGallerySharingOperations
+        /// </summary>
+        public virtual IGallerySharingOperations GallerySharing { get; private set; }
         /// <summary>
         /// Gets the IGalleryApplicationsOperations
         /// </summary>
@@ -530,6 +538,7 @@ namespace Microsoft.Azure.Management.Compute
             this.Disks = new DisksOperations(this);
             this.Snapshots = new SnapshotsOperations(this);
             this.DiskRestorePoint = new DiskRestorePointOperations(this);
+            this.TenantLevelGallerySharing = new TenantLevelGallerySharingOperations(this);
             this.Galleries = new GalleriesOperations(this);
             this.CommunityGalleries = new CommunityGalleriesOperations(this);
             this.CommunityGalleryImages = new CommunityGalleryImagesOperations(this);
@@ -537,6 +546,7 @@ namespace Microsoft.Azure.Management.Compute
             this.SharedGalleries = new SharedGalleriesOperations(this);
             this.SharedGalleryImages = new SharedGalleryImagesOperations(this);
             this.SharedGalleryImageVersions = new SharedGalleryImageVersionsOperations(this);
+            this.GallerySharing = new GallerySharingOperations(this);
             this.GalleryApplications = new GalleryApplicationsOperations(this);
             this.GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
             this.GalleryImages = new GalleryImagesOperations(this);
