@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Management.Compute
     using Models;
 
     /// <summary>
-    /// SoftDeletedResourceOperations operations.
+    /// TenantLevelGallerySharingOperations operations.
     /// </summary>
-    internal partial class SoftDeletedResourceOperations : Microsoft.Rest.IServiceOperations<ComputeManagementClient>, ISoftDeletedResourceOperations
+    internal partial class TenantLevelGallerySharingOperations : Microsoft.Rest.IServiceOperations<ComputeManagementClient>, ITenantLevelGallerySharingOperations
     {
         /// <summary>
-        /// Initializes a new instance of the SoftDeletedResourceOperations class.
+        /// Initializes a new instance of the TenantLevelGallerySharingOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal SoftDeletedResourceOperations (ComputeManagementClient client)
+        internal TenantLevelGallerySharingOperations (ComputeManagementClient client)
         {
-            if (client == null) 
+            if (client == null)
             {
                 throw new System.ArgumentNullException("client");
             }
@@ -39,21 +39,66 @@ namespace Microsoft.Azure.Management.Compute
         public ComputeManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List soft-deleted resources of an artifact in the gallery, such as
-        /// soft-deleted gallery image version of an image.
+        /// Accept sharing of a tenant-level shared gallery.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='location'>
+        /// The name of Azure region.
         /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery.
+        /// <param name='sharedGallerySubscriptionId'>
+        /// The name of the SharedGallerySubscription
         /// </param>
-        /// <param name='artifactType'>
-        /// The type of the artifact to be listed, such as gallery image version.
+        /// <param name='sharedGalleryName'>
+        /// The name of the TenantLevelSharedGallerySubscription
         /// </param>
-        /// <param name='artifactName'>
-        /// The artifact name to be listed. If artifact type is Images, then the
-        /// artifact name should be the gallery image name.
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingAcceptHeaders>> AcceptWithHttpMessagesAsync(string location, string sharedGallerySubscriptionId, string sharedGalleryName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingAcceptHeaders> _response = await BeginAcceptWithHttpMessagesAsync(location, sharedGallerySubscriptionId, sharedGalleryName, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Reject sharing of a tenant-level shared gallery.
+        /// </summary>
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='sharedGallerySubscriptionId'>
+        /// The name of the SharedGallerySubscription
+        /// </param>
+        /// <param name='sharedGalleryName'>
+        /// The name of the TenantLevelSharedGallerySubscription
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingRejectHeaders>> RejectWithHttpMessagesAsync(string location, string sharedGallerySubscriptionId, string sharedGalleryName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingRejectHeaders> _response = await BeginRejectWithHttpMessagesAsync(location, sharedGallerySubscriptionId, sharedGalleryName, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Accept sharing of a tenant-level shared gallery.
+        /// </summary>
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='sharedGallerySubscriptionId'>
+        /// The name of the SharedGallerySubscription
+        /// </param>
+        /// <param name='sharedGalleryName'>
+        /// The name of the TenantLevelSharedGallerySubscription
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -64,9 +109,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -76,69 +118,43 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GallerySoftDeletedResource>>> ListByArtifactNameWithHttpMessagesAsync(string resourceGroupName, string galleryName, string artifactType, string artifactName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingAcceptHeaders>> BeginAcceptWithHttpMessagesAsync(string location, string sharedGallerySubscriptionId, string sharedGalleryName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
- 
-            if (this.Client.SubscriptionId == null)
+
+            if (location == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
             }
-            if (this.Client.SubscriptionId != null)
+            if (location != null)
             {
-                if (this.Client.SubscriptionId.Length < 1)
+                if (location.Length < 1)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
                 }
             }
-            if (resourceGroupName == null)
+            if (sharedGallerySubscriptionId == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedGallerySubscriptionId");
             }
-            if (resourceGroupName != null)
+            if (sharedGallerySubscriptionId != null)
             {
-                if (resourceGroupName.Length > 90)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sharedGallerySubscriptionId, "^[^_\\W][\\w-._]{0,79}(?<![-.])$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "sharedGallerySubscriptionId", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
                 }
             }
-            if (galleryName == null)
+            if (sharedGalleryName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "galleryName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedGalleryName");
             }
-            if (galleryName != null)
+            if (sharedGalleryName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(galleryName, "^[^_\\W][\\w-._]{0,79}(?<![-.])$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sharedGalleryName, "^[^_\\W][\\w-._]{0,79}(?<![-.])$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "galleryName", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
-                }
-            }
-            if (artifactType == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "artifactType");
-            }
-            if (artifactType != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(artifactType, "^[a-zA-Z0-9]+([_]?[a-zA-Z0-9]+)*$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "artifactType", "^[a-zA-Z0-9]+([_]?[a-zA-Z0-9]+)*$");
-                }
-            }
-            if (artifactName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "artifactName");
-            }
-            if (artifactName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(artifactName, "^[a-zA-Z0-9]+([_]?[a-zA-Z0-9]+)*$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "artifactName", "^[a-zA-Z0-9]+([_]?[a-zA-Z0-9]+)*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "sharedGalleryName", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
                 }
             }
             string apiVersion = "2025-12-03";
@@ -150,24 +166,21 @@ namespace Microsoft.Azure.Management.Compute
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("galleryName", galleryName);
-                tracingParameters.Add("artifactType", artifactType);
-                tracingParameters.Add("artifactName", artifactName);
+                tracingParameters.Add("location", location);
+                tracingParameters.Add("sharedGallerySubscriptionId", sharedGallerySubscriptionId);
+                tracingParameters.Add("sharedGalleryName", sharedGalleryName);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByArtifactName", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginAccept", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/softdeletedartifacttypes/{artifactType}/artifacts/{artifactName}/versions").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{galleryName}", System.Uri.EscapeDataString(galleryName));
-            _url = _url.Replace("{artifactType}", System.Uri.EscapeDataString(artifactType));
-            _url = _url.Replace("{artifactName}", System.Uri.EscapeDataString(artifactName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Compute/locations/{location}/tenantLevelSharedGallerySubscriptions/{sharedGallerySubscriptionId}/sharedGalleries/{sharedGalleryName}/accept").ToString();
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            _url = _url.Replace("{sharedGallerySubscriptionId}", System.Uri.EscapeDataString(sharedGallerySubscriptionId));
+            _url = _url.Replace("{sharedGalleryName}", System.Uri.EscapeDataString(sharedGalleryName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -181,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute
             // Create HTTP transport objects
             var _httpRequest = new System.Net.Http.HttpRequestMessage();
             System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
@@ -232,7 +245,7 @@ namespace Microsoft.Azure.Management.Compute
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
             {
                 var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -267,31 +280,26 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GallerySoftDeletedResource>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingAcceptHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            
+
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
             }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
+            try
             {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<TenantLevelGallerySharingAcceptHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<GallerySoftDeletedResource>>(_responseContent, this.Client.DeserializationSettings);
+                    _httpResponse.Dispose();
                 }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -305,11 +313,16 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// List soft-deleted resources of an artifact in the gallery, such as
-        /// soft-deleted gallery image version of an image.
+        /// Reject sharing of a tenant-level shared gallery.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='sharedGallerySubscriptionId'>
+        /// The name of the SharedGallerySubscription
+        /// </param>
+        /// <param name='sharedGalleryName'>
+        /// The name of the TenantLevelSharedGallerySubscription
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -320,9 +333,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -332,13 +342,46 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GallerySoftDeletedResource>>> ListByArtifactNameNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingRejectHeaders>> BeginRejectWithHttpMessagesAsync(string location, string sharedGallerySubscriptionId, string sharedGalleryName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
-            if (nextPageLink == null)
+
+
+
+            if (location == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nextPageLink");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
             }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
+                }
+            }
+            if (sharedGallerySubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedGallerySubscriptionId");
+            }
+            if (sharedGallerySubscriptionId != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sharedGallerySubscriptionId, "^[^_\\W][\\w-._]{0,79}(?<![-.])$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "sharedGallerySubscriptionId", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
+                }
+            }
+            if (sharedGalleryName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedGalleryName");
+            }
+            if (sharedGalleryName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sharedGalleryName, "^[^_\\W][\\w-._]{0,79}(?<![-.])$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "sharedGalleryName", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
+                }
+            }
+            string apiVersion = "2025-12-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -346,17 +389,28 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
-               
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
+                tracingParameters.Add("sharedGallerySubscriptionId", sharedGallerySubscriptionId);
+                tracingParameters.Add("sharedGalleryName", sharedGalleryName);
+
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByArtifactNameNext", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginReject", tracingParameters);
             }
             // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Compute/locations/{location}/tenantLevelSharedGallerySubscriptions/{sharedGallerySubscriptionId}/sharedGalleries/{sharedGalleryName}/reject").ToString();
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            _url = _url.Replace("{sharedGallerySubscriptionId}", System.Uri.EscapeDataString(sharedGallerySubscriptionId));
+            _url = _url.Replace("{sharedGalleryName}", System.Uri.EscapeDataString(sharedGalleryName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -364,7 +418,7 @@ namespace Microsoft.Azure.Management.Compute
             // Create HTTP transport objects
             var _httpRequest = new System.Net.Http.HttpRequestMessage();
             System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
@@ -415,7 +469,7 @@ namespace Microsoft.Azure.Management.Compute
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
             {
                 var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -450,31 +504,26 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GallerySoftDeletedResource>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingRejectHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            
+
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
             }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
+            try
             {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<TenantLevelGallerySharingRejectHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<GallerySoftDeletedResource>>(_responseContent, this.Client.DeserializationSettings);
+                    _httpResponse.Dispose();
                 }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {

@@ -228,6 +228,11 @@ namespace Microsoft.Azure.Management.Compute
         IDiskRestorePointOperations DiskRestorePoint { get; }
 
         /// <summary>
+        /// Gets the ITenantLevelGallerySharingOperations
+        /// </summary>
+        ITenantLevelGallerySharingOperations TenantLevelGallerySharing { get; }
+
+        /// <summary>
         /// Gets the IGalleriesOperations
         /// </summary>
         IGalleriesOperations Galleries { get; }
@@ -261,6 +266,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the ISharedGalleryImageVersionsOperations
         /// </summary>
         ISharedGalleryImageVersionsOperations SharedGalleryImageVersions { get; }
+
+        /// <summary>
+        /// Gets the IGallerySharingOperations
+        /// </summary>
+        IGallerySharingOperations GallerySharing { get; }
 
         /// <summary>
         /// Gets the IGalleryApplicationsOperations
