@@ -96,23 +96,16 @@ function Update-StorageSyncHelp
     $status = $null
     try 
     {
-        Write-Verbose "Re-Loading module: Microsoft.PowerShell.PlatyPS"
-        if (Get-Module Microsoft.PowerShell.PlatyPS)
+        Write-Verbose "Re-Loading module: platyPS"
+        if (Get-Module platyPS)
         {
-            Remove-Module Microsoft.PowerShell.PlatyPS
+            Remove-Module platyPS
         }
-        Import-Module Microsoft.PowerShell.PlatyPS -MinimumVersion 1.0.2 -ErrorAction Stop
+        Import-Module platyPS
 
-        $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) 'src' 'StorageSync' 'StorageSync' 'help'
+        $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) "src\StorageSync\StorageSync\help"
         Write-Verbose "Updating help: $PathToHelpFolder"
-        $cmdletHelpFiles = Join-Path $PathToHelpFolder '*-*.md'
-        Update-MarkdownCommandHelp -Path $cmdletHelpFiles -NoBackup
-        $updatedHelp = Import-MarkdownCommandHelp -Path $cmdletHelpFiles
-        $moduleFile = Get-ChildItem -Path $PathToHelpFolder -Filter 'Az.StorageSync.md' | Select-Object -First 1
-        if ($moduleFile)
-        {
-            $status = Update-MarkdownModuleFile -Path $moduleFile.FullName -CommandHelp $updatedHelp -NoBackup -Force
-        }
+        $status = Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName
     }
     finally
     {

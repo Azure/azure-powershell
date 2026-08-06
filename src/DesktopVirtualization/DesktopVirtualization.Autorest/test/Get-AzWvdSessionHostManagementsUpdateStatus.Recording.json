@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "158" ],
-        "x-ms-client-request-id": [ "ad31e95c-d7f5-4eb3-84f6-3ff0a0b121a8" ],
+        "x-ms-client-request-id": [ "7543d58a-5627-466b-9a24-efb050b5fbfd" ],
         "CommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus" ],
         "FullCommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.DesktopVirtualization/6.0.0" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,32 +23,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=0fff6e681643fd9addf73ac337341404a9fd18e988188b8248f9ac04d076d8ac;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=0fff6e681643fd9addf73ac337341404a9fd18e988188b8248f9ac04d076d8ac;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/61a878aa-9fb9-4d75-bb69-b2b5a33dbec0" ],
+        "Set-Cookie": [ "ARRAffinity=8666cc830dd47c2d7654a02aa9175f1bc17fa37c91b6b6552457574e91027a6e;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=8666cc830dd47c2d7654a02aa9175f1bc17fa37c91b6b6552457574e91027a6e;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/780c3ce4-b2fe-48e4-a7f8-3ba699f6c973" ],
         "X-Rate-Limit-Limit": [ "5m" ],
-        "X-Rate-Limit-Remaining": [ "9811" ],
-        "X-Rate-Limit-Reset": [ "2026-07-29T06:21:55.8437384Z" ],
+        "X-Rate-Limit-Remaining": [ "9846" ],
+        "X-Rate-Limit-Reset": [ "2026-08-06T06:11:42.0688375Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkMi9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQvc2Vzc2lvbkhvc3RVcGRhdGVTdGF0dXNlcy9kZWZhdWx0" ],
-        "x-ms-lamport-ts": [ "-9223372036854775684" ],
-        "x-ms-correlation-id": [ "8b94a882-5ef8-4ff3-8f82-f6945c3e20c1" ],
-        "x-ms-request-id": [ "ad31e95c-d7f5-4eb3-84f6-3ff0a0b121a8" ],
+        "x-ms-lamport-ts": [ "-9223372036854775689" ],
+        "x-ms-correlation-id": [ "2bc28ca4-ecbb-48e8-bf09-a6819be29979" ],
+        "x-ms-request-id": [ "7543d58a-5627-466b-9a24-efb050b5fbfd" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
-        "x-ms-correlation-request-id": [ "e79f1e31-89c5-4ead-8f89-c90e7f9b6437" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260729T062008Z:e79f1e31-89c5-4ead-8f89-c90e7f9b6437" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3747" ],
+        "x-ms-correlation-request-id": [ "27d93c2b-453d-4377-a09f-6e7b63f3d296" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260806T060823Z:27d93c2b-453d-4377-a09f-6e7b63f3d296" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0639611411EA4F87AE2876431A421A10 Ref B: PNQ231110908062 Ref C: 2026-07-29T06:20:07Z" ],
-        "Date": [ "Wed, 29 Jul 2026 06:20:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EC9F39A0B4B9414190E97D7997493B19 Ref B: PNQ231110908034 Ref C: 2026-08-06T06:08:23Z" ],
+        "Date": [ "Thu, 06 Aug 2026 06:08:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2067" ],
+        "Content-Length": [ "1480" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostUpdateStatuses/default\",\"status\":\"Failed\",\"startTime\":\"2026-07-28T20:26:00Z\",\"endTime\":\"2026-07-28T20:26:06Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MigrationMayExceedCapacityLimit_1024\\\",\\\"faultText\\\":\\\"It was detected that resources created during the update process may cause subscription limits to be exceeded for the following resources:  \u0027[{\\\\\\\"name\\\\\\\":{\\\\\\\"value\\\\\\\":\\\\\\\"standardDaldv6Family\\\\\\\",\\\\\\\"localizedValue\\\\\\\":\\\\\\\"standard Daldv6 Family vCPUs\\\\\\\"},\\\\\\\"limit\\\\\\\":10,\\\\\\\"projectedUsedCapacity\\\\\\\":12}]\u0027.  Please delete some resources of this type before creating a new one\\\",\\\"faultContext\\\":\\\"ComputeCapacityRule\\\",\\\"faultType\\\":0}]\"},\"correlationId\":\"b54e72c2-e49f-4de0-b382-96df58d14821\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-07-28T20:26:00.6055217\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"b54e72c2-e49f-4de0-b382-96df58d14821\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-07-28T20:26:00.6055217\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
+      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostUpdateStatuses/default\",\"status\":\"Succeeded\",\"startTime\":\"2026-08-06T03:07:18Z\",\"endTime\":\"2026-08-06T05:52:36Z\",\"percentComplete\":100.0,\"error\":null,\"correlationId\":\"1f51259f-e69c-4a76-8255-436217f07516\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-08-06T03:07:19.0136216Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":1},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":1,\"logOffMessage\":\"Updating HostpoolUpdate is great!\"},\"provisioning\":{\"instanceCount\":0,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"1f51259f-e69c-4a76-8255-436217f07516\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-08-06T03:07:19.0136216Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":1},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":1,\"logOffMessage\":\"Updating HostpoolUpdate is great!\"},\"provisioning\":{\"instanceCount\":0,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
       "isContentBase64": false
     }
   }

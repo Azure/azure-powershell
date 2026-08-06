@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Upgraded the module to support the Microsoft.Datadog 2025-12-26-preview API version, adding new cmdlets:
     - `Get-AzDatadogMonitorDefaultApplicationKey` to get the default Datadog application key for a monitor.
     - `Invoke-AzDatadogLatestDatadogMonitorResourceLinkedSaaS` to return the latest SaaS (Software as a Service) resource linked to the Datadog organization of a monitor.
