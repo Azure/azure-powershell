@@ -13,6 +13,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     public partial class PolicyDefinitionReference
     {
         /// <summary>
+        /// The policy definition reference parameter values, exposed with its pre-migration named type
+        /// <see cref="IParameterValues"/> (the emitter renamed it to
+        /// <see cref="IPolicyDefinitionReferenceParameters"/>). The generated property is renamed to
+        /// <c>ParameterRaw</c> (see tspconfig.yaml) so this back-compatible accessor owns the
+        /// <c>Parameter</c> name, reading/writing the same underlying storage.
+        /// </summary>
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterValues Parameter
+        {
+            get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).ParameterRaw as Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterValues;
+            set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).ParameterRaw = value as Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceParameters;
+        }
+
+        /// <summary>
         /// <c>AfterDeserializeDictionary</c> will be called after the deserialization has finished, allowing customization of the
         /// object before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
@@ -61,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "Parameters".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (keyValuePair.Key != null)
             {
-                ((IPolicyDefinitionReferenceInternal)this).Parameter = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Parameter, PolicyDefinitionReferenceParametersTypeConverter.ConvertFrom);
+                ((IPolicyDefinitionReferenceInternal)this).ParameterRaw = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).ParameterRaw, PolicyDefinitionReferenceParametersTypeConverter.ConvertFrom);
             }
 
             // Github issue: https://github.com/Azure/azure-powershell/issues/25112
@@ -95,5 +108,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow)
         {
         }
+    }
+
+    public partial interface IPolicyDefinitionReference
+    {
+        /// <summary>
+        /// The policy definition reference parameter values. Restored to its pre-migration named type
+        /// <see cref="IParameterValues"/> (renamed to <see cref="IPolicyDefinitionReferenceParameters"/>).
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterValues Parameter { get; set; }
     }
 }

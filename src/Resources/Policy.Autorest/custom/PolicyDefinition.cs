@@ -38,6 +38,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).EndpointSettingDetail as Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails;
             set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).EndpointSettingDetail = value;
         }
+
+        /// <summary>
+        /// The policy definition parameter definitions, exposed with its pre-migration named type
+        /// <see cref="IParameterDefinitions"/> (the emitter renamed it to
+        /// <see cref="IPolicyDefinitionPropertiesParameters"/>). The generated flattened property is
+        /// renamed to <c>ParameterRaw</c> (see tspconfig.yaml) so this back-compatible accessor owns
+        /// the <c>Parameter</c> name, reading/writing the same <c>Property.Parameter</c> storage.
+        /// </summary>
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions Parameter
+        {
+            get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Parameter as Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions;
+            set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Parameter = value as Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters;
+        }
     }
 
     public partial interface IPolicyDefinition
@@ -50,5 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The external evaluation endpoint settings detail (restored named type, previously collapsed to IAny).</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails EndpointSettingDetail { get; set; }
+
+        /// <summary>
+        /// The policy definition parameter definitions. Restored to its pre-migration named type
+        /// <see cref="IParameterDefinitions"/> (renamed to <see cref="IPolicyDefinitionPropertiesParameters"/>).
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions Parameter { get; set; }
     }
 }
