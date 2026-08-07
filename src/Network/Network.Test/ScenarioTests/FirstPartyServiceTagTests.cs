@@ -17,7 +17,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Resource requires first party service tag access")]
+        [Fact(Skip = "Requires an East or Central Canary subscription registered for FirstPartyServiceTag.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestFirstPartyServiceTagBasicOperations()

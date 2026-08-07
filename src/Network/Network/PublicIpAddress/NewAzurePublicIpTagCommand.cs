@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(ipTag);
         }
 
-        private PSPublicIpTag CreatePublicIpTag()
+        internal PSPublicIpTag CreatePublicIpTag()
         {
             var ipTag = new PSPublicIpTag();
             ipTag.IpTagType = this.IpTagType;
