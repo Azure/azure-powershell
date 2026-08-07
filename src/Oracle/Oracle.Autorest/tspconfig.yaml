@@ -1,0 +1,68 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Oracle/Oracle.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 2.0.0
+    prefix: "Az"
+    subject-prefix: "Oracle"
+    service-name: Oracle
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+
+    directive:
+      # Common directives (previously inherited from readme.azure.noprofile.md)
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: '(Get-AzContext).Subscription.Id'
+
+      # Model complex objects
+      - model-cmdlet:
+        - model-name: CustomerContact
+          cmdlet-name: New-AzOracleCustomerContactObject
+        - model-name: NsgCidr
+          cmdlet-name: New-AzOracleNsgCidrObject
+
+      # Remove the set-* cmdlet
+      - where:
+          verb: Set
+        remove: true
+
+      # Remove APIs
+      - where:
+          subject: CloudExadataInfrastructureStorageCapacity|PrivateIpaddress|SystemVersion|VirtualNetworkAddress|AutonomousDatabaseWallet|ShrinkAutonomousDatabase|OracleSubscription
+        remove: true
+      - where:
+          subject: AutonomousDatabaseBackUp
+          verb: Update
+        remove: true
+
+      # Remove variants
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+      - where:
+          variant: ^Add$|^AddViaIdentity$|^Action$|^ActionViaIdentity$|^ActionViaIdentityCloudVMCluster$|^Switchover$|^SwitchoverViaIdentity$
+        remove: true
+
+      # Rename parameter
+      - where:
+          parameter-name: ScheduledOperationScheduledStartTime
+        set:
+          parameter-name: ScheduledStartTime
+      - where:
+          parameter-name: ScheduledOperationScheduledStopTime
+        set:
+          parameter-name: ScheduledStopTime
