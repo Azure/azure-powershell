@@ -3,15 +3,19 @@ Invoke-LiveTestScenario -Name "Create automation account" -Description "Test cre
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
+    # Automation accounts are capped at a small number per region per subscription, and the live test
+    # matrix runs several jobs against the same subscription concurrently. Use a distinct region per
+    # SKU and delete each account as soon as it has been verified so that at most one account per
+    # region is alive at any point in time.
     $autoAccParams = @(
         @{
             Name = New-LiveTestResourceName;
-            Location = "eastus";
+            Location = "westus2";
             Plan = "Free"
         },
         @{
             Name = New-LiveTestResourceName;
-            Location = "eastus";
+            Location = "westus3";
             Plan = "Basic"
         }
     )
@@ -26,6 +30,8 @@ Invoke-LiveTestScenario -Name "Create automation account" -Description "Test cre
         Assert-AreEqual $_.Location $actual.Location
         #Assert-AreEqual $_.Plan $actual.Plan
         Assert-AreEqual "Ok" $actual.State
+
+        Remove-AzAutomationAccount -ResourceGroupName $rgName -Name $_.Name -Force
     }
 }
 
@@ -54,7 +60,7 @@ Invoke-LiveTestScenario -Name "Remove automation account" -Description "Test rem
 
     $rgName = $rg.ResourceGroupName
     $accName = New-LiveTestResourceName
-    $accLocation = "eastus"
+    $accLocation = "southcentralus"
 
     New-AzAutomationAccount -ResourceGroupName $rgName -Name $accName -Location $accLocation
     Remove-AzAutomationAccount -ResourceGroupName $rgName -Name $accName -Force

@@ -26,7 +26,7 @@ Invoke-LiveTestScenario -Name "Operate synapse data flow" -Description "Test cre
 
     $rgName = $rg.ResourceGroupName
     $wsName = New-LiveTestResourceName
-    $location = "eastus"
+    $location = "westus2"
     $saName = New-LiveTestStorageAccountName
     $fsName = New-LiveTestStorageAccountName
     $flowName = New-LiveTestResourceName

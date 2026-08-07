@@ -18,7 +18,10 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
     'y' | ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
     $sshKeyValue = Get-Content id_rsa.pub -Raw
 
-    $kvName = "LiveTestKeyVault"
+    # The vault must live in the same tenant the live tests authenticate against, otherwise Key Vault
+    # rejects the token with "AKV10032: Invalid issuer". Allow the pipeline to override the name so a
+    # tenant switch does not require a code change.
+    $kvName = if ($env:LIVE_TEST_KEY_VAULT_NAME) { $env:LIVE_TEST_KEY_VAULT_NAME } else { "LiveTestKeyVault" }
     $aksSPIdKey = "AKSSPId"
     $aksSPSecretKey = "AKSSPSecret"
     $ServicePrincipalId = Get-AzKeyVaultSecret -VaultName $kvName -Name $aksSPIdKey -AsPlainText
@@ -33,8 +36,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
 
     $snet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName | Get-AzVirtualNetworkSubnetConfig -Name $snetName
 
-    $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard
 
     $kubeVersion = (Get-AzAksVersion -Location $location).OrchestratorVersion | Sort-Object -Descending | Select-Object -Skip 2 -First 1
 
@@ -198,7 +200,10 @@ Invoke-LiveTestScenario -Name "Test_AKS_AzureContainerLinux" -Description "Test 
     'y' | ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
     $sshKeyValue = Get-Content id_rsa.pub -Raw
 
-    $kvName = "LiveTestKeyVault"
+    # The vault must live in the same tenant the live tests authenticate against, otherwise Key Vault
+    # rejects the token with "AKV10032: Invalid issuer". Allow the pipeline to override the name so a
+    # tenant switch does not require a code change.
+    $kvName = if ($env:LIVE_TEST_KEY_VAULT_NAME) { $env:LIVE_TEST_KEY_VAULT_NAME } else { "LiveTestKeyVault" }
     $aksSPIdKey = "AKSSPId"
     $aksSPSecretKey = "AKSSPSecret"
     $ServicePrincipalId = Get-AzKeyVaultSecret -VaultName $kvName -Name $aksSPIdKey -AsPlainText
@@ -213,8 +218,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_AzureContainerLinux" -Description "Test 
 
     $snet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName | Get-AzVirtualNetworkSubnetConfig -Name $snetName
 
-    $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard
 
     $kubeVersion = (Get-AzAksVersion -Location $location).OrchestratorVersion | Sort-Object -Descending | Select-Object -Skip 2 -First 1
 
