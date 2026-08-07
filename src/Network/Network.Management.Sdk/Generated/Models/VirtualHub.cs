@@ -219,6 +219,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string AddressPrefix {get; set; }
 
         /// <summary>
+        /// Gets or sets IPv6 address-prefix for this VirtualHub.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.addressPrefixV6")]
+        public string AddressPrefixV6 {get; set; }
+
+        /// <summary>
         /// Gets or sets the routeTable associated with this virtual hub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routeTable")]
@@ -272,6 +278,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualRouterIps")]
         public System.Collections.Generic.IList<string> VirtualRouterIps {get; set; }
+
+        /// <summary>
+        /// Gets or sets virtualRouter IPv6 IPs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualRouterIpsV6")]
+        public System.Collections.Generic.IList<string> VirtualRouterIpsV6 {get; set; }
 
         /// <summary>
         /// Gets or sets flag to control transit for VirtualRouter hub.

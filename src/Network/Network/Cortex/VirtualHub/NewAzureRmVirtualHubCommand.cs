@@ -128,6 +128,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The IPv6 address space string for this virtual hub.")]
+        public string AddressPrefixV6 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -176,6 +181,7 @@ namespace Microsoft.Azure.Commands.Network
                         Name = this.Name,
                         VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id },
                         AddressPrefix = this.AddressPrefix,
+                        AddressPrefixV6 = this.AddressPrefixV6,
                         Location = this.Location,
                         VirtualRouterAsn = this.VirtualRouterAsn,
                         VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration

@@ -138,5 +138,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableInternetSecurity")]
         public bool? EnableInternetSecurity {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable only IPv6 peering for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableOnlyIpv6Peering")]
+        public string EnableOnlyIpv6Peering {get; set; }
     }
 }
