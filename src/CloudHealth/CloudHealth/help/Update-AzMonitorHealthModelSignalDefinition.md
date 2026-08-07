@@ -1,68 +1,54 @@
-﻿---
-document type: cmdlet
-external help file: 
-HelpUri: https://learn.microsoft.com/powershell/module/az.cloudhealth/update-azmonitorhealthmodelsignaldefinition
+---
+external help file: Az.CloudHealth-help.xml
 Module Name: Az.CloudHealth
-ms.date: 07/29/2026
-PlatyPS schema version: 2024-05-01
+online version: https://learn.microsoft.com/powershell/module/az.cloudhealth/update-azmonitorhealthmodelsignaldefinition
+schema: 2.0.0
 ---
 
 # Update-AzMonitorHealthModelSignalDefinition
 
 ## SYNOPSIS
-
 Update a SignalDefinition
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
-
 ```
-Update-AzMonitorHealthModelSignalDefinition -HealthModelName <string> -Name <string>
- -ResourceGroupName <string> [-SubscriptionId <string>] [-DataUnit <string>]
- [-DegradedRuleLookBackWindow <string>] [-DegradedRuleOperator <string>]
- [-DegradedRuleSensitivity <string>] [-DegradedRuleThreshold <double>] [-DisplayName <string>]
- [-RefreshInterval <string>] [-SignalKind <string>] [-Tag <hashtable>]
- [-UnhealthyRuleLookBackWindow <string>] [-UnhealthyRuleOperator <string>]
- [-UnhealthyRuleSensitivity <string>] [-UnhealthyRuleThreshold <double>]
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DataUnit <String>]
+ [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>]
+ [-DegradedRuleThreshold <Double>] [-DisplayName <String>] [-RefreshInterval <String>] [-SignalKind <String>]
+ [-Tag <Hashtable>] [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
+ [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
-
 ```
-Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity> [-DataUnit <string>]
- [-DegradedRuleLookBackWindow <string>] [-DegradedRuleOperator <string>]
- [-DegradedRuleSensitivity <string>] [-DegradedRuleThreshold <double>] [-DisplayName <string>]
- [-RefreshInterval <string>] [-SignalKind <string>] [-Tag <hashtable>]
- [-UnhealthyRuleLookBackWindow <string>] [-UnhealthyRuleOperator <string>]
- [-UnhealthyRuleSensitivity <string>] [-UnhealthyRuleThreshold <double>]
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity> [-DataUnit <String>]
+ [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>]
+ [-DegradedRuleThreshold <Double>] [-DisplayName <String>] [-RefreshInterval <String>] [-SignalKind <String>]
+ [-Tag <Hashtable>] [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
+ [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHealthmodelExpanded
-
 ```
-Update-AzMonitorHealthModelSignalDefinition -Name <string>
- -HealthmodelInputObject <ICloudHealthIdentity> [-DataUnit <string>]
- [-DegradedRuleLookBackWindow <string>] [-DegradedRuleOperator <string>]
- [-DegradedRuleSensitivity <string>] [-DegradedRuleThreshold <double>] [-DisplayName <string>]
- [-RefreshInterval <string>] [-SignalKind <string>] [-Tag <hashtable>]
- [-UnhealthyRuleLookBackWindow <string>] [-UnhealthyRuleOperator <string>]
- [-UnhealthyRuleSensitivity <string>] [-UnhealthyRuleThreshold <double>]
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzMonitorHealthModelSignalDefinition -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
+ [-DataUnit <String>] [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>]
+ [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>] [-DisplayName <String>]
+ [-RefreshInterval <String>] [-SignalKind <String>] [-Tag <Hashtable>] [-UnhealthyRuleLookBackWindow <String>]
+ [-UnhealthyRuleOperator <String>] [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
-
-## ALIASES
 
 ## DESCRIPTION
-
 Update a SignalDefinition
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
-
 ```powershell
 {{ Add code here }}
 ```
@@ -74,7 +60,6 @@ Update a SignalDefinition
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
-
 ```powershell
 {{ Add code here }}
 ```
@@ -88,538 +73,378 @@ Update a SignalDefinition
 ## PARAMETERS
 
 ### -AsJob
-
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Confirm
-
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
+Parameter Sets: (All)
 Aliases:
-- cf
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DataUnit
-
 Unit of the signal result (e.g.
 Bytes, MilliSeconds, Percent, Count))
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- AzureRMContext
-- AzureCredential
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleLookBackWindow
-
 ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleOperator
-
 Operator how to compare the signal value with the threshold
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleSensitivity
-
 Sensitivity level for dynamic threshold detection.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleThreshold
-
 Threshold value
 
 ```yaml
 Type: System.Double
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DisplayName
-
 Display name
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -HealthmodelInputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: UpdateViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: UpdateViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -HealthModelName
-
 Name of health model resource
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: UpdateExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -InputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: UpdateViaIdentityExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -Name
-
 Name of the signal definition.
 Must be unique within a health model.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- SignalDefinitionName
-ParameterSets:
-- Name: UpdateViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: UpdateExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: UpdateExpanded, UpdateViaIdentityHealthmodelExpanded
+Aliases: SignalDefinitionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RefreshInterval
-
 Interval in which the signal is being evaluated.
 Defaults to PT1M (1 minute).
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: UpdateExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SignalKind
-
 Kind of the signal definition
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: (Get-AzContext).Subscription.Id
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: UpdateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Tag
-
 Optional set of tags (key-value pairs)
 
 ```yaml
 Type: System.Collections.Hashtable
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleLookBackWindow
-
 ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleOperator
-
 Operator how to compare the signal value with the threshold
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleSensitivity
-
 Sensitivity level for dynamic threshold detection.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleThreshold
-
 Threshold value
 
 ```yaml
 Type: System.Double
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-Runs the command in a mode that only reports what would happen without performing the actions.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- wi
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
--ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -632,6 +457,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-{{ Fill in the related links here }}
 
