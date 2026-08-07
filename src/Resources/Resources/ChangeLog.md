@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Updated Policy cmdlets to use `2026-01-01` API
+* Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` cmdlets to interact with new Policy Enrollments resources.
 
 ## Version 10.1.0
 * Added deployment stack WhatIfResult cmdlets for resource group, subscription, and management group scopes.
