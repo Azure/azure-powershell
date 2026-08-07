@@ -34,7 +34,7 @@
 * Added ChangeSafety Support
 * Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
 * Fixed `Set-AzRoleAssignment` unable to delete conditions
-* Updated Policy.Autorest to 2025-03-01: added -Expand, -EnforcementMode, -Version; removed -BackwardCompatible
+* Updated Policy.Autorest to 2025-03-01: added `-Expand`, `-EnforcementMode`, `-Version`; removed `-BackwardCompatible`
 * Fixed `Get-AzRoleDefinition` null ABAC `Condition` [#29058] [#25940]
 * [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions
 
