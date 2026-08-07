@@ -66,3 +66,8 @@ options:
           parameter-name: ScheduledOperationScheduledStopTime
         set:
           parameter-name: ScheduledStopTime
+
+# Remove this once the spec repo drops that rule set.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
