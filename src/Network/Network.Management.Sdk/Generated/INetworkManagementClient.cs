@@ -198,6 +198,11 @@ namespace Microsoft.Azure.Management.Network
         IAzureFirewallsOperations AzureFirewalls { get; }
 
         /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; }
+
+        /// <summary>
         /// Gets the IFirewallPoliciesOperations
         /// </summary>
         IFirewallPoliciesOperations FirewallPolicies { get; }

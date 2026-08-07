@@ -27,25 +27,26 @@ use-extension:
 
 ###
 ``` yaml
-commit: 587a15661041e26ff8a3059a4886ff9e092adfda
+commit: 53bf18b0183641d789bcdfba04a03744bba0e7b3
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/applicationGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/azureWebCategory.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/expressRoute.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/firewall.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/firewallPolicy.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/interconnectGroup.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/loadBalancer.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkManager.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkSecurityPerimeter.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkWatcher.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkingOperations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/serviceGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualNetwork.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualNetworkAppliance.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualWan.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/applicationGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/azureWebCategory.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/common.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/expressRoute.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firewall.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firewallPolicy.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firstPartyServiceTag.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/interconnectGroup.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/loadBalancer.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkManager.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkWatcher.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkingOperations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/serviceGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualNetwork.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualNetworkAppliance.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualWan.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2018-10-01/vmssNetwork.json
 
 output-folder: Generated

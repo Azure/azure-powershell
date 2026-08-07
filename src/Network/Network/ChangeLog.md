@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets to create, retrieve, update, and remove First Party Service Tag resources.
+    - Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag`.
+    - Added first party service tag association support to `New-AzPublicIpTag`.
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
