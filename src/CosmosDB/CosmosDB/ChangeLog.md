@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.21.1
 * Upgraded `Azure.Security.KeyVault.Keys` to `4.10.0` to align with other modules.
 
 ## Version 1.21.0

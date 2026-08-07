@@ -20,7 +20,8 @@ New-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <S
  [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-ManagementClusterHost <String[]>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VcfLicense <IVcfLicense>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -431,6 +432,23 @@ Optionally, set the vCenter admin password when the private cloud is created
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VcfLicense
+The VMware Cloud Foundation (VCF) license for the private cloud.
+To construct, see NOTES section for VCFLICENSE properties and create a hash table,
+or use New-AzVMwareVcf5LicenseObject to create a Vcf5License object.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense
 Parameter Sets: (All)
 Aliases:
 

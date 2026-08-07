@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Functions",
-  "ModuleVersion": "5.0.0",
+  "ModuleVersion": "5.0.1",
   "Cmdlets": [
     {
       "VerbName": "Get",

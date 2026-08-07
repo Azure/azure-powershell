@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `New-AzVMwareVcf5LicenseObject` and the `-VcfLicense` parameter on `New-AzVMwarePrivateCloud` not being available in the `0.9.1` package
+    - The cmdlet and parameter are now correctly generated and exported by the module
 
 ## Version 0.9.1
 * Added `-VcfLicense` parameter to `New-AzVMwarePrivateCloud` to support setting a VMware Cloud Foundation (VCF) license during private cloud provisioning
