@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         {
             command = new StorageCloudBlobCmdletBase(BlobMock)
             {
-                Context = new AzureStorageContext(CloudStorageAccount.DevelopmentStorageAccount),
+                Context = new AzureStorageContext(CloudStorageAccount.DevelopmentStorageAccount, null, null, null),
                 CommandRuntime = MockCmdRunTime
             };
         }
