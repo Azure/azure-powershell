@@ -15,12 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppNetworkAppLinkMember
 }
 
 Describe 'Get-AzAppNetworkAppLinkMember' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $members = Get-AzAppNetworkAppLinkMember -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup
+            $members.Name | Should -Contain $env.memberName
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $member = Get-AzAppNetworkAppLinkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup
+            $member.Name | Should -Be $env.memberName
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentityAppLink' -skip {

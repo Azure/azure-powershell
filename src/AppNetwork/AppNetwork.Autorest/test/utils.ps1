@@ -47,6 +47,14 @@ function setupEnv() {
     $env.location = 'eastus'
     $env.resourceGroup = 'appnetwork-test-' + (RandomString -allChars $false -len 6)
     $env.appLinkName = 'applink-' + (RandomString -allChars $false -len 6)
+    $env.memberName = 'member-' + (RandomString -allChars $false -len 6)
+    # AKS cluster used as the AppLinkMember target. It must be created with the
+    # AppLink prerequisites enabled:
+    #   az aks create ... --enable-oidc-issuer --enable-aad --enable-gateway-api
+    # Provide an existing cluster's ARM resource id via $env.aksClusterId, or set
+    # AKS_CLUSTER_ID before recording. AppLinkMember provisioning is a service-side
+    # mesh onboarding operation, so the target cluster must already be reachable.
+    $env.aksClusterId = $env:AKS_CLUSTER_ID
     if ($TestMode -ne 'playback') {
         Write-Host "Creating resource group $($env.resourceGroup) in $($env.location)"
         New-AzResourceGroup -Name $env.resourceGroup -Location $env.location | Out-Null

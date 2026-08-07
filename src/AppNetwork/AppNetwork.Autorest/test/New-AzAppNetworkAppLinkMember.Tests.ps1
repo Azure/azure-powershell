@@ -15,8 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAppNetworkAppLinkMember
 }
 
 Describe 'New-AzAppNetworkAppLinkMember' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $member = New-AzAppNetworkAppLinkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup -Location $env.location `
+                -ClusterType AKS -MetadataResourceId $env.aksClusterId `
+                -UpgradeProfileMode FullyManaged -FullyManagedUpgradeProfileReleaseChannel Stable
+            $member.Name | Should -Be $env.memberName
+            $member.ClusterType | Should -Be 'AKS'
+            $member.MetadataResourceId | Should -Be $env.aksClusterId
+            $member.ProvisioningState | Should -Be 'Succeeded'
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip {

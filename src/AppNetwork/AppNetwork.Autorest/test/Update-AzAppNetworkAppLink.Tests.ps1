@@ -18,7 +18,7 @@ Describe 'Update-AzAppNetworkAppLink' {
     It 'UpdateExpanded' {
         {
             $appLink = Update-AzAppNetworkAppLink -Name $env.appLinkName -ResourceGroupName $env.resourceGroup -Tag @{ env = 'test' }
-            $appLink.Tag.env | Should -Be 'test'
+            $appLink.Tag['env'] | Should -Be 'test'
         } | Should -Not -Throw
     }
 

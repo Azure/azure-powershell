@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAppNetworkAppLinkMem
 }
 
 Describe 'Remove-AzAppNetworkAppLinkMember' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzAppNetworkAppLinkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup
+            { Get-AzAppNetworkAppLinkMember -Name $env.memberName -AppLinkName $env.appLinkName -ResourceGroupName $env.resourceGroup -ErrorAction Stop } | Should -Throw
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentityAppLink' -skip {
