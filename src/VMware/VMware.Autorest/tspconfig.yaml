@@ -1,0 +1,210 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/VMware/VMware.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.4.0
+    prefix: "Az"
+    subject-prefix: "VMware"
+    service-name: "VMware"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    support-json-input: false
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?Expanded)
+        remove: true
+      - where:
+          variant: ^Restrict$|^RestrictViaIdentity$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          verb: Get
+          subject: Operation
+        remove: true
+      - where:
+          subject: PrivateCloud
+          variant: ^List$
+        set:
+          variant: LegacyList
+      - where:
+          subject: PrivateCloud
+          variant: ^List1$
+        set:
+          variant: List
+      - where:
+          subject: PrivateCloud
+          variant: ^LegacyList$
+        set:
+          variant: List1
+      - where:
+          verb: Get|New|Remove
+          subject: Addon
+        hide: true
+      - where:
+          verb: New|Remove
+          subject: PrivateCloud
+        hide: true
+      - where:
+          verb: Get
+          subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
+        hide: true
+      - where:
+          verb: Get|New|Remove
+          subject: ScriptExecution|WorkloadNetworkPublicIP
+        hide: true
+      - where:
+          verb: Lock
+          subject: VirtualMachineMovement
+        hide: true
+      - where:
+          verb: Get|New|Update|Remove
+          subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
+        hide: true
+      - where:
+          verb: New|Get|Remove
+          subject: HcxEnterpriseSite
+        remove: true
+      - where:
+          verb: Test
+          subject: ^LocationQuotaAvailability$
+          variant: ^CheckViaIdentity$
+        remove: true
+      - where:
+          verb: Test
+          subject: ^LocationTrialAvailability$
+          variant: ^Check$|CheckViaIdentity
+        remove: true
+      - where:
+          verb: New
+          subject: PrivateCloud
+          variant: CreateViaIdentityExpanded
+        remove: true
+      - where:
+          verb: Get
+          subject: WorkloadNetwork
+        hide: true
+      - where:
+          verb: Lock
+          subject: VirtualMachineMovement
+          variant: ^RestrictViaIdentityCluster$|^RestrictViaIdentityPrivateCloud$
+        remove: true
+      - where:
+          verb: Update
+          subject: HcxEnterpriseSite|ScriptExecution|Addon
+        remove: true
+      - no-inline:
+          - AddonProperties
+          - PlacementPolicyProperties
+          - VcfLicense
+      - model-cmdlet:
+          - model-name: VMPlacementPolicyProperties
+            cmdlet-name: New-AzVMwareVMPlacementPolicyPropertyObject
+          - model-name: VmHostPlacementPolicyProperties
+            cmdlet-name: New-AzVMwareVmHostPlacementPolicyPropertyObject
+          - model-name: Vcf5License
+            cmdlet-name: New-AzVMwareVcf5LicenseObject
+      - where:
+          verb: Get
+          subject: ^PrivateCloudAdminCredentials$
+        set:
+          subject: PrivateCloudAdminCredential
+      - where:
+          verb: Invoke
+          subject: ^RotatePrivateCloudNsxtPassword$
+        set:
+          verb: New
+          subject: PrivateCloudNsxtPassword
+      - where:
+          verb: Invoke
+          subject: ^RotatePrivateCloudVcenterPassword$
+        set:
+          verb: New
+          subject: PrivateCloudVcenterPassword
+      - where:
+          verb: Get
+          subject: ^WorkloadNetworkVirtualMachine$
+        set:
+          subject: WorkloadNetworkVM
+      - where:
+          verb: New|Get|Update|Remove
+          subject: ^WorkloadNetworkDhcp$
+          parameter-name: DhcpId
+        set:
+          parameter-name: DhcpName
+      - where:
+          verb: New|Get|Update|Remove
+          subject: ^WorkloadNetworkDnsService$
+          parameter-name: DnsServiceId
+        set:
+          parameter-name: DnsServiceName
+      - where:
+          subject: ^Cluster$
+          parameter-name: ^PropertiesHosts$|^Host$
+        set:
+          parameter-name: PropertiesHost
+      - where:
+          verb: New|Get|Update|Remove
+          subject: ^WorkloadNetworkDnsZone$
+          parameter-name: DnsZoneId
+        set:
+          parameter-name: DnsZoneName
+      - where:
+          verb: Get
+          subject: ^WorkloadNetworkGateway$
+          parameter-name: GatewayId
+        set:
+          parameter-name: GatewayName
+      - where:
+          verb: New|Get|Update|Remove
+          subject: ^WorkloadNetworkPortMirroring$
+          parameter-name: PortMirroringId
+        set:
+          parameter-name: PortMirroringName
+      - where:
+          verb: New|Get|Remove
+          subject: ^WorkloadNetworkPublicIP$
+          parameter-name: PublicIPId
+        set:
+          parameter-name: PublicIPName
+      - where:
+          verb: New|Get|Update|Remove
+          subject: ^WorkloadNetworkSegment$
+          parameter-name: SegmentId
+        set:
+          parameter-name: SegmentName
+      - where:
+          verb: New|Get|Update|Remove
+          subject: ^WorkloadNetworkVMGroup$
+          parameter-name: VMGroupId
+        set:
+          parameter-name: VMGroupName
+      - where:
+          verb: New
+          subject: ^GlobalReachConnection$
+          parameter-name: PeerExpressRouteCircuit
+        set:
+          parameter-name: PeerExpressRouteResourceId
+      - where:
+          model-name: Datastore
+        set:
+          format-table:
+            properties:
+              - Name
+              - Status
+              - ProvisioningState
+              - ResourceGroupName
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
