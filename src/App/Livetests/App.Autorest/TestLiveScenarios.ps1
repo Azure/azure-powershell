@@ -13,7 +13,7 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     $delName = New-LiveTestResourceName
     $wsName = New-LiveTestResourceName
 
-    $pflName = New-LiveTestResourceName
+    $pflName = "Consumption"
     $envName = New-LiveTestResourceName
     $tplName = New-LiveTestResourceName
     $daprName = New-LiveTestResourceName
@@ -35,7 +35,7 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     $custId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $wsName).CustomerId
     $sharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $rgName -Name $wsName).PrimarySharedKey
 
-    $wlProfile = New-AzContainerAppWorkloadProfileObject -Name $pflName -Type D4 -MinimumCount 1 -MaximumCount 3
+    $wlProfile = New-AzContainerAppWorkloadProfileObject -Name $pflName -Type "Consumption"
     New-AzContainerAppManagedEnv -ResourceGroupName $rgName -Name $envName -Location $location -WorkloadProfile $wlProfile -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $custId -LogAnalyticConfigurationSharedKey $sharedKey -VnetConfigurationInternal -VnetConfigurationInfrastructureSubnetId $snet.Id
     $envId = (Get-AzContainerAppManagedEnv -ResourceGroupName $rgName -Name $envName).Id
 
