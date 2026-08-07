@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
 
 ## Version 0.8.0
 * Added ChangeSafety Support
@@ -75,4 +76,3 @@
 ## Version 0.1.0
 * Preview of `Az.AlertsManagement` module
 * Powershell Cmdlets for Alerts Management Resource Provider to manage alerts, action rules and smart groups.
-
