@@ -841,7 +841,6 @@ function Assert-InvalidScheduledEventId
 {
     param([scriptblock] $cmd)
 
-    $errorCode = ""
     try
     {
         & $cmd
@@ -849,29 +848,45 @@ function Assert-InvalidScheduledEventId
     }
     catch
     {
-        # Primary path: many Az cmdlet exceptions carry parsed response body.
-        if ($_.Exception -and $_.Exception.Body -and $_.Exception.Body.Error -and $_.Exception.Body.Error.Code)
-        {
-            $errorCode = $_.Exception.Body.Error.Code
-        }
+        Assert-AreEqual "Microsoft.Azure.Management.Maintenance.Models.MaintenanceErrorException" $_.Exception.GetType().FullName
+        Assert-AreEqual "NotFound" $_.Exception.Response.StatusCode.ToString()
+        Assert-AreEqual "InvalidScheduledEventId" $_.Exception.Body.Error.Code
+    }
+}
 
-        # Fallback path: parse code from serialized error details or exception text.
-        if ([string]::IsNullOrWhiteSpace($errorCode))
-        {
-            $payload = ($_.ErrorDetails.Message + "`n" + $_.Exception.Message + "`n" + ($_ | Out-String))
-            if ($payload -match '"Code"\s*:\s*"([^"]+)"')
-            {
-                $errorCode = $Matches[1]
-            }
-            elseif ($payload -match '"code"\s*:\s*"([^"]+)"')
-            {
-                $errorCode = $Matches[1]
-            }
-        }
+<#
+.SYNOPSIS
+Asserts that a list of invalid Scheduled Event IDs returns a MultiStatus response.
 
-        if ($errorCode -ne "InvalidScheduledEventId")
+.PARAMETER cmd
+Script block expected to throw ScheduledEventsListAcknowledgeErrorException.
+
+.PARAMETER expectedErrorCount
+Expected number of per-event NotFound details.
+#>
+function Assert-InvalidScheduledEventIdList
+{
+    param(
+        [scriptblock] $cmd,
+        [int] $expectedErrorCount)
+
+    try
+    {
+        & $cmd
+        throw "Expected ScheduledEventsListAcknowledgeErrorException was not thrown."
+    }
+    catch
+    {
+        Assert-AreEqual "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorException" $_.Exception.GetType().FullName
+        Assert-AreEqual "MultiStatus" $_.Exception.Response.StatusCode.ToString()
+
+        $responseBody = $_.Exception.Response.Content | ConvertFrom-Json
+        Assert-AreEqual "MultiStatusResponse" $responseBody.Response.Code
+        Assert-AreEqual $expectedErrorCount $responseBody.Details.Count
+        foreach ($detail in $responseBody.Details)
         {
-            throw "Expected error code 'InvalidScheduledEventId' but got '$errorCode'."
+            Assert-AreEqual "NotFound" $detail.Code
+            Assert-AreEqual "Scheduled event not found" $detail.Message
         }
     }
 }
@@ -883,35 +898,108 @@ Test Set-AzScheduledEvents and Set-AzScheduledEventsList
 function Test-SetAzScheduledEvents
 {
     $resourceGroupName = Get-RandomResourceGroupName
-    $resourceType = "virtualmachines"
-    $virtualMachineName = Get-RandomVirtualMachineName
-    $location = "eastus2euap"
-    $scheduledEventsId = [guid]::NewGuid().ToString()
-
-    Write-Host $scheduledEventsId
+    $resourceType = "virtualmachinescalesets"
+    $virtualMachineScaleSetName = Get-RandomVirtualMachineName
+    $location = "West Central US"
+    $subscriptionId = $((Get-AzContext).Subscription.Id)
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
-        $virtualMachineId = New-VirtualMachine $virtualMachineName $resourceGroupName $location
-        Assert-InvalidScheduledEventId {
-            Set-AzScheduledEvents `
+        try
+        {
+            $virtualMachineScaleSetId = New-VirtualMachineScaleSet $virtualMachineScaleSetName $resourceGroupName $location
+            Write-Warning "Created VMSS '$virtualMachineScaleSetName' successfully: $virtualMachineScaleSetId"
+
+            # Wait for VMSS created to succeed and ScheduledEventsPolicy is updated
+            $null = Wait-VirtualMachineScaleSetReady `
+                $virtualMachineScaleSetName `
+                $resourceGroupName `
+                -RequireScheduledEventsPolicy
+
+            $restartJob = Restart-AzVmss `
                 -ResourceGroupName $resourceGroupName `
-                -ResourceType $resourceType `
-                -ResourceName $virtualMachineName `
-                -ScheduledEventsId $scheduledEventsId
+                -VMScaleSetName $virtualMachineScaleSetName `
+                -AsJob `
+                -ErrorAction Stop
+
+            Write-Warning "Started VMSS restart job '$($restartJob.Id)' for '$virtualMachineScaleSetName'."
+        }
+        catch
+        {
+            Write-Warning "[ERROR] VMSS creation or restart failed: $($_.Exception.Message)"
+            Write-Warning "[ERROR] Full error: $($_ | Out-String)"
+            throw
         }
 
+        # Allow scheduled events to begin indexing in ARG before the first query.
+        Start-TestSleep -Seconds 60
+
+        # ARG query to get the scheduledEventIds
+        $kql = "maintenanceresources " +
+                        "| where type == 'microsoft.maintenance/scheduledevents' " +
+                        "| where subscriptionId contains '$subscriptionId' " +
+                        "| where properties.Resources contains '$virtualMachineScaleSetName' " +
+                        "| where properties.EventStatus contains 'scheduled' " +
+                        "| project EventId = tostring(properties.EventId)"
+
+        try
+        {
+            $kqlResponse = Search-AzGraph -Subscription $subscriptionId -Query $kql
+            if ($null -ne $kqlResponse.PSObject.Properties["Data"])
+            {
+                $kqlResults = @($kqlResponse.Data)
+            }
+            else
+            {
+                $kqlResults = @($kqlResponse)
+            }
+
+            Write-Warning "KQL Results: $($kqlResults | ConvertTo-Json -Depth 5 -Compress)"
+        }
+        catch
+        {
+            Write-Warning "[ERROR] KQL query failed: $($_.Exception.Message)"
+            Write-Warning "[ERROR] Full error: $($_ | Out-String)"
+            throw
+        }
+
+        $scheduledEventsIds = @($kqlResults | ForEach-Object {
+            $_.EventId
+        })
+
+        # Approving 1st event using standalone api
+        $success_response = Set-AzScheduledEvents -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsId $scheduledEventsIds[0]
+        Assert-AreEqual "Successfully approved scheduled event" $success_response.Value
+
+        # Approving all remaining events using list api
+        $remainingScheduledEventsIds = @($scheduledEventsIds | Select-Object -Skip 1)
+        Assert-True { $remainingScheduledEventsIds.Count -gt 0 }
+        $success_response = Set-AzScheduledEventsList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsIdList $remainingScheduledEventsIds
+        Assert-NotNull $success_response
+        Assert-AreEqual "Successfully approved all Scheduled Events in the list" $success_response.Value
+
+        # Approving a random guid to test InvalidScheduledEventId exception
+        $scheduledEventsId = [guid]::NewGuid().ToString()
         Assert-InvalidScheduledEventId {
-            Set-AzScheduledEventsList `
-                -ResourceGroupName $resourceGroupName `
-                -ResourceType $resourceType `
-                -ResourceName $virtualMachineName `
-                -ScheduledEventsId $scheduledEventsId
+            Write-Warning "Calling Set-AzScheduledEvents"
+            $result = Set-AzScheduledEvents -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsId $scheduledEventsId
+            Write-Warning "Set-AzScheduledEvents returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
+            return $result
+        }
+
+        # Approving a random list of guids to test InvalidScheduledEventId exception
+        $invalidScheduledEventsIds = @($scheduledEventsId, [guid]::NewGuid().ToString())
+        Assert-InvalidScheduledEventIdList -ExpectedErrorCount $invalidScheduledEventsIds.Count -Cmd {
+            Write-Warning "Calling Set-AzScheduledEventsList"
+            $result = Set-AzScheduledEventsList -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $virtualMachineScaleSetName -ScheduledEventsIdList $invalidScheduledEventsIds
+            Write-Warning "Set-AzScheduledEventsList returned: $($result | ConvertTo-Json -Depth 5 -Compress)"
+            return $result
         }
     }
     finally
     {
+        # Cleanup
         Clean-ResourceGroup $resourceGroupName
     }
 }

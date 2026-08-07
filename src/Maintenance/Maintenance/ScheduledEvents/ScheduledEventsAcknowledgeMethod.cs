@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess("default", VerbsCommon.Set))
+                if (ShouldProcess(this.ResourceName, VerbsCommon.Set))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string resourceType = this.ResourceType;

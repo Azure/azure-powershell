@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.Maintenance
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess("default", VerbsCommon.Set))
+                if (ShouldProcess(this.ResourceName, VerbsCommon.Set))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string resourceType = this.ResourceType;
                     string resourceName = this.ResourceName;
-                    string[] scheduledEventsId = this.ScheduledEventsId;
+                    string[] scheduledEventsId = this.ScheduledEventsIdList;
                     ScheduledEventsApproveResponse response;
                     response = ScheduledEventsClient.AcknowledgeList(resourceGroupName, resourceType, resourceName, scheduledEventsId);
                     var psObject = new PSScheduledEventsApproveResponse();
@@ -78,6 +78,6 @@ namespace Microsoft.Azure.Commands.Maintenance
             Mandatory = true,
             HelpMessage = "The list of ScheduledEvents Ids.",
             ValueFromPipelineByPropertyName = true)]
-        public string[] ScheduledEventsId { get; set; }
+        public string[] ScheduledEventsIdList { get; set; }
     }
 }

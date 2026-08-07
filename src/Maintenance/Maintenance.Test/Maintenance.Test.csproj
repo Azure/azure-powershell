@@ -14,4 +14,8 @@
     <Folder Include="SessionRecords\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Maintenance\Maintenance.csproj" />
+  </ItemGroup>
+
 </Project>
