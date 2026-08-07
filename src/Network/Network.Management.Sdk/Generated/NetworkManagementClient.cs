@@ -168,6 +168,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IAzureFirewallsOperations AzureFirewalls { get; private set; }
         /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
+        /// <summary>
         /// Gets the IFirewallPoliciesOperations
         /// </summary>
         public virtual IFirewallPoliciesOperations FirewallPolicies { get; private set; }
@@ -985,6 +989,7 @@ namespace Microsoft.Azure.Management.Network
             this.ServiceEndpointPolicyDefinitions = new ServiceEndpointPolicyDefinitionsOperations(this);
             this.AzureFirewallFqdnTags = new AzureFirewallFqdnTagsOperations(this);
             this.AzureFirewalls = new AzureFirewallsOperations(this);
+            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.FirewallPolicies = new FirewallPoliciesOperations(this);
             this.FirewallPolicyDeployments = new FirewallPolicyDeploymentsOperations(this);
             this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
