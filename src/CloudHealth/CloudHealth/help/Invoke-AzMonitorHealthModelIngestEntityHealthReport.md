@@ -1,107 +1,90 @@
-﻿---
-document type: cmdlet
-external help file: 
-HelpUri: https://learn.microsoft.com/powershell/module/az.cloudhealth/invoke-azmonitorhealthmodelingestentityhealthreport
+---
+external help file: Az.CloudHealth-help.xml
 Module Name: Az.CloudHealth
-ms.date: 07/29/2026
-PlatyPS schema version: 2024-05-01
+online version: https://learn.microsoft.com/powershell/module/az.cloudhealth/invoke-azmonitorhealthmodelingestentityhealthreport
+schema: 2.0.0
 ---
 
 # Invoke-AzMonitorHealthModelIngestEntityHealthReport
 
 ## SYNOPSIS
-
 Ingest a health report for a specific signal on an entity (the entity must already exist)
 
 ## SYNTAX
 
 ### IngestExpanded (Default)
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <string> -HealthModelName <string>
- -ResourceGroupName <string> -HealthState <string> -SignalName <string> [-SubscriptionId <string>]
- [-AdditionalContext <string>] [-DegradedRuleLookBackWindow <string>]
- [-DegradedRuleOperator <string>] [-DegradedRuleSensitivity <string>]
- [-DegradedRuleThreshold <double>] [-ExpiresInMinute <int>] [-UnhealthyRuleLookBackWindow <string>]
- [-UnhealthyRuleOperator <string>] [-UnhealthyRuleSensitivity <string>]
- [-UnhealthyRuleThreshold <double>] [-Value <double>] [-DefaultProfile <psobject>] [-PassThru]
- [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> -HealthState <String> -SignalName <String> [-SubscriptionId <String>]
+ [-AdditionalContext <String>] [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>]
+ [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>] [-ExpiresInMinute <Int32>]
+ [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
+ [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-Value <Double>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Ingest
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <string> -HealthModelName <string>
- -ResourceGroupName <string> -Body <IHealthReportRequest> [-SubscriptionId <string>]
- [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> -Body <IHealthReportRequest> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IngestViaIdentity
-
 ```
 Invoke-AzMonitorHealthModelIngestEntityHealthReport -InputObject <ICloudHealthIdentity>
- -Body <IHealthReportRequest> [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+ -Body <IHealthReportRequest> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### IngestViaIdentityExpanded
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -InputObject <ICloudHealthIdentity>
- -HealthState <string> -SignalName <string> [-AdditionalContext <string>]
- [-DegradedRuleLookBackWindow <string>] [-DegradedRuleOperator <string>]
- [-DegradedRuleSensitivity <string>] [-DegradedRuleThreshold <double>] [-ExpiresInMinute <int>]
- [-UnhealthyRuleLookBackWindow <string>] [-UnhealthyRuleOperator <string>]
- [-UnhealthyRuleSensitivity <string>] [-UnhealthyRuleThreshold <double>] [-Value <double>]
- [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -InputObject <ICloudHealthIdentity> -HealthState <String>
+ -SignalName <String> [-AdditionalContext <String>] [-DegradedRuleLookBackWindow <String>]
+ [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>]
+ [-ExpiresInMinute <Int32>] [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
+ [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-Value <Double>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IngestViaIdentityHealthmodel
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <string>
- -HealthmodelInputObject <ICloudHealthIdentity> -Body <IHealthReportRequest>
- [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String>
+ -HealthmodelInputObject <ICloudHealthIdentity> -Body <IHealthReportRequest> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IngestViaIdentityHealthmodelExpanded
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <string>
- -HealthmodelInputObject <ICloudHealthIdentity> -HealthState <string> -SignalName <string>
- [-AdditionalContext <string>] [-DegradedRuleLookBackWindow <string>]
- [-DegradedRuleOperator <string>] [-DegradedRuleSensitivity <string>]
- [-DegradedRuleThreshold <double>] [-ExpiresInMinute <int>] [-UnhealthyRuleLookBackWindow <string>]
- [-UnhealthyRuleOperator <string>] [-UnhealthyRuleSensitivity <string>]
- [-UnhealthyRuleThreshold <double>] [-Value <double>] [-DefaultProfile <psobject>] [-PassThru]
- [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String>
+ -HealthmodelInputObject <ICloudHealthIdentity> -HealthState <String> -SignalName <String>
+ [-AdditionalContext <String>] [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>]
+ [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>] [-ExpiresInMinute <Int32>]
+ [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
+ [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-Value <Double>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IngestViaJsonFilePath
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <string> -HealthModelName <string>
- -ResourceGroupName <string> -JsonFilePath <string> [-SubscriptionId <string>]
- [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IngestViaJsonString
-
 ```
-Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <string> -HealthModelName <string>
- -ResourceGroupName <string> -JsonString <string> [-SubscriptionId <string>]
- [-DefaultProfile <psobject>] [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String> -HealthModelName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
-
-## ALIASES
 
 ## DESCRIPTION
-
 Ingest a health report for a specific signal on an entity (the entity must already exist)
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
-
 ```powershell
 {{ Add code here }}
 ```
@@ -113,7 +96,6 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
-
 ```powershell
 {{ Add code here }}
 ```
@@ -127,836 +109,407 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 ## PARAMETERS
 
 ### -AdditionalContext
-
 Optional additional context or description for the health report
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Body
-
 Health report that's submitted for a specific signal
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportRequest
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodel
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentity
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Ingest
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Confirm
-
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
+Parameter Sets: Ingest, IngestViaIdentity, IngestViaIdentityHealthmodel
 Aliases:
-- cf
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- AzureRMContext
-- AzureCredential
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleLookBackWindow
-
 ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleOperator
-
 Operator how to compare the signal value with the threshold
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleSensitivity
-
 Sensitivity level for dynamic threshold detection.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DegradedRuleThreshold
-
 Threshold value
 
 ```yaml
 Type: System.Double
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -EntityName
-
 Name of the entity.
 Must be unique within a health model.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityHealthmodel
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Ingest
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: Ingest, IngestExpanded, IngestViaIdentityHealthmodel, IngestViaIdentityHealthmodelExpanded, IngestViaJsonFilePath, IngestViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ExpiresInMinute
-
 Number of minutes until the health report expires.
 Defaults to 60 (1 hour) if not specified.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -HealthmodelInputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityHealthmodel
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestViaIdentityHealthmodel, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -HealthModelName
-
 Name of health model resource
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Ingest
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: Ingest, IngestExpanded, IngestViaJsonFilePath, IngestViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -HealthState
-
 Health state to report for the signal
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -InputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentity
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestViaIdentity, IngestViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-
 Path of Json file supplied to the Ingest operation
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -JsonString
-
 Json string supplied to the Ingest operation
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PassThru
-
 Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Ingest
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: Ingest, IngestExpanded, IngestViaJsonFilePath, IngestViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SignalName
-
 Name of the entity signal to report health for
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: (Get-AzContext).Subscription.Id
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaJsonString
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaJsonFilePath
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Ingest
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: Ingest, IngestExpanded, IngestViaJsonFilePath, IngestViaJsonString
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleLookBackWindow
-
 ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleOperator
-
 Operator how to compare the signal value with the threshold
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleSensitivity
-
 Sensitivity level for dynamic threshold detection.
 Only applicable when operator is Dynamic.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -UnhealthyRuleThreshold
-
 Threshold value
 
 ```yaml
 Type: System.Double
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Value
-
 Reported value of the signal
 
 ```yaml
 Type: System.Double
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: IngestViaIdentityHealthmodelExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: IngestExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-Runs the command in a mode that only reports what would happen without performing the actions.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- wi
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
--ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -971,6 +524,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-{{ Fill in the related links here }}
 
