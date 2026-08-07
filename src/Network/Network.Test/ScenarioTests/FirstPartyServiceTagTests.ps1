@@ -7,7 +7,7 @@
 function Test-FirstPartyServiceTagsCRUD
 {
     $resourceGroupName = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement "eastus"
+    $location = Get-ProviderLocation ResourceManagement "eastus2euap"
     $serviceTagName = Get-ResourceName
 
     try
@@ -27,6 +27,15 @@ function Test-FirstPartyServiceTagsCRUD
         $retrieved = Get-AzFirstPartyServiceTag -ResourceGroupName $resourceGroupName -Name $serviceTagName
         Assert-AreEqual $created.Id $retrieved.Id
 
+        $retrievedByResourceId = Get-AzFirstPartyServiceTag -ResourceId $created.Id
+        Assert-AreEqual $created.Id $retrievedByResourceId.Id
+
+        $wildcardList = Get-AzFirstPartyServiceTag `
+            -ResourceGroupName $resourceGroupName `
+            -Name "$serviceTagName*"
+        Assert-AreEqual 1 @($wildcardList).Count
+        Assert-AreEqual $created.Id $wildcardList[0].Id
+
         $resourceGroupList = Get-AzFirstPartyServiceTag -ResourceGroupName $resourceGroupName
         Assert-True { $resourceGroupList.Count -ge 1 }
 
@@ -37,9 +46,14 @@ function Test-FirstPartyServiceTagsCRUD
         $updated = $retrieved | Set-AzFirstPartyServiceTag
         Assert-AreEqual "updatedServiceTagValue" $updated.Value
 
+        $ipTag = New-AzPublicIpTag `
+            -IpTagType "FirstPartyUsage" `
+            -Tag "/Sql" `
+            -FirstPartyServiceTagId $updated.Id
+        Assert-AreEqual $updated.Id $ipTag.FirstPartyServiceTagId
+
         $removed = Remove-AzFirstPartyServiceTag `
-            -ResourceGroupName $resourceGroupName `
-            -Name $serviceTagName `
+            -ResourceId $updated.Id `
             -PassThru `
             -Force
         Assert-AreEqual $true $removed
