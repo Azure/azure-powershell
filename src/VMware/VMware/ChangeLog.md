@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
 * Fixed `New-AzVMwareVcf5LicenseObject` and the `-VcfLicense` parameter on `New-AzVMwarePrivateCloud` not being available in the `0.9.1` package
     - The cmdlet and parameter are now correctly generated and exported by the module
 
@@ -104,4 +105,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.VMWare
-
