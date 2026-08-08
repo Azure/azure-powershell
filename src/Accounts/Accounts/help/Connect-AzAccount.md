@@ -286,6 +286,7 @@ xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy Azu
 ### Example 10: Connect interactively using WAM
 
 This example demonstrates how to enable the config for WAM (Web Account Manager) and use it to connect to Azure.
+The WAM broker is supported on Windows only. On Linux (including WSL) and macOS the `EnableLoginByWam` config is ignored and the browser is always used for interactive login.
 
 ```powershell
 Update-AzConfig -EnableLoginByWam $true

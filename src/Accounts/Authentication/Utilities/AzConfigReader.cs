@@ -63,7 +63,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
                     {
                         authority = authority + "/";
                     }
-                    return Instance.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && authority.StartsWith(AzureAuthorityHosts.AzurePublicCloud.OriginalString, System.StringComparison.OrdinalIgnoreCase);
+                    // The OS broker is only reliably available on Windows (WAM). It is not supported on Linux, and
+                    // on macOS the required native runtime is not shipped with the module, so gate on Windows only.
+                    // Non-Windows (Linux/WSL, macOS) never selects the broker path and always falls back to the
+                    // browser, even if the user explicitly turns the config on.
+                    return SharedUtilities.IsWindowsPlatform() && Instance.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && authority.StartsWith(AzureAuthorityHosts.AzurePublicCloud.OriginalString, System.StringComparison.OrdinalIgnoreCase);
                 }
                 catch
                 {
