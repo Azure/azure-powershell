@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxtransferconfigurationobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,13 @@ Create an in-memory object for TransferConfiguration.
 ## SYNTAX
 
 ```
-New-AzDataBoxTransferConfigurationObject -Type <TransferConfigurationType>
- [-TransferAllDetail <ITransferConfigurationTransferAllDetails>]
- [-TransferFilterDetail <ITransferConfigurationTransferFilterDetails>] [<CommonParameters>]
+New-AzDataBoxTransferConfigurationObject -Type <String> [-AzureFileFilterDetailFilePathList <String[]>]
+ [-AzureFileFilterDetailFilePrefixList <String[]>] [-AzureFileFilterDetailFileShareList <String[]>]
+ [-BlobFilterDetailBlobPathList <String[]>] [-BlobFilterDetailBlobPrefixList <String[]>]
+ [-BlobFilterDetailContainerList <String[]>] [-IncludeFilterFileDetail <IFilterFileDetails[]>]
+ [-IncludeTransferAllBlob <Boolean>] [-IncludeTransferAllFile <Boolean>]
+ [-TransferAllDetailsIncludeDataAccountType <String>] [-TransferFilterDetailsIncludeDataAccountType <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,13 +36,11 @@ Create a in-memory object for export jobs TransferConfiguration
 
 ## PARAMETERS
 
-### -TransferAllDetail
-Map of filter type and the details to transfer all data.
-This field is required only if the TransferConfigurationType is given as TransferAll.
-To construct, see NOTES section for TRANSFERALLDETAIL properties and create a hash table.
+### -AzureFileFilterDetailFilePathList
+List of full path of the files to be transferred.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -49,13 +51,146 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TransferFilterDetail
-Map of filter type and the details to filter.
-This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
-To construct, see NOTES section for TRANSFERFILTERDETAIL properties and create a hash table.
+### -AzureFileFilterDetailFilePrefixList
+Prefix list of the Azure files to be transferred.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileFilterDetailFileShareList
+List of file shares to be transferred.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlobFilterDetailBlobPathList
+List of full path of the blobs to be transferred.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlobFilterDetailBlobPrefixList
+Prefix list of the Azure blobs to be transferred.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlobFilterDetailContainerList
+List of blob containers to be transferred.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeFilterFileDetail
+Details of the filter files to be used for data transfer.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IFilterFileDetails[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTransferAllBlob
+To indicate if all Azure blobs have to be transferred.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTransferAllFile
+To indicate if all Azure Files have to be transferred.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransferAllDetailsIncludeDataAccountType
+Type of the account of data.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransferFilterDetailsIncludeDataAccountType
+Type of the account of data.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +205,7 @@ Accept wildcard characters: False
 Type of the configuration for transfer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration
 
 ## NOTES
 
