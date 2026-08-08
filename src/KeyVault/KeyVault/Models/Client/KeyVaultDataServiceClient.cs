@@ -2143,6 +2143,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Creating keys on managed HSM is only possible in track 2 SDK.");
         }
 
+        public PSKeyVaultKey CreateManagedHsmExternalKey(string managedHsmName, string keyName, string externalKeyId, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            throw new NotImplementedException("Creating external keys on managed HSM is only possible in track 2 SDK.");
+        }
+
         public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
         {
             throw new NotImplementedException("Removing keys on managed HSM is only possible in track 2 SDK.");
@@ -2253,6 +2258,36 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         public PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultEkmConnection CreateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultEkmConnection GetManagedHsmEkmConnection(string hsmName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultEkmConnection UpdateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultEkmConnection RemoveManagedHsmEkmConnection(string hsmName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultEkmProxyInfo CheckManagedHsmEkmConnection(string hsmName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultEkmConnectionCertificate GetManagedHsmEkmCertificate(string hsmName)
         {
             throw new NotImplementedException();
         }
