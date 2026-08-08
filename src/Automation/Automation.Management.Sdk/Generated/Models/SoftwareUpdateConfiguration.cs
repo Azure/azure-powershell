@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     /// Software update configuration properties.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SoftwareUpdateConfiguration : Microsoft.Rest.Azure.IResource
+    public partial class SoftwareUpdateConfiguration : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SoftwareUpdateConfiguration class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the SoftwareUpdateConfiguration class.
         /// </summary>
 
-        /// <param name="name">Resource name.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="id">Resource Id.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="updateConfiguration">update specific properties for the Software update configuration
@@ -61,12 +67,10 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="tasks">Tasks information for the Software update configuration.
         /// </param>
-        public SoftwareUpdateConfiguration(UpdateConfiguration updateConfiguration, SUCScheduleProperties scheduleInfo, string name = default(string), string id = default(string), string type = default(string), string provisioningState = default(string), ErrorResponse error = default(ErrorResponse), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks))
+        public SoftwareUpdateConfiguration(UpdateConfiguration updateConfiguration, SUCScheduleProperties scheduleInfo, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), AutomationErrorResponse error = default(AutomationErrorResponse), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string createdBy = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string lastModifiedBy = default(string), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks))
 
+        : base(id, name, type, systemData)
         {
-            this.Name = name;
-            this.Id = id;
-            this.Type = type;
             this.UpdateConfiguration = updateConfiguration;
             this.ScheduleInfo = scheduleInfo;
             this.ProvisioningState = provisioningState;
@@ -84,24 +88,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource Id.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets update specific properties for the Software update
@@ -127,13 +113,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets details of provisioning error
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.error")]
-        public ErrorResponse Error {get; set; }
+        public AutomationErrorResponse Error {get; set; }
 
         /// <summary>
         /// Gets creation time of the resource, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets createdBy property, which only appears in the response.
@@ -145,7 +131,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets last time resource was modified, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets lastModifiedBy property, which only appears in the response.
@@ -174,9 +160,6 @@ namespace Microsoft.Azure.Management.Automation.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ScheduleInfo");
             }
-
-
-
             if (this.UpdateConfiguration != null)
             {
                 this.UpdateConfiguration.Validate();
