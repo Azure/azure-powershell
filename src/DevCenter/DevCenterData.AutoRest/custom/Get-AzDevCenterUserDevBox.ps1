@@ -45,7 +45,7 @@ Get-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBox
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -74,7 +74,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevbox
 #>
 function Get-AzDevCenterUserDevBox {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBox])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

@@ -25,7 +25,7 @@ Aligns all Dev Boxes in the pool with the current configuration.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IPoolAlignBody
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
@@ -116,7 +116,7 @@ function Invoke-AzDevCenterUserAlignPool {
         [Parameter(ParameterSetName = 'AlignByDevCenter', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'AlignViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IPoolAlignBody]
         # Indicates which pool properties to align on.
         # To construct, see NOTES section for BODY properties and create a hash table.
         ${Body},
@@ -126,9 +126,9 @@ function Invoke-AzDevCenterUserAlignPool {
         [Parameter(ParameterSetName = 'AlignExpandedByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'AlignViaIdentityExpandedByDevCenter', Mandatory)]
         [AllowEmptyCollection()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget])]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PSArgumentCompleterAttribute("NetworkProperties")]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget[]]
+        [System.String[]]
         # The targets to align on.
         ${Target},
 

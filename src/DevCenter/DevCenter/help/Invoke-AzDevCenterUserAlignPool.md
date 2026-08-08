@@ -14,9 +14,9 @@ Aligns all Dev Boxes in the pool with the current configuration.
 
 ### AlignExpanded (Default)
 ```
-Invoke-AzDevCenterUserAlignPool -Endpoint <String> -PoolName <String> -ProjectName <String>
- -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzDevCenterUserAlignPool -Endpoint <String> -PoolName <String> -ProjectName <String> -Target <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Align
@@ -35,9 +35,9 @@ Invoke-AzDevCenterUserAlignPool -Endpoint <String> -InputObject <IDevCenterdataI
 
 ### AlignViaIdentityExpanded
 ```
-Invoke-AzDevCenterUserAlignPool -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzDevCenterUserAlignPool -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Target <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AlignByDevCenter
@@ -57,14 +57,14 @@ Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -InputObject <IDevCenter
 ### AlignExpandedByDevCenter
 ```
 Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -PoolName <String> -ProjectName <String>
- -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Target <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AlignViaIdentityExpandedByDevCenter
 ```
 Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Target <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -145,7 +145,7 @@ Indicates which pool properties to align on.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IPoolAlignBody
 Parameter Sets: Align, AlignViaIdentity, AlignByDevCenter, AlignViaIdentityByDevCenter
 Aliases:
 
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 The targets to align on.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget[]
+Type: System.String[]
 Parameter Sets: AlignExpanded, AlignViaIdentityExpanded, AlignExpandedByDevCenter, AlignViaIdentityExpandedByDevCenter
 Aliases:
 
@@ -314,9 +314,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IPoolAlignBody
 
 ## OUTPUTS
 
