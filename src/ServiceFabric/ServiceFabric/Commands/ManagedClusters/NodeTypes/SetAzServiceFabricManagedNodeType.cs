@@ -98,6 +98,30 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.")]
         public bool? EnableOverProvisioning { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Indicates if this node type can only be used for outbound connections. Outbound-only node types will not have load balancing rules associated with them.")]
+        public bool? IsOutboundOnly { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Enable resilient ephemeral OS disk for the node type. This provides better performance and resilience for ephemeral OS disks.")]
+        public bool? EnableResilientEphemeralOSDisk { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Enable accelerated networking on the node type VMs. This provides better network performance.")]
+        public bool? EnableAcceleratedNetworking { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Enable encryption at host for the node type VMs. This encrypts data at the VM host level.")]
+        public bool? EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Enable public IP for each node in the node type. Each VM will get its own public IP.")]
+        public bool? EnableNodePublicIP { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Enable public IPv6 for each node in the node type.")]
+        public bool? EnableNodePublicIPv6 { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Enable secure boot for the node type VMs. This provides additional security during boot.")]
+        public bool? SecureBootEnabled { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Use ephemeral OS disk instead of managed disk for the node type VMs.")]
+        public bool? UseEphemeralOSDisk { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
         public List<string> Zone { get; set; }
 
@@ -193,6 +217,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.EnableOverProvisioning.HasValue)
             {
                 currentNodeType.EnableOverProvisioning = this.EnableOverProvisioning.Value;
+            }
+
+            if (this.IsOutboundOnly.HasValue)
+            {
+                currentNodeType.IsOutboundOnly = this.IsOutboundOnly.Value;
+            }
+
+            if (this.EnableResilientEphemeralOSDisk.HasValue)
+            {
+                currentNodeType.EnableResilientEphemeralOSDisk = this.EnableResilientEphemeralOSDisk.Value;
+            }
+
+            if (this.EnableAcceleratedNetworking.HasValue)
+            {
+                currentNodeType.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.Value;
+            }
+
+            if (this.EnableEncryptionAtHost.HasValue)
+            {
+                currentNodeType.EnableEncryptionAtHost = this.EnableEncryptionAtHost.Value;
+            }
+
+            if (this.EnableNodePublicIP.HasValue)
+            {
+                currentNodeType.EnableNodePublicIP = this.EnableNodePublicIP.Value;
+            }
+
+            if (this.EnableNodePublicIPv6.HasValue)
+            {
+                currentNodeType.EnableNodePublicIPv6 = this.EnableNodePublicIPv6.Value;
+            }
+
+            if (this.SecureBootEnabled.HasValue)
+            {
+                currentNodeType.SecureBootEnabled = this.SecureBootEnabled.Value;
+            }
+
+            if (this.UseEphemeralOSDisk.HasValue)
+            {
+                currentNodeType.UseEphemeralOSDisk = this.UseEphemeralOSDisk.Value;
             }
 
             if (this.Zone != null && this.Zone.Count > 0)

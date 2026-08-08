@@ -114,6 +114,30 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.")]
         public SwitchParameter EnableOverProvisioning { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Indicates if this node type can only be used for outbound connections. Outbound-only node types will not have load balancing rules associated with them.")]
+        public SwitchParameter IsOutboundOnly { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable resilient ephemeral OS disk for the node type. This provides better performance and resilience for ephemeral OS disks.")]
+        public SwitchParameter EnableResilientEphemeralOSDisk { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable accelerated networking on the node type VMs. This provides better network performance.")]
+        public SwitchParameter EnableAcceleratedNetworking { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable encryption at host for the node type VMs. This encrypts data at the VM host level.")]
+        public SwitchParameter EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable public IP for each node in the node type. Each VM will get its own public IP.")]
+        public SwitchParameter EnableNodePublicIP { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable public IPv6 for each node in the node type.")]
+        public SwitchParameter EnableNodePublicIPv6 { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable secure boot for the node type VMs. This provides additional security during boot.")]
+        public SwitchParameter SecureBootEnabled { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Use ephemeral OS disk instead of managed disk for the node type VMs.")]
+        public SwitchParameter UseEphemeralOSDisk { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
         public List<string> Zone { get; set; }
 
@@ -212,6 +236,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.EnableOverProvisioning.IsPresent)
             {
                 newNodeType.EnableOverProvisioning = this.EnableOverProvisioning.IsPresent;
+            }
+
+            if (this.IsOutboundOnly.IsPresent)
+            {
+                newNodeType.IsOutboundOnly = this.IsOutboundOnly.IsPresent;
+            }
+
+            if (this.EnableResilientEphemeralOSDisk.IsPresent)
+            {
+                newNodeType.EnableResilientEphemeralOSDisk = this.EnableResilientEphemeralOSDisk.IsPresent;
+            }
+
+            if (this.EnableAcceleratedNetworking.IsPresent)
+            {
+                newNodeType.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
+            }
+
+            if (this.EnableEncryptionAtHost.IsPresent)
+            {
+                newNodeType.EnableEncryptionAtHost = this.EnableEncryptionAtHost.IsPresent;
+            }
+
+            if (this.EnableNodePublicIP.IsPresent)
+            {
+                newNodeType.EnableNodePublicIP = this.EnableNodePublicIP.IsPresent;
+            }
+
+            if (this.EnableNodePublicIPv6.IsPresent)
+            {
+                newNodeType.EnableNodePublicIPv6 = this.EnableNodePublicIPv6.IsPresent;
+            }
+
+            if (this.SecureBootEnabled.IsPresent)
+            {
+                newNodeType.SecureBootEnabled = this.SecureBootEnabled.IsPresent;
+            }
+
+            if (this.UseEphemeralOSDisk.IsPresent)
+            {
+                newNodeType.UseEphemeralOSDisk = this.UseEphemeralOSDisk.IsPresent;
             }
 
             return newNodeType;
