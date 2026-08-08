@@ -19,6 +19,13 @@ Connect-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <Strin
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ConnectViaIdentityProject
+```
+Connect-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ConnectViaIdentity
 ```
 Connect-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -67,7 +74,7 @@ The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Connect
+Parameter Sets: Connect, ConnectViaIdentityProject
 Aliases:
 
 Required: True
@@ -95,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -136,6 +142,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: ConnectViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

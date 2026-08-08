@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDevCenterAdminCatalog
 
 ## SYNOPSIS
-Partially updates a catalog.
+Partially update a catalog.
 
 ## SYNTAX
 
@@ -17,21 +17,44 @@ Partially updates a catalog.
 Update-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AdoGitBranch <String>] [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>]
  [-AdoGitUri <String>] [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>]
- [-GitHubUri <String>] [-SyncType <CatalogSyncType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GitHubUri <String>] [-SyncType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityDevcenterExpanded
+```
+Update-AzDevCenterAdminCatalog -Name <String> -DevcenterInputObject <IDevCenterIdentity>
+ [-AdoGitBranch <String>] [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>]
+ [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>] [-GitHubUri <String>]
+ [-SyncType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> [-AdoGitBranch <String>]
  [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>] [-GitHubBranch <String>]
- [-GitHubPath <String>] [-GitHubSecretIdentifier <String>] [-GitHubUri <String>] [-SyncType <CatalogSyncType>]
+ [-GitHubPath <String>] [-GitHubSecretIdentifier <String>] [-GitHubUri <String>] [-SyncType <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Partially updates a catalog.
+Partially update a catalog.
 
 ## EXAMPLES
 
@@ -58,7 +81,7 @@ Git branch.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -73,7 +96,7 @@ The folder where the catalog items can be found inside the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -88,7 +111,7 @@ A reference to the Key Vault secret containing a security token to authenticate 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -103,7 +126,7 @@ Git URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -144,12 +167,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: UpdateViaIdentityDevcenterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -164,7 +202,7 @@ Git branch.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -179,7 +217,7 @@ The folder where the catalog items can be found inside the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,7 +232,7 @@ A reference to the Key Vault secret containing a security token to authenticate 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -209,7 +247,7 @@ Git URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -221,7 +259,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -235,12 +272,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityDevcenterExpanded
 Aliases: CatalogName
 
 Required: True
@@ -271,7 +338,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -286,7 +353,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -300,8 +367,8 @@ Accept wildcard characters: False
 Indicates the type of sync that is configured for the catalog.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -316,7 +383,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -366,7 +433,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalog
 
 ## NOTES
 

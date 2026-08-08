@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDevCenterAdminEnvironmentType
 
 ## SYNOPSIS
-Creates or updates an environment type.
+Create an environment type.
 
 ## SYNTAX
 
@@ -19,14 +19,35 @@ New-AzDevCenterAdminEnvironmentType -DevCenterName <String> -Name <String> -Reso
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityDevcenterExpanded
+```
+New-AzDevCenterAdminEnvironmentType -DevcenterInputObject <IDevCenterIdentity> -Name <String>
+ [-DisplayName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminEnvironmentType -InputObject <IDevCenterIdentity> [-DisplayName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzDevCenterAdminEnvironmentType -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDevCenterAdminEnvironmentType -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates an environment type.
+Create an environment type.
 
 ## EXAMPLES
 
@@ -65,12 +86,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: CreateViaIdentityDevcenterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -85,7 +121,7 @@ The display name of the environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDevcenterExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -97,7 +133,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -111,12 +146,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityDevcenterExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: EnvironmentTypeName
 
 Required: True
@@ -132,7 +197,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -147,7 +212,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -162,7 +227,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDevcenterExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IEnvironmentType
 
 ## NOTES
 
