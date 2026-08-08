@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.AssemblyLoading;
+using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
@@ -28,6 +30,9 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
         private string AssemblyDirectory { get; set; }
 
         private static readonly ConcurrentDictionary<string, AssemblyLoadContext> DependencyLoadContexts = new ConcurrentDictionary<string, AssemblyLoadContext>();
+
+        private static readonly ConcurrentDictionary<string, (string Path, Version Version)> SharedAssemblies =
+            new ConcurrentDictionary<string, (string, Version)>(ConditionalAssemblyProvider.GetAssemblies(), StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Get an ALC for a certain directory that contains assemblies.
@@ -54,6 +59,15 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         protected override Assembly LoadAfterCacheMiss(AssemblyName requestedAssemblyName)
         {
+            // Shared assemblies must come from the shared ALC even when a copy exists in the module
+            // directory, otherwise the module gets a second instance and its types lose identity with
+            // the ones already loaded (e.g. System.ClientModel's IJsonModel).
+            if (SharedAssemblies.TryGetValue(requestedAssemblyName.Name, out var sharedAssembly)
+                && sharedAssembly.Version >= requestedAssemblyName.Version)
+            {
+                return GetForDirectory(AzSharedAssemblyLoadContext.Key).LoadFromAssemblyName(requestedAssemblyName);
+            }
+
             string assemblyFileName = $"{requestedAssemblyName.Name}.dll";
 
             // Now try to load the assembly from the dependency directory
