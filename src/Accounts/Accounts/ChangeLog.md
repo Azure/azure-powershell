@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue where importing a module could fail with a `Method not found` error because a shared dependency such as `System.ClientModel` was loaded twice.
 
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
