@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operating Container App" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operating Container App" -Platform "Windows" -PowerShellVersion "5.1" -ScenarioScript `
 {
     param ($rg)
 
