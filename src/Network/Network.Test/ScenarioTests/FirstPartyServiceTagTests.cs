@@ -17,12 +17,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Requires an East or Central Canary subscription registered for FirstPartyServiceTag.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestFirstPartyServiceTagBasicOperations()
         {
-            TestRunner.RunTestScript("Test-FirstPartyServiceTagsCRUD");
+            TestRunner.RunTestScript("Test-FirstPartyServiceTagBasicOperations");
         }
     }
 }
