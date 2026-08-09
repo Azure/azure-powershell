@@ -57,10 +57,10 @@ Update-AzVirtualHub -InputObject $virtualHub -AddressPrefix "10.0.2.0/24"
 ```
 
 ```output
-VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+VirtualWan                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
-Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
 AddressPrefix             : 10.0.2.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}

@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Network
                         Name = this.Name,
                         VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id },
                         AddressPrefix = this.AddressPrefix,
-                        AddressPrefixV6 = this.AddressPrefixV6,
+                        AddressPrefixV6 = string.IsNullOrWhiteSpace(this.AddressPrefixV6) ? null : this.AddressPrefixV6,
                         Location = this.Location,
                         VirtualRouterAsn = this.VirtualRouterAsn,
                         VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration

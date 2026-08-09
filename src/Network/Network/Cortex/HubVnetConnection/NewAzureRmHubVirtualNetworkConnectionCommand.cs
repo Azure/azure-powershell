@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrWhiteSpace(this.EnableOnlyIpv6Peering))
             {
-                hubVnetConnection.EnableOnlyIpv6Peering = this.EnableOnlyIpv6Peering;
+                hubVnetConnection.EnableOnlyIpv6Peering = this.EnableOnlyIpv6Peering.Equals("Enabled", StringComparison.OrdinalIgnoreCase);
             }
 
             List<string> resourceIds = new List<string>();
