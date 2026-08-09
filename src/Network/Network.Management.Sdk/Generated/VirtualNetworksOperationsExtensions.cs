@@ -330,6 +330,42 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Move IP configurations from one virtual network to another.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        public static void MoveIpConfigurations(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, MoveIpConfigurationsRequest body)
+        {
+                ((IVirtualNetworksOperations)operations).MoveIpConfigurationsAsync(resourceGroupName, virtualNetworkName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Move IP configurations from one virtual network to another.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task MoveIpConfigurationsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, MoveIpConfigurationsRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.MoveIpConfigurationsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Lists usage stats.
         /// </summary>
         /// <param name='operations'>
@@ -367,42 +403,6 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
-        }
-        /// <summary>
-        /// Move IP configurations from one virtual network to another.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        public static void MoveIpConfigurations(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, MoveIpConfigurationsRequest body)
-        {
-                ((IVirtualNetworksOperations)operations).MoveIpConfigurationsAsync(resourceGroupName, virtualNetworkName, body).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Move IP configurations from one virtual network to another.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task MoveIpConfigurationsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, MoveIpConfigurationsRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.MoveIpConfigurationsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a virtual network in the specified resource group.
