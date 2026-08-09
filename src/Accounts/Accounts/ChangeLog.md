@@ -20,7 +20,6 @@
 
 ## Upcoming Release
 * Fixed an issue where importing a module on PowerShell 7.6 or later could fail with a `Method not found` error for `System.ClientModel.Primitives.IJsonModel`. `System.Text.Json` and `System.Text.Encodings.Web` are no longer loaded into the shared assembly load context on runtimes that already provide them.
-* Fixed shared dependencies being loaded a second time when a copy was also present in a module directory.
 
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
