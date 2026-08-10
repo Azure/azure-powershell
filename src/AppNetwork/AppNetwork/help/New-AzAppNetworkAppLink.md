@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
 online version: https://learn.microsoft.com/powershell/module/az.appnetwork/new-azappnetworkapplink
 schema: 2.0.0
@@ -14,24 +14,24 @@ Create an AppLink.
 
 ### CreateExpanded (Default)
 ```
-New-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,27 +39,31 @@ Create an AppLink.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an Application Network resource
 ```powershell
-{{ Add code here }}
+New-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Location westus2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState ResourceGroupName
+----           -------- ----------------- -----------------
+appnet-test-01 westus2  Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Creates an Azure Kubernetes Application Network resource named `appnet-test-01` in the `test_rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an Application Network resource with a system-assigned identity
 ```powershell
-{{ Add code here }}
+New-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Location westus2 -EnableSystemAssignedIdentity
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState IdentityType   ResourceGroupName
+----           -------- ----------------- ------------   -----------------
+appnet-test-01 westus2  Succeeded         SystemAssigned test_rg
 ```
 
-{{ Add description here }}
+Creates an Application Network resource with a system-assigned managed identity enabled.
 
 ## PARAMETERS
 
@@ -290,4 +294,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

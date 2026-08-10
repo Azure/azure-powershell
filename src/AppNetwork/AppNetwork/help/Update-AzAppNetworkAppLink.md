@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
 online version: https://learn.microsoft.com/powershell/module/az.appnetwork/update-azappnetworkapplink
 schema: 2.0.0
@@ -15,15 +15,16 @@ Update an AppLink.
 ### UpdateExpanded (Default)
 ```
 Update-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAppNetworkAppLink -InputObject <IAppNetworkIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
+Update-AzAppNetworkAppLink -InputObject <IAppNetworkIdentity> [-EnableSystemAssignedIdentity <Boolean>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,27 +32,18 @@ Update an AppLink.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the tags of an Application Network resource
 ```powershell
-{{ Add code here }}
+Update-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Tag @{ key2913 = 'test_tag' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState ResourceGroupName
+----           -------- ----------------- -----------------
+appnet-test-01 westus2  Succeeded         test_rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the tags of the Application Network resource named `appnet-test-01`.
 
 ## PARAMETERS
 
@@ -90,7 +82,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -254,4 +246,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
 online version: https://learn.microsoft.com/powershell/module/az.appnetwork/update-azappnetworkapplinkmember
 schema: 2.0.0
@@ -17,38 +17,39 @@ Update an AppLinkMember.
 Update-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-EastWestGatewayVisibility <String>]
  [-FullyManagedUpgradeProfileReleaseChannel <String>] [-SelfManagedUpgradeProfileVersion <String>]
- [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAppLinkExpanded
 ```
-Update-AzAppNetworkAppLinkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <String>
+Update-AzAppNetworkAppLinkMember -Name <String> -AppLinkInputObject <IAppNetworkIdentity>
  [-EastWestGatewayVisibility <String>] [-FullyManagedUpgradeProfileReleaseChannel <String>]
  [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>] [-UpgradeProfileMode <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAppNetworkAppLinkMember -InputObject <IAppNetworkIdentity> [-EastWestGatewayVisibility <String>]
  [-FullyManagedUpgradeProfileReleaseChannel <String>] [-SelfManagedUpgradeProfileVersion <String>]
- [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,27 +57,31 @@ Update an AppLinkMember.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the release channel of an Application Network member
 ```powershell
-{{ Add code here }}
+Update-AzAppNetworkAppLinkMember -Name member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg -FullyManagedUpgradeProfileReleaseChannel Stable
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ClusterType ProvisioningState ResourceGroupName
+----      ----------- ----------------- -----------------
+member-01 AKS         Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Updates the fully managed release channel of the `member-01` Application Network member to `Stable`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update the Application Network version of a self managed member
 ```powershell
-{{ Add code here }}
+Update-AzAppNetworkAppLinkMember -Name member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg -SelfManagedUpgradeProfileVersion 1.4
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ClusterType ProvisioningState ResourceGroupName
+----      ----------- ----------------- -----------------
+member-01 AKS         Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Updates the self managed Application Network version of the `member-01` member to `1.4`.
 
 ## PARAMETERS
 
@@ -100,7 +105,7 @@ The name of the AppLink
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -221,7 +226,7 @@ The name of the AppLinkMember
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityAppLinkExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityAppLinkExpanded
 Aliases: AppLinkMemberName
 
 Required: True
@@ -252,7 +257,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -283,7 +288,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -368,4 +373,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
 online version: https://learn.microsoft.com/powershell/module/az.appnetwork/remove-azappnetworkapplinkmember
 schema: 2.0.0
@@ -15,20 +15,21 @@ Delete an AppLinkMember.
 ### Delete (Default)
 ```
 Remove-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityAppLink
+```
+Remove-AzAppNetworkAppLinkMember -Name <String> -AppLinkInputObject <IAppNetworkIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzAppNetworkAppLinkMember -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityAppLink
-```
-Remove-AzAppNetworkAppLinkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,27 +37,12 @@ Delete an AppLinkMember.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a member from an Application Network
 ```powershell
-{{ Add code here }}
+Remove-AzAppNetworkAppLinkMember -Name member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the `member-01` member from the `appnet-test-01` Application Network resource.
 
 ## PARAMETERS
 
@@ -258,4 +244,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
 online version: https://learn.microsoft.com/powershell/module/az.appnetwork/set-azappnetworkapplink
 schema: 2.0.0
@@ -14,24 +14,24 @@ Update an AppLink.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzAppNetworkAppLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,27 +39,18 @@ Update an AppLink.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace an Application Network resource
 ```powershell
-{{ Add code here }}
+Set-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Location westus2 -EnableSystemAssignedIdentity -Tag @{ key2913 = 'test_tag' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState IdentityType   ResourceGroupName
+----           -------- ----------------- ------------   -----------------
+appnet-test-01 westus2  Succeeded         SystemAssigned test_rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates or replaces the Application Network resource named `appnet-test-01` with the specified location, identity, and tags.
 
 ## PARAMETERS
 
@@ -98,7 +89,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -290,4 +281,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

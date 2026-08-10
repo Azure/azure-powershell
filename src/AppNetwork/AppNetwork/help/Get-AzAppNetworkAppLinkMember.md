@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppNetwork-help.xml
 Module Name: Az.AppNetwork
 online version: https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkapplinkmember
 schema: 2.0.0
@@ -21,7 +21,14 @@ Get-AzAppNetworkAppLinkMember -AppLinkName <String> -ResourceGroupName <String> 
 ### Get
 ```
 Get-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityAppLink
+```
+Get-AzAppNetworkAppLinkMember -Name <String> -AppLinkInputObject <IAppNetworkIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -30,38 +37,37 @@ Get-AzAppNetworkAppLinkMember -InputObject <IAppNetworkIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### GetViaIdentityAppLink
-```
-Get-AzAppNetworkAppLinkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get an AppLinkMember.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List members of an Application Network resource
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAppLinkMember -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ClusterType ProvisioningState ResourceGroupName
+----      ----------- ----------------- -----------------
+member-01 AKS         Succeeded         test_rg
+member-02 AKS         Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Lists all members of the `appnet-test-01` Application Network resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a member of an Application Network resource
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAppLinkMember -Name member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ClusterType ProvisioningState ResourceGroupName
+----      ----------- ----------------- -----------------
+member-01 AKS         Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Gets the `member-01` member of the `appnet-test-01` Application Network resource.
 
 ## PARAMETERS
 
@@ -85,7 +91,7 @@ The name of the AppLink
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -147,7 +153,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -163,7 +169,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -187,4 +193,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
