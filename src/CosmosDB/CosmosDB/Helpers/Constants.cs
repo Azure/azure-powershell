@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string GarnetClusterNameHelpMessage = "Name of the Garnet Cluster.";
         public const string GarnetClusterObjectHelpMessage = "Garnet Cluster Object.";
         public const string GarnetClusterLocationHelpMessage = "Azure Location of the Garnet Cluster.";
-        public const string GarnetClusterSubnetIdHelpMessage = "Resource id of a subnet that this cluster's management service should have its network interface attached to.";
+        public const string GarnetClusterSubnetIdHelpMessage = "Resource ID of a subnet that this cluster's management service should have its network interface attached to.";
         public const string GarnetClusterReplicationFactorHelpMessage = "Number of copies of data maintained by the cluster.";
         public const string GarnetClusterShardCountHelpMessage = "Number of shards in the cluster.";
         public const string GarnetClusterNodeSkuHelpMessage = "Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.";

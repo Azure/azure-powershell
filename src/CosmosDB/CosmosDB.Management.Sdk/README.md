@@ -43,7 +43,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/services.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/fleet.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(previewapiversion)/tablerbac.json
-  - garnet.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(garnetcommit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/preview/$(garnetpreviewapiversion)/openapi.json
 
 output-folder: Generated
 

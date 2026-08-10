@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Rest.Azure;
 
@@ -49,6 +48,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterAvailabilityZoneHelpMessage)]
         public bool? AvailabilityZone { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.TagsHelpMessage)]
+        [ValidateNotNull]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             GarnetClusterResource existingCluster = null;
@@ -72,7 +75,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Dictionary<string, string> tagsDict = new Dictionary<string, string>();
             if (Tag != null)
             {
-                tagsDict = base.PopulateTags(Tag);
+                foreach (string key in Tag.Keys)
+                {
+                    tagsDict.Add(key, Tag[key].ToString());
+                }
             }
 
             IList<string> extensionsList = null;
