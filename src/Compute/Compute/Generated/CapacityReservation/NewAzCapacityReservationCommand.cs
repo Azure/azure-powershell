@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. Must be >= 30 if provided. Only valid when -ScheduleProfileStart is also specified.")]
+            HelpMessage = "The minimum number of days that must pass after the start date before a future capacity reservation can be updated or deleted once it has been committed. Only valid when used with a future capacity reservation. If not provided, this property will default to a minimum value.")]
         public int MinimumCommitmentDays { get; set; }
 
         public override void ExecuteCmdlet()
@@ -108,16 +108,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (this.IsParameterBound(c => c.MinimumCommitmentDays) && !this.IsParameterBound(c => c.ScheduleProfileStart))
-                {
-                    throw new PSArgumentException("MinimumCommitmentDays can only be used when ScheduleProfileStart is also specified.", "MinimumCommitmentDays");
-                }
-
-                if (this.IsParameterBound(c => c.MinimumCommitmentDays) && this.MinimumCommitmentDays < 30)
-                {
-                    throw new PSArgumentException("MinimumCommitmentDays must be greater than or equal to 30.", "MinimumCommitmentDays");
-                }
-
                 if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     CapacityReservation capacityReservation = new CapacityReservation();
@@ -139,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         capacityReservation.ScheduleProfile = new ScheduleProfile
                         {
-                            Start = this.ScheduleProfileStart.ToString("yyyy-MM-dd")
+                            Start = this.ScheduleProfileStart.Date.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
                         };
                         if (this.IsParameterBound(c => c.MinimumCommitmentDays))
                         {

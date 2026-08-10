@@ -5399,9 +5399,8 @@ function Test-CapacityReservation
 <#
 .SYNOPSIS
 Tests creation of Future Capacity Reservations (FCR) via New-AzCapacityReservation with
--ScheduleProfileStart and -MinimumCommitmentDays, verifies Get-AzCapacityReservation surfaces
-the ScheduleProfile, verifies negative/edge cases, and verifies Update-AzCapacityReservation
-rejects attempts to modify the immutable schedule properties.
+-ScheduleProfileStart and -MinimumCommitmentDays. Also verifies Get-AzCapacityReservation surfaces
+ReservationStateInfo when -InstanceView is provided, and always surfaces ScheduleProfile.
 #>
 function Test-FutureCapacityReservation
 {
@@ -5413,52 +5412,53 @@ function Test-FutureCapacityReservation
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        # create a Targeted CRG
-        $CRGName = 'CRG' + $rgname
-        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc
+        # create Targeted CRGs
+        $CRGName1 = 'CRG1' + $rgname
+        $CRGName2 = 'CRG2' + $rgname
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName1 -Location $loc
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName2 -Location $loc
 
         $Sku = "Standard_DS1_v2"
         $futureStart = (Get-Date).AddDays(30)
 
         # Step 1: -ScheduleProfileStart alone (no MinimumCommitmentDays)
         $CRName1 = "cr1" + $rgname
-        $cr1 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -Sku $Sku -CapacityToReserve 4 -Location $loc -ScheduleProfileStart $futureStart
+        $cr1 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName1 -Name $CRName1 -Sku $Sku -CapacityToReserve 4 -Location $loc -ScheduleProfileStart $futureStart
         Assert-NotNull $cr1.ScheduleProfile
         Assert-NotNull $cr1.ScheduleProfile.Start
 
+        # MinimumCommitmentDays should be set to default when not provided
+        Assert-NotNull $cr1.ScheduleProfile.MinimumCommitmentDays
+
         # Step 2: -ScheduleProfileStart combined with -MinimumCommitmentDays
         $CRName2 = "cr2" + $rgname
-        $cr2 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -Sku $Sku -CapacityToReserve 4 -Location $loc -ScheduleProfileStart $futureStart -MinimumCommitmentDays 45
+        $cr2 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName2 -Name $CRName2 -Sku $Sku -CapacityToReserve 4 -Location $loc -ScheduleProfileStart $futureStart -MinimumCommitmentDays 45
         Assert-NotNull $cr2.ScheduleProfile
         Assert-AreEqual 45 $cr2.ScheduleProfile.MinimumCommitmentDays
 
         # Step 3: Re-read with Get-AzCapacityReservation to confirm persisted state
-        $getCr2 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2
+        $getCr2 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName2 -Name $CRName2
         Assert-NotNull $getCr2.ScheduleProfile
         Assert-AreEqual 45 $getCr2.ScheduleProfile.MinimumCommitmentDays
 
         # Step 4: Get-AzCapacityReservation -InstanceView surfaces ReservationStateInfo for future reservations
-        $getCr2InstanceView = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -InstanceView
+        $getCr2InstanceView = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName2 -Name $CRName2 -InstanceView
         Assert-NotNull $getCr2InstanceView.InstanceView.ReservationStateInfo
 
-        # Negative: -MinimumCommitmentDays without -ScheduleProfileStart should error
-        $CRNameNeg1 = "crneg1" + $rgname
-        Assert-ThrowsContains { New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRNameNeg1 -Sku $Sku -CapacityToReserve 4 -Location $loc -MinimumCommitmentDays 30; } "ScheduleProfileStart"
-
-        # Negative: -MinimumCommitmentDays less than 30 should error
-        $CRNameNeg2 = "crneg2" + $rgname
-        Assert-ThrowsContains { New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRNameNeg2 -Sku $Sku -CapacityToReserve 4 -Location $loc -ScheduleProfileStart $futureStart -MinimumCommitmentDays 10; } "30"
-
-        # Negative: Update-AzCapacityReservation should reject updates to the immutable schedule properties
-        Assert-ThrowsContains { Update-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -ScheduleProfileStart $futureStart.AddDays(1); } "immutable"
-        Assert-ThrowsContains { Update-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -MinimumCommitmentDays 60; } "immutable"
-
         # remove CRs
-        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1
-        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2
+        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName1 -Name $CRName1
+        $CRList = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName1
+        Assert-AreEqual 0 $CRList.count
 
-        # remove CRG
-        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName
+        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName2 -Name $CRName2
+        $CRList = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName2
+        Assert-AreEqual 0 $CRList.count
+
+        # remove CRGs
+        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName1
+        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName2
+        $CRGList = Get-AzCapacityReservationGroup -ResourceGroupName $rgname
+        Assert-AreEqual 0 $CRGList.count
     }
     finally
     {

@@ -37,7 +37,7 @@ This command will create a Capacity Reservation resource with the provided sku a
 New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myFutureCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 4 -ScheduleProfileStart (Get-Date).AddDays(30) -MinimumCommitmentDays 30
 ```
 
-This command will create a Future Capacity Reservation with a schedule that starts 30 days from today and a minimum commitment of 30 days.
+This command will create a Future Capacity Reservation scheduled to start 30 days from today with a minimum commitment period of 30 days.
 
 ## PARAMETERS
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumCommitmentDays
-The minimum number of days that must pass after the start date before the reservation can be updated or deleted once it has been committed. Must be >= 30 if provided. Only valid when -ScheduleProfileStart is also specified.
+The minimum number of days that must pass after the start date before a future capacity reservation can be updated or deleted once it has been committed. Only valid when used with a future capacity reservation. If not provided, this property will default to a minimum value.
 
 ```yaml
 Type: System.Int32
