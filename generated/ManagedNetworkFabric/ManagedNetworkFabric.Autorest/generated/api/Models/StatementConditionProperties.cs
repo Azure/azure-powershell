@@ -10,28 +10,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Route policy statement condition properties.</summary>
     public partial class StatementConditionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList __ipCommunityIdList = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList __ipExtendedCommunityIdList = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPExtendedCommunityIdList();
+        /// <summary>Backing field for <see cref="IPCommunityId" /> property.</summary>
+        private System.Collections.Generic.List<string> _iPCommunityId;
 
         /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> IPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)__ipCommunityIdList).IPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)__ipCommunityIdList).IPCommunityId = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> IPCommunityId { get => this._iPCommunityId; set => this._iPCommunityId = value; }
+
+        /// <summary>Backing field for <see cref="IPExtendedCommunityId" /> property.</summary>
+        private System.Collections.Generic.List<string> _iPExtendedCommunityId;
 
         /// <summary>List of IP Extended Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> IPExtendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)__ipExtendedCommunityIdList).IPExtendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)__ipExtendedCommunityIdList).IPExtendedCommunityId = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> IPExtendedCommunityId { get => this._iPExtendedCommunityId; set => this._iPExtendedCommunityId = value; }
 
         /// <summary>Backing field for <see cref="IPPrefixId" /> property.</summary>
         private string _iPPrefixId;
@@ -52,27 +46,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__ipCommunityIdList), __ipCommunityIdList);
-            await eventListener.AssertObjectIsValid(nameof(__ipCommunityIdList), __ipCommunityIdList);
-            await eventListener.AssertNotNull(nameof(__ipExtendedCommunityIdList), __ipExtendedCommunityIdList);
-            await eventListener.AssertObjectIsValid(nameof(__ipExtendedCommunityIdList), __ipExtendedCommunityIdList);
-        }
     }
     /// Route policy statement condition properties.
     public partial interface IStatementConditionProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Community resource IDs.",
+        SerializedName = @"ipCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> IPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Extended Community resource IDs.",
+        SerializedName = @"ipExtendedCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> IPExtendedCommunityId { get; set; }
         /// <summary>Arm Resource Id of IpPrefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -99,10 +99,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
     }
     /// Route policy statement condition properties.
-    internal partial interface IStatementConditionPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal
+    internal partial interface IStatementConditionPropertiesInternal
+
     {
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> IPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        System.Collections.Generic.List<string> IPExtendedCommunityId { get; set; }
         /// <summary>Arm Resource Id of IpPrefix.</summary>
         string IPPrefixId { get; set; }
         /// <summary>Type of the condition used.</summary>

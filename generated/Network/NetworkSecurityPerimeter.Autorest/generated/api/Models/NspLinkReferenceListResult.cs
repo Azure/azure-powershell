@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list NSP linkReference resources. Contains a list of NSP linkReference resources and a URL link
-    /// to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a NspLinkReference list operation.</summary>
     public partial class NspLinkReferenceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferenceListResult,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferenceListResultInternal
@@ -19,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>Gets the URL to get the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference> _value;
 
-        /// <summary>Gets a page of NSP LinkReference resources.</summary>
+        /// <summary>The NspLinkReference items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference> Value { get => this._value; set => this._value = value; }
 
@@ -36,43 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
         }
     }
-    /// Result of the request to list NSP linkReference resources. Contains a list of NSP linkReference resources and a URL link
-    /// to get the next set of results.
+    /// The response of a NspLinkReference list operation.
     public partial interface INspLinkReferenceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
-        /// <summary>Gets the URL to get the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Gets the URL to get the next page of results.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Gets a page of NSP LinkReference resources.</summary>
+        /// <summary>The NspLinkReference items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Gets a page of NSP LinkReference resources.",
+        Description = @"The NspLinkReference items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference> Value { get; set; }
 
     }
-    /// Result of the request to list NSP linkReference resources. Contains a list of NSP linkReference resources and a URL link
-    /// to get the next set of results.
+    /// The response of a NspLinkReference list operation.
     internal partial interface INspLinkReferenceListResultInternal
 
     {
-        /// <summary>Gets the URL to get the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Gets a page of NSP LinkReference resources.</summary>
+        /// <summary>The NspLinkReference items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference> Value { get; set; }
 
     }

@@ -114,17 +114,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IdentitySelector"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelector = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch) content.GetValueForProperty("IdentitySelector",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelector, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorPatchTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).Annotation, global::System.Convert.ToString);
             }
             if (content.Contains("HostName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).HostName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).HostName, global::System.Convert.ToString);
             }
             if (content.Contains("SerialNumber"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).SerialNumber, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentitySelectorIdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorIdentityType = (string) content.GetValueForProperty("IdentitySelectorIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorIdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentitySelectorUserAssignedIdentityResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId = (string) content.GetValueForProperty("IdentitySelectorUserAssignedIdentityResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -143,17 +155,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IdentitySelector"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelector = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch) content.GetValueForProperty("IdentitySelector",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelector, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorPatchTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Annotation"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).Annotation, global::System.Convert.ToString);
             }
             if (content.Contains("HostName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).HostName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).HostName, global::System.Convert.ToString);
             }
             if (content.Contains("SerialNumber"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchablePropertiesInternal)this).SerialNumber, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentitySelectorIdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorIdentityType = (string) content.GetValueForProperty("IdentitySelectorIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorIdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentitySelectorUserAssignedIdentityResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId = (string) content.GetValueForProperty("IdentitySelectorUserAssignedIdentityResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkDevicePatchParametersPropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

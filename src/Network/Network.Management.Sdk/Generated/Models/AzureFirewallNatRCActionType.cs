@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallNatRCActionType
     {
+        /// <summary>
+        /// Snat
+        /// </summary>
         public const string Snat = "Snat";
+        /// <summary>
+        /// Dnat
+        /// </summary>
         public const string Dnat = "Dnat";
     }
 }

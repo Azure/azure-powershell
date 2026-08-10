@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SyncRemoteAddressSpace
     {
+        /// <summary>
+        /// true
+        /// </summary>
         public const string True = "true";
     }
 }

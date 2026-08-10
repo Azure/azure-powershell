@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayOperationalState
     {
+        /// <summary>
+        /// Stopped
+        /// </summary>
         public const string Stopped = "Stopped";
+        /// <summary>
+        /// Starting
+        /// </summary>
         public const string Starting = "Starting";
+        /// <summary>
+        /// Running
+        /// </summary>
         public const string Running = "Running";
+        /// <summary>
+        /// Stopping
+        /// </summary>
         public const string Stopping = "Stopping";
     }
 }

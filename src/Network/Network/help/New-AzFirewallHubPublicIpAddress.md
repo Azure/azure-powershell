@@ -14,7 +14,8 @@ Public Ip associated to the firewall on virtual hub
 
 ```
 New-AzFirewallHubPublicIpAddress [-Count <Int32>] [-Address <PSAzureFirewallPublicIpAddress[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,11 +41,41 @@ This will create 1 new public ip on the firewall by retain $publicIp1, $publicIp
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Address
 The Public IP Addresses of the Firewall attached to a hub
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPublicIpAddress[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

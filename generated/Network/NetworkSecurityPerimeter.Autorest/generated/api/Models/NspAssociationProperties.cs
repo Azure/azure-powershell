@@ -30,35 +30,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal.HasProvisioningIssue { get => this._hasProvisioningIssue; set { {_hasProvisioningIssue = value;} } }
 
         /// <summary>Internal Acessors for PrivateLinkResource</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal.PrivateLinkResource { get => (this._privateLinkResource = this._privateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource()); set { {_privateLinkResource = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal.PrivateLinkResource { get => (this._privateLinkResource = this._privateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource()); set { {_privateLinkResource = value;} } }
 
         /// <summary>Internal Acessors for Profile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal.Profile { get => (this._profile = this._profile ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource()); set { {_profile = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal.Profile { get => (this._profile = this._profile ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource()); set { {_profile = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Backing field for <see cref="PrivateLinkResource" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource _privateLinkResource;
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource _privateLinkResource;
 
         /// <summary>The PaaS resource to be associated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource PrivateLinkResource { get => (this._privateLinkResource = this._privateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource()); set => this._privateLinkResource = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource PrivateLinkResource { get => (this._privateLinkResource = this._privateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource()); set => this._privateLinkResource = value; }
 
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string PrivateLinkResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)PrivateLinkResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)PrivateLinkResource).Id = value ?? null; }
+        public string PrivateLinkResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)PrivateLinkResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)PrivateLinkResource).Id = value ?? null; }
 
         /// <summary>Backing field for <see cref="Profile" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource _profile;
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource _profile;
 
         /// <summary>Profile id to which the PaaS resource is associated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Profile { get => (this._profile = this._profile ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SubResource()); set => this._profile = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Profile { get => (this._profile = this._profile ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.CommonSubResource()); set => this._profile = value; }
 
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string ProfileId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)Profile).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResourceInternal)Profile).Id = value ?? null; }
+        public string ProfileId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)Profile).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResourceInternal)Profile).Id = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -144,11 +144,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Specifies if there are provisioning issues</summary>
         string HasProvisioningIssue { get; set; }
         /// <summary>The PaaS resource to be associated.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource PrivateLinkResource { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource PrivateLinkResource { get; set; }
         /// <summary>Resource ID.</summary>
         string PrivateLinkResourceId { get; set; }
         /// <summary>Profile id to which the PaaS resource is associated.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubResource Profile { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICommonSubResource Profile { get; set; }
         /// <summary>Resource ID.</summary>
         string ProfileId { get; set; }
         /// <summary>The provisioning state of the resource association resource.</summary>

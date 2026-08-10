@@ -10,74 +10,360 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Resource properties.</summary>
     public partial class L3IsolationDomainPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchableProperties __l3IsolationDomainPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3IsolationDomainPatchableProperties();
+        /// <summary>Backing field for <see cref="AggregateRouteConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfiguration _aggregateRouteConfiguration;
 
         /// <summary>Aggregate route configurations.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRouteConfiguration AggregateRouteConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).AggregateRouteConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).AggregateRouteConfiguration = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfiguration AggregateRouteConfiguration { get => (this._aggregateRouteConfiguration = this._aggregateRouteConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AggregateRoutePatchConfiguration()); set => this._aggregateRouteConfiguration = value; }
+
+        /// <summary>List of IPv4 Route prefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute> AggregateRouteConfigurationIpv4Route { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfigurationInternal)AggregateRouteConfiguration).Ipv4Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfigurationInternal)AggregateRouteConfiguration).Ipv4Route = value ?? null /* arrayOf */; }
+
+        /// <summary>List of Ipv6Routes prefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute> AggregateRouteConfigurationIpv6Route { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfigurationInternal)AggregateRouteConfiguration).Ipv6Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfigurationInternal)AggregateRouteConfiguration).Ipv6Route = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="Annotation" /> property.</summary>
+        private string _annotation;
 
         /// <summary>Switch configuration description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Annotation { get => this._annotation; set => this._annotation = value; }
+
+        /// <summary>Backing field for <see cref="ConnectedSubnetRoutePolicy" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatch _connectedSubnetRoutePolicy;
 
         /// <summary>Connected Subnet RoutePolicy</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicy ConnectedSubnetRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).ConnectedSubnetRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).ConnectedSubnetRoutePolicy = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatch ConnectedSubnetRoutePolicy { get => (this._connectedSubnetRoutePolicy = this._connectedSubnetRoutePolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ConnectedSubnetRoutePolicyPatch()); set => this._connectedSubnetRoutePolicy = value; }
+
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string ConnectedSubnetRoutePolicyExportRoutePolicyExportIpv4RoutePolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatchInternal)ConnectedSubnetRoutePolicy).ExportRoutePolicyExportIpv4RoutePolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatchInternal)ConnectedSubnetRoutePolicy).ExportRoutePolicyExportIpv4RoutePolicyId = value ?? null; }
+
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string ConnectedSubnetRoutePolicyExportRoutePolicyExportIpv6RoutePolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatchInternal)ConnectedSubnetRoutePolicy).ExportRoutePolicyExportIpv6RoutePolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatchInternal)ConnectedSubnetRoutePolicy).ExportRoutePolicyExportIpv6RoutePolicyId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ExportPolicyConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyPatchProperties _exportPolicyConfiguration;
+
+        /// <summary>BMP Export Policy configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyPatchProperties ExportPolicyConfiguration { get => (this._exportPolicyConfiguration = this._exportPolicyConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BmpExportPolicyPatchProperties()); set => this._exportPolicyConfiguration = value; }
+
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ExportPolicyConfigurationExportPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyPatchPropertiesInternal)ExportPolicyConfiguration).ExportPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyPatchPropertiesInternal)ExportPolicyConfiguration).ExportPolicy = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for AggregateRouteConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.AggregateRouteConfiguration { get => (this._aggregateRouteConfiguration = this._aggregateRouteConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AggregateRoutePatchConfiguration()); set { {_aggregateRouteConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for ConnectedSubnetRoutePolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.ConnectedSubnetRoutePolicy { get => (this._connectedSubnetRoutePolicy = this._connectedSubnetRoutePolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ConnectedSubnetRoutePolicyPatch()); set { {_connectedSubnetRoutePolicy = value;} } }
+
+        /// <summary>Internal Acessors for ConnectedSubnetRoutePolicyExportRoutePolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicyPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.ConnectedSubnetRoutePolicyExportRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatchInternal)ConnectedSubnetRoutePolicy).ExportRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatchInternal)ConnectedSubnetRoutePolicy).ExportRoutePolicy = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ExportPolicyConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.ExportPolicyConfiguration { get => (this._exportPolicyConfiguration = this._exportPolicyConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BmpExportPolicyPatchProperties()); set { {_exportPolicyConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for StaticRoutePolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.StaticRoutePolicy { get => (this._staticRoutePolicy = this._staticRoutePolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRoutePolicyPatch()); set { {_staticRoutePolicy = value;} } }
+
+        /// <summary>Internal Acessors for StaticRoutePolicyExportRoutePolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicyPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.StaticRoutePolicyExportRoutePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatchInternal)StaticRoutePolicy).ExportRoutePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatchInternal)StaticRoutePolicy).ExportRoutePolicy = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for V4RoutePrefixLimit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.V4RoutePrefixLimit { get => (this._v4RoutePrefixLimit = this._v4RoutePrefixLimit ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RoutePrefixLimitPatchProperties()); set { {_v4RoutePrefixLimit = value;} } }
+
+        /// <summary>Internal Acessors for V6RoutePrefixLimit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchPropertiesInternal.V6RoutePrefixLimit { get => (this._v6RoutePrefixLimit = this._v6RoutePrefixLimit ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RoutePrefixLimitPatchProperties()); set { {_v6RoutePrefixLimit = value;} } }
+
+        /// <summary>Backing field for <see cref="RedistributeConnectedSubnet" /> property.</summary>
+        private string _redistributeConnectedSubnet;
 
         /// <summary>Advertise Connected Subnets. Ex: "True" | "False".</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string RedistributeConnectedSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).RedistributeConnectedSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).RedistributeConnectedSubnet = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string RedistributeConnectedSubnet { get => this._redistributeConnectedSubnet; set => this._redistributeConnectedSubnet = value; }
+
+        /// <summary>Backing field for <see cref="RedistributeStaticRoute" /> property.</summary>
+        private string _redistributeStaticRoute;
 
         /// <summary>Advertise Static Routes. Ex: "True" | "False".</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string RedistributeStaticRoute { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).RedistributeStaticRoute; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal)__l3IsolationDomainPatchableProperties).RedistributeStaticRoute = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string RedistributeStaticRoute { get => this._redistributeStaticRoute; set => this._redistributeStaticRoute = value; }
+
+        /// <summary>Backing field for <see cref="StaticRoutePolicy" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatch _staticRoutePolicy;
+
+        /// <summary>Static Route - route policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatch StaticRoutePolicy { get => (this._staticRoutePolicy = this._staticRoutePolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRoutePolicyPatch()); set => this._staticRoutePolicy = value; }
+
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string StaticRoutePolicyExportRoutePolicyExportIpv4RoutePolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatchInternal)StaticRoutePolicy).ExportRoutePolicyExportIpv4RoutePolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatchInternal)StaticRoutePolicy).ExportRoutePolicyExportIpv4RoutePolicyId = value ?? null; }
+
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string StaticRoutePolicyExportRoutePolicyExportIpv6RoutePolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatchInternal)StaticRoutePolicy).ExportRoutePolicyExportIpv6RoutePolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatchInternal)StaticRoutePolicy).ExportRoutePolicyExportIpv6RoutePolicyId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="V4RoutePrefixLimit" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties _v4RoutePrefixLimit;
+
+        /// <summary>IPv4 VRF Limit configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties V4RoutePrefixLimit { get => (this._v4RoutePrefixLimit = this._v4RoutePrefixLimit ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RoutePrefixLimitPatchProperties()); set => this._v4RoutePrefixLimit = value; }
+
+        /// <summary>Hard limit for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? V4RoutePrefixLimitHardLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V4RoutePrefixLimit).HardLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V4RoutePrefixLimit).HardLimit = value ?? default(int); }
+
+        /// <summary>Threshold for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? V4RoutePrefixLimitThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V4RoutePrefixLimit).Threshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V4RoutePrefixLimit).Threshold = value ?? default(int); }
+
+        /// <summary>Backing field for <see cref="V6RoutePrefixLimit" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties _v6RoutePrefixLimit;
+
+        /// <summary>IPv6 VRF Limit configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties V6RoutePrefixLimit { get => (this._v6RoutePrefixLimit = this._v6RoutePrefixLimit ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RoutePrefixLimitPatchProperties()); set => this._v6RoutePrefixLimit = value; }
+
+        /// <summary>Hard limit for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? V6RoutePrefixLimitHardLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V6RoutePrefixLimit).HardLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V6RoutePrefixLimit).HardLimit = value ?? default(int); }
+
+        /// <summary>Threshold for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? V6RoutePrefixLimitThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V6RoutePrefixLimit).Threshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchPropertiesInternal)V6RoutePrefixLimit).Threshold = value ?? default(int); }
 
         /// <summary>Creates an new <see cref="L3IsolationDomainPatchProperties" /> instance.</summary>
         public L3IsolationDomainPatchProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertObjectIsValid(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertNotNull(nameof(__l3IsolationDomainPatchableProperties), __l3IsolationDomainPatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__l3IsolationDomainPatchableProperties), __l3IsolationDomainPatchableProperties);
-        }
     }
     /// Resource properties.
     public partial interface IL3IsolationDomainPatchProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchableProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>List of IPv4 Route prefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IPv4 Route prefixes.",
+        SerializedName = @"ipv4Routes",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute> AggregateRouteConfigurationIpv4Route { get; set; }
+        /// <summary>List of Ipv6Routes prefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of Ipv6Routes prefixes.",
+        SerializedName = @"ipv6Routes",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute> AggregateRouteConfigurationIpv6Route { get; set; }
+        /// <summary>Switch configuration description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        string Annotation { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ARM Resource ID of the RoutePolicy.",
+        SerializedName = @"exportIpv4RoutePolicyId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectedSubnetRoutePolicyExportRoutePolicyExportIpv4RoutePolicyId { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ARM Resource ID of the RoutePolicy.",
+        SerializedName = @"exportIpv6RoutePolicyId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectedSubnetRoutePolicyExportRoutePolicyExportIpv6RoutePolicyId { get; set; }
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Export Policy for the BGP Monitoring Protocol (BMP) Configuration.",
+        SerializedName = @"exportPolicies",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Pre-Policy", "Post-Policy", "All", "LocalRib")]
+        System.Collections.Generic.List<string> ExportPolicyConfigurationExportPolicy { get; set; }
+        /// <summary>Advertise Connected Subnets. Ex: "True" | "False".</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Advertise Connected Subnets. Ex: ""True"" | ""False"".",
+        SerializedName = @"redistributeConnectedSubnets",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string RedistributeConnectedSubnet { get; set; }
+        /// <summary>Advertise Static Routes. Ex: "True" | "False".</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Advertise Static Routes. Ex: ""True"" | ""False"".",
+        SerializedName = @"redistributeStaticRoutes",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string RedistributeStaticRoute { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ARM Resource ID of the RoutePolicy.",
+        SerializedName = @"exportIpv4RoutePolicyId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StaticRoutePolicyExportRoutePolicyExportIpv4RoutePolicyId { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ARM Resource ID of the RoutePolicy.",
+        SerializedName = @"exportIpv6RoutePolicyId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StaticRoutePolicyExportRoutePolicyExportIpv6RoutePolicyId { get; set; }
+        /// <summary>Hard limit for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Hard limit for the routes.",
+        SerializedName = @"hardLimit",
+        PossibleTypes = new [] { typeof(int) })]
+        int? V4RoutePrefixLimitHardLimit { get; set; }
+        /// <summary>Threshold for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Threshold for the routes.",
+        SerializedName = @"threshold",
+        PossibleTypes = new [] { typeof(int) })]
+        int? V4RoutePrefixLimitThreshold { get; set; }
+        /// <summary>Hard limit for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Hard limit for the routes.",
+        SerializedName = @"hardLimit",
+        PossibleTypes = new [] { typeof(int) })]
+        int? V6RoutePrefixLimitHardLimit { get; set; }
+        /// <summary>Threshold for the routes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Threshold for the routes.",
+        SerializedName = @"threshold",
+        PossibleTypes = new [] { typeof(int) })]
+        int? V6RoutePrefixLimitThreshold { get; set; }
 
     }
     /// Resource properties.
-    internal partial interface IL3IsolationDomainPatchPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomainPatchablePropertiesInternal
+    internal partial interface IL3IsolationDomainPatchPropertiesInternal
+
     {
+        /// <summary>Aggregate route configurations.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoutePatchConfiguration AggregateRouteConfiguration { get; set; }
+        /// <summary>List of IPv4 Route prefixes.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute> AggregateRouteConfigurationIpv4Route { get; set; }
+        /// <summary>List of Ipv6Routes prefixes.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRoute> AggregateRouteConfigurationIpv6Route { get; set; }
+        /// <summary>Switch configuration description.</summary>
+        string Annotation { get; set; }
+        /// <summary>Connected Subnet RoutePolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicyPatch ConnectedSubnetRoutePolicy { get; set; }
+        /// <summary>Array of ARM Resource ID of the RoutePolicies.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicyPatch ConnectedSubnetRoutePolicyExportRoutePolicy { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        string ConnectedSubnetRoutePolicyExportRoutePolicyExportIpv4RoutePolicyId { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        string ConnectedSubnetRoutePolicyExportRoutePolicyExportIpv6RoutePolicyId { get; set; }
+        /// <summary>BMP Export Policy configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBmpExportPolicyPatchProperties ExportPolicyConfiguration { get; set; }
+        /// <summary>Export Policy for the BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Pre-Policy", "Post-Policy", "All", "LocalRib")]
+        System.Collections.Generic.List<string> ExportPolicyConfigurationExportPolicy { get; set; }
+        /// <summary>Advertise Connected Subnets. Ex: "True" | "False".</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string RedistributeConnectedSubnet { get; set; }
+        /// <summary>Advertise Static Routes. Ex: "True" | "False".</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string RedistributeStaticRoute { get; set; }
+        /// <summary>Static Route - route policy.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePolicyPatch StaticRoutePolicy { get; set; }
+        /// <summary>Array of ARM Resource ID of the RoutePolicies.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicyPatch StaticRoutePolicyExportRoutePolicy { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        string StaticRoutePolicyExportRoutePolicyExportIpv4RoutePolicyId { get; set; }
+        /// <summary>ARM Resource ID of the RoutePolicy.</summary>
+        string StaticRoutePolicyExportRoutePolicyExportIpv6RoutePolicyId { get; set; }
+        /// <summary>IPv4 VRF Limit configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties V4RoutePrefixLimit { get; set; }
+        /// <summary>Hard limit for the routes.</summary>
+        int? V4RoutePrefixLimitHardLimit { get; set; }
+        /// <summary>Threshold for the routes.</summary>
+        int? V4RoutePrefixLimitThreshold { get; set; }
+        /// <summary>IPv6 VRF Limit configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePrefixLimitPatchProperties V6RoutePrefixLimit { get; set; }
+        /// <summary>Hard limit for the routes.</summary>
+        int? V6RoutePrefixLimitHardLimit { get; set; }
+        /// <summary>Threshold for the routes.</summary>
+        int? V6RoutePrefixLimitThreshold { get; set; }
 
     }
 }
