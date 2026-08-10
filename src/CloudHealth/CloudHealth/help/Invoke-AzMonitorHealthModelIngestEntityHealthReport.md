@@ -84,27 +84,12 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Report a health state for an entity
 ```powershell
-{{ Add code here }}
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency -HealthState Degraded -Value 142.5 -ExpiresInMinute 60
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Pushes an external health signal into the model. The report expires after 60 minutes unless it is sent again.
 
 ## PARAMETERS
 

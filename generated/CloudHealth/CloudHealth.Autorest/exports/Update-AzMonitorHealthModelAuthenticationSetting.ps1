@@ -25,6 +25,8 @@ Update a AuthenticationSetting
 {{ Add code here }}
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
@@ -54,6 +56,13 @@ INPUTOBJECT <ICloudHealthIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SignalDefinitionName <String>]: Name of the signal definition. Must be unique within a health model.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+PROPERTY <IAuthenticationSettingProperties>: The resource-specific properties for this resource.
+  [DisplayName <String>]: Display name
+
+RESOURCE <IAuthenticationSetting>: An authentication setting in a health model
+  [Property <IAuthenticationSettingProperties>]: The resource-specific properties for this resource.
+    [DisplayName <String>]: Display name
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/update-azmonitorhealthmodelauthenticationsetting
 #>
@@ -61,13 +70,16 @@ function Update-AzMonitorHealthModelAuthenticationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [System.String]
     # Name of health model resource
     ${HealthModelName},
 
+    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodel', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded', Mandatory)]
     [Alias('AuthenticationSettingName')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
@@ -76,6 +88,7 @@ param(
     # Must be unique within a health model.
     ${Name},
 
+    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [System.String]
@@ -83,6 +96,7 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -91,23 +105,35 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity]
     # Identity Parameter
     ${InputObject},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodel', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity]
     # Identity Parameter
     ${HealthmodelInputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodel', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Display name
-    ${DisplayName},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting]
+    # An authentication setting in a health model
+    ${Resource},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityHealthmodelExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties]
+    # The resource-specific properties for this resource.
+    ${Property},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -204,11 +230,14 @@ begin {
         }
 
         $mapping = @{
+            Update = 'Az.CloudHealth.private\Update-AzMonitorHealthModelAuthenticationSetting_Update';
             UpdateExpanded = 'Az.CloudHealth.private\Update-AzMonitorHealthModelAuthenticationSetting_UpdateExpanded';
+            UpdateViaIdentity = 'Az.CloudHealth.private\Update-AzMonitorHealthModelAuthenticationSetting_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.CloudHealth.private\Update-AzMonitorHealthModelAuthenticationSetting_UpdateViaIdentityExpanded';
+            UpdateViaIdentityHealthmodel = 'Az.CloudHealth.private\Update-AzMonitorHealthModelAuthenticationSetting_UpdateViaIdentityHealthmodel';
             UpdateViaIdentityHealthmodelExpanded = 'Az.CloudHealth.private\Update-AzMonitorHealthModelAuthenticationSetting_UpdateViaIdentityHealthmodelExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

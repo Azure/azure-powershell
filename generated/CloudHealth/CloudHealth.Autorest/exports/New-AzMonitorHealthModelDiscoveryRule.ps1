@@ -24,8 +24,33 @@ Create a DiscoveryRule
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROPERTY <IDiscoveryRuleProperties>: The resource-specific properties for this resource.
+  AddRecommendedSignal <String>: Whether to add all recommended signals to the discovered entities.
+  AuthenticationSetting <String>: Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+  DiscoverRelationship <String>: Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+  Specification <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
+    Kind <String>: Kind of the discovery rule specification
+  [AddResourceHealthSignal <String>]: Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
+  [DisplayName <String>]: Display name
+
+RESOURCE <IDiscoveryRule>: A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query
+  [Property <IDiscoveryRuleProperties>]: The resource-specific properties for this resource.
+    AddRecommendedSignal <String>: Whether to add all recommended signals to the discovered entities.
+    AuthenticationSetting <String>: Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+    DiscoverRelationship <String>: Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+    Specification <IDiscoveryRuleSpecification>: Specification of the discovery rule defining how entities are discovered.
+      Kind <String>: Kind of the discovery rule specification
+    [AddResourceHealthSignal <String>]: Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
+    [DisplayName <String>]: Display name
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/new-azmonitorhealthmodeldiscoveryrule
 #>
@@ -62,49 +87,17 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Whether to add all recommended signals to the discovered entities.
-    ${AddRecommendedSignal},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities.
-    # Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal.
-    # Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
-    ${AddResourceHealthSignal},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule]
+    # A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query
+    ${Resource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Reference to the name of the authentication setting which is used for querying Azure Resource Graph.
-    # The same authentication setting will also be assigned to any discovered entities.
-    ${AuthenticationSetting},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Whether to create relationships between the discovered entities based on a set of built-in rules.
-    # These relationships cannot be manually deleted.
-    ${DiscoverRelationship},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Display name
-    ${DisplayName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("ResourceGraphQuery", "ApplicationInsightsTopology")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Kind of the discovery rule specification
-    ${SpecificationKind},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties]
+    # The resource-specific properties for this resource.
+    ${Property},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
@@ -213,11 +206,12 @@ begin {
         }
 
         $mapping = @{
+            Create = 'Az.CloudHealth.private\New-AzMonitorHealthModelDiscoveryRule_Create';
             CreateExpanded = 'Az.CloudHealth.private\New-AzMonitorHealthModelDiscoveryRule_CreateExpanded';
             CreateViaJsonFilePath = 'Az.CloudHealth.private\New-AzMonitorHealthModelDiscoveryRule_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.CloudHealth.private\New-AzMonitorHealthModelDiscoveryRule_CreateViaJsonString';
         }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

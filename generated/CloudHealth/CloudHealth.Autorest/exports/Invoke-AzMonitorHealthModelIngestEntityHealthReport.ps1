@@ -39,16 +39,26 @@ BODY <IHealthReportRequest>: Health report that's submitted for a specific signa
   HealthState <String>: Health state to report for the signal
   SignalName <String>: Name of the entity signal to report health for
   [AdditionalContext <String>]: Optional additional context or description for the health report
-  [DegradedRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-  [DegradedRuleOperator <String>]: Operator how to compare the signal value with the threshold
-  [DegradedRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-  [DegradedRuleThreshold <Double?>]: Threshold value
+  [EvaluationRuleDegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
+    Operator <String>: Operator how to compare the signal value with the threshold
+    [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
+    [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
+    [Threshold <Double?>]: Threshold value
+  [EvaluationRuleUnhealthyRule <IThresholdRuleV2>]: Unhealthy rule with static threshold.
   [ExpiresInMinute <Int32?>]: Number of minutes until the health report expires. Defaults to 60 (1 hour) if not specified.
-  [UnhealthyRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-  [UnhealthyRuleOperator <String>]: Operator how to compare the signal value with the threshold
-  [UnhealthyRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-  [UnhealthyRuleThreshold <Double?>]: Threshold value
   [Value <Double?>]: Reported value of the signal
+
+EVALUATIONRULEDEGRADEDRULE <IThresholdRuleV2>: Degraded rule with static threshold.
+  Operator <String>: Operator how to compare the signal value with the threshold
+  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
+  [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
+  [Threshold <Double?>]: Threshold value
+
+EVALUATIONRULEUNHEALTHYRULE <IThresholdRuleV2>: Unhealthy rule with static threshold.
+  Operator <String>: Operator how to compare the signal value with the threshold
+  [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
+  [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
+  [Threshold <Double?>]: Threshold value
 
 HEALTHMODELINPUTOBJECT <ICloudHealthIdentity>: Identity Parameter
   [AuthenticationSettingName <String>]: Name of the authentication setting. Must be unique within a health model.
@@ -170,39 +180,18 @@ param(
     [Parameter(ParameterSetName='IngestExpanded')]
     [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
     [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-    # Only applicable when operator is Dynamic.
-    ${DegradedRuleLookBackWindow},
-
-    [Parameter(ParameterSetName='IngestExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Operator how to compare the signal value with the threshold
-    ${DegradedRuleOperator},
-
-    [Parameter(ParameterSetName='IngestExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Sensitivity level for dynamic threshold detection.
-    # Only applicable when operator is Dynamic.
-    ${DegradedRuleSensitivity},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2]
+    # Degraded rule with static threshold.
+    ${EvaluationRuleDegradedRule},
 
     [Parameter(ParameterSetName='IngestExpanded')]
     [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
     [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.Double]
-    # Threshold value
-    ${DegradedRuleThreshold},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2]
+    # Unhealthy rule with static threshold.
+    ${EvaluationRuleUnhealthyRule},
 
     [Parameter(ParameterSetName='IngestExpanded')]
     [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
@@ -212,43 +201,6 @@ param(
     # Number of minutes until the health report expires.
     # Defaults to 60 (1 hour) if not specified.
     ${ExpiresInMinute},
-
-    [Parameter(ParameterSetName='IngestExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-    # Only applicable when operator is Dynamic.
-    ${UnhealthyRuleLookBackWindow},
-
-    [Parameter(ParameterSetName='IngestExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Operator how to compare the signal value with the threshold
-    ${UnhealthyRuleOperator},
-
-    [Parameter(ParameterSetName='IngestExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Sensitivity level for dynamic threshold detection.
-    # Only applicable when operator is Dynamic.
-    ${UnhealthyRuleSensitivity},
-
-    [Parameter(ParameterSetName='IngestExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityExpanded')]
-    [Parameter(ParameterSetName='IngestViaIdentityHealthmodelExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.Double]
-    # Threshold value
-    ${UnhealthyRuleThreshold},
 
     [Parameter(ParameterSetName='IngestExpanded')]
     [Parameter(ParameterSetName='IngestViaIdentityExpanded')]

@@ -36,55 +36,40 @@ SIGNALGROUP <ISignalGroups>: Signal groups which are assigned to this entity
   [AzureLogAnalyticLogAnalyticsWorkspaceResourceId <String>]: Log Analytics workspace resource ID.
   [AzureLogAnalyticSignal <List<ILogAnalyticsSignal>>]: Signals assigned to this group.
     [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-    [DegradedRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-    [DegradedRuleOperator <String>]: Operator how to compare the signal value with the threshold
-    [DegradedRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-    [DegradedRuleThreshold <Double?>]: Threshold value
     [DisplayName <String>]: Display name
+    [EvaluationRule <IEvaluationRule>]: Evaluation rules for the signal definition
+      UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
+      [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
+        Operator <String>: Operator how to compare the signal value with the threshold
+        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
+        [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
+        [Threshold <Double?>]: Threshold value
     [QueryText <String>]: Query text in KQL syntax
     [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
     [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
-    [UnhealthyRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-    [UnhealthyRuleOperator <String>]: Operator how to compare the signal value with the threshold
-    [UnhealthyRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-    [UnhealthyRuleThreshold <Double?>]: Threshold value
     [ValueColumnName <String>]: Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
   [AzureMonitorWorkspaceAuthenticationSetting <String>]: Reference to the name of the authentication setting which is used for querying the data source.
   [AzureMonitorWorkspaceAzureMonitorWorkspaceResourceId <String>]: Azure Monitor workspace resource ID.
   [AzureMonitorWorkspaceSignal <List<IPrometheusMetricsSignal>>]: Signals assigned to this signal group.
     [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-    [DegradedRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-    [DegradedRuleOperator <String>]: Operator how to compare the signal value with the threshold
-    [DegradedRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-    [DegradedRuleThreshold <Double?>]: Threshold value
     [DisplayName <String>]: Display name
+    [EvaluationRule <IEvaluationRule>]: Evaluation rules for the signal definition
     [QueryText <String>]: Query text in PromQL syntax
     [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
     [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
-    [UnhealthyRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-    [UnhealthyRuleOperator <String>]: Operator how to compare the signal value with the threshold
-    [UnhealthyRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-    [UnhealthyRuleThreshold <Double?>]: Threshold value
   [AzureResourceAuthenticationSetting <String>]: Reference to the name of the authentication setting which is used for querying the data source.
   [AzureResourceId <String>]: Azure resource ID
   [AzureResourceKind <String>]: Azure resource kind (e.g., 'functionapp'). Populated by the UI for icon rendering. Can be null if not populated.
   [AzureResourceSignal <List<IAzureResourceSignal>>]: Signals assigned to this group.
     [AggregationType <String>]: Type of aggregation to apply to the metric
     [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-    [DegradedRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-    [DegradedRuleOperator <String>]: Operator how to compare the signal value with the threshold
-    [DegradedRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-    [DegradedRuleThreshold <Double?>]: Threshold value
     [DimensionFilter <String>]: Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
     [DisplayName <String>]: Display name
+    [EvaluationRule <IEvaluationRule>]: Evaluation rules for the signal definition
     [MetricName <String>]: Name of the metric
     [MetricNamespace <String>]: Metric namespace
     [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
     [TimeGrain <String>]: Time range of signal. ISO duration format like PT10M.
-    [UnhealthyRuleLookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
-    [UnhealthyRuleOperator <String>]: Operator how to compare the signal value with the threshold
-    [UnhealthyRuleSensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-    [UnhealthyRuleThreshold <Double?>]: Threshold value
   [DependencyAggregationType <String>]: Aggregation type for child dependencies.
   [DependencyDegradedThreshold <Double?>]: Degraded threshold for aggregation. For MinHealthy: parent is degraded when healthy count/percentage falls to or below this value. For MaxNotHealthy: parent is degraded when not-healthy count/percentage reaches or exceeds this value. Optional — if not set, there is no degraded state (transitions directly from Healthy to Unhealthy).
   [DependencyIgnoreUnknown <Boolean?>]: If true, children with Unknown health state are excluded from aggregation calculations. Defaults to true.

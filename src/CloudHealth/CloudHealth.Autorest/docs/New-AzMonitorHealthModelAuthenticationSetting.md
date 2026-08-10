@@ -15,8 +15,15 @@ Create a AuthenticationSetting
 ### CreateExpanded (Default)
 ```
 New-AzMonitorHealthModelAuthenticationSetting -HealthModelName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <IAuthenticationSettingProperties>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzMonitorHealthModelAuthenticationSetting -HealthModelName <String> -Name <String>
+ -ResourceGroupName <String> -Resource <IAuthenticationSetting> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -38,27 +45,13 @@ Create a AuthenticationSetting
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add a managed identity authentication setting
 ```powershell
-{{ Add code here }}
+$property = New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject -ManagedIdentityName SystemAssigned -DisplayName 'Default managed identity'
+New-AzMonitorHealthModelAuthenticationSetting -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name default-auth -Property $property
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Registers the health model's system-assigned identity so discovery rules can query Azure on its behalf. The identity must already be enabled on the health model.
 
 ## PARAMETERS
 
@@ -85,21 +78,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -184,6 +162,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+An authentication setting in a health model
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -251,6 +259,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
 
 ## OUTPUTS
 

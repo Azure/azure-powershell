@@ -38,27 +38,12 @@ Create a Relationship
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Connect two entities
 ```powershell
-{{ Add code here }}
+New-AzMonitorHealthModelRelationship -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name frontend-to-backend -ParentEntityName frontend-service -ChildEntityName backend-api
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Makes the frontend service depend on the backend API, so the child's health rolls up into the parent.
 
 ## PARAMETERS
 

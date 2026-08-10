@@ -69,17 +69,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Display name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Display name")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Display name",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DisplayName { get => _resourceBody.DisplayName ?? null; set => _resourceBody.DisplayName = value; }
-
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -141,6 +130,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource-specific properties for this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties Property { get => _resourceBody.Property ?? null /* object */; set => _resourceBody.Property = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -492,9 +492,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
 
         private void Update_resourceBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DisplayName")))
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Property")))
             {
-                this.DisplayName = (string)(this.MyInvocation?.BoundParameters["DisplayName"]);
+                this.Property = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties)(this.MyInvocation?.BoundParameters["Property"]);
             }
         }
 

@@ -15,10 +15,15 @@ Create a DiscoveryRule
 ### CreateExpanded (Default)
 ```
 New-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AddRecommendedSignal <String>] [-AddResourceHealthSignal <String>]
- [-AuthenticationSetting <String>] [-DiscoverRelationship <String>] [-DisplayName <String>]
- [-SpecificationKind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Property <IDiscoveryRuleProperties>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
+ -Resource <IDiscoveryRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -40,61 +45,16 @@ Create a DiscoveryRule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Discover virtual machines with a Resource Graph query
 ```powershell
-{{ Add code here }}
+$specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' | project id"
+$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover virtual machines' -Specification $specification
+New-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Adds every virtual machine returned by the query as an entity. The authentication setting's identity needs Reader on the queried scope.
 
 ## PARAMETERS
-
-### -AddRecommendedSignal
-Whether to add all recommended signals to the discovered entities.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AddResourceHealthSignal
-Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities.
-Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal.
-Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -102,22 +62,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationSetting
-Reference to the name of the authentication setting which is used for querying Azure Resource Graph.
-The same authentication setting will also be assigned to any discovered entities.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -135,37 +79,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DiscoverRelationship
-Whether to create relationships between the discovered entities based on a set of built-in rules.
-These relationships cannot be manually deleted.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -250,6 +163,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -260,21 +203,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpecificationKind
-Kind of the discovery rule specification
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -332,6 +260,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
 
 ## OUTPUTS
 

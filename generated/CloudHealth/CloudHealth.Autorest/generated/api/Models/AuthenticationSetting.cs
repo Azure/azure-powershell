@@ -18,28 +18,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ProxyResource();
 
-        /// <summary>Kind of the authentication setting</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string AuthenticationKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).AuthenticationKind; }
-
-        /// <summary>Display name</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).DisplayName = value ?? null; }
-
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)__proxyResource).Id; }
-
-        /// <summary>Internal Acessors for AuthenticationKind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal.AuthenticationKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).AuthenticationKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).AuthenticationKind = value ?? null; }
-
-        /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.AuthenticationSettingProperties()); set { {_property = value;} } }
-
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
@@ -81,10 +64,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.AuthenticationSettingProperties()); set => this._property = value; }
-
-        /// <summary>The status of the last operation.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingPropertiesInternal)Property).ProvisioningState; }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
@@ -149,55 +128,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IProxyResource
     {
-        /// <summary>Kind of the authentication setting</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Kind of the authentication setting",
-        SerializedName = @"authenticationKind",
-        PossibleTypes = new [] { typeof(string) })]
-        string AuthenticationKind { get;  }
-        /// <summary>Display name</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Display name",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DisplayName { get; set; }
-        /// <summary>The status of the last operation.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The status of the last operation.",
-        SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Deleting")]
-        string ProvisioningState { get;  }
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties Property { get; set; }
 
     }
     /// An authentication setting in a health model
     internal partial interface IAuthenticationSettingInternal :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IProxyResourceInternal
     {
-        /// <summary>Kind of the authentication setting</summary>
-        string AuthenticationKind { get; set; }
-        /// <summary>Display name</summary>
-        string DisplayName { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties Property { get; set; }
-        /// <summary>The status of the last operation.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Deleting")]
-        string ProvisioningState { get; set; }
 
     }
 }

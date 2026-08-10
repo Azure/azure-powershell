@@ -65,14 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 return;
             }
-            {_specification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("specification"), out var __jsonSpecification) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleSpecification.FromJson(__jsonSpecification) : _specification;}
-            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryError.FromJson(__jsonError) : _error;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
             {_authenticationSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("authenticationSetting"), out var __jsonAuthenticationSetting) ? (string)__jsonAuthenticationSetting : (string)_authenticationSetting;}
             {_discoverRelationship = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("discoverRelationships"), out var __jsonDiscoverRelationships) ? (string)__jsonDiscoverRelationships : (string)_discoverRelationship;}
             {_addRecommendedSignal = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("addRecommendedSignals"), out var __jsonAddRecommendedSignals) ? (string)__jsonAddRecommendedSignals : (string)_addRecommendedSignal;}
+            {_specification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("specification"), out var __jsonSpecification) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleSpecification.FromJson(__jsonSpecification) : _specification;}
             {_addResourceHealthSignal = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("addResourceHealthSignal"), out var __jsonAddResourceHealthSignal) ? (string)__jsonAddResourceHealthSignal : (string)_addResourceHealthSignal;}
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryError.FromJson(__jsonError) : _error;}
             {_entityName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("entityName"), out var __jsonEntityName) ? (string)__jsonEntityName : (string)_entityName;}
             AfterFromJson(json);
         }
@@ -108,11 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 return container;
             }
-            AddIf( null != this._specification ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._specification.ToJson(null,serializationMode) : null, "specification" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._error ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._error.ToJson(null,serializationMode) : null, "error" ,container.Add );
-            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -121,7 +116,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             AddIf( null != (((object)this._authenticationSetting)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._authenticationSetting.ToString()) : null, "authenticationSetting" ,container.Add );
             AddIf( null != (((object)this._discoverRelationship)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._discoverRelationship.ToString()) : null, "discoverRelationships" ,container.Add );
             AddIf( null != (((object)this._addRecommendedSignal)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._addRecommendedSignal.ToString()) : null, "addRecommendedSignals" ,container.Add );
+            AddIf( null != this._specification ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._specification.ToJson(null,serializationMode) : null, "specification" ,container.Add );
             AddIf( null != (((object)this._addResourceHealthSignal)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._addResourceHealthSignal.ToString()) : null, "addResourceHealthSignal" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._error ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._error.ToJson(null,serializationMode) : null, "error" ,container.Add );
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._entityName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._entityName.ToString()) : null, "entityName" ,container.Add );

@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: List recommended signals for an entity
 ```powershell
-{{ Add code here }}
+Get-AzMonitorHealthModelEntitySignalRecommendation -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Suggests signals for the entity based on the Azure resource assigned to it. The entity must have a resource assigned.

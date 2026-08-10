@@ -20,33 +20,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string AdditionalContext { get => this._additionalContext; set => this._additionalContext = value; }
 
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string DegradedRuleLookBackWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleLookBackWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleLookBackWindow = value ?? null; }
-
-        /// <summary>Operator how to compare the signal value with the threshold</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string DegradedRuleOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleOperator; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleOperator = value ?? null; }
-
-        /// <summary>
-        /// Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string DegradedRuleSensitivity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleSensitivity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleSensitivity = value ?? null; }
-
-        /// <summary>Threshold value</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public double? DegradedRuleThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRuleThreshold = value ?? default(double); }
-
         /// <summary>Backing field for <see cref="EvaluationRule" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRule _evaluationRule;
 
         /// <summary>Evaluation rules that were used to determine the reported health state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRule EvaluationRule { get => (this._evaluationRule = this._evaluationRule ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.HealthReportEvaluationRule()); set => this._evaluationRule = value; }
+
+        /// <summary>Degraded rule with static threshold.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2 EvaluationRuleDegradedRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRule = value ?? null /* model class */; }
+
+        /// <summary>Unhealthy rule with static threshold.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2 EvaluationRuleUnhealthyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRule = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="ExpiresInMinute" /> property.</summary>
         private int? _expiresInMinute;
@@ -67,39 +54,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Internal Acessors for EvaluationRule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRule Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportRequestInternal.EvaluationRule { get => (this._evaluationRule = this._evaluationRule ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.HealthReportEvaluationRule()); set { {_evaluationRule = value;} } }
 
-        /// <summary>Internal Acessors for EvaluationRuleDegradedRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportRequestInternal.EvaluationRuleDegradedRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).DegradedRule = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for EvaluationRuleUnhealthyRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportRequestInternal.EvaluationRuleUnhealthyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRule = value ?? null /* model class */; }
-
         /// <summary>Backing field for <see cref="SignalName" /> property.</summary>
         private string _signalName;
 
         /// <summary>Name of the entity signal to report health for</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string SignalName { get => this._signalName; set => this._signalName = value; }
-
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string UnhealthyRuleLookBackWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleLookBackWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleLookBackWindow = value ?? null; }
-
-        /// <summary>Operator how to compare the signal value with the threshold</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string UnhealthyRuleOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleOperator; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleOperator = value ?? null; }
-
-        /// <summary>
-        /// Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string UnhealthyRuleSensitivity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleSensitivity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleSensitivity = value ?? null; }
-
-        /// <summary>Threshold value</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public double? UnhealthyRuleThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRuleInternal)EvaluationRule).UnhealthyRuleThreshold = value ?? default(double); }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private double? _value;
@@ -129,58 +89,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"additionalContext",
         PossibleTypes = new [] { typeof(string) })]
         string AdditionalContext { get; set; }
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
+        /// <summary>Degraded rule with static threshold.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.",
-        SerializedName = @"lookBackWindow",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        string DegradedRuleLookBackWindow { get; set; }
-        /// <summary>Operator how to compare the signal value with the threshold</summary>
+        Description = @"Degraded rule with static threshold.",
+        SerializedName = @"degradedRule",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2 EvaluationRuleDegradedRule { get; set; }
+        /// <summary>Unhealthy rule with static threshold.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Operator how to compare the signal value with the threshold",
-        SerializedName = @"operator",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-        string DegradedRuleOperator { get; set; }
-        /// <summary>
-        /// Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.",
-        SerializedName = @"sensitivity",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-        string DegradedRuleSensitivity { get; set; }
-        /// <summary>Threshold value</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Threshold value",
-        SerializedName = @"threshold",
-        PossibleTypes = new [] { typeof(double) })]
-        double? DegradedRuleThreshold { get; set; }
+        Description = @"Unhealthy rule with static threshold.",
+        SerializedName = @"unhealthyRule",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2 EvaluationRuleUnhealthyRule { get; set; }
         /// <summary>
         /// Number of minutes until the health report expires. Defaults to 60 (1 hour) if not specified.
         /// </summary>
@@ -217,58 +147,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"signalName",
         PossibleTypes = new [] { typeof(string) })]
         string SignalName { get; set; }
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.",
-        SerializedName = @"lookBackWindow",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        string UnhealthyRuleLookBackWindow { get; set; }
-        /// <summary>Operator how to compare the signal value with the threshold</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Operator how to compare the signal value with the threshold",
-        SerializedName = @"operator",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-        string UnhealthyRuleOperator { get; set; }
-        /// <summary>
-        /// Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.",
-        SerializedName = @"sensitivity",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-        string UnhealthyRuleSensitivity { get; set; }
-        /// <summary>Threshold value</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Threshold value",
-        SerializedName = @"threshold",
-        PossibleTypes = new [] { typeof(double) })]
-        double? UnhealthyRuleThreshold { get; set; }
         /// <summary>Reported value of the signal</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
@@ -288,22 +166,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
     {
         /// <summary>Optional additional context or description for the health report</summary>
         string AdditionalContext { get; set; }
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        string DegradedRuleLookBackWindow { get; set; }
-        /// <summary>Operator how to compare the signal value with the threshold</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-        string DegradedRuleOperator { get; set; }
-        /// <summary>
-        /// Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-        string DegradedRuleSensitivity { get; set; }
-        /// <summary>Threshold value</summary>
-        double? DegradedRuleThreshold { get; set; }
         /// <summary>Evaluation rules that were used to determine the reported health state</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IHealthReportEvaluationRule EvaluationRule { get; set; }
         /// <summary>Degraded rule with static threshold.</summary>
@@ -319,22 +181,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         string HealthState { get; set; }
         /// <summary>Name of the entity signal to report health for</summary>
         string SignalName { get; set; }
-        /// <summary>
-        /// ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator
-        /// is Dynamic.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-        string UnhealthyRuleLookBackWindow { get; set; }
-        /// <summary>Operator how to compare the signal value with the threshold</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-        string UnhealthyRuleOperator { get; set; }
-        /// <summary>
-        /// Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-        string UnhealthyRuleSensitivity { get; set; }
-        /// <summary>Threshold value</summary>
-        double? UnhealthyRuleThreshold { get; set; }
         /// <summary>Reported value of the signal</summary>
         double? Value { get; set; }
 

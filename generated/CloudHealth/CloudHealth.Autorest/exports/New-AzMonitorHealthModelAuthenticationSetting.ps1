@@ -24,8 +24,21 @@ Create a AuthenticationSetting
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROPERTY <IAuthenticationSettingProperties>: The resource-specific properties for this resource.
+  [DisplayName <String>]: Display name
+
+RESOURCE <IAuthenticationSetting>: An authentication setting in a health model
+  [Property <IAuthenticationSettingProperties>]: The resource-specific properties for this resource.
+    [DisplayName <String>]: Display name
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/new-azmonitorhealthmodelauthenticationsetting
 #>
@@ -62,11 +75,17 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSetting]
+    # An authentication setting in a health model
+    ${Resource},
+
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Display name
-    ${DisplayName},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingProperties]
+    # The resource-specific properties for this resource.
+    ${Property},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
@@ -175,11 +194,12 @@ begin {
         }
 
         $mapping = @{
+            Create = 'Az.CloudHealth.private\New-AzMonitorHealthModelAuthenticationSetting_Create';
             CreateExpanded = 'Az.CloudHealth.private\New-AzMonitorHealthModelAuthenticationSetting_CreateExpanded';
             CreateViaJsonFilePath = 'Az.CloudHealth.private\New-AzMonitorHealthModelAuthenticationSetting_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.CloudHealth.private\New-AzMonitorHealthModelAuthenticationSetting_CreateViaJsonString';
         }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

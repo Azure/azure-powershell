@@ -41,10 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string AuthenticationSetting { get => this._authenticationSetting; set => this._authenticationSetting = value; }
 
-        /// <summary>Additional context information, like resource IDs or query details</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> Context { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryErrorInternal)Error).Context; }
-
         /// <summary>Backing field for <see cref="DiscoverRelationship" /> property.</summary>
         private string _discoverRelationship;
 
@@ -77,14 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
 
         /// <summary>Error details if the last discovery operation failed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryError()); }
-
-        /// <summary>Error message</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryErrorInternal)Error).Message; }
-
-        /// <summary>Internal Acessors for Context</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRulePropertiesInternal.Context { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryErrorInternal)Error).Context; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryErrorInternal)Error).Context = value ?? null /* arrayOf */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryError()); }
 
         /// <summary>Internal Acessors for EntityName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRulePropertiesInternal.EntityName { get => this._entityName; set { {_entityName = value;} } }
@@ -92,14 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRulePropertiesInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryError()); set { {_error = value;} } }
 
-        /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRulePropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryErrorInternal)Error).Message = value ?? null; }
-
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRulePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
-        /// <summary>Internal Acessors for Specification</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRulePropertiesInternal.Specification { get => (this._specification = this._specification ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleSpecification()); set { {_specification = value;} } }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -114,10 +97,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Specification of the discovery rule defining how entities are discovered.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification Specification { get => (this._specification = this._specification ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRuleSpecification()); set => this._specification = value; }
-
-        /// <summary>Kind of the discovery rule specification</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
-        public string SpecificationKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecificationInternal)Specification).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecificationInternal)Specification).Kind = value ; }
 
         /// <summary>Creates an new <see cref="DiscoveryRuleProperties" /> instance.</summary>
         public DiscoveryRuleProperties()
@@ -171,17 +150,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"authenticationSetting",
         PossibleTypes = new [] { typeof(string) })]
         string AuthenticationSetting { get; set; }
-        /// <summary>Additional context information, like resource IDs or query details</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Additional context information, like resource IDs or query details",
-        SerializedName = @"context",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> Context { get;  }
         /// <summary>
         /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships
         /// cannot be manually deleted.
@@ -222,17 +190,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"entityName",
         PossibleTypes = new [] { typeof(string) })]
         string EntityName { get;  }
-        /// <summary>Error message</summary>
+        /// <summary>Error details if the last discovery operation failed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Error message",
-        SerializedName = @"message",
-        PossibleTypes = new [] { typeof(string) })]
-        string Message { get;  }
+        Description = @"Error details if the last discovery operation failed.",
+        SerializedName = @"error",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError Error { get;  }
         /// <summary>The status of the last operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
@@ -245,18 +213,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Deleting")]
         string ProvisioningState { get;  }
-        /// <summary>Kind of the discovery rule specification</summary>
+        /// <summary>Specification of the discovery rule defining how entities are discovered.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Kind of the discovery rule specification",
-        SerializedName = @"kind",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("ResourceGraphQuery", "ApplicationInsightsTopology")]
-        string SpecificationKind { get; set; }
+        Description = @"Specification of the discovery rule defining how entities are discovered.",
+        SerializedName = @"specification",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification Specification { get; set; }
 
     }
     /// Discovery rule properties
@@ -278,8 +245,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// setting will also be assigned to any discovered entities.
         /// </summary>
         string AuthenticationSetting { get; set; }
-        /// <summary>Additional context information, like resource IDs or query details</summary>
-        System.Collections.Generic.List<string> Context { get; set; }
         /// <summary>
         /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships
         /// cannot be manually deleted.
@@ -295,16 +260,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         string EntityName { get; set; }
         /// <summary>Error details if the last discovery operation failed.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryError Error { get; set; }
-        /// <summary>Error message</summary>
-        string Message { get; set; }
         /// <summary>The status of the last operation.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Deleting")]
         string ProvisioningState { get; set; }
         /// <summary>Specification of the discovery rule defining how entities are discovered.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleSpecification Specification { get; set; }
-        /// <summary>Kind of the discovery rule specification</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("ResourceGraphQuery", "ApplicationInsightsTopology")]
-        string SpecificationKind { get; set; }
 
     }
 }

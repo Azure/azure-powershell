@@ -77,7 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 return;
             }
-            {_evaluationRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("evaluationRules"), out var __jsonEvaluationRules) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule.FromJson(__jsonEvaluationRules) : _evaluationRule;}
             {_signalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("signalId"), out var __jsonSignalId) ? (string)__jsonSignalId : (string)_signalId;}
             {_metricNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("metricNamespace"), out var __jsonMetricNamespace) ? (string)__jsonMetricNamespace : (string)_metricNamespace;}
             {_metricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("metricName"), out var __jsonMetricName) ? (string)__jsonMetricName : (string)_metricName;}
@@ -85,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {_unit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("unit"), out var __jsonUnit) ? (string)__jsonUnit : (string)_unit;}
             {_timeGrain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("timeGrain"), out var __jsonTimeGrain) ? (string)__jsonTimeGrain : (string)_timeGrain;}
             {_dimensionFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("dimensionFilter"), out var __jsonDimensionFilter) ? (string)__jsonDimensionFilter : (string)_dimensionFilter;}
+            {_evaluationRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("evaluationRules"), out var __jsonEvaluationRules) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule.FromJson(__jsonEvaluationRules) : _evaluationRule;}
             AfterFromJson(json);
         }
 
@@ -107,7 +107,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 return container;
             }
-            AddIf( null != this._evaluationRule ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._evaluationRule.ToJson(null,serializationMode) : null, "evaluationRules" ,container.Add );
             AddIf( null != (((object)this._signalId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._signalId.ToString()) : null, "signalId" ,container.Add );
             AddIf( null != (((object)this._metricNamespace)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._metricNamespace.ToString()) : null, "metricNamespace" ,container.Add );
             AddIf( null != (((object)this._metricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._metricName.ToString()) : null, "metricName" ,container.Add );
@@ -115,6 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             AddIf( null != (((object)this._unit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._unit.ToString()) : null, "unit" ,container.Add );
             AddIf( null != (((object)this._timeGrain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._timeGrain.ToString()) : null, "timeGrain" ,container.Add );
             AddIf( null != (((object)this._dimensionFilter)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._dimensionFilter.ToString()) : null, "dimensionFilter" ,container.Add );
+            AddIf( null != this._evaluationRule ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._evaluationRule.ToJson(null,serializationMode) : null, "evaluationRules" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
