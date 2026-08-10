@@ -120,18 +120,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("AuthenticationKind"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).AuthenticationKind = (string) content.GetValueForProperty("AuthenticationKind",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).AuthenticationKind, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("DisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).DisplayName, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -192,18 +180,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationKind"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).AuthenticationKind = (string) content.GetValueForProperty("AuthenticationKind",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).AuthenticationKind, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("DisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IAuthenticationSettingInternal)this).DisplayName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -15,12 +15,15 @@ Create a SignalDefinition
 ### CreateExpanded (Default)
 ```
 New-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DataUnit <String>] [-DegradedRuleLookBackWindow <String>]
- [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>]
- [-DisplayName <String>] [-RefreshInterval <String>] [-SignalKind <String>] [-Tag <Hashtable>]
- [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-SubscriptionId <String>] [-Property <ISignalDefinitionProperties>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String> -ResourceGroupName <String>
+ -Resource <ISignalDefinition> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -42,27 +45,16 @@ Create a SignalDefinition
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Define a CPU metric signal
 ```powershell
-{{ Add code here }}
+$degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
+$property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization' -DataUnit Percent -RefreshInterval PT5M
+New-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization -Property $property
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a signal that reads the Percentage CPU metric and marks an entity degraded above 70 percent and unhealthy above 90 percent.
 
 ## PARAMETERS
 
@@ -81,22 +73,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataUnit
-Unit of the signal result (e.g.
-Bytes, MilliSeconds, Percent, Count))
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -105,83 +81,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -266,12 +165,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RefreshInterval
-Interval in which the signal is being evaluated.
-Defaults to PT1M (1 minute).
+### -Property
+The resource-specific properties for this resource.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -279,6 +177,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+A signal definition in a health model
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -298,21 +211,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SignalKind
-Kind of the signal definition
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -325,83 +223,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Optional set of tags (key-value pairs)
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -441,6 +262,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
 
 ## OUTPUTS
 

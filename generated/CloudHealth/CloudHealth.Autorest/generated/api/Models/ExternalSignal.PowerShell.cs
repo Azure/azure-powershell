@@ -142,46 +142,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalInstancePropertiesInternal)this).SignalDefinitionName = (string) content.GetValueForProperty("SignalDefinitionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalInstancePropertiesInternal)this).SignalDefinitionName, global::System.Convert.ToString);
             }
-            if (content.Contains("EvaluationRuleDegradedRule"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleDegradedRule = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2) content.GetValueForProperty("EvaluationRuleDegradedRule",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleDegradedRule, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2TypeConverter.ConvertFrom);
-            }
-            if (content.Contains("EvaluationRuleUnhealthyRule"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleUnhealthyRule = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2) content.GetValueForProperty("EvaluationRuleUnhealthyRule",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleUnhealthyRule, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2TypeConverter.ConvertFrom);
-            }
-            if (content.Contains("DegradedRuleOperator"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleOperator = (string) content.GetValueForProperty("DegradedRuleOperator",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleOperator, global::System.Convert.ToString);
-            }
-            if (content.Contains("DegradedRuleThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleThreshold = (double?) content.GetValueForProperty("DegradedRuleThreshold",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleThreshold, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("DegradedRuleSensitivity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleSensitivity = (string) content.GetValueForProperty("DegradedRuleSensitivity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleSensitivity, global::System.Convert.ToString);
-            }
-            if (content.Contains("DegradedRuleLookBackWindow"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleLookBackWindow = (string) content.GetValueForProperty("DegradedRuleLookBackWindow",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleLookBackWindow, global::System.Convert.ToString);
-            }
-            if (content.Contains("UnhealthyRuleOperator"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleOperator = (string) content.GetValueForProperty("UnhealthyRuleOperator",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleOperator, global::System.Convert.ToString);
-            }
-            if (content.Contains("UnhealthyRuleThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleThreshold = (double?) content.GetValueForProperty("UnhealthyRuleThreshold",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleThreshold, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("UnhealthyRuleSensitivity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleSensitivity = (string) content.GetValueForProperty("UnhealthyRuleSensitivity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleSensitivity, global::System.Convert.ToString);
-            }
-            if (content.Contains("UnhealthyRuleLookBackWindow"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleLookBackWindow = (string) content.GetValueForProperty("UnhealthyRuleLookBackWindow",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleLookBackWindow, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -238,46 +198,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             if (content.Contains("SignalDefinitionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalInstancePropertiesInternal)this).SignalDefinitionName = (string) content.GetValueForProperty("SignalDefinitionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalInstancePropertiesInternal)this).SignalDefinitionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("EvaluationRuleDegradedRule"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleDegradedRule = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2) content.GetValueForProperty("EvaluationRuleDegradedRule",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleDegradedRule, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2TypeConverter.ConvertFrom);
-            }
-            if (content.Contains("EvaluationRuleUnhealthyRule"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleUnhealthyRule = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2) content.GetValueForProperty("EvaluationRuleUnhealthyRule",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).EvaluationRuleUnhealthyRule, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ThresholdRuleV2TypeConverter.ConvertFrom);
-            }
-            if (content.Contains("DegradedRuleOperator"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleOperator = (string) content.GetValueForProperty("DegradedRuleOperator",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleOperator, global::System.Convert.ToString);
-            }
-            if (content.Contains("DegradedRuleThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleThreshold = (double?) content.GetValueForProperty("DegradedRuleThreshold",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleThreshold, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("DegradedRuleSensitivity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleSensitivity = (string) content.GetValueForProperty("DegradedRuleSensitivity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleSensitivity, global::System.Convert.ToString);
-            }
-            if (content.Contains("DegradedRuleLookBackWindow"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleLookBackWindow = (string) content.GetValueForProperty("DegradedRuleLookBackWindow",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).DegradedRuleLookBackWindow, global::System.Convert.ToString);
-            }
-            if (content.Contains("UnhealthyRuleOperator"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleOperator = (string) content.GetValueForProperty("UnhealthyRuleOperator",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleOperator, global::System.Convert.ToString);
-            }
-            if (content.Contains("UnhealthyRuleThreshold"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleThreshold = (double?) content.GetValueForProperty("UnhealthyRuleThreshold",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleThreshold, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("UnhealthyRuleSensitivity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleSensitivity = (string) content.GetValueForProperty("UnhealthyRuleSensitivity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleSensitivity, global::System.Convert.ToString);
-            }
-            if (content.Contains("UnhealthyRuleLookBackWindow"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleLookBackWindow = (string) content.GetValueForProperty("UnhealthyRuleLookBackWindow",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IExternalSignalInternal)this).UnhealthyRuleLookBackWindow, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

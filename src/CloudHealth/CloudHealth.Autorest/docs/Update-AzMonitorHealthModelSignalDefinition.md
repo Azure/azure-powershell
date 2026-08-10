@@ -15,32 +15,42 @@ Update a SignalDefinition
 ### UpdateExpanded (Default)
 ```
 Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DataUnit <String>]
- [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>]
- [-DegradedRuleThreshold <Double>] [-DisplayName <String>] [-RefreshInterval <String>] [-SignalKind <String>]
- [-Tag <Hashtable>] [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <ISignalDefinitionProperties>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzMonitorHealthModelSignalDefinition -HealthModelName <String> -Name <String>
+ -ResourceGroupName <String> -Resource <ISignalDefinition> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity> -Resource <ISignalDefinition>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity> [-DataUnit <String>]
- [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>]
- [-DegradedRuleThreshold <Double>] [-DisplayName <String>] [-RefreshInterval <String>] [-SignalKind <String>]
- [-Tag <Hashtable>] [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMonitorHealthModelSignalDefinition -InputObject <ICloudHealthIdentity>
+ [-Property <ISignalDefinitionProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityHealthmodel
+```
+Update-AzMonitorHealthModelSignalDefinition -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
+ -Resource <ISignalDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHealthmodelExpanded
 ```
 Update-AzMonitorHealthModelSignalDefinition -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-DataUnit <String>] [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>]
- [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>] [-DisplayName <String>]
- [-RefreshInterval <String>] [-SignalKind <String>] [-Tag <Hashtable>] [-UnhealthyRuleLookBackWindow <String>]
- [-UnhealthyRuleOperator <String>] [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Property <ISignalDefinitionProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,27 +58,16 @@ Update a SignalDefinition
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Raise the thresholds on a signal definition
 ```powershell
-{{ Add code here }}
+$degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 75
+$unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 95
+$rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
+$property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'CPU Utilization'
+Update-AzMonitorHealthModelSignalDefinition -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name cpu-utilization -Property $property
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the signal definition so it tolerates more load before reporting degraded or unhealthy.
 
 ## PARAMETERS
 
@@ -77,22 +76,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataUnit
-Unit of the signal result (e.g.
-Bytes, MilliSeconds, Percent, Count))
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,89 +102,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DegradedRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HealthmodelInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: UpdateViaIdentityHealthmodelExpanded
+Parameter Sets: UpdateViaIdentityHealthmodel, UpdateViaIdentityHealthmodelExpanded
 Aliases:
 
 Required: True
@@ -216,7 +122,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -231,7 +137,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -247,7 +153,7 @@ Must be unique within a health model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityHealthmodelExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityHealthmodel, UpdateViaIdentityHealthmodelExpanded
 Aliases: SignalDefinitionName
 
 Required: True
@@ -272,19 +178,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RefreshInterval
-Interval in which the signal is being evaluated.
-Defaults to PT1M (1 minute).
+### -Property
+The resource-specific properties for this resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityHealthmodelExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+A signal definition in a health model
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
+Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityHealthmodel
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -294,25 +214,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SignalKind
-Kind of the signal definition
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -325,89 +230,12 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Optional set of tags (key-value pairs)
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -449,6 +277,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
 
 ## OUTPUTS
 

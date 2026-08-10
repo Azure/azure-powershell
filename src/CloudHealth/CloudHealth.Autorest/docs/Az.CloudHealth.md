@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CloudHealth
-Module Guid: 28f74d02-82b6-4aa7-ba92-08f05a8469d8
+Module Guid: 9a1d549e-8f2d-4808-8e14-407cac0ada1d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.cloudhealth
 Help Version: 1.0.0.0
 Locale: en-US
@@ -50,20 +50,47 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 ### [New-AzMonitorHealthModel](New-AzMonitorHealthModel.md)
 Create a HealthModel
 
+### [New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject](New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject.md)
+Create an in-memory object for ApplicationInsightsTopologySpecification.
+
 ### [New-AzMonitorHealthModelAuthenticationSetting](New-AzMonitorHealthModelAuthenticationSetting.md)
 Create a AuthenticationSetting
 
 ### [New-AzMonitorHealthModelDiscoveryRule](New-AzMonitorHealthModelDiscoveryRule.md)
 Create a DiscoveryRule
 
+### [New-AzMonitorHealthModelDiscoveryRulePropertiesObject](New-AzMonitorHealthModelDiscoveryRulePropertiesObject.md)
+Create an in-memory object for DiscoveryRuleProperties.
+
 ### [New-AzMonitorHealthModelEntity](New-AzMonitorHealthModelEntity.md)
 Create a Entity
+
+### [New-AzMonitorHealthModelEvaluationRuleObject](New-AzMonitorHealthModelEvaluationRuleObject.md)
+Create an in-memory object for EvaluationRule.
+
+### [New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject](New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject.md)
+Create an in-memory object for LogAnalyticsQuerySignalDefinitionProperties.
+
+### [New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject](New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject.md)
+Create an in-memory object for ManagedIdentityAuthenticationSettingProperties.
+
+### [New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject](New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject.md)
+Create an in-memory object for PrometheusMetricsSignalDefinitionProperties.
 
 ### [New-AzMonitorHealthModelRelationship](New-AzMonitorHealthModelRelationship.md)
 Create a Relationship
 
+### [New-AzMonitorHealthModelResourceGraphQuerySpecificationObject](New-AzMonitorHealthModelResourceGraphQuerySpecificationObject.md)
+Create an in-memory object for ResourceGraphQuerySpecification.
+
+### [New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject](New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject.md)
+Create an in-memory object for ResourceMetricSignalDefinitionProperties.
+
 ### [New-AzMonitorHealthModelSignalDefinition](New-AzMonitorHealthModelSignalDefinition.md)
 Create a SignalDefinition
+
+### [New-AzMonitorHealthModelThresholdRuleV2Object](New-AzMonitorHealthModelThresholdRuleV2Object.md)
+Create an in-memory object for ThresholdRuleV2.
 
 ### [Remove-AzMonitorHealthModel](Remove-AzMonitorHealthModel.md)
 Delete a HealthModel

@@ -24,8 +24,45 @@ Create a SignalDefinition
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROPERTY <ISignalDefinitionProperties>: The resource-specific properties for this resource.
+  EvaluationRule <IEvaluationRule>: Evaluation rules for the signal definition
+    UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
+    [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
+      Operator <String>: Operator how to compare the signal value with the threshold
+      [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
+      [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
+      [Threshold <Double?>]: Threshold value
+  SignalKind <String>: Kind of the signal definition
+  [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+  [DisplayName <String>]: Display name
+  [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+  [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+RESOURCE <ISignalDefinition>: A signal definition in a health model
+  [Property <ISignalDefinitionProperties>]: The resource-specific properties for this resource.
+    EvaluationRule <IEvaluationRule>: Evaluation rules for the signal definition
+      UnhealthyRule <IThresholdRuleV2>: Unhealthy rule with static threshold.
+      [DegradedRule <IThresholdRuleV2>]: Degraded rule with static threshold.
+        Operator <String>: Operator how to compare the signal value with the threshold
+        [LookBackWindow <String>]: ISO 8601 duration for the historical look-back window used by dynamic threshold computation. Only applicable when operator is Dynamic.
+        [Sensitivity <String>]: Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic.
+        [Threshold <Double?>]: Threshold value
+    SignalKind <String>: Kind of the signal definition
+    [DataUnit <String>]: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+    [DisplayName <String>]: Display name
+    [RefreshInterval <String>]: Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+    [Tag <ISignalDefinitionPropertiesTags>]: Optional set of tags (key-value pairs)
+      [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudhealth/new-azmonitorhealthmodelsignaldefinition
 #>
@@ -62,98 +99,17 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Unit of the signal result (e.g.
-    # Bytes, MilliSeconds, Percent, Count))
-    ${DataUnit},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-    # Only applicable when operator is Dynamic.
-    ${DegradedRuleLookBackWindow},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Operator how to compare the signal value with the threshold
-    ${DegradedRuleOperator},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Sensitivity level for dynamic threshold detection.
-    # Only applicable when operator is Dynamic.
-    ${DegradedRuleSensitivity},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinition]
+    # A signal definition in a health model
+    ${Resource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.Double]
-    # Threshold value
-    ${DegradedRuleThreshold},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Display name
-    ${DisplayName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT1M", "PT5M", "PT10M", "PT15M", "PT30M", "PT1H", "PT2H")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Interval in which the signal is being evaluated.
-    # Defaults to PT1M (1 minute).
-    ${RefreshInterval},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("AzureResourceMetric", "LogAnalyticsQuery", "PrometheusMetricsQuery", "External")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Kind of the signal definition
-    ${SignalKind},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionPropertiesTags]))]
-    [System.Collections.Hashtable]
-    # Optional set of tags (key-value pairs)
-    ${Tag},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT5M", "PT15M", "PT30M", "PT1H")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-    # Only applicable when operator is Dynamic.
-    ${UnhealthyRuleLookBackWindow},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "LessThanOrEqual", "GreaterThanOrEqual", "Equal", "NotEqual", "Dynamic")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Operator how to compare the signal value with the threshold
-    ${UnhealthyRuleOperator},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Low", "Medium", "High")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.String]
-    # Sensitivity level for dynamic threshold detection.
-    # Only applicable when operator is Dynamic.
-    ${UnhealthyRuleSensitivity},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
-    [System.Double]
-    # Threshold value
-    ${UnhealthyRuleThreshold},
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalDefinitionProperties]
+    # The resource-specific properties for this resource.
+    ${Property},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category('Body')]
@@ -262,11 +218,12 @@ begin {
         }
 
         $mapping = @{
+            Create = 'Az.CloudHealth.private\New-AzMonitorHealthModelSignalDefinition_Create';
             CreateExpanded = 'Az.CloudHealth.private\New-AzMonitorHealthModelSignalDefinition_CreateExpanded';
             CreateViaJsonFilePath = 'Az.CloudHealth.private\New-AzMonitorHealthModelSignalDefinition_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.CloudHealth.private\New-AzMonitorHealthModelSignalDefinition_CreateViaJsonString';
         }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

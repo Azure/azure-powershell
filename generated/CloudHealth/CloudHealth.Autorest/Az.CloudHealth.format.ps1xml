@@ -1548,18 +1548,6 @@
             <Label>DataUnit</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DegradedRuleLookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleSensitivity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1570,18 +1558,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SignalKind</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleLookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleSensitivity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleThreshold</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>QueryText</Label>
@@ -1600,18 +1576,6 @@
                 <PropertyName>DataUnit</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DegradedRuleLookBackWindow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleSensitivity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1622,18 +1586,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SignalKind</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleLookBackWindow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleSensitivity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleThreshold</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>QueryText</PropertyName>
@@ -2052,18 +2004,6 @@
             <Label>DataUnit</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DegradedRuleLookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleSensitivity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2074,18 +2014,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SignalKind</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleLookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleSensitivity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleThreshold</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>QueryText</Label>
@@ -2101,18 +2029,6 @@
                 <PropertyName>DataUnit</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DegradedRuleLookBackWindow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleSensitivity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2123,18 +2039,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SignalKind</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleLookBackWindow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleSensitivity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleThreshold</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>QueryText</PropertyName>
@@ -2420,18 +2324,6 @@
             <Label>DataUnit</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DegradedRuleLookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleSensitivity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DegradedRuleThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2442,18 +2334,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SignalKind</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleLookBackWindow</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleSensitivity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UnhealthyRuleThreshold</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AggregationType</Label>
@@ -2478,18 +2358,6 @@
                 <PropertyName>DataUnit</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DegradedRuleLookBackWindow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleSensitivity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DegradedRuleThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2500,18 +2368,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SignalKind</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleLookBackWindow</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleSensitivity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UnhealthyRuleThreshold</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AggregationType</PropertyName>

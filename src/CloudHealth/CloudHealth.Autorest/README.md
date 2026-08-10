@@ -55,7 +55,19 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
   # Following two directives are v4 specific
+  #
+  # AuthenticationSetting, SignalDefinition and DiscoveryRule carry discriminated
+  # (polymorphic) property bags. The Expanded variants only flatten the base type, so
+  # the subtype-required fields (authenticationKind/managedIdentityName, the
+  # signalKind subtype metric fields, and specification/entityName) are unreachable and
+  # every Expanded call fails API payload validation. Keep their unexpanded variants so
+  # the property object built by the *Object cmdlets below can be passed directly.
   - where:
+      subject: ^(AuthenticationSetting|SignalDefinition|DiscoveryRule)$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: false
+  - where:
+      subject: ^(?!AuthenticationSetting$|SignalDefinition$|DiscoveryRule$).*$
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
@@ -66,4 +78,31 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # Keep the discriminated property bags as explicit models and emit constructor
+  # cmdlets for them, so the unexpanded variants above are actually usable.
+  - no-inline:
+    - AuthenticationSettingProperties
+    - ManagedIdentityAuthenticationSettingProperties
+    - SignalDefinitionProperties
+    - ResourceMetricSignalDefinitionProperties
+    - LogAnalyticsQuerySignalDefinitionProperties
+    - PrometheusMetricsSignalDefinitionProperties
+    - DiscoveryRuleProperties
+    - DiscoveryRuleSpecification
+    - ApplicationInsightsTopologySpecification
+    - ResourceGraphQuerySpecification
+    - EvaluationRule
+    - ThresholdRuleV2
+
+  - model-cmdlet:
+    - model-name: ManagedIdentityAuthenticationSettingProperties
+    - model-name: ResourceMetricSignalDefinitionProperties
+    - model-name: LogAnalyticsQuerySignalDefinitionProperties
+    - model-name: PrometheusMetricsSignalDefinitionProperties
+    - model-name: DiscoveryRuleProperties
+    - model-name: ApplicationInsightsTopologySpecification
+    - model-name: ResourceGraphQuerySpecification
+    - model-name: EvaluationRule
+    - model-name: ThresholdRuleV2
 ```

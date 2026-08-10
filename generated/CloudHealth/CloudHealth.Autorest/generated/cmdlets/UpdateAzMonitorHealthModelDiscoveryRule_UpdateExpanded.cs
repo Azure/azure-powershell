@@ -46,52 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.DiscoveryRule();
 
-        /// <summary>Whether to add all recommended signals to the discovered entities.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to add all recommended signals to the discovered entities.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Whether to add all recommended signals to the discovered entities.",
-        SerializedName = @"addRecommendedSignals",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        public string AddRecommendedSignal { get => _resourceBody.AddRecommendedSignal ?? null; set => _resourceBody.AddRecommendedSignal = value; }
-
-        /// <summary>
-        /// Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered
-        /// entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting
-        /// a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.",
-        SerializedName = @"addResourceHealthSignal",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        public string AddResourceHealthSignal { get => _resourceBody.AddResourceHealthSignal ?? null; set => _resourceBody.AddResourceHealthSignal = value; }
-
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
-
-        /// <summary>
-        /// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication
-        /// setting will also be assigned to any discovered entities.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.",
-        SerializedName = @"authenticationSetting",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AuthenticationSetting { get => _resourceBody.AuthenticationSetting ?? null; set => _resourceBody.AuthenticationSetting = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -113,32 +71,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
-
-        /// <summary>
-        /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships
-        /// cannot be manually deleted.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.",
-        SerializedName = @"discoverRelationships",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        public string DiscoverRelationship { get => _resourceBody.DiscoverRelationship ?? null; set => _resourceBody.DiscoverRelationship = value; }
-
-        /// <summary>Display name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Display name")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Display name",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DisplayName { get => _resourceBody.DisplayName ?? null; set => _resourceBody.DisplayName = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -208,6 +140,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource-specific properties for this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties Property { get => _resourceBody.Property ?? null /* object */; set => _resourceBody.Property = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Runtime)]
@@ -237,18 +180,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Kind of the discovery rule specification</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kind of the discovery rule specification")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Kind of the discovery rule specification",
-        SerializedName = @"kind",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("ResourceGraphQuery", "ApplicationInsightsTopology")]
-        public string SpecificationKind { get => _resourceBody.SpecificationKind ?? null; set => _resourceBody.SpecificationKind = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -580,29 +511,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Cmdlets
 
         private void Update_resourceBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DisplayName")))
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Property")))
             {
-                this.DisplayName = (string)(this.MyInvocation?.BoundParameters["DisplayName"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AuthenticationSetting")))
-            {
-                this.AuthenticationSetting = (string)(this.MyInvocation?.BoundParameters["AuthenticationSetting"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiscoverRelationship")))
-            {
-                this.DiscoverRelationship = (string)(this.MyInvocation?.BoundParameters["DiscoverRelationship"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AddRecommendedSignal")))
-            {
-                this.AddRecommendedSignal = (string)(this.MyInvocation?.BoundParameters["AddRecommendedSignal"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AddResourceHealthSignal")))
-            {
-                this.AddResourceHealthSignal = (string)(this.MyInvocation?.BoundParameters["AddResourceHealthSignal"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SpecificationKind")))
-            {
-                this.SpecificationKind = (string)(this.MyInvocation?.BoundParameters["SpecificationKind"]);
+                this.Property = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties)(this.MyInvocation?.BoundParameters["Property"]);
             }
         }
 

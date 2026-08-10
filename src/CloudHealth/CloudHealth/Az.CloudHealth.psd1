@@ -82,11 +82,20 @@ FunctionsToExport = 'Add-AzMonitorHealthModelEntityDataAnnotation',
                'Get-AzMonitorHealthModelSignalDefinition', 
                'Invoke-AzMonitorHealthModelIngestEntityHealthReport', 
                'New-AzMonitorHealthModel', 
+               'New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject', 
                'New-AzMonitorHealthModelAuthenticationSetting', 
                'New-AzMonitorHealthModelDiscoveryRule', 
+               'New-AzMonitorHealthModelDiscoveryRulePropertiesObject', 
                'New-AzMonitorHealthModelEntity', 
+               'New-AzMonitorHealthModelEvaluationRuleObject', 
+               'New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject', 
+               'New-AzMonitorHealthModelManagedIdentityAuthenticationSettingPropertiesObject', 
+               'New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject', 
                'New-AzMonitorHealthModelRelationship', 
+               'New-AzMonitorHealthModelResourceGraphQuerySpecificationObject', 
+               'New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject', 
                'New-AzMonitorHealthModelSignalDefinition', 
+               'New-AzMonitorHealthModelThresholdRuleV2Object', 
                'Remove-AzMonitorHealthModel', 
                'Remove-AzMonitorHealthModelAuthenticationSetting', 
                'Remove-AzMonitorHealthModelDiscoveryRule', 
@@ -99,8 +108,6 @@ FunctionsToExport = 'Add-AzMonitorHealthModelEntityDataAnnotation',
                'Update-AzMonitorHealthModelEntity', 
                'Update-AzMonitorHealthModelRelationship', 
                'Update-AzMonitorHealthModelSignalDefinition'
-
-# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
 
 # Variables to export from this module

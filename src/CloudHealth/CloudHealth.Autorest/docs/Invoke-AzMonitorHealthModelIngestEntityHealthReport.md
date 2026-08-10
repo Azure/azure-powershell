@@ -16,10 +16,8 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 ```
 Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String> -HealthModelName <String>
  -ResourceGroupName <String> -HealthState <String> -SignalName <String> [-SubscriptionId <String>]
- [-AdditionalContext <String>] [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>]
- [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>] [-ExpiresInMinute <Int32>]
- [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-Value <Double>]
+ [-AdditionalContext <String>] [-EvaluationRuleDegradedRule <IThresholdRuleV2>]
+ [-EvaluationRuleUnhealthyRule <IThresholdRuleV2>] [-ExpiresInMinute <Int32>] [-Value <Double>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -40,10 +38,8 @@ Invoke-AzMonitorHealthModelIngestEntityHealthReport -InputObject <ICloudHealthId
 ### IngestViaIdentityExpanded
 ```
 Invoke-AzMonitorHealthModelIngestEntityHealthReport -InputObject <ICloudHealthIdentity> -HealthState <String>
- -SignalName <String> [-AdditionalContext <String>] [-DegradedRuleLookBackWindow <String>]
- [-DegradedRuleOperator <String>] [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>]
- [-ExpiresInMinute <Int32>] [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-Value <Double>]
+ -SignalName <String> [-AdditionalContext <String>] [-EvaluationRuleDegradedRule <IThresholdRuleV2>]
+ [-EvaluationRuleUnhealthyRule <IThresholdRuleV2>] [-ExpiresInMinute <Int32>] [-Value <Double>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -58,10 +54,8 @@ Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String>
 ```
 Invoke-AzMonitorHealthModelIngestEntityHealthReport -EntityName <String>
  -HealthmodelInputObject <ICloudHealthIdentity> -HealthState <String> -SignalName <String>
- [-AdditionalContext <String>] [-DegradedRuleLookBackWindow <String>] [-DegradedRuleOperator <String>]
- [-DegradedRuleSensitivity <String>] [-DegradedRuleThreshold <Double>] [-ExpiresInMinute <Int32>]
- [-UnhealthyRuleLookBackWindow <String>] [-UnhealthyRuleOperator <String>]
- [-UnhealthyRuleSensitivity <String>] [-UnhealthyRuleThreshold <Double>] [-Value <Double>]
+ [-AdditionalContext <String>] [-EvaluationRuleDegradedRule <IThresholdRuleV2>]
+ [-EvaluationRuleUnhealthyRule <IThresholdRuleV2>] [-ExpiresInMinute <Int32>] [-Value <Double>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,27 +78,12 @@ Ingest a health report for a specific signal on an entity (the entity must alrea
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Report a health state for an entity
 ```powershell
-{{ Add code here }}
+Invoke-AzMonitorHealthModelIngestEntityHealthReport -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -EntityName frontend-service -SignalName checkout-latency -HealthState Degraded -Value 142.5 -ExpiresInMinute 60
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Pushes an external health signal into the model. The report expires after 60 minutes unless it is sent again.
 
 ## PARAMETERS
 
@@ -154,68 +133,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DegradedRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DegradedRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EntityName
 Name of the entity.
 Must be unique within a health model.
@@ -226,6 +143,36 @@ Parameter Sets: Ingest, IngestExpanded, IngestViaIdentityHealthmodel, IngestViaI
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EvaluationRuleDegradedRule
+Degraded rule with static threshold.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EvaluationRuleUnhealthyRule
+Unhealthy rule with static threshold.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IThresholdRuleV2
+Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -396,68 +343,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleLookBackWindow
-ISO 8601 duration for the historical look-back window used by dynamic threshold computation.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleOperator
-Operator how to compare the signal value with the threshold
-
-```yaml
-Type: System.String
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleSensitivity
-Sensitivity level for dynamic threshold detection.
-Only applicable when operator is Dynamic.
-
-```yaml
-Type: System.String
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnhealthyRuleThreshold
-Threshold value
-
-```yaml
-Type: System.Double
-Parameter Sets: IngestExpanded, IngestViaIdentityExpanded, IngestViaIdentityHealthmodelExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

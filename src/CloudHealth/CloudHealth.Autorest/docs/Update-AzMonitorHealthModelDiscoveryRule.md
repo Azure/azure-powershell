@@ -15,26 +15,42 @@ Update a DiscoveryRule
 ### UpdateExpanded (Default)
 ```
 Update-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AddRecommendedSignal <String>] [-AddResourceHealthSignal <String>]
- [-AuthenticationSetting <String>] [-DiscoverRelationship <String>] [-DisplayName <String>]
- [-SpecificationKind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Property <IDiscoveryRuleProperties>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzMonitorHealthModelDiscoveryRule -HealthModelName <String> -Name <String> -ResourceGroupName <String>
+ -Resource <IDiscoveryRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzMonitorHealthModelDiscoveryRule -InputObject <ICloudHealthIdentity> -Resource <IDiscoveryRule>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMonitorHealthModelDiscoveryRule -InputObject <ICloudHealthIdentity> [-AddRecommendedSignal <String>]
- [-AddResourceHealthSignal <String>] [-AuthenticationSetting <String>] [-DiscoverRelationship <String>]
- [-DisplayName <String>] [-SpecificationKind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMonitorHealthModelDiscoveryRule -InputObject <ICloudHealthIdentity>
+ [-Property <IDiscoveryRuleProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityHealthmodel
+```
+Update-AzMonitorHealthModelDiscoveryRule -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
+ -Resource <IDiscoveryRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityHealthmodelExpanded
 ```
 Update-AzMonitorHealthModelDiscoveryRule -HealthmodelInputObject <ICloudHealthIdentity> -Name <String>
- [-AddRecommendedSignal <String>] [-AddResourceHealthSignal <String>] [-AuthenticationSetting <String>]
- [-DiscoverRelationship <String>] [-DisplayName <String>] [-SpecificationKind <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Property <IDiscoveryRuleProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,83 +58,22 @@ Update a DiscoveryRule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Narrow the query on a discovery rule
 ```powershell
-{{ Add code here }}
+$specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where type =~ 'microsoft.compute/virtualmachines' and tags['env'] =~ 'prod' | project id"
+$property = New-AzMonitorHealthModelDiscoveryRulePropertiesObject -AuthenticationSetting default-auth -AddRecommendedSignal Enabled -AddResourceHealthSignal Enabled -DiscoverRelationship Enabled -DisplayName 'Discover production virtual machines' -Specification $specification
+Update-AzMonitorHealthModelDiscoveryRule -HealthModelName azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Name discover-vms -Property $property
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Restricts discovery to virtual machines tagged as production.
 
 ## PARAMETERS
-
-### -AddRecommendedSignal
-Whether to add all recommended signals to the discovered entities.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AddResourceHealthSignal
-Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities.
-Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal.
-Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationSetting
-Reference to the name of the authentication setting which is used for querying Azure Resource Graph.
-The same authentication setting will also be assigned to any discovered entities.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -145,43 +100,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiscoverRelationship
-Whether to create relationships between the discovered entities based on a set of built-in rules.
-These relationships cannot be manually deleted.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HealthmodelInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: UpdateViaIdentityHealthmodelExpanded
+Parameter Sets: UpdateViaIdentityHealthmodel, UpdateViaIdentityHealthmodelExpanded
 Aliases:
 
 Required: True
@@ -196,7 +120,7 @@ Name of health model resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -211,7 +135,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -227,7 +151,7 @@ Must be unique within a health model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityHealthmodelExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityHealthmodel, UpdateViaIdentityHealthmodelExpanded
 Aliases: DiscoveryRuleName
 
 Required: True
@@ -252,31 +176,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Property
+The resource-specific properties for this resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRuleProperties
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityHealthmodelExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpecificationKind
-Kind of the discovery rule specification
+### -Resource
+A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
+Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityHealthmodel
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -289,7 +228,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
@@ -336,6 +275,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ICloudHealthIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IDiscoveryRule
 
 ## OUTPUTS
 

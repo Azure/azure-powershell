@@ -78,12 +78,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
                 return;
             }
             __signalInstanceProperties = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalInstanceProperties(json);
-            {_evaluationRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("evaluationRules"), out var __jsonEvaluationRules) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule.FromJson(__jsonEvaluationRules) : _evaluationRule;}
             {_queryText = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("queryText"), out var __jsonQueryText) ? (string)__jsonQueryText : (string)_queryText;}
             {_timeGrain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("timeGrain"), out var __jsonTimeGrain) ? (string)__jsonTimeGrain : (string)_timeGrain;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
             {_refreshInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("refreshInterval"), out var __jsonRefreshInterval) ? (string)__jsonRefreshInterval : (string)_refreshInterval;}
             {_dataUnit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("dataUnit"), out var __jsonDataUnit) ? (string)__jsonDataUnit : (string)_dataUnit;}
+            {_evaluationRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("evaluationRules"), out var __jsonEvaluationRules) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule.FromJson(__jsonEvaluationRules) : _evaluationRule;}
             AfterFromJson(json);
         }
 
@@ -107,12 +107,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
                 return container;
             }
             __signalInstanceProperties?.ToJson(container, serializationMode);
-            AddIf( null != this._evaluationRule ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._evaluationRule.ToJson(null,serializationMode) : null, "evaluationRules" ,container.Add );
             AddIf( null != (((object)this._queryText)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._queryText.ToString()) : null, "queryText" ,container.Add );
             AddIf( null != (((object)this._timeGrain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._timeGrain.ToString()) : null, "timeGrain" ,container.Add );
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
             AddIf( null != (((object)this._refreshInterval)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._refreshInterval.ToString()) : null, "refreshInterval" ,container.Add );
             AddIf( null != (((object)this._dataUnit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._dataUnit.ToString()) : null, "dataUnit" ,container.Add );
+            AddIf( null != this._evaluationRule ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._evaluationRule.ToJson(null,serializationMode) : null, "evaluationRules" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

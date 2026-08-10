@@ -39,27 +39,12 @@ Create a HealthModel
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a health model
 ```powershell
-{{ Add code here }}
+New-AzMonitorHealthModel -Name azpwsh-healthmodel1 -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a health model with a system-assigned managed identity, which discovery rules and signals use to read monitoring data.
 
 ## PARAMETERS
 
