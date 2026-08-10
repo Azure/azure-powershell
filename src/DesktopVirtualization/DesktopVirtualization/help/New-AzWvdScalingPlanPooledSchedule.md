@@ -1,64 +1,54 @@
-﻿---
-document type: cmdlet
-external help file: 
-HelpUri: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpooledschedule
+---
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
-ms.date: 07/29/2026
-PlatyPS schema version: 2024-05-01
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpooledschedule
+schema: 2.0.0
 ---
 
 # New-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-
 Create a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
-
 ```
-New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <string> -ScalingPlanName <string>
- -ScalingPlanScheduleName <string> [-SubscriptionId <string>]
- [-CreateDeleteRampDownMaximumHostPoolSize <int>] [-CreateDeleteRampDownMinimumHostPoolSize <int>]
- [-CreateDeleteRampUpMaximumHostPoolSize <int>] [-CreateDeleteRampUpMinimumHostPoolSize <int>]
- [-DaysOfWeek <string[]>] [-OffPeakLoadBalancingAlgorithm <string>] [-OffPeakStartTimeHour <int>]
- [-OffPeakStartTimeMinute <int>] [-PeakLoadBalancingAlgorithm <string>] [-PeakStartTimeHour <int>]
- [-PeakStartTimeMinute <int>] [-RampDownCapacityThresholdPct <int>] [-RampDownForceLogoffUser]
- [-RampDownLoadBalancingAlgorithm <string>] [-RampDownMinimumHostsPct <int>]
- [-RampDownNotificationMessage <string>] [-RampDownStartTimeHour <int>]
- [-RampDownStartTimeMinute <int>] [-RampDownStopHostsWhen <string>] [-RampDownWaitTimeMinute <int>]
- [-RampUpCapacityThresholdPct <int>] [-RampUpLoadBalancingAlgorithm <string>]
- [-RampUpMinimumHostsPct <int>] [-RampUpStartTimeHour <int>] [-RampUpStartTimeMinute <int>]
- [-ScalingMethod <string>] [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
+New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>]
+ [-CreateDeleteRampDownMaximumHostPoolSize <Int32>] [-CreateDeleteRampDownMinimumHostPoolSize <Int32>]
+ [-CreateDeleteRampUpMaximumHostPoolSize <Int32>] [-CreateDeleteRampUpMinimumHostPoolSize <Int32>]
+ [-DaysOfWeek <String[]>] [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>]
+ [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>]
+ [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser]
+ [-RampDownLoadBalancingAlgorithm <String>] [-RampDownMinimumHostsPct <Int32>]
+ [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
+ [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
+ [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
+ [-RampUpStartTimeMinute <Int32>] [-ScalingMethod <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
-
 ```
-New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <string> -ScalingPlanName <string>
- -ScalingPlanScheduleName <string> -JsonFilePath <string> [-SubscriptionId <string>]
- [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
+New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
-
 ```
-New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <string> -ScalingPlanName <string>
- -ScalingPlanScheduleName <string> -JsonString <string> [-SubscriptionId <string>]
- [-DefaultProfile <psobject>] [-WhatIf] [-Confirm]
+New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
-
-## ALIASES
 
 ## DESCRIPTION
-
 Create a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
 ### Example 1: Create a Scaling Plan Pooled Schedule
-
 ```powershell
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -96,762 +86,543 @@ Add a Scaling Plan Pooled Schedule to an existing Scaling Plan.
 
 ## PARAMETERS
 
-### -Confirm
-
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- cf
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
 ### -CreateDeleteRampDownMaximumHostPoolSize
-
 Maximum number of session hosts that may be created by the Scaling Service.
 This requires the assigned hostpool to have a session host config property.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CreateDeleteRampDownMinimumHostPoolSize
-
 Minimum number of session hosts that will be be created by the Scaling Service.
 Scaling will not delete any hosts when this limit is met.
 This requires the assigned hostpool to have a session host config property.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CreateDeleteRampUpMaximumHostPoolSize
-
 Maximum number of session hosts that may be created by the Scaling Service.
 This requires the assigned hostpool to have a session host config property.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CreateDeleteRampUpMinimumHostPoolSize
-
 Minimum number of session hosts that will be be created by the Scaling Service.
 Scaling will not delete any hosts when this limit is met.
 This requires the assigned hostpool to have a session host config property.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DaysOfWeek
-
 Set of days of the week on which this schedule is active.
 
 ```yaml
 Type: System.String[]
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- AzureRMContext
-- AzureCredential
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -JsonString
-
 Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -OffPeakLoadBalancingAlgorithm
-
 Load balancing algorithm for off-peak period.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -OffPeakStartTimeHour
-
 The hour.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -OffPeakStartTimeMinute
-
 The minute.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PeakLoadBalancingAlgorithm
-
 Load balancing algorithm for peak period.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PeakStartTimeHour
-
 The hour.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PeakStartTimeMinute
-
 The minute.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownCapacityThresholdPct
-
 Capacity threshold for ramp down period.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownForceLogoffUser
-
 Should users be logged off forcefully from hosts.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownLoadBalancingAlgorithm
-
 Load balancing algorithm for ramp down period.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownMinimumHostsPct
-
 Minimum host percentage for ramp down period.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownNotificationMessage
-
 Notification message for users during ramp down period.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownStartTimeHour
-
 The hour.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownStartTimeMinute
-
 The minute.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownStopHostsWhen
-
 Specifies when to stop hosts during ramp down period.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampDownWaitTimeMinute
-
 Number of minutes to wait to stop hosts during ramp down period.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampUpCapacityThresholdPct
-
 Capacity threshold for ramp up period.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampUpLoadBalancingAlgorithm
-
 Load balancing algorithm for ramp up period.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampUpMinimumHostsPct
-
 Minimum host percentage for ramp up period.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampUpStartTimeHour
-
 The hour.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -RampUpStartTimeMinute
-
 The minute.
 
 ```yaml
 Type: System.Int32
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ScalingMethod
-
 The desired scaling method to be used to scale the hosts in the assigned host pool.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: CreateExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ScalingPlanName
-
 The name of the scaling plan.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ScalingPlanScheduleName
-
 The name of the ScalingPlanSchedule
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: (Get-AzContext).Subscription.Id
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-Runs the command in a mode that only reports what would happen without performing the actions.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- wi
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
--ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -862,6 +633,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-{{ Fill in the related links here }}
-

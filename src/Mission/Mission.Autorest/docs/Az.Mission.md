@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Mission
-Module Guid: 1ed7b1c7-8dea-4f5d-aaaf-6cfd8e6a42c3
+Module Guid: 670efdc0-8a97-437b-bd85-119da84f4b9d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mission
 Help Version: 1.0.0.0
 Locale: en-US

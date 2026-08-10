@@ -1,78 +1,66 @@
-﻿---
-document type: cmdlet
-external help file: 
-HelpUri: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcontrolsessionhostupdate
+---
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
-ms.date: 07/29/2026
-PlatyPS schema version: 2024-05-01
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcontrolsessionhostupdate
+schema: 2.0.0
 ---
 
 # Invoke-AzWvdControlSessionHostUpdate
 
 ## SYNOPSIS
-
 Control actions on a session host post
 
 ## SYNTAX
 
 ### PostExpanded (Default)
-
 ```
-Invoke-AzWvdControlSessionHostUpdate -HostPoolName <string> -ResourceGroupName <string>
- -Action <string> [-SubscriptionId <string>] [-CancelMessage <string>] [-DefaultProfile <psobject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
-```
-
-### Post
-
-```
-Invoke-AzWvdControlSessionHostUpdate -HostPoolName <string> -ResourceGroupName <string>
- -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-SubscriptionId <string>]
- [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
-```
-
-### PostViaIdentity
-
-```
-Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
- -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-DefaultProfile <psobject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
-```
-
-### PostViaIdentityExpanded
-
-```
-Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity> -Action <string>
- [-CancelMessage <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm]
-```
-
-### PostViaJsonFilePath
-
-```
-Invoke-AzWvdControlSessionHostUpdate -HostPoolName <string> -ResourceGroupName <string>
- -JsonFilePath <string> [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Action <String> [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaJsonString
-
 ```
-Invoke-AzWvdControlSessionHostUpdate -HostPoolName <string> -ResourceGroupName <string>
- -JsonString <string> [-SubscriptionId <string>] [-DefaultProfile <psobject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm]
+Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## ALIASES
+### PostViaJsonFilePath
+```
+Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Post
+```
+Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### PostViaIdentityExpanded
+```
+Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity> -Action <String>
+ [-CancelMessage <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaIdentity
+```
+Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
+ -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ## DESCRIPTION
-
 Control actions on a session host post
 
 ## EXAMPLES
 
 ### Example 1: Controls a SessionHostUpdate Operation on a HostPool
-
 ```powershell
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName HostPoolName `
                             -ResourceGroupName resourceGroupName `
@@ -86,414 +74,237 @@ This command controls an ongoing sessionHostUpdate operation on the given hostpo
 ## PARAMETERS
 
 ### -Action
-
 Action types for controlling hostpool update.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaIdentityExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -AsJob
-
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CancelMessage
-
 The cancel message sent to the user on the session host.
 This is can only be specified if the action is 'Cancel'.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaIdentityExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
-### -Confirm
-
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
-- cf
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- AzureRMContext
-- AzureCredential
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -HostPoolName
-
 The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Post
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath, Post
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -HostPoolUpdateControlParameter
-
 Object containing control action for hostpool update.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateControlParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaIdentity
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Post
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: Post, PostViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -InputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaIdentityExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostViaIdentity
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: true
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostViaIdentityExpanded, PostViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-
 Path of Json file supplied to the Post operation
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -JsonString
-
 Json string supplied to the Post operation
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -PassThru
-
 Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-DefaultValue: None
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaJsonString
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostViaJsonFilePath
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostExpanded
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Post
-  Position: Named
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath, Post
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String
-DefaultValue: (Get-AzContext).Subscription.Id
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: PostViaJsonString
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostViaJsonFilePath
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: PostExpanded
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-- Name: Post
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: PostExpanded, PostViaJsonString, PostViaJsonFilePath, Post
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-Runs the command in a mode that only reports what would happen without performing the actions.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- wi
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
--ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -508,6 +319,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-{{ Fill in the related links here }}
-
