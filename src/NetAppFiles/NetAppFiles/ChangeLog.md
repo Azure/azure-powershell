@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added deprecation notices to all Azure NetApp Files subvolume cmdlets
+* Added breaking change notices for the removal of `EnableSubvolume` from Azure NetApp Files volume parameters and output
 
 ## Version 1.4.0
  * Added FileAccessLogs to `Get-AzNetAppFilesCache` output.
