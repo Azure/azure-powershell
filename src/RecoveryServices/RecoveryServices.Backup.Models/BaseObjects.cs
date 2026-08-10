@@ -234,6 +234,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string SourceResourceId { get; set; }
 
+        /// <summary>
+        /// Source Scan status of the protected item, indicating whether Microsoft Defender for
+        /// Cloud Source Scan is configured for this item. Mapped from the protected item's
+        /// sourceSideScanInfo.sourceSideScanStatus.
+        /// </summary>
+        public ServiceClientModel.SourceSideScanStatus? SourceSideScanStatus { get; set; }
+
+        /// <summary>
+        /// Source Scan threat summary of the protected item. Mapped from the protected item's
+        /// sourceSideScanInfo.sourceSideScanSummary.
+        /// </summary>
+        public ServiceClientModel.SourceSideScanSummary? SourceSideScanSummary { get; set; }
+
         public ItemBase(ServiceClientModel.ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType)
             : base(protectedItemResource.Properties, containerName, containerType)
@@ -243,6 +256,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             Id = protectedItemResource.Id;
             LatestRecoveryPoint = protectedItem.LastRecoveryPoint;
             SourceResourceId = protectedItem.SourceResourceId;
+
+            if (protectedItem.SourceSideScanInfo != null)
+            {
+                SourceSideScanStatus = protectedItem.SourceSideScanInfo.SourceSideScanStatus;
+                SourceSideScanSummary = protectedItem.SourceSideScanInfo.SourceSideScanSummary;
+            }
         }
 
         public ItemBase(CrrModel.ProtectedItemResource protectedItemResource,
@@ -308,6 +327,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Fully qualified ARM ID of this recovery point
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Threat status of this recovery point, mapped from the recovery point's threatStatus.
+        /// </summary>
+        public ServiceClientModel.ThreatStatus? ThreatStatus { get; set; }
+
+        /// <summary>
+        /// Threat information associated with this recovery point, mapped from the recovery
+        /// point's threatInfo.
+        /// </summary>
+        public IList<ServiceClientModel.ThreatInfo> ThreatInfo { get; set; }
 
         public RecoveryPointBase()
             : base()

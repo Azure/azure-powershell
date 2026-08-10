@@ -334,6 +334,15 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="PublicNetworkAccessEnabledByDefault" xml:space="preserve">
     <value>Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet</value>
   </data>
+  <data name="SourceScanIdentityIdRequired" xml:space="preserve">
+    <value>SourceScanUserAssignedIdentityId is required when SourceScanIdentityType is UserAssigned</value>
+  </data>
+  <data name="SourceScanIdentityIdNotAllowed" xml:space="preserve">
+    <value>SourceScanUserAssignedIdentityId can't be set when SourceScanIdentityType is SystemAssigned</value>
+  </data>
+  <data name="SourceScanIdentityNotAllowedWhenDisabled" xml:space="preserve">
+    <value>SourceScanIdentityType and SourceScanUserAssignedIdentityId can't be set when SourceScanState is Disabled</value>
+  </data>
   <data name="UnexpectedParameterToken" xml:space="preserve">
     <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
   </data>

@@ -31,8 +31,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// The API version to use for this operation.
+        /// NOTE: The setter visibility was widened from 'private set' to 'set' as a narrow,
+        /// hand-authored change so that ServiceClientAdapter can temporarily override the API
+        /// version to "2026-01-31-preview" for the single Source Scan protected-item PUT call,
+        /// then restore the original value afterwards. All other operations continue to use the
+        /// default API version set in the constructor.
         /// </summary>
-        public string ApiVersion { get; private set; }
+        public string ApiVersion { get; set; }
 
         /// <summary>
         /// The subscription Id.

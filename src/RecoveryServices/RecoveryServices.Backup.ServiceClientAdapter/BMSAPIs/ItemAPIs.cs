@@ -108,6 +108,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Updates the Source Scan configuration on an already existing protected item.
+        /// NOTE: This method is a narrow, hand-authored adapter addition. The Source Scan feature
+        /// (sourceSideScanInfo) is only available under the 2026-01-31-preview Backup API version,
+        /// which is newer than the default API version used by the rest of this client
+        /// (2025-02-01). Since regenerating the whole SDK against the preview spec was infeasible
+        /// (the corresponding swagger/TypeSpec could not be located for local AutoRest
+        /// regeneration), this method temporarily swaps the client's ApiVersion to the preview
+        /// value for the single PUT call needed here, then restores the original value, leaving
+        /// all other operations unaffected.
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="request">Protected item create or update request, with SourceSideScanInfo updated</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Response returned by the service for this operation, including tracking headers for async jobs</returns>
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UpdateProtectedItemSourceScan(
+            string containerName,
+            string protectedItemName,
+            ProtectedItemResource request,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            const string sourceScanApiVersion = "2026-01-31-preview";
+            string originalApiVersion = BmsAdapter.Client.ApiVersion;
+
+            try
+            {
+                BmsAdapter.Client.ApiVersion = sourceScanApiVersion;
+
+                Logger.Instance.WriteDebug("Executing CreateOrUpdateWithHttpMessagesAsync for Source Scan update");
+                return BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
+                     vaultName ?? BmsAdapter.GetResourceName(),
+                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                     AzureFabricName,
+                     containerName,
+                     protectedItemName,
+                     request,
+                     null,
+                     null,
+                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+            }
+            finally
+            {
+                BmsAdapter.Client.ApiVersion = originalApiVersion;
+            }
+        }
+
+        /// <summary>
         /// Deletes a protected item
         /// </summary>
         /// <param name="containerName">Name of the container which this item belongs to</param>

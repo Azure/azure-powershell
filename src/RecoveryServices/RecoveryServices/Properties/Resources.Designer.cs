@@ -414,6 +414,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SourceScanUserAssignedIdentityId is required when SourceScanIdentityType is UserAssigned.
+        /// </summary>
+        internal static string SourceScanIdentityIdRequired {
+            get {
+                return ResourceManager.GetString("SourceScanIdentityIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SourceScanUserAssignedIdentityId can&apos;t be set when SourceScanIdentityType is SystemAssigned.
+        /// </summary>
+        internal static string SourceScanIdentityIdNotAllowed {
+            get {
+                return ResourceManager.GetString("SourceScanIdentityIdNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SourceScanIdentityType and SourceScanUserAssignedIdentityId can&apos;t be set when SourceScanState is Disabled.
+        /// </summary>
+        internal static string SourceScanIdentityNotAllowedWhenDisabled {
+            get {
+                return ResourceManager.GetString("SourceScanIdentityNotAllowedWhenDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryPlan  {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string RecoveryPlanNotFound {

@@ -192,6 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 this.Properties.SoftDeleteSettings = vault.Properties.SecuritySettings.SoftDeleteSettings;
                 this.Properties.MultiUserAuthorization = vault.Properties.SecuritySettings.MultiUserAuthorization;
+                this.Properties.SourceScanConfiguration = vault.Properties.SecuritySettings.SourceScanConfiguration;
             }
         }
 
@@ -290,6 +291,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public VaultPropertiesRedundancySettings RedundancySettings { get; set; }
         public SoftDeleteSettings SoftDeleteSettings {get; set; }
         public string MultiUserAuthorization { get; set; }
+
+        /// <summary>
+        /// Gets or sets SourceScanConfiguration.
+        /// </summary>
+        public SourceScanConfiguration SourceScanConfiguration { get; set; }
         public CostManagementSettings CostManagementSettings { get; set; }
 
         public string SecureScore { get; set; }
@@ -529,6 +535,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     {
         Enabled = 1,
         Disabled
+    }
+
+    /// <summary>
+    /// Enum to define the vault Source Scan state.
+    /// </summary>
+    public enum SourceScanState
+    {
+        Enabled = 1,
+        Disabled
+    }
+
+    /// <summary>
+    /// Enum to define the identity type used for the Source Scan operation.
+    /// Does not include 'None' since Source Scan identity is only meaningful when an identity is configured.
+    /// </summary>
+    public enum SourceScanIdentityType
+    {
+        SystemAssigned = 1,
+        UserAssigned
     }
 
     /// <summary>

@@ -230,5 +230,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vaultId")]
         public string VaultId {get; private set; }
+
+        /// <summary>
+        /// Gets or sets source side scan information for the protected item, indicating whether
+        /// Microsoft Defender for Cloud Source Scan is configured and its current threat summary.
+        /// NOTE: This property is a narrow, hand-authored addition mirroring the
+        /// 2026-01-31-preview backup contract (property "sourceSideScanInfo"); it was not produced
+        /// by an AutoRest regeneration pass because the corresponding preview spec could not be
+        /// located for local regeneration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceSideScanInfo")]
+        public SourceSideScanInfo SourceSideScanInfo {get; set; }
     }
 }

@@ -28,5 +28,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         partial void CustomInit();
 
+        /// <summary>
+        /// Gets or sets threat status of the recovery point.
+        /// NOTE: This property is a narrow, hand-authored addition mirroring the
+        /// 2026-01-31-preview backup contract (property "threatStatus"); it was not produced by an
+        /// AutoRest regeneration pass because the corresponding preview spec could not be located
+        /// for local regeneration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "threatStatus")]
+        public ThreatStatus? ThreatStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets recovery point threat information.
+        /// NOTE: This property is a narrow, hand-authored addition mirroring the
+        /// 2026-01-31-preview backup contract (property "threatInfo"); it was not produced by an
+        /// AutoRest regeneration pass because the corresponding preview spec could not be located
+        /// for local regeneration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "threatInfo")]
+        public System.Collections.Generic.IList<ThreatInfo> ThreatInfo {get; set; }
+
     }
 }
