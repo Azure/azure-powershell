@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added address prefix set management for application security groups
+    - Added `Get-AzAddressPrefixSet`, `New-AzAddressPrefixSet`, `Set-AzAddressPrefixSet`, and `Remove-AzAddressPrefixSet`
+    - Supports IPv4 and IPv6 prefixes in CIDR notation
+    - Related Swagger change: Azure/azure-rest-api-specs [#44737]
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.

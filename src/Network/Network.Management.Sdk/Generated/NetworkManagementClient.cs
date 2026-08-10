@@ -104,6 +104,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
         /// <summary>
+        /// Gets the IExpressRouteLagsOperations
+        /// </summary>
+        public virtual IExpressRouteLagsOperations ExpressRouteLags { get; private set; }
+        /// <summary>
         /// Gets the IExpressRouteProviderPortsLocationOperations
         /// </summary>
         public virtual IExpressRouteProviderPortsLocationOperations ExpressRouteProviderPortsLocation { get; private set; }
@@ -511,6 +515,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualRoutersOperations
         /// </summary>
         public virtual IVirtualRoutersOperations VirtualRouters { get; private set; }
+        /// <summary>
+        /// Gets the IAddressPrefixSetsOperations
+        /// </summary>
+        public virtual IAddressPrefixSetsOperations AddressPrefixSets { get; private set; }
         /// <summary>
         /// Gets the IAvailableResourceGroupDelegationsOperations
         /// </summary>
@@ -953,6 +961,7 @@ namespace Microsoft.Azure.Management.Network
             this.BgpServiceCommunities = new BgpServiceCommunitiesOperations(this);
             this.ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
             this.ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
+            this.ExpressRouteLags = new ExpressRouteLagsOperations(this);
             this.ExpressRouteProviderPortsLocation = new ExpressRouteProviderPortsLocationOperations(this);
             this.ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
             this.RouteFilters = new RouteFiltersOperations(this);
@@ -1055,6 +1064,7 @@ namespace Microsoft.Azure.Management.Network
             this.SecurityPartnerProviders = new SecurityPartnerProvidersOperations(this);
             this.VirtualNetworks = new VirtualNetworksOperations(this);
             this.VirtualRouters = new VirtualRoutersOperations(this);
+            this.AddressPrefixSets = new AddressPrefixSetsOperations(this);
             this.AvailableResourceGroupDelegations = new AvailableResourceGroupDelegationsOperations(this);
             this.NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
             this.NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
@@ -1190,7 +1200,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "providerport");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1437,7 +1447,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1698,7 +1708,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1954,7 +1964,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2209,7 +2219,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2439,7 +2449,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "domainNameLabel");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2747,7 +2757,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3005,7 +3015,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3260,7 +3270,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3488,7 +3498,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3721,7 +3731,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3936,7 +3946,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4145,7 +4155,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4376,7 +4386,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

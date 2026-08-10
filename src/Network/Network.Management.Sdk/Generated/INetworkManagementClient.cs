@@ -123,6 +123,11 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; }
 
         /// <summary>
+        /// Gets the IExpressRouteLagsOperations
+        /// </summary>
+        IExpressRouteLagsOperations ExpressRouteLags { get; }
+
+        /// <summary>
         /// Gets the IExpressRouteProviderPortsLocationOperations
         /// </summary>
         IExpressRouteProviderPortsLocationOperations ExpressRouteProviderPortsLocation { get; }
@@ -631,6 +636,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualRoutersOperations
         /// </summary>
         IVirtualRoutersOperations VirtualRouters { get; }
+
+        /// <summary>
+        /// Gets the IAddressPrefixSetsOperations
+        /// </summary>
+        IAddressPrefixSetsOperations AddressPrefixSets { get; }
 
         /// <summary>
         /// Gets the IAvailableResourceGroupDelegationsOperations
