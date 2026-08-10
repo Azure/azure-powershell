@@ -53,7 +53,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteValue(value?.ToString());
+            // This converter is only registered on DeserializationSettings; serialization of AzureStorageType
+            // should continue to go through the SDK's own StringEnumConverter attribute.
+            new Newtonsoft.Json.Converters.StringEnumConverter().WriteJson(writer, value, serializer);
         }
     }
 

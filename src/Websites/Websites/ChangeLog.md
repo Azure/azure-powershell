@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue where 'Get-AzWebApp' failed with a deserialization error when a web app's Azure Storage mount used a storage type not recognized by the SDK (Software Development Kit), such as 'FileShare' used by Logic App Standard File System connections
+    - Unrecognized storage account mount types are now left unset instead of causing the entire cmdlet to fail
+    - Fixes [#29979]
 
 ## Version 4.0.0
 * Added ChangeSafety Support
