@@ -387,5 +387,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureVMCSBRestoreOLR"
             );
         }
+
+        [Fact(Skip = "Source Scan (2026-01-31-preview) is not yet publicly available for live recording; to be recorded when the feature is generally available.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVaultSourceScan()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVaultSourceScan"
+            );
+        }
+
+        [Fact(Skip = "Source Scan (2026-01-31-preview) is not yet publicly available for live recording; to be recorded when the feature is generally available.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMSourceScan()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVMSourceScan"
+            );
+        }
     }
 }

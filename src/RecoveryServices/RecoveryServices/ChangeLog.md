@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Added support for Microsoft Defender for Cloud Source Scan configuration on Recovery Services vaults:
+    - Added `-SourceScanState`, `-SourceScanIdentityType`, and `-SourceScanUserAssignedIdentityId` parameters to `Update-AzRecoveryServicesVault` to enable or disable Source Scan and configure the identity used to perform the scan
+    - `Get-AzRecoveryServicesVault` and `Get-AzRecoveryServicesVaultProperty` now expose the vault's Source Scan configuration
+* Added new cmdlet `Set-AzRecoveryServicesBackupSourceScan` to enable or disable Microsoft Defender for Cloud Source Scan for an Azure VM (Virtual Machine) backup item
+* Backup items and recovery points now expose Source Scan and threat detection information from Microsoft Defender for Cloud, where available:
+    - Backup items expose `SourceSideScanStatus` and `SourceSideScanSummary`
+    - Recovery points expose `ThreatStatus` and `ThreatInfo`
 
 ## Version 7.14.0
 * Added Cross Subscription Backup (CSB) support for Azure VM:

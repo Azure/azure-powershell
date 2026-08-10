@@ -134,6 +134,63 @@ function Test-AzureVaultPublicNetworkAccess
 	}
 }
 
+function Test-AzureVaultSourceScan
+{
+	$resourceGroupName = "hiagaCZR-rg"
+	$vaultName = "hiagaSourceScanVault"
+	$location = "eastus2euap"
+	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
+
+	try
+	{
+		# new vault
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		# Enable Source Scan with a system-assigned identity
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -SourceScanState Enabled -SourceScanIdentityType SystemAssigned
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
+		Assert-True { $vault.Properties.SourceScanConfiguration.SourceScanIdentity.OperationIdentityType -eq "SystemAssigned" }
+
+		# Disable Source Scan
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -SourceScanState Disabled
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Disabled" }
+	}
+	finally
+	{
+		# remove vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
+function Test-AzureVMSourceScan
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+
+	# Enable Source Scan for the item
+	$job = Set-AzRecoveryServicesBackupSourceScan -Item $item[0] -State Enabled -VaultId $vault.ID -Force
+	Assert-True { $job.Status -eq "Completed" }
+
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+	Assert-True { $item[0].SourceSideScanStatus -eq "Configured" }
+
+	# Disable Source Scan for the item
+	$job = Set-AzRecoveryServicesBackupSourceScan -Item $item[0] -State Disabled -VaultId $vault.ID -Force
+	Assert-True { $job.Status -eq "Completed" }
+
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+	Assert-True { $item[0].SourceSideScanStatus -eq "NotConfigured" }
+}
+
 function Test-AzureVaultImmutability
 {	
 	$resourceGroupName = "hiagaCZR-rg"
