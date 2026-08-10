@@ -39,27 +39,45 @@ Get an AppLink.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Application Networks in the current subscription
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAppLink
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState ResourceGroupName
+----           -------- ----------------- -----------------
+appnet-test-01 westus2  Succeeded         test_rg
+appnet-test-02 eastus   Succeeded         other_rg
 ```
 
-{{ Add description here }}
+Lists all Application Network resources in the current subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: List Application Networks in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAppLink -ResourceGroupName test_rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState ResourceGroupName
+----           -------- ----------------- -----------------
+appnet-test-01 westus2  Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Lists the Application Network resources in the `test_rg` resource group.
+
+### Example 3: Get an Application Network resource
+```powershell
+Get-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg
+```
+
+```output
+Name           Location ProvisioningState ResourceGroupName
+----           -------- ----------------- -----------------
+appnet-test-01 westus2  Succeeded         test_rg
+```
+
+Gets the details of the Application Network resource named `appnet-test-01`.
 
 ## PARAMETERS
 

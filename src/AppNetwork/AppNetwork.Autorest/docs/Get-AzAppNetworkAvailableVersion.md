@@ -22,27 +22,19 @@ List AvailableVersion resources by location.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List available Application Network versions in a location
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAvailableVersion -Location westus2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Version Support
+------- -------
+1.4     Supported
+1.3     Supported
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists the Application Network versions available in the `westus2` location.
 
 ## PARAMETERS
 

@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a member from an Application Network
 ```powershell
-{{ Add code here }}
+Remove-AzAppNetworkAppLinkMember -Name member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Removes the `member-01` member from the `appnet-test-01` Application Network resource.

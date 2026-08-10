@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List members of an Application Network resource
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAppLinkMember -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ClusterType ProvisioningState ResourceGroupName
+----      ----------- ----------------- -----------------
+member-01 AKS         Succeeded         test_rg
+member-02 AKS         Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Lists all members of the `appnet-test-01` Application Network resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a member of an Application Network resource
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkAppLinkMember -Name member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ClusterType ProvisioningState ResourceGroupName
+----      ----------- ----------------- -----------------
+member-01 AKS         Succeeded         test_rg
 ```
 
-{{ Add description here }}
-
+Gets the `member-01` member of the `appnet-test-01` Application Network resource.

@@ -39,27 +39,18 @@ Update an AppLink.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace an Application Network resource
 ```powershell
-{{ Add code here }}
+Set-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Location westus2 -EnableSystemAssignedIdentity -Tag @{ key2913 = 'test_tag' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState IdentityType   ResourceGroupName
+----           -------- ----------------- ------------   -----------------
+appnet-test-01 westus2  Succeeded         SystemAssigned test_rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates or replaces the Application Network resource named `appnet-test-01` with the specified location, identity, and tags.
 
 ## PARAMETERS
 

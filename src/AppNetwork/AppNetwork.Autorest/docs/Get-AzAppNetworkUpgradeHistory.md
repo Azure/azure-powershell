@@ -22,27 +22,18 @@ List UpgradeHistory resources by AppLinkMember.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the upgrade history of an Application Network member
 ```powershell
-{{ Add code here }}
+Get-AzAppNetworkUpgradeHistory -AppLinkMemberName member-01 -AppLinkName appnet-test-01 -ResourceGroupName test_rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+FromVersion ToVersion InitiatedBy StartTimestamp        EndTimestamp
+----------- --------- ----------- --------------        ------------
+1.3         1.4       Admin       2025-09-24T10:30:00Z  2025-09-25T00:00:00Z
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists the upgrade history of the `member-01` member of the `appnet-test-01` Application Network resource.
 
 ## PARAMETERS
 

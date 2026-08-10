@@ -39,27 +39,31 @@ Create an AppLink.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an Application Network resource
 ```powershell
-{{ Add code here }}
+New-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Location westus2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState ResourceGroupName
+----           -------- ----------------- -----------------
+appnet-test-01 westus2  Succeeded         test_rg
 ```
 
-{{ Add description here }}
+Creates an Azure Kubernetes Application Network resource named `appnet-test-01` in the `test_rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an Application Network resource with a system-assigned identity
 ```powershell
-{{ Add code here }}
+New-AzAppNetworkAppLink -Name appnet-test-01 -ResourceGroupName test_rg -Location westus2 -EnableSystemAssignedIdentity
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           Location ProvisioningState IdentityType   ResourceGroupName
+----           -------- ----------------- ------------   -----------------
+appnet-test-01 westus2  Succeeded         SystemAssigned test_rg
 ```
 
-{{ Add description here }}
+Creates an Application Network resource with a system-assigned managed identity enabled.
 
 ## PARAMETERS
 
