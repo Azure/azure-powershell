@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.CosmosDB Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB and Azure Managed Instance for Apache Cassandra in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB, Azure Managed Instance for Apache Cassandra, and Garnet cache clusters in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
@@ -161,6 +161,9 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
 Gets a Azure Managed Instances for Apache Cassandra data center.
+
+### [Get-AzCosmosDBGarnetCluster](Get-AzCosmosDBGarnetCluster.md)
+Gets an Azure Cosmos DB Garnet cache cluster.
 
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -357,6 +360,9 @@ Creates a new Azure Managed Instances for Apache Cassandra cluster.
 ### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
 Create a new Azure Managed Instances for Apache Cassandra data center.
 
+### [New-AzCosmosDBGarnetCluster](New-AzCosmosDBGarnetCluster.md)
+Creates a new Azure Cosmos DB Garnet cache cluster.
+
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a Cosmos DB Account.
 
@@ -422,6 +428,9 @@ Deletes a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
 Deletes a Azure Managed Instances for Apache Cassandra data center.
+
+### [Remove-AzCosmosDBGarnetCluster](Remove-AzCosmosDBGarnetCluster.md)
+Deletes an Azure Cosmos DB Garnet cache cluster.
 
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
@@ -546,3 +555,5 @@ Update an existing Azure Managed Instances for Apache Cassandra cluster.
 ### [Update-AzManagedCassandraDatacenter](Update-AzManagedCassandraDatacenter.md)
 Update an existing Azure Managed Instances for Apache Cassandra data center.
 
+### [Update-AzCosmosDBGarnetCluster](Update-AzCosmosDBGarnetCluster.md)
+Updates an existing Azure Cosmos DB Garnet cache cluster.
