@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -32,10 +29,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.TagsHelpMessage)]
-        [ValidateNotNull]
-        public Hashtable Tag { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterAuthenticationMethodHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string AuthenticationMethod { get; set; }
@@ -49,15 +42,5 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterPersistenceHelpMessage)]
         public bool? Persistence { get; set; }
-
-        public Dictionary<string, string> PopulateTags(Hashtable Tag)
-        {
-            Dictionary<string, string> tags = new Dictionary<string, string>();
-            foreach (string key in Tag.Keys)
-            {
-                tags.Add(key, Tag[key].ToString());
-            }
-            return tags;
-        }
     }
 }
