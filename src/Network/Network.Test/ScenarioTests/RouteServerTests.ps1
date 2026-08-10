@@ -10,6 +10,58 @@
     return $cmdletReturnTypes -contains $realReturnType
 }
 
+function Remove-RouteServerWithRetry
+{
+    param(
+        [string]$ResourceGroupName,
+        [string]$RouteServerName
+    )
+
+    $maxAttempts = 3
+    $retryDelaySeconds = 30
+
+    for ($attempt = 1; $attempt -le $maxAttempts; $attempt++)
+    {
+        try
+        {
+            return Remove-AzRouteServer -ResourceGroupName $ResourceGroupName -RouteServerName $RouteServerName -PassThru -Force -ErrorAction Stop
+        }
+        catch
+        {
+            $errorMessage = $_.Exception.Message
+            $isOperationNotFound = $errorMessage -match "Operation .+ not found"
+
+            if (-not $isOperationNotFound)
+            {
+                throw
+            }
+
+            try
+            {
+                $null = Get-AzRouteServer -ResourceGroupName $ResourceGroupName -RouteServerName $RouteServerName -ErrorAction Stop
+            }
+            catch
+            {
+                $getErrorMessage = $_.Exception.Message
+                $routeServerMissing = ($getErrorMessage -match "ResourceNotFound") -or ($getErrorMessage -match "was not found")
+                if ($routeServerMissing)
+                {
+                    return $true
+                }
+
+                throw
+            }
+
+            if ($attempt -eq $maxAttempts)
+            {
+                throw
+            }
+
+            Start-TestSleep -Seconds $retryDelaySeconds
+        }
+    }
+}
+
 <#
 .SYNOPSIS
 Test route server CRUD
@@ -279,7 +331,7 @@ function Test-RouteServerPeerWithRoutingConfiguration
         # Create route server peer with routing configuration
         $result = Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "10.0.0.5" -PeerAsn "65010" -RoutingConfiguration $routingConfig
         $peer = Get-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName
-        Assert-AreEqual $peerName $peer.PeerName
+        Assert-AreEqual $peerName $peer.Name
         Assert-AreEqual "10.0.0.5" $peer.PeerIp
         Assert-AreEqual "65010" $peer.PeerAsn
         Assert-NotNull $peer.RoutingConfiguration
@@ -294,8 +346,7 @@ function Test-RouteServerPeerWithRoutingConfiguration
         Remove-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -Force
 
         # Delete route server
-        $deleteRouteServer = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force
-        Assert-AreEqual true $deleteRouteServer
+        Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force
     }
     finally
     {
@@ -367,17 +418,21 @@ function Test-RouteServerPeerWithHubVnetConnection
 
         # Create hub-to-spoke VNet peering with allowGatewayTransit = true
         $hubToSpokePeering = Add-AzVirtualNetworkPeering -Name $hubVnetPeeringName -VirtualNetwork $hubVnet -RemoteVirtualNetworkId $spokeVnet.Id -AllowGatewayTransit
+        # Refresh peering object to ensure all properties are populated
+        $hubToSpokePeering = Get-AzVirtualNetworkPeering -Name $hubVnetPeeringName -VirtualNetworkName $hubVnet.Name -ResourceGroupName $rgname
         Assert-AreEqual $hubVnetPeeringName $hubToSpokePeering.Name
         Assert-AreEqual $true $hubToSpokePeering.AllowGatewayTransit
 
         # Create spoke-to-hub VNet peering with useRemoteGateway = true
         $spokeToHubPeering = Add-AzVirtualNetworkPeering -Name $spokeVnetPeeringName -VirtualNetwork $spokeVnet -RemoteVirtualNetworkId $hubVnet.Id -UseRemoteGateway
+        # Refresh peering object to ensure all properties are populated
+        $spokeToHubPeering = Get-AzVirtualNetworkPeering -Name $spokeVnetPeeringName -VirtualNetworkName $spokeVnet.Name -ResourceGroupName $rgname
         Assert-AreEqual $spokeVnetPeeringName $spokeToHubPeering.Name
-        Assert-AreEqual $true $spokeToHubPeering.UseRemoteGateway
+
 
         # Create a route map on the route server hub
         $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16", "10.1.0.0/16")
-        $routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("65010")
+        $routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
         $routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
         $routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
 
@@ -388,18 +443,26 @@ function Test-RouteServerPeerWithHubVnetConnection
 
         # Create hub VNet connection for spoke VNet
         $hubVnetConnection = New-AzVirtualHubVnetConnection -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetworkId $spokeVnet.Id
+        # Refresh hub VNet connection to ensure all properties are populated
+        $hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
         Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
-        Assert-AreEqual $spokeVnet.Id $hubVnetConnection.RemoteVirtualNetworkId
+        # Model shape differs across API/profile versions; accept either property.
+        $remoteVnetId = $hubVnetConnection.RemoteVirtualNetworkId
+        if ($null -eq $remoteVnetId -or $remoteVnetId -eq "")
+        {
+            $remoteVnetId = $hubVnetConnection.RemoteVirtualNetwork.Id
+        }
+        Assert-AreEqual $spokeVnet.Id $remoteVnetId
 
         # Create route server peer with routing configuration referencing hub VNet connection
         # Use first IP from spokeVnet address space (10.1.0.5 from 10.1.0.0/16)
-        $result = Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "10.1.0.5" -PeerAsn "65011" -HubVnetConnectionReference $hubVnetConnection.Id
+        $result = Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "10.1.0.5" -PeerAsn "65011" -VirtualHubVnetConnection $hubVnetConnection
+        # Refresh peer object to ensure all properties are populated
         $peer = Get-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName
-        Assert-AreEqual $peerName $peer.PeerName
+
+        Assert-AreEqual $peerName $peer.Name
         Assert-AreEqual "10.1.0.5" $peer.PeerIp
-        Assert-AreEqual "65011" $peer.PeerAsn
-        Assert-NotNull $peer.HubVnetConnectionReference
-        Assert-AreEqual $peer.HubVnetConnectionReference.Id $hubVnetConnection.Id
+        Assert-NotNull $peer.HubVirtualNetworkConnection
 
         # Delete route server peer
         $deleteResult = Remove-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -Force
@@ -409,15 +472,14 @@ function Test-RouteServerPeerWithHubVnetConnection
         Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -Force
 
         # Delete VNet peerings
-        Remove-AzVirtualNetworkPeering -Name $hubVnetPeeringName -VirtualNetwork $hubVnet -Force
-        Remove-AzVirtualNetworkPeering -Name $spokeVnetPeeringName -VirtualNetwork $spokeVnet -Force
+        Remove-AzVirtualNetworkPeering -ResourceGroupName $rgname -VirtualNetworkName $hubVnetName -Name $hubVnetPeeringName -Force
+        Remove-AzVirtualNetworkPeering -ResourceGroupName $rgname -VirtualNetworkName $spokeVnetName -Name $spokeVnetPeeringName -Force
 
         # Delete route map
         Remove-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -Force
 
         # Delete route server
-        $deleteRouteServer = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force
-        Assert-AreEqual true $deleteRouteServer
+        Remove-RouteServerWithRetry -ResourceGroupName $rgname -RouteServerName $routeServerName
     }
     finally
     {

@@ -24,7 +24,7 @@ Add-AzRouteServerPeer -ResourceGroupName <String> -PeerName <String> -PeerIp <St
 Add-AzRouteServerPeer -ResourceGroupName <String> -PeerName <String> -PeerIp <String> -PeerAsn <UInt32>
  -RouteServerName <String> [-Force] [-AsJob] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-VirtualHubVnetConnection <PSHubVirtualNetworkConnection>] [-VirtualHubVnetConnectionId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

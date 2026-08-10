@@ -1109,7 +1109,10 @@ function Test-VirtualNetworkGatewayConnectionWithRoutingConfiguration
     $localnetName = Get-ResourceName
     $vnetConnectionName = Get-ResourceName
     $publicIpName = Get-ResourceName
+    $publicIpName2 = Get-ResourceName
+    $domainNameLabel2 = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
+    $vnetGatewayConfigName2 = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
     $resourceTypeParent = "Microsoft.Network/connections"
     $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
@@ -1177,13 +1180,16 @@ function Test-VirtualNetworkGatewayConnectionWithRoutingConfiguration
         # Create routing configuration with inbound and outbound route maps
         $routingConfig = New-AzRoutingConfiguration -InboundRouteMap $routeMap.Id -OutboundRouteMap $routeMap.Id
 
-        # Create the publicip for VPN Gateway (must be Static for Standard SKU)
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $rglocation -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
+        # Create public IPs and configure an active-active VPN gateway when route server is in the same VNet.
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $rglocation -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
+        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $rglocation -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel2
 
         # Create VirtualNetworkGateway using GatewaySubnet from same VNet
-        $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-        $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $rglocation -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2
+        $vnetIpConfig1 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip1 -Subnet $subnet
+        $vnetIpConfig2 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip2 -Subnet $subnet
+        $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $rglocation -IpConfigurations $vnetIpConfig1,$vnetIpConfig2 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2Az -EnableActiveActiveFeature
         $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $true $vnetGateway.ActiveActive
 
         # Create LocalNetworkGateway
         $actual = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $rglocation -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10

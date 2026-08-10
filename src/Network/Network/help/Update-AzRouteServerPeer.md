@@ -17,7 +17,7 @@ Update a Peer in an Azure RouteServer
 Update-AzRouteServerPeer -ResourceGroupName <String> -RouteServerName <String> [-Force] [-AsJob]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-VirtualHubVnetConnection <PSHubVirtualNetworkConnection>]
  [-VirtualHubVnetConnectionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RouteServerNPeerNameParameterSet
@@ -25,7 +25,8 @@ Update-AzRouteServerPeer -ResourceGroupName <String> -RouteServerName <String> [
 Update-AzRouteServerPeer -ResourceGroupName <String> -PeerName <String> -PeerIp <String> -PeerAsn <UInt32>
  -RouteServerName <String> [-Force] [-AsJob] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-VirtualHubVnetConnection <PSHubVirtualNetworkConnection>] [-VirtualHubVnetConnectionId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] 
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RouteServerNPeerInputObjectParameterSet

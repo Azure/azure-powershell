@@ -27,7 +27,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-CertificateAuthentication <PSCertificateAuthentication>] [-AsJob] [-ExpressRouteGatewayBypass]
  [-EnablePrivateLinkFastPath] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -44,7 +44,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-CertificateAuthentication <PSCertificateAuthentication>] [-AsJob] [-ExpressRouteGatewayBypass]
  [-EnablePrivateLinkFastPath] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
