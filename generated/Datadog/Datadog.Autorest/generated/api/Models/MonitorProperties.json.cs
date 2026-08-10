@@ -79,6 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             {_datadogOrganizationProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("datadogOrganizationProperties"), out var __jsonDatadogOrganizationProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogOrganizationProperties.FromJson(__jsonDatadogOrganizationProperties) : _datadogOrganizationProperty;}
             {_userInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("userInfo"), out var __jsonUserInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.UserInfo.FromJson(__jsonUserInfo) : _userInfo;}
+            {_saaSData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("saaSData"), out var __jsonSaaSData) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SaaSData.FromJson(__jsonSaaSData) : _saaSData;}
+            {_marketplaceOfferDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("marketplaceOfferDetails"), out var __jsonMarketplaceOfferDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MarketplaceOfferDetails.FromJson(__jsonMarketplaceOfferDetails) : _marketplaceOfferDetail;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_monitoringStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("monitoringStatus"), out var __jsonMonitoringStatus) ? (string)__jsonMonitoringStatus : (string)_monitoringStatus;}
             {_marketplaceSubscriptionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("marketplaceSubscriptionStatus"), out var __jsonMarketplaceSubscriptionStatus) ? (string)__jsonMarketplaceSubscriptionStatus : (string)_marketplaceSubscriptionStatus;}
@@ -108,6 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             AddIf( null != this._datadogOrganizationProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._datadogOrganizationProperty.ToJson(null,serializationMode) : null, "datadogOrganizationProperties" ,container.Add );
             AddIf( null != this._userInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._userInfo.ToJson(null,serializationMode) : null, "userInfo" ,container.Add );
+            AddIf( null != this._saaSData ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._saaSData.ToJson(null,serializationMode) : null, "saaSData" ,container.Add );
+            AddIf( null != this._marketplaceOfferDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._marketplaceOfferDetail.ToJson(null,serializationMode) : null, "marketplaceOfferDetails" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -124,6 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._liftrResourcePreference ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNumber((int)this._liftrResourcePreference) : null, "liftrResourcePreference" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeUpdate))
+            {
+                if (null != this._sreAgentConfiguration)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._sreAgentConfiguration )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("sreAgentConfiguration",__w);
+                }
             }
             AfterToJson(ref container);
             return container;
