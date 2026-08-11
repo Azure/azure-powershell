@@ -14,25 +14,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRule'  {
+Describe 'New-AzFrontDoorCdnRule' {
+    BeforeAll {
+        $script:rsName = 'rsNameRuleNew'
+        $script:ruleName = 'ruleNameNew'
+        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:rsName | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $script:rsName -Name $script:ruleName -ErrorAction SilentlyContinue
+        Remove-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:rsName -ErrorAction SilentlyContinue
+    }
+
     It 'CreateExpanded' {
-        $rulesetName = 'rsName060'
-        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-        $conditions = @(
-            $uriConditon
-        );
-        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-        -CacheConfigurationQueryParameter "a=test" `
-        -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin"
-        $actions = @($overrideAction);
-        
-        $ruleName = 'ruleName040'
-        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-        -Action $actions -Condition $conditions
+        $uri = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name 'RequestUri' -ParameterOperator 'Any'
+        $ovr = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name 'RouteConfigurationOverride' -CacheConfigurationQueryStringCachingBehavior 'IgnoreSpecifiedQueryStrings' -CacheConfigurationQueryParameter 'a=test' -CacheConfigurationIsCompressionEnabled 'Enabled' -CacheConfigurationCacheBehavior 'HonorOrigin'
+        $r = New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $script:rsName -Name $script:ruleName -Action @($ovr) -Condition @($uri)
+        $r.Name | Should -Be $script:ruleName
     }
 }

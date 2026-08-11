@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover", ApiVersion = "2022-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover", ApiVersion = "2026-01-01")]
     public partial class InvokeAzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IContext
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties _parameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties _parameter;
 
         /// <summary>
         /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         ReadOnly = false,
         Description = @"Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Body)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties Parameter { get => this._parameter; set => this._parameter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties Parameter { get => this._parameter; set => this._parameter = value; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the agent pool.
         /// </param>
         /// <param name='machineName'>
-        /// host name of the machine
+        /// Host name of the machine.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

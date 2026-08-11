@@ -38,10 +38,11 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
- [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
- [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
- [-MaxInstancePercentPerZoneValue <Int32>] [-ZonalPlatformFaultDomainAlignMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>] [-MaxZoneCount <Int32>]
+ [-EnableMaxInstancePercentPerZone <Boolean>] [-MaxInstancePercentPerZoneValue <Int32>]
+ [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
+ [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -70,10 +71,11 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
- [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
- [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
- [-MaxInstancePercentPerZoneValue <Int32>] [-ZonalPlatformFaultDomainAlignMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>] [-MaxZoneCount <Int32>]
+ [-EnableMaxInstancePercentPerZone <Boolean>] [-MaxInstancePercentPerZoneValue <Int32>]
+ [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
+ [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -BaseRegularPriorityCount
-Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode. 
+Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode.
 
 ```yaml
 Type: System.Int32
@@ -312,6 +314,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAllInstancesDown
+Specifies if Scheduled Events should be auto-approved when all instances are down. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -1007,6 +1024,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduledEventsApiVersion
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

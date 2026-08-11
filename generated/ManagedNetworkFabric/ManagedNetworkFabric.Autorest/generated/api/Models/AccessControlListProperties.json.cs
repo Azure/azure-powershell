@@ -65,9 +65,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
-            __accessControlListPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPatchableProperties(json);
+            {_globalAccessControlListAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("globalAccessControlListActions"), out var __jsonGlobalAccessControlListActions) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalAccessControlListActionProperties.FromJson(__jsonGlobalAccessControlListActions) : _globalAccessControlListAction;}
+            {_lastOperation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("lastOperation"), out var __jsonLastOperation) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties.FromJson(__jsonLastOperation) : _lastOperation;}
+            {_annotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("annotation"), out var __jsonAnnotation) ? (string)__jsonAnnotation : (string)_annotation;}
+            {_configurationType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("configurationType"), out var __jsonConfigurationType) ? (string)__jsonConfigurationType : (string)_configurationType;}
+            {_aclsUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("aclsUrl"), out var __jsonAclsUrl) ? (string)__jsonAclsUrl : (string)_aclsUrl;}
+            {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)_defaultAction;}
+            {_matchConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("matchConfigurations"), out var __jsonMatchConfigurations) ? If( __jsonMatchConfigurations as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListMatchConfiguration.FromJson(__u) )) ))() : null : _matchConfiguration;}
+            {_dynamicMatchConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("dynamicMatchConfigurations"), out var __jsonDynamicMatchConfigurations) ? If( __jsonDynamicMatchConfigurations as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfiguration.FromJson(__p) )) ))() : null : _dynamicMatchConfiguration;}
             {_lastSyncedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("lastSyncedTime"), out var __jsonLastSyncedTime) ? global::System.DateTime.TryParse((string)__jsonLastSyncedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSyncedTimeValue) ? __jsonLastSyncedTimeValue : _lastSyncedTime : _lastSyncedTime;}
+            {_aclType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("aclType"), out var __jsonAclType) ? (string)__jsonAclType : (string)_aclType;}
+            {_deviceRole = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("deviceRole"), out var __jsonDeviceRole) ? (string)__jsonDeviceRole : (string)_deviceRole;}
+            {_networkFabricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("networkFabricIds"), out var __jsonNetworkFabricIds) ? If( __jsonNetworkFabricIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _networkFabricId;}
+            {_controlPlaneAclConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("controlPlaneAclConfiguration"), out var __jsonControlPlaneAclConfiguration) ? If( __jsonControlPlaneAclConfiguration as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclProperties) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControlPlaneAclProperties.FromJson(__f) )) ))() : null : _controlPlaneAclConfiguration;}
             {_configurationState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("configurationState"), out var __jsonConfigurationState) ? (string)__jsonConfigurationState : (string)_configurationState;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_administrativeState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("administrativeState"), out var __jsonAdministrativeState) ? (string)__jsonAdministrativeState : (string)_administrativeState;}
@@ -105,11 +115,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __annotationResource?.ToJson(container, serializationMode);
-            __accessControlListPatchableProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._globalAccessControlListAction ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._globalAccessControlListAction.ToJson(null,serializationMode) : null, "globalAccessControlListActions" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._lastOperation ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._lastOperation.ToJson(null,serializationMode) : null, "lastOperation" ,container.Add );
+            }
+            AddIf( null != (((object)this._annotation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._annotation.ToString()) : null, "annotation" ,container.Add );
+            AddIf( null != (((object)this._configurationType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._configurationType.ToString()) : null, "configurationType" ,container.Add );
+            AddIf( null != (((object)this._aclsUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._aclsUrl.ToString()) : null, "aclsUrl" ,container.Add );
+            AddIf( null != (((object)this._defaultAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._defaultAction.ToString()) : null, "defaultAction" ,container.Add );
+            if (null != this._matchConfiguration)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __x in this._matchConfiguration )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("matchConfigurations",__w);
+            }
+            if (null != this._dynamicMatchConfiguration)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._dynamicMatchConfiguration )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("dynamicMatchConfigurations",__r);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._lastSyncedTime ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._lastSyncedTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastSyncedTime" ,container.Add );
+            }
+            AddIf( null != (((object)this._aclType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._aclType.ToString()) : null, "aclType" ,container.Add );
+            AddIf( null != (((object)this._deviceRole)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._deviceRole.ToString()) : null, "deviceRole" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._networkFabricId)
+                {
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._networkFabricId )
+                    {
+                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                    }
+                    container.Add("networkFabricIds",__m);
+                }
+            }
+            if (null != this._controlPlaneAclConfiguration)
+            {
+                var __h = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __i in this._controlPlaneAclConfiguration )
+                {
+                    AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                }
+                container.Add("controlPlaneAclConfiguration",__h);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {

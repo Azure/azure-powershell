@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The response to the List Queues operation.</summary>
+    /// <summary>The response of a SBQueue list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(SbQueueListResultTypeConverter))]
     public partial class SbQueueListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The response to the List Queues operation.
+    /// The response of a SBQueue list operation.
     [System.ComponentModel.TypeConverter(typeof(SbQueueListResultTypeConverter))]
     public partial interface ISbQueueListResult
 

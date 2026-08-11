@@ -15,8 +15,9 @@ Create EdgeAction resource
 ### CreateExpanded (Default)
 ```
 New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <String> -SkuTier <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SkuName <String> -SkuTier <String> [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -38,18 +39,12 @@ Create EdgeAction resource
 
 ## EXAMPLES
 
-### Example 1: Create a new Edge Action with Standard SKU
+### Example 1: Create an EdgeAction
 ```powershell
-New-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001" -Location "Global" -SkuName "Standard" -SkuTier "Standard"
+New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
 ```
 
-```output
-Location Name          Kind ResourceGroupName
--------- ----          ---- -----------------
-Global   edgeaction001      testps-rg-da16jm
-```
-
-Create a new Edge Action with Standard Azure Front Door SKU under the resource group
+Creates an EdgeAction resource.
 
 ## PARAMETERS
 
@@ -150,6 +145,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+The provisioning state of the edge action
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

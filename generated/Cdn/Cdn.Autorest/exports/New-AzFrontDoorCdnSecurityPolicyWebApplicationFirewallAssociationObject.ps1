@@ -32,6 +32,9 @@ To create the parameters described below, construct a hash table containing the 
 
 DOMAIN <IActivatedResourceReference[]>: List of domains.
   [Id <String>]: Resource ID.
+
+ROUTE <IResourceReference[]>: List of routes.
+  [Id <String>]: Resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallassociationobject
 #>
@@ -49,7 +52,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String[]]
     # List of paths.
-    ${PatternsToMatch}
+    ${PatternsToMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
+    # List of routes.
+    ${Route}
 )
 
 begin {

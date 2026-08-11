@@ -19,31 +19,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdate __tagsUpdate = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TagsUpdate();
 
+        /// <summary>Access Control List (ACL) Type</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string AclType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).AclType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).AclType = value ?? null; }
+
         /// <summary>Access Control List file URL.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string AclsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).AclsUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).AclsUrl = value ?? null; }
+        public string AclsUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).AclsUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).AclsUrl = value ?? null; }
 
         /// <summary>Switch configuration description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)Property).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)Property).Annotation = value ?? null; }
+        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).Annotation = value ?? null; }
 
         /// <summary>Input method to configure Access Control List.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string ConfigurationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).ConfigurationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).ConfigurationType = value ?? null; }
+        public string ConfigurationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).ConfigurationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).ConfigurationType = value ?? null; }
+
+        /// <summary>Access Control List (ACL) configurations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties> ControlPlaneAclConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).ControlPlaneAclConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).ControlPlaneAclConfiguration = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string DefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).DefaultAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).DefaultAction = value ?? null; }
+        public string DefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).DefaultAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).DefaultAction = value ?? null; }
+
+        /// <summary>Device Role</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string DeviceRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).DeviceRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).DeviceRole = value ?? null; }
 
         /// <summary>List of dynamic match configurations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).DynamicMatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).DynamicMatchConfiguration = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> DynamicMatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).DynamicMatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).DynamicMatchConfiguration = value ?? null /* arrayOf */; }
+
+        /// <summary>Configuration to enable or disable ACL action count.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string GlobalAccessControlListActionEnableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).GlobalAccessControlListActionEnableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).GlobalAccessControlListActionEnableCount = value ?? null; }
 
         /// <summary>List of match configurations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration> MatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).MatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchablePropertiesInternal)Property).MatchConfiguration = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch> MatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).MatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).MatchConfiguration = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for GlobalAccessControlListAction</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalAccessControlListActionPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchInternal.GlobalAccessControlListAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).GlobalAccessControlListAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchPropertiesInternal)Property).GlobalAccessControlListAction = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPatchProperties()); set { {_property = value;} } }
@@ -55,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPatchProperties()); set => this._property = value; }
 
-        /// <summary>Resource tags</summary>
+        /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateInternal)__tagsUpdate).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateInternal)__tagsUpdate).Tag = value ?? null /* model class */; }
 
@@ -82,6 +101,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdate
     {
+        /// <summary>Access Control List (ACL) Type</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Access Control List (ACL) Type",
+        SerializedName = @"aclType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("ControlPlaneTrafficPolicy", "Tenant", "Management", "ControlPlaneAcl")]
+        string AclType { get; set; }
         /// <summary>Access Control List file URL.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -116,6 +147,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
         string ConfigurationType { get; set; }
+        /// <summary>Access Control List (ACL) configurations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Access Control List (ACL) configurations.",
+        SerializedName = @"controlPlaneAclConfiguration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties> ControlPlaneAclConfiguration { get; set; }
         /// <summary>
         /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
         /// </summary>
@@ -130,6 +172,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Permit", "Deny")]
         string DefaultAction { get; set; }
+        /// <summary>Device Role</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Device Role",
+        SerializedName = @"deviceRole",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("CE", "ToR", "NPB", "ManagementSwitch")]
+        string DeviceRole { get; set; }
         /// <summary>List of dynamic match configurations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -139,8 +193,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Update = true,
         Description = @"List of dynamic match configurations.",
         SerializedName = @"dynamicMatchConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> DynamicMatchConfiguration { get; set; }
+        /// <summary>Configuration to enable or disable ACL action count.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable or disable ACL action count.",
+        SerializedName = @"enableCount",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string GlobalAccessControlListActionEnableCount { get; set; }
         /// <summary>List of match configurations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -150,14 +216,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Update = true,
         Description = @"List of match configurations.",
         SerializedName = @"matchConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration> MatchConfiguration { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch> MatchConfiguration { get; set; }
 
     }
     /// The Access Control Lists patch resource definition.
     internal partial interface IAccessControlListPatchInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITagsUpdateInternal
     {
+        /// <summary>Access Control List (ACL) Type</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("ControlPlaneTrafficPolicy", "Tenant", "Management", "ControlPlaneAcl")]
+        string AclType { get; set; }
         /// <summary>Access Control List file URL.</summary>
         string AclsUrl { get; set; }
         /// <summary>Switch configuration description.</summary>
@@ -165,15 +234,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Input method to configure Access Control List.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
         string ConfigurationType { get; set; }
+        /// <summary>Access Control List (ACL) configurations.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclPatchProperties> ControlPlaneAclConfiguration { get; set; }
         /// <summary>
         /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Permit", "Deny")]
         string DefaultAction { get; set; }
+        /// <summary>Device Role</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("CE", "ToR", "NPB", "ManagementSwitch")]
+        string DeviceRole { get; set; }
         /// <summary>List of dynamic match configurations.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> DynamicMatchConfiguration { get; set; }
+        /// <summary>Global Access Control List (ACL) actions</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalAccessControlListActionPatchProperties GlobalAccessControlListAction { get; set; }
+        /// <summary>Configuration to enable or disable ACL action count.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string GlobalAccessControlListActionEnableCount { get; set; }
         /// <summary>List of match configurations.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration> MatchConfiguration { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfigurationPatch> MatchConfiguration { get; set; }
         /// <summary>Access Control Lists patch properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPatchProperties Property { get; set; }
 

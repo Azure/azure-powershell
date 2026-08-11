@@ -111,11 +111,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             // actually deserialize
             if (content.Contains("Annotation"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).Annotation, global::System.Convert.ToString);
             }
             if (content.Contains("IPPrefixRule"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchablePropertiesInternal)this).IPPrefixRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>) content.GetValueForProperty("IPPrefixRule",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchablePropertiesInternal)this).IPPrefixRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPPrefixRuleTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).IPPrefixRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>) content.GetValueForProperty("IPPrefixRule",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).IPPrefixRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPPrefixRuleTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -136,11 +136,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             // actually deserialize
             if (content.Contains("Annotation"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).Annotation, global::System.Convert.ToString);
             }
             if (content.Contains("IPPrefixRule"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchablePropertiesInternal)this).IPPrefixRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>) content.GetValueForProperty("IPPrefixRule",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchablePropertiesInternal)this).IPPrefixRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPPrefixRuleTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).IPPrefixRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>) content.GetValueForProperty("IPPrefixRule",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixPatchPropertiesInternal)this).IPPrefixRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPPrefixRuleTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

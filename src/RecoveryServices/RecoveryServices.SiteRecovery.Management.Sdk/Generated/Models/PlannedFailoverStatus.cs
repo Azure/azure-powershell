@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class PlannedFailoverStatus
     {
+        /// <summary>
+        /// Succeeded
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Cancelled
+        /// </summary>
         public const string Cancelled = "Cancelled";
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
     }
 }

@@ -1502,6 +1502,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.VerifyClientCertIssuerDn,
                         opt => opt.MapFrom(src => src.VerifyClientCertIssuerDN)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
                     );
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
@@ -1608,6 +1612,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.VerifyClientCertIssuerDN,
                         opt => opt.MapFrom(src => src.VerifyClientCertIssuerDn)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
                     );
                 cfg.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
@@ -1997,6 +2005,17 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.RoutingIntent, CNM.PSRoutingIntent>();
                 cfg.CreateMap<MNM.RoutingPolicy, CNM.PSRoutingPolicy>();
+
+                //// Virtual Hub Connection Policy
+                // CNM to MNM - handled manually in ConnectionPolicyBaseCmdlet.CreateOrUpdateConnectionPolicy
+                cfg.CreateMap<CNM.PSConnectionPolicy, MNM.ConnectionPolicy>();
+
+                // MNM to CNM - explicitly flatten nested Properties
+                cfg.CreateMap<MNM.ConnectionPolicy, CNM.PSConnectionPolicy>()
+                    .ForMember(dest => dest.ProvisioningState, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningState : null))
+                    .ForMember(dest => dest.EnableInternetSecurity, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.EnableInternetSecurity : null))
+                    .ForMember(dest => dest.RoutingConfiguration, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.RoutingConfiguration : null))
+                    .ForMember(dest => dest.AssociatedConnections, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.AssociatedConnections : null));
 
                 //// Virtual Hub Route Map
                 // CNM to MNM
