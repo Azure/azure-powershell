@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
         }
 
-        [Fact(Skip = "Garnet scenario tests require a subscription and region with Garnet capacity.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGarnetClusterCreateUpdateGetCmdlets()
         {
             TestRunner.RunTestScript("Test-GarnetClusterCreateUpdateGetCmdlets");
