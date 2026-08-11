@@ -109,7 +109,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2024-11-01-preview/RestorableDroppedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2022-05-01-preview/InstanceFailoverGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2024-11-01-preview/Servers.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2024-11-01-preview/DeletedServers.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2025-08-01-preview/deletedServers.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2022-08-01-preview/ServerConfigurationOptions.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2022-08-01-preview/ManagedLedgerDigestUploads.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2022-08-01-preview/ManagedDatabases.json
