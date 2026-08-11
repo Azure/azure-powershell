@@ -39,6 +39,11 @@
      - Added 'BreakthroughMode' to volume output in 'Get-AzNetAppFilesVolume' and 'Get-AzNetAppFilesVolumeGroup'
 
 #### Az.Network 8.1.0
+* Added `RoutingConfiguration`, `VirtualHubVnetConnection`, and `VirtualHubVnetConnectionId` parameters to `Add-AzRouteServerPeer` and `Update-AzRouteServerPeer`.
+    - Enabled configuring inbound and outbound route maps for Route Server BGP peer connections.
+    - Enabled specifying a hub virtual network connection for the peer (by object or resource id).
+* Added `RoutingConfiguration` parameter to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`.
+    - Enabled configuring inbound and outbound route maps for Virtual Network Gateway connections.
 * Added new cmdlets for ConnectionPolicy management under VirtualHub
     - 'Get-AzConnectionPolicy': Retrieve one or all ConnectionPolicy resources under a VirtualHub
     - 'New-AzConnectionPolicy': Create a new ConnectionPolicy under a VirtualHub
