@@ -1,0 +1,138 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/NewRelic/NewRelic.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.3.0
+    prefix: "Az"
+    subject-prefix: "NewRelic"
+    service-name: "NewRelic"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    api-version: "2025-05-01-preview"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+      - where:
+          variant: ^Switch$|^SwitchViaIdentity$
+        remove: true
+      - where:
+          subject: AppService|Host
+          variant: ^List$
+        remove: true
+      - where:
+          subject: MetricRule|MetricStatus
+          variant: ^Get$|^GetViaIdentity$
+        remove: true
+      - where:
+          subject: MonitoredSubscription
+          variant: List
+        remove: true
+      - where:
+          subject: ConnectedPartnerResource
+        hide: true
+      - where:
+          subject: Monitor
+          verb: New
+        hide: true
+      - where:
+          subject: MonitorLinkedResource
+          parameter-name: MonitorName
+        set:
+          parameter-name: Name
+      - where:
+          subject: MonitorLinkedResource
+        hide: true
+      - where:
+          subject: Monitor
+          verb: Get
+        hide: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          subject: Monitor
+          verb: Update
+        remove: true
+      - model-cmdlet:
+          - model-name: MonitoredSubscription
+          - model-name: FilteringTag
+      - where:
+          subject: TagRule
+        set:
+          subject: MonitorTagRule
+      - where:
+          subject: MonitorHost
+        set:
+          subject: MonitoredHost
+      - where:
+          subject: MonitorAppService
+        set:
+          subject: MonitoredAppService
+      - where:
+          verb: Invoke
+          subject: ResubscribeMonitor
+          parameter-name: SubscriptionId1
+        set:
+          parameter-name: NewSubscriptionId
+      - where:
+          verb: Remove
+          subject: MonitoredSubscription
+        set:
+          command-description: Deletes the subscriptions that are being monitored by the NewRelic monitor resource
+      - where:
+          model-name: AccountResource
+        set:
+          format-table:
+            properties:
+              - OrganizationId
+              - AccountId
+              - AccountName
+              - Region
+      - where:
+          model-name: MonitoredResource
+        set:
+          format-table:
+            properties:
+              - ReasonForLogsStatus
+              - ReasonForMetricsStatus
+              - SendingLog
+              - SendingMetric
+      - where:
+          model-name: PlanDataResource
+        set:
+          format-table:
+            properties:
+              - PlanDataUsageType
+              - PlanDataBillingCycle
+              - PlanDataPlanDetail
+              - PlanDataEffectiveDate
+              - OrgCreationSource
+              - AccountCreationSource
+      - where:
+          model-name: OrganizationResource
+        set:
+          format-table:
+            properties:
+              - OrganizationId
+              - OrganizationName
+              - BillingSource
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicBillingInfo
 
 ## SYNOPSIS
-Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+A synchronous resource action.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzNewRelicBillingInfo -InputObject <INewRelicIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+A synchronous resource action.
 
 ## EXAMPLES
 
@@ -112,6 +112,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

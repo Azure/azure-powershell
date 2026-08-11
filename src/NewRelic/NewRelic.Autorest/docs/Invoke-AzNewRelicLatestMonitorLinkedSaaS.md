@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
+Name of the Monitors resource
 
 ```yaml
 Type: System.String
@@ -134,6 +134,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

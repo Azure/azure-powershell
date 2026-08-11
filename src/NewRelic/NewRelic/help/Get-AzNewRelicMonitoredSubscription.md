@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitoredSubscription
 
 ## SYNOPSIS
-Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
+Get a MonitoredSubscriptionProperties
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzNewRelicMonitoredSubscription -InputObject <INewRelicIdentity> [-DefaultPr
 ```
 
 ## DESCRIPTION
-Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
+Get a MonitoredSubscriptionProperties
 
 ## EXAMPLES
 
@@ -113,6 +113,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

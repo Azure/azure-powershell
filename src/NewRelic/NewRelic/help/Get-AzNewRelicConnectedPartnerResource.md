@@ -8,7 +8,6 @@ schema: 2.0.0
 # Get-AzNewRelicConnectedPartnerResource
 
 ## SYNOPSIS
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
 
 ## SYNTAX
 
@@ -19,7 +18,6 @@ Get-AzNewRelicConnectedPartnerResource -MonitorName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
 
 ## EXAMPLES
 
@@ -39,8 +37,6 @@ This command list of all active deployments that are associated with the marketp
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -55,7 +51,6 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Name of the Monitors resource
 
 ```yaml
 Type: System.String
@@ -70,8 +65,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -86,7 +79,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
 
 ```yaml
 Type: System.String[]

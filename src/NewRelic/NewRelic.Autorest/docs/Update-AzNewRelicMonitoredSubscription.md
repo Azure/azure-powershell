@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNewRelicMonitoredSubscription
 
 ## SYNOPSIS
-Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+Update a MonitoredSubscriptionProperties
 
 ## SYNTAX
 
@@ -26,41 +26,46 @@ Update-AzNewRelicMonitoredSubscription -InputObject <INewRelicIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzNewRelicMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNewRelicMonitoredSubscription -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+Update a MonitoredSubscriptionProperties
 
 ## EXAMPLES
 
-### Example 1: Update the subscriptions that are being monitored by the NewRelic monitor resource
+### Example 1: {{ Add title here }}
 ```powershell
-$includeFT = New-AzNewRelicFilteringTagObject -Action Include -Name testLogRule1 -Value filteringTag1
-$sub1 = New-AzNewRelicMonitoredSubscriptionObject -LogRuleFilteringTag $includeFT -LogRuleSendAadLog Enabled -LogRuleSendActivityLog Enabled -LogRuleSendSubscriptionLog Enabled -MetricRuleFilteringTag $includeFT -MetricRuleUserEmail user1@outlook.com -Status Active -SubscriptionId 11111111-2222-3333-4444-12345678910122
-Update-AzNewRelicMonitoredSubscription -MonitorName test-01 -ResourceGroupName group-test -PatchOperation AddComplete -MonitoredSubscriptionList $sub1
+{{ Add code here }}
 ```
 
 ```output
-Id                        : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/group_test/providers/NewRelic.Observability/monitors/test-01/monitoredSubscriptions/default
-MonitoredSubscriptionList : {{
-                              "tagRules": {
-                                "provisioningState": "Accepted"
-                              },
-                              "subscriptionId": "00000000-0000-0000-0000-000000000000",
-                              "status": "Active"
-                            }, {
-                              "tagRules": {
-                                "provisioningState": "Accepted"
-                              },
-                              "subscriptionId": "11111111-2222-3333-4444-123456789101",
-                              "status": "Active"
-                            }}
-Name                      : default
-PatchOperation            : 
-ProvisioningState         : 
-ResourceGroupName         : group_test
-Type                      : NewRelic.Observability/monitors/monitoredSubscriptions
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates the subscriptions that are being monitored by the NewRelic monitor resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -110,12 +115,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitoredSubscriptionList
 List of subscriptions and the state of the monitoring.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscription[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -130,7 +165,7 @@ Name of the Monitors resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -160,7 +195,7 @@ The operation for the patch on the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +211,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -188,10 +223,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False

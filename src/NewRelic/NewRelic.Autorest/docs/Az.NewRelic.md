@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NewRelic
-Module Guid: 9594ee80-6c29-41b6-a615-e8689b5ae0dd
+Module Guid: 464e4a37-d61b-41d7-ae3e-76c51cd0ab11
 Download Help Link: https://learn.microsoft.com/powershell/module/az.newrelic
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,10 +15,10 @@ Microsoft Azure PowerShell: NewRelic cmdlets
 Lists all the New Relic accounts linked to your email address, helping you understand the existing accounts that have been created
 
 ### [Get-AzNewRelicBillingInfo](Get-AzNewRelicBillingInfo.md)
-Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+A synchronous resource action.
 
 ### [Get-AzNewRelicConnectedPartnerResource](Get-AzNewRelicConnectedPartnerResource.md)
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+
 
 ### [Get-AzNewRelicMonitor](Get-AzNewRelicMonitor.md)
 Get a NewRelicMonitorResource
@@ -30,7 +30,7 @@ Lists the app service resources currently being monitored by the New Relic resou
 Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
 
 ### [Get-AzNewRelicMonitoredSubscription](Get-AzNewRelicMonitoredSubscription.md)
-Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
+Get a MonitoredSubscriptionProperties
 
 ### [Get-AzNewRelicMonitorMetricRule](Get-AzNewRelicMonitorMetricRule.md)
 Retrieves the metric rules that are configured in the New Relic monitor resource
@@ -63,7 +63,7 @@ Returns the latest SaaS linked to the newrelic organization of the underlying mo
 Links a new SaaS to the newrelic organization of the underlying monitor.
 
 ### [Invoke-AzNewRelicResubscribeMonitor](Invoke-AzNewRelicResubscribeMonitor.md)
-Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace
+A long-running resource action.
 
 ### [New-AzNewRelicFilteringTagObject](New-AzNewRelicFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
@@ -72,7 +72,7 @@ Create an in-memory object for FilteringTag.
 Create a NewRelicMonitorResource
 
 ### [New-AzNewRelicMonitoredSubscription](New-AzNewRelicMonitoredSubscription.md)
-Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+Create a MonitoredSubscriptionProperties
 
 ### [New-AzNewRelicMonitoredSubscriptionObject](New-AzNewRelicMonitoredSubscriptionObject.md)
 Create an in-memory object for MonitoredSubscription.
@@ -93,7 +93,7 @@ Deletes a tag rule set for a given New Relic monitor resource, removing fine-gra
 Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
 
 ### [Update-AzNewRelicMonitoredSubscription](Update-AzNewRelicMonitoredSubscription.md)
-Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+Update a MonitoredSubscriptionProperties
 
 ### [Update-AzNewRelicMonitorIngestionKey](Update-AzNewRelicMonitorIngestionKey.md)
 Refreshes the ingestion key for all monitors linked to the same account associated to the underlying monitor.

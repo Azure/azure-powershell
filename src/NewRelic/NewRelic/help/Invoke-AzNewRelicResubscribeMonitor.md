@@ -8,15 +8,15 @@ schema: 2.0.0
 # Invoke-AzNewRelicResubscribeMonitor
 
 ## SYNOPSIS
-Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace
+A long-running resource action.
 
 ## SYNTAX
 
 ### ResubscribeExpanded (Default)
 ```
 Invoke-AzNewRelicResubscribeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-OfferId <String>] [-OrganizationId <String>] [-PlanId <String>]
- [-PublisherId <String>] [-ResourceGroup <String>] [-SubscriptionId1 <String>] [-TermId <String>]
+ [-SubscriptionId <String>] [-NewSubscriptionId <String>] [-OfferId <String>] [-OrganizationId <String>]
+ [-PlanId <String>] [-PublisherId <String>] [-ResourceGroup <String>] [-TermId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -58,7 +58,7 @@ Invoke-AzNewRelicResubscribeMonitor -InputObject <INewRelicIdentity> -Body <IRes
 ```
 
 ## DESCRIPTION
-Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+A long-running resource action.
 
 ## EXAMPLES
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
+Name of the Monitors resource
 
 ```yaml
 Type: System.String
@@ -199,6 +199,21 @@ Parameter Sets: ResubscribeExpanded, ResubscribeViaJsonString, ResubscribeViaJso
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewSubscriptionId
+Newly selected Azure Subscription Id in which the new Marketplace subscription will be created for Resubscribe
+
+```yaml
+Type: System.String
+Parameter Sets: ResubscribeExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -313,6 +328,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -322,21 +338,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId1
-Newly selected Azure Subscription Id in which the new Marketplace subscription will be created for Resubscribe
-
-```yaml
-Type: System.String
-Parameter Sets: ResubscribeExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
