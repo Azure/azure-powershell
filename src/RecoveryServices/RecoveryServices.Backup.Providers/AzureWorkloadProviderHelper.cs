@@ -322,7 +322,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     if (protectedItem.Properties.BackupManagementType == "AzureStorage" && protectedItem.Properties.WorkloadType == "AzureFileShare")
                     {
-                        // code should never reach here, as CRR is not supported for azure files yet
                         string protectedItemFriendlyName = (protectedItem.Properties as CrrModel.AzureFileshareProtectedItem).FriendlyName;
                         filteredByUniqueName = filteredByUniqueName || (itemName != null && protectedItemFriendlyName.ToLower() == itemName.ToLower());
                         filteredByFriendlyName = friendlyName != null && protectedItemFriendlyName.ToLower() == friendlyName.ToLower();
@@ -331,7 +330,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     return filteredByUniqueName || filteredByFriendlyName;
                 }).ToList();
 
-                // bug: below API calls should be made to secondary region 
+                // Known limitation (tracked as follow-up): the CRR list response does not include the
+                // extendedInfo block, so it is fetched via a per-item GetProtectedItem call. That GET is
+                // served from the PRIMARY region, which means -UseSecondaryRegion -FriendlyName currently
+                // depends on the primary region being available. The service does not yet expose a
+                // secondary-region GET that returns extendedInfo; until it does, this cross-region fetch is
+                // the only way to populate ExtendedInfo. TODO: link/track the service work item and switch
+                // to a secondary-region call (or leave ExtendedInfo null on the CRR path) once available.
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
                     new ODataQuery<GetProtectedItemQueryObject>(q => q.Expand == "extendedinfo");
 
@@ -352,7 +357,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelListCrr(protectedItems);
-            if (!string.IsNullOrEmpty(itemName))
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
             {
                 for (int i = 0; i < itemModels.Count; i++)
                 {
@@ -1041,6 +1046,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         if (recoveryPoint.GetType() == typeof(CmdletModel.AzureWorkloadRecoveryPoint))
                         {
                             return ((CmdletModel.AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier != RecoveryPointTier.VaultArchive;
+                        }
+
+                        if (recoveryPoint.GetType() == typeof(CmdletModel.AzureFileShareRecoveryPoint))
+                        {
+                            //no archive tier currently for AFS, so return true for all RPs
+                            return true;
                         }
 
                         return false;
