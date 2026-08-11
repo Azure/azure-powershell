@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         internal GallerySharingOperations (ComputeManagementClient client)
         {
-            if (client == null)
+            if (client == null) 
             {
                 throw new System.ArgumentNullException("client");
             }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Management.Compute
             var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<GallerySharingAcceptHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Management.Compute
             var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<GallerySharingRejectHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();

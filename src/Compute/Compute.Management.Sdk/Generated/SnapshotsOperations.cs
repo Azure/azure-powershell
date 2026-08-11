@@ -2097,7 +2097,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-
+ 
             if (immutabilityPolicyData == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "immutabilityPolicyData");
@@ -2269,7 +2269,7 @@ namespace Microsoft.Azure.Management.Compute
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Snapshot,SnapshotsUpdateImmutabilityPolicyHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -2358,7 +2358,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-
+ 
             if (immutabilityPolicyData == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "immutabilityPolicyData");
@@ -2530,7 +2530,7 @@ namespace Microsoft.Azure.Management.Compute
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Snapshot,SnapshotsUpdateImmutabilityPolicyLockHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();

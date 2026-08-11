@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated DiskRP-related cmdlets to use API version 2026-03-02 and GalleryRP-related cmdlets to use API version 2025-12-03.
 
 ## Version 11.8.0
 * Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.

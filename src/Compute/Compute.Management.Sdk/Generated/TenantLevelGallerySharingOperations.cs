@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         internal TenantLevelGallerySharingOperations (ComputeManagementClient client)
         {
-            if (client == null)
+            if (client == null) 
             {
                 throw new System.ArgumentNullException("client");
             }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-
+ 
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Compute
             var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingAcceptHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
 
-
+ 
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Management.Compute
             var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<TenantLevelGallerySharingRejectHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
