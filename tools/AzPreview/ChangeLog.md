@@ -1,3 +1,28 @@
+## 16.3.0 - September 2026
+#### Az.Dell 0.1.0
+* First preview release for module Az.Dell
+
+#### Az.Network 8.2.0
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the '-DdosCustomPolicyId' parameter to 'Set-AzPublicIpAddress'.
+    - Added the '-RemoveDdosCustomPolicy' switch to remove an existing association.
+    - DDoS custom policy association does not require a specific DDoS protection mode.
+* Added 'RoutingConfiguration', 'VirtualHubVnetConnection', and 'VirtualHubVnetConnectionId' parameters to 'Add-AzRouteServerPeer' and 'Update-AzRouteServerPeer'.
+    - Enabled configuring inbound and outbound route maps for Route Server BGP peer connections.
+    - Enabled specifying a hub virtual network connection for the peer (by object or resource id).
+* Added 'RoutingConfiguration' parameter to 'New-AzVirtualNetworkGatewayConnection' and 'Set-AzVirtualNetworkGatewayConnection'.
+    - Enabled configuring inbound and outbound route maps for Virtual Network Gateway connections.
+
+#### Az.RecoveryServices 7.14.1
+* Added Cross Region Restore support for Azure File Share backup items ('Get-AzRecoveryServicesBackupItem -UseSecondaryRegion', 'Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion', 'Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion')
+* Refined soft delete behavior for Azure File share backup items
+    - 'Undo-AzRecoveryServicesBackupItemDeletion' now throws a clear error when the target Azure File share item is not in the soft-deleted ('ToBeDeleted') state instead of issuing an undelete request that cannot succeed.
+    - Corrected the 'DateOfPurge' computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
+
+#### Az.VMware 0.10.0
+* Fixed 'New-AzVMwareVcf5LicenseObject' and the '-VcfLicense' parameter on 'New-AzVMwarePrivateCloud' not being available in the '0.9.1' package
+    - The cmdlet and parameter are now correctly generated and exported by the module
+
 ## 16.2.0 - August 2026
 #### Az.Accounts 5.5.2
 * Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.
