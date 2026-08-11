@@ -1,0 +1,81 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Sphere/Sphere.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.3
+    prefix: "Az"
+    subject-prefix: "Sphere"
+    service-name: "Sphere"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+      - where:
+          verb: Remove
+          subject: ^Device$|Image|Deployment
+        remove: true
+      - where:
+          verb: Update
+          subject: Image|Deployment
+        remove: true
+      - where:
+          verb: Get
+          subject: CatalogDeployment
+        remove: true
+      - where:
+          verb: Invoke
+          subject: UploadCatalogImage
+        remove: true
+      - where:
+          verb: Invoke
+          subject: ClaimDeviceGroupDevice
+        remove: true
+      - where:
+          verb: Invoke
+          variant: ^Count(.*)
+        set:
+          variant: CountDevice$1
+      - where:
+          variant: ^List(?!.*?Expanded)
+          subject: CatalogDeviceGroup
+        remove: true
+      - where:
+          variant: ^Retrieve(?!.*?Expanded)
+          subject: CertificateProof
+        remove: true
+      - where:
+          variant: ^Claim(?!.*?Expanded)
+          subject: ClaimDeviceGroupDevice
+        hide: true
+      - where:
+          variant: ^Generate(?!.*?(Expanded|JsonString|JsonFilePath))
+          subject: DeviceCapabilityImage
+        remove: true
+      - where:
+          variant: GenerateViaIdentityExpanded
+          subject: DeviceCapabilityImage
+        remove: true
+      - where:
+          verb: Set
+        hide: true
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

@@ -12,7 +12,7 @@ Get a Catalog
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzSphereCatalog [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzSphereCatalog -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 Get-AzSphereCatalog -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzSphereCatalog -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -164,7 +164,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -176,6 +176,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
