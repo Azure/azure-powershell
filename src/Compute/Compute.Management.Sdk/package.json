@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@autorest/core": "^3.10.9",
+    "@autorest/modelerfour": "^4.27.3",
+    "@autorest/powershell": "^4.0.754"
+  }
+}

@@ -47,7 +47,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="virtualMachineExtensionType">Specifies the type of the extension; an example is &#34;CustomScriptExtension&#34;.
         /// </param>
 
-        /// <param name="typeHandlerVersion">Specifies the version of the script handler.
+        /// <param name="typeHandlerVersion">Specifies the Major.Minor version of the script handler. Customer is able
+        /// to specify only the Major.Minor version of an extension, Azure platform
+        /// will deliver the latest Patch.Hotfix version in the Major.Minor series.
         /// </param>
 
         /// <param name="autoUpgradeMinorVersion">Indicates whether the extension should use a newer minor version if one is
@@ -153,7 +155,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string VirtualMachineExtensionType {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the version of the script handler.
+        /// Gets or sets specifies the Major.Minor version of the script handler.
+        /// Customer is able to specify only the Major.Minor version of an extension,
+        /// Azure platform will deliver the latest Patch.Hotfix version in the
+        /// Major.Minor series.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.typeHandlerVersion")]
         public string TypeHandlerVersion {get; set; }
