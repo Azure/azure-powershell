@@ -1,3 +1,113 @@
+## 16.1.0 - August 2026
+#### Az.Accounts 5.5.0
+* Added ChangeSafety Support
+* Upgraded 'Azure.Identity' to 1.17.2.
+
+#### Az.Aks 7.2.0
+* Added ChangeSafety Support
+
+#### Az.AppConfiguration 2.1.0
+* Upgraded API version from 2022-05-01 to 2024-06-01
+* Added support for App Configuration store replicas
+    - Added 'New-AzAppConfigurationReplica'
+    - Added 'Get-AzAppConfigurationReplica'
+    - Added 'Remove-AzAppConfigurationReplica'
+* Added 'DataPlaneProxyAuthenticationMode', 'DataPlaneProxyPrivateLinkDelegation', and 'DefaultKeyValueRevisionRetentionPeriodInSecond' to 'New-AzAppConfigurationStore' and 'Update-AzAppConfigurationStore'
+* Removed 'SoftDeleteRetentionInDay' from 'Update-AzAppConfigurationStore' as it is a create-only property
+* Added data plane snapshot cmdlets for Azure App Configuration
+    - Added 'New-AzAppConfigurationSnapshot'
+    - Added 'Get-AzAppConfigurationSnapshot'
+    - Added 'Update-AzAppConfigurationSnapshot'
+    - Added 'Test-AzAppConfigurationSnapshot'
+* Added 'Snapshot' to 'Get-AzAppConfigurationKeyValue' to support retrieving key-values by snapshot name
+* Added 'Get-AzAppConfigurationOperationDetail' to retrieve data plane operation details
+
+#### Az.Automation 1.12.0
+* Added ChangeSafety Support
+
+#### Az.Batch 4.1.0
+* Added ChangeSafety Support
+
+#### Az.Cdn 6.0.2
+* Announced upcoming breaking changes for all 'Az*CdnEdgeAction*' cmdlets, which will be removed in a future release.
+
+#### Az.CognitiveServices 1.17.0
+* Added ChangeSafety Support
+
+#### Az.Compute 11.6.0
+* Added ChangeSafety Support
+* Added '-ZonalPlatformFaultDomainAlignMode' to 'New-AzVmssConfig', 'New-AzVmss' (SimpleParameterSet), and 'Update-AzVmss' cmdlets.
+* Added '-OsDiskStorageFaultDomainAlignment' parameter to 'Set-AzVmssStorageProfile' cmdlet.
+* Added '-StorageFaultDomainAlignment' parameter to 'Add-AzVmssDataDisk', 'Set-AzVMOSDisk', and 'Add-AzVMDataDisk' cmdlets.
+* Fixed 'Set-AzVMRunCommand' and 'Set-AzVmssVMRunCommand' to skip blank lines when processing local script files via '-ScriptLocalPath', preventing invalid ';;' syntax errors in shell scripts.
+* Added '-InstantAccess' parameter to 'New-AzRestorePointCollection' and 'Update-AzRestorePointCollection' cmdlets.
+* Added '-InstantAccessDurationInMinutes' parameter to 'New-AzRestorePoint' cmdlet.
+
+#### Az.CosmosDB 1.21.0
+* Added ChangeSafety Support
+
+#### Az.DataFactory 1.20.0
+* Added ChangeSafety Support
+
+#### Az.DataMigration 1.1.0
+* Added ChangeSafety Support
+* [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)
+
+#### Az.DataProtection 3.0.0
+* Changed retention rule to require '-Name Default_OperationalStore'
+* Added 'RenameTo' to restore request
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Added Cosmos DB protection support
+
+#### Az.Dns 2.1.0
+* Added ChangeSafety Support
+
+#### Az.EventHub 5.5.0
+* Added ChangeSafety Support
+
+#### Az.FrontDoor 2.2.0
+* Upgraded API version to 2025-11-01
+* Hid Network Experiment cmdlets
+* Fixed 'New/Remove-AzFrontDoorWafPolicy' 'UriFormatException'
+
+#### Az.Functions 5.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Validated SKU in 'Update-AzFunctionApp'
+* Fixed cloud portability using dynamic 'StorageEndpointSuffix' [#29034]
+* Fixed 'Update-AzFunctionApp'
+
+#### Az.IotHub 2.9.0
+* Added ChangeSafety Support
+
+#### Az.KeyVault 6.5.0
+* Added ChangeSafety Support
+* Added support for creating AES 'oct-HSM' keys via 'Add-AzKeyVaultKey -KeyType oct -Destination HSM'.
+* Fixed 'New-AzKeyVault' 'RequestDisallowedByPolicy' error.
+* Removed certificate-backed items from 'Get-AzKeyVaultKey'/'Get-AzKeyVaultSecret'; use 'Get-AzKeyVaultCertificate' instead [#26217].
+
+#### Az.NetAppFiles 1.3.0
+* Added ChangeSafety Support
+
+#### Az.Network 8.0.0
+* Added ChangeSafety Support
+* Changed 'UserAssignedIdentityId' type to string[]
+
+#### Az.OperationalInsights 3.4.0
+* Added ChangeSafety Support
+
+#### Az.RecoveryServices 7.14.1
+* Updated 'System.Security.Cryptography.Cng' dependency from '4.4.0' to '5.0.0'.
+* Added Cross region restore support for Delos cloud regions
+
+#### Az.Resources 10.1.1
+* Updated 'Microsoft.Extensions.DependencyInjection.Abstractions' dependency from '8.0.2' to '10.0.3'.
+
+#### Az.ServiceBus 4.2.0
+* Added ChangeSafety Support
+
+#### Az.Storage 9.7.3
+* Updated storage account identity handling to explicitly use the Storage SDK 'Identity' model in 'New-AzStorageAccount' and 'Set-AzStorageAccount'.
+
 ## 16.0.0 - June 2026
 #### Az.Accounts 5.5.0
 * Added ChangeSafety Support
