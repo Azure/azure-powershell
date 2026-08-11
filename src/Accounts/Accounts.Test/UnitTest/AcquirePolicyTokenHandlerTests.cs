@@ -20,6 +20,8 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -27,7 +29,7 @@ using Xunit;
 namespace Microsoft.Azure.Commands.Profile.Test.UnitTest
 {
     // Matches the PipelineChangeDelegate alias declared in ContextAdapter.cs so the internal
-    // AddAcquirePolicyTokenHandler overload can be invoked directly from tests.
+    // AddChangeSafetyPolicyTokenHandler overload can be invoked directly from tests.
     using PipelineStep = Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>;
 
     public class AcquirePolicyTokenHandlerTests
@@ -38,11 +40,24 @@ namespace Microsoft.Azure.Commands.Profile.Test.UnitTest
             AzureSessionInitializer.CreateOrReplaceSession(new MemoryDataStore());
         }
 
+        // InvocationInfo has no public constructor, so build an uninitialized instance and set its
+        // BoundParameters via the non-public setter to exercise the handler's parameter evaluation.
+        private static InvocationInfo CreateInvocationInfo(IDictionary<string, object> boundParameters)
+        {
+            var invocationInfo = (InvocationInfo)RuntimeHelpers.GetUninitializedObject(typeof(InvocationInfo));
+            if (boundParameters != null)
+            {
+                var setter = typeof(InvocationInfo).GetProperty(nameof(InvocationInfo.BoundParameters)).GetSetMethod(nonPublic: true);
+                setter.Invoke(invocationInfo, new object[] { new Dictionary<string, object>(boundParameters) });
+            }
+            return invocationInfo;
+        }
+
         private static int CountAppendedSteps(IDictionary<string, object> boundParameters)
         {
             int appended = 0;
             Action<PipelineStep> appendStep = _ => appended++;
-            ContextAdapter.Instance.AddAcquirePolicyTokenHandler(boundParameters, appendStep);
+            ContextAdapter.Instance.AddChangeSafetyPolicyTokenHandler(CreateInvocationInfo(boundParameters), appendStep);
             return appended;
         }
 

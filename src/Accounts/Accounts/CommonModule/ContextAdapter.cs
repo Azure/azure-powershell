@@ -128,19 +128,12 @@ namespace Microsoft.Azure.Commands.Common
         /// module right after OnNewRequest. Conditionally appends a step that acquires an Azure Policy
         /// token and stamps it onto outgoing write requests, based on the -AcquirePolicyToken /
         /// -ChangeReference bound parameters. When the feature is off, no step is added (zero added cost).
+        /// The write-verb gate lives inside <c>StampPolicyTokenAsync</c>, so GET sub-requests are skipped
+        /// even though the step is added for the cmdlet.
         /// </summary>
         internal void AddChangeSafetyPolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
         {
-            this.AddAcquirePolicyTokenHandler(invocationInfo?.BoundParameters, appendStep);
-        }
-
-        /// <summary>
-        /// Evaluates the change safety bound parameters up front and only appends a pipeline step when the
-        /// feature is requested. The write-verb gate lives inside <c>StampPolicyTokenAsync</c>, so GET
-        /// sub-requests are skipped even though the step is added for the cmdlet.
-        /// </summary>
-        internal void AddAcquirePolicyTokenHandler(IDictionary<string, object> boundParameters, PipelineChangeDelegate appendStep)
-        {
+            var boundParameters = invocationInfo?.BoundParameters;
             if (boundParameters == null) { return; }
 
             bool acquire = boundParameters.TryGetValue(Microsoft.WindowsAzure.Commands.Common.ChangeSafetyParameters.AcquirePolicyTokenParamName, out var acquireVal)
