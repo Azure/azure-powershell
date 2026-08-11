@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class DiskState
     {
+        /// <summary>
+        /// Unavailable
+        /// </summary>
         public const string Unavailable = "Unavailable";
+        /// <summary>
+        /// InitialReplicationPending
+        /// </summary>
         public const string InitialReplicationPending = "InitialReplicationPending";
+        /// <summary>
+        /// InitialReplicationFailed
+        /// </summary>
         public const string InitialReplicationFailed = "InitialReplicationFailed";
+        /// <summary>
+        /// Protected
+        /// </summary>
         public const string Protected = "Protected";
     }
 }

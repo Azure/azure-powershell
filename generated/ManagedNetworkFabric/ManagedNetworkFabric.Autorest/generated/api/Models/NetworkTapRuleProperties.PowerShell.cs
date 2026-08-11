@@ -109,9 +109,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IdentitySelector"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelector = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelector) content.GetValueForProperty("IdentitySelector",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelector, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GlobalNetworkTapRuleAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleAction = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionProperties) content.GetValueForProperty("GlobalNetworkTapRuleAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleAction, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalNetworkTapRuleActionPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Annotation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TapRulesUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).TapRulesUrl = (string) content.GetValueForProperty("TapRulesUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).TapRulesUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("MatchConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRuleMatchConfigurationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DynamicMatchConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("NetworkTapId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapId = (string) content.GetValueForProperty("NetworkTapId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapId, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkTapIds"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapIds = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkTapIds",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapIds, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("PollingIntervalInSecond"))
             {
@@ -120,6 +156,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("LastSyncedTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastSyncedTime = (global::System.DateTime?) content.GetValueForProperty("LastSyncedTime",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastSyncedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("NetworkFabricId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkFabricId = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkFabricId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkFabricId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ConfigurationState"))
             {
@@ -133,25 +173,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).AdministrativeState = (string) content.GetValueForProperty("AdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).AdministrativeState, global::System.Convert.ToString);
             }
-            if (content.Contains("Annotation"))
+            if (content.Contains("IdentitySelectorIdentityType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorIdentityType = (string) content.GetValueForProperty("IdentitySelectorIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorIdentityType, global::System.Convert.ToString);
             }
-            if (content.Contains("ConfigurationType"))
+            if (content.Contains("IdentitySelectorUserAssignedIdentityResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId = (string) content.GetValueForProperty("IdentitySelectorUserAssignedIdentityResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId, global::System.Convert.ToString);
             }
-            if (content.Contains("TapRulesUrl"))
+            if (content.Contains("GlobalNetworkTapRuleActionEnableCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).TapRulesUrl = (string) content.GetValueForProperty("TapRulesUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).TapRulesUrl, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionEnableCount = (string) content.GetValueForProperty("GlobalNetworkTapRuleActionEnableCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionEnableCount, global::System.Convert.ToString);
             }
-            if (content.Contains("MatchConfiguration"))
+            if (content.Contains("GlobalNetworkTapRuleActionTruncate"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRuleMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionTruncate = (string) content.GetValueForProperty("GlobalNetworkTapRuleActionTruncate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionTruncate, global::System.Convert.ToString);
             }
-            if (content.Contains("DynamicMatchConfiguration"))
+            if (content.Contains("LastOperationDetail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -170,9 +210,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IdentitySelector"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelector = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelector) content.GetValueForProperty("IdentitySelector",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelector, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GlobalNetworkTapRuleAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleAction = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionProperties) content.GetValueForProperty("GlobalNetworkTapRuleAction",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleAction, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalNetworkTapRuleActionPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Annotation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).Annotation, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TapRulesUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).TapRulesUrl = (string) content.GetValueForProperty("TapRulesUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).TapRulesUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("MatchConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRuleMatchConfigurationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DynamicMatchConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("NetworkTapId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapId = (string) content.GetValueForProperty("NetworkTapId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapId, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkTapIds"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapIds = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkTapIds",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkTapIds, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("PollingIntervalInSecond"))
             {
@@ -181,6 +257,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("LastSyncedTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastSyncedTime = (global::System.DateTime?) content.GetValueForProperty("LastSyncedTime",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastSyncedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("NetworkFabricId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkFabricId = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkFabricId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).NetworkFabricId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ConfigurationState"))
             {
@@ -194,25 +274,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).AdministrativeState = (string) content.GetValueForProperty("AdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).AdministrativeState, global::System.Convert.ToString);
             }
-            if (content.Contains("Annotation"))
+            if (content.Contains("IdentitySelectorIdentityType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)this).Annotation, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorIdentityType = (string) content.GetValueForProperty("IdentitySelectorIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorIdentityType, global::System.Convert.ToString);
             }
-            if (content.Contains("ConfigurationType"))
+            if (content.Contains("IdentitySelectorUserAssignedIdentityResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).ConfigurationType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId = (string) content.GetValueForProperty("IdentitySelectorUserAssignedIdentityResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).IdentitySelectorUserAssignedIdentityResourceId, global::System.Convert.ToString);
             }
-            if (content.Contains("TapRulesUrl"))
+            if (content.Contains("GlobalNetworkTapRuleActionEnableCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).TapRulesUrl = (string) content.GetValueForProperty("TapRulesUrl",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).TapRulesUrl, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionEnableCount = (string) content.GetValueForProperty("GlobalNetworkTapRuleActionEnableCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionEnableCount, global::System.Convert.ToString);
             }
-            if (content.Contains("MatchConfiguration"))
+            if (content.Contains("GlobalNetworkTapRuleActionTruncate"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).MatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>) content.GetValueForProperty("MatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).MatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRuleMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionTruncate = (string) content.GetValueForProperty("GlobalNetworkTapRuleActionTruncate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).GlobalNetworkTapRuleActionTruncate, global::System.Convert.ToString);
             }
-            if (content.Contains("DynamicMatchConfiguration"))
+            if (content.Contains("LastOperationDetail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).DynamicMatchConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>) content.GetValueForProperty("DynamicMatchConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)this).DynamicMatchConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.CommonDynamicMatchConfigurationTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePropertiesInternal)this).LastOperationDetail, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
@@ -703,6 +699,10 @@
   {
     "alias": "DiskPool",
     "module": "DiskPool"
+  },
+  {
+    "alias": "Discovery",
+    "module": "Discovery"
   },
   {
     "alias": "Datadog",
@@ -945,14 +945,6 @@
     "module": "ArizeAI"
   },
   {
-    "module": "WeightsAndBiases",
-    "alias": "WeightsAndBiases"
-  },
-  {
-    "module": "Pinecone",
-    "alias": "Pinecone"
-  },
-  {
     "alias": "LambdaTest",
     "module": "LambdaTest"
   },
@@ -1005,6 +997,10 @@
     "module": "EdgeAction"
   },
   {
+    "module": "ChangeSafety",
+    "alias": "ChangeSafety"
+  },
+  {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
   },
@@ -1027,5 +1023,21 @@
   {
     "module": "Relationships",
     "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
+  },
+  {
+    "module": "Napster",
+    "alias": "Napster"
+  },
+  {
+    "alias": "Dell",
+    "module": "Dell"
+  },
+  {
+    "alias": "Mission",
+    "module": "Mission"
   }
 ]

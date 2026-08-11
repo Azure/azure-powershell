@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ProxyResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkToNetworkInterconnectPatchableProperties.FromJson(__jsonProperties) : _property;}
+            __proxyResourceBase = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ProxyResourceBase(json);
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkToNetworkInterconnectPatchProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __proxyResource?.ToJson(container, serializationMode);
+            __proxyResourceBase?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

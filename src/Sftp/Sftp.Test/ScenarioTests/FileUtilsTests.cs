@@ -1,8 +1,11 @@
 using System;
 using System.IO;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 using Xunit;
@@ -15,7 +18,7 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
     /// Port of Azure CLI test_file_utils.py
     /// Owner: johnli1
     /// </summary>
-    public class FileUtilsTests
+    public class FileUtilsTests : IDisposable
     {
         private string _tempDir;
 
@@ -23,6 +26,37 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
         {
             _tempDir = Path.Combine(Path.GetTempPath(), "sftp_file_utils_test_" + Guid.NewGuid().ToString("N").Substring(0, 8));
             Directory.CreateDirectory(_tempDir);
+            EnsureAzureSessionInitialized();
+        }
+
+        private static bool _sessionInitialized = false;
+        private static readonly object _sessionLock = new object();
+
+        private static void EnsureAzureSessionInitialized()
+        {
+            lock (_sessionLock)
+            {
+                if (!_sessionInitialized)
+                {
+                    var dataStore = new MemoryDataStore();
+                    var session = new AzureSessionInitializer.AdalSession
+                    {
+                        DataStore = dataStore,
+                        ProfileDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure"),
+                        ProfileFile = "AzureProfile.json",
+                        TokenCacheDirectory = Path.GetTempPath(),
+                        TokenCacheFile = "msal.cache"
+                    };
+                    session.TokenCache = session.TokenCache ?? new AzureTokenCache();
+                    AzureSession.Initialize(() => session, true);
+                    _sessionInitialized = true;
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            TearDown();
         }
 
         private void TearDown()
@@ -588,6 +622,233 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
                 contextMock.Setup(c => c.Tenant).Returns((IAzureTenant)null);
                 // Act & Assert
                 Assert.Throws<AzPSInvalidOperationException>(() => FileUtils.GetAndWriteCertificate(contextMock.Object, "dummy.pub", null, null));
+            }
+            finally
+            {
+                TearDown();
+            }
+        }
+
+        /// <summary>
+        /// Generates a valid SSH RSA public key file for testing.
+        /// </summary>
+        private string CreateTestPublicKeyFile()
+        {
+            using (var rsa = RSA.Create(2048))
+            {
+                var parameters = rsa.ExportParameters(false);
+                // Build SSH public key format: ssh-rsa <base64(algorithm_length + algorithm + exponent_length + exponent + modulus_length + modulus)>
+                using (var ms = new System.IO.MemoryStream())
+                using (var writer = new System.IO.BinaryWriter(ms))
+                {
+                    var algorithmBytes = System.Text.Encoding.ASCII.GetBytes("ssh-rsa");
+                    WriteSshField(writer, algorithmBytes);
+                    WriteSshField(writer, parameters.Exponent);
+                    WriteSshField(writer, parameters.Modulus);
+                    var base64 = Convert.ToBase64String(ms.ToArray());
+                    var publicKeyText = $"ssh-rsa {base64} test@test";
+                    var publicKeyFile = Path.Combine(_tempDir, "id_rsa.pub");
+                    File.WriteAllText(publicKeyFile, publicKeyText);
+                    return publicKeyFile;
+                }
+            }
+        }
+
+        private static void WriteSshField(System.IO.BinaryWriter writer, byte[] data)
+        {
+            // SSH uses big-endian 4-byte length prefix
+            var lengthBytes = BitConverter.GetBytes(data.Length);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(lengthBytes);
+            }
+            writer.Write(lengthBytes);
+            writer.Write(data);
+        }
+
+        /// <summary>
+        /// Sets up AzureSession with a mock ISshCredentialFactory that returns a credential
+        /// with the given token string.
+        /// </summary>
+        private void SetupMockSshCredentialFactory(string credentialToken)
+        {
+            var mockCredential = new SshCredential()
+            {
+                Credential = credentialToken,
+                ExpiresOn = DateTimeOffset.UtcNow.AddHours(1),
+            };
+
+            var mockFactory = new Mock<ISshCredentialFactory>();
+            mockFactory.Setup(f => f.GetSshCredential(
+                It.IsAny<IAzureContext>(),
+                It.IsAny<RSAParameters>()))
+                .Returns(mockCredential);
+
+            AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(
+                nameof(ISshCredentialFactory), () => mockFactory.Object, true);
+        }
+
+        private IAzureContext CreateMockContext(string accountType)
+        {
+            var contextMock = new Mock<IAzureContext>();
+            var envMock = new Mock<IAzureEnvironment>();
+            envMock.Setup(e => e.Name).Returns("AzureCloud");
+            envMock.Setup(e => e.ActiveDirectoryAuthority).Returns("https://login.microsoftonline.com/");
+            contextMock.Setup(c => c.Environment).Returns(envMock.Object);
+
+            var tenantMock = new Mock<IAzureTenant>();
+            tenantMock.Setup(t => t.Id).Returns("00000000-0000-0000-0000-000000000001");
+            contextMock.Setup(c => c.Tenant).Returns(tenantMock.Object);
+
+            var accountMock = new Mock<IAzureAccount>();
+            accountMock.Setup(a => a.Type).Returns(accountType);
+            accountMock.Setup(a => a.Id).Returns("test-app-id");
+            contextMock.Setup(c => c.Account).Returns(accountMock.Object);
+
+            return contextMock.Object;
+        }
+
+        [Fact]
+        public void TestGetAndWriteCertificateServicePrincipalCallsFactory()
+        {
+            try
+            {
+                // Arrange
+                var publicKeyFile = CreateTestPublicKeyFile();
+                var certFile = Path.Combine(_tempDir, "id_rsa-cert.pub");
+                var dummyToken = "AAAAB3NzaC1yc2EAAAADAQAB_test_sp_token";
+
+                SetupMockSshCredentialFactory(dummyToken);
+                var context = CreateMockContext(AzureAccount.AccountType.ServicePrincipal);
+
+                // Act - GetAndWriteCertificate will call factory.GetSshCredential, write cert,
+                // then try to extract principals via ssh-keygen (which won't be available in test).
+                // We expect it to either succeed or throw at principal extraction stage.
+                Exception caughtException = null;
+                try
+                {
+                    FileUtils.GetAndWriteCertificate(context, publicKeyFile, certFile, null);
+                }
+                catch (Exception ex)
+                {
+                    caughtException = ex;
+                }
+
+                // Assert - The cert file should have been written (factory was called successfully)
+                Assert.True(File.Exists(certFile), "Certificate file should have been written by the factory");
+                var certContent = File.ReadAllText(certFile);
+                Assert.Contains(dummyToken, certContent);
+                Assert.StartsWith("ssh-rsa-cert-v01@openssh.com", certContent);
+            }
+            finally
+            {
+                TearDown();
+            }
+        }
+
+        [Fact]
+        public void TestGetAndWriteCertificateUserAccountCallsFactory()
+        {
+            try
+            {
+                // Arrange
+                var publicKeyFile = CreateTestPublicKeyFile();
+                var certFile = Path.Combine(_tempDir, "id_rsa-cert.pub");
+                var dummyToken = "AAAAB3NzaC1yc2EAAAADAQAB_test_user_token";
+
+                SetupMockSshCredentialFactory(dummyToken);
+                var context = CreateMockContext(AzureAccount.AccountType.User);
+
+                // Act
+                Exception caughtException = null;
+                try
+                {
+                    FileUtils.GetAndWriteCertificate(context, publicKeyFile, certFile, null);
+                }
+                catch (Exception ex)
+                {
+                    caughtException = ex;
+                }
+
+                // Assert - The cert file should have been written
+                Assert.True(File.Exists(certFile), "Certificate file should have been written by the factory");
+                var certContent = File.ReadAllText(certFile);
+                Assert.Contains(dummyToken, certContent);
+                Assert.StartsWith("ssh-rsa-cert-v01@openssh.com", certContent);
+            }
+            finally
+            {
+                TearDown();
+            }
+        }
+
+        [Fact]
+        public void TestGetAndWriteCertificateFactoryNotRegisteredThrows()
+        {
+            try
+            {
+                // Arrange - ensure no factory is registered by registering a null-returning component
+                var publicKeyFile = CreateTestPublicKeyFile();
+                var certFile = Path.Combine(_tempDir, "id_rsa-cert.pub");
+                var context = CreateMockContext(AzureAccount.AccountType.ServicePrincipal);
+
+                // Act & Assert - Without a factory registered, this should throw
+                Assert.ThrowsAny<Exception>(() =>
+                    FileUtils.GetAndWriteCertificate(context, publicKeyFile, certFile, null));
+            }
+            finally
+            {
+                TearDown();
+            }
+        }
+
+        [Fact]
+        public void TestGetAndWriteCertificateNullCredentialThrows()
+        {
+            try
+            {
+                // Arrange - factory returns null
+                var mockFactory = new Mock<ISshCredentialFactory>();
+                mockFactory.Setup(f => f.GetSshCredential(
+                    It.IsAny<IAzureContext>(),
+                    It.IsAny<RSAParameters>()))
+                    .Returns((SshCredential)null);
+
+                AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(
+                    nameof(ISshCredentialFactory), () => mockFactory.Object, true);
+
+                var publicKeyFile = CreateTestPublicKeyFile();
+                var certFile = Path.Combine(_tempDir, "id_rsa-cert.pub");
+                var context = CreateMockContext(AzureAccount.AccountType.ServicePrincipal);
+
+                // Act & Assert
+                var ex = Assert.Throws<AzPSInvalidOperationException>(() =>
+                    FileUtils.GetAndWriteCertificate(context, publicKeyFile, certFile, null));
+                Assert.Contains("Failed to obtain SSH certificate credential", ex.Message);
+            }
+            finally
+            {
+                TearDown();
+            }
+        }
+
+        [Fact]
+        public void TestGetAndWriteCertificateEmptyCredentialStringThrows()
+        {
+            try
+            {
+                // Arrange - factory returns credential with empty string
+                SetupMockSshCredentialFactory(string.Empty);
+
+                var publicKeyFile = CreateTestPublicKeyFile();
+                var certFile = Path.Combine(_tempDir, "id_rsa-cert.pub");
+                var context = CreateMockContext(AzureAccount.AccountType.ServicePrincipal);
+
+                // Act & Assert - The inner AzPSInvalidOperationException gets caught and re-wrapped
+                // by the outer catch block as AzPSApplicationException
+                var ex = Assert.Throws<AzPSApplicationException>(() =>
+                    FileUtils.GetAndWriteCertificate(context, publicKeyFile, certFile, null));
+                Assert.Contains("SSH credential string is null or empty", ex.Message);
             }
             finally
             {

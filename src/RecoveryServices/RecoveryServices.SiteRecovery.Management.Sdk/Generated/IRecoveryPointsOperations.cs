@@ -20,20 +20,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Lists the available recovery points for a replication protected item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// The fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The replication protected item name.
+        /// Replication protected item name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -56,20 +55,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Get the details of specified recovery point.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// The fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The protection container name.
+        /// Protection container name.
         /// </param>
         /// <param name='replicatedProtectedItemName'>
-        /// The replication protected item name.
+        /// Replication protected item name.
         /// </param>
         /// <param name='recoveryPointName'>
         /// The recovery point name.

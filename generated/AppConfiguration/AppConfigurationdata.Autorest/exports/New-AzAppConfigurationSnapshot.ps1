@@ -43,6 +43,7 @@ ENTITY <ISnapshot>: A snapshot is a named, immutable subset of an App Configurat
     [Label <String>]: Filters key-values by their label field.
     [Tag <List<String>>]: Filters key-values by their tags field.
   [CompositionType <String>]: The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label.
+  [Description <String>]: The description of the snapshot.
   [ETag <String>]: 
   [Link <String>]: 
   [OperationLocation <String>]: 
@@ -120,6 +121,13 @@ param(
     # The 'key' composition type ensures there are no two key-values containing the same key.
     # The 'key_label' composition type ensures there are no two key-values containing the same key and label.
     ${CompositionType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Body')]
+    [System.String]
+    # The description of the snapshot.
+    ${Description},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

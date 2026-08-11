@@ -10,171 +10,455 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// <summary>The JSON object that contains the properties of the origin.</summary>
     public partial class AfdOriginProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParameters"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParameters __afdOriginUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginUpdatePropertiesParameters();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties" />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties();
+        /// <summary>Backing field for <see cref="AzureOrigin" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _azureOrigin;
 
         /// <summary>Resource reference to the Azure origin resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureOrigin { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).AzureOrigin; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).AzureOrigin = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureOrigin { get => (this._azureOrigin = this._azureOrigin ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set => this._azureOrigin = value; }
 
         /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string AzureOriginId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).AzureOriginId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).AzureOriginId = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string AzureOriginId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)AzureOrigin).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)AzureOrigin).Id = value ?? null; }
 
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; }
+        /// <summary>Backing field for <see cref="DeploymentStatus" /> property.</summary>
+        private string _deploymentStatus;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string DeploymentStatus { get => this._deploymentStatus; }
+
+        /// <summary>Backing field for <see cref="EnabledState" /> property.</summary>
+        private string _enabledState;
 
         /// <summary>
         /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled
         /// if there is a single enabled backend in single enabled backend pool.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string EnabledState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).EnabledState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).EnabledState = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string EnabledState { get => this._enabledState; set => this._enabledState = value; }
+
+        /// <summary>Backing field for <see cref="EnforceCertificateNameCheck" /> property.</summary>
+        private bool? _enforceCertificateNameCheck;
 
         /// <summary>Whether to enable certificate name check at origin level</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public bool? EnforceCertificateNameCheck { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).EnforceCertificateNameCheck; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).EnforceCertificateNameCheck = value ?? default(bool); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public bool? EnforceCertificateNameCheck { get => this._enforceCertificateNameCheck; set => this._enforceCertificateNameCheck = value; }
+
+        /// <summary>Backing field for <see cref="HostName" /> property.</summary>
+        private string _hostName;
 
         /// <summary>
         /// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across
         /// all origins in an endpoint.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string HostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).HostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).HostName = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string HostName { get => this._hostName; set => this._hostName = value; }
+
+        /// <summary>Backing field for <see cref="HttpPort" /> property.</summary>
+        private int? _httpPort;
 
         /// <summary>The value of the HTTP port. Must be between 1 and 65535.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public int? HttpPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).HttpPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).HttpPort = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public int? HttpPort { get => this._httpPort; set => this._httpPort = value; }
+
+        /// <summary>Backing field for <see cref="HttpsPort" /> property.</summary>
+        private int? _httpsPort;
 
         /// <summary>The value of the HTTPS port. Must be between 1 and 65535.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public int? HttpsPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).HttpsPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).HttpsPort = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public int? HttpsPort { get => this._httpsPort; set => this._httpsPort = value; }
 
         /// <summary>Internal Acessors for AzureOrigin</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.AzureOrigin { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).AzureOrigin; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).AzureOrigin = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for OriginGroupName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.OriginGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).OriginGroupName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).OriginGroupName = value ?? null; }
-
-        /// <summary>Internal Acessors for SharedPrivateLinkResource</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.SharedPrivateLinkResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResource = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for SharedPrivateLinkResourcePrivateLink</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.SharedPrivateLinkResourcePrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourcePrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourcePrivateLink = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal.AzureOrigin { get => (this._azureOrigin = this._azureOrigin ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_azureOrigin = value;} } }
 
         /// <summary>Internal Acessors for DeploymentStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal.DeploymentStatus { get => this._deploymentStatus; set { {_deploymentStatus = value;} } }
+
+        /// <summary>Internal Acessors for OriginGroupName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal.OriginGroupName { get => this._originGroupName; set { {_originGroupName = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for SharedPrivateLinkResource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal.SharedPrivateLinkResource { get => (this._sharedPrivateLinkResource = this._sharedPrivateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourceProperties()); set { {_sharedPrivateLinkResource = value;} } }
+
+        /// <summary>Internal Acessors for SharedPrivateLinkResourcePrivateLink</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal.SharedPrivateLinkResourcePrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink = value ?? null /* model class */; }
+
+        /// <summary>Backing field for <see cref="OriginGroupName" /> property.</summary>
+        private string _originGroupName;
 
         /// <summary>The name of the origin group which contains this origin.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string OriginGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).OriginGroupName; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string OriginGroupName { get => this._originGroupName; }
+
+        /// <summary>Backing field for <see cref="OriginHostHeader" /> property.</summary>
+        private string _originHostHeader;
 
         /// <summary>
         /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this
         /// value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to
         /// match the origin hostname by default. This overrides the host header defined at Endpoint
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string OriginHostHeader { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).OriginHostHeader; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).OriginHostHeader = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string OriginHostHeader { get => this._originHostHeader; set => this._originHostHeader = value; }
+
+        /// <summary>Backing field for <see cref="Priority" /> property.</summary>
+        private int? _priority;
 
         /// <summary>
         /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if
         /// any lower priority origin is healthy.Must be between 1 and 5
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public int? Priority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).Priority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).Priority = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public int? Priority { get => this._priority; set => this._priority = value; }
 
         /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string PrivateLinkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).PrivateLinkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).PrivateLinkId = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string PrivateLinkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLinkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLinkId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
 
         /// <summary>Provisioning status</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="SharedPrivateLinkResource" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties _sharedPrivateLinkResource;
 
         /// <summary>The properties of the private link resource for private origin.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties SharedPrivateLinkResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResource = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties SharedPrivateLinkResource { get => (this._sharedPrivateLinkResource = this._sharedPrivateLinkResource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourceProperties()); set => this._sharedPrivateLinkResource = value; }
 
         /// <summary>
         /// The group id from the provider of resource the shared private link resource is for.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string SharedPrivateLinkResourceGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourceGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourceGroupId = value ?? null; }
-
-        /// <summary>The resource id of the resource the shared private link resource is for.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference SharedPrivateLinkResourcePrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourcePrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourcePrivateLink = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string SharedPrivateLinkResourceGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).GroupId = value ?? null; }
 
         /// <summary>The location of the shared private link resource</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string SharedPrivateLinkResourcePrivateLinkLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourcePrivateLinkLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourcePrivateLinkLocation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string SharedPrivateLinkResourcePrivateLinkLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLinkLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLinkLocation = value ?? null; }
 
         /// <summary>
         /// The request message for requesting approval of the shared private link resource.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string SharedPrivateLinkResourceRequestMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourceRequestMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourceRequestMessage = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string SharedPrivateLinkResourceRequestMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).RequestMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).RequestMessage = value ?? null; }
 
         /// <summary>
         /// Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string SharedPrivateLinkResourceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).SharedPrivateLinkResourceStatus = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string SharedPrivateLinkResourceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).Status = value ?? null; }
+
+        /// <summary>Backing field for <see cref="Weight" /> property.</summary>
+        private int? _weight;
 
         /// <summary>
         /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public int? Weight { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).Weight; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)__afdOriginUpdatePropertiesParameters).Weight = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public int? Weight { get => this._weight; set => this._weight = value; }
 
         /// <summary>Creates an new <see cref="AfdOriginProperties" /> instance.</summary>
         public AfdOriginProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__afdOriginUpdatePropertiesParameters), __afdOriginUpdatePropertiesParameters);
-            await eventListener.AssertObjectIsValid(nameof(__afdOriginUpdatePropertiesParameters), __afdOriginUpdatePropertiesParameters);
-            await eventListener.AssertNotNull(nameof(__afdStateProperties), __afdStateProperties);
-            await eventListener.AssertObjectIsValid(nameof(__afdStateProperties), __afdStateProperties);
-        }
     }
     /// The JSON object that contains the properties of the origin.
     public partial interface IAfdOriginProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParameters,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string AzureOriginId { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"",
+        SerializedName = @"deploymentStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
+        string DeploymentStatus { get;  }
+        /// <summary>
+        /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled
+        /// if there is a single enabled backend in single enabled backend pool.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.",
+        SerializedName = @"enabledState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EnabledState { get; set; }
+        /// <summary>Whether to enable certificate name check at origin level</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable certificate name check at origin level",
+        SerializedName = @"enforceCertificateNameCheck",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnforceCertificateNameCheck { get; set; }
+        /// <summary>
+        /// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across
+        /// all origins in an endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.",
+        SerializedName = @"hostName",
+        PossibleTypes = new [] { typeof(string) })]
+        string HostName { get; set; }
+        /// <summary>The value of the HTTP port. Must be between 1 and 65535.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The value of the HTTP port. Must be between 1 and 65535.",
+        SerializedName = @"httpPort",
+        PossibleTypes = new [] { typeof(int) })]
+        int? HttpPort { get; set; }
+        /// <summary>The value of the HTTPS port. Must be between 1 and 65535.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The value of the HTTPS port. Must be between 1 and 65535.",
+        SerializedName = @"httpsPort",
+        PossibleTypes = new [] { typeof(int) })]
+        int? HttpsPort { get; set; }
+        /// <summary>The name of the origin group which contains this origin.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The name of the origin group which contains this origin.",
+        SerializedName = @"originGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string OriginGroupName { get;  }
+        /// <summary>
+        /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this
+        /// value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to
+        /// match the origin hostname by default. This overrides the host header defined at Endpoint
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint",
+        SerializedName = @"originHostHeader",
+        PossibleTypes = new [] { typeof(string) })]
+        string OriginHostHeader { get; set; }
+        /// <summary>
+        /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if
+        /// any lower priority origin is healthy.Must be between 1 and 5
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5",
+        SerializedName = @"priority",
+        PossibleTypes = new [] { typeof(int) })]
+        int? Priority { get; set; }
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateLinkId { get; set; }
+        /// <summary>Provisioning status</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Provisioning status",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
+        string ProvisioningState { get;  }
+        /// <summary>
+        /// The group id from the provider of resource the shared private link resource is for.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The group id from the provider of resource the shared private link resource is for.",
+        SerializedName = @"groupId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SharedPrivateLinkResourceGroupId { get; set; }
+        /// <summary>The location of the shared private link resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The location of the shared private link resource",
+        SerializedName = @"privateLinkLocation",
+        PossibleTypes = new [] { typeof(string) })]
+        string SharedPrivateLinkResourcePrivateLinkLocation { get; set; }
+        /// <summary>
+        /// The request message for requesting approval of the shared private link resource.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The request message for requesting approval of the shared private link resource.",
+        SerializedName = @"requestMessage",
+        PossibleTypes = new [] { typeof(string) })]
+        string SharedPrivateLinkResourceRequestMessage { get; set; }
+        /// <summary>
+        /// Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Pending", "Approved", "Rejected", "Disconnected", "Timeout")]
+        string SharedPrivateLinkResourceStatus { get; set; }
+        /// <summary>
+        /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Weight of the origin in given origin group for load balancing. Must be between 1 and 1000",
+        SerializedName = @"weight",
+        PossibleTypes = new [] { typeof(int) })]
+        int? Weight { get; set; }
 
     }
     /// The JSON object that contains the properties of the origin.
-    internal partial interface IAfdOriginPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal
+    internal partial interface IAfdOriginPropertiesInternal
+
     {
+        /// <summary>Resource reference to the Azure origin resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureOrigin { get; set; }
+        /// <summary>Resource ID.</summary>
+        string AzureOriginId { get; set; }
+
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
+        string DeploymentStatus { get; set; }
+        /// <summary>
+        /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled
+        /// if there is a single enabled backend in single enabled backend pool.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EnabledState { get; set; }
+        /// <summary>Whether to enable certificate name check at origin level</summary>
+        bool? EnforceCertificateNameCheck { get; set; }
+        /// <summary>
+        /// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across
+        /// all origins in an endpoint.
+        /// </summary>
+        string HostName { get; set; }
+        /// <summary>The value of the HTTP port. Must be between 1 and 65535.</summary>
+        int? HttpPort { get; set; }
+        /// <summary>The value of the HTTPS port. Must be between 1 and 65535.</summary>
+        int? HttpsPort { get; set; }
+        /// <summary>The name of the origin group which contains this origin.</summary>
+        string OriginGroupName { get; set; }
+        /// <summary>
+        /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this
+        /// value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to
+        /// match the origin hostname by default. This overrides the host header defined at Endpoint
+        /// </summary>
+        string OriginHostHeader { get; set; }
+        /// <summary>
+        /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if
+        /// any lower priority origin is healthy.Must be between 1 and 5
+        /// </summary>
+        int? Priority { get; set; }
+        /// <summary>Resource ID.</summary>
+        string PrivateLinkId { get; set; }
+        /// <summary>Provisioning status</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
+        string ProvisioningState { get; set; }
+        /// <summary>The properties of the private link resource for private origin.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties SharedPrivateLinkResource { get; set; }
+        /// <summary>
+        /// The group id from the provider of resource the shared private link resource is for.
+        /// </summary>
+        string SharedPrivateLinkResourceGroupId { get; set; }
+        /// <summary>The resource id of the resource the shared private link resource is for.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference SharedPrivateLinkResourcePrivateLink { get; set; }
+        /// <summary>The location of the shared private link resource</summary>
+        string SharedPrivateLinkResourcePrivateLinkLocation { get; set; }
+        /// <summary>
+        /// The request message for requesting approval of the shared private link resource.
+        /// </summary>
+        string SharedPrivateLinkResourceRequestMessage { get; set; }
+        /// <summary>
+        /// Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Pending", "Approved", "Rejected", "Disconnected", "Timeout")]
+        string SharedPrivateLinkResourceStatus { get; set; }
+        /// <summary>
+        /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
+        /// </summary>
+        int? Weight { get; set; }
 
     }
 }

@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("PoliceRateConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPoliceRateConfigurationProperties) content.GetValueForProperty("PoliceRateConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PoliceRateConfigurationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).Type, global::System.Convert.ToString);
@@ -83,6 +87,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("CounterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).CounterName = (string) content.GetValueForProperty("CounterName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).CounterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemarkComment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).RemarkComment = (string) content.GetValueForProperty("RemarkComment",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).RemarkComment, global::System.Convert.ToString);
+            }
+            if (content.Contains("PoliceRateConfigurationBitRate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBitRate = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBitRate) content.GetValueForProperty("PoliceRateConfigurationBitRate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBitRate, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BitRateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PoliceRateConfigurationBurstSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBurstSize = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBurstSize) content.GetValueForProperty("PoliceRateConfigurationBurstSize",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBurstSize, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BurstSizeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BitRateUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRateUnit = (string) content.GetValueForProperty("BitRateUnit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRateUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("BurstSizeUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSizeUnit = (string) content.GetValueForProperty("BurstSizeUnit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSizeUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("BitRate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRate = (long?) content.GetValueForProperty("BitRate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRate, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("BurstSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSize = (long?) content.GetValueForProperty("BurstSize",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -101,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("PoliceRateConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPoliceRateConfigurationProperties) content.GetValueForProperty("PoliceRateConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PoliceRateConfigurationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).Type, global::System.Convert.ToString);
@@ -108,6 +144,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("CounterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).CounterName = (string) content.GetValueForProperty("CounterName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).CounterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemarkComment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).RemarkComment = (string) content.GetValueForProperty("RemarkComment",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).RemarkComment, global::System.Convert.ToString);
+            }
+            if (content.Contains("PoliceRateConfigurationBitRate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBitRate = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBitRate) content.GetValueForProperty("PoliceRateConfigurationBitRate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBitRate, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BitRateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PoliceRateConfigurationBurstSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBurstSize = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBurstSize) content.GetValueForProperty("PoliceRateConfigurationBurstSize",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).PoliceRateConfigurationBurstSize, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BurstSizeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BitRateUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRateUnit = (string) content.GetValueForProperty("BitRateUnit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRateUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("BurstSizeUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSizeUnit = (string) content.GetValueForProperty("BurstSizeUnit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSizeUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("BitRate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRate = (long?) content.GetValueForProperty("BitRate",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BitRate, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("BurstSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSize = (long?) content.GetValueForProperty("BurstSize",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListActionInternal)this).BurstSize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             AfterDeserializePSObject(content);
         }

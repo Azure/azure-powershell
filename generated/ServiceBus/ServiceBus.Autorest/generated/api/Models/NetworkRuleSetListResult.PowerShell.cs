@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The response of the List NetworkRuleSet operation.</summary>
+    /// <summary>The response of a NetworkRuleSet list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkRuleSetListResultTypeConverter))]
     public partial class NetworkRuleSetListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The response of the List NetworkRuleSet operation.
+    /// The response of a NetworkRuleSet list operation.
     [System.ComponentModel.TypeConverter(typeof(NetworkRuleSetListResultTypeConverter))]
     public partial interface INetworkRuleSetListResult
 

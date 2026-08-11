@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>Result of the List private link resources operation.</summary>
+    /// <summary>Paged collection of PrivateLinkResource items</summary>
     public partial class PrivateLinkResourcesListResult
     {
 

@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
+    - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
+    - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
+    - DDoS custom policy association does not require a specific DDoS protection mode.
+
+## Version 8.1.0
+* Added new cmdlets for ConnectionPolicy management under VirtualHub
+    - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
+    - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
+    - `Set-AzConnectionPolicy`: Update an existing ConnectionPolicy under a VirtualHub
+    - `Remove-AzConnectionPolicy`: Delete a ConnectionPolicy from a VirtualHub
 * Added Managed HSM support to Application Gateway SSL certificate cmdlets (`New-AzApplicationGatewaySslCertificate`, `Set-AzApplicationGatewaySslCertificate`, `Add-AzApplicationGatewaySslCertificate`) with `-HsmKeyId` and `-HsmPublicCertData` parameters.
 * Updated Virtual Network and Virtual Network Appliance cmdlets to use new properties.
     - `New-AzVirtualNetwork`: Added `-SummarizedGatewayPrefix` parameter to specify summarized gateway prefixes advertised for the virtual network, and exposed `SummarizedGatewayPrefixes` on the returned object.
@@ -50,17 +61,24 @@
     - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
     - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
+* Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
+* Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
+* Fixed an issue where `VerifyClientAuthMode` was not preserved during PowerShell and SDK model conversions for Application Gateway client authentication configuration
+* Added cmdlets for cloud service public IP address operations:
+    - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
+    - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
+
+## Version 8.0.1
+* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+
+## Version 8.0.0
 * Added ChangeSafety Support
-    - Fixed Private Endpoint Connection and Private Link Resource cmdlets to properly inherit dynamic parameters from base cmdlet class
 * Changed `UserAssignedIdentityId` type to string[]
 
 ## Version 7.27.0
 * Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
     - Added the `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
     - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzLoadBalancerFrontendIpConfig`.
-* Added cmdlets for cloud service public IP address operations:
-    - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
-    - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
 
 ## Version 7.26.0
 * Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets

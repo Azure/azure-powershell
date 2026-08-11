@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Dns
     public static partial class RecordSetsOperationsExtensions
     {
         /// <summary>
-        /// Updates a record set within a DNS zone.
+        /// Lists the record sets of a specified type in a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,22 +24,25 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
         /// <param name='recordType'>
         /// The type of DNS record in this record set.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
         /// </param>
-        public static RecordSet Update(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string))
+        /// <param name='recordsetnamesuffix'>
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RecordSet> ListByType(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, RecordType recordType, int? top = default(int?), string recordsetnamesuffix = default(string))
         {
-                return ((IRecordSetsOperations)operations).UpdateAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch).GetAwaiter().GetResult();
+                return ((IRecordSetsOperations)operations).ListByTypeAsync(resourceGroupName, zoneName, recordType, top, recordsetnamesuffix).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Updates a record set within a DNS zone.
+        /// Lists the record sets of a specified type in a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -50,141 +53,27 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
         /// <param name='recordType'>
         /// The type of DNS record in this record set.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
+        /// </param>
+        /// <param name='recordsetnamesuffix'>
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecordSet> UpdateAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListByTypeAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, RecordType recordType, int? top = default(int?), string recordsetnamesuffix = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByTypeWithHttpMessagesAsync(resourceGroupName, zoneName, recordType, top, recordsetnamesuffix, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
-        }
-        /// <summary>
-        /// Creates or updates a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
-        /// <param name='recordType'>
-        /// The type of DNS record in this record set.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
-        /// </param>
-        /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.
-        /// </param>
-        public static RecordSet CreateOrUpdate(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
-        {
-                return ((IRecordSetsOperations)operations).CreateOrUpdateAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
-        /// <param name='recordType'>
-        /// The type of DNS record in this record set.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
-        /// </param>
-        /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<RecordSet> CreateOrUpdateAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a record set from a DNS zone. This operation cannot be undone. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
-        /// <param name='recordType'>
-        /// The type of DNS record in this record set.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
-        /// </param>
-        public static void Delete(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, string ifMatch = default(string))
-        {
-                ((IRecordSetsOperations)operations).DeleteAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, ifMatch).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a record set from a DNS zone. This operation cannot be undone. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='relativeRecordSetName'>
-        /// The name of the record set, relative to the name of the zone.
-        /// </param>
-        /// <param name='recordType'>
-        /// The type of DNS record in this record set.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets a record set.
@@ -238,7 +127,9 @@ namespace Microsoft.Azure.Management.Dns
             }
         }
         /// <summary>
-        /// Lists the record sets of a specified type in a DNS zone.
+        /// Creates or updates a record set within a DNS zone. Record sets of type SOA
+        /// can be updated but not created (they are created when the DNS zone is
+        /// created).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -249,22 +140,30 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
+        /// </param>
         /// <param name='recordType'>
         /// The type of DNS record in this record set.
         /// </param>
-        /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always overwrite the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// overwriting any concurrent changes.
         /// </param>
-        /// <param name='recordsetnamesuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// <param name='ifNoneMatch'>
+        /// Set to &#39;*&#39; to allow a new record set to be created, but to prevent updating
+        /// an existing record set. Other values will be ignored.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecordSet> ListByType(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, RecordType recordType, int? top = default(int?), string recordsetnamesuffix = default(string))
+        public static RecordSet CreateOrUpdate(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
-                return ((IRecordSetsOperations)operations).ListByTypeAsync(resourceGroupName, zoneName, recordType, top, recordsetnamesuffix).GetAwaiter().GetResult();
+                return ((IRecordSetsOperations)operations).CreateOrUpdateAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the record sets of a specified type in a DNS zone.
+        /// Creates or updates a record set within a DNS zone. Record sets of type SOA
+        /// can be updated but not created (they are created when the DNS zone is
+        /// created).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -275,27 +174,33 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
+        /// </param>
         /// <param name='recordType'>
         /// The type of DNS record in this record set.
         /// </param>
-        /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always overwrite the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// overwriting any concurrent changes.
         /// </param>
-        /// <param name='recordsetnamesuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// <param name='ifNoneMatch'>
+        /// Set to &#39;*&#39; to allow a new record set to be created, but to prevent updating
+        /// an existing record set. Other values will be ignored.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListByTypeAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, RecordType recordType, int? top = default(int?), string recordsetnamesuffix = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecordSet> CreateOrUpdateAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByTypeWithHttpMessagesAsync(resourceGroupName, zoneName, recordType, top, recordsetnamesuffix, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Lists all record sets in a DNS zone.
+        /// Updates a record set within a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -306,19 +211,24 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
         /// </param>
-        /// <param name='recordsetnamesuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// <param name='recordType'>
+        /// The type of DNS record in this record set.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecordSet> ListByDnsZone(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, int? top = default(int?), string recordsetnamesuffix = default(string))
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always overwrite the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// overwriting concurrent changes.
+        /// </param>
+        public static RecordSet Update(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string))
         {
-                return ((IRecordSetsOperations)operations).ListByDnsZoneAsync(resourceGroupName, zoneName, top, recordsetnamesuffix).GetAwaiter().GetResult();
+                return ((IRecordSetsOperations)operations).UpdateAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists all record sets in a DNS zone.
+        /// Updates a record set within a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -329,23 +239,90 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
         /// </param>
-        /// <param name='recordsetnamesuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// <param name='recordType'>
+        /// The type of DNS record in this record set.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always overwrite the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// overwriting concurrent changes.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListByDnsZoneAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, int? top = default(int?), string recordsetnamesuffix = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecordSet> UpdateAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, RecordSet parameters, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByDnsZoneWithHttpMessagesAsync(resourceGroupName, zoneName, top, recordsetnamesuffix, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
+        /// Deletes a record set from a DNS zone. This operation cannot be undone.
+        /// Record sets of type SOA cannot be deleted (they are deleted when the DNS
+        /// zone is deleted).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
+        /// </param>
+        /// <param name='recordType'>
+        /// The type of DNS record in this record set.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always delete the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// deleting any concurrent changes.
+        /// </param>
+        public static void Delete(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, string ifMatch = default(string))
+        {
+                ((IRecordSetsOperations)operations).DeleteAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, ifMatch).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a record set from a DNS zone. This operation cannot be undone.
+        /// Record sets of type SOA cannot be deleted (they are deleted when the DNS
+        /// zone is deleted).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='relativeRecordSetName'>
+        /// The name of the record set, relative to the name of the zone.
+        /// </param>
+        /// <param name='recordType'>
+        /// The type of DNS record in this record set.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the record set. Omit this value to always delete the current
+        /// record set. Specify the last-seen etag value to prevent accidentally
+        /// deleting any concurrent changes.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, string relativeRecordSetName, RecordType recordType, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, zoneName, relativeRecordSetName, recordType, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Lists all record sets in a DNS zone.
         /// </summary>
         /// <param name='operations'>
@@ -358,10 +335,13 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
         /// </param>
         /// <param name='recordSetNameSuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
         /// </param>
         public static Microsoft.Rest.Azure.IPage<RecordSet> ListAllByDnsZone(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, int? top = default(int?), string recordSetNameSuffix = default(string))
         {
@@ -381,10 +361,13 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='top'>
-        /// The maximum number of record sets to return. If not specified, returns up to 100 record sets.
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
         /// </param>
         /// <param name='recordSetNameSuffix'>
-        /// The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -392,6 +375,63 @@ namespace Microsoft.Azure.Management.Dns
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListAllByDnsZoneAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, int? top = default(int?), string recordSetNameSuffix = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllByDnsZoneWithHttpMessagesAsync(resourceGroupName, zoneName, top, recordSetNameSuffix, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all record sets in a DNS zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
+        /// </param>
+        /// <param name='recordsetnamesuffix'>
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RecordSet> ListByDnsZone(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, int? top = default(int?), string recordsetnamesuffix = default(string))
+        {
+                return ((IRecordSetsOperations)operations).ListByDnsZoneAsync(resourceGroupName, zoneName, top, recordsetnamesuffix).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all record sets in a DNS zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
+        /// </param>
+        /// <param name='recordsetnamesuffix'>
+        /// The suffix label of the record set name that has to be used to filter the
+        /// record set enumerations. If this parameter is specified, Enumeration will
+        /// return only records that end with .&lt;recordSetNameSuffix&gt;
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListByDnsZoneAsync(this IRecordSetsOperations operations, string resourceGroupName, string zoneName, int? top = default(int?), string recordsetnamesuffix = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDnsZoneWithHttpMessagesAsync(resourceGroupName, zoneName, top, recordsetnamesuffix, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -438,39 +478,6 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecordSet> ListByDnsZoneNext(this IRecordSetsOperations operations, string nextPageLink)
-        {
-                return ((IRecordSetsOperations)operations).ListByDnsZoneNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all record sets in a DNS zone.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListByDnsZoneNextAsync(this IRecordSetsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByDnsZoneNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all record sets in a DNS zone.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
         public static Microsoft.Rest.Azure.IPage<RecordSet> ListAllByDnsZoneNext(this IRecordSetsOperations operations, string nextPageLink)
         {
                 return ((IRecordSetsOperations)operations).ListAllByDnsZoneNextAsync(nextPageLink).GetAwaiter().GetResult();
@@ -491,6 +498,39 @@ namespace Microsoft.Azure.Management.Dns
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListAllByDnsZoneNextAsync(this IRecordSetsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllByDnsZoneNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all record sets in a DNS zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RecordSet> ListByDnsZoneNext(this IRecordSetsOperations operations, string nextPageLink)
+        {
+                return ((IRecordSetsOperations)operations).ListByDnsZoneNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all record sets in a DNS zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecordSet>> ListByDnsZoneNextAsync(this IRecordSetsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDnsZoneNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

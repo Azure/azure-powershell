@@ -7,6 +7,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// Nginx ingress controller configuration for the managed cluster ingress
+    /// profile.
+    /// </summary>
     public partial class ManagedClusterIngressProfileNginx
     {
         /// <summary>
