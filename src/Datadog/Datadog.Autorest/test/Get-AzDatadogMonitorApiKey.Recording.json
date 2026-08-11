@@ -1,17 +1,17 @@
 {
-  "Get-AzDatadogMonitorApiKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/bhanu-rg/providers/Microsoft.Datadog/monitors/monitorus1yz8/listApiKeys?api-version=2025-06-11+1": {
+  "Get-AzDatadogMonitorApiKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listApiKeys?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/bhanu-rg/providers/Microsoft.Datadog/monitors/monitorus1yz8/listApiKeys?api-version=2025-06-11",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listApiKeys?api-version=2025-12-26-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "e9c9d36b-6fd7-46aa-a82b-0359b51ff7f1" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "08e70ab5-9b3c-4329-bd58-8b7ca0e3deb9" ],
         "CommandName": [ "Get-AzDatadogMonitorApiKey" ],
         "FullCommandName": [ "Get-AzDatadogMonitorApiKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Datadog/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,27 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=88551f9d-e011-4f80-8154-fa258dcd4ccb/eastus2euap/fbc7abca-82c3-4ab3-9fc5-574f18c402a3" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/48f51729-ce41-4369-94da-1afaf9adc8ac" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
-        "mise-correlation-id": [ "be119e86-3910-4a9a-9738-b54a605a93af" ],
+        "mise-correlation-id": [ "c97b4c18-0a22-40ec-ba31-aac9080d959b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3202e101-0de1-4764-b1f2-58ebb36fce97" ],
-        "x-ms-correlation-request-id": [ "87defbf0-6b63-4c99-b0c6-7c88932da7d2" ],
+        "x-ms-request-id": [ "3c03f91e-3858-4365-b188-35361b599fc2" ],
+        "x-ms-correlation-request-id": [ "a643c451-a993-4683-bd30-4a966ae014f3" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251108T170651Z:87defbf0-6b63-4c99-b0c6-7c88932da7d2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095057Z:a643c451-a993-4683-bd30-4a966ae014f3" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AF5BB5249BA742EC9D93F337113BBAA7 Ref B: MAA201060515021 Ref C: 2025-11-08T17:06:49Z" ],
-        "Date": [ "Sat, 08 Nov 2025 17:06:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E813901CEFA04F3DBB10A1E1A39988B6 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:50:56Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:50:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"createdBy\":\"bhanuchandj@microsoft.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"00000000000000000000000000000000\",\"created\":\"2025-11-08 17:01:25\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"createdBy\":\"user@example.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"xxxxxxxxxxxxxxxxxxxxxx\",\"created\":\"2026-07-23 09:45:37\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

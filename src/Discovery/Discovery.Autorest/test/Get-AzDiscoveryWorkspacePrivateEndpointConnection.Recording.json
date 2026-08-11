@@ -1,0 +1,276 @@
+{
+  "Get-AzDiscoveryWorkspacePrivateEndpointConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "132" ],
+        "x-ms-client-request-id": [ "f6836d8d-44ca-4a91-9916-cf9c0094d6b8" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/762052c5-11ce-4f08-b4a0-4cb454b4b0c3" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "272fc479-31b1-4191-b99e-92a1c2b80df4" ],
+        "x-ms-correlation-request-id": [ "44789fc5-eda7-4e0b-8c43-0ad63ceab1cd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164826Z:44789fc5-eda7-4e0b-8c43-0ad63ceab1cd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1FB7D7ED3BC944138F1BC158C0322A16 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:25Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3849" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe03.ab3f6c49-0768-4164-b052-e76579e2e276\",\"name\":\"pstest-ws-pe03.ab3f6c49-0768-4164-b052-e76579e2e276\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:19:22.4059026Z\",\"lastModifiedBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-22T15:19:22.4059026Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe03\"},\"groupIds\":[\"workspace\"],\"privateLinkServiceConnectionState\":{\"status\":\"Approved\"}}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe04.07dacb0e-6e9d-4b6b-baf8-6a08c27d45bf\",\"name\":\"pstest-ws-pe04.07dacb0e-6e9d-4b6b-baf8-6a08c27d45bf\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:23:09.7702447Z\",\"lastModifiedBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-22T15:23:09.7702447Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe04\"},\"groupIds\":[\"workspace\"],\"privateLinkServiceConnectionState\":{\"status\":\"Approved\"}}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"name\":\"pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:10:32.4246693Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T05:07:01.5932633Z\"},\"properties\":{\"groupIds\":[\"workspace\"],\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe01\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Approved via identity\",\"actionsRequired\":\"None\"},\"provisioningState\":\"Failed\"}},{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe02.d9e0b668-265c-425e-95dd-af779ccee413\",\"name\":\"pstest-ws-pe02.d9e0b668-265c-425e-95dd-af779ccee413\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:14:17.0680666Z\",\"lastModifiedBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-22T15:14:17.0680666Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe02\"},\"groupIds\":[\"workspace\"],\"privateLinkServiceConnectionState\":{\"status\":\"Approved\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateEndpointConnection+[NoContext]+GetViaIdentityWorkspace+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "133" ],
+        "x-ms-client-request-id": [ "1dc75cb3-cd61-49f5-b4ff-ad8a65d52f82" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspace" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspace_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000fe6d-0000-1100-0000-6a6179d10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d5e6d68c-f96c-4723-b637-df2ab58b9920" ],
+        "x-ms-correlation-request-id": [ "5e066c0a-6388-4e33-abd5-b6416da13e27" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164826Z:5e066c0a-6388-4e33-abd5-b6416da13e27" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8924A7F0C6344555B2AD07E547E6E997 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:26Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2144" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01\",\"name\":\"pstest-ws-get01\",\"type\":\"microsoft.discovery/workspaces\",\"location\":\"uksouth\",\"tags\":{\"networkIsolation\":\"true\",\"test\":\"powershell\",\"SkipAssociateKeyVaultToNsp\":\"True\"},\"systemData\":{\"createdBy\":\"danicadu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-21T23:04:07.9656224Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T02:17:45.8623979Z\"},\"properties\":{\"managedResourceGroup\":\"mrg-dwsp-pstest-ws-get01-ucxaas\",\"supercomputerIds\":[\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/supercomputers/pstest-sc-get01\"],\"workspaceApiUri\":\"https://pstest-ws-get01.workspace-dev.discovery.azure.com\",\"workspaceUiUri\":\"https://studio.discovery.microsoft.com/workspaces/pstest-ws-get01\",\"workspaceIdentity\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.ManagedIdentity/userAssignedIdentities/dev-uksouth-uami\",\"principalId\":\"9a8aabb7-db1d-4c93-9306-65bf098dd437\",\"clientId\":\"973f6e49-82e7-4f32-aae7-3b7bbb4a1440\"},\"agentSubnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-ws-agent-subnet\",\"privateEndpointSubnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-ws-pep-subnet\",\"workspaceSubnetId\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/fixedrg-uksouth-dev3/providers/Microsoft.Network/virtualNetworks/vnet-dev-uksouth/subnets/pstest-ws-subnet\",\"managedOnBehalfOfConfiguration\":{\"moboBrokerResources\":[{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Resources/moboBrokers/mobr-dwsp-pstest-ws-get01-ucxaas\"}]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateEndpointConnection+[NoContext]+GetViaIdentityWorkspace+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "134" ],
+        "x-ms-client-request-id": [ "d1431cce-235d-478f-8b15-c383a3cd148b" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection_GetViaIdentityWorkspace" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7f00038d-0000-1100-0000-6a6237d70000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/cc605037-c8f1-47c3-834e-e54c30cbbdc2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "67e0f1ef-d120-4b7a-aa80-85c913d91d9f" ],
+        "x-ms-correlation-request-id": [ "ae68f1ef-921c-4f09-a369-6b24d4e6f8df" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16497" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164827Z:ae68f1ef-921c-4f09-a369-6b24d4e6f8df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 419D506686C84F7385B7D7BDD28767ED Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:27Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "990" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"name\":\"pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:10:32.4246693Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T05:07:01.5932633Z\"},\"properties\":{\"groupIds\":[\"workspace\"],\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe01\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Approved via identity\",\"actionsRequired\":\"None\"},\"provisioningState\":\"Failed\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateEndpointConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "135" ],
+        "x-ms-client-request-id": [ "f7aedd21-97cb-4dd5-935b-4a30f5936531" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7f00038d-0000-1100-0000-6a6237d70000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/d9066f50-3211-4780-95e9-a864515ff0eb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6d27f7e9-820a-4688-903f-c9caf1ddd9c6" ],
+        "x-ms-correlation-request-id": [ "66feb4fd-303f-4177-b0a4-73becd78f73c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164828Z:66feb4fd-303f-4177-b0a4-73becd78f73c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6B2BE6BF9BD44CD49AABBC18612CCD4F Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:28Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "990" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"name\":\"pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:10:32.4246693Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T05:07:01.5932633Z\"},\"properties\":{\"groupIds\":[\"workspace\"],\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe01\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Approved via identity\",\"actionsRequired\":\"None\"},\"provisioningState\":\"Failed\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateEndpointConnection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "136" ],
+        "x-ms-client-request-id": [ "2354ce24-578e-46e8-b2d8-772855d20a01" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7f00038d-0000-1100-0000-6a6237d70000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/5c9d9954-95b2-4e89-a0f1-c4497a5e7de6" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "28aed380-4554-41e6-9aff-68f1f3cb74a9" ],
+        "x-ms-correlation-request-id": [ "5a01d7c9-d672-423a-b646-fb7d5db9e81e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1096" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16496" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164829Z:5a01d7c9-d672-423a-b646-fb7d5db9e81e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83B5D23B928E458D8AE95AADDE764D78 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:29Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "990" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"name\":\"pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:10:32.4246693Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T05:07:01.5932633Z\"},\"properties\":{\"groupIds\":[\"workspace\"],\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe01\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Approved via identity\",\"actionsRequired\":\"None\"},\"provisioningState\":\"Failed\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDiscoveryWorkspacePrivateEndpointConnection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "137" ],
+        "x-ms-client-request-id": [ "c87d4489-2164-4e6c-93c9-d2df30960a02" ],
+        "CommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDiscoveryWorkspacePrivateEndpointConnection_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.3", "Az.Discovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7f00038d-0000-1100-0000-6a6237d70000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=cd2bd8d8-fd54-4025-9f77-10ab353c0b93/uksouth/6c4cd3b4-c0e1-497e-960a-640f7a95b5bf" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "85d50e70-8247-4eab-834a-756c8d239640" ],
+        "x-ms-correlation-request-id": [ "2be2427d-17e7-4e7a-b45b-2ff6318de480" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260723T164829Z:2be2427d-17e7-4e7a-b45b-2ff6318de480" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C5DBAB055EC4340BD0D040F7638BC45 Ref B: BL2AA2011003052 Ref C: 2026-07-23T16:48:29Z" ],
+        "Date": [ "Thu, 23 Jul 2026 16:48:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "990" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Discovery/workspaces/pstest-ws-get01/privateEndpointConnections/pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"name\":\"pstest-ws-pe01.1b6b8cd7-f348-4b00-ad2a-d5cd08ce2d63\",\"type\":\"microsoft.discovery/workspaces/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\"createdByType\":\"Application\",\"createdAt\":\"2026-07-22T15:10:32.4246693Z\",\"lastModifiedBy\":\"danicadu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T05:07:01.5932633Z\"},\"properties\":{\"groupIds\":[\"workspace\"],\"privateEndpoint\":{\"id\":\"/subscriptions/b7b46ea4-92fa-466d-9a33-c25506fc99ac/resourceGroups/pstest-discovery-uksouth/providers/Microsoft.Network/privateEndpoints/pstest-ws-pe01\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Approved via identity\",\"actionsRequired\":\"None\"},\"provisioningState\":\"Failed\"}}",
+      "isContentBase64": false
+    }
+  }
+}
