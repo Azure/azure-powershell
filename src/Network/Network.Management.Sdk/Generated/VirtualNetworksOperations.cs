@@ -2186,7 +2186,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (body == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "body");
@@ -2352,7 +2352,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();

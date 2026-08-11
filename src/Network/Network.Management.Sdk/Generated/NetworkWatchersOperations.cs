@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<NetworkWatcher>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<NetworkWatcher>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1086,7 +1086,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<NetworkWatcher>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1409,7 +1409,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ConnectionAnalyzer>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -1646,7 +1646,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ConnectionAnalyzer>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1749,7 +1749,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (body == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "body");
@@ -1925,7 +1925,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ConnectionAnalyzer>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -2233,7 +2233,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (parameters == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
@@ -2391,7 +2391,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Topology>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -2482,7 +2482,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -2628,7 +2628,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -2684,7 +2684,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (parameters == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
@@ -2842,7 +2842,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<AvailableProvidersList>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -2934,7 +2934,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (parameters == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
@@ -3095,7 +3095,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<AzureReachabilityReport>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -3186,7 +3186,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (parameters == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
@@ -3440,7 +3440,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-
+ 
             if (body == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "body");
@@ -3872,7 +3872,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -6186,7 +6186,7 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
-
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListAllNext", tracingParameters);
@@ -6540,7 +6540,7 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
-
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ConnectionAnalyzersListNext", tracingParameters);
@@ -6641,7 +6641,7 @@ namespace Microsoft.Azure.Management.Network
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ConnectionAnalyzer>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
