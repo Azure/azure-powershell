@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicConnectedPartnerResource
 
 ## SYNOPSIS
+List active deployments associated with the marketplace subscription linked to a New Relic monitor.
 
 ## SYNTAX
 
@@ -18,6 +19,7 @@ Get-AzNewRelicConnectedPartnerResource -MonitorName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
+Lists active deployments associated with the marketplace subscription linked to the specified New Relic monitor.
 
 ## EXAMPLES
 

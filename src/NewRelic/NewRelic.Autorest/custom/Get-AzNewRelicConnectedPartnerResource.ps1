@@ -1,3 +1,9 @@
+<#
+.Synopsis
+List active deployments associated with the marketplace subscription linked to a New Relic monitor.
+.Description
+Lists active deployments associated with the marketplace subscription linked to the specified New Relic monitor.
+#>
 function Get-AzNewRelicConnectedPartnerResource {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListFormat])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]

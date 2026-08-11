@@ -18,7 +18,7 @@ Lists all the New Relic accounts linked to your email address, helping you under
 A synchronous resource action.
 
 ### [Get-AzNewRelicConnectedPartnerResource](Get-AzNewRelicConnectedPartnerResource.md)
-
+List active deployments associated with the marketplace subscription linked to a New Relic monitor.
 
 ### [Get-AzNewRelicMonitor](Get-AzNewRelicMonitor.md)
 Get a NewRelicMonitorResource

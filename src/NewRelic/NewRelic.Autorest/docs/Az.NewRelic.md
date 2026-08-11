@@ -18,7 +18,7 @@ Lists all the New Relic accounts linked to your email address, helping you under
 A synchronous resource action.
 
 ### [Get-AzNewRelicConnectedPartnerResource](Get-AzNewRelicConnectedPartnerResource.md)
-
+List active deployments associated with the marketplace subscription linked to a New Relic monitor.
 
 ### [Get-AzNewRelicMonitor](Get-AzNewRelicMonitor.md)
 Get a NewRelicMonitorResource
@@ -100,4 +100,3 @@ Refreshes the ingestion key for all monitors linked to the same account associat
 
 ### [Update-AzNewRelicMonitorTagRule](Update-AzNewRelicMonitorTagRule.md)
 Update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure resources are monitored
-
