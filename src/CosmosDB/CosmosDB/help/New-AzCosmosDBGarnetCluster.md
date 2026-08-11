@@ -16,7 +16,7 @@ Creates a new Azure Cosmos DB Garnet cache cluster.
 New-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String> -Location <String>
  [-SubnetId <String>] [-ReplicationFactor <Int32>] [-ShardCount <Int32>] [-NodeSku <String>]
  [-AvailabilityZone <Boolean>] [-AuthenticationMethod <String>] [-Persistence <Boolean>]
- [-ClusterType <String>] [-Extensions <String[]>] [-Tag <Hashtable>]
+ [-ClusterType <String>] [-Extension <String[]>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ New-AzCosmosDBGarnetCluster `
  -AuthenticationMethod "Entra" `
  -Persistence $true `
  -ClusterType "Production" `
- -Extensions "extensionA","extensionB" `
+ -Extension "extensionA","extensionB" `
  -Tag $tags
 ```
 
@@ -136,7 +136,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Extensions
+### -Extension
 Extensions to add to the Garnet cluster.
 
 ```yaml

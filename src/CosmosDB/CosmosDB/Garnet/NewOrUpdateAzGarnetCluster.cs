@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string ClusterType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterExtensionsHelpMessage)]
-        public string[] Extensions { get; set; }
+        public string[] Extension { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.GarnetClusterPersistenceHelpMessage)]
         public bool? Persistence { get; set; }

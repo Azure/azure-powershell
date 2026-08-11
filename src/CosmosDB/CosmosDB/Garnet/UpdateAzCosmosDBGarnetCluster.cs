@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IList<string> extensionsList;
-            if (Extensions != null)
+            if (Extension != null)
             {
-                extensionsList = new List<string>(Extensions);
+                extensionsList = new List<string>(Extension);
             }
             else
             {

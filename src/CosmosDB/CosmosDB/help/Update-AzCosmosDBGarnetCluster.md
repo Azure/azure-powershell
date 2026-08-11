@@ -15,7 +15,7 @@ Updates an existing Azure Cosmos DB Garnet cache cluster.
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String>
- [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extensions <String[]>]
+ [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extension <String[]>]
  [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzCosmosDBGarnetCluster -ResourceGroupName <String> -ClusterName <String>
 ### ByResourceIdParameterSet
 ```
 Update-AzCosmosDBGarnetCluster -ResourceId <String>
- [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extensions <String[]>]
+ [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extension <String[]>]
  [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Update-AzCosmosDBGarnetCluster -ResourceId <String>
 ### ByObjectParameterSet
 ```
 Update-AzCosmosDBGarnetCluster -InputObject <PSGarnetClusterResource>
- [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extensions <String[]>]
+ [-AuthenticationMethod <String>] [-ClusterType <String>] [-Extension <String[]>]
  [-Persistence <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ Update-AzCosmosDBGarnetCluster `
 ```powershell
 Update-AzCosmosDBGarnetCluster `
  -ResourceId "/subscriptions/<subscriptionId>/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/garnetClusters/clusterName" `
- -Extensions "extensionA","extensionB"
+ -Extension "extensionA","extensionB"
 ```
 
 ### Example 3
@@ -125,7 +125,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Extensions
+### -Extension
 Extensions to add or update on the Garnet cluster.
 
 ```yaml
