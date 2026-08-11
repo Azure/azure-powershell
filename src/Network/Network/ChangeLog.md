@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded Network SDK to API version `2025-09-01`.
 * Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
     - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
     - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
