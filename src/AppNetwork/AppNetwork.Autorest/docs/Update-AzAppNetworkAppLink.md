@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAppNetworkAppLink
 
 ## SYNOPSIS
-Update an AppLink.
+Replace an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzAppNetworkAppLink -InputObject <IAppNetworkIdentity> [-EnableSystemAssi
 ```
 
 ## DESCRIPTION
-Update an AppLink.
+Replace an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

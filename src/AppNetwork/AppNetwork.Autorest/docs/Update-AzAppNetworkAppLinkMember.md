@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAppNetworkAppLinkMember
 
 ## SYNOPSIS
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ Update-AzAppNetworkAppLinkMember -AppLinkName <String> -Name <String> -ResourceG
 ```
 
 ## DESCRIPTION
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

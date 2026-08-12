@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAppNetworkAppLinkMember
 
 ## SYNOPSIS
-Delete an AppLinkMember.
+Remove a member from an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzAppNetworkAppLinkMember -AppLinkInputObject <IAppNetworkIdentity> -Name
 ```
 
 ## DESCRIPTION
-Delete an AppLinkMember.
+Remove a member from an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

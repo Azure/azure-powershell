@@ -12,38 +12,38 @@ Microsoft Azure PowerShell: AppNetwork cmdlets
 
 ## Az.AppNetwork Cmdlets
 ### [Get-AzAppNetworkAppLink](Get-AzAppNetworkAppLink.md)
-Get an AppLink.
+Get the details of an Azure Kubernetes Application Network.
 
 ### [Get-AzAppNetworkAppLinkMember](Get-AzAppNetworkAppLinkMember.md)
-Get an AppLinkMember.
+Get a member of an Azure Kubernetes Application Network resource.
 
 ### [Get-AzAppNetworkAvailableVersion](Get-AzAppNetworkAvailableVersion.md)
-List AvailableVersion resources by location.
+List the Azure Kubernetes Application Network versions available in a location.
 
 ### [Get-AzAppNetworkUpgradeHistory](Get-AzAppNetworkUpgradeHistory.md)
-List UpgradeHistory resources by AppLinkMember.
+List the upgrade history of an Azure Kubernetes Application Network member.
 
 ### [New-AzAppNetworkAppLink](New-AzAppNetworkAppLink.md)
-Create an AppLink.
+Create an Azure Kubernetes Application Network resource.
 
 ### [New-AzAppNetworkAppLinkMember](New-AzAppNetworkAppLinkMember.md)
-Create an AppLinkMember.
+Create a member of an Azure Kubernetes Application Network resource.
 
 ### [Remove-AzAppNetworkAppLink](Remove-AzAppNetworkAppLink.md)
-Delete an AppLink.
+Delete an Azure Kubernetes Application Network resource.
 
 ### [Remove-AzAppNetworkAppLinkMember](Remove-AzAppNetworkAppLinkMember.md)
-Delete an AppLinkMember.
+Remove a member from an Azure Kubernetes Application Network resource.
 
 ### [Set-AzAppNetworkAppLink](Set-AzAppNetworkAppLink.md)
-Update an AppLink.
+Replace an Azure Kubernetes Application Network resource.
 
 ### [Set-AzAppNetworkAppLinkMember](Set-AzAppNetworkAppLinkMember.md)
-Update an AppLinkMember.
+Replace a member of an Azure Kubernetes Application Network resource.
 
 ### [Update-AzAppNetworkAppLink](Update-AzAppNetworkAppLink.md)
-Update an AppLink.
+Replace an Azure Kubernetes Application Network resource.
 
 ### [Update-AzAppNetworkAppLinkMember](Update-AzAppNetworkAppLinkMember.md)
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 

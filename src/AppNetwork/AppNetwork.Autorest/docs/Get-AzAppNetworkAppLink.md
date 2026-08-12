@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppNetworkAppLink
 
 ## SYNOPSIS
-Get an AppLink.
+Get the details of an Azure Kubernetes Application Network.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzAppNetworkAppLink -ResourceGroupName <String> [-SubscriptionId <String[]>]
 ```
 
 ## DESCRIPTION
-Get an AppLink.
+Get the details of an Azure Kubernetes Application Network.
 
 ## EXAMPLES
 
