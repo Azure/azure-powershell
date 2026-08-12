@@ -20,7 +20,9 @@ A long-running operation for adding an EdgeAction attachment.
 .Description
 A long-running operation for adding an EdgeAction attachment.
 .Example
-Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -197,7 +199,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -322,11 +324,9 @@ Removes a content from CDN.
 .Description
 Removes a content from CDN.
 .Example
-Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
+{{ Add code here }}
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-$contentFilePath = New-AzCdnPurgeParametersObject -ContentPath $contentPath
-Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath $contentFilePath
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -552,7 +552,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -679,11 +679,9 @@ Removes a content from AzureFrontDoor.
 .Description
 Removes a content from AzureFrontDoor.
 .Example
-Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -ContentPath /a
+{{ Add code here }}
 .Example
-$contentPath = "/a"
-$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
-Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
@@ -919,7 +917,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -1046,7 +1044,9 @@ A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Description
 A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Example
-Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Name edge_action.js -Content "Y29uc29sZS5sb2coJ0hlbGxvJyk7"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -1273,7 +1273,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -1400,7 +1400,9 @@ Disable https delivery of the custom domain.
 .Description
 Disable https delivery of the custom domain.
 .Example
-Disable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -1599,7 +1601,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -1722,8 +1724,9 @@ Enable https delivery of the custom domain.
 .Description
 Enable https delivery of the custom domain.
 .Example
-$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType ServerNameIndication
-Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -1993,7 +1996,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -2120,11 +2123,9 @@ Gets an existing custom domain within an endpoint.
 .Description
 Gets an existing custom domain within an endpoint.
 .Example
-Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
-.Example
-New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001  -Name customdomain010 -HostName 'testcm.dev.cdn.azure.cn' | Get-AzCdnCustomDomain
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -2412,9 +2413,9 @@ Get EdgeActionExecutionFilter resource
 .Description
 Get EdgeActionExecutionFilter resource
 .Example
-Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+{{ Add code here }}
 .Example
-Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -2604,7 +2605,9 @@ A long-running operation to get versioncode deployed to EdgeActionVersion resour
 .Description
 A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 .Example
-Get-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
@@ -2906,9 +2909,9 @@ Get EdgeActionVersion resource
 .Description
 Get EdgeActionVersion resource
 .Example
-Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+{{ Add code here }}
 .Example
-Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -3098,9 +3101,9 @@ Get EdgeAction resource
 .Description
 Get EdgeAction resource
 .Example
-Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm
+{{ Add code here }}
 .Example
-Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -3287,7 +3290,9 @@ Edgenodes are the global Point of Presence (POP) locations used to deliver CDN c
 .Description
 Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
 .Example
-Get-AzCdnEdgeNode
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeNode
@@ -3442,7 +3447,9 @@ Checks the quota and usage of geo filters and custom domains under the given end
 .Description
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 .Example
-Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
@@ -3631,16 +3638,9 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 .Description
 Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
-.Example
-$origin = @{
-    Name = "origin1"
-    HostName = "host1.hello.com"
-};
-
-New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest010 -Location global -Origin $origin | Get-AzCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -3893,7 +3893,9 @@ Lists all available managed rule sets.
 .Description
 Lists all available managed rule sets.
 .Example
-Get-AzCdnManagedRuleSet
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinition
@@ -4063,13 +4065,9 @@ Gets an existing origin group within an endpoint.
 .Description
 Gets an existing origin group within an endpoint.
 .Example
-Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
-.Example
-$healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
-$origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1
-New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name org001 -HealthProbeSetting $healthProbeParameters -Origin @(@{ Id = $origin.Id }) | Get-AzCdnOriginGroup
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -4357,11 +4355,9 @@ Gets an existing origin within an endpoint.
 .Description
 Gets an existing origin within an endpoint.
 .Example
-Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
-.Example
-New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1 -HostName "host1.hello.com" | Get-AzCdnOrigin
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -4649,7 +4645,9 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.
 .Example
-Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
@@ -4834,7 +4832,9 @@ A user can list an endpoint with an optimization type from the listed values.
 Gets the supported optimization types for the current profile.
 A user can list an endpoint with an optimization type from the listed values.
 .Example
-Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult
@@ -5017,7 +5017,9 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 .Description
 Check the quota and actual usage of the CDN profiles under the given subscription.
 .Example
-Get-AzCdnSubscriptionResourceUsage
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
@@ -5187,11 +5189,9 @@ Gets an existing AzureFrontDoor domain with the specified domain name under the 
 .Description
 Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 .Example
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
-.Example
-New-AzFrontDoorCdnCustomDomain -CustomDomainName domain001 -ProfileName fdp-v542q6 -ResourceGroupName testps-rg-da16jm -HostName "pstest001.dev.cdn.azure.cn"| Get-AzFrontDoorCdnCustomDomain
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -5443,7 +5443,9 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -5632,12 +5634,9 @@ Gets an existing AzureFrontDoor endpoint with the specified endpoint name under 
 .Description
 Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-.Example
-New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end011 -Location Global -EnabledState Enabled 
-| Get-AzFrontDoorCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -5889,7 +5888,9 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -6078,13 +6079,9 @@ Gets an existing origin group within a profile.
 .Description
 Gets an existing origin group within a profile.
 .Example
-Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
-.Example
-$healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
-$loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
-New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting | Get-AzFrontDoorCdnOriginGroup
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -6336,11 +6333,9 @@ Gets an existing origin within an origin group.
 .Description
 Gets an existing origin within an origin group.
 .Example
- Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001
-.Example
-New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000 | Get-AzFrontDoorCdnOrigin
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -6627,7 +6622,9 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -6810,18 +6807,9 @@ Gets an existing route with the specified route name under the specified subscri
 .Description
 Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
-.Example
-$originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
-$ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
-$customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
-
-$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
-
-New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure) | Get-AzFrontDoorCdnRoute
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -7109,7 +7097,9 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 .Description
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 .Example
-Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage
@@ -7298,11 +7288,9 @@ Gets an existing AzureFrontDoor rule set with the specified rule set name under 
 .Description
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 .Example
-Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
-.Example
-New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Get-AzFrontDoorCdnRuleSet
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -7555,24 +7543,9 @@ Gets an existing delivery rule within a rule set.
 .Description
 Gets an existing delivery rule within a rule set.
 .Example
-Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
-.Example
-$conditions = @(
-    New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
-    New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
-    New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
-);
-
-       
-$actions = @(
-    New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-    New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-    New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
-);
-
-New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions | Get-AzFrontDoorCdnRule
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -7861,13 +7834,9 @@ Gets an existing Secret within a profile.
 .Description
 Gets an existing Secret within a profile.
 .Example
-Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-.Example
-$secretSourceId = "xxxxxxxx"      
-$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
-New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter | Get-AzFrontDoorCdnSecret
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8120,18 +8089,9 @@ Gets an existing security policy within a profile.
 .Description
 Gets an existing security policy within a profile.
 .Example
-Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001
-.Example
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-$endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
-$updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-$updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
-
-$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
-$updateWafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association @($updateAssociation, $updateAssociation2) -WafPolicyId $wafPolicyId
-Update-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $updateWafParameter | Get-AzFrontDoorCdnSecurityPolicy
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8386,11 +8346,9 @@ Available for Verizon Profiles.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 .Example
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
+{{ Add code here }}
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-$contentFilePath = New-AzCdnLoadParametersObject -ContentPath $contentPath
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentFilePath $contentFilePath
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8616,7 +8574,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -8743,7 +8701,9 @@ Abort the migration to Azure Frontdoor Premium/Standard.
 .Description
 Abort the migration to Azure Frontdoor Premium/Standard.
 .Example
-Invoke-AzCdnAbortProfileToAFDMigration -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -8881,7 +8841,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -9002,7 +8962,9 @@ Create a new custom domain within an endpoint.
 .Description
 Create a new custom domain within an endpoint.
 .Example
-New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 -HostName 'testcm.dev.cdn.azure.cn'
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -9222,7 +9184,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -9348,7 +9310,9 @@ Create EdgeActionExecutionFilter resource
 .Description
 Create EdgeActionExecutionFilter resource
 .Example
-New-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001 -Location global -ExecutionFilterIdentifierHeaderName "X-Filter-Key" -ExecutionFilterIdentifierHeaderValue "FilterValue1"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -9506,7 +9470,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -9628,7 +9592,9 @@ Create EdgeActionVersion version
 .Description
 Create EdgeActionVersion version
 .Example
-New-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Location global -DeploymentType zip -IsDefaultVersion True
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -9782,7 +9748,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -9904,7 +9870,9 @@ Create EdgeAction resource
 .Description
 Create EdgeAction resource
 .Example
-New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -10051,7 +10019,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -10173,11 +10141,9 @@ Create a new CDN endpoint with the specified endpoint name under the specified s
 .Description
 Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-$origin = @{
-    Name = "origin1"
-    HostName = "host1.hello.com"
-};
-New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Location westus -Origin $origin             
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -10623,7 +10589,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -10747,9 +10713,9 @@ Create a new origin group within the specified endpoint.
 .Description
 Create a new origin group within the specified endpoint.
 .Example
-$healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
-$origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
-New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $healthProbeParameters -Origin @(@{ Id = $origin.Id })
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -11025,7 +10991,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -11151,7 +11117,9 @@ Create a new origin within the specified endpoint.
 .Description
 Create a new origin within the specified endpoint.
 .Example
-New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -11472,7 +11440,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -11598,10 +11566,9 @@ Create a new domain within the specified profile.
 .Description
 Create a new domain within the specified profile.
 .Example
-$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
-New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
@@ -11843,7 +11810,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -11967,7 +11934,9 @@ Create a new AzureFrontDoor endpoint with the specified endpoint name under the 
 .Description
 Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Location Global -EnabledState Enabled
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint
@@ -12186,7 +12155,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -12310,9 +12279,9 @@ Create a new origin group within the specified profile.
 .Description
 Create a new origin group within the specified profile.
 .Example
-$healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
-$loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
-New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup
@@ -12572,7 +12541,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -12696,7 +12665,9 @@ Create a new origin within the specified origin group.
 .Description
 Create a new origin within the specified origin group.
 .Example
- New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin
@@ -13044,7 +13015,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -13170,7 +13141,9 @@ Create or create a batch rule set within the specified profile along with the ru
 .Description
 Create or create a batch rule set within the specified profile along with the rules associate to it.
 .Example
-New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -13380,7 +13353,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -13505,20 +13478,9 @@ Create a new delivery rule within the specified rule set.
 .Description
 Create a new delivery rule within the specified rule set.
 .Example
-$conditions = @(
-    New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
-    New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
-    New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
-);
-
-       
-$actions = @(
-    New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-    New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-    New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
-);
-
-New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -13781,7 +13743,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -13907,9 +13869,9 @@ Create a new Secret within the specified profile.
 .Description
 Create a new Secret within the specified profile.
 .Example
-$secretSourceId = "xxxxxxxx"      
-$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
-New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter           
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14092,7 +14054,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -14216,12 +14178,9 @@ Create a new security policy within the specified profile.
 .Description
 Create a new security policy within the specified profile.
 .Example
-$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-$association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-$wafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association  -WafPolicyId $wafPolicyId
-
-New-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $wafParameter   
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14400,7 +14359,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -14524,9 +14483,9 @@ Deletes an existing custom domain within an endpoint.
 .Description
 Deletes an existing custom domain within an endpoint.
 .Example
-Remove-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
+{{ Add code here }}
 .Example
-Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 | Remove-AzCdnCustomDomain
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14732,7 +14691,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -14855,7 +14814,9 @@ A long-running operation for deleting an EdgeAction attachment that returns no c
 .Description
 A long-running operation for deleting an EdgeAction attachment that returns no content.
 .Example
-Remove-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -15032,7 +14993,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -15157,7 +15118,9 @@ Delete EdgeActionExecutionFilter resource
 .Description
 Delete EdgeActionExecutionFilter resource
 .Example
-Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 System.Boolean
@@ -15269,7 +15232,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -15389,7 +15352,9 @@ Delete EdgeActionVersion resource
 .Description
 Delete EdgeActionVersion resource
 .Example
-Remove-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 System.Boolean
@@ -15501,7 +15466,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -15621,7 +15586,9 @@ Delete EdgeAction resource
 .Description
 Delete EdgeAction resource
 .Example
-Remove-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 System.Boolean
@@ -15728,7 +15695,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -15848,9 +15815,9 @@ Deletes an existing CDN endpoint with the specified endpoint name under the spec
 .Description
 Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-Remove-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Remove-AzCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16022,7 +15989,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -16144,9 +16111,9 @@ Deletes an existing origin group within an endpoint.
 .Description
 Deletes an existing origin group within an endpoint.
 .Example
-Remove-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
+{{ Add code here }}
 .Example
-Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001| Remove-AzCdnOriginGroup
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16352,7 +16319,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -16475,9 +16442,9 @@ Deletes an existing origin within an endpoint.
 .Description
 Deletes an existing origin within an endpoint.
 .Example
-Remove-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
+{{ Add code here }}
 .Example
-Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 | Remove-AzCdnOrigin
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16683,7 +16650,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -16806,9 +16773,9 @@ Deletes an existing AzureFrontDoor domain with the specified domain name under t
 .Description
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 .Example
-Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Remove-AzFrontDoorCdnCustomDomain
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -16979,7 +16946,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -17101,9 +17068,9 @@ Deletes an existing AzureFrontDoor endpoint with the specified endpoint name und
 .Description
 Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-Remove-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Remove-AzFrontDoorCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17274,7 +17241,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -17396,9 +17363,9 @@ Deletes an existing origin group within a profile.
 .Description
 Deletes an existing origin group within a profile.
 .Example
-Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 | Remove-AzFrontDoorCdnOriginGroup
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17569,7 +17536,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -17691,9 +17658,9 @@ Deletes an existing origin within an origin group.
 .Description
 Deletes an existing origin within an origin group.
 .Example
-Remove-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 | Remove-AzFrontDoorCdnOrigin
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -17898,7 +17865,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -18021,9 +17988,9 @@ Deletes an existing route with the specified route name under the specified subs
 .Description
 Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-Remove-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001  | Remove-AzFrontDoorCdnRoute
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -18229,7 +18196,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -18352,9 +18319,9 @@ Deletes an existing AzureFrontDoor rule set with the specified rule set name und
 .Description
 Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 .Example
-Remove-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Remove-AzFrontDoorCdnRuleSet
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -18526,7 +18493,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -18648,9 +18615,9 @@ Deletes an existing delivery rule within a rule set.
 .Description
 Deletes an existing delivery rule within a rule set.
 .Example
-Remove-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 | Remove-AzFrontDoorCdnRule
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -18857,7 +18824,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -18980,9 +18947,9 @@ Deletes an existing Secret within profile.
 .Description
 Deletes an existing Secret within profile.
 .Example
-Remove-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 | Remove-AzFrontDoorCdnSecret
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -19154,7 +19121,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -19276,10 +19243,9 @@ Deletes an existing security policy within profile.
 .Description
 Deletes an existing security policy within profile.
 .Example
-Remove-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001
+{{ Add code here }}
 .Example
-
-Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 | Remove-AzFrontDoorCdnSecurityPolicy
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -19451,7 +19417,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -19573,9 +19539,9 @@ Starts an existing CDN endpoint that is on a stopped state.
 .Description
 Starts an existing CDN endpoint that is on a stopped state.
 .Example
-Start-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Start-AzCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -19741,7 +19707,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -19863,9 +19829,9 @@ Stops an existing running CDN endpoint.
 .Description
 Stops an existing running CDN endpoint.
 .Example
-Stop-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Stop-AzCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -20031,7 +19997,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -20153,9 +20119,9 @@ Validates the custom domain mapping to ensure it maps to the correct CDN endpoin
 .Description
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 .Example
-Test-AzCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -HostName 'testcm.dev.cdn.azure.cn'
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Test-AzCdnEndpointCustomDomain -HostName 'testcm.dev.cdn.azure.cn'
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -20450,7 +20416,9 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a CDN endpoint.
 .Example
-Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput
@@ -20654,7 +20622,9 @@ Check if the probe path is a valid path and the file can be accessed.
 Probe path is the path to a file hosted on the origin server to help accelerate the delivery of dynamic content via the CDN endpoint.
 This path is relative to the origin path specified in the endpoint configuration.
 .Example
-Test-AzCdnProbe -ProbeUrl "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput
@@ -20844,7 +20814,9 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 .Description
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 .Example
-Test-AzCdnProfileMigrationCompatibility  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -21071,9 +21043,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 .Description
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 .Example
-Test-AzFrontDoorCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -HostName "pstest001.dev.cdn.azure.cn"
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Test-AzFrontDoorCdnEndpointCustomDomain -HostName "pstest001.dev.cdn.azure.cn"
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -21368,7 +21340,9 @@ This is needed for resources where name is globally unique, such as a afdx endpo
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
 .Example
-Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm -Type "Microsoft.Cdn/Profiles/AfdEndpoints" -Name end001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput
@@ -21580,9 +21554,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 .Description
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 .Example
-Test-AzFrontDoorCdnProfileHostNameAvailability -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -HostName hello1.dev.cdn.azure.cn
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Test-AzFrontDoorCdnProfileHostNameAvailability -HostName hello1.dev.cdn.azure.cn
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -21824,7 +21798,9 @@ Update EdgeActionExecutionFilter resource
 .Description
 Update EdgeActionExecutionFilter resource
 .Example
-Update-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001 -ExecutionFilterIdentifierHeaderName "X-Updated-Filter" -ExecutionFilterIdentifierHeaderValue "UpdatedValue"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -21969,7 +21945,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -22091,7 +22067,9 @@ Update EdgeActionVersion resource
 .Description
 Update EdgeActionVersion resource
 .Example
-Update-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -DeploymentType zip -IsDefaultVersion False
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -22232,7 +22210,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -22354,7 +22332,9 @@ Update EdgeAction resource
 .Description
 Update EdgeAction resource
 .Example
-Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Tag @{Environment="Staging"}
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -22488,7 +22468,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -22618,19 +22598,9 @@ To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update custom domains, use the update Custom Domain operation.
 .Example
-$tags = @{
-    Tag1 = 11
-    Tag2 = 22
-}
-Update-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Tag $tags -DefaultOriginGroupId $originGroup.Id
+{{ Add code here }}
 .Example
-$tags = @{
-    Tag1 = 11
-    Tag2 = 22
-}
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Update-AzCdnEndpoint -Tag $tags -DefaultOriginGroupId $originGroup.Id
-.Example
-Update-AzCdnEndpoint -Name cdntestcert -ProfileName classicCDNtest -ResourceGroupName yaoshitest -IsCompressionEnabled:$true
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -23037,7 +23007,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -23162,11 +23132,9 @@ Update an existing origin group within an endpoint.
 .Description
 Update an existing origin group within an endpoint.
 .Example
-$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
-Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
+{{ Add code here }}
 .Example
-$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
-Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 | Update-AzCdnOriginGroup -HealthProbeSetting $updateHealthProbeParameters
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -23478,7 +23446,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -23605,11 +23573,9 @@ Update an existing origin within an endpoint.
 .Description
 Update an existing origin within an endpoint.
 .Example
-Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
+{{ Add code here }}
 .Example
-Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 | Update-AzCdnOrigin -HttpPort 456 -HttpsPort 789
-.Example
-Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -23972,7 +23938,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -24099,9 +24065,9 @@ Refresh the domain validation token.
 .Description
 Refresh the domain validation token.
 .Example
-Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomainValidationToken
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -24272,7 +24238,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -24394,15 +24360,9 @@ Update an existing domain within a profile.
 .Description
 Update an existing domain within a profile.
 .Example
-$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
-Update-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -TlsSetting $updateSetting
+{{ Add code here }}
 .Example
-$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdateParameters
@@ -24658,7 +24618,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -24791,9 +24751,9 @@ To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update domains, use the update Custom Domain operation.
 .Example
-Update-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -EnabledState Disabled
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnEndpoint  -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end011 | Update-AzFrontDoorCdnEndpoint -EnabledState Disabled
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters
@@ -25026,7 +24986,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -25151,11 +25111,9 @@ Update an existing origin group within a profile.
 .Description
 Update an existing origin group within a profile.
 .Example
-$updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
-Update-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $updateLoadBalancingSetting
+{{ Add code here }}
 .Example
-$updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
-Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 | Update-AzFrontDoorCdnOriginGroup -LoadBalancingSetting $updateLoadBalancingSetting
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters
@@ -25453,7 +25411,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -25578,11 +25536,9 @@ Update an existing origin within an origin group.
 .Description
 Update an existing origin within an origin group.
 .Example
-Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -Weight 999
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 | Update-AzFrontDoorCdnOrigin -Weight 999
-.Example
-Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -EnforceCertificateNameCheck:$false
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters
@@ -25975,7 +25931,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -26102,11 +26058,9 @@ Update an existing route with the specified route name under the specified subsc
 .Description
 Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
-Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001  | Update-AzFrontDoorCdnRoute -EnabledState "Enabled"
-.Example
-Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -CompressionSettingIsCompressionEnabled:true
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -26515,7 +26469,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -26642,19 +26596,9 @@ Update or update a batch rule set within the specified profile along with the ru
 .Description
 Update or update a batch rule set within the specified profile along with the rules associate to it.
 .Example
-$rule = @{
-	RuleName = "rule1"
-	Order = 1
-	MatchProcessingBehavior = "Continue"
-}
-Update-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Rule $rule
+{{ Add code here }}
 .Example
-$rule = @{
-	RuleName = "rule1"
-	Order = 1
-	MatchProcessingBehavior = "Continue"
-}
-Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Update-AzFrontDoorCdnRuleSet -Rule $rule
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -26860,7 +26804,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -26983,9 +26927,9 @@ Update an existing delivery rule within a rule set.
 .Description
 Update an existing delivery rule within a rule set.
 .Example
-Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 | Update-AzFrontDoorCdnRule -Order 99
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -27284,7 +27228,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -27411,9 +27355,9 @@ Update a new Secret within the specified profile.
 .Description
 Update a new Secret within the specified profile.
 .Example
-$secretSourceId = "xxxxxxxx"
-$certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
-Update-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -27605,7 +27549,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -27728,24 +27672,9 @@ Patch an existing security policy within a profile.
 .Description
 Patch an existing security policy within a profile.
 .Example
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-$endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
-$updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-$updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
-
-$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
-$updateWafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association @($updateAssociation, $updateAssociation2) -WafPolicyId $wafPolicyId
-Update-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $updateWafParameter
+{{ Add code here }}
 .Example
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-$endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
-$updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-$updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
-                
-$wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
-$updateWafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association @($updateAssociation, $updateAssociation2) -WafPolicyId $wafPolicyId
-
-Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 | Update-AzFrontDoorCdnSecurityPolicy -Parameter $updateWafParameter
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -27955,7 +27884,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
@@ -28080,9 +28009,11 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
+{{ Add code here }}
+{{ Add output here }}
 .Example
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
+{{ Add code here }}
+{{ Add output here }}
 
 .Outputs
 System.Boolean
@@ -28280,13 +28211,9 @@ Gets an CDN profile with the specified profile name under the specified subscrip
 .Description
 Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-Get-AzCdnProfile
+{{ Add code here }}
 .Example
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm
-.Example
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
-.Example
-New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global | Get-AzCdnProfile
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -28505,13 +28432,9 @@ Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile wit
 .Description
 Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-Get-AzFrontDoorCdnProfile
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm
-.Example
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
-.Example
-New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q7 -SkuName Standard_AzureFrontDoor -Location Global | Get-AzFrontDoorCdnProfile
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -28730,9 +28653,9 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
-Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName
+{{ Add code here }}
 .Example
-Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
+{{ Add code here }}
 
 .Outputs
 System.Boolean
@@ -28932,13 +28855,9 @@ This step prepares the profile for migration and will be followed by Commit to f
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 This step prepares the profile for migration and will be followed by Commit to finalize the migration.
 .Example
-$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
-
-Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
+{{ Add code here }}
 .Example
-$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
-
-Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1) -IdentityType "SystemAssigned"
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -29234,7 +29153,9 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 .Description
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
 .Example
-New-AzCdnDeliveryRuleCacheExpirationActionObject -Name CacheExpiration -ParameterCacheBehavior SetIfMissing -ParameterCacheDuration 0.01:30:00
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction
@@ -29357,7 +29278,9 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Description
 Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Example
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name CacheKeyQueryString -ParameterQueryStringBehavior IncludeAll
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction
@@ -29479,7 +29402,9 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 .Description
 Create an in-memory object for DeliveryRuleCookiesCondition.
 .Example
-New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition
@@ -29620,7 +29545,9 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Description
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Example
-New-AzCdnDeliveryRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition
@@ -29748,7 +29675,9 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Description
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Example
-New-AzCdnDeliveryRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition
@@ -29877,14 +29806,9 @@ Create an in-memory object for DeliveryRule.
 .Description
 Create an in-memory object for DeliveryRule.
 .Example
-$cond1 = New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
-$action1 = New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-$action2 = New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-
-
-$conditions = @($cond1)
-$actions = @($action1, $action2)
-New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $conditions -Action $actions -Order 1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule
@@ -30024,7 +29948,9 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 .Description
 Create an in-memory object for DeliveryRulePostArgsCondition.
 .Example
-New-AzCdnDeliveryRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition
@@ -30165,7 +30091,9 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Description
 Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Example
-New-AzCdnDeliveryRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleQueryStringCondition
@@ -30300,7 +30228,9 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Description
 Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Example
-New-AzCdnDeliveryRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition
@@ -30437,7 +30367,9 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Example
-New-AzCdnDeliveryRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition
@@ -30572,7 +30504,9 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Example
-New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
@@ -30700,7 +30634,9 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Example
-New-AzCdnDeliveryRuleRequestHeaderConditionObject  -Name RequestHeader -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition
@@ -30841,7 +30777,9 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Example
-New-AzCdnDeliveryRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestMethodCondition
@@ -30970,7 +30908,9 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Example
-New-AzCdnDeliveryRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition
@@ -31099,7 +31039,9 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
-New-AzCdnDeliveryRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition
@@ -31234,7 +31176,9 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Example
-New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
@@ -31362,7 +31306,9 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 .Example
-New-AzCdnDeliveryRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition
@@ -31497,7 +31443,9 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Example
-New-AzCdnDeliveryRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition
@@ -31632,7 +31580,9 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Example
-New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlPathCondition
@@ -31767,7 +31717,9 @@ Create an in-memory object for HealthProbeParameters.
 .Description
 Create an in-memory object for HealthProbeParameters.
 .Example
-New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
@@ -31895,8 +31847,9 @@ Create an in-memory object for LoadParameters.
 .Description
 Create an in-memory object for LoadParameters.
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-New-AzCdnLoadParametersObject -ContentPath $contentPath
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadParameters
@@ -32005,7 +31958,9 @@ Create an in-memory object for CdnManagedHttpsParameters.
 .Description
 Create an in-memory object for CdnManagedHttpsParameters.
 .Example
-New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn -ProtocolType ServerNameIndication
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters
@@ -32141,7 +32096,9 @@ Create an in-memory object for MigrationEndpointMapping.
 .Description
 Create an in-memory object for MigrationEndpointMapping.
 .Example
-$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping
@@ -32256,7 +32213,9 @@ Create an in-memory object for OriginGroupOverrideAction.
 .Description
 Create an in-memory object for OriginGroupOverrideAction.
 .Example
-New-AzCdnOriginGroupOverrideActionObject -Name OriginGroupOverride -OriginGroupId 001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction
@@ -32371,7 +32330,9 @@ Creates an CDN profile with the specified profile name under the specified subsc
 .Description
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
@@ -32490,6 +32451,31 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.Cdn.custom\New-AzCdnProfile';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -32592,8 +32578,9 @@ Create an in-memory object for PurgeParameters.
 .Description
 Create an in-memory object for PurgeParameters.
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-New-AzCdnPurgeParametersObject -ContentPath $contentPath
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PurgeParameters
@@ -32702,7 +32689,9 @@ Create an in-memory object for ResourceReference.
 .Description
 Create an in-memory object for ResourceReference.
 .Example
-New-AzCdnResourceReferenceObject -Id Idtest
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference
@@ -32810,7 +32799,9 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 .Description
 Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 .Example
-New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters
@@ -32939,7 +32930,9 @@ Create an in-memory object for UrlRedirectAction.
 .Description
 Create an in-memory object for UrlRedirectAction.
 .Example
-New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction
@@ -33095,7 +33088,9 @@ Create an in-memory object for UrlRewriteAction.
 .Description
 Create an in-memory object for UrlRewriteAction.
 .Example
-New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
@@ -33224,7 +33219,9 @@ Create an in-memory object for UrlSigningAction.
 .Description
 Create an in-memory object for UrlSigningAction.
 .Example
-New-AzCdnUrlSigningActionObject -Name action01
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction
@@ -33355,7 +33352,9 @@ Create an in-memory object for UserManagedHttpsParameters.
 .Description
 Create an in-memory object for UserManagedHttpsParameters.
 .Example
-New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters
@@ -33513,9 +33512,9 @@ Create an in-memory object for AfdDomainHttpsParameters.
 .Description
 Create an in-memory object for AfdDomainHttpsParameters.
 .Example
-$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters
@@ -33663,7 +33662,9 @@ Create an in-memory object for MigrationParameters.
 .Description
 Create an in-memory object for MigrationParameters.
 .Example
-New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationParameters
@@ -33798,8 +33799,9 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 .Description
 Create an in-memory object for MigrationWebApplicationFirewallMapping.
 .Example
-New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
-
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationWebApplicationFirewallMapping
@@ -33913,7 +33915,9 @@ Create an in-memory object for HealthProbeParameters.
 .Description
 Create an in-memory object for HealthProbeParameters.
 .Example
-New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
@@ -34041,7 +34045,9 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 .Description
 Create an in-memory object for LoadBalancingSettingsParameters.
 .Example
-New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters
@@ -34161,10 +34167,9 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 .Description
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
 .Example
-New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global
+{{ Add code here }}
 .Example
-$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
-New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global -LogScrubbingRule $rule -LogScrubbingState Enabled
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
@@ -34337,6 +34342,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnProfile';
+        CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzFrontDoorCdnProfile';
+        CreateViaJsonString = 'Az.Cdn.custom\New-AzFrontDoorCdnProfile';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -34441,7 +34473,9 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 .Description
 Create an in-memory object for ProfileChangeSkuWafMapping.
 .Example
-New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileChangeSkuWafMapping
@@ -34555,9 +34589,9 @@ Create an in-memory object for ProfileLogScrubbing.
 .Description
 Create an in-memory object for ProfileLogScrubbing.
 .Example
-$scrubbingRule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
-$scrubbingRule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Enabled
-New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($scrubbingRule1, $scrubbingRule2) -State Enabled
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileLogScrubbing
@@ -34682,9 +34716,9 @@ Create an in-memory object for ProfileScrubbingRules.
 .Description
 Create an in-memory object for ProfileScrubbingRules.
 .Example
-New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+{{ Add code here }}
 .Example
-New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Disabled
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileScrubbingRules
@@ -34807,12 +34841,9 @@ Create an in-memory object for ProfileUpgradeParameters.
 .Description
 Create an in-memory object for ProfileUpgradeParameters.
 .Example
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+{{ Add code here }}
 .Example
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
-$upgrade.ToString()
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileUpgradeParameters
@@ -34928,8 +34959,9 @@ Create an in-memory object for AfdPurgeParameters.
 .Description
 Create an in-memory object for AfdPurgeParameters.
 .Example
-$contentPath = "/a"
-$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdPurgeParameters
@@ -35044,8 +35076,9 @@ Create an in-memory object for ResourceReference.
 .Description
 Create an in-memory object for ResourceReference.
 .Example
-$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference
@@ -35156,12 +35189,6 @@ Create a new route with the specified route name under the specified subscriptio
 $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 $ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 $customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
-
-$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
-
-New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
-     
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -35617,7 +35644,9 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 .Description
 Create an in-memory object for DeliveryRuleClientPortCondition.
 .Example
-New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleClientPortCondition
@@ -35752,7 +35781,9 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 .Description
 Create an in-memory object for DeliveryRuleCookiesCondition.
 .Example
-New-AzFrontDoorCdnRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition
@@ -35893,7 +35924,9 @@ Create an in-memory object for DeliveryRuleHostNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleHostNameCondition.
 .Example
-New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator Equal -ParameterMatchValue azure.com
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHostNameCondition
@@ -36028,7 +36061,9 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Description
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Example
-New-AzFrontDoorCdnRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition
@@ -36156,7 +36191,9 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Description
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Example
-New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition
@@ -36285,7 +36322,9 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 .Description
 Create an in-memory object for DeliveryRulePostArgsCondition.
 .Example
-New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition
@@ -36426,7 +36465,9 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Description
 Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Example
-New-AzFrontDoorCdnRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleQueryStringCondition
@@ -36561,7 +36602,9 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Description
 Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Example
-New-AzFrontDoorCdnRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition
@@ -36698,7 +36741,9 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Example
-New-AzFrontDoorCdnRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition
@@ -36833,7 +36878,9 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Example
-New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
@@ -36961,7 +37008,9 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 .Example
-New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition
@@ -37102,7 +37151,9 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Example
-New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestMethodCondition
@@ -37231,7 +37282,9 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 .Example
-New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition
@@ -37360,7 +37413,9 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
- New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition
@@ -37495,7 +37550,9 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Example
-New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
@@ -37623,8 +37680,9 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 .Description
 Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 .Example
-$originGroupId = "xxxx"
-New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name RouteConfigurationOverride -OriginGroupOverrideForwardingProtocol HttpOnly -OriginGroupId $originGroupId
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction
@@ -37783,7 +37841,9 @@ Create an in-memory object for DeliveryRuleServerPortCondition.
 .Description
 Create an in-memory object for DeliveryRuleServerPortCondition.
 .Example
-New-AzFrontDoorCdnRuleServerPortConditionObject -Name ServerPort -ParameterOperator Equal -ParameterMatchValue 80,81
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleServerPortCondition
@@ -37918,7 +37978,9 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Description
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Example
- New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSocketAddrCondition
@@ -38053,7 +38115,9 @@ Create an in-memory object for DeliveryRuleSslProtocolCondition.
 .Description
 Create an in-memory object for DeliveryRuleSslProtocolCondition.
 .Example
-New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition
@@ -38182,7 +38246,9 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Example
-New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition
@@ -38317,7 +38383,9 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Example
-New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition
@@ -38452,7 +38520,9 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Description
 Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Example
- New-AzFrontDoorCdnRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlPathCondition
@@ -38587,7 +38657,9 @@ Create an in-memory object for UrlRedirectAction.
 .Description
 Create an in-memory object for UrlRedirectAction.
 .Example
-New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction
@@ -38743,7 +38815,9 @@ Create an in-memory object for UrlRewriteAction.
 .Description
 Create an in-memory object for UrlRewriteAction.
 .Example
-New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestination /b -ParameterSourcePattern /a -ParameterPreserveUnmatchedPath $False
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
@@ -38872,7 +38946,9 @@ Create an in-memory object for UrlSigningAction.
 .Description
 Create an in-memory object for UrlSigningAction.
 .Example
-New-AzFrontDoorCdnRuleUrlSigningActionObject -Name rule01
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction
@@ -39003,8 +39079,9 @@ Create an in-memory object for CustomerCertificateParameters.
 .Description
 Create an in-memory object for CustomerCertificateParameters.
 .Example
-$secretSourceId = "xxxxxxxx"
-New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId               
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters
@@ -39136,7 +39213,9 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 .Description
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 .Example
-New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type BYOC
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AzureFirstPartyManagedCertificateParameters
@@ -39250,7 +39329,9 @@ Create an in-memory object for ManagedCertificateParameters.
 .Description
 Create an in-memory object for ManagedCertificateParameters.
 .Example
-New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedCertificateParameters
@@ -39358,7 +39439,9 @@ Create an in-memory object for UrlSigningKeyParameters.
 .Description
 Create an in-memory object for UrlSigningKeyParameters.
 .Example
-New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId keyId01 -Type Byoc -SecretVersion v1.0
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningKeyParameters
@@ -39485,8 +39568,9 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 .Description
 Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 .Example
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallAssociation
@@ -39616,10 +39700,9 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 .Description
 Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 .Example
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-$association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
-            -WafPolicyId $wafPolicyId
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallParameters
@@ -39752,9 +39835,9 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
-Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
+{{ Add code here }}
 .Example
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -39883,6 +39966,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.Cdn.custom\Remove-AzCdnProfile';
+        DeleteViaIdentity = 'Az.Cdn.custom\Remove-AzCdnProfile';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -39988,9 +40097,9 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
-Remove-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Remove-AzFrontDoorCdnProfile
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -40119,6 +40228,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.Cdn.custom\Remove-AzFrontDoorCdnProfile';
+        DeleteViaIdentity = 'Az.Cdn.custom\Remove-AzFrontDoorCdnProfile';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -40226,30 +40361,9 @@ The change need to be committed after this.
 Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
 The change need to be committed after this.
 .Example
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor
+{{ Add code here }}
 .Example
-$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
-.Example
-$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
-.Example
-$wafMapping1 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01test
-
-$wafMapping2 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02 -MigratedToId  /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02test
-
-# enable Managed Identity via SystemAssigned and UserAssigned
-$identityType = "SystemAssigned, UserAssigned"
-
-# UserIdentity information
-$userInfo = @{
-	"/subscriptions/testSubId/resourceGroups/rgName01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" = @{}
-	"/subscriptions/testSubId/resourceGroups/rgName02/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity02" = @{}
-}
-
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Premium_AzureFrontDoor -MigrationWebApplicationFirewallMapping @($wafMapping1, $wafMapping2) -IdentityType $identityType -IdentityUserAssignedIdentity $userInfo
-.Example
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -SubscriptionId testSubId01
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
@@ -40490,9 +40604,11 @@ Abort classic cdn migrate to AFDx.
 Your new Front Door Profile will be deleted and your existing profile will remain active.
 WAF policies will not be deleted.
 .Example
-Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
+{{ Add code here }}
+{{ Add output here }}
 .Example
-Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
+{{ Add code here }}
+{{ Add output here }}
 
 .Outputs
 System.Boolean
@@ -40684,9 +40800,11 @@ Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Pre
 .Description
 Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Example
-Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName
+{{ Add code here }}
+{{ Add output here }}
 .Example
-Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01 
+{{ Add code here }}
+{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult
@@ -40878,17 +40996,9 @@ Updates an existing CDN profile with the specified profile name under the specif
 .Description
 Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-$tags = @{
-    Tag1 = 11
-    Tag2  = 22
-}
-Update-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -Tag $tags
+{{ Add code here }}
 .Example
-$tags = @{
-    Tag1 = 11
-    Tag2  = 22
-}
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 | Update-AzCdnProfile -Tag $tags
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -41025,6 +41135,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.Cdn.custom\Update-AzCdnProfile';
+        UpdateViaIdentityExpanded = 'Az.Cdn.custom\Update-AzCdnProfile';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -41128,34 +41264,9 @@ Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN
 .Description
 Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-$tags = @{
-    Tag1 = 11
-    Tag2  = 22
-}
-Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -Tag $tags
+{{ Add code here }}
 .Example
-$tags = @{
-    Tag1 = 11
-    Tag2  = 22
-}
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Update-AzFrontDoorCdnProfile -Tag $tags
-.Example
-Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType SystemAssigned
-.Example
-$userId =  @{"/subscriptions/subId/resourceGroups/testps-rg-da16jm/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testcdnrpaadidentity" = @{}}
-Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType UserAssigned -IdentityUserAssignedIdentity $userId
-.Example
-$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
-Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Enabled
-.Example
-$rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
-$rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
-$rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
-
-Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled
-.Example
-$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Disabled
-Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Disabled
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -41352,6 +41463,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.Cdn.custom\Update-AzFrontDoorCdnProfile';
+        UpdateViaJsonString = 'Az.Cdn.custom\Update-AzFrontDoorCdnProfile';
+        UpdateViaJsonFilePath = 'Az.Cdn.custom\Update-AzFrontDoorCdnProfile';
+        UpdateViaIdentityExpanded = 'Az.Cdn.custom\Update-AzFrontDoorCdnProfile';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -41457,24 +41596,9 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 .Description
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 .Example
-$nullUpgradePara = @{}
-Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $nullUpgradePara
+{{ Add code here }}
 .Example
-$waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
-
-Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
-.Example
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
-$waf2 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList @($waf1, $waf2)
-
-Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
-.Example
-$waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/testSubId01/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ExistingPremiumWAFName
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
-
-Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade -SubscriptionId testSubId01
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters

@@ -20,7 +20,9 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 .Description
 Create an in-memory object for LoadBalancingSettingsParameters.
 .Example
-New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters

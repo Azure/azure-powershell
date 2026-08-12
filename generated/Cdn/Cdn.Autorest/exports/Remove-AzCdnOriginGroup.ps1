@@ -20,9 +20,9 @@ Deletes an existing origin group within an endpoint.
 .Description
 Deletes an existing origin group within an endpoint.
 .Example
-Remove-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001
+{{ Add code here }}
 .Example
-Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001| Remove-AzCdnOriginGroup
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -228,7 +228,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()

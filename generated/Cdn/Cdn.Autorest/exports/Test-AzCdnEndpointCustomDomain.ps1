@@ -20,9 +20,9 @@ Validates the custom domain mapping to ensure it maps to the correct CDN endpoin
 .Description
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 .Example
-Test-AzCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -HostName 'testcm.dev.cdn.azure.cn'
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Test-AzCdnEndpointCustomDomain -HostName 'testcm.dev.cdn.azure.cn'
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

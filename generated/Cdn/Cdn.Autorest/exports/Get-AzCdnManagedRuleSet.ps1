@@ -20,7 +20,9 @@ Lists all available managed rule sets.
 .Description
 Lists all available managed rule sets.
 .Example
-Get-AzCdnManagedRuleSet
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinition

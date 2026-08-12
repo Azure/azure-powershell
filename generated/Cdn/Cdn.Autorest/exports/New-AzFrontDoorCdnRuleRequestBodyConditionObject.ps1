@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestBodyCondition.
 .Example
-New-AzFrontDoorCdnRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition

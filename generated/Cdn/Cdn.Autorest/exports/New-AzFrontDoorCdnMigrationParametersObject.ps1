@@ -20,7 +20,9 @@ Create an in-memory object for MigrationParameters.
 .Description
 Create an in-memory object for MigrationParameters.
 .Example
-New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationParameters

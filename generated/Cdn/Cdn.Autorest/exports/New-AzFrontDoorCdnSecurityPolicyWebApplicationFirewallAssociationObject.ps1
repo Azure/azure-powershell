@@ -20,8 +20,9 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 .Description
 Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 .Example
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallAssociation

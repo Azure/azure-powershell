@@ -22,11 +22,9 @@ Available for Verizon Profiles.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 .Example
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
+{{ Add code here }}
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-$contentFilePath = New-AzCdnLoadParametersObject -ContentPath $contentPath
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentFilePath $contentFilePath
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -252,7 +250,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()

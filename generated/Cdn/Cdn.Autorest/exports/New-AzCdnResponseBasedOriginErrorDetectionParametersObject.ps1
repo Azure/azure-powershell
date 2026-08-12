@@ -20,7 +20,9 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 .Description
 Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 .Example
-New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters

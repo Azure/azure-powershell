@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 .Description
 Create an in-memory object for DeliveryRuleClientPortCondition.
 .Example
-New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleClientPortCondition

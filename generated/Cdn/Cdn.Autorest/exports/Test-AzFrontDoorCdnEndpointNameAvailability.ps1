@@ -22,7 +22,9 @@ This is needed for resources where name is globally unique, such as a afdx endpo
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
 .Example
-Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm -Type "Microsoft.Cdn/Profiles/AfdEndpoints" -Name end001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput

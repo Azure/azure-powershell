@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 .Description
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
 .Example
-New-AzCdnDeliveryRuleCacheExpirationActionObject -Name CacheExpiration -ParameterCacheBehavior SetIfMissing -ParameterCacheDuration 0.01:30:00
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction

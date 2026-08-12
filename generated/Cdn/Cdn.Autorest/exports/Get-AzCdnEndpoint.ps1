@@ -20,16 +20,9 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 .Description
 Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
+{{ Add code here }}
 .Example
-Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
-.Example
-$origin = @{
-    Name = "origin1"
-    HostName = "host1.hello.com"
-};
-
-New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest010 -Location global -Origin $origin | Get-AzCdnEndpoint
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

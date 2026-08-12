@@ -20,7 +20,9 @@ Create an in-memory object for ResourceReference.
 .Description
 Create an in-memory object for ResourceReference.
 .Example
-New-AzCdnResourceReferenceObject -Id Idtest
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference

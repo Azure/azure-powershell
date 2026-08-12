@@ -20,11 +20,9 @@ Gets an existing AzureFrontDoor domain with the specified domain name under the 
 .Description
 Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 .Example
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
-.Example
-New-AzFrontDoorCdnCustomDomain -CustomDomainName domain001 -ProfileName fdp-v542q6 -ResourceGroupName testps-rg-da16jm -HostName "pstest001.dev.cdn.azure.cn"| Get-AzFrontDoorCdnCustomDomain
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

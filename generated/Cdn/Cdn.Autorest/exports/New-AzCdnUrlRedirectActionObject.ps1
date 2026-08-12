@@ -20,7 +20,9 @@ Create an in-memory object for UrlRedirectAction.
 .Description
 Create an in-memory object for UrlRedirectAction.
 .Example
-New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRedirectAction

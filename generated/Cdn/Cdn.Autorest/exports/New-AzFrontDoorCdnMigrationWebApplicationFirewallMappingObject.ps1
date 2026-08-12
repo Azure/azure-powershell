@@ -20,8 +20,9 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 .Description
 Create an in-memory object for MigrationWebApplicationFirewallMapping.
 .Example
-New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
-
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationWebApplicationFirewallMapping

@@ -22,9 +22,9 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
-Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
+{{ Add code here }}
 .Example
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -163,7 +163,7 @@ dynamicparam {
     }
     if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
     try {
-        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
         $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
         if ($dynamicParams.Length -gt 0) {
             $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()

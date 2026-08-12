@@ -20,8 +20,9 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 .Description
 Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 .Example
-$originGroupId = "xxxx"
-New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name RouteConfigurationOverride -OriginGroupOverrideForwardingProtocol HttpOnly -OriginGroupId $originGroupId
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction

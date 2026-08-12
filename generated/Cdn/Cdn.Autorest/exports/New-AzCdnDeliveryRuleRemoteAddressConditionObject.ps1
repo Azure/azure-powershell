@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Description
 Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Example
-New-AzCdnDeliveryRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition

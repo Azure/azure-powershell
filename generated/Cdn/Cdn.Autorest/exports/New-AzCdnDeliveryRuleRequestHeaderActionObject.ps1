@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
 Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Example
-New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction

@@ -22,13 +22,9 @@ This step prepares the profile for migration and will be followed by Commit to f
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 This step prepares the profile for migration and will be followed by Commit to finalize the migration.
 .Example
-$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
-
-Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
+{{ Add code here }}
 .Example
-$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
-
-Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1) -IdentityType "SystemAssigned"
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

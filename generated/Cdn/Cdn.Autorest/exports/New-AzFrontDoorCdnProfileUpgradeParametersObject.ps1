@@ -20,12 +20,9 @@ Create an in-memory object for ProfileUpgradeParameters.
 .Description
 Create an in-memory object for ProfileUpgradeParameters.
 .Example
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+{{ Add code here }}
 .Example
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
-$upgrade.ToString()
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileUpgradeParameters

@@ -20,9 +20,11 @@ Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Pre
 .Description
 Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Example
-Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName
+{{ Add code here }}
+{{ Add output here }}
 .Example
-Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01 
+{{ Add code here }}
+{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult

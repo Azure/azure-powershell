@@ -20,7 +20,9 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 .Description
 Check the quota and actual usage of the CDN profiles under the given subscription.
 .Example
-Get-AzCdnSubscriptionResourceUsage
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage

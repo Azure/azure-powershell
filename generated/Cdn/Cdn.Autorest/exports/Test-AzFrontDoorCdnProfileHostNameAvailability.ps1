@@ -20,9 +20,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 .Description
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 .Example
-Test-AzFrontDoorCdnProfileHostNameAvailability -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -HostName hello1.dev.cdn.azure.cn
+{{ Add code here }}
 .Example
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Test-AzFrontDoorCdnProfileHostNameAvailability -HostName hello1.dev.cdn.azure.cn
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

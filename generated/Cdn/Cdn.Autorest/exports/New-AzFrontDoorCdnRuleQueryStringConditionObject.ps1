@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Description
 Create an in-memory object for DeliveryRuleQueryStringCondition.
 .Example
-New-AzFrontDoorCdnRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleQueryStringCondition

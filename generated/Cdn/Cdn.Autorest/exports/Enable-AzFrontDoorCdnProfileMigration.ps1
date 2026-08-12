@@ -20,9 +20,11 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
+{{ Add code here }}
+{{ Add output here }}
 .Example
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
+{{ Add code here }}
+{{ Add output here }}
 
 .Outputs
 System.Boolean

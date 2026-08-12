@@ -20,11 +20,9 @@ Gets an existing custom domain within an endpoint.
 .Description
 Gets an existing custom domain within an endpoint.
 .Example
-Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+{{ Add code here }}
 .Example
-Get-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001
-.Example
-New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001  -Name customdomain010 -HostName 'testcm.dev.cdn.azure.cn' | Get-AzCdnCustomDomain
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

@@ -20,8 +20,9 @@ Create an in-memory object for LoadParameters.
 .Description
 Create an in-memory object for LoadParameters.
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-New-AzCdnLoadParametersObject -ContentPath $contentPath
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadParameters

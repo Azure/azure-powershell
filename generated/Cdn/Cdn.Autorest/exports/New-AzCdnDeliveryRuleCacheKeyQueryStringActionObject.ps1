@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Description
 Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Example
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name CacheKeyQueryString -ParameterQueryStringBehavior IncludeAll
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction

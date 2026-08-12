@@ -20,7 +20,9 @@ Checks the quota and usage of geo filters and custom domains under the given end
 .Description
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 .Example
-Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage

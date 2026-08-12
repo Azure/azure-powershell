@@ -20,13 +20,9 @@ Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile wit
 .Description
 Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
-Get-AzCdnProfile
+{{ Add code here }}
 .Example
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm
-.Example
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
-.Example
-New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global | Get-AzCdnProfile
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

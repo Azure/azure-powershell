@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Description
 Create an in-memory object for DeliveryRuleRequestMethodCondition.
 .Example
-New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestMethodCondition

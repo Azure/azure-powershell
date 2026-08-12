@@ -20,7 +20,9 @@ Create an in-memory object for ManagedCertificateParameters.
 .Description
 Create an in-memory object for ManagedCertificateParameters.
 .Example
-New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedCertificateParameters

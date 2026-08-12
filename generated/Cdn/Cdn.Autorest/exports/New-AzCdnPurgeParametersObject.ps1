@@ -20,8 +20,9 @@ Create an in-memory object for PurgeParameters.
 .Description
 Create an in-memory object for PurgeParameters.
 .Example
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-New-AzCdnPurgeParametersObject -ContentPath $contentPath
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PurgeParameters

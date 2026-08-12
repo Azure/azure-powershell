@@ -22,7 +22,9 @@ A user can list an endpoint with an optimization type from the listed values.
 Gets the supported optimization types for the current profile.
 A user can list an endpoint with an optimization type from the listed values.
 .Example
-Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult

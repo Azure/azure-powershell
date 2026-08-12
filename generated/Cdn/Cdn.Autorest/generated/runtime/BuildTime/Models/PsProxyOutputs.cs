@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Text;
 using System.Text.RegularExpressions;
 using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell.PsProxyOutputExtensions;
@@ -205,11 +206,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell
         {
         }
 
-        // Change Safety: only emit a dynamicparam block when a wrapped (private) cmdlet actually declares
-        // dynamic parameters via IDynamicParameters. For every other cmdlet this emits nothing (zero diff),
-        // so it is a no-op that just forwards the private cmdlet's runtime parameters through the proxy.
+        // Change Safety: only emit a dynamicparam block when the wrapped command actually declares dynamic
+        // parameters, either via IDynamicParameters (compiled private cmdlets) or via its own `dynamicparam`
+        // block (custom-fronted cmdlets, which wrap a hand-written function in custom/ instead of a private
+        // cmdlet). For every other cmdlet this emits nothing (zero diff), so it is a no-op that just forwards
+        // the wrapped command's runtime parameters through the proxy.
         private bool HasDynamicParameters() => VariantGroup.Variants.Any(v =>
         {
+            if (v.IsFunction)
+            {
+                // FunctionInfo.ScriptBlock.Ast is a FunctionDefinitionAst (the `function Name { ... }` wrapper);
+                // its Body (a ScriptBlockAst) is what actually exposes the DynamicParamBlock property.
+                var ast = (v.Info as FunctionInfo)?.ScriptBlock?.Ast;
+                var scriptBlockAst = ast as ScriptBlockAst ?? (ast as FunctionDefinitionAst)?.Body;
+                return scriptBlockAst?.DynamicParamBlock != null;
+            }
             var implementingType = (v.Info as CmdletInfo)?.ImplementingType;
             return implementingType != null && typeof(IDynamicParameters).IsAssignableFrom(implementingType);
         });
@@ -231,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell
 {GetParameterSetToCmdletMapping()}
 {Indent}if (-not $mapping.ContainsKey($parameterSet)) {{ $parameterSet = @($mapping.Keys)[0] }}
 {Indent}try {{
-{Indent}{Indent}$targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet, $PSBoundParameters)
+{Indent}{Indent}$targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
 {Indent}{Indent}$dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object {{ $_.Value.IsDynamic }})
 {Indent}{Indent}if ($dynamicParams.Length -gt 0) {{
 {Indent}{Indent}{Indent}$paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()

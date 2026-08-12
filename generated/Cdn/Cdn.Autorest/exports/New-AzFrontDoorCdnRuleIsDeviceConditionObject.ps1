@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Description
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Example
-New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition

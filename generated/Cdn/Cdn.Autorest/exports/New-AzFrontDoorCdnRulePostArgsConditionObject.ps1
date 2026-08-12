@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 .Description
 Create an in-memory object for DeliveryRulePostArgsCondition.
 .Example
-New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition

@@ -20,7 +20,9 @@ Create an in-memory object for DeliveryRuleHostNameCondition.
 .Description
 Create an in-memory object for DeliveryRuleHostNameCondition.
 .Example
-New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator Equal -ParameterMatchValue azure.com
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHostNameCondition

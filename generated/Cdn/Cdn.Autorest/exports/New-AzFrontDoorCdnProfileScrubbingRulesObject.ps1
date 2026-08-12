@@ -20,9 +20,9 @@ Create an in-memory object for ProfileScrubbingRules.
 .Description
 Create an in-memory object for ProfileScrubbingRules.
 .Example
-New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+{{ Add code here }}
 .Example
-New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Disabled
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileScrubbingRules
