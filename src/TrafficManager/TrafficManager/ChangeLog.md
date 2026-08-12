@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 * Added ChangeSafety Support
+* Upgraded TrafficManager SDK to API version 2024-04-01-preview [#29711]
+    - With this release User can Create STP enabled Traffic Manager Profiles ie "RecordType" property is available to be added/modified on TrafficManagerProfile.
+    - Updated corresponding test cases
 
 ## Version 1.3.0
 * Upgraded nuget package to signed package.
