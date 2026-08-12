@@ -2103,7 +2103,7 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.ManagementIPConfiguration,
                         opt => opt.MapFrom(src => src.ManagementIpConfiguration)
                     )
-                    // AFC configuration is service-managed and read-only; never send it back on create/update.
+                    // AFC configuration is service-managed and read-only
                     .ForMember(
                         dest => dest.AfcConfiguration,
                         opt => opt.Ignore()
